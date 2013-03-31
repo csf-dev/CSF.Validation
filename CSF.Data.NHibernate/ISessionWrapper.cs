@@ -2,38 +2,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
-using NHibernate.Linq;
 using CSF.Entities;
 
 namespace CSF.Data.NHibernate
 {
   /// <summary>
-  /// Default implementation of the <see cref="INHLinqWrapper"/>, redirecting calls directly to the NHibernate extension
-  /// methods.
+  /// Interface for a type that wraps an NHibernate <c>ISession</c> and provides alternative routes to its
+  /// functionality.
   /// </summary>
-  [Obsolete("This type hs been renamed SessionWrapper - this obsolete version will be removed in v3.x")]
-  public sealed class DefaultLinqWrapper : INHLinqWrapper
+  /// <remarks>
+  /// <para>
+  /// The rationale for this type is to make it easier to mock linq-based NHibernate queries.  An issue with the stock
+  /// NHibernate Linq methods is that they are based upon extension methods - specifically the type:
+  /// <c>NHibernate.Linq.LinqExtensionMethods</c>.  This makes it near-impossible to substitute NHibernate linq queries
+  /// with mocks.  Because the methods being called are extension methods, they defeat the mock and use NHibernate's
+  /// implementation regardless.
+  /// </para>
+  /// <para>
+  /// By using this wrapper instead of relying on NH's built-in methods, it becomes far simpler to provide mock results
+  /// for a query (for example).  The default implementation of this wrapper (for production use) will simple redirect
+  /// calls to these methods directly to NH's standard extension methods.
+  /// </para>
+  /// <para>
+  /// As a fringe benefit, it also becomes possible to add extra functionality to an <c>ISession</c> via this approach,
+  /// including interacting better with entities and identities.
+  /// </para>
+  /// </remarks>
+  public interface ISessionWrapper
   {
-    #region fields
-
-    private ISession _session;
-
-    #endregion
-
     #region properties
 
     /// <summary>
-    ///  Gets the NHibernate ISession. 
+    /// Gets the wrapped NHibernate ISession.
     /// </summary>
     /// <value>
-    ///  The ISession. 
+    /// The ISession.
     /// </value>
-    public ISession Session
-    {
-      get {
-        return _session;
-      }
-    }
+    ISession Session { get; }
 
     #endregion
 
@@ -51,10 +56,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IQueryable<T> Cacheable<T>(IQueryable<T> query)
-    {
-      return query.Cacheable();
-    }
+    IQueryable<T> Cacheable<T>(IQueryable<T> query);
 
     /// <summary>
     /// Controls how a query interacts with the second level cache.
@@ -71,10 +73,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IQueryable<T> CacheMode<T>(IQueryable<T> query, CacheMode cacheMode)
-    {
-      return query.CacheMode(cacheMode);
-    }
+    IQueryable<T> CacheMode<T>(IQueryable<T> query, CacheMode cacheMode);
 
     /// <summary>
     /// Configures a query cache region.
@@ -91,10 +90,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IQueryable<T> CacheRegion<T>(IQueryable<T> query, string region)
-    {
-      return query.CacheRegion(region);
-    }
+    IQueryable<T> CacheRegion<T>(IQueryable<T> query, string region);
 
     /// <summary>
     /// Creates a new Linq query
@@ -108,10 +104,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IQueryable<T> Query<T>(IStatelessSession session)
-    {
-      return session.Query<T>();
-    }
+    IQueryable<T> Query<T>(IStatelessSession session);
 
     /// <summary>
     /// Creates a new Linq query
@@ -125,10 +118,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IQueryable<T> Query<T>(ISession session)
-    {
-      return session.Query<T>();
-    }
+    IQueryable<T> Query<T>(ISession session);
 
     /// <summary>
     /// Creates a new Linq query using the <see cref="Session"/> referenced by the current instance.
@@ -139,10 +129,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IQueryable<T> Query<T>()
-    {
-      return this.Query<T>(this.Session);
-    }
+    IQueryable<T> Query<T>();
 
     /// <summary>
     /// Returns a copy of the given <paramref name="query"/> as a future-query.
@@ -156,10 +143,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IEnumerable<T> ToFuture<T>(IQueryable<T> query)
-    {
-      return query.ToFuture();
-    }
+    IEnumerable<T> ToFuture<T>(IQueryable<T> query);
 
     /// <summary>
     /// Returns a copy of the given <paramref name="query"/> as a future-value.
@@ -173,10 +157,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The target type for the query.
     /// </typeparam>
-    public IFutureValue<T> ToFutureValue<T>(IQueryable<T> query)
-    {
-      return query.ToFutureValue();
-    }
+    IFutureValue<T> ToFutureValue<T>(IQueryable<T> query);
 
     #endregion
 
@@ -200,15 +181,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The type of entity desired, which may be inferred via the <paramref name="identity"/> parameter.
     /// </typeparam>
-    public T Get<T>(IIdentity<T> identity, ISession session) where T : IEntity
-    {
-      if(session == null)
-      {
-        throw new ArgumentNullException("session");
-      }
-
-      return (identity != null)? session.Get<T>(identity.Value) : default(T);
-    }
+    T Get<T>(IIdentity<T> identity, ISession session) where T : IEntity;
 
     /// <summary>
     /// Loads an entity of the specified identity.
@@ -231,15 +204,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The type of entity desired, which may be inferred via the <paramref name="identity"/> parameter.
     /// </typeparam>
-    public T Load<T>(IIdentity<T> identity, ISession session) where T : IEntity
-    {
-      if(session == null)
-      {
-        throw new ArgumentNullException("session");
-      }
-
-      return (identity != null)? session.Load<T>(identity.Value) : default(T);
-    }
+    T Load<T>(IIdentity<T> identity, ISession session) where T : IEntity;
 
     /// <summary>
     /// Gets an entity of the specified identity using the <see cref="Session"/> referenced by this instance.
@@ -256,10 +221,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The type of entity desired, which may be inferred via the <paramref name="identity"/> parameter.
     /// </typeparam>
-    public T Get<T>(IIdentity<T> identity) where T : IEntity
-    {
-      return this.Get(identity, this.Session);
-    }
+    T Get<T>(IIdentity<T> identity) where T : IEntity;
 
     /// <summary>
     /// Loads an entity of the specified identity using the <see cref="Session"/> referenced by this instance.
@@ -279,30 +241,7 @@ namespace CSF.Data.NHibernate
     /// <typeparam name='T'>
     /// The type of entity desired, which may be inferred via the <paramref name="identity"/> parameter.
     /// </typeparam>
-    public T Load<T>(IIdentity<T> identity) where T : IEntity
-    {
-      return this.Load(identity, this.Session);
-    }
-
-    #endregion
-
-    #region constructor
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CSF.Data.NHibernate.DefaultLinqWrapper"/> class.
-    /// </summary>
-    /// <param name='session'>
-    /// An NHibernate ISession.
-    /// </param>
-    public DefaultLinqWrapper(ISession session)
-    {
-      if(session == null)
-      {
-        throw new ArgumentNullException("session");
-      }
-
-      _session = session;
-    }
+    T Load<T>(IIdentity<T> identity) where T : IEntity;
 
     #endregion
   }

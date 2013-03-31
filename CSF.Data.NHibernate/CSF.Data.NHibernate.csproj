@@ -58,6 +58,8 @@
     <Compile Include="ISessionExtensions.cs" />
     <Compile Include="INHLinqWrapper.cs" />
     <Compile Include="DefaultLinqWrapper.cs" />
+    <Compile Include="ISessionWrapper.cs" />
+    <Compile Include="SessionWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

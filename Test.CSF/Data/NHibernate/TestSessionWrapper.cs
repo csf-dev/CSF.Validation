@@ -8,7 +8,7 @@ using CSF.Entities;
 namespace Test.CSF.Data.NHibernate
 {
   [TestFixture]
-  public class TestDefaultLinqWrapper
+  public class TestSessionWrapper
   {
     #region tests
 
@@ -23,7 +23,7 @@ namespace Test.CSF.Data.NHibernate
         .Setup(x => x.Get<TestEntity>(It.Is<uint>(val => val == identity.Value)))
         .Returns(entity.Object);
 
-      var wrapper = new DefaultLinqWrapper(session.Object);
+      var wrapper = new SessionWrapper(session.Object);
 
       var result = wrapper.Get(identity);
 
@@ -39,7 +39,7 @@ namespace Test.CSF.Data.NHibernate
 
       session.Setup(x => x.Get<TestEntity>(It.IsAny<uint>()));
 
-      var wrapper = new DefaultLinqWrapper(session.Object);
+      var wrapper = new SessionWrapper(session.Object);
 
       var result = wrapper.Get(identity);
       Assert.IsNull(result, "Null returned.");
@@ -57,7 +57,7 @@ namespace Test.CSF.Data.NHibernate
         .Setup(x => x.Load<TestEntity>(It.Is<uint>(val => val == identity.Value)))
         .Returns(entity.Object);
 
-      var wrapper = new DefaultLinqWrapper(session.Object);
+      var wrapper = new SessionWrapper(session.Object);
 
       var result = wrapper.Load(identity);
 
@@ -73,7 +73,7 @@ namespace Test.CSF.Data.NHibernate
 
       session.Setup(x => x.Load<TestEntity>(It.IsAny<uint>()));
 
-      var wrapper = new DefaultLinqWrapper(session.Object);
+      var wrapper = new SessionWrapper(session.Object);
 
       var result = wrapper.Load(identity);
       Assert.IsNull(result, "Null returned.");

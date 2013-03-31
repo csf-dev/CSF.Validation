@@ -24,6 +24,7 @@ namespace CSF.Data.NHibernate
   /// calls to these methods directly to NH's standard extension methods.
   /// </para>
   /// </remarks>
+  [Obsolete("This type hs been renamed ISessionWrapper - this obsolete version will be removed in v3.x")]
   public interface INHLinqWrapper
   {
     #region properties

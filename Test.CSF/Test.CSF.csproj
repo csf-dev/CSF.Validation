@@ -110,12 +110,12 @@
     <Compile Include="Reflection\TestReflect.cs" />
     <Compile Include="Patterns\ServiceLayer\TestRequestExtensions.cs" />
     <Compile Include="TestStringExtensions.cs" />
-    <Compile Include="Data\NHibernate\TestDefaultLinqWrapper.cs" />
     <Compile Include="Collections\TestIEnumerableExtensions.cs" />
     <Compile Include="TestEnumExtensions.cs" />
     <Compile Include="TestExceptionExtensions.cs" />
     <Compile Include="Collections\TestICollectionExtensions.cs" />
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
+    <Compile Include="Data\NHibernate\TestSessionWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

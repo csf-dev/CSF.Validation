@@ -8,11 +8,10 @@ using CSF.Entities;
 namespace CSF.Data.NHibernate
 {
   /// <summary>
-  /// Default implementation of the <see cref="INHLinqWrapper"/>, redirecting calls directly to the NHibernate extension
-  /// methods.
+  /// Default implementation of the <see cref="ISessionWrapper"/>, redirecting calls directly to the NHibernate
+  /// extension methods.
   /// </summary>
-  [Obsolete("This type hs been renamed SessionWrapper - this obsolete version will be removed in v3.x")]
-  public sealed class DefaultLinqWrapper : INHLinqWrapper
+  public sealed class SessionWrapper : ISessionWrapper
   {
     #region fields
 
@@ -23,7 +22,7 @@ namespace CSF.Data.NHibernate
     #region properties
 
     /// <summary>
-    ///  Gets the NHibernate ISession. 
+    /// Gets the wrapped NHibernate ISession.
     /// </summary>
     /// <value>
     ///  The ISession. 
@@ -289,12 +288,12 @@ namespace CSF.Data.NHibernate
     #region constructor
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CSF.Data.NHibernate.DefaultLinqWrapper"/> class.
+    /// Initializes a new instance of the <see cref="CSF.Data.NHibernate.SessionWrapper"/> class.
     /// </summary>
     /// <param name='session'>
     /// An NHibernate ISession.
     /// </param>
-    public DefaultLinqWrapper(ISession session)
+    public SessionWrapper(ISession session)
     {
       if(session == null)
       {
