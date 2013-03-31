@@ -123,6 +123,68 @@ namespace Test.CSF
       }
     }
 
+    [Test]
+    [ExpectedException(typeof(TargetInvocationException))]
+    public void TestTryFixStackTrace()
+    {
+      bool success = false;
+
+      try
+      {
+        CustomSerializableException fixedException = null;
+        try
+        {
+          throw new CustomSerializableException();
+        }
+        catch(CustomSerializableException ex)
+        {
+          success = ex.TryFixStackTrace(out fixedException);
+        }
+
+        if(fixedException != null)
+        {
+          throw new TargetInvocationException(fixedException);
+        }
+      }
+      catch(TargetInvocationException ex)
+      {
+        Assert.IsInstanceOfType(typeof(CustomSerializableException), ex.InnerException, "Inner exception");
+        Assert.IsTrue(success, "Success of fix");
+        throw;
+      }
+    }
+
+    [Test]
+    [ExpectedException(typeof(TargetInvocationException))]
+    public void TestTryFixStackTraceFailure()
+    {
+      bool success = false;
+
+      try
+      {
+        CustomException fixedException = null;
+        try
+        {
+          throw new CustomException();
+        }
+        catch(CustomException ex)
+        {
+          success = ex.TryFixStackTrace(out fixedException);
+        }
+
+        if(fixedException != null)
+        {
+          throw new TargetInvocationException(fixedException);
+        }
+      }
+      catch(TargetInvocationException ex)
+      {
+        Assert.IsInstanceOfType(typeof(CustomException), ex.InnerException, "Inner exception");
+        Assert.IsFalse(success, "Success of fix");
+        throw;
+      }
+    }
+
     #endregion
 
     #region contained custom exception

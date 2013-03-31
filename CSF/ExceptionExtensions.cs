@@ -117,6 +117,75 @@ namespace CSF
       return output;
     }
 
+    /// <summary>
+    /// Makes a number of attempts to fix an exception's stack trace, this method does not throw an exception if all
+    /// attempts fail.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// In almost all scenarios this method should not be used, instead favouring the method
+    /// <c>FixStackTrace&lt;TException&gt;</c>.  This method exists as a last-ditch way of making a best-efforts attempt
+    /// to fix an exception's stack trace when we cannot be sure that it will be possible to do so.  For example, where
+    /// the developer does not control the exception type to be 'fixed' (such as if it is from a third party library) or
+    /// where it is impossible for some reason to add a deserialisation constructor to the exception type.
+    /// </para>
+    /// <para>
+    /// This method uses a priority-ordered set of attempts to fix the stack trace upon the given exception.  If any
+    /// method fails and returns a null result then the next is attempted.
+    /// </para>
+    /// <list type="number">
+    /// <item>An attempt is made using <see cref="FixStackTraceUsingInternalPreserve"/></item>
+    /// <item>An attempt is made using <see cref="FixStackTraceUsingPrepForRemoting"/></item>
+    /// <item>An attempt is made using <see cref="FixStackTraceUsingSerialization"/></item>
+    /// </list>
+    /// <para>
+    /// If all of these methods fail to return a result then this method will return false and the
+    /// <paramref name="fixedException"/> parameter wille expose the original, unmodified exception.  In this scenario
+    /// it is likely that the framework does not support either of the 'unofficial' mechanisms tried (perhaps we are
+    /// using Mono and not the official .NET framework).  The two methods that these mechanisms use are unsupported
+    /// internal functionality of the framework and could vanish at any time.
+    /// </para>
+    /// <para>
+    /// The last-attempted mechanism should work on just about any exception, as long as it posesses a deserialization
+    /// constructor.  That is, a constructor of the signature
+    /// <c>(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)</c>.  If an
+    /// exception possesses such a constructor then this mechanism will work in order to preserve the exception's stack
+    /// trace.
+    /// </para>
+    /// </remarks>
+    /// <returns>
+    /// <c>true</c> if this method successfully fixed the exception's stack trace; <c>false</c> otherwise.
+    /// </returns>
+    /// <param name='ex'>
+    /// The exception for which to preserve the stack trace.
+    /// </param>
+    /// <param name='fixedException'>
+    /// If this method returns <c>true</c>, indicating success, then this parameter exposes the fixed exception
+    /// instance.  If this method returns <c>false</c> then this parameter exposes the original, unmodified exception
+    /// instance.
+    /// </param>
+    /// <typeparam name='TException'>
+    /// The type of exception.
+    /// </typeparam>
+    public static bool TryFixStackTrace<TException>(this TException ex, out TException fixedException)
+      where TException : Exception
+    {
+      bool output;
+
+      try
+      {
+        fixedException = ex.FixStackTrace();
+        output = true;
+      }
+      catch(CannotFixStackTraceException)
+      {
+        fixedException = ex;
+        output = false;
+      }
+
+      return output;
+    }
+
     #endregion
 
     #region static methods
