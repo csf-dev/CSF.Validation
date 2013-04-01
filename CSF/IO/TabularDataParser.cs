@@ -252,6 +252,82 @@ namespace CSF.IO
     }
     
     /// <summary>
+    /// Writes the specified data to a string-based format.
+    /// </summary>
+    /// <param name='data'>
+    /// The data to write.
+    /// </param>
+    public virtual string Write(string[,] data)
+    {
+      return this.Write(data, this.Format.DefaultWriteOptions);
+    }
+    
+    /// <summary>
+    /// Writes the specified data to a string-based format.
+    /// </summary>
+    /// <param name='data'>
+    /// The data to write.
+    /// </param>
+    /// <param name='options'>
+    /// Additional write options to use when writing.
+    /// </param>
+    public virtual string Write(string[,] data, TabularDataWriteOptions options)
+    {
+      StringBuilder output = new StringBuilder();
+      
+      using(TextWriter writer = new StringWriter(output))
+      {
+        this.Write(data, writer, options);
+      }
+      
+      return output.ToString();
+    }
+    
+    /// <summary>
+    /// Write the specified data to a given <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name='data'>
+    /// A <see cref="TextWriter"/> to write the data to.
+    /// </param>
+    /// <param name='stringDataWriter'>
+    /// String data writer.
+    /// </param>
+    public virtual void Write(string[,] data, TextWriter stringDataWriter)
+    {
+      this.Write(data, stringDataWriter, this.Format.DefaultWriteOptions);
+    }
+    
+    /// <summary>
+    /// Write the specified data to a given <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name='data'>
+    /// The data to write.
+    /// </param>
+    /// <param name='stringDataWriter'>
+    /// A <see cref="TextWriter"/> to write the data to.
+    /// </param>
+    /// <param name='options'>
+    /// Additional write options to use when writing.
+    /// </param>
+    public virtual void Write(string[,] data, TextWriter stringDataWriter, TabularDataWriteOptions options)
+    {
+      /* HACK: What we're doing here is looping over the two dimensional array and turning it into a jagged array.
+       * 
+       * It would actually be a lot better (improved performance) to make the tabular data parser handle the 2d array
+       * natively rather than first performing this (potentially expensive) conversion.
+       * 
+       * Perhaps the ideal solution would use a delegate that accepts the row/column number and an object.  This
+       * delegate would return the string data at the given row/column.  For the jagged array solution the delegate
+       * returns the value at data[row][column] wheras for a 2d array it returns data[row,column].
+       */
+      this.Write(TabularDataList.CreateFrom(data), stringDataWriter, options);
+    }
+
+    #endregion
+
+    #region methods
+    
+    /// <summary>
     /// Gets an instance of a helper type that assists in the parsing of data from a <paramref name="reader"/>.
     /// </summary>
     /// <returns>
@@ -310,7 +386,7 @@ namespace CSF.IO
         }
       }
     }
-    
+
     #endregion
     
     #region constructor

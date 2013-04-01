@@ -162,6 +162,41 @@ namespace CSF.IO
     }
     
     #endregion
+
+    #region static methods
+
+    /// <summary>
+    /// Creates a new <see cref="TabularDataList"/> instance from a given two-dimensional string array.
+    /// </summary>
+    /// <returns>
+    /// The created tabular data list.
+    /// </returns>
+    /// <param name='twoDimensionalArray'>
+    /// A two-dimensional string array.
+    /// </param>
+    public static TabularDataList CreateFrom(string[,] twoDimensionalArray)
+    {
+      if(twoDimensionalArray == null)
+      {
+        throw new ArgumentNullException("twoDimensionalArray");
+      }
+
+      TabularDataList output = new TabularDataList(twoDimensionalArray.GetLength(1));
+
+      for(int row = 0; row < twoDimensionalArray.GetLength(0); row++)
+      {
+        var newRow = output.CreateRow();
+        for(int col = 0; col < newRow.Count; col++)
+        {
+          newRow[col] = twoDimensionalArray[row,col];
+        }
+        output.Add(newRow);
+      }
+
+      return output;
+    }
+
+    #endregion
   }
 }
 
