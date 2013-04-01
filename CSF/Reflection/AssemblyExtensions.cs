@@ -77,20 +77,53 @@ namespace CSF.Reflection
     /// The manifest resource text.
     /// </returns>
     /// <param name='assembly'>
-    /// Assembly.
+    /// The assembly.
     /// </param>
     /// <param name='type'>
-    /// Type.
+    /// A type by which to namespace the resource.
     /// </param>
     /// <param name='resourceName'>
     /// Resource name.
     /// </param>
     public static string GetManifestResourceText(this Assembly assembly, Type type, string resourceName)
     {
-      // TODO: Write this implementation
-      throw new NotImplementedException("This method is not yet supported");
+      string output;
+
+      if(assembly == null)
+      {
+        throw new ArgumentNullException("assembly");
+      }
+      else if(type == null)
+      {
+        throw new ArgumentNullException("type");
+      }
+
+      using(Stream resourceStream = assembly.GetManifestResourceStream(type, resourceName))
+      {
+        if(resourceStream == null)
+        {
+          string message = String.Format("Manifest resource '{2}.{0}' was not found in the assembly '{1}'",
+                                         resourceName,
+                                         assembly.FullName,
+                                         type.Namespace);
+          throw new InvalidOperationException(message);
+        }
+
+        output = GetResourceText(resourceStream);
+      }
+
+      return output;
     }
 
+    /// <summary>
+    /// Private helper method gets the textual content of a stream.
+    /// </summary>
+    /// <returns>
+    /// The text content of the stream.
+    /// </returns>
+    /// <param name='resourceStream'>
+    /// A resource stream.
+    /// </param>
     private static string GetResourceText(Stream resourceStream)
     {
       string output;

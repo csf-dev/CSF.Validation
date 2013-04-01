@@ -196,6 +196,38 @@ namespace Test.CSF.IO
     }
     
     #endregion
+
+    #region writing from 2d arrays
+    
+    [Test]
+    public void TestWriteCsvFrom2DArray()
+    {
+      string output;
+      string expectedOutput = "foo,bar,baz\r\n" +
+                              "wibble,wobble,spong";
+      string[,] input = new string[,] { { "foo",    "bar",    "baz"   },
+                                        { "wibble", "wobble", "spong" } };
+      ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Csv);
+      
+      output = parser.Write(input);
+      Assert.AreEqual(expectedOutput, output, "Correct string rendering");
+    }
+    
+    [Test]
+    public void TestWriteTsvFrom2DArray()
+    {
+      string output;
+      string expectedOutput = "foo\tbar\tbaz\n" +
+                              "wibble\twobble\tspong";
+      string[,] input = new string[,] { { "foo",    "bar",    "baz"   },
+                                        { "wibble", "wobble", "spong" } };
+      ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Tsv);
+      
+      output = parser.Write(input);
+      Assert.AreEqual(expectedOutput, output, "Correct string rendering");
+    }
+
+    #endregion
   }
 }
 

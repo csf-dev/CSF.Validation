@@ -10,7 +10,7 @@
     <RootNamespace>CSF</RootNamespace>
     <AssemblyName>CSF</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>2.4.0</ReleaseVersion>
+    <ReleaseVersion>2.5.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -37,10 +37,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -99,16 +99,13 @@
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IIdentity.cs" />
     <Compile Include="ISessionStorage.cs" />
-    <Compile Include="AspNetSessionStorage.cs" />
     <Compile Include="MemorySessionStorage.cs" />
     <Compile Include="Configuration\ConnectionStringSettingsExtensions.cs" />
     <Compile Include="VersionExtensions.cs" />
-    <Compile Include="IEnumerableExtensions.cs" />
     <Compile Include="Reflection\MemberInfoExtensions.cs" />
     <Compile Include="Reflection\EnumExtensions.cs" />
     <Compile Include="Reflection\UITextAttribute.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
-    <Compile Include="Web\HttpResponseExtensions.cs" />
     <Compile Include="Configuration\ConfigurationHelper.cs" />
     <Compile Include="DateTimeEqualityComparer.cs" />
     <Compile Include="Reflection\AssemblyExtensions.cs" />
@@ -138,7 +135,6 @@
     <Compile Include="Patterns\ServiceLayer\RequestDispatcherBase.cs" />
     <Compile Include="Patterns\ServiceLayer\LocalRequestDispatcher.cs" />
     <Compile Include="Collections\NameValueCollectionExtensions.cs" />
-    <Compile Include="Web\HttpRequestExtensions.cs" />
     <Compile Include="NullSafe.cs" />
     <Compile Include="Reflection\Reflect.cs" />
     <Compile Include="Patterns\SerializedLob\ISerializationContainer.cs" />
@@ -149,6 +145,13 @@
     <Compile Include="Patterns\ServiceLayer\IRequest`1.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestExtensions.cs" />
     <Compile Include="StringExtensions.cs" />
+    <Compile Include="Collections\IEnumerableExtensions.cs" />
+    <Compile Include="IEnumerableExtensions.cs" />
+    <Compile Include="EnumExtensions.cs" />
+    <Compile Include="ExceptionExtensions.cs" />
+    <Compile Include="CannotFixStackTraceException.cs" />
+    <Compile Include="Collections\ICollectionExtensions.cs" />
+    <Compile Include="Data\IDbCommandExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -161,10 +164,10 @@
     <Folder Include="Patterns\" />
     <Folder Include="Patterns\IoC\" />
     <Folder Include="Configuration\" />
-    <Folder Include="Web\" />
     <Folder Include="Globalization\" />
     <Folder Include="Patterns\ServiceLayer\" />
     <Folder Include="Patterns\SerializedLob\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

@@ -114,6 +114,51 @@ namespace CSF.Collections
 
       return output;
     }
+
+    /// <summary>
+    /// Returns the <paramref name="source"/> list as a readonly collection.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// If the <paramref name="source"/> collection is already a read-only collection then the source is
+    /// returned by this method, with no further action.
+    /// </para>
+    /// <para>
+    /// If the source list is not read-only then an element-by-element copy is made and returned, leaving the original
+    /// list intact and unmodified.  Subsequent alterations to the source list will have no affect upon the copy.
+    /// </para>
+    /// </remarks>
+    /// <returns>
+    /// A read-only 'snapshot' of the <paramref name="source"/> collection.
+    /// </returns>
+    /// <param name='source'>
+    /// The collection to make read-only.
+    /// </param>
+    /// <typeparam name='T'>
+    /// The type of the list contents.
+    /// </typeparam>
+    public static IList<T> ToReadOnlyList<T>(this IList<T> source)
+    {
+      if(source == null)
+      {
+        throw new ArgumentNullException("source");
+      }
+
+      IList<T> output;
+
+      if(source.IsReadOnly)
+      {
+        output = source;
+      }
+      else
+      {
+        T[] clone = new T[source.Count];
+        source.CopyTo(clone, 0);
+        output = clone;
+      }
+
+      return output;
+    }
   }
 }
 

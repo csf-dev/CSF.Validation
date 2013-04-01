@@ -353,6 +353,33 @@ namespace CSF.Collections
       }
     }
 
+    /// <summary>
+    /// Determines the specified list is the same list that the current instance wraps.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The comparison performed here is one of reference equality.  If the given list is not precisely the same list
+    /// that is wrapped by this event bound list instance then <c>false</c> will be returned.
+    /// </para>
+    /// <para>
+    /// This functionality is required to work around the problem-scenario illustrated by issue #20 - whereby the
+    /// wrapped list could be substituted without going via the wrapper.  In this scenario the wrapper can become out of
+    /// sync with the list that it wraps.  This (a private member being updated without going via a wrapper) would be a
+    /// rare scenario if not for frameworks such as NHibernate.  NH intentionally uses reflection to go and manipulate
+    /// or replace the backing store without touching the property.
+    /// </para>
+    /// </remarks>
+    /// <returns>
+    /// <c>true</c> if the specified list is the same list that this instance wraps; otherwise, <c>false</c>.
+    /// </returns>
+    /// <param name='compareTo'>
+    /// The list to compare to the list that is wrapped by the current instance.
+    /// </param>
+    public virtual bool IsWrappedList(IList<T> compareTo)
+    {
+      return Object.ReferenceEquals(_wrapped, compareTo);
+    }
+
     #endregion
 
     #region explicit interface implementations

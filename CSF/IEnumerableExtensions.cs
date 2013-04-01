@@ -20,7 +20,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Collections;
+using System.Linq;
 using System.Text;
+using CSF.Collections;
 
 namespace CSF
 {
@@ -44,31 +46,12 @@ namespace CSF
     /// <exception cref='ArgumentNullException'>
     /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
     /// </exception>
+    [Obsolete("This type and its associated extension methods are being moved to the 'CSF.Collections' namespace.")]
     public static string ToSeparatedString(this IEnumerable collection, string separator)
     {
-      StringBuilder output = new StringBuilder();
-      
-      if(collection == null)
-      {
-        throw new ArgumentNullException ("collection");
-      }
-      else if(separator == null)
-      {
-        throw new ArgumentNullException ("separator");
-      }
-      
-      foreach(object item in collection)
-      {
-        output.Append(item.ToString());
-        output.Append(separator);
-      }
-      
-      if(separator.Length > 0)
-      {
-        output.Remove(output.Length - separator.Length, separator.Length);
-      }
-      
-      return output.ToString();
+      return CSF.Collections.IEnumerableExtensions.CreateSeparatedString(collection.Cast<object>(),
+                                                                         separator,
+                                                                         x => x);
     }
   }
 }

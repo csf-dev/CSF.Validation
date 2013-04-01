@@ -10,7 +10,7 @@
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>2.4.0</ReleaseVersion>
+    <ReleaseVersion>2.5.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +46,7 @@
       <Private>False</Private>
       <Package>nhibernate-3.1</Package>
     </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Reflection\TestAssemblyExtensions.cs" />
     <Compile Include="Collections\TestOrderNeutralEqualityComparer.cs" />
     <Compile Include="Collections\TestIListExtensions.cs" />
-    <Compile Include="Testing\TestCheckClassAttributes.cs" />
     <Compile Include="TestDictionaryEqualityComparer.cs" />
     <Compile Include="TestDateTimeExtensions.cs" />
     <Compile Include="..\Common\CommonAssemblyInfo.cs">
@@ -89,49 +89,21 @@
     <Compile Include="Patterns\ServiceLayer\TestLocalRequestDispatcher.cs" />
     <Compile Include="Collections\TestNameValueCollectionExtensions.cs" />
     <Compile Include="TestNullSafe.cs" />
-    <Compile Include="KeyValueSerializer\StubTypes.cs" />
-    <Compile Include="KeyValueSerializer\TestClassKeyValueSerializer.cs" />
-    <Compile Include="KeyValueSerializer\TestValueTypeCollectionKeyValueSerializer.cs" />
-    <Compile Include="KeyValueSerializer\MappingHelpers\TestClassMappingHelper.cs" />
-    <Compile Include="KeyValueSerializer\MappingHelpers\TestCompositeMappingHelper.cs" />
-    <Compile Include="KeyValueSerializer\MappingHelpers\TestValueTypeCollectionMappingHelper.cs" />
-    <Compile Include="KeyValueSerializer\MappingHelpers\TestReferenceTypeCollectionMappingHelper.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestClassMapping.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestDefaultKeyNamingPolicy.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestMappingBase.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestCollectionMapping.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestCompositeComponentMapping.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestCompositeMapping.cs" />
-    <Compile Include="KeyValueSerializer\MappingModel\TestSimpleMapping.cs" />
     <Compile Include="Collections\TestIDictionaryExtensions.cs" />
-    <Compile Include="KeyValueSerializer\StubCollectionContainer.cs" />
-    <Compile Include="KeyValueSerializer\TestEntityDeserialization.cs" />
     <Compile Include="Reflection\TestReflect.cs" />
     <Compile Include="Patterns\ServiceLayer\TestRequestExtensions.cs" />
     <Compile Include="TestStringExtensions.cs" />
-    <Compile Include="Data\NHibernate\TestDefaultLinqWrapper.cs" />
+    <Compile Include="Collections\TestIEnumerableExtensions.cs" />
+    <Compile Include="TestEnumExtensions.cs" />
+    <Compile Include="TestExceptionExtensions.cs" />
+    <Compile Include="Collections\TestICollectionExtensions.cs" />
+    <Compile Include="Data\TestIDbCommandExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\CSF\CSF.csproj">
       <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
       <Name>CSF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CSF.Testing\CSF.Testing.csproj">
-      <Project>{80484DD4-6FAE-4473-9FF2-E5A68AE7C669}</Project>
-      <Name>CSF.Testing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CSF.Testing.Mocks\CSF.Testing.Mocks.csproj">
-      <Project>{F9B97F83-AAB0-4E83-B2E6-9D4A2958B820}</Project>
-      <Name>CSF.Testing.Mocks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CSF.Data.NHibernate\CSF.Data.NHibernate.csproj">
-      <Project>{18466B45-F3E5-46D9-808D-EA2896CC7ACD}</Project>
-      <Name>CSF.Data.NHibernate</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CSF.KeyValueSerializer\CSF.KeyValueSerializer.csproj">
-      <Project>{794FC584-5189-4971-B07C-937B5B7BA461}</Project>
-      <Name>CSF.KeyValueSerializer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -145,16 +117,16 @@
     <Folder Include="Patterns\" />
     <Folder Include="Patterns\IoC\" />
     <Folder Include="Configuration\" />
-    <Folder Include="Testing\" />
     <Folder Include="Globalization\" />
     <Folder Include="Patterns\ServiceLayer\" />
-    <Folder Include="KeyValueSerializer\" />
     <Folder Include="Data\" />
-    <Folder Include="Data\NHibernate\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reflection\TestResource.txt">
       <LogicalName>TestResource.txt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reflection\TestResourceType.txt">
+      <LogicalName>Test.CSF.Reflection.TestResourceType.txt</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

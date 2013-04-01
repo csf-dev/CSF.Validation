@@ -21,13 +21,35 @@ namespace Test.CSF.Reflection
     {
       try
       {
-#pragma warning disable 219
-      string resourceText = Assembly.GetExecutingAssembly().GetManifestResourceText("Nonexistent.txt");
-#pragma warning restore 219
+      Assembly.GetExecutingAssembly().GetManifestResourceText("Nonexistent.txt");
       }
       catch(InvalidOperationException ex)
       {
         Assert.IsTrue(ex.Message.StartsWith("Manifest resource 'Nonexistent.txt' was not found in the assembly 'Test.CSF, Version="));
+        throw;
+      }
+      Assert.Fail("Test should not reach this point");
+    }
+
+    [Test]
+    public void TestGetManifestResourceTextType()
+    {
+      string resourceText = Assembly.GetExecutingAssembly().GetManifestResourceText(typeof(TestAssemblyExtensions),
+                                                                                    "TestResourceType.txt");
+      Assert.AreEqual("This is a test resource file, stored by namespace", resourceText, "Correct resource text");
+    }
+
+    [Test]
+    [ExpectedException(ExceptionType = typeof(InvalidOperationException))]
+    public void TestGetManifestResourceTextTypeInvalid()
+    {
+      try
+      {
+      Assembly.GetExecutingAssembly().GetManifestResourceText(typeof(TestAssemblyExtensions), "Nonexistent.txt");
+      }
+      catch(InvalidOperationException ex)
+      {
+        Assert.IsTrue(ex.Message.StartsWith("Manifest resource 'Test.CSF.Reflection.Nonexistent.txt' was not found in the assembly 'Test.CSF, Version="));
         throw;
       }
       Assert.Fail("Test should not reach this point");

@@ -377,8 +377,8 @@ namespace CSF.Entities
     /// <typeparam name='TItem'>
     /// The type of items in the list.
     /// </typeparam>
-    private IEventBoundList<TItem> GetOneToManyReferenceList<TItem>(IList<TItem> sourceList,
-                                                                    Expression<Func<TItem, object>> property)
+    private IEventBoundList<TItem> GetOrInitReferenceList<TItem>(IList<TItem> sourceList,
+                                                                 Expression<Func<TItem, object>> property)
       where TItem : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
@@ -451,22 +451,62 @@ namespace CSF.Entities
     /// <typeparam name='TItem'>
     /// The type of items in the list.
     /// </typeparam>
-    protected virtual IEventBoundList<TItem> GetOneToManyReferenceList<TItem>(ref IList<TItem> wrappedList,
+    [Obsolete("This functionality is being moved to the new 'GetOrInitReferenceList' method")]
+    protected virtual IList<TItem> GetOneToManyReferenceList<TItem>(ref IList<TItem> wrappedList,
                                                                               ref IList<TItem> sourceList,
                                                                               Expression<Func<TItem, object>> property)
+      where TItem : class
+    {
+      return this.GetOrInitReferenceList(ref wrappedList, ref sourceList, property);
+    }
+
+    /// <summary>
+    /// Gets (setting up if neccesary) a list designed to hold 'reciprocal' references between this entity and related
+    /// entities.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This method is used to either pass-through and return an existing event-bound list for the one-to-many
+    /// relationship or to create and configure that list before returning it.  If the source list is null then it is
+    /// initialised as an empty list before use.
+    /// </para>
+    /// <para>
+    /// This method is very heavily based on the excellent work found at:
+    /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
+    /// </para>
+    /// </remarks>
+    /// <returns>
+    /// A list that wraps the source list with events.
+    /// </returns>
+    /// <param name='wrappedList'>
+    /// The existing wrapped list, which may be null.
+    /// </param>
+    /// <param name='sourceList'>
+    /// The 'source' list of related entities.
+    /// </param>
+    /// <param name='property'>
+    /// An expression that exposes a property (upon the items within the source list) that holds the reference back to
+    /// the 'parent' entity.
+    /// </param>
+    /// <typeparam name='TItem'>
+    /// The type of items in the list.
+    /// </typeparam>
+    protected virtual IList<TItem> GetOrInitReferenceList<TItem>(ref IList<TItem> wrappedList,
+                                                                 ref IList<TItem> sourceList,
+                                                                 Expression<Func<TItem, object>> property)
       where TItem : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
 
       IEventBoundList<TItem> typedList = wrappedList as IEventBoundList<TItem>;
 
-      if(typedList == null)
+      if(typedList == null || !typedList.IsWrappedList(sourceList))
       {
         sourceList = sourceList?? new List<TItem>();
-        wrappedList = this.GetOneToManyReferenceList(sourceList, property);
+        wrappedList = this.GetOrInitReferenceList(sourceList, property);
       }
 
-      return (IEventBoundList<TItem>) wrappedList;
+      return wrappedList;
     }
 
     /// <summary>
@@ -495,9 +535,43 @@ namespace CSF.Entities
     /// <typeparam name='TItem'>
     /// The type of items in the list.
     /// </typeparam>
-    protected virtual IEventBoundList<TItem> ReplaceOneToManyReferenceList<TItem>(IList<TItem> wrappedList,
-                                                                                  IList<TItem> replacementList,
-                                                                                  Expression<Func<TItem, object>> property)
+    [Obsolete("This functionality is being moved to the new 'ReplaceReferenceList' method")]
+    protected virtual IList<TItem> ReplaceOneToManyReferenceList<TItem>(IList<TItem> wrappedList,
+                                                                        IList<TItem> replacementList,
+                                                                        Expression<Func<TItem, object>> property)
+      where TItem : class
+    {
+      this.ReplaceReferenceList(ref wrappedList, replacementList, property);
+      return wrappedList;
+    }
+
+    /// <summary>
+    /// Handles cleanup and 'bookkeeping' tasks when replacing an existing many-to-many reciprocal reference list with
+    /// a new list instance.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This method is very heavily based on the excellent work found at:
+    /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
+    /// </para>
+    /// </remarks>
+    /// <param name='wrappedList'>
+    /// The old/original wrapped list, which will be cleared gracefully before it is overwritten and then replaced with
+    /// a new wrapped list.
+    /// </param>
+    /// <param name='replacementList'>
+    /// The list with which to replace the old.
+    /// </param>
+    /// <param name='property'>
+    /// An expression that exposes a property (upon the items within the source list) that holds the reference back to
+    /// the 'parent' entity.
+    /// </param>
+    /// <typeparam name='TItem'>
+    /// The type of items in the list.
+    /// </typeparam>
+    protected virtual void ReplaceReferenceList<TItem>(ref IList<TItem> wrappedList,
+                                                       IList<TItem> replacementList,
+                                                       Expression<Func<TItem, object>> property)
       where TItem : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
@@ -520,8 +594,9 @@ namespace CSF.Entities
         propInfo.SetValue(item, this, null);
       }
 
-      return this.GetOneToManyReferenceList(replacementList, property);
+      wrappedList = this.GetOrInitReferenceList(replacementList, property);
     }
+
 
     /// <summary>
     /// <para>Private method to validate an identity value.</para>

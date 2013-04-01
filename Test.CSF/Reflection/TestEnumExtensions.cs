@@ -1,7 +1,6 @@
 using System;
 using NUnit.Framework;
 using CSF.Reflection;
-using CSF;
 using System.Reflection;
 
 namespace Test.CSF.Reflection
@@ -40,15 +39,21 @@ namespace Test.CSF.Reflection
     }
 
     [Test]
+    [Description("This test may be removed in v3.x and upwards, as it tests obsolete functionality.")]
     public void TestIsDefinedValueTrue()
     {
+#pragma warning disable 618
       Assert.IsTrue(SampleEnum.Two.IsDefinedValue());
+#pragma warning restore 618
     }
 
     [Test]
+    [Description("This test may be removed in v3.x and upwards, as it tests obsolete functionality.")]
     public void TestIsDefinedValueFalse()
     {
+#pragma warning disable 618
       Assert.IsFalse(((SampleEnum) 8).IsDefinedValue());
+#pragma warning restore 618
     }
     
     #endregion
