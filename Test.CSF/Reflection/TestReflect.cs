@@ -198,9 +198,9 @@ namespace Test.CSF.Reflection
     [Test]
     public void TestGetTypeFromAppDomain()
     {
-      Type targetType = Reflect.TypeFromAppDomain("CSF.Testing.Mocks.SampleClass");
+      Type targetType = Reflect.TypeFromAppDomain("System.Configuration.ConnectionStringsSection");
       Assert.IsNotNull(targetType);
-      Assert.AreEqual(typeof(global::CSF.Testing.Mocks.SampleClass), targetType, "Correct type");
+      Assert.AreEqual(typeof(System.Configuration.ConnectionStringsSection), targetType, "Correct type");
     }
 
     #endregion
