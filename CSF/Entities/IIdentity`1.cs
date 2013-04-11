@@ -30,7 +30,11 @@ namespace CSF.Entities
   /// <see cref="IEntity.GetIdentity"/> method.
   /// </para>
   /// </summary>
-  public interface IIdentity<TEntity> : IIdentity where TEntity : IEntity
+#pragma warning disable 618
+  public interface IIdentity<TEntity>
+    : IIdentity, IEquatable<IIdentity<TEntity>>
+    where TEntity : IEntity
+#pragma warning restore 618
   {
   }
 }

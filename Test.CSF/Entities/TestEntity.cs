@@ -45,7 +45,7 @@ namespace Test.CSF.Entities
     public void TestGetIdentity()
     {
       Person entity = new Person() { Id = 5 };
-      IIdentity identity = entity.GetIdentity();
+      var identity = entity.GetIdentity();
       Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 5),
                       identity.ToString(),
                       "Correct identity");
@@ -55,10 +55,9 @@ namespace Test.CSF.Entities
     public void TestSetIdentity()
     {
       Person entity = new Person();
-      IIdentity identity;
       
       entity.SetIdentity(5);
-      identity = entity.GetIdentity();
+      var identity = entity.GetIdentity();
       Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 5),
                       identity.ToString(),
                       "Correct identity");
@@ -108,7 +107,7 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three.Equals(three), "Copies of the same object are equal");
       Assert.IsTrue(three.Equals(threeAgain), "Identical identities are equal");
       
-      Assert.IsFalse(three.Equals(threeProduct), "Non-matching types not equal");
+      Assert.IsFalse(three.Equals((object) threeProduct), "Non-matching types not equal");
     }
     
     [Test]
@@ -140,7 +139,10 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three == three, "Copies of the same object are equal");
 #pragma warning restore 1718
       Assert.IsTrue(three == threeAgain, "Identical instances are equal");
+
+#pragma warning disable 618
       Assert.IsFalse(three == threeProduct, "Non-matching types not equal");
+#pragma warning restore 618
     }
     
     [Test]
@@ -157,7 +159,10 @@ namespace Test.CSF.Entities
       Assert.IsFalse(three != three, "Copies of the same object are equal");
 #pragma warning restore 1718
       Assert.IsFalse(three != threeAgain, "Identical instances are equal");
+
+#pragma warning disable 618
       Assert.IsTrue(three != threeProduct, "Non-matching types not equal");
+#pragma warning restore 618
     }
 
     #endregion

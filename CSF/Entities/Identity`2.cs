@@ -35,8 +35,15 @@ namespace CSF.Entities
   /// <see cref="Type"/>
   /// </typeparam>
   [Serializable]
-  public struct Identity<TEntity,TIdentifier> : IIdentity<TEntity,TIdentifier>, IIdentity<TEntity>, IIdentity
-                                                where TEntity : IEntity
+#pragma warning disable 618
+  public struct Identity<TEntity,TIdentifier>
+    : IIdentity<TEntity,TIdentifier>,
+      IIdentity<TEntity>,
+      IIdentity,
+      IEquatable<IIdentity<TEntity>>,
+      IEquatable<Identity<TEntity,TIdentifier>>
+    where TEntity : IEntity
+#pragma warning restore 618
   {
     #region fields
     
@@ -83,17 +90,19 @@ namespace CSF.Entities
     
     #region IIdentity implementation
     
+#pragma warning disable 618
     object IIdentity.Value
     {
       get {
         return this.Value;
       }
     }
+#pragma warning restore 618
     
     #endregion
     
     #region methods
-    
+
     /// <summary>
     /// <para>Overridden, overloaded.  Determines equality with the given <see cref="System.Object"/>.</para>
     /// </summary>
@@ -107,9 +116,9 @@ namespace CSF.Entities
     {
       bool output;
       
-      if(obj is IIdentity)
+      if(obj is Identity<TEntity,TIdentifier>)
       {
-        output = this.Equals((IIdentity) obj);
+        output = this.Equals((Identity<TEntity,TIdentifier>) obj);
       }
       else
       {
@@ -117,6 +126,45 @@ namespace CSF.Entities
       }
       
       return output;
+    }
+
+    /// <summary>
+    /// Determines whether the specified identity is equal to the current instance.
+    /// </summary>
+    /// <param name='other'>
+    /// The identity to compare with the current instance.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the specified identity is equal to the current instance; otherwise, <c>false</c>.
+    /// </returns>
+    public bool Equals (IIdentity<TEntity> other)
+    {
+      bool output;
+      
+      if(other is Identity<TEntity,TIdentifier>)
+      {
+        output = this.Equals((Identity<TEntity,TIdentifier>) other);
+      }
+      else
+      {
+        output = false;
+      }
+      
+      return output;
+    }
+
+    /// <summary>
+    /// Determines whether the specified identity is equal to the current instance.
+    /// </summary>
+    /// <param name='other'>
+    /// The identity to compare with the current instance.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the specified identity is equal to the current instance; otherwise, <c>false</c>.
+    /// </returns>
+    public bool Equals (Identity<TEntity,TIdentifier> other)
+    {
+      return this.Value.Equals(other.Value);
     }
     
     /// <summary>
@@ -128,6 +176,7 @@ namespace CSF.Entities
     /// <returns>
     /// A <see cref="System.Boolean"/>
     /// </returns>
+    [Obsolete("This method is obsolete and will be removed in 3.x.")]
     public bool Equals (IIdentity identity)
     {
       bool output;
@@ -206,6 +255,7 @@ namespace CSF.Entities
     /// <returns>
     /// A <see cref="System.Boolean"/>
     /// </returns>
+    [Obsolete("This method is obsolete and will be removed in 3.x.")]
     public static bool operator ==(Identity<TEntity,TIdentifier> objectA, IIdentity objectB)
     {
       return objectA.Equals(objectB);
@@ -226,7 +276,92 @@ namespace CSF.Entities
     /// <returns>
     /// A <see cref="System.Boolean"/>
     /// </returns>
+    [Obsolete("This method is obsolete and will be removed in 3.x.")]
     public static bool operator !=(Identity<TEntity,TIdentifier> objectA, IIdentity objectB)
+    {
+      return !(objectA == objectB);
+    }
+
+    /// <summary>
+    /// Operator overload for testing equality between identity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An identity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An identity instance.
+    /// </param>
+    public static bool operator ==(Identity<TEntity,TIdentifier> objectA, Identity<TEntity,TIdentifier> objectB)
+    {
+      return (objectA.Equals(objectB));
+    }
+
+    /// <summary>
+    /// Operator overload for testing inequality between identity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An identity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An identity instance.
+    /// </param>
+    public static bool operator !=(Identity<TEntity,TIdentifier> objectA, Identity<TEntity,TIdentifier> objectB)
+    {
+      return !(objectA == objectB);
+    }
+
+    /// <summary>
+    /// Operator overload for testing equality between identity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An identity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An identity instance.
+    /// </param>
+    public static bool operator ==(Identity<TEntity,TIdentifier> objectA, IIdentity<TEntity> objectB)
+    {
+      return (objectA.Equals(objectB));
+    }
+
+    /// <summary>
+    /// Operator overload for testing inequality between identity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An identity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An identity instance.
+    /// </param>
+    public static bool operator !=(Identity<TEntity,TIdentifier> objectA, IIdentity<TEntity> objectB)
+    {
+      return !(objectA == objectB);
+    }
+
+    /// <summary>
+    /// Operator overload for testing equality between identity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An identity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An identity instance.
+    /// </param>
+    public static bool operator ==(IIdentity<TEntity> objectA, Identity<TEntity,TIdentifier> objectB)
+    {
+      return (objectB == objectA);
+    }
+
+    /// <summary>
+    /// Operator overload for testing inequality between identity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An identity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An identity instance.
+    /// </param>
+    public static bool operator !=(IIdentity<TEntity> objectA, Identity<TEntity,TIdentifier> objectB)
     {
       return !(objectA == objectB);
     }

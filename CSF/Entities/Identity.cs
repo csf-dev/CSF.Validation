@@ -47,7 +47,7 @@ namespace CSF.Entities
     /// <returns>
     /// An <see cref="IIdentity"/>
     /// </returns>
-    public static IIdentity<TEntity,TIdentifier> Create<TEntity,TIdentifier>(TIdentifier identifier)
+    public static Identity<TEntity,TIdentifier> Create<TEntity,TIdentifier>(TIdentifier identifier)
       where TEntity : IEntity
     {
       return new Identity<TEntity,TIdentifier>(identifier);
@@ -68,6 +68,7 @@ namespace CSF.Entities
     /// <returns>
     /// An <see cref="IIdentity"/>
     /// </returns>
+    [Obsolete("This method is obsolete & will be removed in v3.x.  Use the generic overload that takes 2 type params.")]
     public static IIdentity Create<TIdentifier>(TIdentifier identifier, Type entityType)
     {
       return (IIdentity) typeof(Identity<,>)
@@ -88,7 +89,7 @@ namespace CSF.Entities
     /// <typeparam name='TIdentifier'>
     /// The target type for the identifier.
     /// </typeparam>
-    public static IIdentity<TEntity,TIdentifier> Parse<TEntity,TIdentifier>(object identifier)
+    public static Identity<TEntity,TIdentifier> Parse<TEntity,TIdentifier>(object identifier)
       where TEntity : IEntity
     {
       TIdentifier parsedIdentifier = (TIdentifier) Convert.ChangeType(identifier, typeof(TIdentifier));
@@ -114,12 +115,12 @@ namespace CSF.Entities
     /// <typeparam name='TIdentifier'>
     /// The target type for the identifier.
     /// </typeparam>
-    public static bool TryParse<TEntity,TIdentifier>(object identifier, out IIdentity<TEntity,TIdentifier> identity)
+    public static bool TryParse<TEntity,TIdentifier>(object identifier, out Identity<TEntity,TIdentifier> identity)
       where TEntity : IEntity
     {
       TIdentifier parsedIdentifier = default(TIdentifier);
       bool output = false;
-      identity = null;
+      identity = default(Identity<TEntity,TIdentifier>);
 
       try
       {

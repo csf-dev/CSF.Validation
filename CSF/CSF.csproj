@@ -94,7 +94,6 @@
     <Compile Include="Patterns\IoC\ServiceInstanceCache.cs" />
     <Compile Include="Patterns\IoC\IServiceInstanceCache.cs" />
     <Compile Include="Patterns\IoC\IRegisteredService.cs" />
-    <Compile Include="Entities\EntityReader.cs" />
     <Compile Include="Entities\Identity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IIdentity.cs" />
@@ -152,6 +151,7 @@
     <Compile Include="CannotFixStackTraceException.cs" />
     <Compile Include="Collections\ICollectionExtensions.cs" />
     <Compile Include="Data\IDbCommandExtensions.cs" />
+    <Compile Include="Entities\EntityGetter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

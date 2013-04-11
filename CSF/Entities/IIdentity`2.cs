@@ -29,6 +29,7 @@ namespace CSF.Entities
   /// <see cref="IEntity.GetIdentity"/> method.
   /// </para>
   /// </summary>
+  [Obsolete("This interface is deemed to be obsolete and will be removed in v3.x.")]
   public interface IIdentity<TEntity,TIdentifier> : IIdentity<TEntity> where TEntity : IEntity
   {
     /// <summary>

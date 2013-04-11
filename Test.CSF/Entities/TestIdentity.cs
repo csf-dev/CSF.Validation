@@ -46,7 +46,9 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three.Equals(three), "Copies of the same object are equal");
       Assert.IsTrue(three.Equals(threeAgain), "Identical instances are equal");
       
+#pragma warning disable 618
       Assert.IsFalse(three.Equals(threeProduct), "Non-matching types not equal");
+#pragma warning restore 618
     }
     
     [Test]
@@ -72,7 +74,10 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three == three, "Copies of the same object are equal");
 #pragma warning restore 1718
       Assert.IsTrue(three == threeAgain, "Identical instances are equal");
+
+#pragma warning disable 618
       Assert.IsFalse(three == threeProduct, "Non-matching types not equal");
+#pragma warning restore 618
     }
     
     [Test]
@@ -89,13 +94,16 @@ namespace Test.CSF.Entities
       Assert.IsFalse(three != three, "Copies of the same object are equal");
 #pragma warning restore 1718
       Assert.IsFalse(three != threeAgain, "Identical instances are equal");
+
+#pragma warning disable 618
       Assert.IsTrue(three != threeProduct, "Non-matching types not equal");
+#pragma warning restore 618
     }
     
     [Test]
     public void TestCreate()
     {
-      IIdentity identity = Identity.Create<Person,uint>(5);
+      var identity = Identity.Create<Person,uint>(5);
       Assert.AreEqual(typeof(Person), identity.EntityType, "Correct type");
       Assert.AreEqual(5, identity.Value, "Correct value");
     }
@@ -103,7 +111,7 @@ namespace Test.CSF.Entities
     [Test]
     public void TestCreateSubclass()
     {
-      IIdentity identity = Identity.Create<Employee,uint>(5);
+      var identity = Identity.Create<Employee,uint>(5);
       Assert.AreEqual(typeof(Employee), identity.EntityType, "Correct type");
       Assert.AreEqual(5, identity.Value, "Correct value");
     }

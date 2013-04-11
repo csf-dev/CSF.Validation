@@ -40,11 +40,14 @@ namespace CSF.Entities
   /// <para>This type supports access to the reference ID within that repository.</para>
   /// </remarks>
   [Serializable]
-  public class Entity<TEntity,TIdentity> : IEntity<TEntity,TIdentity> where TEntity : IEntity
+  public class Entity<TEntity,TIdentity>
+    : IEntity<TEntity,TIdentity>,
+      IEquatable<IEntity<TEntity,TIdentity>>
+    where TEntity : IEntity
   {
     #region fields
     
-    private IIdentity<TEntity,TIdentity> _identity;
+    private Identity<TEntity,TIdentity>? _identity;
     
     #endregion
     
@@ -77,14 +80,7 @@ namespace CSF.Entities
     public virtual TIdentity Id
     {
       get {
-        TIdentity output = default(TIdentity);
-        
-        if(_identity != null)
-        {
-          output = _identity.Value;
-        }
-        
-        return output;
+        return _identity.HasValue? _identity.Value.Value : default(TIdentity);
       }
       set {
         try
@@ -107,14 +103,14 @@ namespace CSF.Entities
     /// <exception cref="InvalidOperationException">
     /// If the underlying reference stored within the current object instance is not valid.
     /// </exception>
-    public virtual IIdentity<TEntity,TIdentity> GetIdentity()
+    public virtual Identity<TEntity,TIdentity> GetIdentity()
     {
-      if(_identity == null)
+      if(!_identity.HasValue)
       {
         throw new InvalidOperationException("This entity instance does not have an identity.");
       }
       
-      return _identity;
+      return _identity.Value;
     }
 
     /// <summary>
@@ -128,7 +124,7 @@ namespace CSF.Entities
     /// </exception>
     public virtual void SetIdentity(TIdentity identityValue)
     {
-      if(_identity != null)
+      if(_identity.HasValue)
       {
         throw new InvalidOperationException("The current entity already has an identity.  Identity may not be " +
                                             "changed once set without first calling ClearIdentity().");
@@ -185,11 +181,13 @@ namespace CSF.Entities
         this.Id = (TIdentity) value;
       }
     }
-    
+
+#pragma warning disable 618
     IIdentity IEntity.GetIdentity()
     {
       return this.GetIdentity();
     }
+#pragma warning restore 618
     
     void IEntity.SetIdentity(object identityValue)
     {
@@ -220,20 +218,52 @@ namespace CSF.Entities
     public override bool Equals(object obj)
     {
       bool output;
-      
-      if(Object.ReferenceEquals(this, obj))
+
+      IEntity<TEntity,TIdentity> typedObj = obj as IEntity<TEntity,TIdentity>;
+      if(typedObj != null)
       {
-        output = true;
-      }
-      else if(obj is IEntity)
-      {
-        output = this.Equals((IEntity) obj);
+        output = this.Equals(typedObj);
       }
       else
       {
         output = false;
       }
-      
+
+      return output;
+    }
+    
+    /// <summary>
+    /// <para>
+    /// Determines whether the current instance is equal to the specified <paramref name="obj"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="obj">
+    /// An entity instance to compare with.
+    /// </param>
+    /// <returns>
+    /// A <see cref="System.Boolean"/> indicating whether the <paramref name="obj"/> is equal to the current instance.
+    /// </returns>
+    public virtual bool Equals(IEntity<TEntity,TIdentity> obj)
+    {
+      bool output;
+
+      if(obj == null)
+      {
+        output = false;
+      }
+      else if(Object.ReferenceEquals(this, obj))
+      {
+        output = true;
+      }
+      else if(!this.HasIdentity || !obj.HasIdentity)
+      {
+        output = false;
+      }
+      else
+      {
+        output = (this.GetIdentity() == obj.GetIdentity());
+      }
+
       return output;
     }
     
@@ -249,27 +279,21 @@ namespace CSF.Entities
     /// A <see cref="System.Boolean"/> indicating whether the entity to <paramref name="compareTo"/> is equal to
     /// the current instance.
     /// </returns>
+    [Obsolete("This method is obsolete and will be removed in v3.x")]
     public virtual bool Equals(IEntity compareTo)
     {
       bool output;
-      
-      if(Object.ReferenceEquals(this, compareTo))
+
+      IEntity<TEntity,TIdentity> typedObj = compareTo as IEntity<TEntity,TIdentity>;
+      if(typedObj != null)
       {
-        output = true;
-      }
-      else if((object) compareTo == null)
-      {
-        output = false;
-      }
-      else if(!this.HasIdentity || !compareTo.HasIdentity)
-      {
-        output = false;
+        output = this.Equals(typedObj);
       }
       else
       {
-        output = (this.GetIdentity().Equals(compareTo.GetIdentity()));
+        output = false;
       }
-      
+
       return output;
     }
     
@@ -328,7 +352,7 @@ namespace CSF.Entities
     /// <returns>
     /// A generic identity instance
     /// </returns>
-    protected virtual IIdentity<TEntity,TIdentity> CreateIdentity(TIdentity identityValue)
+    protected virtual Identity<TEntity,TIdentity> CreateIdentity(TIdentity identityValue)
     {
       if(!this.Validate(identityValue))
       {
@@ -707,6 +731,7 @@ namespace CSF.Entities
     /// <returns>
     /// A <see cref="System.Boolean"/>
     /// </returns>
+    [Obsolete("This method is obsolete and will be removed in v3.x.")]
     public static bool operator ==(Entity<TEntity,TIdentity> entity, IEntity obj)
     {
       bool output;
@@ -738,11 +763,51 @@ namespace CSF.Entities
     /// <returns>
     /// A <see cref="System.Boolean"/>
     /// </returns>
+    [Obsolete("This method is obsolete and will be removed in v3.x.")]
     public static bool operator !=(Entity<TEntity,TIdentity> entity, IEntity obj)
     {
       return !(entity == obj);
     }
-    
+
+    /// <summary>
+    /// Determines equality between two entity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An entity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An entity instance.
+    /// </param>
+    public static bool operator ==(Entity<TEntity,TIdentity> objectA, IEntity<TEntity,TIdentity> objectB)
+    {
+      bool output;
+
+      if((object) objectA == null)
+      {
+        output = (object) objectB == null;
+      }
+      else
+      {
+        output = objectA.Equals(objectB);
+      }
+
+      return output;
+    }
+
+    /// <summary>
+    /// Determines inequality between two entity instances.
+    /// </summary>
+    /// <param name="objectA">
+    /// An entity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An entity instance.
+    /// </param>
+    public static bool operator !=(Entity<TEntity,TIdentity> objectA, IEntity<TEntity,TIdentity> objectB)
+    {
+      return !(objectA == objectB);
+    }
+
     #endregion
   }
 }
