@@ -98,6 +98,7 @@
     <Compile Include="TestExceptionExtensions.cs" />
     <Compile Include="Collections\TestICollectionExtensions.cs" />
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
+    <Compile Include="Data\TestInMemoryDataReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

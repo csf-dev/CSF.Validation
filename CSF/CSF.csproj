@@ -152,6 +152,7 @@
     <Compile Include="Collections\ICollectionExtensions.cs" />
     <Compile Include="Data\IDbCommandExtensions.cs" />
     <Compile Include="Entities\EntityGetter.cs" />
+    <Compile Include="Data\InMemoryDataReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
