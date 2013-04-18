@@ -153,6 +153,23 @@ namespace CSF.Patterns.ServiceLayer
     /// <summary>
     /// Registers that the specified handler type should be used for requests of the specified type.
     /// </summary>
+    /// <param name='factoryMethod'>
+    /// A function that creates an instance of <typeparamref name='THandler' />.
+    /// </param>
+    /// <typeparam name='TRequest'>
+    /// The type of request that we are registering a handler for.
+    /// </typeparam>
+    /// <typeparam name='THandler'>
+    /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
+    /// parameterless constructor.
+    /// </typeparam>
+    IRequestDispatcher Register<TRequest, THandler>(Func<IRequestHandler> factoryMethod)
+      where TRequest : IRequest
+      where THandler : IRequestHandler;
+
+    /// <summary>
+    /// Registers that the specified handler type should be used for requests of the specified type.
+    /// </summary>
     /// <param name='requestType'>
     /// The type of request that we are registering a handler for.
     /// </param>
@@ -161,6 +178,22 @@ namespace CSF.Patterns.ServiceLayer
     /// parameterless constructor.
     /// </param>
     IRequestDispatcher Register(Type requestType, Type handlerType);
+
+    /// <summary>
+    /// Registers that the specified handler type should be used for requests of the specified type.
+    /// </summary>
+    /// <param name='requestType'>
+    /// The type of request that we are registering a handler for.
+    /// </param>
+    /// <param name='handlerType'>
+    /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
+    /// parameterless constructor.
+    /// </param>
+    /// <param name='factoryMethod'>
+    /// A function that creates an instance of an <see cref='IRequestHandler'/>, matching the type indicated by
+    /// <paramref name='handlerType'/>
+    /// </param>
+    IRequestDispatcher Register(Type requestType, Type handlerType, Func<IRequestHandler> factoryMethod);
 
     /// <summary>
     /// Searches an <see cref="Assembly"/> and registers all request handlers found within.

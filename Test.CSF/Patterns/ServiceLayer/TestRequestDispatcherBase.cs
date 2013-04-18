@@ -44,6 +44,16 @@ namespace Test.CSF.Patterns.ServiceLayer
     }
 
     [Test]
+    public void TestRegisterWithFactory()
+    {
+      this.Dispatcher.Register<MockRequestType4,MockHandlerType4>(() => new MockHandlerType4("Bar"));
+
+      this.MockDispatcher
+        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType4)), It.IsAny<MockHandlerType4>()),
+                Times.Once());
+    }
+
+    [Test]
     public void TestRegisterFromAssemblyOf()
     {
       this.Dispatcher.RegisterFromAssemblyOf<DummyRequestDispatcher>();
@@ -76,14 +86,25 @@ namespace Test.CSF.Patterns.ServiceLayer
     public class MockRequestType1 : IRequest {}
     public class MockRequestType2 : IRequest {}
     public class MockRequestType3 : IRequest {}
+    public class MockRequestType4 : IRequest {}
 
     public class MockResponseType1 : Response {}
     public class MockResponseType2 : Response {}
     public class MockResponseType3 : Response {}
+    public class MockResponseType4 : Response {}
 
     public class MockHandlerType1 : RequestHandlerBase<MockRequestType1,MockResponseType1> {}
     public class MockHandlerType2 : RequestHandlerBase<MockRequestType2,MockResponseType2> {}
     public abstract class MockHandlerType3 : RequestHandlerBase<MockRequestType3,MockResponseType3> {}
+    public class MockHandlerType4 : RequestHandlerBase<MockRequestType4,MockResponseType4>
+    {
+      public string Foo;
+
+      public MockHandlerType4(string foo)
+      {
+        this.Foo = foo;
+      }
+    }
 
     #endregion
 
