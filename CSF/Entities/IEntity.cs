@@ -60,6 +60,7 @@ namespace CSF.Entities
     /// <exception cref="InvalidOperationException">
     /// If the current instance does not yet have an identity.  <see cref="HasIdentity"/>.
     /// </exception>
+    [Obsolete("This method is obsolete and will be removed in 3.x.")]
     IIdentity GetIdentity();
     
     /// <summary>

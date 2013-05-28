@@ -37,7 +37,9 @@ namespace CSF.Entities
   /// <typeparam name="TIdentity">
   /// Describes the underlying type used to create unique references to this entity - usually a primitive type.
   /// </typeparam>
-  public interface IEntity<TEntity,TIdentity> : IEntity where TEntity : IEntity
+  public interface IEntity<TEntity,TIdentity>
+    : IEntity, IEquatable<IEntity<TEntity,TIdentity>>
+    where TEntity : IEntity
   {
     #region properties
     
@@ -66,7 +68,7 @@ namespace CSF.Entities
     /// <exception cref="InvalidOperationException">
     /// If the current instance does not yet have an identity.  <see cref="HasIdentity"/>.
     /// </exception>
-    new IIdentity<TEntity,TIdentity> GetIdentity();
+    new Identity<TEntity,TIdentity> GetIdentity();
 
     /// <summary>
     /// <para>Overloaded.  Sets the reference stored within the current object instance.</para>

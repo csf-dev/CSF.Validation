@@ -29,6 +29,7 @@ namespace CSF.Entities
   /// its unique <paramref name="identity"/>.
   /// </para>
   /// </summary>
+  [Obsolete("This delegate is deemed to be obsolete and will be removed in v3.x.")]
   public delegate IEntity EntityReader(IIdentity identity);
 
   /// <summary>
@@ -37,7 +38,24 @@ namespace CSF.Entities
   /// using its unique <paramref name="identity"/>.
   /// </para>
   /// </summary>
+  [Obsolete("This delegate is deemed to be obsolete and will be removed in v3.x.")]
   public delegate TEntity EntityReader<TEntity,TIdentity>(IIdentity<TEntity,TIdentity> identity)
                                                           where TEntity : IEntity<TEntity,TIdentity>;
+
+#pragma warning disable 1587
+#pragma warning disable 1591
+
+  /// <summary>
+  /// Generic delegate represents a method that gets an entity instance using its identity.
+  /// </summary>
+  public delegate TEntity EntityGetter<TEntity,TIdentity>(Identity<TEntity,TIdentity> identity) where TEntity : IEntity;
+
+  /// <summary>
+  /// Generic delegate represents a method that gets an entity instance using its identity.
+  /// </summary>
+  public delegate TEntity EntityGetter<TEntity>(IIdentity<TEntity> identity) where TEntity : IEntity;
+
+#pragma warning restore 1591
+#pragma warning restore 1587
 }
 

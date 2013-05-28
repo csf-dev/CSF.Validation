@@ -10,7 +10,8 @@
     <RootNamespace>CSF</RootNamespace>
     <AssemblyName>CSF</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>2.5.0</ReleaseVersion>
+    <ReleaseVersion>2.6.0</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -94,7 +95,6 @@
     <Compile Include="Patterns\IoC\ServiceInstanceCache.cs" />
     <Compile Include="Patterns\IoC\IServiceInstanceCache.cs" />
     <Compile Include="Patterns\IoC\IRegisteredService.cs" />
-    <Compile Include="Entities\EntityReader.cs" />
     <Compile Include="Entities\Identity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IIdentity.cs" />
@@ -152,6 +152,8 @@
     <Compile Include="CannotFixStackTraceException.cs" />
     <Compile Include="Collections\ICollectionExtensions.cs" />
     <Compile Include="Data\IDbCommandExtensions.cs" />
+    <Compile Include="Entities\EntityGetter.cs" />
+    <Compile Include="Data\InMemoryDataReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

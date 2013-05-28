@@ -125,7 +125,32 @@ namespace CSF.Patterns.ServiceLayer
       where TRequest : IRequest
       where THandler : IRequestHandler, new ()
     {
-      return this.Register(typeof(TRequest), new THandler());
+      return this.Register<TRequest,THandler>(() => new THandler());
+    }
+
+    /// <summary>
+    /// Registers that the specified handler type should be used for requests of the specified type.
+    /// </summary>
+    /// <param name='factoryMethod'>
+    /// A function that creates an instance of <typeparamref name='THandler' />.
+    /// </param>
+    /// <typeparam name='TRequest'>
+    /// The type of request that we are registering a handler for.
+    /// </typeparam>
+    /// <typeparam name='THandler'>
+    /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
+    /// parameterless constructor.
+    /// </typeparam>
+    public virtual IRequestDispatcher Register<TRequest, THandler>(Func<IRequestHandler> factoryMethod)
+      where TRequest : IRequest
+      where THandler : IRequestHandler
+    {
+      if(factoryMethod == null)
+      {
+        throw new ArgumentNullException("factoryMethod");
+      }
+
+      return this.Register(typeof(TRequest), typeof(THandler), factoryMethod);
     }
 
     /// <summary>
@@ -140,22 +165,59 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     public virtual IRequestDispatcher Register (Type requestType, Type handlerType)
     {
+      Func<IRequestHandler> factoryMethod = () => {
+        ConstructorInfo constructor = handlerType.GetConstructor(Type.EmptyTypes);
+        if(constructor == null)
+        {
+          throw new ArgumentException("The specified handler type does not expose a public parameterless constructor.");
+        }
+
+        return (IRequestHandler) constructor.Invoke(null);
+      };
+
+      return this.Register(requestType, handlerType, factoryMethod);
+    }
+
+    /// <summary>
+    /// Registers that the specified handler type should be used for requests of the specified type.
+    /// </summary>
+    /// <param name='requestType'>
+    /// The type of request that we are registering a handler for.
+    /// </param>
+    /// <param name='handlerType'>
+    /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
+    /// parameterless constructor.
+    /// </param>
+    /// <param name='factoryMethod'>
+    /// A function that creates an instance of an <see cref='IRequestHandler'/>, matching the type indicated by
+    /// <paramref name='handlerType'/>
+    /// </param>
+    public virtual IRequestDispatcher Register(Type requestType, Type handlerType, Func<IRequestHandler> factoryMethod)
+    {
       if(handlerType == null)
       {
         throw new ArgumentNullException("handlerType");
       }
-      else if(!typeof(IRequestHandler).IsAssignableFrom(handlerType))
+      else if(!handlerType.ImplementsInterface<IRequestHandler>())
       {
         throw new ArgumentException("The specified type does not indicate IRequestHandler", "handlerType");
       }
-
-      ConstructorInfo constructor = handlerType.GetConstructor(Type.EmptyTypes);
-      if(constructor == null)
+      else if(factoryMethod == null)
       {
-        throw new ArgumentException("The specified handler type does not expose a public parameterless constructor.");
+        throw new ArgumentNullException("factoryMethod");
       }
 
-      return this.Register(requestType, (IRequestHandler) constructor.Invoke(null));
+      IRequestHandler handler = factoryMethod();
+      if(handler.GetType() != handlerType)
+      {
+        string message = String.Format("Type mismatch: Handler of type `{0}' being registered but factory method " +
+                                       "created a handler of type `{1}'.",
+                                       handlerType.FullName,
+                                       handler.GetType().FullName);
+        throw new InvalidOperationException(message);
+      }
+
+      return this.Register(requestType, handler);
     }
 
     /// <summary>
