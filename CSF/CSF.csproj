@@ -10,7 +10,7 @@
     <RootNamespace>CSF</RootNamespace>
     <AssemblyName>CSF</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>2.5.0</ReleaseVersion>
+    <ReleaseVersion>2.6.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
