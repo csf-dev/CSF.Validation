@@ -45,6 +45,7 @@ namespace CSF.Patterns.ServiceLayer
     /// <exception cref="RequestDispatchException">
     /// If the response returned by the request handler is not of the specifed type.
     /// </exception>
+    [Obsolete("This overload is deprecated.  Use the overload that takes a generic IRequest<TResponse> instead.")]
     public virtual TResponse Dispatch<TResponse>(IRequest request)
       where TResponse : IResponse
     {
@@ -52,7 +53,38 @@ namespace CSF.Patterns.ServiceLayer
 
       try
       {
-        output = (TResponse) this.Dispatch(request);
+        output = (TResponse) this.Dispatch((IRequest) request);
+      }
+      catch(InvalidCastException ex)
+      {
+        throw new RequestDispatchException(request, "Cannot return response, it was not of the requested type.", ex);
+      }
+
+      return output;
+    }
+
+    /// <summary>
+    /// Dispatch the specified request and get a strongly-typed response.
+    /// </summary>
+    /// <param name='request'>
+    /// The request to dispatch.
+    /// </param>
+    /// <typeparam name='TResponse'>
+    /// The expected type of the response.  The returned response will be cast to this type.
+    /// </typeparam>
+    /// <exception cref="RequestDispatchException">
+    /// If the response returned by the request handler is not of the specifed type.
+    /// </exception>
+    public virtual TResponse Dispatch<TResponse>(IRequest<TResponse> request)
+      where TResponse : IResponse
+    {
+      TResponse output;
+
+      try
+      {
+#pragma warning disable 618
+        output = (TResponse) this.Dispatch((IRequest) request);
+#pragma warning restore 618
       }
       catch(InvalidCastException ex)
       {
@@ -105,6 +137,8 @@ namespace CSF.Patterns.ServiceLayer
     /// <typeparam name='TRequest'>
     ///  The type of request that we are registering a handler for. 
     /// </typeparam>
+    [Obsolete("Registering request handlers using instantiated instances is deprecated, instead register them with " +
+              "a factory method.  This way they may be created and disposed of as needed.")]
     public virtual IRequestDispatcher Register<TRequest>(IRequestHandler handler)
       where TRequest : IRequest
     {
@@ -125,7 +159,7 @@ namespace CSF.Patterns.ServiceLayer
       where TRequest : IRequest
       where THandler : IRequestHandler, new ()
     {
-      return this.Register<TRequest,THandler>(() => new THandler());
+      return this.Register<TRequest>(() => new THandler());
     }
 
     /// <summary>
@@ -141,6 +175,7 @@ namespace CSF.Patterns.ServiceLayer
     /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
     /// parameterless constructor.
     /// </typeparam>
+    [Obsolete("The 'THandler' generic type parameter is unneeded.  Use the overload that doesn't take it.")]
     public virtual IRequestDispatcher Register<TRequest, THandler>(Func<IRequestHandler> factoryMethod)
       where TRequest : IRequest
       where THandler : IRequestHandler
@@ -156,6 +191,21 @@ namespace CSF.Patterns.ServiceLayer
     /// <summary>
     /// Registers that the specified handler type should be used for requests of the specified type.
     /// </summary>
+    /// <param name='factoryMethod'>
+    /// A function that creates an instance of an appropriate handler for the request.
+    /// </param>
+    /// <typeparam name='TRequest'>
+    /// The type of request that we are registering a handler for.
+    /// </typeparam>
+    public virtual IRequestDispatcher Register<TRequest>(Func<IRequestHandler> factoryMethod)
+      where TRequest : IRequest
+    {
+      return this.Register(typeof(TRequest), factoryMethod);
+    }
+
+    /// <summary>
+    /// Registers that the specified handler type should be used for requests of the specified type.
+    /// </summary>
     /// <param name='requestType'>
     /// The type of request that we are registering a handler for.
     /// </param>
@@ -165,17 +215,9 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     public virtual IRequestDispatcher Register (Type requestType, Type handlerType)
     {
-      Func<IRequestHandler> factoryMethod = () => {
-        ConstructorInfo constructor = handlerType.GetConstructor(Type.EmptyTypes);
-        if(constructor == null)
-        {
-          throw new ArgumentException("The specified handler type does not expose a public parameterless constructor.");
-        }
+      Func<IRequestHandler> factoryMethod = (() => (IRequestHandler) Activator.CreateInstance(handlerType));
 
-        return (IRequestHandler) constructor.Invoke(null);
-      };
-
-      return this.Register(requestType, handlerType, factoryMethod);
+      return this.Register(requestType, factoryMethod);
     }
 
     /// <summary>
@@ -192,32 +234,10 @@ namespace CSF.Patterns.ServiceLayer
     /// A function that creates an instance of an <see cref='IRequestHandler'/>, matching the type indicated by
     /// <paramref name='handlerType'/>
     /// </param>
+    [Obsolete("The 'handlerType' parameter is unneeded.  Use the overload that doesn't take it.")]
     public virtual IRequestDispatcher Register(Type requestType, Type handlerType, Func<IRequestHandler> factoryMethod)
     {
-      if(handlerType == null)
-      {
-        throw new ArgumentNullException("handlerType");
-      }
-      else if(!handlerType.ImplementsInterface<IRequestHandler>())
-      {
-        throw new ArgumentException("The specified type does not indicate IRequestHandler", "handlerType");
-      }
-      else if(factoryMethod == null)
-      {
-        throw new ArgumentNullException("factoryMethod");
-      }
-
-      IRequestHandler handler = factoryMethod();
-      if(handler.GetType() != handlerType)
-      {
-        string message = String.Format("Type mismatch: Handler of type `{0}' being registered but factory method " +
-                                       "created a handler of type `{1}'.",
-                                       handlerType.FullName,
-                                       handler.GetType().FullName);
-        throw new InvalidOperationException(message);
-      }
-
-      return this.Register(requestType, handler);
+      return this.Register(requestType, factoryMethod);
     }
 
     /// <summary>
@@ -317,6 +337,8 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='request'>
     ///  The request to dispatch. 
     /// </param>
+    [Obsolete("This overload is deprecated and will be removed.  The non-generic IRequest interface will be for " +
+              "requests that do not expect a response.")]
     public abstract IResponse Dispatch(IRequest request);
 
     /// <summary>
@@ -325,6 +347,9 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='request'>
     ///  The request to dispatch. 
     /// </param>
+    // This overload will become obsolete in v3.x, once we have changed the non-generic 'Dispatch' method.
+//    [Obsolete("This overload is deprecated and will be renamed to simply 'Dispatch'.  The non-generic IRequest " +
+//              "interface will be used only for requests that do not expect a response.")]
     public abstract void DispatchRequestOnly(IRequest request);
 
     /// <summary>
@@ -345,6 +370,8 @@ namespace CSF.Patterns.ServiceLayer
     /// <returns>
     ///  The registered handlers. 
     /// </returns>
+    [Obsolete("The return type of this method is obsolete and thus it will be removed.  We shall be registering " +
+              "handler factories in future and not handler instances.")]
     public abstract IDictionary<Type, IRequestHandler> GetRegisteredHandlers();
 
     /// <summary>
@@ -356,7 +383,21 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='handler'>
     ///  The handler to use for requests of the given type. 
     /// </param>
+    [Obsolete("Registering request handlers using instantiated instances is deprecated, instead register them with " +
+              "a factory method.  This way they may be created and disposed of as needed.")]
     public abstract IRequestDispatcher Register(Type requestType, IRequestHandler handler);
+
+    /// <summary>
+    /// Registers that the specified handler type should be used for requests of the specified type.
+    /// </summary>
+    /// <param name='requestType'>
+    /// The type of request that we are registering a handler for.
+    /// </param>
+    /// <param name='factoryMethod'>
+    /// A function that creates an instance of an <see cref='IRequestHandler'/>, matching the type indicated by
+    /// <paramref name='handlerType'/>
+    /// </param>
+    public abstract IRequestDispatcher Register(Type requestType, Func<IRequestHandler> factoryMethod);
 
     /// <summary>
     ///  Removes a registration for a request handler that would handle the specified type of request. 

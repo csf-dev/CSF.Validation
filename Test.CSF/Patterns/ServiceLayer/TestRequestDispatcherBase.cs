@@ -23,7 +23,7 @@ namespace Test.CSF.Patterns.ServiceLayer
     {
       this.MockDispatcher = new Mock<IRequestDispatcher>();
       this.MockDispatcher
-        .Setup(x => x.Register(It.IsAny<Type>(), It.IsAny<IRequestHandler>()))
+        .Setup(x => x.Register(It.IsAny<Type>(), It.IsAny<Func<IRequestHandler>>()))
         .Returns(this.MockDispatcher.Object);
 
       this.Dispatcher = new DummyRequestDispatcher(this.MockDispatcher.Object);
@@ -39,17 +39,17 @@ namespace Test.CSF.Patterns.ServiceLayer
       this.Dispatcher.Register<MockRequestType1,MockHandlerType1>();
 
       this.MockDispatcher
-        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType1)), It.IsAny<MockHandlerType1>()),
+        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType1)), It.IsAny<Func<IRequestHandler>>()),
                 Times.Once());
     }
 
     [Test]
     public void TestRegisterWithFactory()
     {
-      this.Dispatcher.Register<MockRequestType4,MockHandlerType4>(() => new MockHandlerType4("Bar"));
+      this.Dispatcher.Register<MockRequestType4>(() => new MockHandlerType4("Bar"));
 
       this.MockDispatcher
-        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType4)), It.IsAny<MockHandlerType4>()),
+        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType4)), It.IsAny<Func<IRequestHandler>>()),
                 Times.Once());
     }
 
@@ -59,22 +59,22 @@ namespace Test.CSF.Patterns.ServiceLayer
       this.Dispatcher.RegisterFromAssemblyOf<DummyRequestDispatcher>();
 
       this.MockDispatcher
-        .Verify(x => x.Register(It.IsAny<Type>(), It.IsAny<IRequestHandler>()),
+        .Verify(x => x.Register(It.IsAny<Type>(), It.IsAny<Func<IRequestHandler>>()),
                 Times.AtLeast(2),
                 "Some registrations processed");
 
       this.MockDispatcher
-        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType1)), It.IsAny<MockHandlerType1>()),
+        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType1)), It.IsAny<Func<IRequestHandler>>()),
                 Times.Once(),
                 "Mock request 1 (and handler) registered");
 
       this.MockDispatcher
-        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType2)), It.IsAny<MockHandlerType2>()),
+        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType2)), It.IsAny<Func<IRequestHandler>>()),
                 Times.Once(),
                 "Mock request 2 (and handler) registered");
 
       this.MockDispatcher
-        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType3)), It.IsAny<MockHandlerType3>()),
+        .Verify(x => x.Register(It.Is<Type>(typ => typ == typeof(MockRequestType3)), It.IsAny<Func<IRequestHandler>>()),
                 Times.Never(),
                 "Mock request 3 (and handler) NOT registered (the handler is abstract)");
     }
@@ -114,6 +114,7 @@ namespace Test.CSF.Patterns.ServiceLayer
     {
       private IRequestDispatcher Implementation;
 
+      [Obsolete]
       public override IResponse Dispatch (IRequest request)
       {
         return this.Implementation.Dispatch(request);
@@ -129,14 +130,22 @@ namespace Test.CSF.Patterns.ServiceLayer
         return this.Implementation.CanDispatch(requestType);
       }
 
+      [Obsolete]
       public override IDictionary<Type, IRequestHandler> GetRegisteredHandlers ()
       {
         return this.Implementation.GetRegisteredHandlers();
       }
 
+      [Obsolete]
       public override IRequestDispatcher Register (Type requestType, IRequestHandler handler)
       {
         this.Implementation.Register(requestType, handler);
+        return this;
+      }
+
+      public override IRequestDispatcher Register (Type requestType, Func<IRequestHandler> factoryMethod)
+      {
+        this.Implementation.Register(requestType, factoryMethod);
         return this;
       }
 

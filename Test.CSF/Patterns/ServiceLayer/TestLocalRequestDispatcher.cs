@@ -68,9 +68,13 @@ namespace Test.CSF.Patterns.ServiceLayer
 
       this.Dispatcher = new LocalRequestDispatcher();
 
+#pragma warning disable 618
       this.Dispatcher
         .Register(typeof(MockRequestType1), this.Handler1.Object)
         .Register(typeof(MockRequestType2), this.Handler2.Object);
+#pragma warning restore 618
+
+      DisposeableRequestHandler.DisposedOnce = false;
     }
 
     #endregion
@@ -80,7 +84,9 @@ namespace Test.CSF.Patterns.ServiceLayer
     [Test]
     public void TestRegister()
     {
+#pragma warning disable 618
       var handlers = this.Dispatcher.GetRegisteredHandlers();
+#pragma warning restore 618
 
       Assert.AreEqual(2, handlers.Count);
 
@@ -132,19 +138,32 @@ namespace Test.CSF.Patterns.ServiceLayer
         .Verify(x => x.HandleRequestOnly(It.Is<IRequest>(req => req == this.Request1.Object)), Times.Once());
     }
 
+    [Test]
+    public void TestDispatchAndRelease()
+    {
+      this.Dispatcher.Unregister<MockRequestType1>();
+      this.Dispatcher.Register<MockRequestType1,DisposeableRequestHandler>();
+
+      Assert.IsFalse(DisposeableRequestHandler.DisposedOnce, "Disposed before handling");
+
+      this.Dispatcher.Dispatch(new MockRequestType1());
+
+      Assert.IsTrue(DisposeableRequestHandler.DisposedOnce, "Disposed after handling");
+    }
+
     #endregion
 
     #region contained types
     
-    public class MockRequestType1 : IRequest
+    public class MockRequestType1 : IRequest<MockResponseType1>
     {
       public new Type GetType() { return typeof(MockRequestType1); }
     }
-    public class MockRequestType2 : IRequest
+    public class MockRequestType2 : IRequest<MockResponseType2>
     {
       public new Type GetType() { return typeof(MockRequestType2); }
     }
-    public class MockRequestType3 : IRequest
+    public class MockRequestType3 : IRequest<MockResponseType3>
     {
       public new Type GetType() { return typeof(MockRequestType3); }
     }
@@ -152,6 +171,21 @@ namespace Test.CSF.Patterns.ServiceLayer
     public class MockResponseType1 : Response {}
     public class MockResponseType2 : Response {}
     public class MockResponseType3 : Response {}
+
+    public class DisposeableRequestHandler : RequestHandlerBase<MockRequestType1,MockResponseType1>, IDisposable
+    {
+      public static bool DisposedOnce;
+
+      public override MockResponseType1 Handle (MockRequestType1 request)
+      {
+        return new MockResponseType1();
+      }
+
+      public void Dispose()
+      {
+        DisposedOnce = true;
+      }
+    }
 
     #endregion
   }

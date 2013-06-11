@@ -17,7 +17,7 @@ namespace Test.CSF.Patterns.ServiceLayer
       var request = new DummyRequest();
 
       dispatcher
-        .Setup(x => x.Dispatch<DummyResponse>(It.Is<IRequest>(req => req == request)))
+        .Setup(x => x.Dispatch(It.Is<IRequest<DummyResponse>>(req => req == request)))
         .Returns(new DummyResponse());
 
       var response = request.Dispatch(dispatcher.Object);
@@ -25,7 +25,7 @@ namespace Test.CSF.Patterns.ServiceLayer
       Assert.IsNotNull(response, "Response nullability");
       Assert.IsInstanceOfType(typeof(DummyResponse), response, "Response correct type");
       dispatcher
-        .Verify(x => x.Dispatch<DummyResponse>(It.Is<IRequest>(req => req == request)),
+        .Verify(x => x.Dispatch(It.Is<IRequest<DummyResponse>>(req => req == request)),
                 Times.Once(),
                 "Dispatcher called correctly");
     }
