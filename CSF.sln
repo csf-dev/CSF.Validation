@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{AD355647
 		utils\bump-versions = utils\bump-versions
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Collections", "CSF.Collections\CSF.Collections.csproj", "{CA00FFB0-ABD0-431D-987F-0DE5BA886575}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA00FFB0-ABD0-431D-987F-0DE5BA886575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA00FFB0-ABD0-431D-987F-0DE5BA886575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA00FFB0-ABD0-431D-987F-0DE5BA886575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA00FFB0-ABD0-431D-987F-0DE5BA886575}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU

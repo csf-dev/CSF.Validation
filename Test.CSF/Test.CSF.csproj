@@ -49,6 +49,10 @@
       <Package>nhibernate-3.1</Package>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <Private>False</Private>
+      <Package>iesi.collections-1.0.1</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -101,12 +105,17 @@
     <Compile Include="Collections\TestICollectionExtensions.cs" />
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
     <Compile Include="Data\TestInMemoryDataReader.cs" />
+    <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\CSF\CSF.csproj">
       <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
       <Name>CSF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Collections\CSF.Collections.csproj">
+      <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
+      <Name>CSF.Collections</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
