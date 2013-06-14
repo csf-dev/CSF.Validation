@@ -375,7 +375,7 @@ namespace CSF.Collections
     /// <param name='compareTo'>
     /// The list to compare to the list that is wrapped by the current instance.
     /// </param>
-    public virtual bool IsWrappedList(IList<T> compareTo)
+    public virtual bool IsWrapping(IList<T> compareTo)
     {
       return Object.ReferenceEquals(_wrapped, compareTo);
     }

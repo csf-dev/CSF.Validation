@@ -158,6 +158,7 @@
     <Compile Include="Patterns\ServiceLayer\ServiceModel`1.cs" />
     <Compile Include="Patterns\ServiceLayer\ServiceModel`2.cs" />
     <Compile Include="Patterns\ServiceLayer\IServiceModel`1.cs" />
+    <Compile Include="Collections\ReferenceList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -136,7 +136,7 @@ namespace CSF.Collections
     /// <param name='compareTo'>
     /// The list to compare to the list that is wrapped by the current instance.
     /// </param>
-    bool IsWrappedList(IList<T> compareTo);
+    bool IsWrapping(IList<T> compareTo);
 
     #endregion
   }
