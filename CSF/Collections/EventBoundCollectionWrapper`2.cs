@@ -1,10 +1,10 @@
 //
-//  EventBoundListWrapper.cs
+//  EventBoundCollectionWrapper.cs
 //
 //  Author:
 //       Craig Fowler <craig@craigfowler.me.uk>
 //
-//  Copyright (c) 2012 Craig Fowler
+//  Copyright (c) 2013 Craig Fowler
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -26,24 +26,20 @@ using System.Linq;
 namespace CSF.Collections
 {
   /// <summary>
-  /// Implementation of a generic <c>IEventBoundList</c> that wraps a normal generic <c>IList</c> instance.
+  /// Base type for all implementations of the generic <c>IEventBoundCollection&lt;TCollection,TItem&gt;</c> interface.
   /// </summary>
-  /// <remarks>
-  /// <para>
-  /// This type is very heavily based on the excellent work found at:
-  /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
-  /// </para>
-  /// </remarks>
   [Serializable]
-  public class EventBoundListWrapper<T> : IEventBoundList<T> where T : class
+  public abstract class EventBoundCollectionWrapper<TCollection,T> : IEventBoundCollection<TCollection,T>
+    where T : class
+    where TCollection : ICollection<T>
   {
     // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'.
 
     #region fields
 
-    private readonly IList<T> _wrapped;
-    private Action<IList<T>> _afterAdd, _afterRemove;
-    private Func<IList<T>, T, bool> _beforeAdd, _beforeRemove;
+    private readonly TCollection _wrapped;
+    private Action<TCollection> _afterAdd, _afterRemove;
+    private Func<TCollection, T, bool> _beforeAdd, _beforeRemove;
 
     #endregion
 
@@ -55,7 +51,7 @@ namespace CSF.Collections
     /// <value>
     /// The action to perform after item addition. 
     /// </value>
-    public virtual Action<IList<T>> AfterAdd
+    public virtual Action<TCollection> AfterAdd
     {
       get {
         return _afterAdd ?? (_afterAdd = list => {});
@@ -71,7 +67,7 @@ namespace CSF.Collections
     /// <value>
     /// The action to perform after item removal. 
     /// </value>
-    public virtual Action<IList<T>> AfterRemove
+    public virtual Action<TCollection> AfterRemove
     {
       get {
         return _afterRemove ?? (_afterRemove = list => {});
@@ -88,7 +84,7 @@ namespace CSF.Collections
     /// <value>
     /// The function to execute before item addition. 
     /// </value>
-    public virtual Func<IList<T>, T, bool> BeforeAdd
+    public virtual Func<TCollection, T, bool> BeforeAdd
     {
       get {
         return _beforeAdd ?? (_beforeAdd = (list, item) => true);
@@ -105,7 +101,7 @@ namespace CSF.Collections
     /// <value>
     /// The function to execute before item removal. 
     /// </value>
-    public virtual Func<IList<T>, T, bool> BeforeRemove
+    public virtual Func<TCollection, T, bool> BeforeRemove
     {
       get {
         return _beforeRemove ?? (_beforeRemove = (list, item) => true);
@@ -128,24 +124,9 @@ namespace CSF.Collections
     /// </param>
     public virtual void Detach(T item)
     {
-      if(this.BeforeRemove(this, item))
+      if(this.BeforeRemove(this.WrappedCollection, item))
       {
-        this.AfterRemove(this);
-      }
-    }
-
-    /// <summary>
-    /// Detaches the item at the specified index from the list as if it had been removed but does not actually remove
-    /// it from the underlying list. 
-    /// </summary>
-    /// <param name='index'>
-    /// The numeric index of the item to detach 
-    /// </param>
-    public virtual void DetachAt(int index)
-    {
-      if(this.BeforeRemove(this, _wrapped[index]))
-      {
-        this.AfterRemove(this);
+        this.AfterRemove(this.WrappedCollection);
       }
     }
 
@@ -155,9 +136,9 @@ namespace CSF.Collections
     /// </summary>
     public virtual void DetachAll()
     {
-      for(int i = _wrapped.Count - 1; i >=0; i--)
+      foreach(T item in _wrapped)
       {
-        this.DetachAt(i);
+        this.Detach(item);
       }
     }
 
@@ -192,28 +173,15 @@ namespace CSF.Collections
     }
 
     /// <summary>
-    /// Gets or sets the item at the specified index.
+    /// Gets the wrapped collection.
     /// </summary>
-    /// <param name='index'>
-    /// The numeric index to get/set to/from.
-    /// </param>
-    public virtual T this[int index]
+    /// <value>
+    /// The wrapped collection.
+    /// </value>
+    protected TCollection WrappedCollection
     {
       get {
-        return _wrapped[index];
-      }
-      set {
-        /* This setter is a problem for us because the BeforeAdd function must be executed against a copy of the wrapped
-         * list that does not include an item at the desired index.  So - we make a copy of it first for that function.
-         */
-        var copiedList = new List<T>(_wrapped);
-        copiedList.RemoveAt(index);
-
-        if(this.BeforeAdd(copiedList, value))
-        {
-          _wrapped[index] = value;
-          this.AfterAdd(this);
-        }
+        return _wrapped;
       }
     }
 
@@ -240,10 +208,10 @@ namespace CSF.Collections
     /// </param>
     public virtual void Add(T item)
     {
-      if(this.BeforeAdd(this, item))
+      if(this.BeforeAdd(this.WrappedCollection, item))
       {
         _wrapped.Add(item);
-        this.AfterAdd(this);
+        this.AfterAdd(this.WrappedCollection);
       }
     }
 
@@ -254,7 +222,7 @@ namespace CSF.Collections
     {
       while(_wrapped.Any())
       {
-        this.RemoveAt(0);
+        this.Remove(_wrapped.First());
       }
     }
 
@@ -293,10 +261,10 @@ namespace CSF.Collections
     {
       bool output;
 
-      if(this.BeforeRemove(this, item))
+      if(this.BeforeRemove(this.WrappedCollection, item))
       {
         output = _wrapped.Remove(item);
-        this.AfterRemove(this);
+        this.AfterRemove(this.WrappedCollection);
       }
       else
       {
@@ -304,53 +272,6 @@ namespace CSF.Collections
       }
 
       return output;
-    }
-
-    /// <summary>
-    /// Removes the item at the given <paramref name="index"/> from this collection.
-    /// </summary>
-    /// <param name='index'>
-    /// The index at which to remove the item.
-    /// </param>
-    public virtual void RemoveAt(int index)
-    {
-      if(this.BeforeRemove(this, _wrapped[index]))
-      {
-        _wrapped.RemoveAt(index);
-        this.AfterRemove(this);
-      }
-    }
-
-    /// <summary>
-    /// Determines the index of a specific item in the current instance.
-    /// </summary>
-    /// <returns>
-    /// The numeric index of the item.
-    /// </returns>
-    /// <param name='item'>
-    /// The item to search for.
-    /// </param>
-    public virtual int IndexOf(T item)
-    {
-      return _wrapped.IndexOf(item);
-    }
-
-    /// <summary>
-    /// Inserts an item into the current collection at the specified index.
-    /// </summary>
-    /// <param name='index'>
-    /// The index at which to insert the item.
-    /// </param>
-    /// <param name='item'>
-    /// The item to insert.
-    /// </param>
-    public virtual void Insert(int index, T item)
-    {
-      if(this.BeforeAdd(this, item))
-      {
-        _wrapped.Insert(index, item);
-        this.AfterAdd(this);
-      }
     }
 
     /// <summary>
@@ -375,7 +296,7 @@ namespace CSF.Collections
     /// <param name='compareTo'>
     /// The list to compare to the list that is wrapped by the current instance.
     /// </param>
-    public virtual bool IsWrapping(IList<T> compareTo)
+    public virtual bool IsWrapping(TCollection compareTo)
     {
       return Object.ReferenceEquals(_wrapped, compareTo);
     }
@@ -418,9 +339,9 @@ namespace CSF.Collections
     /// Initializes a new instance of the <c>EventBoundListWrapper</c> class.
     /// </summary>
     /// <param name='wrapped'>
-    /// The generic <c>IList</c> that this instance will wrap.
+    /// The generic <c>ICollection</c> that this instance will wrap.
     /// </param>
-    public EventBoundListWrapper(IList<T> wrapped)
+    public EventBoundCollectionWrapper(TCollection wrapped)
     {
       if(wrapped == null)
       {

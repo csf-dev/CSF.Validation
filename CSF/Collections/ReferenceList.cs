@@ -167,7 +167,7 @@ namespace CSF.Collections
                                         Expression<Func<T, object>> referenceProperty,
                                         object referenceItem) where T : class
     {
-      IEventBoundList<T> typedList = wrapper as IEventBoundList<T>;
+      EventBoundListWrapper<T> typedList = wrapper as EventBoundListWrapper<T>;
 
       if(typedList == null || !typedList.IsWrapping(original))
       {
@@ -212,7 +212,7 @@ namespace CSF.Collections
         throw new ArgumentNullException("replacement");
       }
 
-      IEventBoundList<T> typedList = wrapperToOverwrite as IEventBoundList<T>;
+      EventBoundListWrapper<T> typedList = wrapperToOverwrite as EventBoundListWrapper<T>;
 
       if(typedList != null)
       {
@@ -250,16 +250,16 @@ namespace CSF.Collections
     /// <typeparam name='T'>
     /// The type of item contained within the list.
     /// </typeparam>
-    private static IEventBoundList<T> GetOrInit<T>(IList<T> original,
-                                                   Expression<Func<T, object>> referenceProperty,
-                                                   object referenceItem) where T : class
+    private static EventBoundListWrapper<T> GetOrInit<T>(IList<T> original,
+                                                         Expression<Func<T, object>> referenceProperty,
+                                                         object referenceItem) where T : class
     {
       if(original == null)
       {
         throw new ArgumentNullException("original");
       }
 
-      IEventBoundList<T> output = original as IEventBoundList<T>;
+      EventBoundListWrapper<T> output = original as EventBoundListWrapper<T>;
 
       if(output == null)
       {

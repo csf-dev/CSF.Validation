@@ -54,13 +54,15 @@ namespace CSF.Collections
     /// <typeparam name='T'>
     /// The type of object contained within the list.
     /// </typeparam>
-    public static IEventBoundList<T> WrapWithBeforeActions<T>(this IList<T> sourceList,
-                                                              Action<T> beforeAdd,
-                                                              Action<T> beforeRemove) where T : class
+    public static EventBoundListWrapper<T> WrapWithBeforeActions<T>(this IList<T> sourceList,
+                                                                    Action<T> beforeAdd,
+                                                                    Action<T> beforeRemove)
+      where T : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
 
-      IEventBoundList<T> output = (sourceList as IEventBoundList<T>)?? new EventBoundListWrapper<T>(sourceList);
+      EventBoundListWrapper<T> output;
+      output = (sourceList as EventBoundListWrapper<T>)?? new EventBoundListWrapper<T>(sourceList);
 
       output.BeforeAdd = (list, item) => {
         beforeAdd(item);
@@ -101,13 +103,15 @@ namespace CSF.Collections
     /// <typeparam name='T'>
     /// The type of object contained within the list.
     /// </typeparam>
-    public static IEventBoundList<T> WrapWithBeforeActions<T>(this IList<T> sourceList,
-                                                              Func<IList<T>, T, bool> beforeAdd,
-                                                              Func<IList<T>, T, bool> beforeRemove) where T : class
+    public static EventBoundListWrapper<T> WrapWithBeforeActions<T>(this IList<T> sourceList,
+                                                                    Func<IList<T>, T, bool> beforeAdd,
+                                                                    Func<IList<T>, T, bool> beforeRemove)
+      where T : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
 
-      IEventBoundList<T> output = (sourceList as IEventBoundList<T>)?? new EventBoundListWrapper<T>(sourceList);
+      EventBoundListWrapper<T> output;
+      output = (sourceList as EventBoundListWrapper<T>)?? new EventBoundListWrapper<T>(sourceList);
 
       output.BeforeAdd = beforeAdd;
       output.BeforeRemove = beforeRemove;
