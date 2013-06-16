@@ -161,7 +161,7 @@
     <Compile Include="Collections\IEventBoundCollection`2.cs" />
     <Compile Include="Collections\EventBoundListWrapper`1.cs" />
     <Compile Include="Collections\EventBoundCollectionWrapper`2.cs" />
-    <Compile Include="Collections\EventBoundCollectionWrapper.cs" />
+    <Compile Include="Collections\EventBoundCollectionWrapper`1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

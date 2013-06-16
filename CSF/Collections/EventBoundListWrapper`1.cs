@@ -26,7 +26,7 @@ using System.Linq;
 namespace CSF.Collections
 {
   /// <summary>
-  /// Implementation of a generic <c>IEventBoundList</c> that wraps a normal generic <c>IList</c> instance.
+  /// Implementation of a generic <c>EventBoundCollectionWrapper</c> that wraps a normal generic <c>IList</c> instance.
   /// </summary>
   /// <remarks>
   /// <para>
@@ -36,7 +36,7 @@ namespace CSF.Collections
   /// </remarks>
   [Serializable]
 #pragma warning disable 618
-  public class EventBoundListWrapper<T> : EventBoundCollectionWrapper<IList<T>,T>, IEventBoundList<T>
+  public class EventBoundListWrapper<T> : EventBoundCollectionWrapper<IList<T>,T>, IEventBoundList<T>, IList<T>
 #pragma warning restore 618
     where T : class
   {

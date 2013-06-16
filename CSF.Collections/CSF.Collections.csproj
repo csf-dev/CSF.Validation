@@ -49,6 +49,9 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="IesiCollectionExtensions.cs" />
+    <Compile Include="EventBoundSetWrapper.cs" />
+    <Compile Include="ReferenceSet.cs" />
+    <Compile Include="ISetExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
