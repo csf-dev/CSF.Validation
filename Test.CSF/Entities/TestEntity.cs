@@ -507,6 +507,7 @@ namespace Test.CSF.Entities
 
       public virtual IList<Order> Orders
       {
+#pragma warning disable 618
         get {
           return this.GetOrInitReferenceList(ref _wrappedOrders, ref _orders, x => x.Owner);
         }
@@ -514,21 +515,20 @@ namespace Test.CSF.Entities
           this.ReplaceReferenceList(ref _wrappedOrders, value, x => x.Owner);
           _orders = value;
         }
+#pragma warning restore 618
       }
 
       public virtual IList<Order> OrdersViaObsoleteApi
       {
-        get {
 #pragma warning disable 618
+        get {
           return this.GetOneToManyReferenceList(ref _wrappedOrders, ref _orders, x => x.Owner);
-#pragma warning restore 618
         }
         set {
-#pragma warning disable 618
           _wrappedOrders = this.ReplaceOneToManyReferenceList(_wrappedOrders, value, x => x.Owner);
-#pragma warning restore 618
           _orders = value;
         }
+#pragma warning restore 618
       }
 
       public virtual IList<Order> SourceList

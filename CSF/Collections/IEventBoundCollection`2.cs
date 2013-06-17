@@ -1,10 +1,10 @@
 //
-//  IEventWrappedList.cs
+//  IEventBoundCollection.cs
 //
 //  Author:
 //       Craig Fowler <craig@craigfowler.me.uk>
 //
-//  Copyright (c) 2012 Craig Fowler
+//  Copyright (c) 2013 Craig Fowler
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,37 +19,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CSF.Collections
 {
   /// <summary>
-  /// Interface for a list/collection type that additionally has associated events/actions perform before/after item
-  /// addition/removal (and that can prevent item addition/removal).
+  /// Interface for a type provides an event-bound collection.
   /// </summary>
-  /// <remarks>
-  /// <para>
-  /// This type is very heavily based on the excellent work found at:
-  /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
-  /// </para>
-  /// <para>
-  /// An important explanation as to the rationale for the <c>class</c> constraint on the generic type of the list
-  /// items:  This is entirely because the contained items within the list must be reference types and not value types.
-  /// If the list items were value types then the actions (before and after) would not be able to modify these instances
-  /// in their own method bodies.
-  /// </para>
-  /// <example>
-  /// For example:  A list is configured with a <see cref="BeforeAdd"/> handler which sets a property on the item that
-  /// is to be added to the list.  However, if this item were a value type then it would be passed in as a value - the
-  /// property would be set but only on that 'copy' of the value passed into the anonymous method.  The original value
-  /// would remain unchanged and the entire purpose of the action will have been lost.
-  /// </example>
-  /// </remarks>
-  public interface IEventBoundList<T> : IList<T>, ICollection where T : class
+  public interface IEventBoundCollection<TCollection,TItem> : ICollection<TItem>, ICollection
+    where TCollection : ICollection<TItem>
+    where TItem : class
   {
-    // See the remarks for this type for an important rationale discussion for the generic constraint 'class'.
-
     #region properties
 
     /// <summary>
@@ -58,7 +39,7 @@ namespace CSF.Collections
     /// <value>
     /// The action to perform after item addition.
     /// </value>
-    Action<IList<T>> AfterAdd { get; set; }
+    Action<TCollection> AfterAdd { get; set; }
 
     /// <summary>
     /// Gets or sets the action to perform after an item is removed from this collection.
@@ -66,7 +47,7 @@ namespace CSF.Collections
     /// <value>
     /// The action to perform after item removal.
     /// </value>
-    Action<IList<T>> AfterRemove { get; set; }
+    Action<TCollection> AfterRemove { get; set; }
 
     /// <summary>
     /// Gets or sets a function to execute before an item is added to this collection.  If the return value of that
@@ -75,7 +56,7 @@ namespace CSF.Collections
     /// <value>
     /// The function to execute before item addition.
     /// </value>
-    Func<IList<T>, T, bool> BeforeAdd { get; set; }
+    Func<TCollection, TItem, bool> BeforeAdd { get; set; }
 
     /// <summary>
     /// Gets or sets a function to execute before an item is removed from this collection.  If the return value of that
@@ -84,7 +65,7 @@ namespace CSF.Collections
     /// <value>
     /// The function to execute before item removal.
     /// </value>
-    Func<IList<T>, T, bool> BeforeRemove { get; set; }
+    Func<TCollection, TItem, bool> BeforeRemove { get; set; }
 
     #endregion
 
@@ -97,16 +78,7 @@ namespace CSF.Collections
     /// <param name='item'>
     /// The item to detach
     /// </param>
-    void Detach(T item);
-
-    /// <summary>
-    /// Detaches the item at the specified index from the list as if it had been removed but does not actually remove
-    /// it from the underlying list.
-    /// </summary>
-    /// <param name='index'>
-    /// The numeric index of the item to detach
-    /// </param>
-    void DetachAt(int index);
+    void Detach(TItem item);
 
     /// <summary>
     /// Detaches all contained items from the list as if they had been removed, without actually removing
@@ -136,7 +108,7 @@ namespace CSF.Collections
     /// <param name='compareTo'>
     /// The list to compare to the list that is wrapped by the current instance.
     /// </param>
-    bool IsWrappedList(IList<T> compareTo);
+    bool IsWrapping(TCollection compareTo);
 
     #endregion
   }

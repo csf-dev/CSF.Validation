@@ -110,8 +110,6 @@
     <Compile Include="DateTimeEqualityComparer.cs" />
     <Compile Include="Reflection\AssemblyExtensions.cs" />
     <Compile Include="Collections\OrderNeutralEqualityComparer.cs" />
-    <Compile Include="Collections\IEventBoundList`T.cs" />
-    <Compile Include="Collections\EventBoundListWrapper`T.cs" />
     <Compile Include="Collections\IListExtensions.cs" />
     <Compile Include="DictionaryEqualityComparer.cs" />
     <Compile Include="DateTimeExtensions.cs" />
@@ -158,6 +156,12 @@
     <Compile Include="Patterns\ServiceLayer\ServiceModel`1.cs" />
     <Compile Include="Patterns\ServiceLayer\ServiceModel`2.cs" />
     <Compile Include="Patterns\ServiceLayer\IServiceModel`1.cs" />
+    <Compile Include="Collections\ReferenceList.cs" />
+    <Compile Include="Collections\IEventBoundList`1.cs" />
+    <Compile Include="Collections\IEventBoundCollection`2.cs" />
+    <Compile Include="Collections\EventBoundListWrapper`1.cs" />
+    <Compile Include="Collections\EventBoundCollectionWrapper`2.cs" />
+    <Compile Include="Collections\EventBoundCollectionWrapper`1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

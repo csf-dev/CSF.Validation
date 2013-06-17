@@ -106,6 +106,8 @@
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
     <Compile Include="Data\TestInMemoryDataReader.cs" />
     <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
+    <Compile Include="Collections\TestEventBoundListWrapper.cs" />
+    <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

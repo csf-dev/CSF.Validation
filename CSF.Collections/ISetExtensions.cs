@@ -1,33 +1,13 @@
-//
-//  IListExtensions.cs
-//
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-//
-//  Copyright (c) 2012 Craig Fowler
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using Iesi.Collections.Generic;
 
 namespace CSF.Collections
 {
   /// <summary>
-  /// Extension methods to the generic <c>IList</c> type.
+  /// Extension methods to the generic <c>ISet</c> type.
   /// </summary>
-  public static class IListExtensions
+  public static class ISetExtensions
   {
     /// <summary>
     /// Creates a wrapped copy of the <paramref name="sourceList"/> and associates a pair of actions with it that are
@@ -54,15 +34,15 @@ namespace CSF.Collections
     /// <typeparam name='T'>
     /// The type of object contained within the list.
     /// </typeparam>
-    public static EventBoundListWrapper<T> WrapWithBeforeActions<T>(this IList<T> sourceList,
+    public static EventBoundSetWrapper<T> WrapWithBeforeActions<T>(this ISet<T> sourceList,
                                                                     Action<T> beforeAdd,
                                                                     Action<T> beforeRemove)
       where T : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
 
-      EventBoundListWrapper<T> output;
-      output = (sourceList as EventBoundListWrapper<T>)?? new EventBoundListWrapper<T>(sourceList);
+      EventBoundSetWrapper<T> output;
+      output = (sourceList as EventBoundSetWrapper<T>)?? new EventBoundSetWrapper<T>(sourceList);
 
       output.BeforeAdd = (list, item) => {
         beforeAdd(item);
@@ -103,63 +83,18 @@ namespace CSF.Collections
     /// <typeparam name='T'>
     /// The type of object contained within the list.
     /// </typeparam>
-    public static EventBoundListWrapper<T> WrapWithBeforeActions<T>(this IList<T> sourceList,
-                                                                    Func<IList<T>, T, bool> beforeAdd,
-                                                                    Func<IList<T>, T, bool> beforeRemove)
+    public static EventBoundSetWrapper<T> WrapWithBeforeActions<T>(this ISet<T> sourceList,
+                                                                    Func<ISet<T>, T, bool> beforeAdd,
+                                                                    Func<ISet<T>, T, bool> beforeRemove)
       where T : class
     {
       // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'
 
-      EventBoundListWrapper<T> output;
-      output = (sourceList as EventBoundListWrapper<T>)?? new EventBoundListWrapper<T>(sourceList);
+      EventBoundSetWrapper<T> output;
+      output = (sourceList as EventBoundSetWrapper<T>)?? new EventBoundSetWrapper<T>(sourceList);
 
       output.BeforeAdd = beforeAdd;
       output.BeforeRemove = beforeRemove;
-
-      return output;
-    }
-
-    /// <summary>
-    /// Returns the <paramref name="source"/> list as a readonly collection.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// If the <paramref name="source"/> collection is already a read-only collection then the source is
-    /// returned by this method, with no further action.
-    /// </para>
-    /// <para>
-    /// If the source list is not read-only then an element-by-element copy is made and returned, leaving the original
-    /// list intact and unmodified.  Subsequent alterations to the source list will have no affect upon the copy.
-    /// </para>
-    /// </remarks>
-    /// <returns>
-    /// A read-only 'snapshot' of the <paramref name="source"/> collection.
-    /// </returns>
-    /// <param name='source'>
-    /// The collection to make read-only.
-    /// </param>
-    /// <typeparam name='T'>
-    /// The type of the list contents.
-    /// </typeparam>
-    public static IList<T> ToReadOnlyList<T>(this IList<T> source)
-    {
-      if(source == null)
-      {
-        throw new ArgumentNullException("source");
-      }
-
-      IList<T> output;
-
-      if(source.IsReadOnly)
-      {
-        output = source;
-      }
-      else
-      {
-        T[] clone = new T[source.Count];
-        source.CopyTo(clone, 0);
-        output = clone;
-      }
 
       return output;
     }
