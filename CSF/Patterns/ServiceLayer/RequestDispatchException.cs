@@ -31,10 +31,14 @@ namespace CSF.Patterns.ServiceLayer
     #region constants
 
     private const string
-      DefaultMessageNull                = "Could not dispatch the request; it is null.",
-      DefaultMessageUncaught            = "Uncaught exception whilst handling the request, refer to InnerException " +
-                                          "for more info",
-      DefaultMessageFormatNoHandler     = "Could not dispatch the request as there is no registered handler. " +
+      DefaultMessageNull                = "The request to dispatch must not be null.",
+      DefaultMessageUncaught            = "An unhandled exception was raised by the request handler.  Request " +
+                                          "handler implementations should catch exceptions and return them as part " +
+                                          "of the response object.  The original exception is stored within the " +
+                                          "InnerException property of this exception.",
+      DefaultMessageFormatNoHandler     = "There must be a type (that derives from " +
+                                          "RequestHandler<TRequest,TResponse>) registered with the request " +
+                                          "dispatcher in order to dispatch this request; no such type was found.\n" +
                                           "Request type: `{0}'";
 
     #endregion

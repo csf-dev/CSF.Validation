@@ -16,7 +16,6 @@ namespace Test.CSF.Patterns.ServiceLayer
     private Mock<MockRequestType3> Request3;
     private Mock<MockResponseType1> Response1;
     private Mock<MockResponseType2> Response2;
-    private Mock<MockResponseType3> Response3;
     private Mock<IRequestHandler> Handler1;
     private Mock<IRequestHandler> Handler2;
 #pragma warning restore 414
@@ -46,21 +45,16 @@ namespace Test.CSF.Patterns.ServiceLayer
 
       this.Response1 = new Mock<MockResponseType1>();
       this.Response2 = new Mock<MockResponseType2>();
-      this.Response3 = new Mock<MockResponseType3>();
-
-      this.Response1.As<IResponse>();
-      this.Response2.As<IResponse>();
-      this.Response3.As<IResponse>();
 
       this.Handler1 = new Mock<IRequestHandler>(MockBehavior.Strict);
       this.Handler2 = new Mock<IRequestHandler>(MockBehavior.Strict);
 
       this.Handler1
         .Setup(x => x.Handle(It.IsAny<IRequest>()))
-        .Returns((IResponse) this.Response1.Object);
+        .Returns((Response) this.Response1.Object);
       this.Handler2
         .Setup(x => x.Handle(It.IsAny<IRequest>()))
-        .Returns((IResponse) this.Response2.Object);
+        .Returns((Response) this.Response2.Object);
       this.Handler1
         .Setup(x => x.HandleRequestOnly(It.IsAny<IRequest>()));
       this.Handler2
@@ -68,11 +62,9 @@ namespace Test.CSF.Patterns.ServiceLayer
 
       this.Dispatcher = new LocalRequestDispatcher();
 
-#pragma warning disable 618
       this.Dispatcher
-        .Register(typeof(MockRequestType1), this.Handler1.Object)
-        .Register(typeof(MockRequestType2), this.Handler2.Object);
-#pragma warning restore 618
+        .Register(typeof(MockRequestType1), () => this.Handler1.Object)
+        .Register(typeof(MockRequestType2), () => this.Handler2.Object);
 
       DisposeableRequestHandler.DisposedOnce = false;
     }
@@ -84,23 +76,14 @@ namespace Test.CSF.Patterns.ServiceLayer
     [Test]
     public void TestRegister()
     {
-#pragma warning disable 618
-      var handlers = this.Dispatcher.GetRegisteredHandlers();
-#pragma warning restore 618
-
-      Assert.AreEqual(2, handlers.Count);
-
-      Assert.IsTrue(handlers.ContainsKey(typeof(MockRequestType1)), "Contains a definition for request type 1");
-      Assert.IsTrue(handlers.ContainsKey(typeof(MockRequestType2)), "Contains a definition for request type 2");
-
-      Assert.AreSame(this.Handler1.Object, handlers[typeof(MockRequestType1)], "Correct handler 1");
-      Assert.AreSame(this.Handler2.Object, handlers[typeof(MockRequestType2)], "Correct handler 2");
+      Assert.IsTrue(this.Dispatcher.CanDispatch<MockRequestType1>(), "Can dispatch type one");
+      Assert.IsTrue(this.Dispatcher.CanDispatch<MockRequestType2>(), "Can dispatch type two");
     }
 
     [Test]
     public void TestDispatch()
     {
-      var response = this.Dispatcher.Dispatch<MockResponseType1>(this.Request1.Object);
+      var response = this.Dispatcher.Dispatch(this.Request1.Object);
 
       Assert.AreSame(this.Response1.Object, response);
 
@@ -112,16 +95,19 @@ namespace Test.CSF.Patterns.ServiceLayer
 
     [Test]
     [ExpectedException(ExceptionType = typeof(RequestDispatchException),
-                       ExpectedMessage = "Could not dispatch the request as there is no registered handler. " +
-                                         "Request type: `Test.CSF.Patterns.ServiceLayer.TestLocalRequestDispatcher+MockRequestType3'")]
+                       ExpectedMessage = "There must be a type (that derives from " +
+                                         "RequestHandler<TRequest,TResponse>) registered with the request " +
+                                         "dispatcher in order to dispatch this request; no such type was found.\n" +
+                                         "Request type: `Test.CSF.Patterns.ServiceLayer.TestLocalRequestDispatcher+MockRequestType2'")]
     public void TestDispatchNotRegistered()
     {
-      this.Dispatcher.Dispatch<MockResponseType3>(this.Request3.Object);
+      this.Dispatcher.Unregister<MockRequestType2>();
+      this.Dispatcher.Dispatch(this.Request2.Object);
     }
 
     [Test]
     [ExpectedException(ExceptionType = typeof(RequestDispatchException),
-                       ExpectedMessage = "Could not dispatch the request; it is null.")]
+                       ExpectedMessage = "The request to dispatch must not be null.")]
     public void TestDispatchNullRequest()
     {
       this.Dispatcher.Dispatch<MockResponseType1>(null);
@@ -130,12 +116,14 @@ namespace Test.CSF.Patterns.ServiceLayer
     [Test]
     public void TestDispatchRequestOnly()
     {
-      this.Dispatcher.DispatchRequestOnly(this.Request1.Object);
+      var handler3 = new Mock<IRequestHandler>();
+      this.Dispatcher.Register<MockRequestType3>(() => handler3.Object);
+      this.Dispatcher.Dispatch(this.Request3.Object);
 
-      this.Handler1
+      handler3
         .Verify(x => x.Handle(It.IsAny<IRequest>()), Times.Never());
-      this.Handler1
-        .Verify(x => x.HandleRequestOnly(It.Is<IRequest>(req => req == this.Request1.Object)), Times.Once());
+      handler3
+        .Verify(x => x.HandleRequestOnly(It.Is<IRequest>(req => req == this.Request3.Object)), Times.Once());
     }
 
     [Test]
@@ -163,16 +151,21 @@ namespace Test.CSF.Patterns.ServiceLayer
     {
       public new Type GetType() { return typeof(MockRequestType2); }
     }
-    public class MockRequestType3 : IRequest<MockResponseType3>
+    public class MockRequestType3 : IRequest
     {
       public new Type GetType() { return typeof(MockRequestType3); }
     }
 
-    public class MockResponseType1 : Response {}
-    public class MockResponseType2 : Response {}
-    public class MockResponseType3 : Response {}
+    public class MockResponseType1 : Response
+    {
+      public MockResponseType1() : base(null) { }
+    }
+    public class MockResponseType2 : Response
+    {
+      public MockResponseType2() : base(null) { }
+    }
 
-    public class DisposeableRequestHandler : RequestHandlerBase<MockRequestType1,MockResponseType1>, IDisposable
+    public class DisposeableRequestHandler : RequestHandler<MockRequestType1,MockResponseType1>, IDisposable
     {
       public static bool DisposedOnce;
 

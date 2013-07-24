@@ -25,6 +25,7 @@ namespace CSF.Patterns.ServiceLayer
   /// <summary>
   /// Extension methods for IRequest types.
   /// </summary>
+  [Obsolete("This entire type is obsolete - it is not needed.")]
   public static class RequestExtensions
   {
     /// <summary>
@@ -40,7 +41,7 @@ namespace CSF.Patterns.ServiceLayer
     /// The expected type of the response.
     /// </typeparam>
     public static TResponse Dispatch<TResponse>(this IRequest<TResponse> request, IRequestDispatcher dispatcher)
-      where TResponse : IResponse
+      where TResponse : Response
     {
       if(request == null)
       {

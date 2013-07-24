@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Moq;
 using CSF.Patterns.ServiceLayer;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Test.CSF.Patterns.ServiceLayer
 {
@@ -79,6 +80,25 @@ namespace Test.CSF.Patterns.ServiceLayer
                 "Mock request 3 (and handler) NOT registered (the handler is abstract)");
     }
 
+    [Test]
+    public void TestGetRequestHandlerTypes()
+    {
+      Assembly target = Assembly.GetAssembly(typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestOne));
+      var result = RequestDispatcherBase.GetRequestHandlerTypes(target);
+
+      Assert.IsNotNull(result, "Nullability");
+      Assert.AreEqual(3, result.Count, "Count of items");
+      Assert.AreEqual(typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestHandlerOne),
+                      result[typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestOne)],
+                      "First type");
+      Assert.AreEqual(typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestHandlerTwo),
+                      result[typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestTwo)],
+                      "Second type");
+      Assert.AreEqual(typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestHandlerThree),
+                      result[typeof(Test.CSF.StubAssembly.Patterns.ServiceLayer.RequestThree)],
+                      "Third type");
+    }
+
     #endregion
 
     #region contained types
@@ -88,15 +108,27 @@ namespace Test.CSF.Patterns.ServiceLayer
     public class MockRequestType3 : IRequest {}
     public class MockRequestType4 : IRequest {}
 
-    public class MockResponseType1 : Response {}
-    public class MockResponseType2 : Response {}
-    public class MockResponseType3 : Response {}
-    public class MockResponseType4 : Response {}
+    public class MockResponseType1 : Response
+    {
+      public MockResponseType1() : base(null) { }
+    }
+    public class MockResponseType2 : Response
+    {
+      public MockResponseType2() : base(null) { }
+    }
+    public class MockResponseType3 : Response
+    {
+      public MockResponseType3() : base(null) { }
+    }
+    public class MockResponseType4 : Response
+    {
+      public MockResponseType4() : base(null) { }
+    }
 
-    public class MockHandlerType1 : RequestHandlerBase<MockRequestType1,MockResponseType1> {}
-    public class MockHandlerType2 : RequestHandlerBase<MockRequestType2,MockResponseType2> {}
-    public abstract class MockHandlerType3 : RequestHandlerBase<MockRequestType3,MockResponseType3> {}
-    public class MockHandlerType4 : RequestHandlerBase<MockRequestType4,MockResponseType4>
+    public class MockHandlerType1 : RequestHandler<MockRequestType1,MockResponseType1> {}
+    public class MockHandlerType2 : RequestHandler<MockRequestType2,MockResponseType2> {}
+    public abstract class MockHandlerType3 : RequestHandler<MockRequestType3,MockResponseType3> {}
+    public class MockHandlerType4 : RequestHandler<MockRequestType4,MockResponseType4>
     {
       public string Foo;
 
@@ -114,33 +146,19 @@ namespace Test.CSF.Patterns.ServiceLayer
     {
       private IRequestDispatcher Implementation;
 
-      [Obsolete]
-      public override IResponse Dispatch (IRequest request)
+      public override TResponse Dispatch<TResponse>(IRequest<TResponse> request)
       {
         return this.Implementation.Dispatch(request);
       }
 
-      public override void DispatchRequestOnly (IRequest request)
+      public override void Dispatch(IRequest request)
       {
-        this.Implementation.DispatchRequestOnly(request);
+        this.Implementation.Dispatch(request);
       }
 
       public override bool CanDispatch (Type requestType)
       {
         return this.Implementation.CanDispatch(requestType);
-      }
-
-      [Obsolete]
-      public override IDictionary<Type, IRequestHandler> GetRegisteredHandlers ()
-      {
-        return this.Implementation.GetRegisteredHandlers();
-      }
-
-      [Obsolete]
-      public override IRequestDispatcher Register (Type requestType, IRequestHandler handler)
-      {
-        this.Implementation.Register(requestType, handler);
-        return this;
       }
 
       public override IRequestDispatcher Register (Type requestType, Func<IRequestHandler> factoryMethod)

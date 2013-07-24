@@ -38,18 +38,6 @@ namespace CSF.Patterns.ServiceLayer
     #region properties
 
     /// <summary>
-    /// Gets the registered handlers, indexed by the request types that they handle.
-    /// </summary>
-    /// <value>
-    /// The handlers.
-    /// </value>
-    protected virtual IDictionary<Type, IRequestHandler> Handlers
-    {
-      get;
-      private set;
-    }
-
-    /// <summary>
     /// Gets the registered handler factories, indexed by the request types that they handle.
     /// </summary>
     /// <value>
@@ -71,22 +59,21 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='request'>
     ///  The request to dispatch. 
     /// </param>
-    [Obsolete("This overload is deprecated and will be removed.  The non-generic IRequest interface will be for " +
-              "requests that do not expect a response.")]
-    public override IResponse Dispatch(IRequest request)
+    public override TResponse Dispatch<TResponse>(IRequest<TResponse> request)
     {
       if(request == null)
       {
         throw new RequestDispatchException();
       }
 
-      IResponse output = null;
+      TResponse output = null;
+      Response untypedOutput;
       bool releaseable;
       IRequestHandler handler = this.GetHandlerFor(request, out releaseable);
 
       try
       {
-        output = handler.Handle(request);
+        untypedOutput = handler.Handle(request);
       }
       catch(Exception ex)
       {
@@ -100,10 +87,25 @@ namespace CSF.Patterns.ServiceLayer
         }
       }
 
-      if(output == null)
+      if(untypedOutput == null)
       {
-        string message = String.Format("Handler for `{0}' returned a null response.  This is invalid behaviour.",
-                                       request.GetType().FullName);
+        string message = String.Format("Request handler (type: `{0}') must return an instance that derives from " +
+                                       "`CSF.Patterns.ServiceLayer.Response' and not return a null reference.",
+                                       handler.GetType().FullName);
+        throw new RequestDispatchException(request, message);
+      }
+
+      try
+      {
+        output = (TResponse) untypedOutput;
+      }
+      catch(InvalidCastException)
+      {
+        string message = String.Format("Request handler (type: `{0}') must return an instance of `{1}'.  Instead it " +
+                                       "returned an instance of `{2}'.",
+                                       handler.GetType().FullName,
+                                       typeof(TResponse).FullName,
+                                       untypedOutput.GetType().FullName);
         throw new RequestDispatchException(request, message);
       }
 
@@ -116,10 +118,7 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='request'>
     ///  The request to dispatch. 
     /// </param>
-    // This overload will become obsolete in v3.x, once we have changed the non-generic 'Dispatch' method.
-//    [Obsolete("This overload is deprecated and will be renamed to simply 'Dispatch'.  The non-generic IRequest " +
-//              "interface will be used only for requests that do not expect a response.")]
-    public override void DispatchRequestOnly(IRequest request)
+    public override void Dispatch(IRequest request)
     {
       if(request == null)
       {
@@ -157,56 +156,8 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     public override bool CanDispatch(Type requestType)
     {
-      return (this.Handlers.ContainsKey(requestType)
-              && this.Handlers[requestType] != null);
-    }
-
-    /// <summary>
-    ///  Gets a read-only indexed collection of the registered request types and the request handlers that requests of
-    /// that type would be dispatched to. 
-    /// </summary>
-    /// <returns>
-    ///  The registered handlers. 
-    /// </returns>
-    [Obsolete("The return type of this method is obsolete and thus it will be removed.  We shall be registering " +
-              "handler factories in future and not handler instances.  This method now only returns handlers that " +
-              "were registered as instances, now those registered using factory methods.")]
-    public override IDictionary<Type, IRequestHandler> GetRegisteredHandlers()
-    {
-      IDictionary<Type, IRequestHandler> output = new Dictionary<Type, IRequestHandler>();
-
-      foreach(KeyValuePair<Type, IRequestHandler> registration in this.Handlers)
-      {
-        output.Add(registration);
-      }
-
-      return output;
-    }
-
-    /// <summary>
-    ///  Registers that the specified handler should be used for requests of the specified type. 
-    /// </summary>
-    /// <param name='requestType'>
-    ///  The type of request that we are registering a handler for. 
-    /// </param>
-    /// <param name='handler'>
-    ///  The handler to use for requests of the given type. 
-    /// </param>
-    [Obsolete("Registering request handlers using instantiated instances is deprecated, instead register them with " +
-              "a factory method.  This way they may be created and disposed of as needed.")]
-    public override IRequestDispatcher Register(Type requestType, IRequestHandler handler)
-    {
-      if(requestType == null)
-      {
-        throw new ArgumentNullException("requestType");
-      }
-      else if(handler == null)
-      {
-        throw new ArgumentNullException("handler");
-      }
-
-      this.Handlers.Add(requestType, handler);
-      return this;
+      return (this.HandlerFactories.ContainsKey(requestType)
+              && this.HandlerFactories[requestType] != null);
     }
 
     /// <summary>
@@ -246,7 +197,7 @@ namespace CSF.Patterns.ServiceLayer
         throw new ArgumentNullException("requestType");
       }
 
-      this.Handlers.Remove(requestType);
+      this.HandlerFactories.Remove(requestType);
       return this;
     }
 
@@ -282,11 +233,6 @@ namespace CSF.Patterns.ServiceLayer
         output = factory();
         releaseable = true;
       }
-      else if(this.Handlers.ContainsKey(requestType))
-      {
-        output = this.Handlers[requestType];
-        releaseable = false;
-      }
       else
       {
         throw new RequestDispatchException(request);
@@ -320,7 +266,6 @@ namespace CSF.Patterns.ServiceLayer
     /// </summary>
     public LocalRequestDispatcher()
     {
-      this.Handlers = new Dictionary<Type, IRequestHandler>();
       this.HandlerFactories = new Dictionary<Type, Func<IRequestHandler>>();
     }
 

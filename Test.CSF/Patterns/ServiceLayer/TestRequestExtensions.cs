@@ -34,7 +34,10 @@ namespace Test.CSF.Patterns.ServiceLayer
 
     #region contained types
 
-    private class DummyResponse : Response {}
+    private class DummyResponse : Response
+    {
+      public DummyResponse() : base(null) { }
+    }
     private class DummyRequest : IRequest<DummyResponse> {}
 
     #endregion

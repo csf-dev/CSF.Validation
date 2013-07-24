@@ -123,11 +123,8 @@
     </Compile>
     <Compile Include="Globalization\CultureInfoExtensions.cs" />
     <Compile Include="Patterns\ServiceLayer\IRequest.cs" />
-    <Compile Include="Patterns\ServiceLayer\IResponse.cs" />
     <Compile Include="Patterns\ServiceLayer\IRequestDispatcher.cs" />
-    <Compile Include="Patterns\ServiceLayer\IRequestHandler`2.cs" />
     <Compile Include="Patterns\ServiceLayer\IRequestHandler.cs" />
-    <Compile Include="Patterns\ServiceLayer\RequestHandlerBase.cs" />
     <Compile Include="Patterns\ServiceLayer\Response.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestDispatchException.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestDispatcherBase.cs" />
@@ -162,6 +159,8 @@
     <Compile Include="Collections\EventBoundListWrapper`1.cs" />
     <Compile Include="Collections\EventBoundCollectionWrapper`2.cs" />
     <Compile Include="Collections\EventBoundCollectionWrapper`1.cs" />
+    <Compile Include="Patterns\ServiceLayer\RequestHandler`1.cs" />
+    <Compile Include="Patterns\ServiceLayer\RequestHandler`2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

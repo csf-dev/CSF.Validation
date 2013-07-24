@@ -1,5 +1,5 @@
 //
-//  RequestHandlerBase.cs
+//  RequestHandler.cs
 //
 //  Author:
 //       Craig Fowler <craig@craigfowler.me.uk>
@@ -23,15 +23,20 @@ using System;
 namespace CSF.Patterns.ServiceLayer
 {
   /// <summary>
-  /// Abstract generic base class for a strongly-typed <see cref="IRequestHandler"/>.
+  /// Base type for all service layer request handlers.
   /// </summary>
-  public abstract class RequestHandlerBase<TRequest,TResponse> : IRequestHandler<TRequest,TResponse>, IRequestHandler
+  /// <remarks>
+  /// <para>
+  /// Derived types should override and implement one of either the <c>Handle</c> or <c>HandleRequestOnly</c> methods.
+  /// </para>
+  /// </remarks>
+  public abstract class RequestHandler<TRequest,TResponse> : RequestHandler<TRequest>, IRequestHandler
     where TRequest : IRequest
-    where TResponse : IResponse
+    where TResponse : Response
   {
     #region non-generic IRequestHandler implementation
 
-    IResponse IRequestHandler.Handle (IRequest request)
+    Response IRequestHandler.Handle (IRequest request)
     {
       return this.Handle((TRequest) request);
     }
@@ -53,18 +58,9 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     public virtual TResponse Handle (TRequest request)
     {
-      throw new NotSupportedException("This handler type does not include an implementation for 'Handle'.");
-    }
-
-    /// <summary>
-    ///  Handles a one-way/fire-and-forget request. This method does not return any kind of response. 
-    /// </summary>
-    /// <param name='request'>
-    ///  The request to handle. 
-    /// </param>
-    public virtual void HandleRequestOnly (TRequest request)
-    {
-      throw new NotSupportedException("This handler type does not include an implementation for 'HandleRequestOnly'.");
+      string message = String.Format("The type `{0}' does not provide an implementation for 'Handle'.",
+                                     this.GetType().FullName);
+      throw new NotImplementedException(message);
     }
 
     #endregion
