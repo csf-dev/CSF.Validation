@@ -25,7 +25,7 @@ namespace CSF.Patterns.IoC
   /// <summary>
   /// Enumerates the possible lifetimes of a service.
   /// </summary>
-  public enum ServiceLifetime : ushort
+  public enum ServiceLifetime
   {
     /// <summary>
     /// There is only a single instance of a service created for an entire application domain.
