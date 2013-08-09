@@ -108,6 +108,7 @@
     <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\TestEventBoundListWrapper.cs" />
     <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
+    <Compile Include="Entities\TestIdentityParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -161,6 +161,9 @@
     <Compile Include="Collections\EventBoundCollectionWrapper`1.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestHandler`1.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestHandler`2.cs" />
+    <Compile Include="Entities\IIdentityParser.cs" />
+    <Compile Include="Entities\IdentityParser.cs" />
+    <Compile Include="Entities\IdentityParser`2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

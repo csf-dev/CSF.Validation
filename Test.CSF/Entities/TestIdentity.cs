@@ -99,38 +99,28 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three != threeProduct, "Non-matching types not equal");
 #pragma warning restore 618
     }
-    
-    [Test]
-    public void TestCreate()
-    {
-      var identity = Identity.Create<Person,uint>(5);
-      Assert.AreEqual(typeof(Person), identity.EntityType, "Correct type");
-      Assert.AreEqual(5, identity.Value, "Correct value");
-    }
-    
-    [Test]
-    public void TestCreateSubclass()
-    {
-      var identity = Identity.Create<Employee,uint>(5);
-      Assert.AreEqual(typeof(Employee), identity.EntityType, "Correct type");
-      Assert.AreEqual(5, identity.Value, "Correct value");
-    }
 
     [Test]
+    [Description("This test is only here to test the preservation of backwards-compatibility.")]
     public void TestTryParse()
     {
       Identity<Person,uint> output;
+#pragma warning disable 618
       bool result = Identity.TryParse("57", out output);
+#pragma warning restore 618
 
       Assert.IsTrue(result);
       Assert.AreEqual(57, output.Value);
     }
 
     [Test]
+    [Description("This test is only here to test the preservation of backwards-compatibility.")]
     public void TestTryParseInterface()
     {
       IIdentity<Person> output;
+#pragma warning disable 618
       bool result = Identity.TryParse<Person,uint>("57", out output);
+#pragma warning restore 618
 
       Assert.IsTrue(result);
       Assert.AreEqual(57, output.Value);

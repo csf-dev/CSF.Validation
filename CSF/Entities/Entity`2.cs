@@ -329,7 +329,7 @@ namespace CSF.Entities
         throw new ArgumentException("Invalid identity value");
       }
       
-      return Identity.Create<TEntity,TIdentity>(identityValue);
+      return new Identity<TEntity,TIdentity>(identityValue);
     }
     
     /// <summary>
