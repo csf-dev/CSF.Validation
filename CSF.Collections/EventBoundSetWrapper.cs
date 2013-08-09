@@ -9,7 +9,8 @@ namespace CSF.Collections
   /// <summary>
   /// Implementation of a generic <c>EventBoundCollectionWrapper</c> that wraps a generic <c>ISet</c> instance.
   /// </summary>
-  public class EventBoundSetWrapper<T> : EventBoundCollectionWrapper<ISet<T>,T>, ISet<T>
+  public class EventBoundSetWrapper<T>
+    : EventBoundCollectionWrapper<Iesi.Collections.Generic.ISet<T>,T>, Iesi.Collections.Generic.ISet<T>
     where T : class
   {
     #region ISet implementation
@@ -33,7 +34,7 @@ namespace CSF.Collections
     /// <param name='a'>
     /// The set with which to perform the operation;
     /// </param>
-    public ISet<T> Union (ISet<T> a)
+    public Iesi.Collections.Generic.ISet<T> Union (Iesi.Collections.Generic.ISet<T> a)
     {
       return this.WrappedCollection.Union(a);
     }
@@ -44,7 +45,7 @@ namespace CSF.Collections
     /// <param name='a'>
     /// The set with which to perform the operation;
     /// </param>
-    public ISet<T> Intersect (ISet<T> a)
+    public Iesi.Collections.Generic.ISet<T> Intersect (Iesi.Collections.Generic.ISet<T> a)
     {
       return this.WrappedCollection.Intersect(a);
     }
@@ -55,7 +56,7 @@ namespace CSF.Collections
     /// <param name='a'>
     /// The set with which to perform the operation;
     /// </param>
-    public ISet<T> Minus (ISet<T> a)
+    public Iesi.Collections.Generic.ISet<T> Minus (Iesi.Collections.Generic.ISet<T> a)
     {
       return this.WrappedCollection.Minus(a);
     }
@@ -66,7 +67,7 @@ namespace CSF.Collections
     /// <param name='a'>
     /// The set with which to perform the operation;
     /// </param>
-    public ISet<T> ExclusiveOr (ISet<T> a)
+    public Iesi.Collections.Generic.ISet<T> ExclusiveOr (Iesi.Collections.Generic.ISet<T> a)
     {
       return this.WrappedCollection.ExclusiveOr(a);
     }
@@ -201,7 +202,8 @@ namespace CSF.Collections
     /// </summary>
     public object Clone ()
     {
-      ISet<T> clonedWrappedSet = (ISet<T>) base.WrappedCollection.Clone();
+      Iesi.Collections.Generic.ISet<T> clonedWrappedSet;
+      clonedWrappedSet = (Iesi.Collections.Generic.ISet<T>) base.WrappedCollection.Clone();
       EventBoundSetWrapper<T> clonedWrapper = new EventBoundSetWrapper<T>(clonedWrappedSet);
 
       clonedWrapper.BeforeAdd = this.BeforeAdd;
@@ -222,7 +224,7 @@ namespace CSF.Collections
     /// <param name='wrapped'>
     /// The set instance to wrap.
     /// </param>
-    public EventBoundSetWrapper (ISet<T> wrapped) : base(wrapped) {}
+    public EventBoundSetWrapper (Iesi.Collections.Generic.ISet<T> wrapped) : base(wrapped) {}
 
     #endregion
   }

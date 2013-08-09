@@ -21,7 +21,7 @@ namespace CSF.Collections
     /// <typeparam name='T'>
     /// The type of item contained within the collection.
     /// </typeparam>
-    public static ISet<T> ToSet<T>(this ICollection<T> source)
+    public static Iesi.Collections.Generic.ISet<T> ToSet<T>(this ICollection<T> source)
     {
       if(source == null)
       {

@@ -13,7 +13,7 @@ namespace Test.CSF.Collections
     public void TestToSet()
     {
       ICollection<int> integers = new int[] { 1, 3, 5, 7 };
-      ISet<int> setIntegers = integers.ToSet();
+      Iesi.Collections.Generic.ISet<int> setIntegers = integers.ToSet();
 
       Assert.IsNotNull(setIntegers, "Nullability");
       Assert.AreEqual(4, setIntegers.Count, "Count");
@@ -27,7 +27,7 @@ namespace Test.CSF.Collections
     public void TestToSetDuplicates()
     {
       ICollection<int> integers = new int[] { 1, 5, 5, 7 };
-      ISet<int> setIntegers = integers.ToSet();
+      Iesi.Collections.Generic.ISet<int> setIntegers = integers.ToSet();
 
       Assert.IsNotNull(setIntegers, "Nullability");
       Assert.AreEqual(3, setIntegers.Count, "Count");

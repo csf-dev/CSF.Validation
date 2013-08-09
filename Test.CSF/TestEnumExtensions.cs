@@ -35,14 +35,6 @@ namespace Test.CSF
       Assert.IsFalse(val.HasFlag(FlagsEnum.Four));
     }
 
-    [Test]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestHasFlagNotFlags()
-    {
-      SampleEnum val = SampleEnum.One;
-      val.HasFlag(SampleEnum.One);
-    }
-
     #endregion
 
     #region test enumeration
