@@ -163,6 +163,8 @@
     <Compile Include="Entities\IIdentityParser.cs" />
     <Compile Include="Entities\IdentityParser.cs" />
     <Compile Include="Entities\IdentityParser`2.cs" />
+    <Compile Include="NameReformatter.cs" />
+    <Compile Include="LowercaseUnderscoreNameReformatter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
