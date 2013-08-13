@@ -165,6 +165,9 @@
     <Compile Include="Entities\IdentityParser`2.cs" />
     <Compile Include="NameReformatter.cs" />
     <Compile Include="LowercaseUnderscoreNameReformatter.cs" />
+    <Compile Include="IGuidGenerationStrategy.cs" />
+    <Compile Include="DefaultGuidStrategy.cs" />
+    <Compile Include="BinaryGuidCombStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
