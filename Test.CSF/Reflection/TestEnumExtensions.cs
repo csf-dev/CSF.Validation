@@ -38,24 +38,6 @@ namespace Test.CSF.Reflection
       Assert.AreEqual(SampleEnum.Three.ToString(), field.Name, "Field hsa correct name");
     }
 
-    [Test]
-    [Description("This test may be removed in v3.x and upwards, as it tests obsolete functionality.")]
-    public void TestIsDefinedValueTrue()
-    {
-#pragma warning disable 618
-      Assert.IsTrue(SampleEnum.Two.IsDefinedValue());
-#pragma warning restore 618
-    }
-
-    [Test]
-    [Description("This test may be removed in v3.x and upwards, as it tests obsolete functionality.")]
-    public void TestIsDefinedValueFalse()
-    {
-#pragma warning disable 618
-      Assert.IsFalse(((SampleEnum) 8).IsDefinedValue());
-#pragma warning restore 618
-    }
-    
     #endregion
     
     #region test enumeration

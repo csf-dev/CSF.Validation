@@ -34,15 +34,11 @@ namespace CSF.Entities
   /// <see cref="Type"/>
   /// </typeparam>
   [Serializable]
-#pragma warning disable 618
   public struct Identity<TEntity,TIdentifier>
-    : IIdentity<TEntity,TIdentifier>,
-      IIdentity<TEntity>,
-      IIdentity,
+    : IIdentity<TEntity>,
       IEquatable<IIdentity<TEntity>>,
       IEquatable<Identity<TEntity,TIdentifier>>
     where TEntity : IEntity
-#pragma warning restore 618
   {
     #region fields
     
@@ -84,22 +80,16 @@ namespace CSF.Entities
         return _value;
       }
     }
-    
-    #endregion
-    
-    #region IIdentity implementation
-    
-#pragma warning disable 618
-    object IIdentity.Value
+
+    object IIdentity<TEntity>.Value
     {
       get {
         return this.Value;
       }
     }
-#pragma warning restore 618
     
     #endregion
-    
+
     #region methods
 
     /// <summary>
@@ -165,34 +155,7 @@ namespace CSF.Entities
     {
       return this.Value.Equals(other.Value);
     }
-    
-    /// <summary>
-    /// <para>Overloaded.  Determines equality with a <see cref="IIdentity"/>.</para>
-    /// </summary>
-    /// <param name="identity">
-    /// A <see cref="IIdentity"/>
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>
-    /// </returns>
-    [Obsolete("This method is obsolete and will be removed in 3.x.")]
-    public bool Equals (IIdentity identity)
-    {
-      bool output;
-      
-      if(identity != null)
-      {
-        output = (identity.EntityType == this.EntityType
-                  && identity.Value.Equals(this.Value));
-      }
-      else
-      {
-        output = false;
-      }
-      
-      return output;
-    }
-    
+
     /// <summary>
     /// <para>Overridden.  Computes a hash code for this identity instance.</para>
     /// </summary>
@@ -238,48 +201,6 @@ namespace CSF.Entities
     #endregion
     
     #region operator overloads
-    
-    /// <summary>
-    /// <para>
-    /// Overloaded.  Operator overload for testing equality between an identity instance and an
-    /// <see cref="IIdentity"/>.
-    /// </para>
-    /// </summary>
-    /// <param name="objectA">
-    /// A generic identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An <see cref="IIdentity"/>
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>
-    /// </returns>
-    [Obsolete("This method is obsolete and will be removed in 3.x.")]
-    public static bool operator ==(Identity<TEntity,TIdentifier> objectA, IIdentity objectB)
-    {
-      return objectA.Equals(objectB);
-    }
-    
-    /// <summary>
-    /// <para>
-    /// Overloaded.  Operator overload for testing inequality between an identity instance and an
-    /// <see cref="IIdentity"/>.
-    /// </para>
-    /// </summary>
-    /// <param name="objectA">
-    /// A generic identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An <see cref="IIdentity"/>
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>
-    /// </returns>
-    [Obsolete("This method is obsolete and will be removed in 3.x.")]
-    public static bool operator !=(Identity<TEntity,TIdentifier> objectA, IIdentity objectB)
-    {
-      return !(objectA == objectB);
-    }
 
     /// <summary>
     /// Operator overload for testing equality between identity instances.

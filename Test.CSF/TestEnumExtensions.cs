@@ -21,20 +21,6 @@ namespace Test.CSF
       Assert.IsFalse(((SampleEnum) 8).IsDefinedValue());
     }
 
-    [Test]
-    public void TestHasFlagTrue()
-    {
-      FlagsEnum val = (FlagsEnum.One | FlagsEnum.Eight);
-      Assert.IsTrue(val.HasFlag(FlagsEnum.Eight));
-    }
-
-    [Test]
-    public void TestHasFlagFalse()
-    {
-      FlagsEnum val = (FlagsEnum.One | FlagsEnum.Eight);
-      Assert.IsFalse(val.HasFlag(FlagsEnum.Four));
-    }
-
     #endregion
 
     #region test enumeration

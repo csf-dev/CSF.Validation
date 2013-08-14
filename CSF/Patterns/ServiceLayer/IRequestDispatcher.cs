@@ -55,15 +55,6 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     void Dispatch(IRequest request);
 
-    /// <summary>
-    /// Dispatch the specified request using a request-only mechaism, which will not return a response.
-    /// </summary>
-    /// <param name='request'>
-    /// The request to dispatch.
-    /// </param>
-    [Obsolete("This overload is deprecated and has been renamed to simply 'Dispatch'.")]
-    void DispatchRequestOnly(IRequest request);
-
     #endregion
 
     #region inspecting what this dispatcher can do

@@ -36,8 +36,7 @@ namespace CSF.Entities
     bool HasIdentity { get; }
     
     /// <summary>
-    /// <para>Gets and sets the unique identifier component of this entity's <see cref="IIdentity"/>.</para>
-    /// <seealso cref="IIdentity.Value"/>
+    /// Gets and sets a value that uniquely identifies this entity from others of its same type.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -50,19 +49,7 @@ namespace CSF.Entities
     #endregion
     
     #region methods
-    
-    /// <summary>
-    /// <para>Gets the identity of the current instance.</para>
-    /// </summary>
-    /// <returns>
-    /// An <see cref="IIdentity"/> instance.
-    /// </returns>
-    /// <exception cref="InvalidOperationException">
-    /// If the current instance does not yet have an identity.  <see cref="HasIdentity"/>.
-    /// </exception>
-    [Obsolete("This method is obsolete and will be removed in 3.x.")]
-    IIdentity GetIdentity();
-    
+
     /// <summary>
     /// <para>Sets the reference stored within the current object instance.</para>
     /// </summary>

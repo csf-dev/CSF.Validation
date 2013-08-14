@@ -24,17 +24,44 @@ using System;
 namespace CSF.Entities
 {
   /// <summary>
-  /// <para>
-  /// Interface to describe the identity that every generic <see cref="IEntity"/> exposes in its
-  /// <see cref="IEntity.GetIdentity"/> method.
-  /// </para>
+  /// Interface describes an identity instance that uniquely identifies an <see cref="IEntity"/> instance, by its type
+  /// and an identifier value.
   /// </summary>
-#pragma warning disable 618
-  public interface IIdentity<TEntity>
-    : IIdentity, IEquatable<IIdentity<TEntity>>
-    where TEntity : IEntity
-#pragma warning restore 618
+  public interface IIdentity<TEntity> : IEquatable<IIdentity<TEntity>> where TEntity : IEntity
   {
+    /// <summary>
+    /// Gets a <see cref="System.Type"/> that indicates the type of entity that this instance represents.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This will always be the same as the type <c>TEntity</c> that this type is constructed from.
+    /// </para>
+    /// </remarks>
+    /// <value>
+    /// The type of the entity.
+    /// </value>
+    Type EntityType { get; }
+
+    /// <summary>
+    /// Gets a <see cref="System.Type"/> that indicates the type of the identity value that this instance contains.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This essentially exposes the underlying type of the <see cref="Value"/> property.
+    /// </para>
+    /// </remarks>
+    /// <value>
+    /// The type of the contained identity value.
+    /// </value>
+    Type IdentifierType { get; }
+
+    /// <summary>
+    /// Gets the identity value contained within the current instance.
+    /// </summary>
+    /// <value>
+    /// The identity value.
+    /// </value>
+    object Value { get; }
   }
 }
 

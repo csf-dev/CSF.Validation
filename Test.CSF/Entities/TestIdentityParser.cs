@@ -103,13 +103,6 @@ namespace Test.CSF.Entities
 
       public event EventHandler Created;
 
-#pragma warning disable 618
-      public IIdentity GetIdentity ()
-      {
-        throw new System.NotImplementedException ();
-      }
-#pragma warning restore 618
-
       public void SetIdentity (object identityValue)
       {
         throw new System.NotImplementedException ();
@@ -143,13 +136,6 @@ namespace Test.CSF.Entities
 
     public class DummyEntityFive : DummyEntityTwo, IEntity<DummyEntityTwo,ulong>
     {
-#pragma warning disable 618
-      IIdentity IEntity.GetIdentity ()
-      {
-        throw new System.NotImplementedException ();
-      }
-#pragma warning restore 618
-
       void IEntity.SetIdentity (object identityValue)
       {
         throw new System.NotImplementedException ();

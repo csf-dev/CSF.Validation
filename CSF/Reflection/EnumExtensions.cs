@@ -108,21 +108,6 @@ namespace CSF.Reflection
       return output;
     }
 
-    /// <summary>
-    /// Determines whether the given enumeration value is a defined value of its parent enumeration.
-    /// </summary>
-    /// <returns>
-    /// <c>true</c> if the given value is a defined value of its associated enumeration; otherwise, <c>false</c>.
-    /// </returns>
-    /// <param name='value'>
-    /// The enumeration value to analyse.
-    /// </param>
-    [Obsolete("This extension method is being moved to a counterpart type in the 'CSF' namespace.")]
-    public static bool IsDefinedValue(this Enum value)
-    {
-      return CSF.EnumExtensions.IsDefined(value);
-    }
-    
     #endregion
   }
 }

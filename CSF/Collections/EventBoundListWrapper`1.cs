@@ -35,13 +35,9 @@ namespace CSF.Collections
   /// </para>
   /// </remarks>
   [Serializable]
-#pragma warning disable 618
-  public class EventBoundListWrapper<T> : EventBoundCollectionWrapper<IList<T>,T>, IEventBoundList<T>, IList<T>
-#pragma warning restore 618
+  public class EventBoundListWrapper<T> : EventBoundCollectionWrapper<IList<T>,T>, IList<T>
     where T : class
   {
-    // See the remarks for IEventBoundList<T> for an important rationale discussion for the generic constraint 'class'.
-
     #region event-binding properties
 
     /// <summary>
