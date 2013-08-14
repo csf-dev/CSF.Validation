@@ -40,7 +40,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -86,14 +85,6 @@
     <Compile Include="Security\BinaryPasswordService.cs" />
     <Compile Include="Fraction.cs" />
     <Compile Include="PrimeFactoriser.cs" />
-    <Compile Include="Patterns\IoC\ServiceLocator.cs" />
-    <Compile Include="Patterns\IoC\ServiceLifetime.cs" />
-    <Compile Include="Patterns\IoC\IServiceLocator.cs" />
-    <Compile Include="Patterns\IoC\RegisteredService.cs" />
-    <Compile Include="Patterns\IoC\ServiceLocatorHttpModule.cs" />
-    <Compile Include="Patterns\IoC\ServiceInstanceCache.cs" />
-    <Compile Include="Patterns\IoC\IServiceInstanceCache.cs" />
-    <Compile Include="Patterns\IoC\IRegisteredService.cs" />
     <Compile Include="Entities\Identity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IIdentity.cs" />
@@ -178,7 +169,6 @@
     <Folder Include="Cli\" />
     <Folder Include="Security\" />
     <Folder Include="Patterns\" />
-    <Folder Include="Patterns\IoC\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
     <Folder Include="Patterns\ServiceLayer\" />

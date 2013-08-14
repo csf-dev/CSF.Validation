@@ -69,7 +69,6 @@
     <Compile Include="Security\TestBinaryPasswordService.cs" />
     <Compile Include="TestFraction.cs" />
     <Compile Include="TestPrimeFactoriser.cs" />
-    <Compile Include="Patterns\IoC\TestServiceLocator.cs" />
     <Compile Include="Entities\TestEntity.cs" />
     <Compile Include="Entities\TestIdentity.cs" />
     <Compile Include="TestMemorySessionStorage.cs" />
@@ -134,7 +133,6 @@
     <Folder Include="Cli\" />
     <Folder Include="Security\" />
     <Folder Include="Patterns\" />
-    <Folder Include="Patterns\IoC\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
     <Folder Include="Patterns\ServiceLayer\" />
