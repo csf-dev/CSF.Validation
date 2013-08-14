@@ -34,18 +34,6 @@ namespace CSF.Patterns.ServiceLayer
     #region IRequestDispatcher implementation (virtual methods)
 
     /// <summary>
-    ///  Dispatch the specified request using a request-only mechaism, which will not return a response. 
-    /// </summary>
-    /// <param name='request'>
-    ///  The request to dispatch. 
-    /// </param>
-    [Obsolete("This overload is deprecated and has been be renamed to simply 'Dispatch'.")]
-    public void DispatchRequestOnly(IRequest request)
-    {
-      this.Dispatch(request);
-    }
-
-    /// <summary>
     /// Determines whether this instance can dispatch the specified request.
     /// </summary>
     /// <returns>

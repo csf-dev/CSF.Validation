@@ -46,9 +46,7 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three.Equals(three), "Copies of the same object are equal");
       Assert.IsTrue(three.Equals(threeAgain), "Identical instances are equal");
       
-#pragma warning disable 618
       Assert.IsFalse(three.Equals(threeProduct), "Non-matching types not equal");
-#pragma warning restore 618
     }
     
     [Test]
@@ -66,7 +64,6 @@ namespace Test.CSF.Entities
       Identity<Person,uint> three = new Identity<Person,uint>(3);
       Identity<Person,uint> four = new Identity<Person,uint>(4);
       Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
-      Identity<Product,uint> threeProduct = new Identity<Product,uint>(3);
       
       Assert.IsFalse(three == four, "Non-matching identities not equal");
 #pragma warning disable 1718
@@ -74,10 +71,6 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three == three, "Copies of the same object are equal");
 #pragma warning restore 1718
       Assert.IsTrue(three == threeAgain, "Identical instances are equal");
-
-#pragma warning disable 618
-      Assert.IsFalse(three == threeProduct, "Non-matching types not equal");
-#pragma warning restore 618
     }
     
     [Test]
@@ -86,7 +79,6 @@ namespace Test.CSF.Entities
       Identity<Person,uint> three = new Identity<Person,uint>(3);
       Identity<Person,uint> four = new Identity<Person,uint>(4);
       Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
-      Identity<Product,uint> threeProduct = new Identity<Product,uint>(3);
 
       Assert.IsTrue(three != four, "Non-matching identities not equal");
 #pragma warning disable 1718
@@ -94,60 +86,6 @@ namespace Test.CSF.Entities
       Assert.IsFalse(three != three, "Copies of the same object are equal");
 #pragma warning restore 1718
       Assert.IsFalse(three != threeAgain, "Identical instances are equal");
-
-#pragma warning disable 618
-      Assert.IsTrue(three != threeProduct, "Non-matching types not equal");
-#pragma warning restore 618
-    }
-
-    [Test]
-    [Description("This test is only here to test the preservation of backwards-compatibility.")]
-    public void TestTryParse()
-    {
-      Identity<Person,uint> output;
-#pragma warning disable 618
-      bool result = Identity.TryParse("57", out output);
-#pragma warning restore 618
-
-      Assert.IsTrue(result);
-      Assert.AreEqual(57, output.Value);
-    }
-
-    [Test]
-    [Description("This test is only here to test the preservation of backwards-compatibility.")]
-    public void TestTryParseInterface()
-    {
-      IIdentity<Person> output;
-#pragma warning disable 618
-      bool result = Identity.TryParse<Person,uint>("57", out output);
-#pragma warning restore 618
-
-      Assert.IsTrue(result);
-      Assert.AreEqual(57, output.Value);
-    }
-
-    [Test]
-    [Description("This test ensures that backwards compatibility is maintained, per #39")]
-    public void TestTryParseObsolete()
-    {
-#pragma warning disable 618
-      IIdentity<Person,uint> output;
-      bool result = Identity.TryParse("57", out output);
-#pragma warning restore 618
-
-      Assert.IsTrue(result);
-      Assert.AreEqual(57, output.Value);
-    }
-
-    [Test]
-    [Description("This test ensures that backwards compatibility is maintained, per #39")]
-    public void TestParseBackwardsCompatible()
-    {
-#pragma warning disable 618
-      IIdentity<Person,uint> output = Identity.Parse<Person,uint>("57");
-#pragma warning restore 618
-
-      Assert.AreEqual(57, output.Value);
     }
 
     #endregion

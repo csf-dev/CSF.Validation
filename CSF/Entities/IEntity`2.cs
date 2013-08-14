@@ -60,15 +60,15 @@ namespace CSF.Entities
     #region methods
     
     /// <summary>
-    /// <para>Gets the identity of the current instance.</para>
+    /// Gets the identity of the current instance.
     /// </summary>
     /// <returns>
-    /// An <see cref="IIdentity"/> instance.
+    /// The identity of the current entity instance.
     /// </returns>
     /// <exception cref="InvalidOperationException">
     /// If the current instance does not yet have an identity.  <see cref="HasIdentity"/>.
     /// </exception>
-    new Identity<TEntity,TIdentity> GetIdentity();
+    Identity<TEntity,TIdentity> GetIdentity();
 
     /// <summary>
     /// <para>Overloaded.  Sets the reference stored within the current object instance.</para>

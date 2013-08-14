@@ -265,32 +265,6 @@ namespace CSF.Validation
     /// Validates the specified object instance.
     /// </summary>
     /// <returns>
-    /// A value indicating whether validation was successful or not.
-    /// </returns>
-    /// <param name='target'>
-    /// The target object instance to perform validation on.
-    /// </param>
-    /// <param name='throwOnFailure'>
-    /// A value that indicates whether a <see cref="ValidationFailureException"/> should be thrown on unsuccessful
-    /// validation.
-    /// </param>
-    /// <exception cref="ValidationFailureException">
-    /// Thrown if <paramref name="throwOnFailure"/> and the validation process fails.
-    /// </exception>
-    /// <exception cref="ArgumentNullException">
-    /// Thrown if <paramref name="target"/> is null.
-    /// </exception>
-    [Obsolete("This method is deprecated, use the 'setup method' ThrowOnFailure instead.")]
-    public bool Validate (TTarget target, bool throwOnFailure)
-    {
-      this.ThrowOnFailure(throwOnFailure);
-      return this.Validate(target);
-    }
-  
-    /// <summary>
-    /// Validates the specified object instance.
-    /// </summary>
-    /// <returns>
     /// A value that indicates whether validation was successful or not.
     /// </returns>
     /// <param name='target'>

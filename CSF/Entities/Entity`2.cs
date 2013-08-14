@@ -42,7 +42,8 @@ namespace CSF.Entities
   [Serializable]
   public class Entity<TEntity,TIdentity>
     : IEntity<TEntity,TIdentity>,
-      IEquatable<IEntity<TEntity,TIdentity>>
+      IEquatable<IEntity<TEntity,TIdentity>>,
+      IEquatable<IEntity>
     where TEntity : IEntity
   {
     #region fields
@@ -182,13 +183,6 @@ namespace CSF.Entities
       }
     }
 
-#pragma warning disable 618
-    IIdentity IEntity.GetIdentity()
-    {
-      return this.GetIdentity();
-    }
-#pragma warning restore 618
-    
     void IEntity.SetIdentity(object identityValue)
     {
       this.SetIdentity((TIdentity) Convert.ChangeType(identityValue, typeof(TIdentity)));
@@ -220,6 +214,35 @@ namespace CSF.Entities
       bool output;
 
       IEntity<TEntity,TIdentity> typedObj = obj as IEntity<TEntity,TIdentity>;
+      if(typedObj != null)
+      {
+        output = this.Equals(typedObj);
+      }
+      else
+      {
+        output = false;
+      }
+
+      return output;
+    }
+    
+    /// <summary>
+    /// <para>
+    /// Overloaded.  Determines whether the current instance is equal to the specified entity reference.
+    /// </para>
+    /// </summary>
+    /// <param name="compareTo">
+    /// An <see cref="IEntity"/> to compare against
+    /// </param>
+    /// <returns>
+    /// A <see cref="System.Boolean"/> indicating whether the entity to <paramref name="compareTo"/> is equal to
+    /// the current instance.
+    /// </returns>
+    public virtual bool Equals(IEntity compareTo)
+    {
+      bool output;
+
+      IEntity<TEntity,TIdentity> typedObj = compareTo as IEntity<TEntity,TIdentity>;
       if(typedObj != null)
       {
         output = this.Equals(typedObj);
@@ -312,9 +335,7 @@ namespace CSF.Entities
     }
     
     /// <summary>
-    /// <para>
-    /// Factory method creates a new <see cref="IIdentity"/> instance that uniquely identifies the current instance.
-    /// </para>
+    /// Creates and validates a new identity instance from the given value.
     /// </summary>
     /// <param name="identityValue">
     /// An identity value of the generic type appropriate to this entity
@@ -359,242 +380,6 @@ namespace CSF.Entities
     
     #endregion
 
-    #region obsolete functionality
-    
-    /// <summary>
-    /// <para>
-    /// Overloaded.  Determines whether the current instance is equal to the specified entity reference.
-    /// </para>
-    /// </summary>
-    /// <param name="compareTo">
-    /// An <see cref="IEntity"/> to compare against
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/> indicating whether the entity to <paramref name="compareTo"/> is equal to
-    /// the current instance.
-    /// </returns>
-    [Obsolete("This method is obsolete and will be removed in v3.x")]
-    public virtual bool Equals(IEntity compareTo)
-    {
-      bool output;
-
-      IEntity<TEntity,TIdentity> typedObj = compareTo as IEntity<TEntity,TIdentity>;
-      if(typedObj != null)
-      {
-        output = this.Equals(typedObj);
-      }
-      else
-      {
-        output = false;
-      }
-
-      return output;
-    }
-
-    /// <summary>
-    /// Gets (setting up if neccesary) a list designed to hold 'reciprocal' references between this entity and related
-    /// entities.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This method is used to either pass-through and return an existing event-bound list for the one-to-many
-    /// relationship or to create and configure that list before returning it.  If the source list is null then it is
-    /// initialised as an empty list before use.
-    /// </para>
-    /// <para>
-    /// This method is very heavily based on the excellent work found at:
-    /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
-    /// </para>
-    /// </remarks>
-    /// <returns>
-    /// A list that wraps the source list with events.
-    /// </returns>
-    /// <param name='wrappedList'>
-    /// The existing wrapped list, which may be null.
-    /// </param>
-    /// <param name='sourceList'>
-    /// The 'source' list of related entities.
-    /// </param>
-    /// <param name='property'>
-    /// An expression that exposes a property (upon the items within the source list) that holds the reference back to
-    /// the 'parent' entity.
-    /// </param>
-    /// <typeparam name='TItem'>
-    /// The type of items in the list.
-    /// </typeparam>
-    [Obsolete("This functionality has been moved to the new ReferenceList helper type.")]
-    protected virtual IList<TItem> GetOneToManyReferenceList<TItem>(ref IList<TItem> wrappedList,
-                                                                    ref IList<TItem> sourceList,
-                                                                    Expression<Func<TItem, object>> property)
-      where TItem : class
-    {
-      return ReferenceList.GetOrInit<TItem>(ref wrappedList, ref sourceList, property, this);
-    }
-
-    /// <summary>
-    /// Handles cleanup and 'bookkeeping' tasks when replacing an existing many-to-many reciprocal reference list with
-    /// a new list instance.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This method is very heavily based on the excellent work found at:
-    /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
-    /// </para>
-    /// </remarks>
-    /// <returns>
-    /// A list that wraps the replacement list.
-    /// </returns>
-    /// <param name='wrappedList'>
-    /// The old/original wrapped list, which will be cleared gracefully before it is overwritten.
-    /// </param>
-    /// <param name='replacementList'>
-    /// The list with which to replace the old.
-    /// </param>
-    /// <param name='property'>
-    /// An expression that exposes a property (upon the items within the source list) that holds the reference back to
-    /// the 'parent' entity.
-    /// </param>
-    /// <typeparam name='TItem'>
-    /// The type of items in the list.
-    /// </typeparam>
-    [Obsolete("This functionality has been moved to the new ReferenceList helper type.")]
-    protected virtual IList<TItem> ReplaceOneToManyReferenceList<TItem>(IList<TItem> wrappedList,
-                                                                        IList<TItem> replacementList,
-                                                                        Expression<Func<TItem, object>> property)
-      where TItem : class
-    {
-      ReferenceList.Replace<TItem>(ref wrappedList, replacementList, property, this);
-      return wrappedList;
-    }
-
-    /// <summary>
-    /// Gets (setting up if neccesary) a list designed to hold 'reciprocal' references between this entity and related
-    /// entities.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This method is used to either pass-through and return an existing event-bound list for the one-to-many
-    /// relationship or to create and configure that list before returning it.  If the source list is null then it is
-    /// initialised as an empty list before use.
-    /// </para>
-    /// <para>
-    /// This method is very heavily based on the excellent work found at:
-    /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
-    /// </para>
-    /// </remarks>
-    /// <returns>
-    /// A list that wraps the source list with events.
-    /// </returns>
-    /// <param name='wrappedList'>
-    /// The existing wrapped list, which may be null.
-    /// </param>
-    /// <param name='sourceList'>
-    /// The 'source' list of related entities.
-    /// </param>
-    /// <param name='property'>
-    /// An expression that exposes a property (upon the items within the source list) that holds the reference back to
-    /// the 'parent' entity.
-    /// </param>
-    /// <typeparam name='TItem'>
-    /// The type of items in the list.
-    /// </typeparam>
-    [Obsolete("This functionality has been moved to the new ReferenceList helper type.")]
-    protected virtual IList<TItem> GetOrInitReferenceList<TItem>(ref IList<TItem> wrappedList,
-                                                                 ref IList<TItem> sourceList,
-                                                                 Expression<Func<TItem, object>> property)
-      where TItem : class
-    {
-      return ReferenceList.GetOrInit<TItem>(ref wrappedList, ref sourceList, property, this);
-    }
-
-    /// <summary>
-    /// Handles cleanup and 'bookkeeping' tasks when replacing an existing many-to-many reciprocal reference list with
-    /// a new list instance.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This method is very heavily based on the excellent work found at:
-    /// <c>https://handcraftsman.wordpress.com/2011/01/05/nhibernate-custom-collection-options/</c>.
-    /// </para>
-    /// </remarks>
-    /// <param name='wrappedList'>
-    /// The old/original wrapped list, which will be cleared gracefully before it is overwritten and then replaced with
-    /// a new wrapped list.
-    /// </param>
-    /// <param name='replacementList'>
-    /// The list with which to replace the old.
-    /// </param>
-    /// <param name='property'>
-    /// An expression that exposes a property (upon the items within the source list) that holds the reference back to
-    /// the 'parent' entity.
-    /// </param>
-    /// <typeparam name='TItem'>
-    /// The type of items in the list.
-    /// </typeparam>
-    [Obsolete("This functionality has been moved to the new ReferenceList helper type.")]
-    protected virtual void ReplaceReferenceList<TItem>(ref IList<TItem> wrappedList,
-                                                       IList<TItem> replacementList,
-                                                       Expression<Func<TItem, object>> property)
-      where TItem : class
-    {
-      ReferenceList.Replace<TItem>(ref wrappedList, replacementList, property, this);
-    }
-    
-    /// <summary>
-    /// <para>Performs equality testing between two entity instances.</para>
-    /// </summary>
-    /// <remarks>
-    /// <para>This equality test does not require type equality between the objects to be compared.</para>
-    /// </remarks>
-    /// <param name="entity">
-    /// An entity instance.
-    /// </param>
-    /// <param name="obj">
-    /// An <see cref="IEntity"/>
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>
-    /// </returns>
-    [Obsolete("This method is obsolete and will be removed in v3.x.")]
-    public static bool operator ==(Entity<TEntity,TIdentity> entity, IEntity obj)
-    {
-      bool output;
-      
-      if((object) entity == null)
-      {
-        output = (obj == null);
-      }
-      else
-      {
-        output = entity.Equals(obj);
-      }
-      
-      return output;
-    }
-
-    /// <summary>
-    /// <para>Performs inequality testing between two entity instances.</para>
-    /// </summary>
-    /// <remarks>
-    /// <para>This equality test does not require type equality between the objects to be compared.</para>
-    /// </remarks>
-    /// <param name="entity">
-    /// An entity instance.
-    /// </param>
-    /// <param name="obj">
-    /// An <see cref="IEntity"/>
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>
-    /// </returns>
-    [Obsolete("This method is obsolete and will be removed in v3.x.")]
-    public static bool operator !=(Entity<TEntity,TIdentity> entity, IEntity obj)
-    {
-      return !(entity == obj);
-    }
-
-    #endregion
-    
     #region events and invokers
     
     /// <summary>
@@ -688,7 +473,7 @@ namespace CSF.Entities
 
       if((object) objectA == null)
       {
-        output = (object) objectB == null;
+        output = ((object) objectB == null);
       }
       else
       {
@@ -708,6 +493,57 @@ namespace CSF.Entities
     /// An entity instance.
     /// </param>
     public static bool operator !=(Entity<TEntity,TIdentity> objectA, IEntity<TEntity,TIdentity> objectB)
+    {
+      return !(objectA == objectB);
+    }
+
+    /// <summary>
+    /// <para>Performs equality testing between two entity instances.</para>
+    /// </summary>
+    /// <remarks>
+    /// <para>This equality test does not require type equality between the objects to be compared.</para>
+    /// </remarks>
+    /// <param name="objectA">
+    /// An entity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An <see cref="IEntity"/>
+    /// </param>
+    /// <returns>
+    /// A <see cref="System.Boolean"/>
+    /// </returns>
+    public static bool operator ==(Entity<TEntity,TIdentity> objectA, IEntity objectB)
+    {
+      bool output;
+      
+      if((object) objectA == null)
+      {
+        output = ((object) objectB == null);
+      }
+      else
+      {
+        output = objectA.Equals(objectB);
+      }
+      
+      return output;
+    }
+
+    /// <summary>
+    /// <para>Performs inequality testing between two entity instances.</para>
+    /// </summary>
+    /// <remarks>
+    /// <para>This equality test does not require type equality between the objects to be compared.</para>
+    /// </remarks>
+    /// <param name="objectA">
+    /// An entity instance.
+    /// </param>
+    /// <param name="objectB">
+    /// An <see cref="IEntity"/>
+    /// </param>
+    /// <returns>
+    /// A <see cref="System.Boolean"/>
+    /// </returns>
+    public static bool operator !=(Entity<TEntity,TIdentity> objectA, IEntity objectB)
     {
       return !(objectA == objectB);
     }

@@ -10,7 +10,6 @@ namespace Test.CSF.Patterns.ServiceLayer
   {
     #region fields
 
-#pragma warning disable 414
     private Mock<MockRequestType1> Request1;
     private Mock<MockRequestType2> Request2;
     private Mock<MockRequestType3> Request3;
@@ -18,7 +17,6 @@ namespace Test.CSF.Patterns.ServiceLayer
     private Mock<MockResponseType2> Response2;
     private Mock<IRequestHandler> Handler1;
     private Mock<IRequestHandler> Handler2;
-#pragma warning restore 414
 
     private LocalRequestDispatcher Dispatcher;
 

@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <ReleaseVersion>2.6.0</ReleaseVersion>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -73,7 +73,6 @@
     <Compile Include="Entities\TestIdentity.cs" />
     <Compile Include="TestMemorySessionStorage.cs" />
     <Compile Include="TestVersionExtensions.cs" />
-    <Compile Include="TestIEnumerableExtensions.cs" />
     <Compile Include="Reflection\TestEnumExtensions.cs" />
     <Compile Include="Reflection\TestMemberInfoExtensions.cs" />
     <Compile Include="Reflection\TestTypeExtensions.cs" />
@@ -95,7 +94,6 @@
     <Compile Include="TestNullSafe.cs" />
     <Compile Include="Collections\TestIDictionaryExtensions.cs" />
     <Compile Include="Reflection\TestReflect.cs" />
-    <Compile Include="Patterns\ServiceLayer\TestRequestExtensions.cs" />
     <Compile Include="TestStringExtensions.cs" />
     <Compile Include="Collections\TestIEnumerableExtensions.cs" />
     <Compile Include="TestEnumExtensions.cs" />
@@ -108,6 +106,10 @@
     <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
     <Compile Include="Entities\TestIdentityParser.cs" />
     <Compile Include="TestBinaryGuidCombStrategy.cs" />
+    <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
+    <Compile Include="Collections\TestReferenceCollection.cs" />
+    <Compile Include="Collections\TestReferenceList.cs" />
+    <Compile Include="Collections\TestReferenceSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

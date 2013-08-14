@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF.StubAssembly</RootNamespace>
     <AssemblyName>Test.CSF.StubAssembly</AssemblyName>
-    <ReleaseVersion>2.6.0</ReleaseVersion>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
