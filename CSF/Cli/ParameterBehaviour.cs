@@ -25,7 +25,7 @@ namespace CSF.Cli
   /// <summary>
   /// Enumerates the possible behaviours for an <see cref="IParameter"/>.
   /// </summary>
-  public enum ParameterBehaviour : ushort
+  public enum ParameterBehaviour
   {
     /// <summary>
     /// Indicates that the parameter is a switch only and may not have an associated value.  It is either present or not

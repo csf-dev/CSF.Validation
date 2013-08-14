@@ -311,7 +311,7 @@ namespace CSF.IO
     /// </param>
     public virtual void Write(string[,] data, TextWriter stringDataWriter, TabularDataWriteOptions options)
     {
-      /* HACK: What we're doing here is looping over the two dimensional array and turning it into a jagged array.
+      /* What we're doing here is looping over the two dimensional array and turning it into a jagged array.
        * 
        * It would actually be a lot better (improved performance) to make the tabular data parser handle the 2d array
        * natively rather than first performing this (potentially expensive) conversion.

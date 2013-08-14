@@ -25,7 +25,7 @@ namespace CSF.Patterns.ServiceLayer
   /// <summary>
   /// Interface for a service layer request that knows its own preferred type of response.
   /// </summary>
-  public interface IRequest<TResponse> : IRequest where TResponse : IResponse
+  public interface IRequest<TResponse> : IRequest where TResponse : Response
   {
   }
 }

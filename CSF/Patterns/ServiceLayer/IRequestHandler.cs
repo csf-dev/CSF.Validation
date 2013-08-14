@@ -50,7 +50,7 @@ namespace CSF.Patterns.ServiceLayer
     /// <exception cref="InvalidCastException">
     /// If the <paramref name="request"/> is not of the type that this handler is designed to deal with.
     /// </exception>
-    IResponse Handle(IRequest request);
+    Response Handle(IRequest request);
 
     /// <summary>
     /// Handles a one-way/fire-and-forget request.  This method does not return any kind of response.

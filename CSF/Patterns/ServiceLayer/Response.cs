@@ -25,8 +25,14 @@ namespace CSF.Patterns.ServiceLayer
   /// <summary>
   /// Base class for service layer responses.
   /// </summary>
-  public class Response : IResponse
+  public abstract class Response
   {
+    #region fields
+
+    private Exception _exceptionInfo;
+
+    #endregion
+
     #region IResponse implementation
 
     /// <summary>
@@ -38,8 +44,9 @@ namespace CSF.Patterns.ServiceLayer
     /// </value>
     public Exception ExceptionInfo
     {
-      get;
-      private set;
+      get {
+        return _exceptionInfo;
+      }
     }
 
     #endregion
@@ -49,17 +56,12 @@ namespace CSF.Patterns.ServiceLayer
     /// <summary>
     /// Initializes a new instance of the <see cref="CSF.Patterns.ServiceLayer.Response"/> class.
     /// </summary>
-    public Response() : this(null) {}
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CSF.Patterns.ServiceLayer.Response"/> class.
-    /// </summary>
     /// <param name='exceptionInfo'>
     /// An exception that was raised whilst handling the associated request.
     /// </param>
     public Response(Exception exceptionInfo)
     {
-      this.ExceptionInfo = exceptionInfo;
+      _exceptionInfo = exceptionInfo;
     }
 
     #endregion

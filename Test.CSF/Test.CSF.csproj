@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,8 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>2.6.0</ReleaseVersion>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -48,6 +48,10 @@
       <Package>nhibernate-3.1</Package>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <Private>False</Private>
+      <Package>iesi.collections-1.0.1</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -65,12 +69,10 @@
     <Compile Include="Security\TestBinaryPasswordService.cs" />
     <Compile Include="TestFraction.cs" />
     <Compile Include="TestPrimeFactoriser.cs" />
-    <Compile Include="Patterns\IoC\TestServiceLocator.cs" />
     <Compile Include="Entities\TestEntity.cs" />
     <Compile Include="Entities\TestIdentity.cs" />
     <Compile Include="TestMemorySessionStorage.cs" />
     <Compile Include="TestVersionExtensions.cs" />
-    <Compile Include="TestIEnumerableExtensions.cs" />
     <Compile Include="Reflection\TestEnumExtensions.cs" />
     <Compile Include="Reflection\TestMemberInfoExtensions.cs" />
     <Compile Include="Reflection\TestTypeExtensions.cs" />
@@ -92,7 +94,6 @@
     <Compile Include="TestNullSafe.cs" />
     <Compile Include="Collections\TestIDictionaryExtensions.cs" />
     <Compile Include="Reflection\TestReflect.cs" />
-    <Compile Include="Patterns\ServiceLayer\TestRequestExtensions.cs" />
     <Compile Include="TestStringExtensions.cs" />
     <Compile Include="Collections\TestIEnumerableExtensions.cs" />
     <Compile Include="TestEnumExtensions.cs" />
@@ -100,12 +101,29 @@
     <Compile Include="Collections\TestICollectionExtensions.cs" />
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
     <Compile Include="Data\TestInMemoryDataReader.cs" />
+    <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
+    <Compile Include="Collections\TestEventBoundListWrapper.cs" />
+    <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
+    <Compile Include="Entities\TestIdentityParser.cs" />
+    <Compile Include="TestBinaryGuidCombStrategy.cs" />
+    <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
+    <Compile Include="Collections\TestReferenceCollection.cs" />
+    <Compile Include="Collections\TestReferenceList.cs" />
+    <Compile Include="Collections\TestReferenceSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\CSF\CSF.csproj">
       <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
       <Name>CSF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Collections\CSF.Collections.csproj">
+      <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
+      <Name>CSF.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test.CSF.StubAssembly\Test.CSF.StubAssembly.csproj">
+      <Project>{3BE8AC15-E500-479F-9BAE-0B583D842B2E}</Project>
+      <Name>Test.CSF.StubAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +135,6 @@
     <Folder Include="Cli\" />
     <Folder Include="Security\" />
     <Folder Include="Patterns\" />
-    <Folder Include="Patterns\IoC\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
     <Folder Include="Patterns\ServiceLayer\" />

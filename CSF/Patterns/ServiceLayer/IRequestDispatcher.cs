@@ -33,14 +33,6 @@ namespace CSF.Patterns.ServiceLayer
     #region request dispatching
 
     /// <summary>
-    /// Dispatch the specified request and get the response.
-    /// </summary>
-    /// <param name='request'>
-    /// The request to dispatch.
-    /// </param>
-    IResponse Dispatch(IRequest request);
-
-    /// <summary>
     /// Dispatch the specified request and get a strongly-typed response.
     /// </summary>
     /// <param name='request'>
@@ -52,8 +44,8 @@ namespace CSF.Patterns.ServiceLayer
     /// <exception cref="RequestDispatchException">
     /// If the response returned by the request handler is not of the specifed type.
     /// </exception>
-    TResponse Dispatch<TResponse>(IRequest request)
-      where TResponse : IResponse;
+    TResponse Dispatch<TResponse>(IRequest<TResponse> request)
+      where TResponse : Response;
 
     /// <summary>
     /// Dispatch the specified request using a request-only mechaism, which will not return a response.
@@ -61,7 +53,7 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='request'>
     /// The request to dispatch.
     /// </param>
-    void DispatchRequestOnly(IRequest request);
+    void Dispatch(IRequest request);
 
     #endregion
 
@@ -100,41 +92,9 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     bool CanDispatch(Type requestType);
 
-    /// <summary>
-    /// Gets a read-only indexed collection of the registered request types and the request handlers that requests of
-    /// that type would be dispatched to.
-    /// </summary>
-    /// <returns>
-    /// The registered handlers.
-    /// </returns>
-    IDictionary<Type, IRequestHandler> GetRegisteredHandlers();
-
     #endregion
 
     #region registering handlers
-
-    /// <summary>
-    /// Registers that the specified handler should be used for requests of the specified type.
-    /// </summary>
-    /// <param name='handler'>
-    /// The handler to use for requests of the given type.
-    /// </param>
-    /// <typeparam name='TRequest'>
-    /// The type of request that we are registering a handler for.
-    /// </typeparam>
-    IRequestDispatcher Register<TRequest>(IRequestHandler handler)
-      where TRequest : IRequest;
-
-    /// <summary>
-    /// Registers that the specified handler should be used for requests of the specified type.
-    /// </summary>
-    /// <param name='requestType'>
-    /// The type of request that we are registering a handler for.
-    /// </param>
-    /// <param name='handler'>
-    /// The handler to use for requests of the given type.
-    /// </param>
-    IRequestDispatcher Register(Type requestType, IRequestHandler handler);
 
     /// <summary>
     /// Registers that the specified handler type should be used for requests of the specified type.
@@ -154,18 +114,13 @@ namespace CSF.Patterns.ServiceLayer
     /// Registers that the specified handler type should be used for requests of the specified type.
     /// </summary>
     /// <param name='factoryMethod'>
-    /// A function that creates an instance of <typeparamref name='THandler' />.
+    /// A function that creates an instance of an appropriate handler for the request.
     /// </param>
     /// <typeparam name='TRequest'>
     /// The type of request that we are registering a handler for.
     /// </typeparam>
-    /// <typeparam name='THandler'>
-    /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
-    /// parameterless constructor.
-    /// </typeparam>
-    IRequestDispatcher Register<TRequest, THandler>(Func<IRequestHandler> factoryMethod)
-      where TRequest : IRequest
-      where THandler : IRequestHandler;
+    IRequestDispatcher Register<TRequest>(Func<IRequestHandler> factoryMethod)
+      where TRequest : IRequest;
 
     /// <summary>
     /// Registers that the specified handler type should be used for requests of the specified type.
@@ -185,15 +140,11 @@ namespace CSF.Patterns.ServiceLayer
     /// <param name='requestType'>
     /// The type of request that we are registering a handler for.
     /// </param>
-    /// <param name='handlerType'>
-    /// The type of handler to use for requests of the given type.  The handler type must expose a default/public
-    /// parameterless constructor.
-    /// </param>
     /// <param name='factoryMethod'>
     /// A function that creates an instance of an <see cref='IRequestHandler'/>, matching the type indicated by
     /// <paramref name='handlerType'/>
     /// </param>
-    IRequestDispatcher Register(Type requestType, Type handlerType, Func<IRequestHandler> factoryMethod);
+    IRequestDispatcher Register(Type requestType, Func<IRequestHandler> factoryMethod);
 
     /// <summary>
     /// Searches an <see cref="Assembly"/> and registers all request handlers found within.

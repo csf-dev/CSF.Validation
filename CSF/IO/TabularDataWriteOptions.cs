@@ -26,7 +26,7 @@ namespace CSF.IO
   /// Enumerates the options available when writing tabular data.
   /// </summary>
   [Flags]
-  public enum TabularDataWriteOptions : ushort
+  public enum TabularDataWriteOptions
   {
     /// <summary>
     /// Indicates no special options selected.
