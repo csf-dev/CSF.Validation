@@ -49,6 +49,7 @@ namespace CSF.Entities
     #region fields
     
     private Identity<TEntity,TIdentity>? _identity;
+    private int? _cachedHashCode;
     
     #endregion
     
@@ -298,18 +299,19 @@ namespace CSF.Entities
     /// </returns>
     public override int GetHashCode()
     {
-      int output;
-      
-      if(this.HasIdentity)
+      if(!_cachedHashCode.HasValue)
       {
-        output = _identity.GetHashCode();
+        if(this.HasIdentity)
+        {
+          _cachedHashCode = _identity.GetHashCode();
+        }
+        else
+        {
+          _cachedHashCode = base.GetHashCode();
+        }
       }
-      else
-      {
-        output = base.GetHashCode();
-      }
-      
-      return output;
+
+      return _cachedHashCode.Value;
     }
     
     /// <summary>
@@ -451,7 +453,8 @@ namespace CSF.Entities
     /// </summary>
     public Entity()
     {
-      this._identity = null;
+      _identity = null;
+      _cachedHashCode = null;
     }
     
     #endregion
