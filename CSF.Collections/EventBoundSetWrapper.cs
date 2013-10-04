@@ -10,7 +10,9 @@ namespace CSF.Collections
   /// Implementation of a generic <c>EventBoundCollectionWrapper</c> that wraps a generic <c>ISet</c> instance.
   /// </summary>
   public class EventBoundSetWrapper<T>
-    : EventBoundCollectionWrapper<Iesi.Collections.Generic.ISet<T>,T>, Iesi.Collections.Generic.ISet<T>
+    : EventBoundCollectionWrapper<Iesi.Collections.Generic.ISet<T>,T>,
+      Iesi.Collections.Generic.ISet<T>,
+      Iesi.Collections.ISet
     where T : class
   {
     #region ISet implementation
@@ -212,6 +214,70 @@ namespace CSF.Collections
       clonedWrapper.AfterRemove = this.AfterRemove;
 
       return clonedWrapper;
+    }
+
+    #endregion
+
+    #region ISet implementation
+
+    Iesi.Collections.ISet Iesi.Collections.ISet.Union (Iesi.Collections.ISet a)
+    {
+      return (Iesi.Collections.ISet) this.Union((Iesi.Collections.Generic.ISet<T>) a);
+    }
+
+    Iesi.Collections.ISet Iesi.Collections.ISet.Intersect (Iesi.Collections.ISet a)
+    {
+      return (Iesi.Collections.ISet) this.Intersect((Iesi.Collections.Generic.ISet<T>) a);
+    }
+
+    Iesi.Collections.ISet Iesi.Collections.ISet.Minus (Iesi.Collections.ISet a)
+    {
+      return (Iesi.Collections.ISet) this.Minus((Iesi.Collections.Generic.ISet<T>) a);
+    }
+
+    Iesi.Collections.ISet Iesi.Collections.ISet.ExclusiveOr (Iesi.Collections.ISet a)
+    {
+      return (Iesi.Collections.ISet) this.ExclusiveOr((Iesi.Collections.Generic.ISet<T>) a);
+    }
+
+    bool Iesi.Collections.ISet.Contains (object o)
+    {
+      return this.Contains((T) o);
+    }
+
+    bool Iesi.Collections.ISet.ContainsAll (ICollection c)
+    {
+      return this.ContainsAll((ICollection<T>) c);
+    }
+
+    bool Iesi.Collections.ISet.Add (object o)
+    {
+      return this.Add((T) o);
+    }
+
+    bool Iesi.Collections.ISet.AddAll (ICollection c)
+    {
+      return this.AddAll((ICollection<T>) c);
+    }
+
+    bool Iesi.Collections.ISet.Remove (object o)
+    {
+      return this.Remove((T) o);
+    }
+
+    bool Iesi.Collections.ISet.RemoveAll (ICollection c)
+    {
+      return this.RemoveAll((ICollection<T>) c);
+    }
+
+    bool Iesi.Collections.ISet.RetainAll (ICollection c)
+    {
+      return this.RetainAll((ICollection<T>) c);
+    }
+
+    void Iesi.Collections.ISet.Clear ()
+    {
+      this.Clear();
     }
 
     #endregion

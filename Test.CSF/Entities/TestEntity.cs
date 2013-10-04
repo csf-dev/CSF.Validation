@@ -161,6 +161,22 @@ namespace Test.CSF.Entities
       Assert.IsTrue(three != threeProduct, "Non-matching types not equal");
     }
 
+    [Test]
+    public void TestGetHashCodeDoesNotChange()
+    {
+      Person person = new Person();
+      int hashCode1 = person.GetHashCode();
+
+      person.SetIdentity(5);
+      int hashCode2 = person.GetHashCode();
+      Assert.AreEqual(hashCode1, hashCode2, "Hashcodes (without identity and then with identity) should be equal.");
+
+      person.ClearIdentity();
+      person.SetIdentity(6);
+      int hashCode3 = person.GetHashCode();
+      Assert.AreEqual(hashCode2, hashCode3, "Hashcodes (after change of identity) should be equal.");
+    }
+
     #endregion
 
     #region contained mocks

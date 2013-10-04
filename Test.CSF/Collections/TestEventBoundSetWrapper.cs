@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using CSF.Collections;
 using Iesi.Collections.Generic;
+using Iesi.Collections;
 
 namespace Test.CSF.Collections
 {
@@ -57,6 +58,19 @@ namespace Test.CSF.Collections
 
       Assert.AreEqual(2, list.Count, "Count");
       Assert.AreEqual("BeforeRemove", removed.AProperty, "Property is set");
+    }
+
+    [Test]
+    [Description("This tests that an event bound set wrapper implements both the generic and non-generic ISet" +
+                 "interfaces")]
+    public void TestImplementsCorrectInterface()
+    {
+      EventBoundSetWrapper<StubClass> list;
+
+      list = new EventBoundSetWrapper<StubClass>(new HashedSet<StubClass>(OriginalList));
+
+      Assert.IsInstanceOfType(typeof(ISet<StubClass>), list, "Generic ISet");
+      Assert.IsInstanceOfType(typeof(ISet), list, "Non-generic ISet");
     }
 
     #endregion
