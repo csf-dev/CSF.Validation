@@ -474,9 +474,18 @@ namespace CSF.Entities
     {
       bool output;
 
-      if((object) objectA == null)
+      if(Object.ReferenceEquals(objectA, objectB))
       {
-        output = ((object) objectB == null);
+        output = true;
+      }
+      else if((object) objectA == null || (object) objectB == null)
+      {
+        output = false;
+      }
+      else if(!objectA.Id.Equals(default(TIdentity))
+              && objectA.Id.Equals(objectB.Id))
+      {
+        output = true;
       }
       else
       {
@@ -517,18 +526,8 @@ namespace CSF.Entities
     /// </returns>
     public static bool operator ==(Entity<TEntity,TIdentity> objectA, IEntity objectB)
     {
-      bool output;
-      
-      if((object) objectA == null)
-      {
-        output = ((object) objectB == null);
-      }
-      else
-      {
-        output = objectA.Equals(objectB);
-      }
-      
-      return output;
+      IEntity<TEntity,TIdentity> typedB = objectB as IEntity<TEntity,TIdentity>;
+      return (objectA == typedB);
     }
 
     /// <summary>
