@@ -48,7 +48,12 @@ namespace CSF
     /// </param>
     public static bool IsDefinedValue(this Enum value)
     {
-      return IsDefined(value);
+      if(value == null)
+      {
+        throw new ArgumentNullException("value");
+      }
+
+      return Enum.IsDefined(value.GetType(), value);
     }
 
     /// <summary>
@@ -126,26 +131,6 @@ namespace CSF
     #endregion
 
     #region static methods
-
-    /// <summary>
-    /// Determines whether the given enumeration value is a defined value of its parent enumeration.
-    /// </summary>
-    /// <returns>
-    /// <c>true</c> if the given value is a defined value of its associated enumeration; otherwise, <c>false</c>.
-    /// </returns>
-    /// <param name='value'>
-    /// The enumeration value to analyse.
-    /// </param>
-    internal static bool IsDefined(Enum value)
-    {
-      if(value == null)
-      {
-        throw new ArgumentNullException("value");
-      }
-
-      Type enumerationType = value.GetType();
-      return Enum.IsDefined(enumerationType, value);
-    }
 
     /// <summary>
     /// Gets the numeric equivalent of an enumeration value, given that the enumeration uses the given underlying type.
