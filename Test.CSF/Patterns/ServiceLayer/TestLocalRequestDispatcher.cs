@@ -137,6 +137,26 @@ namespace Test.CSF.Patterns.ServiceLayer
       Assert.IsTrue(DisposeableRequestHandler.DisposedOnce, "Disposed after handling");
     }
 
+    [Test]
+    public void TestDispatchWithException()
+    {
+      this.Handler2
+        .Setup(x => x.Handle(It.IsAny<IRequest>()))
+        .Throws(new InvalidOperationException("Intended exception"));
+
+      var response = this.Dispatcher.Dispatch(this.Request2.Object);
+
+      Assert.IsNotNull(response, "Response nullability");
+      Assert.IsNotNull(response.ExceptionInfo, "Response exception info");
+      Assert.IsInstanceOfType(typeof(InvalidOperationException), response.ExceptionInfo, "Exception info correct type");
+      Assert.AreEqual("Intended exception", response.ExceptionInfo.Message, "Exception message");
+
+      this.Handler2
+        .Verify(x => x.Handle(It.Is<IRequest>(req => req == this.Request2.Object)), Times.Once());
+      this.Handler2
+        .Verify(x => x.HandleRequestOnly(It.IsAny<IRequest>()), Times.Never());
+    }
+
     #endregion
 
     #region contained types
@@ -161,6 +181,8 @@ namespace Test.CSF.Patterns.ServiceLayer
     public class MockResponseType2 : Response
     {
       public MockResponseType2() : base(null) { }
+
+      public MockResponseType2(Exception ex) : base(ex) { }
     }
 
     public class DisposeableRequestHandler : RequestHandler<MockRequestType1,MockResponseType1>, IDisposable

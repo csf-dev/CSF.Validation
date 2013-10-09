@@ -21,6 +21,7 @@
 using System;
 using CSF.Reflection;
 using System.Reflection;
+using System.Linq;
 
 namespace CSF
 {
@@ -47,7 +48,84 @@ namespace CSF
     /// </param>
     public static bool IsDefinedValue(this Enum value)
     {
-      return IsDefined(value);
+      if(value == null)
+      {
+        throw new ArgumentNullException("value");
+      }
+
+      return Enum.IsDefined(value.GetType(), value);
+    }
+
+    /// <summary>
+    /// Combines a flags-based enumerated value with the given flags, returning the result.
+    /// </summary>
+    /// <returns>
+    /// The original value, with the given flags added.
+    /// </returns>
+    /// <param name='original'>
+    /// The original value (unmodified in this process).
+    /// </param>
+    /// <param name='addedFlags'>
+    /// A collection of the flags to add.
+    /// </param>
+    /// <typeparam name='TEnum'>
+    /// The type of the enumerated value.
+    /// </typeparam>
+    public static TEnum WithFlags<TEnum>(this TEnum original, params TEnum[] addedFlags) where TEnum : struct
+    {
+      Type enumType = typeof(TEnum);
+
+      if(!enumType.IsEnum
+         || !enumType.HasAttribute<FlagsAttribute>())
+      {
+        throw new ArgumentException("This method is valid only on enumerated types decorated with FlagsAttribute.",
+                                    "original");
+      }
+
+      Type underlyingType = Enum.GetUnderlyingType(enumType);
+
+      ulong
+        numericOriginal = GetEnumValue(original, underlyingType),
+        numericAdded = addedFlags.Aggregate((ulong) 0, (acc,next) => acc += GetEnumValue(next, underlyingType)),
+        output = numericOriginal | numericAdded;
+
+      return (TEnum) Enum.ToObject(enumType, output);
+    }
+
+    /// <summary>
+    /// Excludes the given flags from a flags-based enumerated value, returning the result.
+    /// </summary>
+    /// <returns>
+    /// The original value, with the given flags removed.
+    /// </returns>
+    /// <param name='original'>
+    /// The original value (unmodified in this process).
+    /// </param>
+    /// <param name='removedFlags'>
+    /// A collection of the flags to remove.
+    /// </param>
+    /// <typeparam name='TEnum'>
+    /// The type of the enumerated value.
+    /// </typeparam>
+    public static TEnum WithoutFlags<TEnum>(this TEnum original, params TEnum[] removedFlags) where TEnum : struct
+    {
+      Type enumType = typeof(TEnum);
+
+      if(!enumType.IsEnum
+         || !enumType.HasAttribute<FlagsAttribute>())
+      {
+        throw new ArgumentException("This method is valid only on enumerated types decorated with FlagsAttribute.",
+                                    "original");
+      }
+
+      Type underlyingType = Enum.GetUnderlyingType(enumType);
+
+      ulong
+        numericOriginal = GetEnumValue(original, underlyingType),
+        numericRemoved = removedFlags.Aggregate((ulong) 0, (acc,next) => acc += GetEnumValue(next, underlyingType)),
+        output = numericOriginal & (~numericRemoved);
+
+      return (TEnum) Enum.ToObject(enumType, output);
     }
 
     #endregion
@@ -55,23 +133,82 @@ namespace CSF
     #region static methods
 
     /// <summary>
-    /// Determines whether the given enumeration value is a defined value of its parent enumeration.
+    /// Gets the numeric equivalent of an enumeration value, given that the enumeration uses the given underlying type.
     /// </summary>
     /// <returns>
-    /// <c>true</c> if the given value is a defined value of its associated enumeration; otherwise, <c>false</c>.
+    /// The numeric equivalent of the enumeration value.
     /// </returns>
     /// <param name='value'>
-    /// The enumeration value to analyse.
+    /// The enumeration value.
     /// </param>
-    internal static bool IsDefined(Enum value)
+    /// <param name='underlyingTypeCode'>
+    /// The <c>System.TypeCode</c> of the underlying type of the enumeration.
+    /// </param>
+    internal static ulong GetEnumValue(object value, TypeCode underlyingTypeCode)
     {
-      if(value == null)
+      ulong output;
+
+      switch(underlyingTypeCode)
       {
-        throw new ArgumentNullException("value");
+      case TypeCode.SByte:
+        output = (ulong) ((byte) ((sbyte) value));
+        break;
+
+      case TypeCode.Byte:
+        output = (ulong) ((byte) value);
+        break;
+
+      case TypeCode.Int16:
+        output = (ulong) ((ushort) ((short) value));
+        break;
+
+      case TypeCode.UInt16:
+        output = (ulong) ((ushort) value);
+        break;
+
+      case TypeCode.Int32:
+        output = (ulong) ((int) value);
+        break;
+
+      case TypeCode.UInt32:
+        output = (ulong) ((uint) value);
+        break;
+
+      case TypeCode.Int64:
+        output = (ulong) ((long) value);
+        break;
+
+      case TypeCode.UInt64:
+        output = (ulong) value;
+        break;
+
+      default:
+        throw new ArgumentException("The underlying type code must be valid for an enumeration", "underlyingTypeCode");
       }
 
-      Type enumerationType = value.GetType();
-      return Enum.IsDefined(enumerationType, value);
+      return output;
+    }
+
+    /// <summary>
+    /// Gets the numeric equivalent of an enumeration value, given that the enumeration uses the given underlying type.
+    /// </summary>
+    /// <returns>
+    /// The numeric equivalent of the enumeration value.
+    /// </returns>
+    /// <param name='value'>
+    /// The enumeration value.
+    /// </param>
+    /// <param name='underlyingType'>
+    /// The underlying type of the enumeration.
+    /// </param>
+    internal static ulong GetEnumValue(object value, Type underlyingType)
+    {
+      if(underlyingType == null)
+      {
+        throw new ArgumentNullException("underlyingType");
+      }
+
+      return GetEnumValue(value, Type.GetTypeCode(underlyingType));
     }
 
     #endregion

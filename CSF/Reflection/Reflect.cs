@@ -464,6 +464,54 @@ namespace CSF.Reflection
       return (Type.GetType("Mono.Runtime") != null);
     }
 
+    /// <summary>
+    /// Used to prevent use of functionality in production builds.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This method will always throw a <see cref="NotPermittedInProductionException"/> if the <c>DEBUG</c> compiler
+    /// directive is not defined.  In a production build (in which <c>DEBUG</c> is not defined), this exception may be
+    /// used to prevent code from executing which is not yet ready to go into production.
+    /// </para>
+    /// </remarks>
+    /// <param name='targetType'>
+    /// The type that contains the forbidden functionality.
+    /// </param>
+    public static void PreventProductionUse(Type targetType)
+    {
+      if(targetType == null)
+      {
+        throw new ArgumentNullException("targetType");
+      }
+
+#if !DEBUG
+      throw new NotPermittedInProductionException(targetType);
+#endif
+    }
+
+    /// <summary>
+    /// Used to prevent use of functionality in production builds.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This method will always throw a <see cref="NotPermittedInProductionException"/> if the <c>DEBUG</c> compiler
+    /// directive is not defined.  In a production build (in which <c>DEBUG</c> is not defined), this exception may be
+    /// used to prevent code from executing which is not yet ready to go into production.
+    /// </para>
+    /// </remarks>
+    /// <param name='targetObject'>
+    /// The object that contains the forbidden functionality.
+    /// </param>
+    public static void PreventProductionUse(object targetObject)
+    {
+      if(targetObject == null)
+      {
+        throw new ArgumentNullException("targetObject");
+      }
+
+      PreventProductionUse(targetObject.GetType());
+    }
+
     #endregion
     
     #region private methods

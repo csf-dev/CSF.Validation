@@ -77,7 +77,16 @@ namespace CSF.Patterns.ServiceLayer
       }
       catch(Exception ex)
       {
-        throw new RequestDispatchException(request, ex);
+        Type responseType = typeof(TResponse);
+
+        if(responseType.GetConstructor(new Type[] { typeof(Exception) }) != null)
+        {
+          untypedOutput = (Response) Activator.CreateInstance(responseType, ex);
+        }
+        else
+        {
+          throw new RequestDispatchException(request, ex);
+        }
       }
       finally
       {
