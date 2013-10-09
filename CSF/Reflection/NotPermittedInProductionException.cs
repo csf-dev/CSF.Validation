@@ -52,7 +52,7 @@ namespace CSF.Reflection
     public Type Type
     {
       get {
-        return this.Data[TYPE_KEY];
+        return this.Data[TYPE_KEY] as Type;
       }
     }
 
