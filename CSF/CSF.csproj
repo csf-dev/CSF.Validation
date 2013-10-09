@@ -154,6 +154,7 @@
     <Compile Include="BinaryGuidCombStrategy.cs" />
     <Compile Include="Collections\ReferenceCollection.cs" />
     <Compile Include="Reflection\NotPermittedInProductionException.cs" />
+    <Compile Include="GuidExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

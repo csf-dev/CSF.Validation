@@ -110,6 +110,7 @@
     <Compile Include="Collections\TestReferenceCollection.cs" />
     <Compile Include="Collections\TestReferenceList.cs" />
     <Compile Include="Collections\TestReferenceSet.cs" />
+    <Compile Include="TestGuidExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
