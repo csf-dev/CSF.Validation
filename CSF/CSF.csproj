@@ -156,6 +156,8 @@
     <Compile Include="Reflection\NotPermittedInProductionException.cs" />
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="CancelOrProceed.cs" />
+    <Compile Include="Entities\IGenericIdentityParser.cs" />
+    <Compile Include="Entities\AdHocGenericIdentityParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
