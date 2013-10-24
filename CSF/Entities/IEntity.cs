@@ -89,11 +89,13 @@ namespace CSF.Entities
     /// This event is invoked when the current instance becomes dirty (requires update in a presistent data store).
     /// </para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     event EventHandler Dirty;
     
     /// <summary>
     /// <para>This event is invoked when the current instance is to deleted in a persistent data store.</para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     event EventHandler Deleted;
     
     /// <summary>
@@ -101,6 +103,7 @@ namespace CSF.Entities
     /// This event is invoked when the current instance is created (stored within the repository for the first time).
     /// </para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     event EventHandler Created;
     
     #endregion

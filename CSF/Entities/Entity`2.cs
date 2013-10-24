@@ -389,11 +389,13 @@ namespace CSF.Entities
     /// This event is invoked when the current instance becomes dirty (requires update in a presistent data store).
     /// </para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     public virtual event EventHandler Dirty;
     
     /// <summary>
     /// <para>This event is invoked when the current instance is to deleted in a persistent data store.</para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     public virtual event EventHandler Deleted;
     
     /// <summary>
@@ -401,11 +403,13 @@ namespace CSF.Entities
     /// This event is invoked when the current instance is created (stored within the repository for the first time).
     /// </para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     public virtual event EventHandler Created;
     
     /// <summary>
     /// <para>Event invoker for when this instance becomes dirty.</para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     protected virtual void OnDirty()
     {
       EventArgs ev = new EventArgs();
@@ -419,6 +423,7 @@ namespace CSF.Entities
     /// <summary>
     /// <para>Event invoker for when this instance is to be deleted.</para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     protected virtual void OnDelete()
     {
       EventArgs ev = new EventArgs();
@@ -434,6 +439,7 @@ namespace CSF.Entities
     /// Event invoker for when this instance is to be created (stored in the repository for the first time).
     /// </para>
     /// </summary>
+    [Obsolete("These state-change events have never been used and simply clutter the API.")]
     protected virtual void OnCreated()
     {
       EventArgs ev = new EventArgs();
