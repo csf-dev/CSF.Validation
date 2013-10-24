@@ -92,6 +92,14 @@ namespace CSF.Patterns.ServiceLayer
     /// </param>
     bool CanDispatch(Type requestType);
 
+    /// <summary>
+    /// Gets the exception handling policy for this request dispatcher.
+    /// </summary>
+    /// <value>
+    /// The exception handling policy.
+    /// </value>
+    ExceptionHandlingPolicy ExceptionHandlingPolicy { get; }
+
     #endregion
 
     #region registering handlers

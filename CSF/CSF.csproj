@@ -159,6 +159,7 @@
     <Compile Include="Entities\IGenericIdentityParser.cs" />
     <Compile Include="Entities\AdHocGenericIdentityParser.cs" />
     <Compile Include="Entities\CachingGenericIdentityParser.cs" />
+    <Compile Include="Patterns\ServiceLayer\ExceptionHandlingPolicy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

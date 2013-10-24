@@ -27,7 +27,7 @@ namespace Test.CSF.Patterns.ServiceLayer
         .Setup(x => x.Register(It.IsAny<Type>(), It.IsAny<Func<IRequestHandler>>()))
         .Returns(this.MockDispatcher.Object);
 
-      this.Dispatcher = new DummyRequestDispatcher(this.MockDispatcher.Object);
+      this.Dispatcher = new DummyRequestDispatcher(this.MockDispatcher.Object, 0);
     }
 
     #endregion
@@ -173,7 +173,7 @@ namespace Test.CSF.Patterns.ServiceLayer
         return this;
       }
 
-      public DummyRequestDispatcher(IRequestDispatcher implementation)
+      public DummyRequestDispatcher(IRequestDispatcher implementation, ExceptionHandlingPolicy policy) : base(policy)
       {
         if(implementation == null)
         {
