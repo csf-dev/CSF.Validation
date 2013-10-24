@@ -19,6 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
+using System.Text.RegularExpressions;
+using System.Text;
+using System.Globalization;
 
 namespace CSF
 {
@@ -27,6 +30,87 @@ namespace CSF
   /// </summary>
   public static class StringExtensions
   {
+    #region constants
+
+    private const string FirstCharacterPattern = @"\b(\w)";
+    private static readonly Regex FirstCharacterFinder = new Regex(FirstCharacterPattern, RegexOptions.Compiled);
+
+    #endregion
+
+    #region extension methods
+
+    /// <summary>
+    /// Capitalizes the specified string.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The definition of this operation is to firstly convert the entire string to lowercase.  Then, the first
+    /// character of every word is replaced with its uppercase equivalent.
+    /// </para>
+    /// </remarks>
+    /// <param name='value'>
+    /// The string to be capitalized.
+    /// </param>
+    public static string Capitalize(this string value)
+    {
+      return value.Capitalize(CultureInfo.CurrentCulture);
+    }
+
+    /// <summary>
+    /// Capitalizes the specified string.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The definition of this operation is to firstly convert the entire string to lowercase.  Then, the first
+    /// character of every word is replaced with its uppercase equivalent.
+    /// </para>
+    /// </remarks>
+    /// <param name='value'>
+    /// The string to be capitalized.
+    /// </param>
+    /// <param name='culture'>
+    /// The culture to use for any lowercase/uppercase transformations.
+    /// </param>
+    public static string Capitalize(this string value, CultureInfo culture)
+    {
+      if(value == null)
+      {
+        throw new ArgumentNullException("value");
+      }
+      if(culture == null)
+      {
+        throw new ArgumentNullException("culture");
+      }
+
+      string lowercaseVersion = value.ToLower(culture);
+      StringBuilder output = new StringBuilder(lowercaseVersion);
+      var matches = FirstCharacterFinder.Matches(lowercaseVersion);
+
+      foreach(Match match in matches)
+      {
+        output.Replace(match.Value, match.Value.ToUpper(culture), match.Index, 1);
+      }
+
+      return output.ToString();
+    }
+
+    /// <summary>
+    /// Capitalizes the specified string using the invariant culture.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The definition of this operation is to firstly convert the entire string to lowercase.  Then, the first
+    /// character of every word is replaced with its uppercase equivalent.
+    /// </para>
+    /// </remarks>
+    /// <param name='value'>
+    /// The string to be capitalized.
+    /// </param>
+    public static string CapitalizeInvariant(this string value)
+    {
+      return value.Capitalize(CultureInfo.InvariantCulture);
+    }
+
     /// <summary>
     /// Parses the string as an enumeration member.
     /// </summary>
@@ -147,6 +231,8 @@ namespace CSF
 
       return output;
     }
+
+    #endregion
   }
 }
 

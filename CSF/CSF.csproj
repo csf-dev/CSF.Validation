@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>CSF</RootNamespace>
     <AssemblyName>CSF</AssemblyName>
-    <ReleaseVersion>3.1.0</ReleaseVersion>
+    <ReleaseVersion>3.2.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -155,6 +155,14 @@
     <Compile Include="Collections\ReferenceCollection.cs" />
     <Compile Include="Reflection\NotPermittedInProductionException.cs" />
     <Compile Include="GuidExtensions.cs" />
+    <Compile Include="CancelOrProceed.cs" />
+    <Compile Include="Entities\IGenericIdentityParser.cs" />
+    <Compile Include="Entities\AdHocGenericIdentityParser.cs" />
+    <Compile Include="Entities\CachingGenericIdentityParser.cs" />
+    <Compile Include="Patterns\ServiceLayer\ExceptionHandlingPolicy.cs" />
+    <Compile Include="Patterns\ServiceLayer\InvalidRequestException.cs" />
+    <Compile Include="Patterns\ServiceLayer\RequestNotPermittedException.cs" />
+    <Compile Include="Entities\NonExistantEntityException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

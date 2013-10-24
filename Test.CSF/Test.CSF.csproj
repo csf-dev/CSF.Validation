@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <ReleaseVersion>3.1.0</ReleaseVersion>
+    <ReleaseVersion>3.2.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -111,6 +111,7 @@
     <Compile Include="Collections\TestReferenceList.cs" />
     <Compile Include="Collections\TestReferenceSet.cs" />
     <Compile Include="TestGuidExtensions.cs" />
+    <Compile Include="Entities\TestCachingGenericIdentityParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

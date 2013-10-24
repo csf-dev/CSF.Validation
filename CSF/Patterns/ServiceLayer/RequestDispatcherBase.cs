@@ -31,7 +31,26 @@ namespace CSF.Patterns.ServiceLayer
   /// </summary>
   public abstract class RequestDispatcherBase : IRequestDispatcher
   {
+    #region fields
+
+    private ExceptionHandlingPolicy _exceptionHandlingPolicy;
+
+    #endregion
+
     #region IRequestDispatcher implementation (virtual methods)
+
+    /// <summary>
+    /// Gets the exception handling policy for this request dispatcher.
+    /// </summary>
+    /// <value>
+    /// The exception handling policy.
+    /// </value>
+    public virtual ExceptionHandlingPolicy ExceptionHandlingPolicy
+    {
+      get {
+        return _exceptionHandlingPolicy;
+      }
+    }
 
     /// <summary>
     /// Determines whether this instance can dispatch the specified request.
@@ -235,6 +254,21 @@ namespace CSF.Patterns.ServiceLayer
     ///  The type of request for which to 'unregister' its handler. 
     /// </param>
     public abstract IRequestDispatcher Unregister(Type requestType);
+
+    #endregion
+
+    #region constructor
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CSF.Patterns.ServiceLayer.RequestDispatcherBase"/> class.
+    /// </summary>
+    /// <param name='exceptionHandlingPolicy'>
+    /// Exception handling policy.
+    /// </param>
+    public RequestDispatcherBase(ExceptionHandlingPolicy exceptionHandlingPolicy)
+    {
+      _exceptionHandlingPolicy = exceptionHandlingPolicy;
+    }
 
     #endregion
 

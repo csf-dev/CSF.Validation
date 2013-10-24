@@ -35,6 +35,13 @@ namespace CSF.Patterns.ServiceLayer
   /// </remarks>
   public class LocalRequestDispatcher : RequestDispatcherBase
   {
+    #region constants
+
+    private const ExceptionHandlingPolicy
+      DefaultExceptionPolicy = ExceptionHandlingPolicy.IncludeWithWithResponseIfPossible;
+
+    #endregion
+
     #region properties
 
     /// <summary>
@@ -77,15 +84,21 @@ namespace CSF.Patterns.ServiceLayer
       }
       catch(Exception ex)
       {
+        Exception reportedException = this.GetReportedException(ex);
         Type responseType = typeof(TResponse);
 
-        if(responseType.GetConstructor(new Type[] { typeof(Exception) }) != null)
+        if(base.ExceptionHandlingPolicy.HasFlag(ExceptionHandlingPolicy.IncludeWithWithResponseIfPossible)
+           && this.MayConstructWithException(responseType))
         {
-          untypedOutput = (Response) Activator.CreateInstance(responseType, ex);
+          untypedOutput = (Response) Activator.CreateInstance(responseType, reportedException);
+        }
+        else if(!Object.ReferenceEquals(reportedException, ex))
+        {
+          throw reportedException;
         }
         else
         {
-          throw new RequestDispatchException(request, ex);
+          throw;
         }
       }
       finally
@@ -143,7 +156,15 @@ namespace CSF.Patterns.ServiceLayer
       }
       catch(Exception ex)
       {
-        throw new RequestDispatchException(request, ex);
+        Exception reportedException = this.GetReportedException(ex);
+        if(!Object.ReferenceEquals(reportedException, ex))
+        {
+          throw reportedException;
+        }
+        else
+        {
+          throw;
+        }
       }
       finally
       {
@@ -266,6 +287,49 @@ namespace CSF.Patterns.ServiceLayer
       }
     }
 
+    /// <summary>
+    /// Determines whether the given <see cref="Response"/> type may be constructed with an exception.
+    /// </summary>
+    /// <returns>
+    /// <c>true</c> if the given type may be constructed with an <see cref="Exception"/> instance; <c>false</c>
+    /// otherwise.
+    /// </returns>
+    /// <param name='responseType'>
+    /// The <c>System.Type</c> of response.
+    /// </param>
+    protected virtual bool MayConstructWithException(Type responseType)
+    {
+      return responseType.GetConstructor(new Type[] { typeof(Exception) }) != null;
+    }
+
+    /// <summary>
+    /// Gets the exception to release 'externally' to the request dispatcher.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// If the <see cref="RequestDispatcherBase.ExceptionHandlingPolicy"/> indicates 
+    /// <see cref="ExceptionHandlingPolicy.WrapWithRequestDispatchException"/> then the exception returned from this
+    /// method is a <see cref="RequestDispatchException"/>, that contains the original exception as its inner exception.
+    /// Otherwise, the original exception is returned from this method.
+    /// </para>
+    /// </remarks>
+    /// <returns>
+    /// The reported exception.
+    /// </returns>
+    /// <param name='ex'>
+    /// The original exception.
+    /// </param>
+    protected virtual Exception GetReportedException(Exception ex)
+    {
+      if(ex == null)
+      {
+        throw new ArgumentNullException("ex");
+      }
+
+      bool wrap = base.ExceptionHandlingPolicy.HasFlag(ExceptionHandlingPolicy.WrapWithRequestDispatchException);
+      return wrap? new RequestDispatchException("An exception was encountered whilst handling the request.", ex) : ex;
+    }
+
     #endregion
 
     #region constructor
@@ -273,7 +337,16 @@ namespace CSF.Patterns.ServiceLayer
     /// <summary>
     /// Initializes a new instance of the <see cref="CSF.Patterns.ServiceLayer.LocalRequestDispatcher"/> class.
     /// </summary>
-    public LocalRequestDispatcher()
+    [Obsolete("Use the overload that takes an exception handling policy.")]
+    public LocalRequestDispatcher() : this(DefaultExceptionPolicy) {}
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CSF.Patterns.ServiceLayer.LocalRequestDispatcher"/> class.
+    /// </summary>
+    /// <param name='policy'>
+    /// The exception handling policy to use.
+    /// </param>
+    public LocalRequestDispatcher(ExceptionHandlingPolicy policy) : base(policy)
     {
       this.HandlerFactories = new Dictionary<Type, Func<IRequestHandler>>();
     }

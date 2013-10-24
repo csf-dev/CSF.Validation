@@ -58,7 +58,9 @@ namespace Test.CSF.Patterns.ServiceLayer
       this.Handler2
         .Setup(x => x.HandleRequestOnly(It.IsAny<IRequest>()));
 
+#pragma warning disable 618
       this.Dispatcher = new LocalRequestDispatcher();
+#pragma warning restore 618
 
       this.Dispatcher
         .Register(typeof(MockRequestType1), () => this.Handler1.Object)
@@ -148,6 +150,111 @@ namespace Test.CSF.Patterns.ServiceLayer
 
       Assert.IsNotNull(response, "Response nullability");
       Assert.IsNotNull(response.ExceptionInfo, "Response exception info");
+      Assert.IsInstanceOfType(typeof(InvalidOperationException), response.ExceptionInfo, "Exception info correct type");
+      Assert.AreEqual("Intended exception", response.ExceptionInfo.Message, "Exception message");
+
+      this.Handler2
+        .Verify(x => x.Handle(It.Is<IRequest>(req => req == this.Request2.Object)), Times.Once());
+      this.Handler2
+        .Verify(x => x.HandleRequestOnly(It.IsAny<IRequest>()), Times.Never());
+    }
+
+    [Test]
+    [ExpectedException(typeof(RequestDispatchException))]
+    public void TestDispatchWithExceptionWrapped()
+    {
+      this.Handler2
+        .Setup(x => x.Handle(It.IsAny<IRequest>()))
+        .Throws(new InvalidOperationException("Intended exception"));
+
+      this.Dispatcher = new LocalRequestDispatcher(ExceptionHandlingPolicy.WrapWithRequestDispatchException);
+      this.Dispatcher
+        .Register(typeof(MockRequestType1), () => this.Handler1.Object)
+        .Register(typeof(MockRequestType2), () => this.Handler2.Object);
+
+      try
+      {
+        this.Dispatcher.Dispatch(this.Request2.Object);
+      }
+      catch(RequestDispatchException ex)
+      {
+        Assert.IsNotNull(ex, "Exception nullability");
+        Assert.IsNotNull(ex.InnerException, "Inner exception nullability");
+        Assert.IsInstanceOfType(typeof(InvalidOperationException), ex.InnerException, "Inner exception type");
+        throw;
+      }
+    }
+
+    [Test]
+    [ExpectedException(typeof(InvalidOperationException))]
+    public void TestDispatchWithExceptionNotWrapped()
+    {
+      this.Handler2
+        .Setup(x => x.Handle(It.IsAny<IRequest>()))
+        .Throws(new InvalidOperationException("Intended exception"));
+
+      this.Dispatcher = new LocalRequestDispatcher((ExceptionHandlingPolicy) 0);
+      this.Dispatcher
+        .Register(typeof(MockRequestType1), () => this.Handler1.Object)
+        .Register(typeof(MockRequestType2), () => this.Handler2.Object);
+
+      try
+      {
+        this.Dispatcher.Dispatch(this.Request2.Object);
+      }
+      catch(InvalidOperationException ex)
+      {
+        Assert.IsNotNull(ex, "Exception nullability");
+        Assert.IsNull(ex.InnerException, "Inner exception nullability");
+        throw;
+      }
+    }
+
+    [Test]
+    public void TestDispatchWithExceptionWrappedInResponse()
+    {
+      this.Handler2
+        .Setup(x => x.Handle(It.IsAny<IRequest>()))
+        .Throws(new InvalidOperationException("Intended exception"));
+
+      this.Dispatcher = new LocalRequestDispatcher(ExceptionHandlingPolicy.WrapWithRequestDispatchException |
+                                                   ExceptionHandlingPolicy.IncludeWithWithResponseIfPossible);
+      this.Dispatcher
+        .Register(typeof(MockRequestType1), () => this.Handler1.Object)
+        .Register(typeof(MockRequestType2), () => this.Handler2.Object);
+
+      var response = this.Dispatcher.Dispatch(this.Request2.Object);
+
+      Assert.IsNotNull(response, "Response nullability");
+      Assert.IsNotNull(response.ExceptionInfo, "Response exception info");
+      Assert.IsNotNull(response.ExceptionInfo.InnerException, "Response inner exception info");
+      Assert.IsInstanceOfType(typeof(RequestDispatchException), response.ExceptionInfo, "Exception info correct type");
+      Assert.IsInstanceOfType(typeof(InvalidOperationException), response.ExceptionInfo.InnerException, "Inner exception type");
+      Assert.AreEqual("Intended exception", response.ExceptionInfo.InnerException.Message, "Inner exception message");
+
+      this.Handler2
+        .Verify(x => x.Handle(It.Is<IRequest>(req => req == this.Request2.Object)), Times.Once());
+      this.Handler2
+        .Verify(x => x.HandleRequestOnly(It.IsAny<IRequest>()), Times.Never());
+    }
+
+    [Test]
+    public void TestDispatchWithExceptionNotWrappedInResponse()
+    {
+      this.Handler2
+        .Setup(x => x.Handle(It.IsAny<IRequest>()))
+        .Throws(new InvalidOperationException("Intended exception"));
+
+      this.Dispatcher = new LocalRequestDispatcher(ExceptionHandlingPolicy.IncludeWithWithResponseIfPossible);
+      this.Dispatcher
+        .Register(typeof(MockRequestType1), () => this.Handler1.Object)
+        .Register(typeof(MockRequestType2), () => this.Handler2.Object);
+
+      var response = this.Dispatcher.Dispatch(this.Request2.Object);
+
+      Assert.IsNotNull(response, "Response nullability");
+      Assert.IsNotNull(response.ExceptionInfo, "Response exception info");
+      Assert.IsNull(response.ExceptionInfo.InnerException, "Response inner exception info");
       Assert.IsInstanceOfType(typeof(InvalidOperationException), response.ExceptionInfo, "Exception info correct type");
       Assert.AreEqual("Intended exception", response.ExceptionInfo.Message, "Exception message");
 

@@ -28,6 +28,12 @@ namespace CSF.Entities
   /// </summary>
   public class IdentityParser
   {
+    #region fields
+
+    private static AdHocGenericIdentityParser _adHocParser;
+
+    #endregion
+
     #region methods
 
     /// <summary>
@@ -87,10 +93,10 @@ namespace CSF.Entities
     /// <typeparam name='TEntity'>
     /// The type of of the entity, whose identity to parse.
     /// </typeparam>
+    [Obsolete("Instead, use an implementation of IGenericIdentityParser")]
     public static IIdentity<TEntity> Parse<TEntity>(object input) where TEntity : IEntity
     {
-      var parser = Create<TEntity>();
-      return parser.Parse(input);
+      return _adHocParser.Parse<TEntity>(input);
     }
 
     /// <summary>
@@ -108,10 +114,22 @@ namespace CSF.Entities
     /// <typeparam name='TEntity'>
     /// The type of of the entity, whose identity to parse.
     /// </typeparam>
+    [Obsolete("Instead, use an implementation of IGenericIdentityParser")]
     public static bool TryParse<TEntity>(object input, out IIdentity<TEntity> output) where TEntity : IEntity
     {
-      var parser = Create<TEntity>();
-      return parser.TryParse(input, out output);
+      return _adHocParser.TryParse<TEntity>(input, out output);
+    }
+
+    #endregion
+
+    #region constructor
+
+    /// <summary>
+    /// Initializes the <see cref="CSF.Entities.IdentityParser"/> type.
+    /// </summary>
+    static IdentityParser()
+    {
+      _adHocParser = new AdHocGenericIdentityParser();
     }
 
     #endregion
