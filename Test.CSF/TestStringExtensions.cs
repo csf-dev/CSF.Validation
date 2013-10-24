@@ -85,6 +85,18 @@ namespace Test.CSF
       "Foo".TryParseAs<int>();
     }
 
+    [Test]
+    public void TestCapitalize()
+    {
+      string test1 = "Foo bar BAZ", expected1 = "Foo Bar Baz";
+      string test2 = "FLOUNCE", expected2 = "Flounce";
+      string test3 = String.Empty, expected3 = String.Empty;
+
+      Assert.AreEqual(expected1, test1.Capitalize(), "Test 1");
+      Assert.AreEqual(expected2, test2.Capitalize(), "Test 2");
+      Assert.AreEqual(expected3, test3.Capitalize(), "Test 3");
+    }
+
     #endregion
 
     #region enumeration
