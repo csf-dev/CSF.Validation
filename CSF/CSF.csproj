@@ -163,6 +163,7 @@
     <Compile Include="Patterns\ServiceLayer\InvalidRequestException.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestNotPermittedException.cs" />
     <Compile Include="Entities\NonExistantEntityException.cs" />
+    <Compile Include="Data\IQuery.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
