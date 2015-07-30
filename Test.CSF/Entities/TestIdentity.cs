@@ -34,10 +34,10 @@ namespace Test.CSF.Entities
     {
       string stringTest = "foo bar";
       uint numericTest = 3; 
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Identity<Person,uint> four = new Identity<Person,uint>(4);
-      Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
-      Identity<Product,uint> threeProduct = new Identity<Product,uint>(3);
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Identity<uint,Person> four = new Identity<uint,Person>(4);
+      Identity<uint,Person> threeAgain = new Identity<uint,Person>(3);
+      Identity<uint,Product> threeProduct = new Identity<uint,Product>(3);
       
       Assert.IsFalse(three.Equals(stringTest), "Identity does not equal a string");
       Assert.IsFalse(three.Equals(numericTest), "Identity does not equal a uint");
@@ -52,8 +52,8 @@ namespace Test.CSF.Entities
     [Test]
     public void TestToString()
     {
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 3),
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Assert.AreEqual(String.Format("[{0}#{1}]", typeof(Person).FullName, 3),
                       three.ToString(),
                       "Correct string representation");
     }
@@ -61,9 +61,9 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorEquality()
     {
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Identity<Person,uint> four = new Identity<Person,uint>(4);
-      Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Identity<uint,Person> four = new Identity<uint,Person>(4);
+      Identity<uint,Person> threeAgain = new Identity<uint,Person>(3);
       
       Assert.IsFalse(three == four, "Non-matching identities not equal");
 #pragma warning disable 1718
@@ -76,9 +76,9 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorInequality()
     {
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Identity<Person,uint> four = new Identity<Person,uint>(4);
-      Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Identity<uint,Person> four = new Identity<uint,Person>(4);
+      Identity<uint,Person> threeAgain = new Identity<uint,Person>(3);
 
       Assert.IsTrue(three != four, "Non-matching identities not equal");
 #pragma warning disable 1718
@@ -92,11 +92,11 @@ namespace Test.CSF.Entities
     
     #region mocks
     
-    public class Person : Entity<Person,uint> {}
+    public class Person : Entity<uint> {}
     
     public class Employee : Person {}
     
-    public class Product : Entity<Product,uint> {}
+    public class Product : Entity<uint> {}
     
     #endregion
   }

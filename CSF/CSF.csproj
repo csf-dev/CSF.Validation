@@ -104,7 +104,6 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Entities\IIdentity`1.cs" />
     <Compile Include="Entities\Identity`2.cs" />
-    <Compile Include="Entities\IEntity`2.cs" />
     <Compile Include="Entities\Entity`2.cs" />
     <Compile Include="..\Common\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
@@ -145,9 +144,6 @@
     <Compile Include="Collections\EventBoundCollectionWrapper`1.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestHandler`1.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestHandler`2.cs" />
-    <Compile Include="Entities\IIdentityParser.cs" />
-    <Compile Include="Entities\IdentityParser.cs" />
-    <Compile Include="Entities\IdentityParser`2.cs" />
     <Compile Include="NameReformatter.cs" />
     <Compile Include="LowercaseUnderscoreNameReformatter.cs" />
     <Compile Include="IGuidGenerationStrategy.cs" />
@@ -157,14 +153,14 @@
     <Compile Include="Reflection\NotPermittedInProductionException.cs" />
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="CancelOrProceed.cs" />
-    <Compile Include="Entities\IGenericIdentityParser.cs" />
-    <Compile Include="Entities\AdHocGenericIdentityParser.cs" />
-    <Compile Include="Entities\CachingGenericIdentityParser.cs" />
     <Compile Include="Patterns\ServiceLayer\ExceptionHandlingPolicy.cs" />
     <Compile Include="Patterns\ServiceLayer\InvalidRequestException.cs" />
     <Compile Include="Patterns\ServiceLayer\RequestNotPermittedException.cs" />
     <Compile Include="Entities\NonExistantEntityException.cs" />
     <Compile Include="Data\IQuery.cs" />
+    <Compile Include="Entities\Identity.cs" />
+    <Compile Include="Entities\EntityExtensions.cs" />
+    <Compile Include="Entities\IIdentity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

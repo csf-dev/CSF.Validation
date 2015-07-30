@@ -1,10 +1,10 @@
-//
-//  IIdentityParser.cs
+﻿//
+//  IIdentity.cs
 //
 //  Author:
 //       Craig Fowler <craig@craigfowler.me.uk>
 //
-//  Copyright (c) 2013 Craig Fowler
+//  Copyright (c) 2015 Craig Fowler
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -23,35 +23,27 @@ using System;
 namespace CSF.Entities
 {
   /// <summary>
-  /// Interface for a type that is capable of parsing identity instances for a given entity type.
+  /// Base non-generic interface for an entity identity.
   /// </summary>
-  public interface IIdentityParser<TEntity> where TEntity : IEntity
+  public interface IIdentity
   {
-    #region methods
+    /// <summary>
+    /// Gets a <see cref="System.Type"/> that indicates the type of entity that this instance describes.
+    /// </summary>
+    /// <value>The entity type.</value>
+    Type EntityType { get; }
 
     /// <summary>
-    /// Parse the specified input as an identity instance.
+    /// Gets the underlying type of <see cref="Value"/>.
     /// </summary>
-    /// <param name='input'>
-    /// The identity value to parse.
-    /// </param>
-    IIdentity<TEntity> Parse(object input);
+    /// <value>The identity type.</value>
+    Type IdentityType { get; }
 
     /// <summary>
-    /// Attempts to parse the specified input as an identity instance.
+    /// Gets the identity value contained within the current instance.
     /// </summary>
-    /// <returns>
-    /// <c>true</c> if the parsing succeeded; <c>false</c> otherwise.
-    /// </returns>
-    /// <param name='input'>
-    /// The identity value to parse.
-    /// </param>
-    /// <param name='output'>
-    /// The parsed identity.
-    /// </param>
-    bool TryParse(object input, out IIdentity<TEntity> output);
-
-    #endregion
+    /// <value>The identity value.</value>
+    object Value { get; }
   }
 }
 
