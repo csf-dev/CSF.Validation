@@ -106,6 +106,7 @@
     <Compile Include="Collections\TestReferenceSet.cs" />
     <Compile Include="TestGuidExtensions.cs" />
     <Compile Include="Entities\TestCachingGenericIdentityParser.cs" />
+    <Compile Include="TestConfiguration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

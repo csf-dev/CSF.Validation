@@ -28,6 +28,8 @@ namespace CSF.IO
   /// </summary>
   public static class FileSystemInfoExtensions
   {
+    #region extension methods
+
     /// <summary>
     /// Determines whether this instance is child of the specified directory.
     /// </summary>
@@ -103,6 +105,37 @@ namespace CSF.IO
       
       return output;
     }
+
+    /// <summary>
+    /// Creates a directory recursively, creating parent directories if required.
+    /// </summary>
+    /// <param name="info">Info.</param>
+    public static void CreateRecursive(this DirectoryInfo info)
+    {
+      if(info == null)
+      {
+        throw new ArgumentNullException("info");
+      }
+
+      if(info == info.Root)
+      {
+        var message = String.Format("Cannot create the root of a file system: {0}", info.Root.FullName);
+        throw new IOException(message);
+      }
+
+      if(!info.Exists)
+      {
+        if(info.Parent != info.Root)
+        {
+          info.Parent.CreateRecursive();
+        }
+
+        info.Create();
+        info.Refresh();
+      }
+    }
+
+    #endregion
   }
 }
 
