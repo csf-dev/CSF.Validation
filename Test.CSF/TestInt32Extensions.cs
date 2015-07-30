@@ -38,7 +38,7 @@ namespace Test.CSF
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(NotSupportedException),
+    [ExpectedException(typeof(NotSupportedException),
                        ExpectedMessage = "Creating alphabetic references for negative integers is not supported " +
                                          "when the reference is to be zero-based.")]
     public void TestGenerateAlphabeticReferenceException()
@@ -79,7 +79,7 @@ namespace Test.CSF
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentNullException))]
+    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseAlphabeticReferenceNull()
     {
       int parsed = Int32Extensions.ParseAlphabeticReference(null, true);
@@ -89,7 +89,7 @@ namespace Test.CSF
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(FormatException),
+    [ExpectedException(typeof(FormatException),
                        ExpectedMessage =  "An empty string may represent zero in non-zero-based scenarios but it " +
                                           "is not permitted in zero-based scenarios.")]
     public void TestParseAlphabeticReferenceEmptyString()
@@ -101,7 +101,7 @@ namespace Test.CSF
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(FormatException),
+    [ExpectedException(typeof(FormatException),
                        ExpectedMessage =  "Alphabetic reference does not conform to the required format.")]
     public void TestParseAlphabeticReferenceInvalid()
     {

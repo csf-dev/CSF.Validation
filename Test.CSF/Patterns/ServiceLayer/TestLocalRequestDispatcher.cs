@@ -94,7 +94,7 @@ namespace Test.CSF.Patterns.ServiceLayer
     }
 
     [Test]
-    [ExpectedException(ExceptionType = typeof(RequestDispatchException),
+    [ExpectedException(typeof(RequestDispatchException),
                        ExpectedMessage = "There must be a type (that derives from " +
                                          "RequestHandler<TRequest,TResponse>) registered with the request " +
                                          "dispatcher in order to dispatch this request; no such type was found.\n" +
@@ -106,7 +106,7 @@ namespace Test.CSF.Patterns.ServiceLayer
     }
 
     [Test]
-    [ExpectedException(ExceptionType = typeof(RequestDispatchException),
+    [ExpectedException(typeof(RequestDispatchException),
                        ExpectedMessage = "The request to dispatch must not be null.")]
     public void TestDispatchNullRequest()
     {

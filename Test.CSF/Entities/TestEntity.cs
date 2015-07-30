@@ -65,7 +65,7 @@ namespace Test.CSF.Entities
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentException), ExpectedMessage = "Invalid identity value")]
+    [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Invalid identity value")]
     public void TestSetIdentityInvalid()
     {
       Entity<Person,uint> entity = new Entity<Person,uint>();

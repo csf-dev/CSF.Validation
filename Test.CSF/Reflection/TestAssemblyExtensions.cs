@@ -16,7 +16,7 @@ namespace Test.CSF.Reflection
     }
 
     [Test]
-    [ExpectedException(ExceptionType = typeof(InvalidOperationException))]
+    [ExpectedException(typeof(InvalidOperationException))]
     public void TestGetManifestResourceTextInvalid()
     {
       try
@@ -40,7 +40,7 @@ namespace Test.CSF.Reflection
     }
 
     [Test]
-    [ExpectedException(ExceptionType = typeof(InvalidOperationException))]
+    [ExpectedException(typeof(InvalidOperationException))]
     public void TestGetManifestResourceTextTypeInvalid()
     {
       try

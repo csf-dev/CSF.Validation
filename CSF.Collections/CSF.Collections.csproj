@@ -3,14 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>CSF.Collections</RootNamespace>
     <AssemblyName>CSF.Collections</AssemblyName>
-    <ReleaseVersion>3.2.0</ReleaseVersion>
+    <ReleaseVersion>4.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +23,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <DocumentationFile>..\bin\Debug\CSF.Collections.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -32,15 +33,14 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <DocumentationFile>..\bin\Release\CSF.Collections.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <Private>False</Private>
-      <Package>iesi.collections-1.0.1</Package>
-    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Common\Dependencies\Iesi.Collections.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />

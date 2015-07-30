@@ -89,7 +89,7 @@ namespace Test.CSF.IO
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentException),
+    [ExpectedException(typeof(ArgumentException),
                        ExpectedMessage = "Invalid tabular data, an error was encountered whilst parsing row 4.")]
     public void TestReadCsvInvalid()
     {

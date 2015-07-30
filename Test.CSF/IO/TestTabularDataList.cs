@@ -20,7 +20,7 @@ namespace Test.CSF.IO
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentException),
+    [ExpectedException(typeof(ArgumentException),
                        ExpectedMessage = "Row to add has an incorrect count of columns.")]
     public void TestAddException()
     {
@@ -47,7 +47,7 @@ namespace Test.CSF.IO
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentException),
+    [ExpectedException(typeof(ArgumentException),
                        ExpectedMessage = "Row to insert has an incorrect count of columns.")]
     public void TestInsertException()
     {
@@ -77,7 +77,7 @@ namespace Test.CSF.IO
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentException),
+    [ExpectedException(typeof(ArgumentException),
                        ExpectedMessage = "Row has an incorrect count of columns.")]
     public void TestItemException()
     {

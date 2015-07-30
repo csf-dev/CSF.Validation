@@ -30,7 +30,7 @@ namespace Test.CSF.IO
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(ArgumentException))]
+    [ExpectedException(typeof(ArgumentException))]
     public void TestGetRelativeNotRooted()
     {
       FileInfo file = new FileInfo(@"C:\SomeDirectory\SomeFile.txt");
