@@ -31,81 +31,21 @@ namespace CSF.Entities
     #region properties
     
     /// <summary>
-    /// <para>Read-only.  Gets whether or not the current instance holds a valid reference or not.</para>
+    /// <para>Read-only.  Gets whether or not the current instance has an identity or not.</para>
     /// </summary>
     bool HasIdentity { get; }
-    
-    /// <summary>
-    /// Gets and sets a value that uniquely identifies this entity from others of its same type.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Ideally, avoid using this property unless absolutely neccesary.  It exists primarily for providing access to
-    /// database-mapping layers that need a property with which to reference the unique identifier.
-    /// </para>
-    /// </remarks>
-    object Id { get; set; }
-    
+
     #endregion
-    
+
     #region methods
 
     /// <summary>
-    /// <para>Sets the reference stored within the current object instance.</para>
+    /// Gets the raw identity instance contained within the current entity, favour the extension method 'GetIdentity'
+    /// instead.
     /// </summary>
-    /// <param name="identityValue">
-    /// An instance of the underlying reference type for the current object.
-    /// </param>
-    /// <exception cref="ArgumentException">
-    /// If <paramref name="identityValue"/> is not a valid reference.
-    /// </exception>
-    void SetIdentity(object identityValue);
-    
-    /// <summary>
-    /// <para>
-    /// Determines whether or not a given <paramref name="identityValue"/> is valid for storing within the current
-    /// object instance.
-    /// </para>
-    /// </summary>
-    /// <param name="identityValue">
-    /// An instance of the underlying identity type for the current object.
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>
-    /// </returns>
-    bool ValidateIdentity(object identityValue);
-    
-    /// <summary>
-    /// <para>Clears the identity stored within the current instance.</para>
-    /// </summary>
-    void ClearIdentity();
-    
-    #endregion
-    
-    #region events
-    
-    /// <summary>
-    /// <para>
-    /// This event is invoked when the current instance becomes dirty (requires update in a presistent data store).
-    /// </para>
-    /// </summary>
-    [Obsolete("These state-change events have never been used and simply clutter the API.")]
-    event EventHandler Dirty;
-    
-    /// <summary>
-    /// <para>This event is invoked when the current instance is to deleted in a persistent data store.</para>
-    /// </summary>
-    [Obsolete("These state-change events have never been used and simply clutter the API.")]
-    event EventHandler Deleted;
-    
-    /// <summary>
-    /// <para>
-    /// This event is invoked when the current instance is created (stored within the repository for the first time).
-    /// </para>
-    /// </summary>
-    [Obsolete("These state-change events have never been used and simply clutter the API.")]
-    event EventHandler Created;
-    
+    /// <returns>The identity value.</returns>
+    IIdentity GetRawIdentity();
+
     #endregion
   }
 }

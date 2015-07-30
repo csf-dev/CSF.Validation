@@ -98,14 +98,12 @@
     <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\TestEventBoundListWrapper.cs" />
     <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
-    <Compile Include="Entities\TestIdentityParser.cs" />
     <Compile Include="TestBinaryGuidCombStrategy.cs" />
     <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
     <Compile Include="Collections\TestReferenceCollection.cs" />
     <Compile Include="Collections\TestReferenceList.cs" />
     <Compile Include="Collections\TestReferenceSet.cs" />
     <Compile Include="TestGuidExtensions.cs" />
-    <Compile Include="Entities\TestCachingGenericIdentityParser.cs" />
     <Compile Include="TestConfiguration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

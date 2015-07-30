@@ -34,148 +34,126 @@ namespace Test.CSF.Entities
     [Test]
     public void TestHasIdentity()
     {
-      Entity<Person,uint> entity = new Entity<Person,uint>();
+      Entity<uint> entity = new Entity<uint>();
       
       Assert.IsFalse(entity.HasIdentity, "Entity has no identity");
       
-      entity.SetIdentity(5);
+      entity.Identity = 5;
       Assert.IsTrue(entity.HasIdentity, "Entity has an identity");
     }
     
     [Test]
     public void TestGetIdentity()
     {
-      Person entity = new Person() { Id = 5 };
+      Person entity = new Person() { Identity = 5 };
       var identity = entity.GetIdentity();
-      Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 5),
+
+      Assert.AreEqual(String.Format("[{0}#{1}]", typeof(Person).FullName, 5),
                       identity.ToString(),
                       "Correct identity");
     }
-    
-    [Test]
-    public void TestSetIdentity()
-    {
-      Person entity = new Person();
-      
-      entity.SetIdentity(5);
-      var identity = entity.GetIdentity();
-      Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 5),
-                      identity.ToString(),
-                      "Correct identity");
-    }
-    
-    [Test]
-    [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Invalid identity value")]
-    public void TestSetIdentityInvalid()
-    {
-      Entity<Person,uint> entity = new Entity<Person,uint>();
-      entity.SetIdentity(0);
-      Assert.Fail("Test should never reach this point");
-    }
-    
-    [Test]
-    public void TestClearIdentity()
-    {
-      Person entity = new Person() { Id = 5 };
-      
-      Assert.IsTrue(entity.HasIdentity, "Has identity");
-      entity.ClearIdentity();
-      Assert.IsFalse(entity.HasIdentity, "Identity removed");
-    }
-    
-    [Test]
-    public void TestValidateIdentity()
-    {
-      Person entity = new Person();
-      Assert.IsTrue(entity.ValidateIdentity(5), "Valid identity");
-      Assert.IsFalse(entity.ValidateIdentity(0), "Invalid identity");
-    }
-    
-    [Test]
-    public void TestEquals()
-    {
-      string stringTest = "foo bar";
-      uint numericTest = 3; 
-      Person three = new Person() { Id = 3 };
-      Person four = new Person() { Id = 4 };
-      Person threeAgain = new Person() { Id = 3 };
-      Product threeProduct = new Product() { Id = 3 };
-      
-      Assert.IsFalse(three.Equals(stringTest), "Entity does not equal a string");
-      Assert.IsFalse(three.Equals(numericTest), "Entity does not equal a uint");
-      Assert.IsFalse(three.Equals(four), "Non-matching identities not equal");
-      
-      Assert.IsTrue(three.Equals(three), "Copies of the same object are equal");
-      Assert.IsTrue(three.Equals(threeAgain), "Identical identities are equal");
-      
-      Assert.IsFalse(three.Equals((object) threeProduct), "Non-matching types not equal");
-    }
-    
-    [Test]
-    public void TestToString()
-    {
-      Person entity = new Person() { Id = 5 };
-      
-      Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 5),
-                      entity.ToString(),
-                      "Correct identity");
-      
-      entity.ClearIdentity();
-      Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, "no identity"),
-                      entity.ToString(),
-                      "Correct identity");
-    }
-    
-    [Test]
-    public void TestOperatorEquality()
-    {
-      Person three = new Person() { Id = 3 };
-      Person four = new Person() { Id = 4 };
-      Person threeAgain = new Person() { Id = 3 };
-      Product threeProduct = new Product() { Id = 3 };
-      
-      Assert.IsFalse(three == four, "Non-matching identities not equal");
-#pragma warning disable 1718
-      // Disabling CS1718 - the point of this test is to compare the object to itself
-      Assert.IsTrue(three == three, "Copies of the same object are equal");
-#pragma warning restore 1718
-      Assert.IsTrue(three == threeAgain, "Identical instances are equal");
 
-      Assert.IsFalse(three == threeProduct, "Non-matching types not equal");
-    }
-    
-    [Test]
-    public void TestOperatorInequality()
+    [TestCase(0u, 0u, false)]
+    [TestCase(1u, 0u, false)]
+    [TestCase(0u, 1u, false)]
+    [TestCase(1u, 2u, false)]
+    [TestCase(1u, 1u, true)]
+    public void TestEquals(uint identityOne, uint identityTwo, bool expectEqual)
     {
-      Person three = new Person() { Id = 3 };
-      Person four = new Person() { Id = 4 };
-      Person threeAgain = new Person() { Id = 3 };
-      Product threeProduct = new Product() { Id = 3 };
-      
-      Assert.IsTrue(three != four, "Non-matching identities not equal");
-#pragma warning disable 1718
-      // Disabling CS1718 - the point of this test is to compare the object to itself
-      Assert.IsFalse(three != three, "Copies of the same object are equal");
-#pragma warning restore 1718
-      Assert.IsFalse(three != threeAgain, "Identical instances are equal");
+      // Arrange
+      Person
+        one = new Person() { Identity = identityOne },
+        two = new Person() { Identity = identityTwo };
 
-      Assert.IsTrue(three != threeProduct, "Non-matching types not equal");
+      // Act and assert
+      Assert.AreEqual(expectEqual, one.Equals(two));
     }
 
     [Test]
-    public void TestGetHashCodeDoesNotChange()
+    public void TestEqualsWrongTypeString()
     {
-      Person person = new Person();
-      int hashCode1 = person.GetHashCode();
+      // Arrange
+      Person sut = new Person() { Identity = 1 };
 
-      person.SetIdentity(5);
-      int hashCode2 = person.GetHashCode();
-      Assert.AreEqual(hashCode1, hashCode2, "Hashcodes (without identity and then with identity) should be equal.");
+      // Act and assert
+      Assert.IsFalse(sut.Equals("Foo"));
+    }
 
-      person.ClearIdentity();
-      person.SetIdentity(6);
-      int hashCode3 = person.GetHashCode();
-      Assert.AreEqual(hashCode2, hashCode3, "Hashcodes (after change of identity) should be equal.");
+    [Test]
+    public void TestEqualsWrongTypeNumber()
+    {
+      // Arrange
+      Person sut = new Person() { Identity = 1 };
+
+      // Act and assert
+      Assert.IsFalse(sut.Equals((uint) 1));
+    }
+
+    [Test]
+    public void TestEqualsWrongTypeDifferentEntity()
+    {
+      // Arrange
+      Person one = new Person() { Identity = 1 };
+      Product two = new Product() { Identity = 2 };
+
+      // Act and assert
+      Assert.IsFalse(one.Equals(two));
+    }
+
+    [Test]
+    public void TestEqualsReferenceEqual()
+    {
+      // Arrange
+      Person
+        one = new Person() { Identity = 0 },
+        two = one;
+
+      // Act and assert
+      Assert.IsTrue(one.Equals(two));
+    }
+    
+    [TestCase(0u, "[Test.CSF.Entities.TestEntity+Person#(no identity)]")]
+    [TestCase(1u, "[Test.CSF.Entities.TestEntity+Person#1]")]
+    [TestCase(555u, "[Test.CSF.Entities.TestEntity+Person#555]")]
+    public void TestToString(uint identity, string expected)
+    {
+      // Arrange
+      Person sut = new Person() { Identity = identity };
+
+      // Act and assert
+      Assert.AreEqual(expected, sut.ToString());
+    }
+
+    [TestCase(0u, 0u, false)]
+    [TestCase(1u, 0u, false)]
+    [TestCase(0u, 1u, false)]
+    [TestCase(1u, 2u, false)]
+    [TestCase(1u, 1u, true)]
+    public void TestOpEquality(uint identityOne, uint identityTwo, bool expectEqual)
+    {
+      // Arrange
+      Person
+        one = new Person() { Identity = identityOne },
+        two = new Person() { Identity = identityTwo };
+
+      // Act and assert
+      Assert.AreEqual(expectEqual, one == two);
+    }
+
+    [TestCase(0u, 0u, true)]
+    [TestCase(1u, 0u, true)]
+    [TestCase(0u, 1u, true)]
+    [TestCase(1u, 2u, true)]
+    [TestCase(1u, 1u, false)]
+    public void TestOpInequality(uint identityOne, uint identityTwo, bool expectNotEqual)
+    {
+      // Arrange
+      Person
+      one = new Person() { Identity = identityOne },
+      two = new Person() { Identity = identityTwo };
+
+      // Act and assert
+      Assert.AreEqual(expectNotEqual, one != two);
     }
 
     #endregion
@@ -185,6 +163,7 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorEqualsCompareWithSelf()
     {
+      // Arrange
       Mock<Person> mockPerson = new Mock<Person>() { CallBase = true };
 
       Person
@@ -193,6 +172,7 @@ namespace Test.CSF.Entities
 
       mockPerson.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
 
+      // Act and assert
       Assert.IsTrue(person1 == person2, "Correct result");
       mockPerson.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
     }
@@ -200,6 +180,7 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorEqualsCompareWithNull()
     {
+      // Arrange
       Mock<Person> mockPerson = new Mock<Person>() { CallBase = true };
 
       Person
@@ -208,6 +189,7 @@ namespace Test.CSF.Entities
 
       mockPerson.Setup(x => x.Equals(It.IsAny<Person>())).Returns(false);
 
+      // Act and assert
       Assert.IsFalse(person1 == person2, "Correct result");
       mockPerson.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
     }
@@ -215,21 +197,19 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorEqualsBothNull()
     {
-      Mock<Person> mockPerson = new Mock<Person>() { CallBase = true };
-
+      // Arrange
       Person
         person1 = null,
         person2 = null;
 
-      mockPerson.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-
+      // Act and assert
       Assert.IsTrue(person1 == person2, "Correct result");
-      mockPerson.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
     }
 
     [Test]
     public void TestOperatorEqualsIdsSame()
     {
+      // Arrange
       Mock<Person>
         mockPerson1 = new Mock<Person>() { CallBase = true },
         mockPerson2 = new Mock<Person>() { CallBase = true };
@@ -239,14 +219,15 @@ namespace Test.CSF.Entities
         person2 = mockPerson2.Object;
 
       mockPerson1.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-      mockPerson1.SetupGet(x => x.Id).Returns(4);
+      mockPerson1.SetupGet(x => x.Identity).Returns(4);
       mockPerson1.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson1.Setup(x => x.GetIdentity()).Returns(new Identity<Person, uint>(4));
+      mockPerson1.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
       mockPerson2.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-      mockPerson2.SetupGet(x => x.Id).Returns(4);
+      mockPerson2.SetupGet(x => x.Identity).Returns(4);
       mockPerson2.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson2.Setup(x => x.GetIdentity()).Returns(new Identity<Person, uint>(4));
+      mockPerson2.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
 
+      // Act and assert
       Assert.IsTrue(person1 == person2, "Correct result");
       mockPerson1.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
       mockPerson2.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
@@ -255,6 +236,7 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorEqualsDownCast()
     {
+      // Arrange
       Mock<Person>
         mockPerson1 = new Mock<Person>() { CallBase = true },
         mockPerson2 = new Mock<Person>() { CallBase = true };
@@ -263,14 +245,15 @@ namespace Test.CSF.Entities
       IEntity person2 = mockPerson2.Object;
 
       mockPerson1.Setup(x => x.Equals(It.IsAny<IEntity>())).Returns(true);
-      mockPerson1.SetupGet(x => x.Id).Returns(4);
+      mockPerson1.SetupGet(x => x.Identity).Returns(4);
       mockPerson1.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson1.Setup(x => x.GetIdentity()).Returns(new Identity<Person, uint>(4));
+      mockPerson1.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
       mockPerson2.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-      mockPerson2.SetupGet(x => x.Id).Returns(4);
+      mockPerson2.SetupGet(x => x.Identity).Returns(4);
       mockPerson2.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson2.Setup(x => x.GetIdentity()).Returns(new Identity<Person, uint>(4));
+      mockPerson2.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
 
+      // Act and assert
       Assert.IsTrue(person1 == person2, "Correct result");
       mockPerson1.Verify(x => x.Equals(It.IsAny<IEntity>()), Times.Never());
       mockPerson2.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
@@ -280,9 +263,9 @@ namespace Test.CSF.Entities
 
     #region contained mocks
     
-    public class Person : Entity<Person,uint> {}
+    public class Person : Entity<uint> {}
 
-    public class Product : Entity<Product,uint> {}
+    public class Product : Entity<uint> {}
     
     #endregion
   }
