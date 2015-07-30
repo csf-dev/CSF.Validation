@@ -102,8 +102,8 @@ namespace CSF
     /// <param name="date">Date.</param>
     public static DateTime GetLastDayOfMonth(this DateTime date)
     {
-      // TODO: Write this implementation
-      throw new NotImplementedException();
+      var firstDay = new DateTime(date.Year, date.Month, 1);
+      return firstDay.AddMonths(1).AddDays(-1);
     }
   }
 }
