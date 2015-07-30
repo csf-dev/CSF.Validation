@@ -93,6 +93,18 @@ namespace CSF
       return previousYears + thisYear;
 
     }
+
+    /// <summary>
+    /// Gets a <c>System.DateTime</c> which represents midnight on the last day of the same month represented by the
+    /// given instance.
+    /// </summary>
+    /// <returns>A DateTime representing the last day of the month.</returns>
+    /// <param name="date">Date.</param>
+    public static DateTime GetLastDayOfMonth(this DateTime date)
+    {
+      var firstDay = new DateTime(date.Year, date.Month, 1);
+      return firstDay.AddMonths(1).AddDays(-1);
+    }
   }
 }
 
