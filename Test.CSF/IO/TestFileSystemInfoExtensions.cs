@@ -8,6 +8,52 @@ namespace Test.CSF.IO
   [TestFixture]
   public class TestFileSystemInfoExtensions
   {
+    #region fields
+
+    private DirectoryInfo _testRoot;
+
+    #endregion
+
+    #region setup
+
+    [TestFixtureSetUp]
+    public void FixtureSetup()
+    {
+      var config = global::CSF.Configuration.ConfigurationHelper.GetSection<TestConfiguration>();
+      if(config == null)
+      {
+        string message = String.Format("Serious test error; `{0}' must not be null.", typeof(TestConfiguration).Name);
+        throw new InvalidOperationException(message);
+      }
+
+      var mainRoot = config.GetFilesystemTestingRootPath();
+
+      _testRoot = new DirectoryInfo(Path.Combine(mainRoot.FullName, this.GetType().Name));
+      if(!_testRoot.Exists)
+      {
+        _testRoot.Create();
+      }
+    }
+
+    [SetUp]
+    public void Setup()
+    {
+      _testRoot.Refresh();
+
+      foreach(var file in _testRoot.EnumerateFiles())
+      {
+        File.Delete(file.FullName);
+      }
+      foreach(var dir in _testRoot.EnumerateDirectories())
+      {
+        Directory.Delete(dir.FullName, true);
+      }
+
+      _testRoot.Refresh();
+    }
+
+    #endregion
+
     #region tests
     
     [Test]
@@ -51,6 +97,26 @@ namespace Test.CSF.IO
                       currentDir.GetParent(),
                       "Directory");
       Assert.IsNull(currentDir.Root.GetParent(), "Filesystem root");
+    }
+
+    [Test]
+    [TestCase("foo/bar/baz", '/')]
+    [TestCase("foo", '/')]
+    public void TestCreateRecursive(string relativePath, char separator)
+    {
+      // Arrange
+      var pathParts = relativePath.Split(separator);
+      /* Dismantle and reassemble the path, because we want to be OS independent;
+       * not everyone uses forward-slashes to separate paths.
+       */
+      var reassembledRelativePath = Path.Combine(pathParts);
+      var desiredPath = new DirectoryInfo(Path.Combine(_testRoot.FullName, reassembledRelativePath));
+
+      // Act
+      desiredPath.CreateRecursive();
+
+      // Assert
+      Assert.IsTrue(desiredPath.Exists, "Path has been created");
     }
     
     #endregion
