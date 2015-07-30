@@ -3,14 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <ReleaseVersion>3.2.0</ReleaseVersion>
+    <ReleaseVersion>4.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,24 +34,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-      <Package>nunit-2.4</Package>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Configuration" />
-    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920">
-      <Private>False</Private>
-      <Package>moq-4.0</Package>
-    </Reference>
-    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <Private>False</Private>
-      <Package>nhibernate-3.1</Package>
-    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <Private>False</Private>
-      <Package>iesi.collections-1.0.1</Package>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Common\Dependencies\Iesi.Collections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -146,13 +140,12 @@
     <EmbeddedResource Include="Reflection\TestResource.txt">
       <LogicalName>TestResource.txt</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reflection\TestResourceType.txt">
-      <LogicalName>Test.CSF.Reflection.TestResourceType.txt</LogicalName>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Reflection\TestResourceType.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.CSF.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

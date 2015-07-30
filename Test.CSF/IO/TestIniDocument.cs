@@ -67,7 +67,7 @@ value = another value");
     }
     
     [Test]
-    [ExpectedException(ExceptionType = typeof(FormatException))]
+    [ExpectedException(typeof(FormatException))]
     public void TestReadInvalidFile()
     {
       IniDocument.Read(@"foo = bar
