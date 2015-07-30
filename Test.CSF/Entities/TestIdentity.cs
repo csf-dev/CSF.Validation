@@ -88,6 +88,27 @@ namespace Test.CSF.Entities
       Assert.IsFalse(three != threeAgain, "Identical instances are equal");
     }
 
+    [Test]
+    [Description("This tests issue #56 on the bugtracker")]
+    public void TestEntityInheritance()
+    {
+      // Arrange
+      Person
+        one = new Person() { Identity = 5 },
+        two = new Employee() { Identity = 6 };
+
+      // Act
+      IIdentity<Person>
+        idOne = one.GetIdentity(),
+        idTwo = two.GetIdentity();
+
+      // Assert
+      Assert.AreEqual(typeof(Person), idOne.EntityType, "Entity type one");
+      Assert.AreEqual(typeof(Employee), idTwo.EntityType, "Entity type two");
+      Assert.AreEqual(5, idOne.Value, "Identity one");
+      Assert.AreEqual(6, idTwo.Value, "Identity two");
+    }
+
     #endregion
     
     #region mocks
