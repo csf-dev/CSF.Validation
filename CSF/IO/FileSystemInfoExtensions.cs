@@ -112,8 +112,27 @@ namespace CSF.IO
     /// <param name="info">Info.</param>
     public static void CreateRecursive(this DirectoryInfo info)
     {
-      // TODO: Write this implementation
-      throw new NotImplementedException();
+      if(info == null)
+      {
+        throw new ArgumentNullException("info");
+      }
+
+      if(info == info.Root)
+      {
+        var message = String.Format("Cannot create the root of a file system: {0}", info.Root.FullName);
+        throw new IOException(message);
+      }
+
+      if(!info.Exists)
+      {
+        if(info.Parent != info.Root)
+        {
+          info.Parent.CreateRecursive();
+        }
+
+        info.Create();
+        info.Refresh();
+      }
     }
 
     #endregion
