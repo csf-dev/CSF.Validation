@@ -28,6 +28,8 @@ namespace CSF.IO
   /// </summary>
   public static class FileSystemInfoExtensions
   {
+    #region extension methods
+
     /// <summary>
     /// Determines whether this instance is child of the specified directory.
     /// </summary>
@@ -103,6 +105,18 @@ namespace CSF.IO
       
       return output;
     }
+
+    /// <summary>
+    /// Creates a directory recursively, creating parent directories if required.
+    /// </summary>
+    /// <param name="info">Info.</param>
+    public static void CreateRecursive(this DirectoryInfo info)
+    {
+      // TODO: Write this implementation
+      throw new NotImplementedException();
+    }
+
+    #endregion
   }
 }
 
