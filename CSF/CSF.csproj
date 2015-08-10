@@ -46,7 +46,6 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="IO\ITabularDataParser.cs" />
     <Compile Include="IO\TabularDataParser.cs" />
-    <Compile Include="IO\TabularDataList.cs" />
     <Compile Include="Int32Extensions.cs" />
     <Compile Include="IO\TabularDataWriteOptions.cs" />
     <Compile Include="IO\TabularDataFormat.cs" />
@@ -144,6 +143,10 @@
     <Compile Include="Entities\Identity.cs" />
     <Compile Include="Entities\EntityExtensions.cs" />
     <Compile Include="Entities\IIdentity.cs" />
+    <Compile Include="IO\TabularData.cs" />
+    <Compile Include="IO\TabularArrayData.cs" />
+    <Compile Include="IO\TabularListData.cs" />
+    <Compile Include="IO\TabularDataBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

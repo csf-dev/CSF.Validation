@@ -57,7 +57,7 @@ namespace CSF.IO
     /// <param name='stringData'>
     /// Tabular data formatted as a string.
     /// </param>
-    IList<IList<string>> Read(string stringData);
+    TabularData Read(string stringData);
     
     /// <summary>
     /// Reads the specified string-based data and returns a collection representing the tabular data.
@@ -65,7 +65,7 @@ namespace CSF.IO
     /// <param name='stringDataReader'>
     /// A <see cref="TextReader"/> that reads tabular data, formatted as a string.
     /// </param>
-    IList<IList<string>> Read(TextReader stringDataReader);
+    TabularData Read(TextReader stringDataReader);
     
     /// <summary>
     /// Writes the specified data to a string-based format.
