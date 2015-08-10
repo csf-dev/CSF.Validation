@@ -55,6 +55,45 @@ namespace Test.CSF
       testVal.WithFlags(DateTime.Now);
     }
 
+    [Test]
+    public void TestGetIndividualValues()
+    {
+      // Arrange
+      SecondFlagsEnum
+        testOne = (SecondFlagsEnum) 6,
+        testTwo = (SecondFlagsEnum) 31,
+        testThree = (SecondFlagsEnum) 2,
+        testFour = (SecondFlagsEnum) 0;
+      SecondFlagsEnum[]
+        expectedOne = new SecondFlagsEnum[] { 
+          SecondFlagsEnum.Two, 
+          SecondFlagsEnum.Four
+        },
+        expectedTwo = new SecondFlagsEnum[] { 
+          SecondFlagsEnum.One,
+          SecondFlagsEnum.Two,
+          SecondFlagsEnum.Four,
+          SecondFlagsEnum.Eight,
+          SecondFlagsEnum.Sixteen
+        },
+        expectedThree = new SecondFlagsEnum[] {
+          SecondFlagsEnum.Two
+        },
+        expectedFour = new SecondFlagsEnum[0];
+
+      // Act
+      var resultOne = testOne.GetIndividualValues();
+      var resultTwo = testTwo.GetIndividualValues();
+      var resultThree = testThree.GetIndividualValues();
+      var resultFour = testFour.GetIndividualValues();
+
+      // Assert
+      Assert.AreEqual(expectedOne, resultOne, "Result 1");
+      Assert.AreEqual(expectedTwo, resultTwo, "Result 2");
+      Assert.AreEqual(expectedThree, resultThree, "Result 3");
+      Assert.AreEqual(expectedFour, resultFour, "Result 4");
+    }
+
     #endregion
 
     #region test enumeration
@@ -80,6 +119,20 @@ namespace Test.CSF
       Four = 4,
 
       Eight = 8
+    }
+
+    [Flags]
+    enum SecondFlagsEnum : ulong
+    {
+      One     = 1 << 0,
+
+      Two     = 1 << 1,
+
+      Four    = 1 << 2,
+
+      Eight   = 1 << 3,
+
+      Sixteen = 1 << 4,
     }
     
     #endregion
