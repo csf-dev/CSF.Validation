@@ -15,11 +15,10 @@ namespace Test.CSF.IO
     {
       string input = "foo,bar,baz\r\n" +
                      "wibble,wobble,spong";
-      IList<IList<string>> output;
       ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Csv);
       
-      output = parser.Read(input);
-      Assert.AreEqual(2, output.Count, "Correct row count");
+      var output = parser.Read(input);
+      Assert.AreEqual(2, output.GetRowCount(), "Correct row count");
       Assert.AreEqual("wibble", output[1][0], "Correct data in second row, first column");
       Assert.AreEqual("wobble", output[1][1], "Correct data in second row, second column");
     }
@@ -30,11 +29,10 @@ namespace Test.CSF.IO
       string input = "foo,bar,baz\r\n" +
                      "wibble,    wobble   ,spong\r\n" +
                      "\"  foo\",\"\"\"bar\"\"\",\"A big, \"\"big, test!\"";
-      IList<IList<string>> output;
       ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Csv);
       
-      output = parser.Read(input);
-      Assert.AreEqual(3, output.Count, "Correct row count");
+      var output = parser.Read(input);
+      Assert.AreEqual(3, output.GetRowCount(), "Correct row count");
       Assert.AreEqual("wobble", output[1][1], "Correct data in second row, second column");
       Assert.AreEqual("  foo", output[2][0], "Correct data in third row, first column");
       Assert.AreEqual("\"bar\"", output[2][1], "Correct data in third row, second column");
@@ -47,11 +45,10 @@ namespace Test.CSF.IO
       string input = "foo,bar,baz\r\n" +
                      "wibble,    wobble   ,spong\r\n" +
                      "\"  foo\",\"\"\"bar\"\"\",\"A big, \"\"big, ¥en test!\"";
-      IList<IList<string>> output;
       ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Csv);
       
-      output = parser.Read(input);
-      Assert.AreEqual(3, output.Count, "Correct row count");
+      var output = parser.Read(input);
+      Assert.AreEqual(3, output.GetRowCount(), "Correct row count");
       Assert.AreEqual("wobble", output[1][1], "Correct data in second row, second column");
       Assert.AreEqual("  foo", output[2][0], "Correct data in third row, first column");
       Assert.AreEqual("\"bar\"", output[2][1], "Correct data in third row, second column");
@@ -97,7 +94,6 @@ namespace Test.CSF.IO
                      ",,\r\n" +
                      "r3c1,,\r\n";
       new TabularDataParser(TabularDataFormat.Csv).Read(input);
-      Assert.Fail("Test should not reach this point");
     }
     
     [Test]
@@ -106,7 +102,7 @@ namespace Test.CSF.IO
       string input = "r1c1,,\r\n" +
                      ",,\r\n" +
                      "r3c1,,";
-      IList<IList<string>> output = new TabularDataParser(TabularDataFormat.Csv).Read(input);
+      var output = new TabularDataParser(TabularDataFormat.Csv).Read(input);
       
       Assert.AreEqual("r1c1", output[0][0], "Row 1 column 1");
       Assert.AreEqual(String.Empty, output[0][2], "Row 1 column 3");
@@ -122,11 +118,10 @@ namespace Test.CSF.IO
     {
       string input = "foo\tbar\tbaz\n" +
                      "wibble\twobble\tspong";
-      IList<IList<string>> output;
       ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Tsv);
       
-      output = parser.Read(input);
-      Assert.AreEqual(2, output.Count, "Correct row count");
+      var output = parser.Read(input);
+      Assert.AreEqual(2, output.GetRowCount(), "Correct row count");
       Assert.AreEqual("wibble", output[1][0], "Correct data in second row, first column");
       Assert.AreEqual("wobble", output[1][1], "Correct data in second row, second column");
     }
@@ -137,11 +132,10 @@ namespace Test.CSF.IO
       string input = "foo\tbar\tbaz\n" +
                      "wibble\t    wobble   \tspong\n" +
                      "\"  foo\"\t\"\"\"bar\"\"\"\t\"A big, \"\"big, test!\"";
-      IList<IList<string>> output;
       ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Tsv);
       
-      output = parser.Read(input);
-      Assert.AreEqual(3, output.Count, "Correct row count");
+      var output = parser.Read(input);
+      Assert.AreEqual(3, output.GetRowCount(), "Correct row count");
       Assert.AreEqual("wobble", output[1][1], "Correct data in second row, second column");
       Assert.AreEqual("\"  foo\"", output[2][0], "Correct data in third row, first column");
       Assert.AreEqual("\"\"\"bar\"\"\"", output[2][1], "Correct data in third row, second column");
@@ -154,11 +148,10 @@ namespace Test.CSF.IO
       string input = "foo\tbar\tbaz\n" +
                      "wibble\t    wobble   \tspong\n" +
                      "\"  foo\"\t\"\"\"bar\"\"\"\t\"A big, \"\"big, ¥en test!\"";
-      IList<IList<string>> output;
       ITabularDataParser parser = new TabularDataParser(TabularDataFormat.Tsv);
       
-      output = parser.Read(input);
-      Assert.AreEqual(3, output.Count, "Correct row count");
+      var output = parser.Read(input);
+      Assert.AreEqual(3, output.GetRowCount(), "Correct row count");
       Assert.AreEqual("wobble", output[1][1], "Correct data in second row, second column");
       Assert.AreEqual("\"  foo\"", output[2][0], "Correct data in third row, first column");
       Assert.AreEqual("\"\"\"bar\"\"\"", output[2][1], "Correct data in third row, second column");

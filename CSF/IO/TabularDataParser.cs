@@ -116,9 +116,9 @@ namespace CSF.IO
     /// <param name='stringData'>
     /// Tabular data formatted as a string.
     /// </param>
-    public virtual IList<IList<string>> Read(string stringData)
+    public virtual TabularData Read(string stringData)
     {
-      IList<IList<string>> output;
+      TabularData output;
       
       using(TextReader reader = new StringReader(stringData))
       {
@@ -134,21 +134,30 @@ namespace CSF.IO
     /// <param name='stringDataReader'>
     /// A <see cref="TextReader"/> that reads tabular data, formatted as a string.
     /// </param>
-    public virtual IList<IList<string>> Read(TextReader stringDataReader)
+    public virtual TabularData Read(TextReader stringDataReader)
     {
       TabularDataStream readHelper = this.GetDataStream(stringDataReader);
-      int currentRow = 1;
-      IList<IList<string>> output = null;
+      int currentRow = 1, columnCount = 0;
+      TabularDataBuilder output = null;
       
       try
       {
-        foreach(IList<string> row in readHelper)
+        foreach(var row in readHelper)
         {
           if(output == null)
           {
-            output = new TabularDataList(row.Count);
+            columnCount = row.Count;
+            output = new TabularDataBuilder(columnCount);
           }
-          output.Add(row);
+
+          if(row.Count != columnCount)
+          {
+            string message = String.Format("Invalid tabular data, an error was encountered whilst parsing row {0}.",
+                                           currentRow);
+            throw new ArgumentException(message, "stringDataReader");
+          }
+
+          output.AddRow(row);
           currentRow++;
         }
       }
@@ -171,7 +180,7 @@ namespace CSF.IO
         throw new ArgumentException(message, ex);
       }
       
-      return output;
+      return output.Build();
     }
     
     /// <summary>
@@ -220,21 +229,8 @@ namespace CSF.IO
     /// </param>
     public virtual void Write(IList<IList<string>> data, TextWriter stringDataWriter, TabularDataWriteOptions options)
     {
-      if(data == null)
-      {
-        throw new ArgumentNullException ("data");
-      }
-      
-      for(int rowNumber = 0; rowNumber < data.Count; rowNumber++)
-      {
-        IList<string> row = data[rowNumber];
-        this.Write(row, stringDataWriter, options);
-        
-        if(rowNumber < data.Count - 1)
-        {
-          stringDataWriter.Write(this.Format.RowDelimiter);
-        }
-      }
+      var tabularData = new TabularListData(data);
+      this.Write(tabularData, stringDataWriter, options);
     }
     
     /// <summary>
@@ -311,16 +307,40 @@ namespace CSF.IO
     /// </param>
     public virtual void Write(string[,] data, TextWriter stringDataWriter, TabularDataWriteOptions options)
     {
-      /* What we're doing here is looping over the two dimensional array and turning it into a jagged array.
-       * 
-       * It would actually be a lot better (improved performance) to make the tabular data parser handle the 2d array
-       * natively rather than first performing this (potentially expensive) conversion.
-       * 
-       * Perhaps the ideal solution would use a delegate that accepts the row/column number and an object.  This
-       * delegate would return the string data at the given row/column.  For the jagged array solution the delegate
-       * returns the value at data[row][column] wheras for a 2d array it returns data[row,column].
-       */
-      this.Write(TabularDataList.CreateFrom(data), stringDataWriter, options);
+      var tabularData = new TabularArrayData(data);
+      this.Write(tabularData, stringDataWriter, options);
+    }
+
+    /// <summary>
+    /// Write the specified data to a given <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name='data'>
+    /// The tabular data structure.
+    /// </param>
+    /// <param name='stringDataWriter'>
+    /// A <see cref="TextWriter"/> to write the output to.
+    /// </param>
+    /// <param name='options'>
+    /// The options to use when writing the data.
+    /// </param>
+    public virtual void Write(TabularData data, TextWriter stringDataWriter, TabularDataWriteOptions options)
+    {
+      if(data == null)
+      {
+        throw new ArgumentNullException ("data");
+      }
+
+      int rowCount = data.GetRowCount();
+      for(int rowNumber = 0; rowNumber < rowCount; rowNumber++)
+      {
+        IList<string> row = data[rowNumber];
+        this.Write(row, stringDataWriter, options);
+
+        if(rowNumber < rowCount - 1)
+        {
+          stringDataWriter.Write(this.Format.RowDelimiter);
+        }
+      }
     }
 
     #endregion
