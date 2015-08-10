@@ -22,6 +22,7 @@ using System;
 using CSF.Reflection;
 using System.Reflection;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace CSF
 {
@@ -126,6 +127,44 @@ namespace CSF
         output = numericOriginal & (~numericRemoved);
 
       return (TEnum) Enum.ToObject(enumType, output);
+    }
+
+    /// <summary>
+    /// Breaks a <see cref="FlagsAttribute"/>-decorated enumeration value down into its component parts and returns
+    /// them,
+    /// </summary>
+    /// <returns>The individual enumeration values.</returns>
+    /// <param name="combinedValue">The combined enumeration value.</param>
+    /// <typeparam name="TEnum">The type of enumeration.</typeparam>
+    public static TEnum[] GetIndividualValues<TEnum>(this TEnum combinedValue) where TEnum : struct
+    {
+      var enumType = combinedValue.GetType();
+      if(!enumType.IsEnum)
+      {
+        throw new ArgumentException("Combined value must be an enumerated type.", "combinedValue");
+      }
+      else if(!enumType.HasAttribute<FlagsAttribute>())
+      {
+        throw new ArgumentException("Enumeration type must be decorated with System.FlagsAttribute.", "combinedValue");
+      }
+
+      List<TEnum> output = new List<TEnum>();
+
+      var underlyingValue = GetEnumValue(combinedValue, enumType);
+      int exponent = 0;
+
+      while(underlyingValue > 0 && exponent < 64)
+      {
+        ulong testValue = (ulong) Math.Pow(2, exponent ++);
+
+        if((underlyingValue & testValue) == testValue)
+        {
+          output.Add((TEnum) Enum.ToObject(enumType, testValue));
+          underlyingValue = underlyingValue - testValue;
+        }
+      }
+
+      return output.ToArray();
     }
 
     #endregion
