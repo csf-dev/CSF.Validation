@@ -109,13 +109,6 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Globalization\CultureInfoExtensions.cs" />
-    <Compile Include="Patterns\ServiceLayer\IRequest.cs" />
-    <Compile Include="Patterns\ServiceLayer\IRequestDispatcher.cs" />
-    <Compile Include="Patterns\ServiceLayer\IRequestHandler.cs" />
-    <Compile Include="Patterns\ServiceLayer\Response.cs" />
-    <Compile Include="Patterns\ServiceLayer\RequestDispatchException.cs" />
-    <Compile Include="Patterns\ServiceLayer\RequestDispatcherBase.cs" />
-    <Compile Include="Patterns\ServiceLayer\LocalRequestDispatcher.cs" />
     <Compile Include="Collections\NameValueCollectionExtensions.cs" />
     <Compile Include="NullSafe.cs" />
     <Compile Include="Reflection\Reflect.cs" />
@@ -124,7 +117,6 @@
     <Compile Include="Patterns\SerializedLob\SerializationService.cs" />
     <Compile Include="Patterns\SerializedLob\XmlSerializationContainer.cs" />
     <Compile Include="Collections\IDictionaryExtensions.cs" />
-    <Compile Include="Patterns\ServiceLayer\IRequest`1.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\IEnumerableExtensions.cs" />
     <Compile Include="EnumExtensions.cs" />
@@ -133,17 +125,11 @@
     <Compile Include="Collections\ICollectionExtensions.cs" />
     <Compile Include="Data\IDbCommandExtensions.cs" />
     <Compile Include="Data\InMemoryDataReader.cs" />
-    <Compile Include="Patterns\ServiceLayer\ServiceModel`3.cs" />
-    <Compile Include="Patterns\ServiceLayer\ServiceModel`1.cs" />
-    <Compile Include="Patterns\ServiceLayer\ServiceModel`2.cs" />
-    <Compile Include="Patterns\ServiceLayer\IServiceModel`1.cs" />
     <Compile Include="Collections\ReferenceList.cs" />
     <Compile Include="Collections\IEventBoundCollection`2.cs" />
     <Compile Include="Collections\EventBoundListWrapper`1.cs" />
     <Compile Include="Collections\EventBoundCollectionWrapper`2.cs" />
     <Compile Include="Collections\EventBoundCollectionWrapper`1.cs" />
-    <Compile Include="Patterns\ServiceLayer\RequestHandler`1.cs" />
-    <Compile Include="Patterns\ServiceLayer\RequestHandler`2.cs" />
     <Compile Include="NameReformatter.cs" />
     <Compile Include="LowercaseUnderscoreNameReformatter.cs" />
     <Compile Include="IGuidGenerationStrategy.cs" />
@@ -153,9 +139,6 @@
     <Compile Include="Reflection\NotPermittedInProductionException.cs" />
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="CancelOrProceed.cs" />
-    <Compile Include="Patterns\ServiceLayer\ExceptionHandlingPolicy.cs" />
-    <Compile Include="Patterns\ServiceLayer\InvalidRequestException.cs" />
-    <Compile Include="Patterns\ServiceLayer\RequestNotPermittedException.cs" />
     <Compile Include="Entities\NonExistantEntityException.cs" />
     <Compile Include="Data\IQuery.cs" />
     <Compile Include="Entities\Identity.cs" />
@@ -173,7 +156,6 @@
     <Folder Include="Patterns\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
-    <Folder Include="Patterns\ServiceLayer\" />
     <Folder Include="Patterns\SerializedLob\" />
     <Folder Include="Data\" />
   </ItemGroup>

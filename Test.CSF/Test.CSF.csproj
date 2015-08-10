@@ -82,8 +82,6 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Globalization\TestCultureInfoExtensions.cs" />
-    <Compile Include="Patterns\ServiceLayer\TestRequestDispatcherBase.cs" />
-    <Compile Include="Patterns\ServiceLayer\TestLocalRequestDispatcher.cs" />
     <Compile Include="Collections\TestNameValueCollectionExtensions.cs" />
     <Compile Include="TestNullSafe.cs" />
     <Compile Include="Collections\TestIDictionaryExtensions.cs" />
@@ -116,10 +114,6 @@
       <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
       <Name>CSF.Collections</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Test.CSF.StubAssembly\Test.CSF.StubAssembly.csproj">
-      <Project>{3BE8AC15-E500-479F-9BAE-0B583D842B2E}</Project>
-      <Name>Test.CSF.StubAssembly</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IO\" />
@@ -129,10 +123,8 @@
     <Folder Include="Mocks\" />
     <Folder Include="Cli\" />
     <Folder Include="Security\" />
-    <Folder Include="Patterns\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
-    <Folder Include="Patterns\ServiceLayer\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
