@@ -14,7 +14,7 @@ namespace Test.CSF.Security
       
       IHashAndSaltPair hashAndSalt = service.GenerateHash("foo bar baz", 6);
       
-      Assert.IsInstanceOfType(typeof(BinaryHashAndSaltPair), hashAndSalt, "Output correct type");
+      Assert.IsInstanceOf<BinaryHashAndSaltPair>(hashAndSalt, "Output correct type");
       BinaryHashAndSaltPair typedHashAndSalt = hashAndSalt as BinaryHashAndSaltPair;
       Assert.AreEqual(6, typedHashAndSalt.Salt.Length, "Correct salt length in bytes");
       Assert.AreEqual(32, typedHashAndSalt.Hash.Length, "Correct hash length in bytes");
