@@ -69,8 +69,8 @@ namespace Test.CSF.Collections
 
       list = new EventBoundSetWrapper<StubClass>(new HashedSet<StubClass>(OriginalList));
 
-      Assert.IsInstanceOfType(typeof(ISet<StubClass>), list, "Generic ISet");
-      Assert.IsInstanceOfType(typeof(ISet), list, "Non-generic ISet");
+      Assert.IsInstanceOf<ISet<StubClass>>(list, "Generic ISet");
+      Assert.IsInstanceOf<ISet>(list, "Non-generic ISet");
     }
 
     #endregion

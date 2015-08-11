@@ -35,7 +35,7 @@ namespace Test.CSF
       }
       catch(TargetInvocationException ex)
       {
-        Assert.IsInstanceOfType(typeof(InvalidOperationException), ex.InnerException, "Inner exception");
+        Assert.IsInstanceOf<InvalidOperationException>(ex.InnerException, "Inner exception");
         throw;
       }
     }
@@ -63,7 +63,7 @@ namespace Test.CSF
       }
       catch(TargetInvocationException ex)
       {
-        Assert.IsInstanceOfType(typeof(CustomException), ex.InnerException, "Inner exception");
+        Assert.IsInstanceOf<CustomException>(ex.InnerException, "Inner exception");
         throw;
       }
     }
@@ -91,7 +91,7 @@ namespace Test.CSF
       }
       catch(TargetInvocationException ex)
       {
-        Assert.IsInstanceOfType(typeof(InvalidOperationException), ex.InnerException, "Inner exception");
+        Assert.IsInstanceOf<InvalidOperationException>(ex.InnerException, "Inner exception");
         throw;
       }
     }
@@ -119,7 +119,7 @@ namespace Test.CSF
       }
       catch(TargetInvocationException ex)
       {
-        Assert.IsInstanceOfType(typeof(CustomSerializableException), ex.InnerException, "Inner exception");
+        Assert.IsInstanceOf<CustomSerializableException>(ex.InnerException, "Inner exception");
         throw;
       }
     }
@@ -149,7 +149,7 @@ namespace Test.CSF
       }
       catch(TargetInvocationException ex)
       {
-        Assert.IsInstanceOfType(typeof(CustomSerializableException), ex.InnerException, "Inner exception");
+        Assert.IsInstanceOf<CustomSerializableException>(ex.InnerException, "Inner exception");
         Assert.IsTrue(success, "Success of fix");
         throw;
       }
@@ -187,7 +187,7 @@ namespace Test.CSF
       }
       catch(TargetInvocationException ex)
       {
-        Assert.IsInstanceOfType(typeof(CustomException), ex.InnerException, "Inner exception");
+        Assert.IsInstanceOf<CustomException>(ex.InnerException, "Inner exception");
         Assert.IsFalse(success, "Success of fix");
         throw;
       }
