@@ -55,9 +55,9 @@ namespace CSF
     /// method fails and returns a null result then the next is attempted.
     /// </para>
     /// <list type="number">
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingInternalPreserve"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingPrepForRemoting"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingSerialization"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingInternalPreserve{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingPrepForRemoting{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingSerialization{TException}"/></item>
     /// </list>
     /// <para>
     /// If all of these methods fail to return a result then an exception of type
@@ -134,9 +134,9 @@ namespace CSF
     /// method fails and returns a null result then the next is attempted.
     /// </para>
     /// <list type="number">
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingInternalPreserve"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingPrepForRemoting"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingSerialization"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingInternalPreserve{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingPrepForRemoting{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingSerialization{TException}"/></item>
     /// </list>
     /// <para>
     /// If all of these methods fail to return a result then this method will return false and the
@@ -201,8 +201,8 @@ namespace CSF
     /// framework someday.
     /// </para>
     /// <para>
-    /// This method should only ever be used as part of <see cref="FixStackTrace"/>, which makes a number of
-    /// priority-ordered attempts to fix the stack trace, sticking with the one that works.
+    /// This method should only ever be used as part of <see cref="M:FixStackTrace{TException}"/>, which makes a number
+    /// of priority-ordered attempts to fix the stack trace, sticking with the one that works.
     /// </para>
     /// </remarks>
     /// <returns>
@@ -245,8 +245,8 @@ namespace CSF
     /// framework someday.
     /// </para>
     /// <para>
-    /// This method should only ever be used as part of <see cref="FixStackTrace"/>, which makes a number of
-    /// priority-ordered attempts to fix the stack trace, sticking with the one that works.
+    /// This method should only ever be used as part of <see cref="M:FixStackTrace{TException}"/>, which makes a number
+    /// of priority-ordered attempts to fix the stack trace, sticking with the one that works.
     /// </para>
     /// </remarks>
     /// <returns>
@@ -295,8 +295,8 @@ namespace CSF
     /// add a deserialization constructor.
     /// </para>
     /// <para>
-    /// This method should only ever be used as part of <see cref="FixStackTrace"/>, which makes a number of
-    /// priority-ordered attempts to fix the stack trace, sticking with the one that works.
+    /// This method should only ever be used as part of <see cref="M:FixStackTrace{TException}"/>, which makes a number
+    /// of priority-ordered attempts to fix the stack trace, sticking with the one that works.
     /// </para>
     /// <para>
     /// Credit where it's due; this method almost direct copy-paste of the following StackOverflow answer:

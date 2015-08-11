@@ -145,7 +145,7 @@ namespace CSF.Cli
     }
     
     /// <summary>
-    // Checks that the current instance is a valid parameter.
+    /// Checks that the current instance is a valid parameter.
     /// </summary>
     /// <exception cref='InvalidOperationException'>
     /// Is thrown if the current instance is invalid.

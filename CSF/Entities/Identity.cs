@@ -37,7 +37,8 @@ namespace CSF.Entities
     /// Creates an identity instance generically.
     /// </summary>
     /// <param name="identityValue">Identity value.</param>
-    /// <typeparam name="TIdentity">The 1st type parameter.</typeparam>
+    /// <param name="entityType">The entity type.</param>
+    /// <typeparam name="TIdentity">The identity type.</typeparam>
     public static IIdentity Create<TIdentity>(TIdentity identityValue, Type entityType)
     {
       if(entityType == null)
