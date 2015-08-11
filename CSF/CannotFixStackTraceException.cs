@@ -23,8 +23,8 @@ using System;
 namespace CSF
 {
   /// <summary>
-  /// An exception thrown when <see cref="ExceptionExtensions.FixStackTrace"/> is unable to use any mechanism to fix
-  /// an exception's stack trace.
+  /// An exception thrown when <see cref="M:ExceptionExtensions.FixStackTrace{TException}"/> is unable to use any
+  /// mechanism to fix an exception's stack trace.
   /// </summary>
   public class CannotFixStackTraceException : Exception
   {

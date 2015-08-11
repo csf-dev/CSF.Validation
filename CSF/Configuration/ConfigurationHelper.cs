@@ -35,7 +35,7 @@ namespace CSF.Configuration
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This method uses the default configuration path, retrieved using <see cref="GetDefaultConfigurationPath"/>.
+    /// This method uses the default configuration path, retrieved using <see cref="M:GetDefaultConfigurationPath{TSection}"/>.
     /// </para>
     /// <para>
     /// If the section is not found at the appropriate configuration path, or if the configuration section found at that

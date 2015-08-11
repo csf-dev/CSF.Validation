@@ -34,7 +34,6 @@ namespace CSF.Entities
     /// </summary>
     /// <returns>The identity, or a <c>null</c> reference if the entity does not have an identity.</returns>
     /// <param name="entity">An entity instance.</param>
-    /// <typeparam name="TIdentity">The type of the identity value.</typeparam>
     /// <typeparam name="TEntity">The entity type.</typeparam>
     public static IIdentity<TEntity> GetIdentity<TEntity>(this TEntity entity)
       where TEntity : IEntity

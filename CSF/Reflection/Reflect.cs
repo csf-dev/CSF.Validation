@@ -44,9 +44,6 @@ namespace CSF.Reflection
     /// <typeparam name='TObject'>
     /// The type that contains the member which we are interested in.
     /// </typeparam>
-    /// <typeparam name='TReturn'>
-    /// The return/output type of the member.
-    /// </typeparam>
     /// <exception cref='ArgumentNullException'>
     /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
     /// </exception>
