@@ -86,8 +86,8 @@ namespace Test.CSF.IO
     }
     
     [Test]
-    [ExpectedException(typeof(ArgumentException),
-                       ExpectedMessage = "Invalid tabular data, an error was encountered whilst parsing row 4.")]
+    [ExpectedException(typeof(TabularDataReadException),
+                       ExpectedMessage = "Invalid tabular data; column count does not match first column at row 4.")]
     public void TestReadCsvInvalid()
     {
       string input = "r1c1,,\r\n" +
