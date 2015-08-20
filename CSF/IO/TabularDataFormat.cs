@@ -42,7 +42,7 @@ namespace CSF.IO
     private string _rowDelimiter;
     private TabularDataWriteOptions _defaultWriteOptions;
     private ISet<char> _disallowedCharacters;
-    private bool _trimWhitespace;
+    private bool _trimWhitespace, _tolerateEmptyLines;
 
     private IList<char> CachedCharactersRequiringQuotation;
     
@@ -149,6 +149,18 @@ namespace CSF.IO
     {
       get {
         return _trimWhitespace;
+      }
+    }
+    
+    /// <summary>
+    /// Gets a value indicating whether this <see cref="CSF.IO.TabularDataFormat"/> indicates that empty rows will be
+    /// tolerated (and ignored).
+    /// </summary>
+    /// <value><c>true</c> if empty rows are to be tolerated; otherwise, <c>false</c>.</value>
+    public virtual bool TolerateEmptyRows
+    {
+      get {
+        return _tolerateEmptyLines;
       }
     }
     
@@ -308,13 +320,15 @@ namespace CSF.IO
     /// <param name="defaultWriteOptions">Default write options.</param>
     /// <param name="disallowedCharacters">Disallowed characters.</param>
     /// <param name="trimWhitespace">If set to <c>true</c> trim whitespace.</param>
+    /// <param name="tolerateEmptyRows">Whether or not empty rows will be tolerated.</param>
     public TabularDataFormat(string rowDelimiter,
                              char columnDelimiter = '\t',
                              char? quotationCharacter = null,
                              char? quotationEscapeCharacter = null,
                              TabularDataWriteOptions defaultWriteOptions = TabularDataWriteOptions.None,
                              ISet<char> disallowedCharacters = null,
-                             bool trimWhitespace = false)
+                             bool trimWhitespace = false,
+                             bool tolerateEmptyRows = false)
     {
       if(rowDelimiter == null)
       {
@@ -332,6 +346,7 @@ namespace CSF.IO
       _defaultWriteOptions = defaultWriteOptions;
       _disallowedCharacters = disallowedCharacters?? new HashSet<char>();
       _trimWhitespace = trimWhitespace;
+      _tolerateEmptyLines = tolerateEmptyRows;
 
       this.EnsureValidity();
     }
@@ -383,7 +398,8 @@ namespace CSF.IO
                                    columnDelimiter: ',',
                                    quotationCharacter: '"',
                                    quotationEscapeCharacter: '"',
-                                   trimWhitespace: true);
+                                   trimWhitespace: true,
+                                   tolerateEmptyRows: tolerateEmptyRows);
     }
 
     /// <summary>
