@@ -149,6 +149,7 @@
     <Compile Include="IO\TabularDataBuilder.cs" />
     <Compile Include="ICache.cs" />
     <Compile Include="NotAvailableInCacheException.cs" />
+    <Compile Include="ThreadSafeCache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
