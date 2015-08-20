@@ -147,6 +147,7 @@
     <Compile Include="IO\TabularArrayData.cs" />
     <Compile Include="IO\TabularListData.cs" />
     <Compile Include="IO\TabularDataBuilder.cs" />
+    <Compile Include="IO\TabularDataReadException.cs" />
     <Compile Include="ICache.cs" />
     <Compile Include="NotAvailableInCacheException.cs" />
     <Compile Include="ThreadSafeCache.cs" />

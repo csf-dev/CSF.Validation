@@ -41,9 +41,9 @@ namespace CSF.IO
     private Nullable<char> _quotationCharacter, _quotationEscapeCharacter;
     private string _rowDelimiter;
     private TabularDataWriteOptions _defaultWriteOptions;
-    private IList<char> _disallowedCharacters;
-    private bool _trimWhitespace;
-    
+    private ISet<char> _disallowedCharacters;
+    private bool _trimWhitespace, _tolerateEmptyLines;
+
     private IList<char> CachedCharactersRequiringQuotation;
     
     #endregion
@@ -60,9 +60,6 @@ namespace CSF.IO
     {
       get {
         return _columnDelimiter;
-      }
-      private set {
-        _columnDelimiter = value;
       }
     }
   
@@ -83,18 +80,6 @@ namespace CSF.IO
       get {
         return _rowDelimiter;
       }
-      private set {
-        if(value == null)
-        {
-          throw new ArgumentNullException ("value");
-        }
-        else if(value.Length < 1 || value.Length > 2)
-        {
-          throw new ArgumentException("Row delimiter must be precisely 1 or two characters.");
-        }
-        
-        _rowDelimiter = value;
-      }
     }
   
     /// <summary>
@@ -107,9 +92,6 @@ namespace CSF.IO
     {
       get {
         return _quotationCharacter;
-      }
-      private set {
-        _quotationCharacter = value;
       }
     }
   
@@ -125,9 +107,6 @@ namespace CSF.IO
       get {
         return _quotationEscapeCharacter;
       }
-      private set {
-        _quotationEscapeCharacter = value;
-      }
     }
   
     /// <summary>
@@ -141,9 +120,6 @@ namespace CSF.IO
       get {
         return _defaultWriteOptions;
       }
-      private set {
-        _defaultWriteOptions = value;
-      }
     }
   
     /// <summary>
@@ -155,18 +131,10 @@ namespace CSF.IO
     /// <exception cref='ArgumentNullException'>
     /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
     /// </exception>
-    public virtual IList<char> DisallowedCharacters
+    public virtual IEnumerable<char> DisallowedCharacters
     {
       get {
-        return _disallowedCharacters;
-      }
-      private set {
-        if(value == null)
-        {
-          throw new ArgumentNullException ("value");
-        }
-        
-        _disallowedCharacters = value;
+        return _disallowedCharacters.AsEnumerable();
       }
     }
   
@@ -182,8 +150,17 @@ namespace CSF.IO
       get {
         return _trimWhitespace;
       }
-      private set {
-        _trimWhitespace = value;
+    }
+    
+    /// <summary>
+    /// Gets a value indicating whether this <see cref="CSF.IO.TabularDataFormat"/> indicates that empty rows will be
+    /// tolerated (and ignored).
+    /// </summary>
+    /// <value><c>true</c> if empty rows are to be tolerated; otherwise, <c>false</c>.</value>
+    public virtual bool TolerateEmptyRows
+    {
+      get {
+        return _tolerateEmptyLines;
       }
     }
     
@@ -336,58 +313,42 @@ namespace CSF.IO
     /// <summary>
     /// Initializes a new instance of the <see cref="CSF.IO.TabularDataFormat"/> class.
     /// </summary>
-    private TabularDataFormat ()
+    /// <param name="rowDelimiter">Row delimiter.</param>
+    /// <param name="columnDelimiter">Column delimiter.</param>
+    /// <param name="quotationCharacter">Quotation character.</param>
+    /// <param name="quotationEscapeCharacter">Quotation escape character.</param>
+    /// <param name="defaultWriteOptions">Default write options.</param>
+    /// <param name="disallowedCharacters">Disallowed characters.</param>
+    /// <param name="trimWhitespace">If set to <c>true</c> trim whitespace.</param>
+    /// <param name="tolerateEmptyRows">Whether or not empty rows will be tolerated.</param>
+    public TabularDataFormat(string rowDelimiter,
+                             char columnDelimiter = '\t',
+                             char? quotationCharacter = null,
+                             char? quotationEscapeCharacter = null,
+                             TabularDataWriteOptions defaultWriteOptions = TabularDataWriteOptions.None,
+                             ISet<char> disallowedCharacters = null,
+                             bool trimWhitespace = false,
+                             bool tolerateEmptyRows = false)
     {
-      this.ColumnDelimiter = '\t';
-      this.RowDelimiter = Environment.NewLine;
-      this.QuotationCharacter = null;
-      this.QuotationEscapeCharacter = null;
-      this.DefaultWriteOptions = TabularDataWriteOptions.None;
-      this.DisallowedCharacters = new char[0];
-      this.TrimWhitespace = false;
-      
+      if(rowDelimiter == null)
+      {
+        throw new ArgumentNullException ("rowDelimiter");
+      }
+      else if(rowDelimiter.Length < 1 || rowDelimiter.Length > 2)
+      {
+        throw new ArgumentException("Row delimiter must be precisely 1 or two characters.", "rowDelimiter");
+      }
+
+      _rowDelimiter = rowDelimiter;
+      _columnDelimiter = columnDelimiter;
+      _quotationCharacter = quotationCharacter;
+      _quotationEscapeCharacter = quotationEscapeCharacter;
+      _defaultWriteOptions = defaultWriteOptions;
+      _disallowedCharacters = disallowedCharacters?? new HashSet<char>();
+      _trimWhitespace = trimWhitespace;
+      _tolerateEmptyLines = tolerateEmptyRows;
+
       this.EnsureValidity();
-    }
-    
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CSF.IO.TabularDataFormat"/> class.
-    /// </summary>
-    /// <param name='columnDelimiter'>
-    /// Column delimiter.
-    /// </param>
-    /// <param name='rowDelimiter'>
-    /// Row delimiter.
-    /// </param>
-    /// <param name='quotationCharacter'>
-    /// Quotation character.
-    /// </param>
-    /// <param name='quotationEscapeCharacter'>
-    /// Quotation escape character.
-    /// </param>
-    /// <param name='defaultWriteOptions'>
-    /// Default write options.
-    /// </param>
-    /// <param name='disallowedCharacters'>
-    /// Disallowed characters.
-    /// </param>
-    /// <param name='trimWhitespace'>
-    /// Trim whitespace.
-    /// </param>
-    public TabularDataFormat(char columnDelimiter,
-                             string rowDelimiter,
-                             char? quotationCharacter,
-                             char? quotationEscapeCharacter,
-                             TabularDataWriteOptions defaultWriteOptions,
-                             IList<char> disallowedCharacters,
-                             bool trimWhitespace) : this()
-    {
-      this.ColumnDelimiter = columnDelimiter;
-      this.RowDelimiter = rowDelimiter;
-      this.QuotationCharacter = quotationCharacter;
-      this.QuotationEscapeCharacter = quotationEscapeCharacter;
-      this.DefaultWriteOptions = defaultWriteOptions;
-      this.DisallowedCharacters = disallowedCharacters;
-      this.TrimWhitespace = trimWhitespace;
     }
     
     #endregion
@@ -400,16 +361,11 @@ namespace CSF.IO
     /// <value>
     /// A format instance for CSV data.
     /// </value>
+    [Obsolete("Instead, use the CreateCsv method, which permits passing of tolerance options")]
     public static TabularDataFormat Csv
     {
       get {
-        return new TabularDataFormat() {
-          ColumnDelimiter = ',',
-          QuotationCharacter = '"',
-          QuotationEscapeCharacter = '"',
-          RowDelimiter = "\r\n",
-          TrimWhitespace = true
-        };
+        return CreateCsv();
       }
     }
     
@@ -419,17 +375,44 @@ namespace CSF.IO
     /// <value>
     /// A format instance for TSV data.
     /// </value>
+    [Obsolete("Instead, use the CreateTsv method, which permits passing of tolerance options")]
     public static TabularDataFormat Tsv
     {
       get {
-        return new TabularDataFormat() {
-          ColumnDelimiter = '\t',
-          TrimWhitespace = false,
-          DisallowedCharacters = new char[] { '\t', '\n' }
-        };
+        return CreateTsv();
       }
     }
     
+    #endregion
+
+    #region static methods
+
+    /// <summary>
+    /// Creates a <see cref="TabularDataFormat"/> representing the CSV specification.
+    /// </summary>
+    /// <returns>The format instance.</returns>
+    /// <param name="tolerateEmptyRows"><c>true</c> if empty lines are to be tolerated; <c>false</c> otherwise.</param>
+    public static TabularDataFormat CreateCsv(bool tolerateEmptyRows = false)
+    {
+      return new TabularDataFormat(rowDelimiter: "\r\n",
+                                   columnDelimiter: ',',
+                                   quotationCharacter: '"',
+                                   quotationEscapeCharacter: '"',
+                                   trimWhitespace: true,
+                                   tolerateEmptyRows: tolerateEmptyRows);
+    }
+
+    /// <summary>
+    /// Creates a <see cref="TabularDataFormat"/> representing the TSV specification.
+    /// </summary>
+    /// <returns>The format instance.</returns>
+    public static TabularDataFormat CreateTsv()
+    {
+      return new TabularDataFormat(rowDelimiter: Environment.NewLine,
+                                   columnDelimiter: '\t',
+                                   disallowedCharacters: new HashSet<char>(new [] { '\t', '\n' }));
+    }
+
     #endregion
   }
 }
