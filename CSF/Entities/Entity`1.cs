@@ -1,23 +1,29 @@
-//  
-//  Entity.cs
-//  
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-// 
-//  Copyright (c) 2012 CSF Software Limited
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// Entity`2.cs
+//
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
+//
+// Copyright (c) 2015 CSF Software Limited
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 
 using System;
 using CSF.Collections;
@@ -33,7 +39,7 @@ namespace CSF.Entities
   /// </summary>
   /// <typeparam name="TIdentity">The identity type for the current instance.</typeparam>
   [Serializable]
-  public class Entity<TIdentity> : IEntity, IEquatable<IEntity>, IEquatable<Entity<TIdentity>>
+  public class Entity<TIdentity> : IEntity, IEquatable<IEntity>
   {
     #region fields
     
@@ -114,7 +120,7 @@ namespace CSF.Entities
       }
       else
       {
-        var other = obj as Entity<TIdentity>;
+        var other = obj as IEntity;
         output = ((object) other != null)? this.Equals(other) : false;
       }
 
@@ -138,41 +144,22 @@ namespace CSF.Entities
       {
         output = true;
       }
-      else
-      {
-        var other = obj as Entity<TIdentity>;
-        output = ((object) other != null)? this.Equals(other) : false;
-      }
-
-      return output;
-    }
-    
-    /// <summary>
-    /// Determines whether the specified <see cref="T:CSF.Entities.Entity{TIdentity}"/> is equal to the current
-    /// <see cref="T:CSF.Entities.Entity{TIdentity}"/>.
-    /// </summary>
-    /// <param name="other">The <see cref="T:CSF.Entities.Entity{TIdentity}"/> to compare with the current <see cref="T:CSF.Entities.Entity{TIdentity}"/>.</param>
-    /// <returns>
-    /// <c>true</c> if the specified <see cref="T:CSF.Entities.Entity{TIdentity}"/> is equal to the current
-    /// <see cref="T:CSF.Entities.Entity{TIdentity}"/>; otherwise, <c>false</c>.
-    /// </returns>
-    public virtual bool Equals(Entity<TIdentity> other)
-    {
-      bool output;
-
-      if(Object.ReferenceEquals(this, other))
-      {
-        output = true;
-      }
-      else if((object) other != null)
-      {
-        output = (this.HasIdentity
-                  && other.HasIdentity
-                  && this.GetRawIdentity().Equals(other.GetRawIdentity()));
-      }
-      else
+      else if((object) obj == null)
       {
         output = false;
+      }
+      else if(!this.HasIdentity
+              || !obj.HasIdentity)
+      {
+        output = false;
+      }
+      else
+      {
+        IIdentity
+          myIdentity = this.GetRawIdentity(),
+          theirIdentity = obj.GetRawIdentity();
+
+        output = myIdentity.Equals(theirIdentity);
       }
 
       return output;
@@ -250,19 +237,13 @@ namespace CSF.Entities
     {
       bool output;
 
-      if(Object.ReferenceEquals(objectA, objectB))
+      if((object) objectA != null)
       {
-        output = true;
-      }
-      else if((object) objectA != null)
-      {
-        output = (objectA.HasIdentity
-                  && objectB.HasIdentity
-                  && objectA.GetRawIdentity().Equals(objectB.GetRawIdentity()));
+        output = objectA.Equals(objectB);
       }
       else
       {
-        output = false;
+        output = Object.ReferenceEquals(objectA, objectB);
       }
 
       return output;
@@ -287,19 +268,13 @@ namespace CSF.Entities
     {
       bool output;
 
-      if(Object.ReferenceEquals(objectA, objectB))
+      if((object) objectA != null)
       {
-        output = true;
-      }
-      else if((object) objectA != null)
-      {
-        output = (objectA.HasIdentity
-                  && objectB.HasIdentity
-                  && objectA.GetRawIdentity().Equals(objectB.GetRawIdentity()));
+        output = objectA.Equals(objectB);
       }
       else
       {
-        output = false;
+        output = Object.ReferenceEquals(objectA, objectB);
       }
 
       return output;

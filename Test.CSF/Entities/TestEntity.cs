@@ -1,23 +1,29 @@
-//  
-//  TestEntity.cs
-//  
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-// 
-//  Copyright (c) 2012 CSF Software Limited
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// TestEntity.cs
+//
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
+//
+// Copyright (c) 2015 CSF Software Limited
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 using System;
 using CSF.Entities;
 using NUnit.Framework;
@@ -161,40 +167,6 @@ namespace Test.CSF.Entities
     #region Operator interaction with Equals
 
     [Test]
-    public void TestOperatorEqualsCompareWithSelf()
-    {
-      // Arrange
-      Mock<Person> mockPerson = new Mock<Person>() { CallBase = true };
-
-      Person
-        person1 = mockPerson.Object,
-        person2 = mockPerson.Object;
-
-      mockPerson.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-
-      // Act and assert
-      Assert.IsTrue(person1 == person2, "Correct result");
-      mockPerson.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
-    }
-
-    [Test]
-    public void TestOperatorEqualsCompareWithNull()
-    {
-      // Arrange
-      Mock<Person> mockPerson = new Mock<Person>() { CallBase = true };
-
-      Person
-        person1 = mockPerson.Object,
-        person2 = null;
-
-      mockPerson.Setup(x => x.Equals(It.IsAny<Person>())).Returns(false);
-
-      // Act and assert
-      Assert.IsFalse(person1 == person2, "Correct result");
-      mockPerson.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
-    }
-
-    [Test]
     public void TestOperatorEqualsBothNull()
     {
       // Arrange
@@ -204,59 +176,6 @@ namespace Test.CSF.Entities
 
       // Act and assert
       Assert.IsTrue(person1 == person2, "Correct result");
-    }
-
-    [Test]
-    public void TestOperatorEqualsIdsSame()
-    {
-      // Arrange
-      Mock<Person>
-        mockPerson1 = new Mock<Person>() { CallBase = true },
-        mockPerson2 = new Mock<Person>() { CallBase = true };
-
-      Person
-        person1 = mockPerson1.Object,
-        person2 = mockPerson2.Object;
-
-      mockPerson1.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-      mockPerson1.SetupGet(x => x.Identity).Returns(4);
-      mockPerson1.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson1.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
-      mockPerson2.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-      mockPerson2.SetupGet(x => x.Identity).Returns(4);
-      mockPerson2.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson2.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
-
-      // Act and assert
-      Assert.IsTrue(person1 == person2, "Correct result");
-      mockPerson1.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
-      mockPerson2.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
-    }
-
-    [Test]
-    public void TestOperatorEqualsDownCast()
-    {
-      // Arrange
-      Mock<Person>
-        mockPerson1 = new Mock<Person>() { CallBase = true },
-        mockPerson2 = new Mock<Person>() { CallBase = true };
-
-      Person person1 = mockPerson1.Object;
-      IEntity person2 = mockPerson2.Object;
-
-      mockPerson1.Setup(x => x.Equals(It.IsAny<IEntity>())).Returns(true);
-      mockPerson1.SetupGet(x => x.Identity).Returns(4);
-      mockPerson1.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson1.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
-      mockPerson2.Setup(x => x.Equals(It.IsAny<Person>())).Returns(true);
-      mockPerson2.SetupGet(x => x.Identity).Returns(4);
-      mockPerson2.SetupGet(x => x.HasIdentity).Returns(true);
-      mockPerson2.Setup(x => x.GetRawIdentity()).Returns(new Identity<uint,Person>(4));
-
-      // Act and assert
-      Assert.IsTrue(person1 == person2, "Correct result");
-      mockPerson1.Verify(x => x.Equals(It.IsAny<IEntity>()), Times.Never());
-      mockPerson2.Verify(x => x.Equals(It.IsAny<Person>()), Times.Never());
     }
 
     #endregion
