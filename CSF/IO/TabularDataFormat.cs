@@ -376,7 +376,8 @@ namespace CSF.IO
     /// Creates a <see cref="TabularDataFormat"/> representing the CSV specification.
     /// </summary>
     /// <returns>The format instance.</returns>
-    public static TabularDataFormat CreateCsv()
+    /// <param name="tolerateEmptyRows"><c>true</c> if empty lines are to be tolerated; <c>false</c> otherwise.</param>
+    public static TabularDataFormat CreateCsv(bool tolerateEmptyRows = false)
     {
       return new TabularDataFormat(rowDelimiter: "\r\n",
                                    columnDelimiter: ',',

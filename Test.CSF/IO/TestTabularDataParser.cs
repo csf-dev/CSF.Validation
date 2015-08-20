@@ -108,7 +108,45 @@ namespace Test.CSF.IO
       Assert.AreEqual(String.Empty, output[0][2], "Row 1 column 3");
       Assert.AreEqual("r3c1", output[2][0], "Row 3 column 1");
     }
-    
+
+    [Test]
+    public void TestReadCsvTolerateEmptyLines()
+    {
+      // Arrange
+      string input = "r1c1,,\r\n" +
+        "\r\n" +
+        "r3c1,,";
+
+      // Act
+      var format = TabularDataFormat.CreateCsv(tolerateEmptyRows: true);
+      var output = new TabularDataParser(format).Read(input);
+
+      // Assert
+      Assert.AreEqual(2, output.GetRowCount(), "Row count");
+      Assert.AreEqual(3, output.GetColumnCount(), "Column count");
+      Assert.AreEqual("r1c1", output[0][0], "Row 1 column 1");
+      Assert.AreEqual("r3c1", output[1][0], "Row 2 column 1");
+    }
+
+    [Test]
+    public void TestReadCsvTolerateTrailingLines()
+    {
+      // Arrange
+      string input = "r1c1,,\r\n" +
+        "r3c1,,\r\n" +
+        "\r\n";
+
+      // Act
+      var format = TabularDataFormat.CreateCsv(tolerateEmptyRows: true);
+      var output = new TabularDataParser(format).Read(input);
+
+      // Assert
+      Assert.AreEqual(2, output.GetRowCount(), "Row count");
+      Assert.AreEqual(3, output.GetColumnCount(), "Column count");
+      Assert.AreEqual("r1c1", output[0][0], "Row 1 column 1");
+      Assert.AreEqual("r3c1", output[1][0], "Row 2 column 1");
+    }
+
     #endregion
     
     #region TSV tests
