@@ -152,34 +152,26 @@ namespace CSF.IO
 
           if(row.Count != columnCount)
           {
-            string message = String.Format("Invalid tabular data, an error was encountered whilst parsing row {0}.",
+            string message = String.Format("Invalid tabular data; column count does not match first column at row {0}.",
                                            currentRow);
-            throw new ArgumentException(message, "stringDataReader");
+            throw new TabularDataReadException(message);
           }
 
           output.AddRow(row);
           currentRow++;
         }
       }
-      catch(ArgumentException ex)
+      catch(TabularDataReadException)
       {
-        string message = String.Format("Invalid tabular data, an error was encountered whilst parsing row {0}.",
-                                       currentRow);
-        throw new ArgumentException(message, ex);
+        throw;
       }
-      catch(IOException ex)
+      catch(Exception ex)
       {
-        string message = String.Format("Invalid tabular data, an error was encountered whilst parsing row {0}.",
+        string message = String.Format("Invalid tabular data; an error was encountered whilst parsing row {0}.",
                                        currentRow);
-        throw new ArgumentException(message, ex);
+        throw new TabularDataReadException(message, ex);
       }
-      catch(IndexOutOfRangeException ex)
-      {
-        string message = String.Format("Invalid tabular data, an error was encountered whilst parsing row {0}.",
-                                       currentRow);
-        throw new ArgumentException(message, ex);
-      }
-      
+
       return output.Build();
     }
     
