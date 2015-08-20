@@ -150,7 +150,13 @@ namespace CSF.IO
             output = new TabularDataBuilder(columnCount);
           }
 
-          if(row.Count != columnCount)
+          if(row.Count != columnCount
+             && row.Count == 1
+             && this.Format.TolerateEmptyRows)
+          {
+            continue;
+          }
+          else if(row.Count != columnCount)
           {
             string message = String.Format("Invalid tabular data; column count does not match first column at row {0}.",
                                            currentRow);
