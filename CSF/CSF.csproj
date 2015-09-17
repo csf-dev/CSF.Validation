@@ -67,17 +67,10 @@
     <Compile Include="Validation\ValidationTest`1.cs" />
     <Compile Include="Validation\ValidationTestList.cs" />
     <Compile Include="Validation\ValidationTests.cs" />
-    <Compile Include="Cli\IParsedParameters.cs" />
     <Compile Include="Cli\IParameterParser.cs" />
     <Compile Include="Cli\ParameterBehaviour.cs" />
-    <Compile Include="Cli\IParameter.cs" />
-    <Compile Include="Cli\IParameter`1.cs" />
-    <Compile Include="Cli\ParameterAttribute.cs" />
-    <Compile Include="Cli\Parameter`1.cs" />
     <Compile Include="Cli\ParsedParameters.cs" />
     <Compile Include="Cli\PosixParameterParser.cs" />
-    <Compile Include="Cli\ParameterNameAttribute.cs" />
-    <Compile Include="Cli\ParsedParameters`1.cs" />
     <Compile Include="IO\FileSystemInfoExtensions.cs" />
     <Compile Include="Security\IPasswordService.cs" />
     <Compile Include="Security\IHashAndSaltPair.cs" />
@@ -151,6 +144,11 @@
     <Compile Include="NotAvailableInCacheException.cs" />
     <Compile Include="ThreadSafeCache.cs" />
     <Compile Include="Entities\Entity`1.cs" />
+    <Compile Include="Cli\IParameterParser`1.cs" />
+    <Compile Include="Cli\ParameterParserBuilder`1.cs" />
+    <Compile Include="Cli\ParameterMapping.cs" />
+    <Compile Include="Cli\ParameterParserBuilder.cs" />
+    <Compile Include="Cli\PosixParameterParser`1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

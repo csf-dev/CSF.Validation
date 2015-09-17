@@ -57,7 +57,6 @@
     <Compile Include="Validation\TestValidationFailureList.cs" />
     <Compile Include="Mocks\SampleObject.cs" />
     <Compile Include="Validation\TestValidationTest.cs" />
-    <Compile Include="Cli\TestPosixParameterParser.cs" />
     <Compile Include="IO\TestFileSystemInfoExtensions.cs" />
     <Compile Include="Security\TestBinaryPasswordService.cs" />
     <Compile Include="TestFraction.cs" />
@@ -103,6 +102,10 @@
     <Compile Include="TestGuidExtensions.cs" />
     <Compile Include="TestConfiguration.cs" />
     <Compile Include="TestThreadSafeCache.cs" />
+    <Compile Include="Cli\TestParameterParserBuilder.cs" />
+    <Compile Include="Cli\TestGenericParameterParserBuilder.cs" />
+    <Compile Include="Cli\TestPosixParameterParser.cs" />
+    <Compile Include="Cli\TestGenericPosixParameterParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
