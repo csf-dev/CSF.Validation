@@ -102,6 +102,10 @@
     <Compile Include="TestGuidExtensions.cs" />
     <Compile Include="TestConfiguration.cs" />
     <Compile Include="TestThreadSafeCache.cs" />
+    <Compile Include="Cli\TestParameterParserBuilder.cs" />
+    <Compile Include="Cli\TestGenericParameterParserBuilder.cs" />
+    <Compile Include="Cli\TestPosixParameterParser.cs" />
+    <Compile Include="Cli\TestGenericPosixParameterParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
