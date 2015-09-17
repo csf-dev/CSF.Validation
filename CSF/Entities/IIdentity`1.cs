@@ -1,67 +1,39 @@
-//  
-//  IIdentity`T.cs
-//  
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-// 
-//  Copyright (c) 2012 CSF Software Limited
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// IIdentity`1.cs
+//
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
+//
+// Copyright (c) 2015 CSF Software Limited
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 
 using System;
 
 namespace CSF.Entities
 {
   /// <summary>
-  /// Interface describes an identity instance that uniquely identifies an <see cref="IEntity"/> instance, by its type
-  /// and an identifier value.
+  /// Generic interface for a type which describes the identity of an <see cref="T:Entity{TIdentity}"/>.
   /// </summary>
-  public interface IIdentity<TEntity> : IEquatable<IIdentity<TEntity>> where TEntity : IEntity
+  public interface IIdentity<out TEntity> : IIdentity where TEntity : IEntity
   {
-    /// <summary>
-    /// Gets a <see cref="System.Type"/> that indicates the type of entity that this instance represents.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This will always be the same as the type <c>TEntity</c> that this type is constructed from.
-    /// </para>
-    /// </remarks>
-    /// <value>
-    /// The type of the entity.
-    /// </value>
-    Type EntityType { get; }
-
-    /// <summary>
-    /// Gets a <see cref="System.Type"/> that indicates the type of the identity value that this instance contains.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This essentially exposes the underlying type of the <see cref="Value"/> property.
-    /// </para>
-    /// </remarks>
-    /// <value>
-    /// The type of the contained identity value.
-    /// </value>
-    Type IdentifierType { get; }
-
-    /// <summary>
-    /// Gets the identity value contained within the current instance.
-    /// </summary>
-    /// <value>
-    /// The identity value.
-    /// </value>
-    object Value { get; }
   }
 }
 

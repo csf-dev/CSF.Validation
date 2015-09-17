@@ -1,48 +1,49 @@
-//  
-//  Identity`T.cs
-//  
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-// 
-//  Copyright (c) 2012 CSF Software Limited
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// Identity`2.cs
+//
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
+//
+// Copyright (c) 2015 CSF Software Limited
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 
 using System;
 
 namespace CSF.Entities
 {
   /// <summary>
-  /// <para>
-  /// Describes an immutable identity for an <see cref="IEntity"/>.  This serves as a globally unique identifier for
-  /// that entity within the domain.
-  /// </para>
+  /// Describes an immutable identity for an <see cref="T:Entity{TIdentity}"/>.  This serves as a unique identifier for
+  /// that entity instance within the object model.
   /// </summary>
-  /// <typeparam name="T">
-  /// The underlying type of the <see cref="Value"/> that sets an entity aside from all other entities of the same
-  /// <see cref="Type"/>
-  /// </typeparam>
+  /// <typeparam name="TIdentity">The underlying type of the identity <see cref="Value"/>.</typeparam>
+  /// <typeparam name="TEntity">The type of <see cref="T:Entity{TIdentity}"/> that this object represents.</typeparam>
   [Serializable]
-  public struct Identity<TEntity,TIdentifier>
-    : IIdentity<TEntity>,
-      IEquatable<IIdentity<TEntity>>,
-      IEquatable<Identity<TEntity,TIdentifier>>
-    where TEntity : IEntity
+  public class Identity<TIdentity,TEntity> :  IIdentity<TEntity>,
+                                              IEquatable<IIdentity<TEntity>>,
+                                              IEquatable<Identity<TIdentity,TEntity>>
+                                              where TEntity : IEntity
   {
     #region fields
     
-    private TIdentifier _value;
+    private TIdentity _value;
     
     #endregion
     
@@ -59,35 +60,36 @@ namespace CSF.Entities
     }
 
     /// <summary>
-    /// <para>Read-only.  Gets the type of the identifier <see cref="Value"/>.</para>
+    /// Gets the underlying type of <see cref="Value"/>.
     /// </summary>
-    public Type IdentifierType
+    /// <value>The identity type.</value>
+    public Type IdentityType
     {
       get {
-        return typeof(TIdentifier);
+        return typeof(IIdentity);
       }
     }
-    
+
     /// <summary>
     /// <para>
     /// Read-only.  An <see cref="System.Object"/> of the appropriate generic type that uniquely identifies this entity
     /// amongst all other entities of the same <see cref="Type"/>.
     /// </para>
     /// </summary>
-    public TIdentifier Value
+    public TIdentity Value
     {
       get {
         return _value;
       }
     }
 
-    object IIdentity<TEntity>.Value
+    object IIdentity.Value
     {
       get {
         return this.Value;
       }
     }
-    
+
     #endregion
 
     #region methods
@@ -104,41 +106,65 @@ namespace CSF.Entities
     public override bool Equals (object obj)
     {
       bool output;
-      
-      if(obj is Identity<TEntity,TIdentifier>)
+
+      if(Object.ReferenceEquals(this, obj))
       {
-        output = this.Equals((Identity<TEntity,TIdentifier>) obj);
+        output = true;
       }
       else
       {
-        output = false;
+        Identity<TIdentity,TEntity> other = obj as Identity<TIdentity,TEntity>;
+        output = ((object) other != null)? this.Equals(other) : false;
       }
-      
+
       return output;
     }
 
     /// <summary>
     /// Determines whether the specified identity is equal to the current instance.
     /// </summary>
-    /// <param name='other'>
-    /// The identity to compare with the current instance.
-    /// </param>
+    /// <param name='obj'>The identity to compare with the current instance.</param>
     /// <returns>
     /// <c>true</c> if the specified identity is equal to the current instance; otherwise, <c>false</c>.
     /// </returns>
-    public bool Equals (IIdentity<TEntity> other)
+    public bool Equals (IIdentity obj)
     {
       bool output;
-      
-      if(other is Identity<TEntity,TIdentifier>)
+
+      if(Object.ReferenceEquals(this, obj))
       {
-        output = this.Equals((Identity<TEntity,TIdentifier>) other);
+        output = true;
       }
       else
       {
-        output = false;
+        Identity<TIdentity,TEntity> other = obj as Identity<TIdentity,TEntity>;
+        output = ((object) other != null)? this.Equals(other) : false;
       }
-      
+
+      return output;
+    }
+
+    /// <summary>
+    /// Determines whether the specified identity is equal to the current instance.
+    /// </summary>
+    /// <param name='obj'>The identity to compare with the current instance.</param>
+    /// <returns>
+    /// <c>true</c> if the specified identity is equal to the current instance; otherwise, <c>false</c>.
+    /// </returns>
+    public bool Equals (IIdentity<TEntity> obj)
+    {
+      bool output;
+
+      if(Object.ReferenceEquals(this, obj))
+      {
+        output = true;
+      }
+      else
+      {
+        Identity<TIdentity,TEntity> other = obj as Identity<TIdentity,TEntity>;
+        output = ((object) other != null)? this.Equals(other) : false;
+      }
+
       return output;
     }
 
@@ -151,9 +177,20 @@ namespace CSF.Entities
     /// <returns>
     /// <c>true</c> if the specified identity is equal to the current instance; otherwise, <c>false</c>.
     /// </returns>
-    public bool Equals (Identity<TEntity,TIdentifier> other)
+    public bool Equals (Identity<TIdentity,TEntity> other)
     {
-      return this.Value.Equals(other.Value);
+      bool output;
+
+      if(Object.ReferenceEquals(this, other))
+      {
+        output = true;
+      }
+      else
+      {
+        output = ((object) other != null)? this.Value.Equals(other.Value) : false;
+      }
+
+      return output;
     }
 
     /// <summary>
@@ -180,7 +217,7 @@ namespace CSF.Entities
     /// </returns>
     public override string ToString ()
     {
-      return string.Format ("[{0}: {1}]", this.EntityType.FullName, this.Value.ToString());
+      return string.Format ("[{0}#{1}]", this.EntityType.FullName, this.Value.ToString());
     }
 
     #endregion
@@ -188,12 +225,10 @@ namespace CSF.Entities
     #region constructor
     
     /// <summary>
-    /// <para>Constructs a new identity instance.</para>
+    /// Initializes a new instance of the <see cref="T:CSF.Entities.Identity{TIdentity,TEntity}"/> class.
     /// </summary>
-    /// <param name="identity">
-    /// An identifir of the appropriate generic type
-    /// </param>
-    public Identity(TIdentifier identity)
+    /// <param name="identity">The identity value.</param>
+    public Identity(TIdentity identity)
     {
       _value = identity;
     }
@@ -205,27 +240,20 @@ namespace CSF.Entities
     /// <summary>
     /// Operator overload for testing equality between identity instances.
     /// </summary>
-    /// <param name="objectA">
-    /// An identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An identity instance.
-    /// </param>
-    public static bool operator ==(Identity<TEntity,TIdentifier> objectA, Identity<TEntity,TIdentifier> objectB)
+    /// <param name="objectA">An identity instance.</param>
+    /// <param name="objectB">An identity instance.</param>
+    public static bool operator ==(Identity<TIdentity,TEntity> objectA, Identity<TIdentity,TEntity> objectB)
     {
-      return (objectA.Equals(objectB));
+      return ((object) objectA != null || (object) objectB == null)
+             && objectA.Equals(objectB);
     }
 
     /// <summary>
     /// Operator overload for testing inequality between identity instances.
     /// </summary>
-    /// <param name="objectA">
-    /// An identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An identity instance.
-    /// </param>
-    public static bool operator !=(Identity<TEntity,TIdentifier> objectA, Identity<TEntity,TIdentifier> objectB)
+    /// <param name="objectA">An identity instance.</param>
+    /// <param name="objectB">An identity instance.</param>
+    public static bool operator !=(Identity<TIdentity,TEntity> objectA, Identity<TIdentity,TEntity> objectB)
     {
       return !(objectA == objectB);
     }
@@ -233,27 +261,20 @@ namespace CSF.Entities
     /// <summary>
     /// Operator overload for testing equality between identity instances.
     /// </summary>
-    /// <param name="objectA">
-    /// An identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An identity instance.
-    /// </param>
-    public static bool operator ==(Identity<TEntity,TIdentifier> objectA, IIdentity<TEntity> objectB)
+    /// <param name="objectA">An identity instance.</param>
+    /// <param name="objectB">An identity instance.</param>
+    public static bool operator ==(Identity<TIdentity,TEntity> objectA, IIdentity<TEntity> objectB)
     {
-      return (objectA.Equals(objectB));
+      return ((object) objectA != null || (object) objectB == null)
+             && objectA.Equals(objectB);
     }
 
     /// <summary>
     /// Operator overload for testing inequality between identity instances.
     /// </summary>
-    /// <param name="objectA">
-    /// An identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An identity instance.
-    /// </param>
-    public static bool operator !=(Identity<TEntity,TIdentifier> objectA, IIdentity<TEntity> objectB)
+    /// <param name="objectA">An identity instance.</param>
+    /// <param name="objectB">An identity instance.</param>
+    public static bool operator !=(Identity<TIdentity,TEntity> objectA, IIdentity<TEntity> objectB)
     {
       return !(objectA == objectB);
     }
@@ -261,27 +282,19 @@ namespace CSF.Entities
     /// <summary>
     /// Operator overload for testing equality between identity instances.
     /// </summary>
-    /// <param name="objectA">
-    /// An identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An identity instance.
-    /// </param>
-    public static bool operator ==(IIdentity<TEntity> objectA, Identity<TEntity,TIdentifier> objectB)
+    /// <param name="objectA">An identity instance.</param>
+    /// <param name="objectB">An identity instance.</param>
+    public static bool operator ==(IIdentity<TEntity> objectA, Identity<TIdentity,TEntity> objectB)
     {
-      return (objectB == objectA);
+      return objectB == objectA;
     }
 
     /// <summary>
     /// Operator overload for testing inequality between identity instances.
     /// </summary>
-    /// <param name="objectA">
-    /// An identity instance.
-    /// </param>
-    /// <param name="objectB">
-    /// An identity instance.
-    /// </param>
-    public static bool operator !=(IIdentity<TEntity> objectA, Identity<TEntity,TIdentifier> objectB)
+    /// <param name="objectA">An identity instance.</param>
+    /// <param name="objectB">An identity instance.</param>
+    public static bool operator !=(IIdentity<TEntity> objectA, Identity<TIdentity,TEntity> objectB)
     {
       return !(objectA == objectB);
     }
