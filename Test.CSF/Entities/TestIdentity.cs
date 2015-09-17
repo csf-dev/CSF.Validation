@@ -1,23 +1,29 @@
-//  
-//  TestIdentity.cs
-//  
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-// 
-//  Copyright (c) 2012 CSF Software Limited
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// TestIdentity.cs
+//
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
+//
+// Copyright (c) 2015 CSF Software Limited
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 using System;
 using CSF.Entities;
 using NUnit.Framework;
@@ -34,10 +40,10 @@ namespace Test.CSF.Entities
     {
       string stringTest = "foo bar";
       uint numericTest = 3; 
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Identity<Person,uint> four = new Identity<Person,uint>(4);
-      Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
-      Identity<Product,uint> threeProduct = new Identity<Product,uint>(3);
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Identity<uint,Person> four = new Identity<uint,Person>(4);
+      Identity<uint,Person> threeAgain = new Identity<uint,Person>(3);
+      Identity<uint,Product> threeProduct = new Identity<uint,Product>(3);
       
       Assert.IsFalse(three.Equals(stringTest), "Identity does not equal a string");
       Assert.IsFalse(three.Equals(numericTest), "Identity does not equal a uint");
@@ -52,8 +58,8 @@ namespace Test.CSF.Entities
     [Test]
     public void TestToString()
     {
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Assert.AreEqual(String.Format("[{0}: {1}]", typeof(Person).FullName, 3),
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Assert.AreEqual(String.Format("[{0}#{1}]", typeof(Person).FullName, 3),
                       three.ToString(),
                       "Correct string representation");
     }
@@ -61,9 +67,9 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorEquality()
     {
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Identity<Person,uint> four = new Identity<Person,uint>(4);
-      Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Identity<uint,Person> four = new Identity<uint,Person>(4);
+      Identity<uint,Person> threeAgain = new Identity<uint,Person>(3);
       
       Assert.IsFalse(three == four, "Non-matching identities not equal");
 #pragma warning disable 1718
@@ -76,9 +82,9 @@ namespace Test.CSF.Entities
     [Test]
     public void TestOperatorInequality()
     {
-      Identity<Person,uint> three = new Identity<Person,uint>(3);
-      Identity<Person,uint> four = new Identity<Person,uint>(4);
-      Identity<Person,uint> threeAgain = new Identity<Person,uint>(3);
+      Identity<uint,Person> three = new Identity<uint,Person>(3);
+      Identity<uint,Person> four = new Identity<uint,Person>(4);
+      Identity<uint,Person> threeAgain = new Identity<uint,Person>(3);
 
       Assert.IsTrue(three != four, "Non-matching identities not equal");
 #pragma warning disable 1718
@@ -88,15 +94,36 @@ namespace Test.CSF.Entities
       Assert.IsFalse(three != threeAgain, "Identical instances are equal");
     }
 
+    [Test]
+    [Description("This tests issue #56 on the bugtracker")]
+    public void TestEntityInheritance()
+    {
+      // Arrange
+      Person
+        one = new Person() { Identity = 5 },
+        two = new Employee() { Identity = 6 };
+
+      // Act
+      IIdentity<Person>
+        idOne = one.GetIdentity(),
+        idTwo = two.GetIdentity();
+
+      // Assert
+      Assert.AreEqual(typeof(Person), idOne.EntityType, "Entity type one");
+      Assert.AreEqual(typeof(Employee), idTwo.EntityType, "Entity type two");
+      Assert.AreEqual(5, idOne.Value, "Identity one");
+      Assert.AreEqual(6, idTwo.Value, "Identity two");
+    }
+
     #endregion
     
     #region mocks
     
-    public class Person : Entity<Person,uint> {}
+    public class Person : Entity<uint> {}
     
     public class Employee : Person {}
     
-    public class Product : Entity<Product,uint> {}
+    public class Product : Entity<uint> {}
     
     #endregion
   }

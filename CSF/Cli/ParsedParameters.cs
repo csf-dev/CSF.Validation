@@ -1,27 +1,34 @@
-//  
-//  ParsedParameters.cs
-//  
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
-// 
-//  Copyright (c) 2012 Craig Fowler
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// ParsedParameters.cs
+//
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
+//
+// Copyright (c) 2015 CSF Software Limited
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using CSF.Reflection;
+using System.Linq;
 
 namespace CSF.Cli
 {
@@ -29,130 +36,86 @@ namespace CSF.Cli
   /// Represents the results of a <see cref="IParameterParser"/>'s parsing activity.  Contains the parameters that were
   /// parsed and their values.
   /// </summary>
-  public class ParsedParameters : IParsedParameters
+  public class ParsedParameters
   {
     #region fields
-    
-    private IDictionary<object, IParameter> _parameters;
+
+    private HashSet<object> _flagParameters;
+    private IDictionary<object,string> _valueParameters;
     private IList<string> _remainingArguments;
-    
+
     #endregion
-    
-    #region properties
-    
-    
-    /// <summary>
-    /// Gets a collection of the remaining arguments; these are command-line arguments that have not been treated as
-    /// parameters.
-    /// </summary>
-    /// <value>
-    /// The remaining arguments.
-    /// </value>
-    public IEnumerable<string> RemainingArguments
-    {
-      get {
-        string[] output = new string[_remainingArguments.Count];
-        _remainingArguments.CopyTo(output, 0);
-        return output;
-      }
-    }
-    
-    /// <summary>
-    /// Gets a collection of the <see cref="IParameter"/>s that have been successfully parsed.
-    /// </summary>
-    /// <value>
-    /// The parameters.
-    /// </value>
-    public IEnumerable<IParameter> Parameters
-    {
-      get {
-        return this.BaseParameters.Values;
-      }
-    }
-    
-    /// <summary>
-    /// Gets or sets the parameters that were successfully parsed.
-    /// </summary>
-    /// <value>
-    /// The base parameters.
-    /// </value>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    protected IDictionary<object, IParameter> BaseParameters
-    {
-      get {
-        return _parameters;
-      }
-      private set {
-        if (value == null) {
-          throw new ArgumentNullException ("value");
-        }
-        
-        _parameters = value;
-      }
-    }
-    
-    #endregion
-    
+
     #region methods
-    
+
     /// <summary>
-    /// Gets a value that indicates whether the parameter (identified using the specified <paramref name="identifier"/>)
-    /// is contained within this instance.
+    /// Determines whether this instance has a parameter with the specified identifier.
     /// </summary>
-    /// <param name='identifier'>
-    /// The identifier for this parameter.
-    /// </param>
-    public bool Contains(object identifier)
+    /// <returns><c>true</c> if this instance has a parameter with the specified identifier; otherwise, <c>false</c>.</returns>
+    /// <param name="identifier">Identifier.</param>
+    public bool HasParameter(object identifier)
     {
-      return this.BaseParameters.ContainsKey(identifier);
+      return (_flagParameters.Contains(identifier)
+              || _valueParameters.ContainsKey(identifier));
     }
-    
+
     /// <summary>
-    /// Gets a parameter using the specified identifier.
+    /// Gets the value for a 'value type' parameter.
     /// </summary>
-    /// <param name='identifier'>
-    /// The identifier for this parameter.
-    /// </param>
-    public IParameter Get(object identifier)
+    /// <returns>The parameter value.</returns>
+    /// <param name="identifier">Identifier.</param>
+    public string GetParameterValue(object identifier)
     {
-      return this.BaseParameters[identifier];
+      if(!_valueParameters.ContainsKey(identifier))
+      {
+        throw new ArgumentException("The parsed parameters must contain a parameter of the given identifier",
+                                    "identifier");
+      }
+
+      return _valueParameters[identifier];
     }
-    
+
     /// <summary>
-    /// Gets a strongly-typed parameter using the specified identifier.
+    /// Gets a collection of the remaining <c>System.String</c> positional arguments, which are not parameters.
     /// </summary>
-    /// <param name='identifier'>
-    /// The identifier for this parameter.
-    /// </param>
-    /// <typeparam name='TParameterValue'>
-    /// The value-type for the parameter.
-    /// </typeparam>
-    public IParameter<TParameterValue> Get<TParameterValue>(object identifier)
+    /// <returns>The remaining arguments.</returns>
+    public string[] GetRemainingArguments()
     {
-      return this.Get(identifier) as IParameter<TParameterValue>;
+      return _remainingArguments.ToArray();
     }
-    
+
     #endregion
     
     #region constructors
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CSF.Cli.ParsedParameters"/> class.
     /// </summary>
-    /// <param name='parameters'>
-    /// The parameters that were successfuly parsed in the parsing operation.
-    /// </param>
-    /// <param name='remainingArguments'>
-    /// The remaining arguments.
-    /// </param>
-    public ParsedParameters(IDictionary<object, IParameter> parameters, IList<string> remainingArguments)
+    /// <param name="flagParameters">Flag parameters.</param>
+    /// <param name="valueParameters">Value parameters.</param>
+    /// <param name="remainingArguments">Remaining arguments.</param>
+    public ParsedParameters(IEnumerable<object> flagParameters,
+                            IDictionary<object,string> valueParameters,
+                            IList<string> remainingArguments)
     {
-      this.BaseParameters = parameters;
+      if(flagParameters == null)
+      {
+        throw new ArgumentNullException("flagParameters");
+      }
+      if(valueParameters == null)
+      {
+        throw new ArgumentNullException("valueParameters");
+      }
+      if(remainingArguments == null)
+      {
+        throw new ArgumentNullException("remainingArguments");
+      }
+
+      _flagParameters = new HashSet<object>(flagParameters);
+      _valueParameters = valueParameters;
       _remainingArguments = remainingArguments;
     }
-    
+
     #endregion
   }
 }

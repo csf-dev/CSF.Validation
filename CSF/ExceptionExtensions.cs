@@ -1,23 +1,29 @@
 //
-//  ExceptionExtensions.cs
+// ExceptionExtensions.cs
 //
-//  Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+// Author:
+//       Craig Fowler <craig@csf-dev.com>
 //
-//  Copyright (c) 2013 Craig Fowler
+// Copyright (c) 2015 CSF Software Limited
 //
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 using System;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -55,9 +61,9 @@ namespace CSF
     /// method fails and returns a null result then the next is attempted.
     /// </para>
     /// <list type="number">
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingInternalPreserve"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingPrepForRemoting"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingSerialization"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingInternalPreserve{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingPrepForRemoting{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingSerialization{TException}"/></item>
     /// </list>
     /// <para>
     /// If all of these methods fail to return a result then an exception of type
@@ -134,9 +140,9 @@ namespace CSF
     /// method fails and returns a null result then the next is attempted.
     /// </para>
     /// <list type="number">
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingInternalPreserve"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingPrepForRemoting"/></item>
-    /// <item>An attempt is made using <see cref="FixStackTraceUsingSerialization"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingInternalPreserve{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingPrepForRemoting{TException}"/></item>
+    /// <item>An attempt is made using <see cref="M:FixStackTraceUsingSerialization{TException}"/></item>
     /// </list>
     /// <para>
     /// If all of these methods fail to return a result then this method will return false and the
@@ -201,8 +207,8 @@ namespace CSF
     /// framework someday.
     /// </para>
     /// <para>
-    /// This method should only ever be used as part of <see cref="FixStackTrace"/>, which makes a number of
-    /// priority-ordered attempts to fix the stack trace, sticking with the one that works.
+    /// This method should only ever be used as part of <see cref="M:FixStackTrace{TException}"/>, which makes a number
+    /// of priority-ordered attempts to fix the stack trace, sticking with the one that works.
     /// </para>
     /// </remarks>
     /// <returns>
@@ -245,8 +251,8 @@ namespace CSF
     /// framework someday.
     /// </para>
     /// <para>
-    /// This method should only ever be used as part of <see cref="FixStackTrace"/>, which makes a number of
-    /// priority-ordered attempts to fix the stack trace, sticking with the one that works.
+    /// This method should only ever be used as part of <see cref="M:FixStackTrace{TException}"/>, which makes a number
+    /// of priority-ordered attempts to fix the stack trace, sticking with the one that works.
     /// </para>
     /// </remarks>
     /// <returns>
@@ -295,8 +301,8 @@ namespace CSF
     /// add a deserialization constructor.
     /// </para>
     /// <para>
-    /// This method should only ever be used as part of <see cref="FixStackTrace"/>, which makes a number of
-    /// priority-ordered attempts to fix the stack trace, sticking with the one that works.
+    /// This method should only ever be used as part of <see cref="M:FixStackTrace{TException}"/>, which makes a number
+    /// of priority-ordered attempts to fix the stack trace, sticking with the one that works.
     /// </para>
     /// <para>
     /// Credit where it's due; this method almost direct copy-paste of the following StackOverflow answer:

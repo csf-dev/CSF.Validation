@@ -3,14 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <ReleaseVersion>3.2.0</ReleaseVersion>
+    <ReleaseVersion>4.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,29 +34,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-      <Package>nunit-2.4</Package>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Configuration" />
-    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920">
-      <Private>False</Private>
-      <Package>moq-4.0</Package>
-    </Reference>
-    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <Private>False</Private>
-      <Package>nhibernate-3.1</Package>
-    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <Private>False</Private>
-      <Package>iesi.collections-1.0.1</Package>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Common\Dependencies\Iesi.Collections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="IO\TestTabularDataList.cs" />
     <Compile Include="TestInt32Extensions.cs" />
     <Compile Include="IO\TestTabularDataParser.cs" />
     <Compile Include="IO\TestIniDocument.cs" />
@@ -64,7 +57,6 @@
     <Compile Include="Validation\TestValidationFailureList.cs" />
     <Compile Include="Mocks\SampleObject.cs" />
     <Compile Include="Validation\TestValidationTest.cs" />
-    <Compile Include="Cli\TestPosixParameterParser.cs" />
     <Compile Include="IO\TestFileSystemInfoExtensions.cs" />
     <Compile Include="Security\TestBinaryPasswordService.cs" />
     <Compile Include="TestFraction.cs" />
@@ -88,8 +80,6 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Globalization\TestCultureInfoExtensions.cs" />
-    <Compile Include="Patterns\ServiceLayer\TestRequestDispatcherBase.cs" />
-    <Compile Include="Patterns\ServiceLayer\TestLocalRequestDispatcher.cs" />
     <Compile Include="Collections\TestNameValueCollectionExtensions.cs" />
     <Compile Include="TestNullSafe.cs" />
     <Compile Include="Collections\TestIDictionaryExtensions.cs" />
@@ -104,14 +94,18 @@
     <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\TestEventBoundListWrapper.cs" />
     <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
-    <Compile Include="Entities\TestIdentityParser.cs" />
     <Compile Include="TestBinaryGuidCombStrategy.cs" />
     <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
     <Compile Include="Collections\TestReferenceCollection.cs" />
     <Compile Include="Collections\TestReferenceList.cs" />
     <Compile Include="Collections\TestReferenceSet.cs" />
     <Compile Include="TestGuidExtensions.cs" />
-    <Compile Include="Entities\TestCachingGenericIdentityParser.cs" />
+    <Compile Include="TestConfiguration.cs" />
+    <Compile Include="TestThreadSafeCache.cs" />
+    <Compile Include="Cli\TestParameterParserBuilder.cs" />
+    <Compile Include="Cli\TestGenericParameterParserBuilder.cs" />
+    <Compile Include="Cli\TestPosixParameterParser.cs" />
+    <Compile Include="Cli\TestGenericPosixParameterParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -123,10 +117,6 @@
       <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
       <Name>CSF.Collections</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Test.CSF.StubAssembly\Test.CSF.StubAssembly.csproj">
-      <Project>{3BE8AC15-E500-479F-9BAE-0B583D842B2E}</Project>
-      <Name>Test.CSF.StubAssembly</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IO\" />
@@ -136,23 +126,20 @@
     <Folder Include="Mocks\" />
     <Folder Include="Cli\" />
     <Folder Include="Security\" />
-    <Folder Include="Patterns\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
-    <Folder Include="Patterns\ServiceLayer\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reflection\TestResource.txt">
       <LogicalName>TestResource.txt</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reflection\TestResourceType.txt">
-      <LogicalName>Test.CSF.Reflection.TestResourceType.txt</LogicalName>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Reflection\TestResourceType.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.CSF.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
