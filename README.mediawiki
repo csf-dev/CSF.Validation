@@ -2,7 +2,7 @@
 This is a library of useful utilities created for and by [http://csf-dev.com/ CSF Software Limited].  All source files
 contained within this project are, unless otherwise indicated, copyright © CSF Software Limited.
 At present, the best documentation available is the
-[http://csf-software-development.github.com/csf-software-utilities/api/index.html auto-generated API Documentation].
+[http://csf-dev.github.io/CSF.Core/api/index.html auto-generated API Documentation].
 
 === Open source license ===
 All source files within this project are released as open source software, under the terms of
