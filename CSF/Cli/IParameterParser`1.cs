@@ -1,5 +1,5 @@
-//
-// IParameter`1.cs
+﻿//
+// IParameterParser1.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -23,27 +23,21 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
+using System.Collections.Generic;
 
 namespace CSF.Cli
 {
   /// <summary>
-  /// Interface for a strongly-typed <see cref="IParameter"/> with an explicit associated value type.
+  /// Interface for an instance of <see cref="IParameterParser"/> which parses parameters into an object type.
   /// </summary>
-  public interface IParameter<TParameterValue> : IParameter
+  public interface IParameterParser<TParsed> : IParameterParser where TParsed : class,new()
   {
-    #region methods
-    
     /// <summary>
-    /// Reads the value associated with this parameter.
+    /// Parses the given command line arguments into an instance of <typeparamref name="TParsed" />.
     /// </summary>
-    /// <returns>
-    /// The value.
-    /// </returns>
-    new TParameterValue GetValue();
-    
-    #endregion
+    /// <param name="commandlineArguments">The command line arguments.</param>
+    new TParsed Parse(IList<string> commandlineArguments);
   }
 }
 

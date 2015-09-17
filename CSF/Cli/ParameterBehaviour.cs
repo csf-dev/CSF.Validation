@@ -29,7 +29,7 @@ using System;
 namespace CSF.Cli
 {
   /// <summary>
-  /// Enumerates the possible behaviours for an <see cref="IParameter"/>.
+  /// Enumerates the possible behaviours for an <see cref="ParameterMapping"/>.
   /// </summary>
   public enum ParameterBehaviour
   {
