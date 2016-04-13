@@ -149,6 +149,8 @@
     <Compile Include="Cli\ParameterParserBuilder.cs" />
     <Compile Include="Cli\PosixParameterParser`1.cs" />
     <Compile Include="Data\IQuery`1.cs" />
+    <Compile Include="Data\IQuery.cs" />
+    <Compile Include="Data\QueryExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
