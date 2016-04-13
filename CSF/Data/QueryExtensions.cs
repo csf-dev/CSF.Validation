@@ -1,5 +1,5 @@
 ﻿//
-// IQuery.cs
+// QueryExtensions.cs
 //
 // Author:
 //       Craig Fowler <craig@craigfowler.me.uk>
@@ -24,13 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using CSF.Entities;
 
 namespace CSF.Data
 {
   /// <summary>
-  /// Interface for a query component that is capable of returning a queryable data source.
+  /// Extension methods for <see cref="IQuery"/> instances.
   /// </summary>
-  public interface IQuery
+  public static class QueryExtensions
   {
     /// <summary>
     /// Creates an instance of the given object-type, based upon a theory that it exists in the underlying data-source.
@@ -42,27 +43,63 @@ namespace CSF.Data
     /// could be thrown if that theory object is used.
     /// </para>
     /// </remarks>
-    /// <param name="identityValue">The identity value for the object to retrieve.</param>
-    /// <typeparam name="TQueried">The type of object to retrieve.</typeparam>
-    TQueried Theorise<TQueried>(object identityValue) where TQueried : class;
+    /// <param name="query">The query instance on which to operate.</param>
+    /// <param name="identity">An identity instance.</param>
+    /// <typeparam name="TEntity">The type of object to retrieve.</typeparam>
+    public static TEntity Theorise<TEntity>(this IQuery query,
+                                            IIdentity<TEntity> identity) where TEntity : class,IEntity
+    {
+      if(query == null)
+      {
+        throw new ArgumentNullException(nameof(query));
+      }
+
+      TEntity output;
+
+      if(identity == null || identity.Value == null)
+      {
+        output = null;
+      }
+      else
+      {
+        output = query.Theorise<TEntity>(identity.Value);
+      }
+
+      return output;
+    }
 
     /// <summary>
-    /// Gets a single instance from the underlying data source, identified by an identity value.
+    /// Gets a single instance from the underlying data source, identified by an identity object.
     /// </summary>
     /// <remarks>
     /// <para>
     /// This method will either get an object instance, or it will return <c>null</c> (if no instance is found).
     /// </para>
     /// </remarks>
-    /// <param name="identityValue">The identity value for the object to retrieve.</param>
-    /// <typeparam name="TQueried">The type of object to retrieve.</typeparam>
-    TQueried Get<TQueried>(object identityValue) where TQueried : class;
+    /// <param name="query">The query instance on which to operate.</param>
+    /// <param name="identity">An identity instance.</param>
+    /// <typeparam name="TEntity">The type of object to retrieve.</typeparam>
+    public static TEntity Get<TEntity>(this IQuery query,
+                                       IIdentity<TEntity> identity) where TEntity : class,IEntity
+    {
+      if(query == null)
+      {
+        throw new ArgumentNullException(nameof(query));
+      }
 
-    /// <summary>
-    /// Gets a new queryable data-source.
-    /// </summary>
-    /// <typeparam name="TQueried">The type of queried-for object.</typeparam>
-    TQueried Query<TQueried>() where TQueried : class;
+      TEntity output;
+
+      if(identity == null || identity.Value == null)
+      {
+        output = null;
+      }
+      else
+      {
+        output = query.Get<TEntity>(identity.Value);
+      }
+
+      return output;
+    }
   }
 }
 

@@ -87,21 +87,6 @@ namespace CSF.Entities
     #region methods
 
     /// <summary>
-    /// Gets the raw identity instance contained within the current entity, favour the extension method 'GetIdentity'
-    /// instead.
-    /// </summary>
-    /// <returns>The identity value.</returns>
-    public virtual IIdentity GetRawIdentity()
-    {
-      if(!this.HasIdentity)
-      {
-        throw new InvalidOperationException("The current instance must have an identity, check using HasIdentity().");
-      }
-
-      return _identity;
-    }
-
-    /// <summary>
     /// Determines whether the specified <see cref="System.Object"/> is equal to the current
     /// <see cref="T:CSF.Entities.Entity{TIdentity}"/>.
     /// </summary>
@@ -209,6 +194,30 @@ namespace CSF.Entities
       }
       
       return output;
+    }
+
+    /// <summary>
+    /// Gets the raw identity instance contained within the current entity, favour the extension method 'GetIdentity'
+    /// instead.
+    /// </summary>
+    /// <returns>The identity value.</returns>
+    protected virtual IIdentity GetRawIdentity()
+    {
+      if(!this.HasIdentity)
+      {
+        throw new InvalidOperationException("The current instance must have an identity, check using HasIdentity().");
+      }
+
+      return _identity;
+    }
+
+    #endregion
+
+    #region explicit interface implementations
+
+    IIdentity IEntity.GetRawIdentity()
+    {
+      return this.GetRawIdentity();
     }
 
     #endregion

@@ -9,15 +9,14 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <ReleaseVersion>4.0.0</ReleaseVersion>
-    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <ReleaseVersion>4.1.0</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Release</OutputPath>
+    <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -91,14 +90,11 @@
     <Compile Include="Collections\TestICollectionExtensions.cs" />
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
     <Compile Include="Data\TestInMemoryDataReader.cs" />
-    <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\TestEventBoundListWrapper.cs" />
-    <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
     <Compile Include="TestBinaryGuidCombStrategy.cs" />
     <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
     <Compile Include="Collections\TestReferenceCollection.cs" />
     <Compile Include="Collections\TestReferenceList.cs" />
-    <Compile Include="Collections\TestReferenceSet.cs" />
     <Compile Include="TestGuidExtensions.cs" />
     <Compile Include="TestConfiguration.cs" />
     <Compile Include="TestThreadSafeCache.cs" />
@@ -106,6 +102,9 @@
     <Compile Include="Cli\TestGenericParameterParserBuilder.cs" />
     <Compile Include="Cli\TestPosixParameterParser.cs" />
     <Compile Include="Cli\TestGenericPosixParameterParser.cs" />
+    <Compile Include="Collections\Legacy\TestEventBoundSetWrapper.cs" />
+    <Compile Include="Collections\Legacy\TestIesiCollectionExtensions.cs" />
+    <Compile Include="Collections\Legacy\TestReferenceSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -113,9 +112,9 @@
       <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
       <Name>CSF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSF.Collections\CSF.Collections.csproj">
+    <ProjectReference Include="..\CSF.Collections.Legacy\CSF.Collections.Legacy.csproj">
       <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
-      <Name>CSF.Collections</Name>
+      <Name>CSF.Collections.Legacy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +128,7 @@
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
     <Folder Include="Data\" />
+    <Folder Include="Collections\Legacy\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reflection\TestResource.txt">

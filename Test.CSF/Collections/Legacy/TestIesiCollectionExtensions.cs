@@ -28,9 +28,9 @@ using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Iesi.Collections.Generic;
-using CSF.Collections;
+using CSF.Collections.Legacy;
 
-namespace Test.CSF.Collections
+namespace Test.CSF.Collections.Legacy
 {
   [TestFixture]
   public class TestIesiCollectionExtensions
