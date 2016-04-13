@@ -131,7 +131,6 @@
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="CancelOrProceed.cs" />
     <Compile Include="Entities\NonExistantEntityException.cs" />
-    <Compile Include="Data\IQuery.cs" />
     <Compile Include="Entities\Identity.cs" />
     <Compile Include="Entities\EntityExtensions.cs" />
     <Compile Include="Entities\IIdentity.cs" />
@@ -149,6 +148,7 @@
     <Compile Include="Cli\ParameterMapping.cs" />
     <Compile Include="Cli\ParameterParserBuilder.cs" />
     <Compile Include="Cli\PosixParameterParser`1.cs" />
+    <Compile Include="Data\IQuery`1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
