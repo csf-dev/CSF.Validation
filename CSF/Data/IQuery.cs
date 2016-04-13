@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 
 namespace CSF.Data
 {
@@ -62,7 +63,7 @@ namespace CSF.Data
     /// Gets a new queryable data-source.
     /// </summary>
     /// <typeparam name="TQueried">The type of queried-for object.</typeparam>
-    TQueried Query<TQueried>() where TQueried : class;
+    IQueryable<TQueried> Query<TQueried>() where TQueried : class;
   }
 }
 
