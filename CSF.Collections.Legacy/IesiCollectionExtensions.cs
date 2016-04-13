@@ -1,5 +1,5 @@
 //
-// CommonAssemblyInfo.cs
+// IesiCollectionExtensions.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,22 +24,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
+using System;
+using System.Collections.Generic;
+using Iesi.Collections.Generic;
 
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyProduct("CSF Software Utilities")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
+namespace CSF.Collections.Legacy
+{
+  /// <summary>
+  /// Provides collection extension methods specific to the <c>Iesi.Collections</c> library.
+  /// </summary>
+  public static class IesiCollectionExtensions
+  {
+    /// <summary>
+    /// Converts a generic collection of elements into an equivalent set.
+    /// </summary>
+    /// <returns>
+    /// A generic <c>ISet</c> containing equivalent elements to the source collection.
+    /// </returns>
+    /// <param name='source'>
+    /// A collection.
+    /// </param>
+    /// <typeparam name='T'>
+    /// The type of item contained within the collection.
+    /// </typeparam>
+    public static Iesi.Collections.Generic.ISet<T> ToSet<T>(this ICollection<T> source)
+    {
+      if(source == null)
+      {
+        throw new ArgumentNullException("source");
+      }
 
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
-
-// The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
-// The form "{Major}.{Minor}.*" will automatically update the build and revision,
-// and "{Major}.{Minor}.{Build}.*" will update just the revision.
-
-[assembly: AssemblyVersion("4.1.0")]
+      return new HashedSet<T>(source);
+    }
+  }
+}
 

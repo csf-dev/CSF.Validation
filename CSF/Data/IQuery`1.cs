@@ -1,5 +1,5 @@
 //
-// AssemblyInfo.cs
+// IQuery.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,11 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System;
+using System.Linq;
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Collections")]
-[assembly: AssemblyDescription("Extension to CSF.dll that adds functionality for custom collections.")]
+namespace CSF.Data
+{
+  /// <summary>
+  /// Interface for a generic query component that is capable of returning a queryable data source.
+  /// </summary>
+  [Obsolete("Instead, use the non-generic interface which has generic methods")]
+  public interface IQuery<TQueried> where TQueried : class
+  {
+    /// <summary>
+    /// Gets a new queryable data-source.
+    /// </summary>
+    IQueryable<TQueried> Query();
+  }
+}
 
