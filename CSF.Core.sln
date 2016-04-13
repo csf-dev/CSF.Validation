@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{AD355647
 		utils\bump-versions = utils\bump-versions
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Collections", "CSF.Collections\CSF.Collections.csproj", "{CA00FFB0-ABD0-431D-987F-0DE5BA886575}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Collections.Legacy", "CSF.Collections.Legacy\CSF.Collections.Legacy.csproj", "{CA00FFB0-ABD0-431D-987F-0DE5BA886575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

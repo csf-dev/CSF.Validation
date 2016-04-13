@@ -26,11 +26,11 @@
 
 using System;
 using NUnit.Framework;
-using CSF.Collections;
+using CSF.Collections.Legacy;
 using System.Linq;
 using Iesi.Collections.Generic;
 
-namespace Test.CSF.Collections
+namespace Test.CSF.Collections.Legacy
 {
   [TestFixture]
   public class TestReferenceSet

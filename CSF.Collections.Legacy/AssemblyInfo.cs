@@ -29,6 +29,6 @@ using System.Runtime.CompilerServices;
 using System;
 
 [assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Collections")]
-[assembly: AssemblyDescription("Extension to CSF.dll that adds functionality for custom collections.")]
+[assembly: AssemblyTitle("CSF.Collections.Legacy")]
+[assembly: AssemblyDescription("Extension to CSF.dll collections for legacy ISet collections using an old version of the Iesi.Collections library.")]
 

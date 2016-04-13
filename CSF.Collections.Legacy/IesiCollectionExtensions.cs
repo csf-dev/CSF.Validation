@@ -1,5 +1,5 @@
 //
-// TestIesiCollectionExtensions.cs
+// IesiCollectionExtensions.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,41 +25,36 @@
 // THE SOFTWARE.
 
 using System;
-using NUnit.Framework;
 using System.Collections.Generic;
 using Iesi.Collections.Generic;
-using CSF.Collections;
 
-namespace Test.CSF.Collections
+namespace CSF.Collections.Legacy
 {
-  [TestFixture]
-  public class TestIesiCollectionExtensions
+  /// <summary>
+  /// Provides collection extension methods specific to the <c>Iesi.Collections</c> library.
+  /// </summary>
+  public static class IesiCollectionExtensions
   {
-    [Test]
-    public void TestToSet()
+    /// <summary>
+    /// Converts a generic collection of elements into an equivalent set.
+    /// </summary>
+    /// <returns>
+    /// A generic <c>ISet</c> containing equivalent elements to the source collection.
+    /// </returns>
+    /// <param name='source'>
+    /// A collection.
+    /// </param>
+    /// <typeparam name='T'>
+    /// The type of item contained within the collection.
+    /// </typeparam>
+    public static Iesi.Collections.Generic.ISet<T> ToSet<T>(this ICollection<T> source)
     {
-      ICollection<int> integers = new int[] { 1, 3, 5, 7 };
-      Iesi.Collections.Generic.ISet<int> setIntegers = integers.ToSet();
+      if(source == null)
+      {
+        throw new ArgumentNullException("source");
+      }
 
-      Assert.IsNotNull(setIntegers, "Nullability");
-      Assert.AreEqual(4, setIntegers.Count, "Count");
-      Assert.IsTrue(setIntegers.Contains(1), "Contains 1");
-      Assert.IsTrue(setIntegers.Contains(3), "Contains 3");
-      Assert.IsTrue(setIntegers.Contains(5), "Contains 5");
-      Assert.IsTrue(setIntegers.Contains(7), "Contains 7");
-    }
-
-    [Test]
-    public void TestToSetDuplicates()
-    {
-      ICollection<int> integers = new int[] { 1, 5, 5, 7 };
-      Iesi.Collections.Generic.ISet<int> setIntegers = integers.ToSet();
-
-      Assert.IsNotNull(setIntegers, "Nullability");
-      Assert.AreEqual(3, setIntegers.Count, "Count");
-      Assert.IsTrue(setIntegers.Contains(1), "Contains 1");
-      Assert.IsTrue(setIntegers.Contains(5), "Contains 5");
-      Assert.IsTrue(setIntegers.Contains(7), "Contains 7");
+      return new HashedSet<T>(source);
     }
   }
 }

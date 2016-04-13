@@ -151,6 +151,8 @@
     <Compile Include="Data\IQuery`1.cs" />
     <Compile Include="Data\IQuery.cs" />
     <Compile Include="Data\QueryExtensions.cs" />
+    <Compile Include="Collections\EventBoundSetWrapper.cs" />
+    <Compile Include="Collections\ISetExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

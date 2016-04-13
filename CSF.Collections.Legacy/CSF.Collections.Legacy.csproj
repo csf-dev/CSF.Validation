@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CSF.Collections</RootNamespace>
-    <AssemblyName>CSF.Collections</AssemblyName>
+    <RootNamespace>CSF.Collections.Legacy</RootNamespace>
+    <AssemblyName>CSF.Collections.Legacy</AssemblyName>
     <ReleaseVersion>4.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,7 +23,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DocumentationFile>bin\Debug\CSF.Collections.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\CSF.Collections.Legacy.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
