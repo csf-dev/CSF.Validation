@@ -91,14 +91,11 @@
     <Compile Include="Collections\TestICollectionExtensions.cs" />
     <Compile Include="Data\TestIDbCommandExtensions.cs" />
     <Compile Include="Data\TestInMemoryDataReader.cs" />
-    <Compile Include="Collections\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\TestEventBoundListWrapper.cs" />
-    <Compile Include="Collections\TestEventBoundSetWrapper.cs" />
     <Compile Include="TestBinaryGuidCombStrategy.cs" />
     <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
     <Compile Include="Collections\TestReferenceCollection.cs" />
     <Compile Include="Collections\TestReferenceList.cs" />
-    <Compile Include="Collections\TestReferenceSet.cs" />
     <Compile Include="TestGuidExtensions.cs" />
     <Compile Include="TestConfiguration.cs" />
     <Compile Include="TestThreadSafeCache.cs" />
@@ -106,6 +103,9 @@
     <Compile Include="Cli\TestGenericParameterParserBuilder.cs" />
     <Compile Include="Cli\TestPosixParameterParser.cs" />
     <Compile Include="Cli\TestGenericPosixParameterParser.cs" />
+    <Compile Include="Collections\Legacy\TestEventBoundSetWrapper.cs" />
+    <Compile Include="Collections\Legacy\TestIesiCollectionExtensions.cs" />
+    <Compile Include="Collections\Legacy\TestReferenceSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -113,9 +113,9 @@
       <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
       <Name>CSF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSF.Collections\CSF.Collections.csproj">
+    <ProjectReference Include="..\CSF.Collections\CSF.Collections.Legacy.csproj">
       <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
-      <Name>CSF.Collections</Name>
+      <Name>CSF.Collections.Legacy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +129,7 @@
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
     <Folder Include="Data\" />
+    <Folder Include="Collections\Legacy\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reflection\TestResource.txt">
