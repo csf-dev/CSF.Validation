@@ -32,6 +32,7 @@ namespace CSF.Data
   /// <summary>
   /// Interface for a generic query component that is capable of returning a queryable data source.
   /// </summary>
+  [Obsolete("Instead, use the non-generic interface which has generic methods")]
   public interface IQuery<TQueried> where TQueried : class
   {
     /// <summary>
