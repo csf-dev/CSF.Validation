@@ -9,8 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
     <AssemblyName>Test.CSF</AssemblyName>
-    <ReleaseVersion>4.0.0</ReleaseVersion>
-    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <ReleaseVersion>4.1.0</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -113,7 +112,7 @@
       <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
       <Name>CSF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSF.Collections\CSF.Collections.Legacy.csproj">
+    <ProjectReference Include="..\CSF.Collections.Legacy\CSF.Collections.Legacy.csproj">
       <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
       <Name>CSF.Collections.Legacy</Name>
     </ProjectReference>

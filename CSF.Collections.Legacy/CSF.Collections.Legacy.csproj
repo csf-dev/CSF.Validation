@@ -9,8 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>CSF.Collections.Legacy</RootNamespace>
     <AssemblyName>CSF.Collections.Legacy</AssemblyName>
-    <ReleaseVersion>4.0.0</ReleaseVersion>
-    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <ReleaseVersion>4.1.0</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
