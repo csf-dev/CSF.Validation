@@ -1,5 +1,5 @@
 //
-// UITextAttribute.cs
+// IParameterParser.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,52 +25,29 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 
-namespace CSF.Reflection
+namespace CSF.Cli.Parameters
 {
   /// <summary>
-  /// Attribute to mark the user interface text that corresponds to an enumeration value.
+  /// Base interface for a parameter parser.
   /// </summary>
-  [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-  public class UITextAttribute : Attribute
+  public interface IParameterParser
   {
-    #region properties
-    
+    #region methods
+
     /// <summary>
-    /// Gets or sets the text associated with this attribute.
+    /// Gets a read-only collection of the parameters registered for the current instance.
     /// </summary>
-    /// <value>
-    /// The text.
-    /// </value>
-    public string Text
-    {
-      get;
-      set;
-    }
-    
-    #endregion
-    
-    #region constructor
-    
+    /// <returns>A read-only collection of the registered parameters.</returns>
+    ParameterMapping[] GetRegisteredParameters();
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="CSF.Reflection.UITextAttribute"/> class.
+    /// Parses the given command line arguments into a <see cref="ParsedParameters"/> instance.
     /// </summary>
-    /// <param name='text'>
-    /// Text.
-    /// </param>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    public UITextAttribute(string text)
-    {
-      if(text == null)
-      {
-        throw new ArgumentNullException ("text");
-      }
-      
-      this.Text = text;
-    }
-    
+    /// <param name="commandlineArguments">The command line arguments.</param>
+    ParsedParameters Parse(IList<string> commandlineArguments);
+
     #endregion
   }
 }

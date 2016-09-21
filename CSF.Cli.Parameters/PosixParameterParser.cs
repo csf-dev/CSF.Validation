@@ -30,7 +30,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Linq;
 
-namespace CSF.Cli
+namespace CSF.Cli.Parameters
 {
   /// <summary>
   /// Implementation of an <see cref="IParameterParser"/> that deals with POSIX-style parameters.

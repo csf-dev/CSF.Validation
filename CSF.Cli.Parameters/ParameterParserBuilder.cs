@@ -26,7 +26,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CSF.Cli
+namespace CSF.Cli.Parameters
 {
   /// <summary>
   /// Builder type creates an instance of the non-generic <see cref="IParameterParser"/> and registers parameters which

@@ -98,10 +98,6 @@
     <Compile Include="TestGuidExtensions.cs" />
     <Compile Include="TestConfiguration.cs" />
     <Compile Include="TestThreadSafeCache.cs" />
-    <Compile Include="Cli\TestParameterParserBuilder.cs" />
-    <Compile Include="Cli\TestGenericParameterParserBuilder.cs" />
-    <Compile Include="Cli\TestPosixParameterParser.cs" />
-    <Compile Include="Cli\TestGenericPosixParameterParser.cs" />
     <Compile Include="Collections\Legacy\TestEventBoundSetWrapper.cs" />
     <Compile Include="Collections\Legacy\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\Legacy\TestReferenceSet.cs" />
@@ -123,7 +119,6 @@
     <Folder Include="Reflection\" />
     <Folder Include="Validation\" />
     <Folder Include="Mocks\" />
-    <Folder Include="Cli\" />
     <Folder Include="Security\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />

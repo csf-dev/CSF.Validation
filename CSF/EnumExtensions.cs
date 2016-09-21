@@ -23,11 +23,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using CSF.Reflection;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
+using CSF.Resources;
 using System.Collections.Generic;
 
 namespace CSF
@@ -47,20 +46,36 @@ namespace CSF
     /// <summary>
     /// Determines whether the given enumeration value is a defined value of its parent enumeration.
     /// </summary>
-    /// <returns>
     /// <c>true</c> if the given value is a defined value of its associated enumeration; otherwise, <c>false</c>.
-    /// </returns>
-    /// <param name='value'>
-    /// The enumeration value to analyse.
-    /// </param>
-    public static bool IsDefinedValue(this Enum value)
+    /// <param name="value">The enumeration value to analyse.</param>
+    /// <typeparam name="TEnum">The enumeration type.</typeparam>
+    public static bool IsDefinedValue<TEnum>(this TEnum value) where TEnum : struct
     {
-      if(value == null)
-      {
-        throw new ArgumentNullException("value");
-      }
+      var type = typeof(TEnum);
 
-      return Enum.IsDefined(value.GetType(), value);
+      RequireEnum(type);
+
+      return Enum.IsDefined(typeof(TEnum), value);
+    }
+
+    /// <summary>
+    /// Asserts that the given enumeration value is a defined value of its parent enumeration and raises an
+    /// exception if it is not.
+    /// </summary>
+    /// <exception cref="RequiresDefinedEnumerationConstantException">If the assertion fails.</exception>
+    /// <param name="value">The enumeration value upon which to perform the assertion.</param>
+    /// <param name="name">An object name, to aid in identifying the object should an exception be raised.</param>
+    /// <typeparam name="TEnum">The enumeration type.</typeparam>
+    public static void RequireDefinedValue<TEnum>(this TEnum value, string name) where TEnum : struct
+    {
+      var type = typeof(TEnum);
+
+      RequireEnum(type);
+
+      if(!Enum.IsDefined(typeof(TEnum), value))
+      {
+        throw new RequiresDefinedEnumerationConstantException(value.GetType(), name);
+      }
     }
 
     /// <summary>
@@ -82,12 +97,8 @@ namespace CSF
     {
       Type enumType = typeof(TEnum);
 
-      if(!enumType.IsEnum
-         || !enumType.HasAttribute<FlagsAttribute>())
-      {
-        throw new ArgumentException("This method is valid only on enumerated types decorated with FlagsAttribute.",
-                                    "original");
-      }
+      RequireEnum(enumType);
+      RequireFlagsAttribute(enumType);
 
       Type underlyingType = Enum.GetUnderlyingType(enumType);
 
@@ -118,12 +129,8 @@ namespace CSF
     {
       Type enumType = typeof(TEnum);
 
-      if(!enumType.IsEnum
-         || !enumType.HasAttribute<FlagsAttribute>())
-      {
-        throw new ArgumentException("This method is valid only on enumerated types decorated with FlagsAttribute.",
-                                    "original");
-      }
+      RequireEnum(enumType);
+      RequireFlagsAttribute(enumType);
 
       Type underlyingType = Enum.GetUnderlyingType(enumType);
 
@@ -142,40 +149,53 @@ namespace CSF
     /// <returns>The individual enumeration values.</returns>
     /// <param name="combinedValue">The combined enumeration value.</param>
     /// <typeparam name="TEnum">The type of enumeration.</typeparam>
-    public static TEnum[] GetIndividualValues<TEnum>(this TEnum combinedValue) where TEnum : struct
+    public static IEnumerable<TEnum> GetIndividualValues<TEnum>(this TEnum combinedValue) where TEnum : struct
     {
-      var enumType = combinedValue.GetType();
-      if(!enumType.IsEnum)
+      var enumType = typeof(TEnum);
+
+      RequireEnum(enumType);
+      RequireFlagsAttribute(enumType);
+
+      var numericEnumValue = GetEnumValue(combinedValue, enumType);
+
+      for(int exponent = 0; exponent < 64; exponent++)
       {
-        throw new ArgumentException("Combined value must be an enumerated type.", "combinedValue");
-      }
-      else if(!enumType.HasAttribute<FlagsAttribute>())
-      {
-        throw new ArgumentException("Enumeration type must be decorated with System.FlagsAttribute.", "combinedValue");
-      }
-
-      List<TEnum> output = new List<TEnum>();
-
-      var underlyingValue = GetEnumValue(combinedValue, enumType);
-      int exponent = 0;
-
-      while(underlyingValue > 0 && exponent < 64)
-      {
-        ulong testValue = (ulong) Math.Pow(2, exponent ++);
-
-        if((underlyingValue & testValue) == testValue)
+        if(numericEnumValue == 0)
         {
-          output.Add((TEnum) Enum.ToObject(enumType, testValue));
-          underlyingValue = underlyingValue - testValue;
+          yield break;
+        }
+
+        var testValue = (ulong) Math.Pow(2, exponent);
+
+        if((numericEnumValue & testValue) == testValue)
+        {
+          numericEnumValue -= testValue;
+          yield return (TEnum) Enum.ToObject(enumType, testValue);
         }
       }
+    }
 
-      return output.ToArray();
+    /// <summary>
+    /// Gets a <c>System.Reflection.FieldInfo</c> instance from an enumeration value.
+    /// </summary>
+    /// <returns>
+    /// Information about the member that represents the enumeration value.
+    /// </returns>
+    /// <param name='value'>
+    /// The enumeration value.
+    /// </param>
+    public static FieldInfo GetFieldInfo<TEnum>(this TEnum value) where TEnum : struct
+    {
+      var enumType = typeof(TEnum);
+
+      RequireDefinedValue(enumType, nameof(value));
+
+      return enumType.GetField(value.ToString());
     }
 
     #endregion
 
-    #region static methods
+    #region methods
 
     /// <summary>
     /// Gets the numeric equivalent of an enumeration value, given that the enumeration uses the given underlying type.
@@ -228,7 +248,8 @@ namespace CSF
         break;
 
       default:
-        throw new ArgumentException("The underlying type code must be valid for an enumeration", "underlyingTypeCode");
+        string message = String.Format(ExceptionMessages.TypeCodeMustBeValid, typeof(TypeCode).Name);
+        throw new ArgumentException(message, nameof(underlyingTypeCode));
       }
 
       return output;
@@ -250,10 +271,38 @@ namespace CSF
     {
       if(underlyingType == null)
       {
-        throw new ArgumentNullException("underlyingType");
+        throw new ArgumentNullException(nameof(underlyingType));
       }
 
       return GetEnumValue(value, Type.GetTypeCode(underlyingType));
+    }
+
+    /// <summary>
+    /// Asserts that the given type is an enumeration.
+    /// </summary>
+    /// <param name="type">The type to analyse.</param>
+    internal static void RequireEnum(Type type)
+    {
+      if(!type.IsEnum)
+      {
+        string message = String.Format(ExceptionMessages.OnlySupportedForEnumTypesFormat, type.FullName);
+        throw new NotSupportedException(message);
+      }
+    }
+
+    /// <summary>
+    /// Asserts that the given type is decorated with <c>FlagsAttribute</c>.
+    /// </summary>
+    /// <param name="type">The type to analyse.</param>
+    internal static void RequireFlagsAttribute(Type type)
+    {
+      if(type.GetCustomAttribute<FlagsAttribute>() == null)
+      {
+        string message = String.Format(ExceptionMessages.MustBeDecoratedWithFlagsAttribute,
+                                       typeof(FlagsAttribute).Name,
+                                       type.FullName);
+        throw new NotSupportedException(message);
+      }
     }
 
     #endregion

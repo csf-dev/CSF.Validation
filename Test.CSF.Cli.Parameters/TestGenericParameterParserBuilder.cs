@@ -27,7 +27,6 @@ using System;
 using NUnit.Framework;
 using CSF.Cli;
 using System.Linq;
-using CSF.Reflection;
 
 namespace Test.CSF.Cli
 {

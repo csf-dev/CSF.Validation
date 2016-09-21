@@ -66,10 +66,6 @@
     <Compile Include="Validation\ValidationTest`1.cs" />
     <Compile Include="Validation\ValidationTestList.cs" />
     <Compile Include="Validation\ValidationTests.cs" />
-    <Compile Include="Cli\IParameterParser.cs" />
-    <Compile Include="Cli\ParameterBehaviour.cs" />
-    <Compile Include="Cli\ParsedParameters.cs" />
-    <Compile Include="Cli\PosixParameterParser.cs" />
     <Compile Include="IO\FileSystemInfoExtensions.cs" />
     <Compile Include="Security\IPasswordService.cs" />
     <Compile Include="Security\IHashAndSaltPair.cs" />
@@ -82,13 +78,8 @@
     <Compile Include="MemorySessionStorage.cs" />
     <Compile Include="Configuration\ConnectionStringSettingsExtensions.cs" />
     <Compile Include="VersionExtensions.cs" />
-    <Compile Include="Reflection\MemberInfoExtensions.cs" />
-    <Compile Include="Reflection\EnumExtensions.cs" />
-    <Compile Include="Reflection\UITextAttribute.cs" />
-    <Compile Include="Reflection\TypeExtensions.cs" />
     <Compile Include="Configuration\ConfigurationHelper.cs" />
     <Compile Include="DateTimeEqualityComparer.cs" />
-    <Compile Include="Reflection\AssemblyExtensions.cs" />
     <Compile Include="Collections\OrderNeutralEqualityComparer.cs" />
     <Compile Include="Collections\IListExtensions.cs" />
     <Compile Include="DictionaryEqualityComparer.cs" />
@@ -101,7 +92,6 @@
     <Compile Include="Globalization\CultureInfoExtensions.cs" />
     <Compile Include="Collections\NameValueCollectionExtensions.cs" />
     <Compile Include="NullSafe.cs" />
-    <Compile Include="Reflection\Reflect.cs" />
     <Compile Include="Patterns\SerializedLob\ISerializationContainer.cs" />
     <Compile Include="Patterns\SerializedLob\ISerializationService.cs" />
     <Compile Include="Patterns\SerializedLob\SerializationService.cs" />
@@ -126,7 +116,6 @@
     <Compile Include="DefaultGuidStrategy.cs" />
     <Compile Include="BinaryGuidCombStrategy.cs" />
     <Compile Include="Collections\ReferenceCollection.cs" />
-    <Compile Include="Reflection\NotPermittedInProductionException.cs" />
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="CancelOrProceed.cs" />
     <Compile Include="Entities\NonExistantEntityException.cs" />
@@ -142,29 +131,34 @@
     <Compile Include="NotAvailableInCacheException.cs" />
     <Compile Include="ThreadSafeCache.cs" />
     <Compile Include="Entities\Entity`1.cs" />
-    <Compile Include="Cli\IParameterParser`1.cs" />
-    <Compile Include="Cli\ParameterParserBuilder`1.cs" />
-    <Compile Include="Cli\ParameterMapping.cs" />
-    <Compile Include="Cli\ParameterParserBuilder.cs" />
-    <Compile Include="Cli\PosixParameterParser`1.cs" />
     <Compile Include="Data\IQuery`1.cs" />
     <Compile Include="Data\IQuery.cs" />
     <Compile Include="Data\QueryExtensions.cs" />
     <Compile Include="Collections\EventBoundSetWrapper.cs" />
     <Compile Include="Collections\ISetExtensions.cs" />
+    <Compile Include="Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RequiresDefinedEnumerationConstantException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="IO\" />
     <Folder Include="Collections\" />
-    <Folder Include="Reflection\" />
     <Folder Include="Validation\" />
-    <Folder Include="Cli\" />
     <Folder Include="Security\" />
     <Folder Include="Patterns\" />
     <Folder Include="Configuration\" />
     <Folder Include="Globalization\" />
     <Folder Include="Patterns\SerializedLob\" />
     <Folder Include="Data\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+      <LogicalName>ExceptionMessages.resx</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

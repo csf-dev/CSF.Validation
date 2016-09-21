@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSF.Cli
+namespace CSF.Cli.Parameters
 {
   /// <summary>
   /// Represents the mapping of a single parameter to be used in an <see cref="T:IParameterParser{T}"/>
@@ -106,11 +106,11 @@ namespace CSF.Cli
     {
       if(identifier == null)
       {
-        throw new ArgumentNullException("identifier");
+        throw new ArgumentNullException(nameof(identifier));
       }
       if(!behaviour.IsDefinedValue())
       {
-        throw new ArgumentException("Behaviour must be a defined enumeration constant.", "behaviour");
+        throw new ArgumentException("Behaviour must be a defined enumeration constant.", nameof(behaviour));
       }
 
       _identifier = identifier;

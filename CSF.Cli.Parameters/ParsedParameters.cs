@@ -30,7 +30,7 @@ using System.Linq.Expressions;
 using CSF.Reflection;
 using System.Linq;
 
-namespace CSF.Cli
+namespace CSF.Cli.Parameters
 {
   /// <summary>
   /// Represents the results of a <see cref="IParameterParser"/>'s parsing activity.  Contains the parameters that were
