@@ -28,6 +28,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using CSF.Reflection.Resources;
 
 namespace CSF.Reflection
 {
@@ -36,6 +37,12 @@ namespace CSF.Reflection
   /// </summary>
   public static class Reflect
   {
+    #region constants
+
+    private const string MONO_TYPE = "Mono.Runtime";
+
+    #endregion
+
     #region static member reflection
     
     /// <summary>
@@ -410,7 +417,7 @@ namespace CSF.Reflection
     /// </param>
     public static Type TypeFromAppDomain(string typeName)
     {
-      return TypeFromAppDomain(AppDomain.CurrentDomain, typeName);
+      return TypeFromAppDomain(typeName, AppDomain.CurrentDomain);
     }
 
     /// <summary>
@@ -425,34 +432,25 @@ namespace CSF.Reflection
     /// <param name='typeName'>
     /// The full name of the type to find and return, does not need to be assembly-qualified.
     /// </param>
-    public static Type TypeFromAppDomain(AppDomain domain, string typeName)
+    public static Type TypeFromAppDomain(string typeName, AppDomain domain)
     {
       if(domain == null)
       {
-        throw new ArgumentNullException("domain");
+        throw new ArgumentNullException(nameof(domain));
       }
-      else if(String.IsNullOrEmpty(typeName))
+      if(typeName == null)
       {
-        throw new ArgumentException("Type name may not be null or empty");
+        throw new ArgumentNullException(nameof(typeName));
+      }
+      if(typeName.Length == 0)
+      {
+        throw new ArgumentException(ExceptionMessages.TypeNameMustNotBeEmpty, nameof(typeName));
       }
 
-      var output = domain.GetAssemblies()
-                   .SelectMany(s => s.GetTypes())
-                   .Where(x => x.FullName == typeName);
-
-      if(output.Count() == 0)
-      {
-        string message = String.Format("Could not find type '{0}' in the specified AppDomain", typeName);
-        throw new InvalidOperationException(message);
-      }
-      else if(output.Count() > 1)
-      {
-        string message = String.Format("Error: Multiple types of name '{0}' found in the specified AppDomain",
-                                       typeName);
-        throw new InvalidOperationException(message);
-      }
-
-      return output.First();
+      return domain.GetAssemblies()
+        .SelectMany(s => s.GetTypes())
+        .Where(x => x.FullName == typeName)
+        .SingleOrDefault();
     }
 
     /// <summary>
@@ -464,55 +462,7 @@ namespace CSF.Reflection
     /// </returns>
     public static bool IsMono()
     {
-      return (Type.GetType("Mono.Runtime") != null);
-    }
-
-    /// <summary>
-    /// Used to prevent use of functionality in production builds.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This method will always throw a <see cref="NotPermittedInProductionException"/> if the <c>DEBUG</c> compiler
-    /// directive is not defined.  In a production build (in which <c>DEBUG</c> is not defined), this exception may be
-    /// used to prevent code from executing which is not yet ready to go into production.
-    /// </para>
-    /// </remarks>
-    /// <param name='targetType'>
-    /// The type that contains the forbidden functionality.
-    /// </param>
-    public static void PreventProductionUse(Type targetType)
-    {
-      if(targetType == null)
-      {
-        throw new ArgumentNullException("targetType");
-      }
-
-#if !DEBUG
-      throw new NotPermittedInProductionException(targetType);
-#endif
-    }
-
-    /// <summary>
-    /// Used to prevent use of functionality in production builds.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This method will always throw a <see cref="NotPermittedInProductionException"/> if the <c>DEBUG</c> compiler
-    /// directive is not defined.  In a production build (in which <c>DEBUG</c> is not defined), this exception may be
-    /// used to prevent code from executing which is not yet ready to go into production.
-    /// </para>
-    /// </remarks>
-    /// <param name='targetObject'>
-    /// The object that contains the forbidden functionality.
-    /// </param>
-    public static void PreventProductionUse(object targetObject)
-    {
-      if(targetObject == null)
-      {
-        throw new ArgumentNullException("targetObject");
-      }
-
-      PreventProductionUse(targetObject.GetType());
+      return (Type.GetType(MONO_TYPE) != null);
     }
 
     #endregion
@@ -550,36 +500,29 @@ namespace CSF.Reflection
     /// </exception>
     private static MemberInfo Member(Expression expression)
     {
-      MemberInfo output = null;
-      
       if(expression == null)
       {
-        throw new ArgumentNullException("expression");
+        throw new ArgumentNullException(nameof(expression));
       }
 
-      Expression toParse = expression;
-
-      if(toParse is UnaryExpression)
+      if(expression is UnaryExpression)
       {
-        toParse = ((UnaryExpression) toParse).Operand;
+        return Member(((UnaryExpression) expression).Operand);
       }
 
-      if(toParse is MemberExpression)
+      if(expression is MemberExpression)
       {
-        output = ((MemberExpression) toParse).Member;
+        return ((MemberExpression) expression).Member;
       }
-      else if(toParse is MethodCallExpression)
+      else if(expression is MethodCallExpression)
       {
-        output = ((MethodCallExpression) toParse).Method;
+        return ((MethodCallExpression) expression).Method;
       }
-
-      if(output == null)
+      else
       {
-        throw new ArgumentException(String.Format("Could not retrieve a member from the expression '{0}'.",
-                                                  expression.ToString()));
+        string message = String.Format(ExceptionMessages.ExpressionMustIndicateMember, expression.ToString());
+        throw new ArgumentException(message, nameof(expression));
       }
-      
-      return output;
     }
     
     #endregion

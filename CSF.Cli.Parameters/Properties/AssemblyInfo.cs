@@ -1,10 +1,10 @@
-//
-// ParameterBehaviour.cs
+﻿//
+// AssemblyInfo.cs
 //
 // Author:
-//       Craig Fowler <craig@csf-dev.com>
+//       Craig Fowler <craig@craigfowler.me.uk>
 //
-// Copyright (c) 2015 CSF Software Limited
+// Copyright (c) 2016 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,31 +23,22 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
-namespace CSF.Cli
-{
-  /// <summary>
-  /// Enumerates the possible behaviours for an <see cref="ParameterMapping"/>.
-  /// </summary>
-  public enum ParameterBehaviour
-  {
-    /// <summary>
-    /// Indicates that the parameter is a switch only and may not have an associated value.  It is either present or not
-    /// present.
-    /// </summary>
-    Switch,
-    
-    /// <summary>
-    /// Indicates that the parameter may have an optional value associated with it but that the value is not mandatory.
-    /// </summary>
-    ValueOptional,
-    
-    /// <summary>
-    /// Indicates that the parameter has an associated value and that this value is mandatory.
-    /// </summary>
-    ValueRequired
-  }
-}
+[assembly: CLSCompliant(true)]
+[assembly: AssemblyTitle("CSF.Cli.Parameters")]
+[assembly: AssemblyDescription("A command-line parameter parser")]
+[assembly: AssemblyCompany("CSF Software Limited")]
+[assembly: AssemblyProduct("CSF Software Utilities")]
+[assembly: AssemblyCopyright("CSF Software Limited")]
+
+#if DEBUG
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif
+
+[assembly: AssemblyVersion("5.0.0")]
 

@@ -1,5 +1,5 @@
 //
-// IParameterParser.cs
+// ParameterBehaviour.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,30 +25,29 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
 
-namespace CSF.Cli
+namespace CSF.Cli.Parameters
 {
   /// <summary>
-  /// Base interface for a parameter parser.
+  /// Enumerates the possible behaviours for an <see cref="ParameterMapping"/>.
   /// </summary>
-  public interface IParameterParser
+  public enum ParameterBehaviour
   {
-    #region methods
-
     /// <summary>
-    /// Gets a read-only collection of the parameters registered for the current instance.
+    /// Indicates that the parameter is a switch only and may not have an associated value.  It is either present or not
+    /// present.
     /// </summary>
-    /// <returns>A read-only collection of the registered parameters.</returns>
-    ParameterMapping[] GetRegisteredParameters();
-
+    Switch,
+    
     /// <summary>
-    /// Parses the given command line arguments into a <see cref="ParsedParameters"/> instance.
+    /// Indicates that the parameter may have an optional value associated with it but that the value is not mandatory.
     /// </summary>
-    /// <param name="commandlineArguments">The command line arguments.</param>
-    ParsedParameters Parse(IList<string> commandlineArguments);
-
-    #endregion
+    ValueOptional,
+    
+    /// <summary>
+    /// Indicates that the parameter has an associated value and that this value is mandatory.
+    /// </summary>
+    ValueRequired
   }
 }
 

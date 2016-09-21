@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
-namespace CSF.Cli
+namespace CSF.Cli.Parameters
 {
   /// <summary>
   /// Generic implementation of <see cref="PosixParameterParser"/>, which parses parameters into object instances.
