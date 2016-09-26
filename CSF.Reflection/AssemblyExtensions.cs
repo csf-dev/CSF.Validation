@@ -27,6 +27,7 @@ using System;
 using System.Reflection;
 using System.IO;
 using CSF.Reflection.Resources;
+using System.Resources;
 
 
 namespace CSF.Reflection
@@ -66,7 +67,7 @@ namespace CSF.Reflection
           var message = String.Format(ExceptionMessages.ResourceNotPresent,
                                       resourceName,
                                       assembly.FullName);
-          throw new ResourceNotFoundException(message);
+          throw new MissingManifestResourceException(message);
         }
 
         output = GetResourceText(resourceStream);
@@ -110,7 +111,7 @@ namespace CSF.Reflection
           var message = String.Format(ExceptionMessages.ResourceNotPresent,
                                       String.Format("{0}.{1}", type.Namespace, resourceName),
                                       assembly.FullName);
-          throw new ResourceNotFoundException(message);
+          throw new MissingManifestResourceException(message);
         }
 
         output = GetResourceText(resourceStream);

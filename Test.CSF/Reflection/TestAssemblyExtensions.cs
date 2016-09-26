@@ -28,6 +28,7 @@ using System;
 using System.Reflection;
 using CSF.Reflection;
 using NUnit.Framework;
+using System.Resources;
 
 namespace Test.CSF.Reflection
 {
@@ -42,7 +43,7 @@ namespace Test.CSF.Reflection
     }
 
     [Test]
-    [ExpectedException(typeof(InvalidOperationException))]
+    [ExpectedException(typeof(MissingManifestResourceException))]
     public void TestGetManifestResourceTextInvalid()
     {
       try
@@ -66,7 +67,7 @@ namespace Test.CSF.Reflection
     }
 
     [Test]
-    [ExpectedException(typeof(InvalidOperationException))]
+    [ExpectedException(typeof(MissingManifestResourceException))]
     public void TestGetManifestResourceTextTypeInvalid()
     {
       try
@@ -79,23 +80,6 @@ namespace Test.CSF.Reflection
         throw;
       }
       Assert.Fail("Test should not reach this point");
-    }
-
-    [Test]
-    public void TestGetAttribute()
-    {
-      Assembly assembly = Assembly.GetAssembly(typeof(AssemblyExtensions));
-      AssemblyProductAttribute attrib = assembly.GetAttribute<AssemblyProductAttribute>();
-
-      Assert.IsNotNull(attrib);
-      Assert.AreEqual("CSF Software Utilities", attrib.Product);
-    }
-
-    [Test]
-    public void TestHasAttribute()
-    {
-      Assembly assembly = Assembly.GetAssembly(typeof(AssemblyExtensions));
-      Assert.IsTrue(assembly.HasAttribute<AssemblyProductAttribute>());
     }
   }
 }

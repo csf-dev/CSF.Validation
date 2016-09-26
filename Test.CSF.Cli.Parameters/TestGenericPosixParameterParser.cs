@@ -25,8 +25,8 @@
 // THE SOFTWARE.
 using System;
 using NUnit.Framework;
-using CSF.Cli;
 using System.Collections.Generic;
+using CSF.Cli.Parameters;
 
 namespace Test.CSF.Cli
 {

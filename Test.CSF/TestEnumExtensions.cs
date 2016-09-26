@@ -27,6 +27,7 @@
 using System;
 using NUnit.Framework;
 using CSF;
+using System.Reflection;
 
 namespace Test.CSF
 {
@@ -66,7 +67,7 @@ namespace Test.CSF
     }
 
     [Test]
-    [ExpectedException(typeof(ArgumentException))]
+    [ExpectedException(typeof(NotSupportedException))]
     public void TestWithFlagsNotFlags()
     {
       SampleEnum testVal = SampleEnum.One | SampleEnum.Two;
@@ -74,7 +75,7 @@ namespace Test.CSF
     }
 
     [Test]
-    [ExpectedException(typeof(ArgumentException))]
+    [ExpectedException(typeof(NotSupportedException))]
     public void TestWithFlagsNotEnumeration()
     {
       DateTime testVal = DateTime.Today;
@@ -120,16 +121,22 @@ namespace Test.CSF
       Assert.AreEqual(expectedFour, resultFour, "Result 4");
     }
 
+    [Test]
+    public void TestGetFieldInfo()
+    {
+      FieldInfo field = SampleEnum.Three.GetFieldInfo();
+      Assert.IsNotNull(field, "Field info not null");
+      Assert.AreEqual(SampleEnum.Three.ToString(), field.Name, "Field hsa correct name");
+    }
+
     #endregion
 
     #region test enumeration
     
     enum SampleEnum : int
     {
-      [global::CSF.Reflection.UIText("First")]
       One   = 1,
       
-      [global::CSF.Reflection.UIText("Second")]
       Two   = 2,
       
       Three = 3

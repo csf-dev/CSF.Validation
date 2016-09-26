@@ -30,7 +30,7 @@ using System.Reflection;
 using CSF.Reflection;
 using Iesi.Collections.Generic;
 
-namespace CSF.Collections.Legacy
+namespace CSF.Collections.EventHandling.Legacy
 {
   /// <summary>
   /// Helper type very similar to <see cref="CSF.Collections.ReferenceList"/> but providing the same functionality for

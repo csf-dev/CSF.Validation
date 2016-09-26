@@ -448,7 +448,8 @@ namespace CSF.Reflection
       }
 
       return domain.GetAssemblies()
-        .SelectMany(s => s.GetTypes())
+        .Where(x => !x.IsDynamic)
+        .SelectMany(s => s.GetExportedTypes())
         .Where(x => x.FullName == typeName)
         .SingleOrDefault();
     }

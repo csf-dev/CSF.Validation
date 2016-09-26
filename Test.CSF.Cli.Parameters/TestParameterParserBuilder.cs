@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System;
 using NUnit.Framework;
-using CSF.Cli;
+using CSF.Cli.Parameters;
 using System.Linq;
 
 namespace Test.CSF.Cli
