@@ -28,7 +28,7 @@ using System;
 using System.Collections.Generic;
 using Iesi.Collections.Generic;
 
-namespace CSF.Collections.Legacy
+namespace CSF.Collections.EventHandling.Legacy
 {
   /// <summary>
   /// Provides collection extension methods specific to the <c>Iesi.Collections</c> library.
