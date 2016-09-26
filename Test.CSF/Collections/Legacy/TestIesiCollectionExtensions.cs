@@ -28,7 +28,7 @@ using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Iesi.Collections.Generic;
-using CSF.Collections.Legacy;
+using CSF.Collections.EventHandling.Legacy;
 
 namespace Test.CSF.Collections.Legacy
 {
