@@ -28,6 +28,7 @@ using System;
 using NUnit.Framework;
 using CSF.Collections;
 using System.Collections.Generic;
+using CSF.Collections.EventHandling;
 
 namespace Test.CSF.Collections
 {

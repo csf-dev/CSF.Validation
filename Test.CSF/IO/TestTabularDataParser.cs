@@ -26,7 +26,7 @@
 
 using System;
 using NUnit.Framework;
-using CSF.IO;
+using CSF.TabularData;
 using System.Collections.Generic;
 
 namespace Test.CSF.IO

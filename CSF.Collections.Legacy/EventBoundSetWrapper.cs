@@ -30,7 +30,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Iesi.Collections.Generic;
 
-namespace CSF.Collections.Legacy
+namespace CSF.Collections.EventHandling.Legacy
 {
   /// <summary>
   /// Implementation of a generic <c>EventBoundCollectionWrapper</c> that wraps a generic <c>ISet</c> instance.
