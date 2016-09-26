@@ -28,7 +28,7 @@ using System;
 using System.Linq;
 using Iesi.Collections.Generic;
 
-namespace CSF.Collections.Legacy
+namespace CSF.Collections.EventHandling.Legacy
 {
   /// <summary>
   /// Extension methods to the generic <c>ISet</c> type.

@@ -188,7 +188,7 @@ namespace CSF
     {
       var enumType = typeof(TEnum);
 
-      RequireDefinedValue(enumType, nameof(value));
+      RequireDefinedValue(value, nameof(value));
 
       return enumType.GetField(value.ToString());
     }
