@@ -33,7 +33,7 @@ using Iesi.Collections.Generic;
 namespace CSF.Collections.EventHandling.Legacy
 {
   /// <summary>
-  /// Helper type very similar to <see cref="CSF.Collections.ReferenceList"/> but providing the same functionality for
+  /// Helper type very similar to <see cref="CSF.Collections.EventHandling.ReferenceList"/> but providing the same functionality for
   /// implementors of the generic <c>ISet</c> type.
   /// </summary>
   public static class ReferenceSet
