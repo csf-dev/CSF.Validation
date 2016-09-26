@@ -26,7 +26,7 @@
 
 using System;
 using NUnit.Framework;
-using CSF.Collections.Legacy;
+using CSF.Collections.EventHandling.Legacy;
 using System.Linq;
 using Iesi.Collections.Generic;
 

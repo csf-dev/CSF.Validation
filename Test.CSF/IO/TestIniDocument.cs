@@ -26,7 +26,7 @@
 
 using System;
 using NUnit.Framework;
-using CSF.IO;
+using CSF.IniDocuments;
 
 namespace Test.CSF.IO
 {
