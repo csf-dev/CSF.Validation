@@ -77,7 +77,6 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Globalization\TestCultureInfoExtensions.cs" />
-    <Compile Include="Collections\TestNameValueCollectionExtensions.cs" />
     <Compile Include="TestNullSafe.cs" />
     <Compile Include="Collections\TestIDictionaryExtensions.cs" />
     <Compile Include="Reflection\TestReflect.cs" />
