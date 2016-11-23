@@ -40,75 +40,6 @@ namespace CSF.Collections
     #region extension methods
 
     /// <summary>
-    /// Returns the collection of items as a <see cref="System.String"/>, separated by the given separator.
-    /// </summary>
-    /// <returns>
-    /// A string representation of all of the items within the <paramref name="collection"/>.
-    /// </returns>
-    /// <param name='collection'>
-    /// The collection for which to generate the string representation.
-    /// </param>
-    /// <param name='separator'>
-    /// A separator sequence to appear between every item.
-    /// </param>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    public static string ToSeparatedString(this IEnumerable collection, string separator)
-    {
-      return CreateSeparatedString(collection.Cast<object>(), separator, x => x);
-    }
-
-    /// <summary>
-    /// Returns the collection of items as a <see cref="System.String"/>, separated by the given separator.
-    /// </summary>
-    /// <returns>
-    /// A string representation of all of the items within the <paramref name="collection"/>.
-    /// </returns>
-    /// <param name='collection'>
-    /// The collection for which to generate the string representation.
-    /// </param>
-    /// <param name='separator'>
-    /// A separator sequence to appear between every item.
-    /// </param>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    /// <typeparam name='T'>
-    /// The type of object contained within the <paramref name="collection"/>.
-    /// </typeparam>
-    public static string ToSeparatedString<T>(this IEnumerable<T> collection, string separator)
-    {
-      return CreateSeparatedString<T>(collection, separator, x => x);
-    }
-
-    /// <summary>
-    /// Returns the collection of items as a <see cref="System.String"/>, separated by the given separator.
-    /// </summary>
-    /// <returns>
-    /// A string representation of all of the items within the <paramref name="collection"/>.
-    /// </returns>
-    /// <param name='collection'>
-    /// The collection for which to generate the string representation.
-    /// </param>
-    /// <param name='separator'>
-    /// A separator sequence to appear between every item.
-    /// </param>
-    /// <param name='selector'>
-    /// A selector function to convert each item into a string representation.
-    /// </param>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    /// <typeparam name='T'>
-    /// The type of object contained within the <paramref name="collection"/>.
-    /// </typeparam>
-    public static string ToSeparatedString<T>(this IEnumerable<T> collection, string separator, Func<T,object> selector)
-    {
-      return CreateSeparatedString<T>(collection, separator, selector);
-    }
-
-    /// <summary>
     /// Determines whether the contents of the <paramref name="source"/> collection are the same as the contents of the
     /// collection to <paramref name="compareWith"/>.
     /// </summary>
@@ -220,57 +151,6 @@ namespace CSF.Collections
     #endregion
 
     #region static methods
-
-    /// <summary>
-    /// Returns the collection of items as a <see cref="System.String"/>, separated by the given separator.
-    /// </summary>
-    /// <returns>
-    /// A string representation of all of the items within the <paramref name="collection"/>.
-    /// </returns>
-    /// <param name='collection'>
-    /// The collection for which to generate the string representation.
-    /// </param>
-    /// <param name='separator'>
-    /// A separator sequence to appear between every item.
-    /// </param>
-    /// <param name='selector'>
-    /// A selector function to convert each item into a string representation.
-    /// </param>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    internal static string CreateSeparatedString<T>(IEnumerable<T> collection,
-                                                    string separator,
-                                                    Func<T,object> selector)
-    {
-      StringBuilder output = new StringBuilder();
-      
-      if(collection == null)
-      {
-        throw new ArgumentNullException ("collection");
-      }
-      else if(separator == null)
-      {
-        throw new ArgumentNullException ("separator");
-      }
-      else if(selector == null)
-      {
-        throw new ArgumentNullException("selector");
-      }
-      
-      foreach(T item in collection)
-      {
-        output.Append(selector(item).ToString());
-        output.Append(separator);
-      }
-      
-      if(separator.Length > 0)
-      {
-        output.Remove(output.Length - separator.Length, separator.Length);
-      }
-      
-      return output.ToString();
-    }
 
     /// <summary>
     /// Determines whether the contents of the <paramref name="firstCollection"/> collection are the same as the
