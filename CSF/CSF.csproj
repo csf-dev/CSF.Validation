@@ -77,7 +77,6 @@
     <Compile Include="DefaultGuidStrategy.cs" />
     <Compile Include="BinaryGuidCombStrategy.cs" />
     <Compile Include="GuidExtensions.cs" />
-    <Compile Include="CancelOrProceed.cs" />
     <Compile Include="ICache.cs" />
     <Compile Include="NotAvailableInCacheException.cs" />
     <Compile Include="ThreadSafeCache.cs" />
