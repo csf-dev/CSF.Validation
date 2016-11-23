@@ -75,36 +75,6 @@ namespace Test.CSF.Collections
       Assert.AreEqual(2, source.Count, "Correct count (source)");
     }
 
-    [Test]
-    public void TestToReadOnlyList()
-    {
-      IList<int> integers = new List<int>();
-
-      integers.Add(2);
-      integers.Add(3);
-      integers.Add(4);
-      integers.Add(5);
-
-      IList<int> readonlyIntegers = integers.ToReadOnlyList();
-
-      Assert.IsNotNull(readonlyIntegers, "Output nullability.");
-      Assert.IsTrue(readonlyIntegers.IsReadOnly, "Output read-only state.");
-      Assert.AreEqual(integers.Count, readonlyIntegers.Count, "Output count of elements.");
-    }
-
-    [Test]
-    public void TestToReadOnlyListAlreadyReadOnly()
-    {
-      IList<int> integers = new int[] { 2,3,4,5 };
-
-      IList<int> readonlyIntegers = integers.ToReadOnlyList();
-
-      Assert.IsNotNull(readonlyIntegers, "Output nullability.");
-      Assert.IsTrue(readonlyIntegers.IsReadOnly, "Output read-only state.");
-      Assert.AreEqual(integers.Count, readonlyIntegers.Count, "Output count of elements.");
-      Assert.AreSame(integers, readonlyIntegers, "Output and source are same object reference.");
-    }
-
     #endregion
   }
 }
