@@ -32,11 +32,18 @@ using System.Linq;
 namespace CSF.Collections
 {
   /// <summary>
-  /// Determines whether two enumerations containing a given type are equal.  The order of items in the collections
-  /// does not matter for this comparison.
+  /// Equality comparer determines order-neutral equality between collections of items.  That is, that they contain
+  /// the same items, irrespective of order.
   /// </summary>
-  public class OrderNeutralEqualityComparer<TCollection> : IEqualityComparer
+  public class OrderNeutralEqualityComparer<TCollection>
+    : IEqualityComparer, IEqualityComparer<IEnumerable<TCollection>>
   {
+    #region fields
+
+    private IEqualityComparer<TCollection> _itemComparer;
+
+    #endregion
+
     #region methods
 
     /// <summary>
@@ -54,45 +61,81 @@ namespace CSF.Collections
     /// </param>
     public bool AreEqual(object obj1, object obj2)
     {
-      bool output;
-
       if(Object.ReferenceEquals(obj1, obj2))
       {
-        output = true;
-      }
-      else if(obj1 == null)
-      {
-        output = false;
-      }
-      else
-      {
-        try
-        {
-          IEnumerable<TCollection>
-            enumerable1 = (IEnumerable<TCollection>) obj1,
-            enumerable2 = (IEnumerable<TCollection>) obj2;
-
-          output = (enumerable1.Count() == enumerable2.Count()
-                    && enumerable1.Except(enumerable2).Count() == 0);
-        }
-        catch(InvalidCastException)
-        {
-          output = obj1.Equals(obj2);
-        }
+        return true;
       }
 
-      return output;
+      try
+      {
+        IEnumerable<TCollection>
+          enumerable1 = (IEnumerable<TCollection>) obj1,
+          enumerable2 = (IEnumerable<TCollection>) obj2;
+
+        return AreEqual(enumerable1, enumerable2);
+      }
+      catch(InvalidCastException)
+      {
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// Determines whether two objects are equal, assuming that they are enumerable collections, ignoring the order of
+    /// elements.
+    /// </summary>
+    /// <returns>
+    /// Whether or not the objects are equal.
+    /// </returns>
+    /// <param name='enumerable1'>
+    /// The first object to compare.
+    /// </param>
+    /// <param name='enumerable2'>
+    /// The second object to compare.
+    /// </param>
+    public bool AreEqual(IEnumerable<TCollection> enumerable1, IEnumerable<TCollection> enumerable2)
+    {
+      if(Object.ReferenceEquals(enumerable1, enumerable2))
+      {
+        return true;
+      }
+
+      if((object) enumerable1 == null || (object) enumerable2 == null)
+      {
+        return false;
+      }
+
+      return (enumerable1.Count() == enumerable2.Count()
+              && enumerable1.OrderBy(x => x).SequenceEqual(enumerable2.OrderBy(x => x), _itemComparer));
     }
 
     /// <summary>
     /// Unsupported method would get the hash code for an object.
     /// </summary>
     /// <param name='obj1'>
-    /// Obj1.
+    /// The object for which to get a hash code.
     /// </param>
     public int GetHashCode(object obj1)
     {
-      throw new NotSupportedException();
+      var enumerable = obj1 as IEnumerable<TCollection>;
+
+      if(enumerable != null)
+      {
+        return GetHashCode(enumerable);
+      }
+
+      return (obj1 != null)? obj1.GetHashCode() : 0;
+    }
+
+    /// <summary>
+    /// Unsupported method would get the hash code for an object.
+    /// </summary>
+    /// <param name='enumerable'>
+    /// The object for which to get a hash code.
+    /// </param>
+    public int GetHashCode(IEnumerable<TCollection> enumerable)
+    {
+      return (enumerable != null)? enumerable.OrderBy(x => x).GetHashCode() : 0;
     }
 
     #endregion
@@ -101,7 +144,31 @@ namespace CSF.Collections
 
     bool IEqualityComparer.Equals(object obj1, object obj2)
     {
-      return this.AreEqual(obj1, obj2);
+      return AreEqual(obj1, obj2);
+    }
+
+    bool IEqualityComparer<IEnumerable<TCollection>>.Equals(IEnumerable<TCollection> enumerable1,
+                                                            IEnumerable<TCollection> enumerable2)
+    {
+      return AreEqual(enumerable1, enumerable2);
+    }
+
+    #endregion
+
+    #region constructor
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Collections.OrderNeutralEqualityComparer`1"/> class.
+    /// </summary>
+    public OrderNeutralEqualityComparer() : this(null) {}
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Collections.OrderNeutralEqualityComparer`1"/> class.
+    /// </summary>
+    /// <param name="itemComparer">Item comparer.</param>
+    public OrderNeutralEqualityComparer(IEqualityComparer<TCollection> itemComparer)
+    {
+      _itemComparer = itemComparer?? EqualityComparer<TCollection>.Default;
     }
 
     #endregion

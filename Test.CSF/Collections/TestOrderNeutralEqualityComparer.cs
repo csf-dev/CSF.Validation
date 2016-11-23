@@ -36,15 +36,24 @@ namespace Test.CSF.Collections
   public class TestOrderNeutralEqualityComparer
   {
     [Test]
-    public void TestEquals()
+    public void AreEqual_returns_true_for_collections_with_same_elements()
     {
       IEqualityComparer comparer = new OrderNeutralEqualityComparer<string>();
 
       IList<string> listOne = new string[] { "foo", "bar", "baz" };
       IList<string> listTwo = new string[] { "bar", "foo", "baz" };
-      IList<string> listThree = new string[] { "bar", "foo", "quux" };
 
       Assert.IsTrue(comparer.Equals(listOne, listTwo), "Lists are equal");
+    }
+
+    [Test]
+    public void AreEqual_returns_false_for_collections_with_different_elements()
+    {
+      IEqualityComparer comparer = new OrderNeutralEqualityComparer<string>();
+
+      IList<string> listOne = new string[] { "foo", "bar", "baz" };
+      IList<string> listThree = new string[] { "bar", "foo", "quux" };
+
       Assert.IsFalse(comparer.Equals(listOne, listThree), "Lists are not equal");
     }
   }

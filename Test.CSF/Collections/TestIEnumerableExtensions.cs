@@ -37,7 +37,7 @@ namespace Test.CSF.Collections
     #region testing AreContentsSameAs
 
     [Test]
-    public void TestAreContentsSameAs()
+    public void AreContentsSameAs_returns_true_for_differently_ordered_collections()
     {
       var collection1 = new string[] {
         "foo", "foo", "bar", "baz"
@@ -51,7 +51,7 @@ namespace Test.CSF.Collections
     }
 
     [Test]
-    public void TestAreContentsSameAsRefEqual()
+    public void AreContentsSameAs_returns_true_for_reference_equal_collections()
     {
       var collection1 = new string[] {
         "foo", "foo", "bar", "baz"
@@ -61,7 +61,7 @@ namespace Test.CSF.Collections
     }
 
     [Test]
-    public void TestAreContentsSameAsDifferentCounts()
+    public void AreContentsSameAs_returns_false_for_collections_with_same_items_but_different_recurrances()
     {
       var collection1 = new string[] {
         "foo", "foo", "bar", "baz"
@@ -75,7 +75,7 @@ namespace Test.CSF.Collections
     }
 
     [Test]
-    public void TestAreContentsSameAsDifferentItems()
+    public void AreContentsSameAs_returns_false_for_collections_with_different_items()
     {
       var collection1 = new string[] {
         "foo", "foo", "bar", "wibble"
@@ -89,7 +89,7 @@ namespace Test.CSF.Collections
     }
 
     [Test]
-    public void TestAreContentsSameAsCustomComparer()
+    public void AreContentsSameAs_returns_true_for_collections_using_a_custom_item_comparer()
     {
       var collection1 = new string[] {
         "foo", "foo", "flam", "flom"
@@ -101,20 +101,6 @@ namespace Test.CSF.Collections
 
       Assert.IsTrue(collection1.AreContentsSameAs(collection2, new FirstCharacterEqualityComparer()),
                     "Contents are the same");
-    }
-
-    [Test]
-    public void TestAreContentsSameAsWithoutCustomComparer()
-    {
-      var collection1 = new string[] {
-        "foo", "foo", "flam", "flom"
-      };
-
-      var collection2 = new string[] {
-        "floop", "fwoop", "foo", "foo"
-      };
-
-      Assert.IsFalse(collection1.AreContentsSameAs(collection2), "Contents are the same");
     }
 
     #endregion
