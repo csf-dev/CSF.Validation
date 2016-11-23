@@ -57,7 +57,6 @@
     <Compile Include="Mocks\SampleObject.cs" />
     <Compile Include="Validation\TestValidationTest.cs" />
     <Compile Include="IO\TestFileSystemInfoExtensions.cs" />
-    <Compile Include="Security\TestBinaryPasswordService.cs" />
     <Compile Include="TestFraction.cs" />
     <Compile Include="TestPrimeFactoriser.cs" />
     <Compile Include="Entities\TestEntity.cs" />
