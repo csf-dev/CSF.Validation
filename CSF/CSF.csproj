@@ -47,10 +47,6 @@
     <Compile Include="ICalculator.cs" />
     <Compile Include="SimpleCalculator.cs" />
     <Compile Include="IO\FileSystemInfoExtensions.cs" />
-    <Compile Include="Security\IPasswordService.cs" />
-    <Compile Include="Security\IHashAndSaltPair.cs" />
-    <Compile Include="Security\BinaryHashAndSaltPair.cs" />
-    <Compile Include="Security\BinaryPasswordService.cs" />
     <Compile Include="Fraction.cs" />
     <Compile Include="PrimeFactoriser.cs" />
     <Compile Include="VersionExtensions.cs" />
@@ -83,7 +79,6 @@
   <ItemGroup>
     <Folder Include="IO\" />
     <Folder Include="Collections\" />
-    <Folder Include="Security\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
