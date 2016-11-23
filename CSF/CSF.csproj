@@ -53,8 +53,6 @@
     <Compile Include="Security\BinaryPasswordService.cs" />
     <Compile Include="Fraction.cs" />
     <Compile Include="PrimeFactoriser.cs" />
-    <Compile Include="ISessionStorage.cs" />
-    <Compile Include="MemorySessionStorage.cs" />
     <Compile Include="VersionExtensions.cs" />
     <Compile Include="DateTimeEqualityComparer.cs" />
     <Compile Include="Collections\OrderNeutralEqualityComparer.cs" />
