@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.TabularData", "CSF.Tabu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.IniDocuments", "CSF.IniDocuments\CSF.IniDocuments.csproj", "{EF897908-7BAC-47F6-9495-6C827D532228}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Caches", "CSF.Caches\CSF.Caches.csproj", "{6644C95A-70A7-4A7B-903D-E087037FDA26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{571419F1-C643-4ADE-B5E0-C819AF67B32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{571419F1-C643-4ADE-B5E0-C819AF67B32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{571419F1-C643-4ADE-B5E0-C819AF67B32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6644C95A-70A7-4A7B-903D-E087037FDA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6644C95A-70A7-4A7B-903D-E087037FDA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6644C95A-70A7-4A7B-903D-E087037FDA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6644C95A-70A7-4A7B-903D-E087037FDA26}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D7899E6-5920-4ACC-8F63-62A984DF156B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D7899E6-5920-4ACC-8F63-62A984DF156B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D7899E6-5920-4ACC-8F63-62A984DF156B}.Release|Any CPU.ActiveCfg = Release|Any CPU

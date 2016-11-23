@@ -26,7 +26,7 @@
 
 using NUnit.Framework;
 using System;
-using CSF;
+using CSF.Caches;
 
 namespace Test.CSF
 {

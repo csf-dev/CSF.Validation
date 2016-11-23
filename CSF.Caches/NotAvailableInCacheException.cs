@@ -26,7 +26,7 @@
 
 using System;
 
-namespace CSF
+namespace CSF.Caches
 {
   /// <summary>
   /// Exception raised by an <see cref="T:ICache{TKey,TValue}"/> when a required value is not present in the cache.
