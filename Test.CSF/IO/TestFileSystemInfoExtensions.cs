@@ -97,7 +97,7 @@ namespace Test.CSF.IO
       FileInfo file = new FileInfo(@"C:\SomeDirectory\SomeFile.txt");
       
       Assert.AreEqual(@"SomeDirectory\SomeFile.txt",
-                      file.GetRelative(new DirectoryInfo(@"C:\")),
+                      file.GetRelativePath(new DirectoryInfo(@"C:\")),
                       "Correct relative path");
     }
     
@@ -106,7 +106,7 @@ namespace Test.CSF.IO
     public void TestGetRelativeNotRooted()
     {
       FileInfo file = new FileInfo(@"C:\SomeDirectory\SomeFile.txt");
-      file.GetRelative(new DirectoryInfo(@"D:\"));
+      file.GetRelativePath(new DirectoryInfo(@"D:\"));
       Assert.Fail("Test should not reach this point");
     }
     
@@ -117,12 +117,12 @@ namespace Test.CSF.IO
       FileInfo file = new FileInfo(currentDir.FullName + Path.DirectorySeparatorChar + "testFile.txt");
       
       Assert.AreEqual(currentDir,
-                      file.GetParent(),
+                      file.GetParentDirectory(),
                       "File");
       Assert.AreEqual(currentDir.Parent,
-                      currentDir.GetParent(),
+                      currentDir.GetParentDirectory(),
                       "Directory");
-      Assert.IsNull(currentDir.Root.GetParent(), "Filesystem root");
+      Assert.IsNull(currentDir.Root.GetParentDirectory(), "Filesystem root");
     }
 
     [Test]
@@ -139,7 +139,7 @@ namespace Test.CSF.IO
       var desiredPath = new DirectoryInfo(Path.Combine(_testRoot.FullName, reassembledRelativePath));
 
       // Act
-      desiredPath.CreateRecursive();
+      desiredPath.CreateRecursively();
 
       // Assert
       Assert.IsTrue(desiredPath.Exists, "Path has been created");

@@ -68,7 +68,7 @@ namespace CSF.IO
     /// <exception cref='ArgumentException'>
     /// Is thrown if the current instance is not a child of the root directory.
     /// </exception>
-    public static string GetRelative(this FileSystemInfo info, DirectoryInfo root)
+    public static string GetRelativePath(this FileSystemInfo info, DirectoryInfo root)
     {
       if(!info.IsChildOf(root))
       {
@@ -90,7 +90,7 @@ namespace CSF.IO
     /// <exception cref='ArgumentNullException'>
     /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
     /// </exception>
-    public static DirectoryInfo GetParent(this FileSystemInfo info)
+    public static DirectoryInfo GetParentDirectory(this FileSystemInfo info)
     {
       DirectoryInfo output;
       DirectoryInfo directory = info as DirectoryInfo;
@@ -116,7 +116,7 @@ namespace CSF.IO
     /// Creates a directory recursively, creating parent directories if required.
     /// </summary>
     /// <param name="info">Info.</param>
-    public static void CreateRecursive(this DirectoryInfo info)
+    public static void CreateRecursively(this DirectoryInfo info)
     {
       if(info == null)
       {
@@ -133,7 +133,7 @@ namespace CSF.IO
       {
         if(info.Parent != info.Root)
         {
-          info.Parent.CreateRecursive();
+          info.Parent.CreateRecursively();
         }
 
         info.Create();
