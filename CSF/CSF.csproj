@@ -58,7 +58,6 @@
     <Compile Include="VersionExtensions.cs" />
     <Compile Include="DateTimeEqualityComparer.cs" />
     <Compile Include="Collections\OrderNeutralEqualityComparer.cs" />
-    <Compile Include="DictionaryEqualityComparer.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="..\Common\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>

@@ -36,7 +36,7 @@ namespace Test.CSF
     #region tests
 
     [Test]
-    public void TestToUlong()
+    public void ConvertTo_returns_correct_result_for_ulong()
     {
       ulong? val = NullSafe.ConvertTo<ulong>("5");
 
@@ -45,7 +45,7 @@ namespace Test.CSF
     }
 
     [Test]
-    public void TestToDate()
+    public void ConvertTo_returns_correct_result_for_DateTime()
     {
       DateTime? val = NullSafe.ConvertTo<DateTime>("2012-10-19");
 
@@ -54,7 +54,7 @@ namespace Test.CSF
     }
 
     [Test]
-    public void TestToFailures()
+    public void ConvertTo_returns_null_for_impossible_conversion()
     {
       int? val = NullSafe.ConvertTo<int>("foo");
 
@@ -63,56 +63,6 @@ namespace Test.CSF
       val = NullSafe.ConvertTo<int>(null);
 
       Assert.IsFalse(val.HasValue);
-    }
-
-    [Test]
-    public void TestGet()
-    {
-      var root = new MockOuter() { Inner = new MockInner() { Value = 5 } };
-      bool result;
-      int val;
-
-      result = NullSafe.Get(root, x => x.Inner.Value, out val);
-
-      Assert.IsTrue(result);
-      Assert.AreEqual(5, val);
-
-      root.Inner = null;
-
-      result = NullSafe.Get(root, x => x.Inner.Value, out val);
-
-      Assert.IsFalse(result);
-    }
-
-    [Test]
-    public void TestToString()
-    {
-      var root = new MockOuter() { Inner = new MockInner() { Value = 5 } };
-      string result;
-
-      result = NullSafe.ToString(root, x => x.Inner.Value);
-
-      Assert.AreEqual("5", result);
-
-      root.Inner = null;
-
-      result = NullSafe.ToString(root, x => x.Inner.Value);
-
-      Assert.IsNull(result);
-    }
-
-    #endregion
-
-    #region contained types
-
-    class MockOuter
-    {
-      public MockInner Inner { get; set; }
-    }
-
-    class MockInner
-    {
-      public int Value { get; set; }
     }
 
     #endregion

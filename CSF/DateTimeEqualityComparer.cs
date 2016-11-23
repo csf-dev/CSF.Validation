@@ -26,13 +26,14 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CSF
 {
   /// <summary>
   /// Custom comparison type for comparing equality between <see cref="DateTime"/> instances.
   /// </summary>
-  public class DateTimeEqualityComparer : IEqualityComparer
+  public class DateTimeEqualityComparer : IEqualityComparer, IEqualityComparer<DateTime>
   {
     #region properties
 
@@ -64,45 +65,68 @@ namespace CSF
     /// </param>
     public bool AreEqual(object obj1, object obj2)
     {
-      bool output;
-
       if(Object.ReferenceEquals(obj1, obj2))
       {
-        output = true;
-      }
-      else if(obj1 == null)
-      {
-        output = false;
-      }
-      else
-      {
-        try
-        {
-          DateTime
-            dateTime1 = (DateTime) obj1,
-            dateTime2 = (DateTime) obj2;
-
-          var difference = (dateTime1 - dateTime2).Duration();
-          output = (difference <= this.PermittedDifference);
-        }
-        catch(InvalidCastException)
-        {
-          output = obj1.Equals(obj2);
-        }
+        return true;
       }
 
-      return output;
+      try
+      {
+        DateTime
+          dateTime1 = (DateTime) obj1,
+          dateTime2 = (DateTime) obj2;
+
+        return AreEqual(dateTime1, dateTime2);
+      }
+      catch(InvalidCastException)
+      {
+        return false;
+      }
     }
 
     /// <summary>
-    /// Unsupported method, would get the hash code of a DateTime.
+    /// Tests for equality between the two <see cref="DateTime"/> instances within the
+    /// <see cref="PermittedDifference"/>.
+    /// </summary>
+    /// <param name='dateTime1'>
+    /// A date/time instance
+    /// </param>
+    /// <param name='dateTime2'>
+    /// A date/time instance
+    /// </param>
+    public bool AreEqual(DateTime dateTime1, DateTime dateTime2)
+    {
+      var difference = (dateTime1 - dateTime2).Duration();
+      return (difference <= this.PermittedDifference);
+    }
+
+    /// <summary>
+    /// Gets the hash code of the given object.
     /// </summary>
     /// <param name='obj'>
     /// An object
     /// </param>
     public int GetHashCode(object obj)
     {
-      throw new NotImplementedException("This method is unsupported");
+      try
+      {
+        return GetHashCode((DateTime) obj);
+      }
+      catch(InvalidCastException)
+      {
+        return 0;
+      }
+    }
+
+    /// <summary>
+    /// Gets the hash code of the given DateTime.
+    /// </summary>
+    /// <param name='obj'>
+    /// An object
+    /// </param>
+    public int GetHashCode(DateTime obj)
+    {
+      return obj.GetHashCode();
     }
 
     #endregion
@@ -110,6 +134,11 @@ namespace CSF
     #region explicit interface implementation
 
     bool IEqualityComparer.Equals(object obj1, object obj2)
+    {
+      return this.AreEqual(obj1, obj2);
+    }
+
+    bool IEqualityComparer<DateTime>.Equals(DateTime obj1, DateTime obj2)
     {
       return this.AreEqual(obj1, obj2);
     }
