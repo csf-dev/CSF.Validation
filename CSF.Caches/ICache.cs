@@ -26,7 +26,7 @@
 
 using System;
 
-namespace CSF
+namespace CSF.Caches
 {
   /// <summary>
   /// Interface for a cache implementation, which caches instances of <typeparamref name="TValue" /> indexed by a

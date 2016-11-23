@@ -28,7 +28,7 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 
-namespace CSF
+namespace CSF.Caches
 {
   /// <summary>
   /// Implementation of <see cref="ICache{TKey,TValue}"/> that is thread-safe and well-optimised for frequent reading.

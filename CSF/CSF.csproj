@@ -77,9 +77,6 @@
     <Compile Include="DefaultGuidStrategy.cs" />
     <Compile Include="BinaryGuidCombStrategy.cs" />
     <Compile Include="GuidExtensions.cs" />
-    <Compile Include="ICache.cs" />
-    <Compile Include="NotAvailableInCacheException.cs" />
-    <Compile Include="ThreadSafeCache.cs" />
     <Compile Include="Resources\ExceptionMessages.Designer.cs">
       <DependentUpon>ExceptionMessages.resx</DependentUpon>
     </Compile>
