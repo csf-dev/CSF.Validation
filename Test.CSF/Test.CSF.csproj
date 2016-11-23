@@ -62,7 +62,6 @@
     <Compile Include="TestPrimeFactoriser.cs" />
     <Compile Include="Entities\TestEntity.cs" />
     <Compile Include="Entities\TestIdentity.cs" />
-    <Compile Include="TestMemorySessionStorage.cs" />
     <Compile Include="TestVersionExtensions.cs" />
     <Compile Include="Reflection\TestTypeExtensions.cs" />
     <Compile Include="Configuration\TestConfigurationHelper.cs" />
