@@ -86,8 +86,6 @@
     <Folder Include="IO\" />
     <Folder Include="Collections\" />
     <Folder Include="Security\" />
-    <Folder Include="Patterns\" />
-    <Folder Include="Patterns\SerializedLob\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
