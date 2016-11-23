@@ -163,6 +163,10 @@
       <Project>{6644C95A-70A7-4A7B-903D-E087037FDA26}</Project>
       <Name>CSF.Caches</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CSF.Security\CSF.Security.csproj">
+      <Project>{D46ED91C-6D2F-4B18-82B3-6EB2F001C121}</Project>
+      <Name>CSF.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IO\" />
