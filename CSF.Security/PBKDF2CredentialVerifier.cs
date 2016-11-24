@@ -32,7 +32,7 @@ namespace CSF.Security
   /// <summary>
   /// Abstract base type for an <see cref="ICredentialVerifier"/> which uses the PBKDF2 mechanism.
   /// </summary>
-  public abstract class PBKDF2CredentialVerifier<TEnteredCredentials,TStoredCredentials>
+  public class PBKDF2CredentialVerifier<TEnteredCredentials,TStoredCredentials>
     : ICredentialVerifier<TEnteredCredentials,TStoredCredentials>, ICredentialVerifier, IBinaryKeyCreator
     where TEnteredCredentials : ICredentialsWithPassword
     where TStoredCredentials : IStoredCredentialsWithKeyAndSalt
@@ -173,8 +173,25 @@ namespace CSF.Security
     /// <summary>
     /// Initializes a new instance of the <see cref="T:CSF.Security.PBKDF2CredentialVerifier`2"/> class.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The iteration count is the "work factor" indicating how difficult it is to perform the hashing operation.
+    /// As of 2012, a sane starting point I have seen suggests 64000 iterations.  This should double roughly every
+    /// two years (thus 256k as of 2016).
+    /// </para>
+    /// <para>
+    /// This however is only really a starting point.  It is important to measure the performance on your own hardware
+    /// and also consider performance on a "password cracking machine" (loaded with GPUs and the like).  You are aiming
+    /// for it to take as long as is acceptable on your own hardware (10ms or so for a multi-user network/web service
+    /// seems reasonable) and also to take a long as possible on the reference "cracking machine".
+    /// </para>
+    /// <para>
+    /// The aim is to ensure that you have acceptable performance for logins on your own hardware, but that crackers
+    /// wouldn't be able to try thousands/millions of passwords every second if they compromised your database.
+    /// </para>
+    /// </remarks>
     /// <param name="iterationCount">Iteration count.</param>
-    public PBKDF2CredentialVerifier(int iterationCount = 1000)
+    public PBKDF2CredentialVerifier(int iterationCount = 256000)
     {
       if(iterationCount < 1)
       {
