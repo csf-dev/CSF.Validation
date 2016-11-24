@@ -30,7 +30,7 @@ namespace CSF.Security
   /// <summary>
   /// Base type for stored credentials which includes a key and salt stored as binary data.
   /// </summary>
-  public abstract class BinaryKeyAndSalt : IStoredCredentialsWithKeyAndSalt
+  public class BinaryKeyAndSalt : IStoredCredentialsWithKeyAndSalt
   {
     #region properties
 
@@ -38,13 +38,13 @@ namespace CSF.Security
     /// Gets or sets the key bytes.
     /// </summary>
     /// <value>The key bytes.</value>
-    public byte[] KeyBytes { get; set; }
+    public virtual byte[] Key { get; set; }
 
     /// <summary>
     /// Gets or sets the salt bytes.
     /// </summary>
     /// <value>The salt bytes.</value>
-    public byte[] SaltBytes { get; set; }
+    public virtual byte[] Salt { get; set; }
 
     #endregion
 
@@ -56,7 +56,7 @@ namespace CSF.Security
     /// <returns>The key as a byte array.</returns>
     public virtual byte[] GetKeyAsByteArray()
     {
-      return KeyBytes;
+      return Key;
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ namespace CSF.Security
     /// <returns>The salt as a byte array.</returns>
     public virtual byte[] GetSaltAsByteArray()
     {
-      return SaltBytes;
+      return Salt;
     }
 
     #endregion

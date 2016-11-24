@@ -30,21 +30,21 @@ namespace CSF.Security
   /// <summary>
   /// Base type for stored credentials which includes a key and salt stored as Base64-encoded strings.
   /// </summary>
-  public abstract class Base64KeyAndSalt : IStoredCredentialsWithKeyAndSalt
+  public class Base64KeyAndSalt : IStoredCredentialsWithKeyAndSalt
   {
     #region properties
 
     /// <summary>
-    /// Gets or sets the key data.
+    /// Gets or sets the Base64-encoded representation of the stored key hash.
     /// </summary>
     /// <value>The key data.</value>
-    public string KeyData { get; set; }
+    public virtual string Key { get; set; }
 
     /// <summary>
-    /// Gets or sets the salt data.
+    /// Gets or sets the Base64-encoded representation of the stored salt.
     /// </summary>
     /// <value>The salt data.</value>
-    public string SaltData { get; set; }
+    public virtual string Salt { get; set; }
 
     #endregion
 
@@ -56,12 +56,12 @@ namespace CSF.Security
     /// <returns>The key as a byte array.</returns>
     public virtual byte[] GetKeyAsByteArray()
     {
-      if(KeyData == null)
+      if(Key == null)
       {
         return null;
       }
 
-      return Convert.FromBase64String(KeyData);
+      return Convert.FromBase64String(Key);
     }
 
     /// <summary>
@@ -70,12 +70,12 @@ namespace CSF.Security
     /// <returns>The salt as a byte array.</returns>
     public virtual byte[] GetSaltAsByteArray()
     {
-      if(SaltData == null)
+      if(Salt == null)
       {
         return null;
       }
 
-      return Convert.FromBase64String(SaltData);
+      return Convert.FromBase64String(Salt);
     }
 
     #endregion
