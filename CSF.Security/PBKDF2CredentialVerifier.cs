@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace CSF.Security
 {
@@ -92,15 +93,12 @@ namespace CSF.Security
         throw new ArgumentNullException(nameof(storedCredentials));
       }
 
-      var salt = storedCredentials.GetSaltAsByteArray();
+      var storedSalt = storedCredentials.GetSaltAsByteArray();
       var storedKey = storedCredentials.GetKeyAsByteArray();
+      var enteredPassword = enteredCredentials.GetPasswordAsByteArray();
 
-      var password = enteredCredentials.GetPasswordAsByteArray();
-
-      var utility = GetHashingUtility(password, salt);
-      var generatedKey = utility.GetBytes(storedKey.Length);
-
-      return generatedKey == storedKey;
+      var generatedKey = CreateKey(enteredPassword, storedSalt, storedKey.Length);
+      return Enumerable.SequenceEqual(generatedKey, storedKey);
     }
 
     /// <summary>
