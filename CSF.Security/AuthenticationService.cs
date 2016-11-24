@@ -30,7 +30,7 @@ namespace CSF.Security
   /// <summary>
   /// Abstract base type for an authentication service.
   /// </summary>
-  public abstract class AuthenticationService<TEnteredCredentials,TStoredCredentials>
+  public class AuthenticationService<TEnteredCredentials,TStoredCredentials>
     : IAuthenticationService<TEnteredCredentials>, IAuthenticationService
   {
     #region fields
