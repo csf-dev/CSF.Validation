@@ -95,6 +95,7 @@
     <Compile Include="Collections\Legacy\TestEventBoundSetWrapper.cs" />
     <Compile Include="Collections\Legacy\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\Legacy\TestReferenceSet.cs" />
+    <Compile Include="Security\TestPBKDF2CredentialVerifier.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
