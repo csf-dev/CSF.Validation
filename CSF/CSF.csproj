@@ -61,8 +61,6 @@
     <Compile Include="ExceptionExtensions.cs" />
     <Compile Include="CannotFixStackTraceException.cs" />
     <Compile Include="Collections\ICollectionExtensions.cs" />
-    <Compile Include="NameReformatter.cs" />
-    <Compile Include="LowercaseUnderscoreNameReformatter.cs" />
     <Compile Include="IGuidGenerationStrategy.cs" />
     <Compile Include="DefaultGuidStrategy.cs" />
     <Compile Include="BinaryGuidCombStrategy.cs" />
