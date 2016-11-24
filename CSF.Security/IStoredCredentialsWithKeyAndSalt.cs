@@ -1,10 +1,10 @@
-//
-// IHashAndSaltPair.cs
+﻿//
+// IStoredCredentialsWithPasswordAndSalt.cs
 //
 // Author:
-//       Craig Fowler <craig@csf-dev.com>
+//       Craig Fowler <craig@craigfowler.me.uk>
 //
-// Copyright (c) 2015 CSF Software Limited
+// Copyright (c) 2016 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,35 +23,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 
 namespace CSF.Security
 {
   /// <summary>
-  /// Interface for a type that exposes a pairing of a password hash and salt.
+  /// Base interface for a form of credentials which includes a key (the hashed password) and a salt, both of
+  /// which may be returned as byte arrays.
   /// </summary>
-  public interface IHashAndSaltPair
+  public interface IStoredCredentialsWithKeyAndSalt
   {
-    #region methods
-    
     /// <summary>
-    /// Gets a <see cref="System.String"/> representation of the password hash.
+    /// Gets the key as a byte array.
     /// </summary>
-    /// <returns>
-    /// The hash.
-    /// </returns>
-    string GetHash();
-    
+    /// <returns>The key as a byte array.</returns>
+    byte[] GetKeyAsByteArray();
+
     /// <summary>
-    /// Gets a <see cref="System.String"/> representation of the password salt.
+    /// Gets the salt as a byte array.
     /// </summary>
-    /// <returns>
-    /// The salt.
-    /// </returns>
-    string GetSalt();
-    
-    #endregion
+    /// <returns>The salt as a byte array.</returns>
+    byte[] GetSaltAsByteArray();
   }
 }
 
