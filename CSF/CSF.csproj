@@ -41,8 +41,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Int32Extensions.cs" />
-    <Compile Include="ICalculator.cs" />
-    <Compile Include="SimpleCalculator.cs" />
     <Compile Include="IO\FileSystemInfoExtensions.cs" />
     <Compile Include="Fraction.cs" />
     <Compile Include="PrimeFactoriser.cs" />

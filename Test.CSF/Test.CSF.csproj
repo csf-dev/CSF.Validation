@@ -168,6 +168,10 @@
       <Project>{D46ED91C-6D2F-4B18-82B3-6EB2F001C121}</Project>
       <Name>CSF.Security</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CSF.Calculator\CSF.Calculator.csproj">
+      <Project>{E592306B-14CF-4FF1-9E04-38F16F88DD2A}</Project>
+      <Name>CSF.Calculator</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IO\" />
