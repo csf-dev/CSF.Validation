@@ -34,10 +34,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BinaryHashAndSaltPair.cs" />
-    <Compile Include="BinaryPasswordService.cs" />
-    <Compile Include="IHashAndSaltPair.cs" />
-    <Compile Include="IPasswordService.cs" />
+    <Compile Include="ICredentialsRepository.cs" />
+    <Compile Include="ICredentialVerifier.cs" />
+    <Compile Include="AuthenticationResult.cs" />
+    <Compile Include="IAuthenticationService.cs" />
+    <Compile Include="ICredentialsWithPassword.cs" />
+    <Compile Include="AuthenticationService.cs" />
+    <Compile Include="PBKDF2CredentialVerifier.cs" />
+    <Compile Include="IStoredCredentialsWithKeyAndSalt.cs" />
+    <Compile Include="BinaryKeyAndSalt.cs" />
+    <Compile Include="Base64KeyAndSalt.cs" />
+    <Compile Include="IBinaryKeyCreator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

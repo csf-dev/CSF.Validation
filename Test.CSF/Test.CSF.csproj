@@ -57,7 +57,6 @@
     <Compile Include="Mocks\SampleObject.cs" />
     <Compile Include="Validation\TestValidationTest.cs" />
     <Compile Include="IO\TestFileSystemInfoExtensions.cs" />
-    <Compile Include="Security\TestBinaryPasswordService.cs" />
     <Compile Include="TestFraction.cs" />
     <Compile Include="TestPrimeFactoriser.cs" />
     <Compile Include="Entities\TestEntity.cs" />
@@ -96,6 +95,7 @@
     <Compile Include="Collections\Legacy\TestEventBoundSetWrapper.cs" />
     <Compile Include="Collections\Legacy\TestIesiCollectionExtensions.cs" />
     <Compile Include="Collections\Legacy\TestReferenceSet.cs" />
+    <Compile Include="Security\TestPBKDF2CredentialVerifier.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
