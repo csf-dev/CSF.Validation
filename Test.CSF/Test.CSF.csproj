@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Test.CSF</RootNamespace>
+    <AssemblyName>Test.CSF</AssemblyName>
+    <ReleaseVersion>4.1.1</ReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Common\Dependencies\Iesi.Collections.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="TestInt32Extensions.cs" />
+    <Compile Include="IO\TestTabularDataParser.cs" />
+    <Compile Include="IO\TestIniDocument.cs" />
+    <Compile Include="TestSimpleCalculator.cs" />
+    <Compile Include="Validation\TestValidator.cs" />
+    <Compile Include="Validation\TestValidationFailureList.cs" />
+    <Compile Include="Mocks\SampleObject.cs" />
+    <Compile Include="Validation\TestValidationTest.cs" />
+    <Compile Include="IO\TestFileSystemInfoExtensions.cs" />
+    <Compile Include="TestFraction.cs" />
+    <Compile Include="TestPrimeFactoriser.cs" />
+    <Compile Include="Entities\TestEntity.cs" />
+    <Compile Include="Entities\TestIdentity.cs" />
+    <Compile Include="TestVersionExtensions.cs" />
+    <Compile Include="Reflection\TestTypeExtensions.cs" />
+    <Compile Include="Configuration\TestConfigurationHelper.cs" />
+    <Compile Include="Configuration\MockConfigurationSection.cs" />
+    <Compile Include="TestDateTimeEqualityComparer.cs" />
+    <Compile Include="Reflection\TestAssemblyExtensions.cs" />
+    <Compile Include="Collections\TestOrderNeutralEqualityComparer.cs" />
+    <Compile Include="Collections\TestIListExtensions.cs" />
+    <Compile Include="TestDateTimeExtensions.cs" />
+    <Compile Include="..\Common\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Globalization\TestCultureInfoExtensions.cs" />
+    <Compile Include="TestNullSafe.cs" />
+    <Compile Include="Collections\TestIDictionaryExtensions.cs" />
+    <Compile Include="Reflection\TestReflect.cs" />
+    <Compile Include="TestStringExtensions.cs" />
+    <Compile Include="Collections\TestIEnumerableExtensions.cs" />
+    <Compile Include="TestEnumExtensions.cs" />
+    <Compile Include="TestExceptionExtensions.cs" />
+    <Compile Include="Collections\TestICollectionExtensions.cs" />
+    <Compile Include="Data\TestIDbCommandExtensions.cs" />
+    <Compile Include="Data\TestInMemoryDataReader.cs" />
+    <Compile Include="Collections\TestEventBoundListWrapper.cs" />
+    <Compile Include="TestBinaryGuidCombStrategy.cs" />
+    <Compile Include="Collections\TestEventBoundCollectionWrapper.cs" />
+    <Compile Include="Collections\TestReferenceCollection.cs" />
+    <Compile Include="Collections\TestReferenceList.cs" />
+    <Compile Include="TestGuidExtensions.cs" />
+    <Compile Include="TestConfiguration.cs" />
+    <Compile Include="TestThreadSafeCache.cs" />
+    <Compile Include="Collections\Legacy\TestEventBoundSetWrapper.cs" />
+    <Compile Include="Collections\Legacy\TestIesiCollectionExtensions.cs" />
+    <Compile Include="Collections\Legacy\TestReferenceSet.cs" />
+    <Compile Include="Security\TestPBKDF2CredentialVerifier.cs" />
+    <Compile Include="Security\TestAuthenticationService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\CSF\CSF.csproj">
+      <Project>{E563D7BC-1AB1-4AFB-8533-51315437C6E6}</Project>
+      <Name>CSF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Collections.Legacy\CSF.Collections.EventHandling.Legacy.csproj">
+      <Project>{CA00FFB0-ABD0-431D-987F-0DE5BA886575}</Project>
+      <Name>CSF.Collections.EventHandling.Legacy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Collections.EventHandling\CSF.Collections.EventHandling.csproj">
+      <Project>{A89D3196-8E70-496D-9999-AA5B7AF1183D}</Project>
+      <Name>CSF.Collections.EventHandling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Cli.Parameters\CSF.Cli.Parameters.csproj">
+      <Project>{295C293C-60FB-43F3-B728-C2BA5B7516BC}</Project>
+      <Name>CSF.Cli.Parameters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Configuration\CSF.Configuration.csproj">
+      <Project>{8C570A26-CEEB-45D1-9436-745C8DBAE9D8}</Project>
+      <Name>CSF.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Configuration.Data\CSF.Configuration.Data.csproj">
+      <Project>{414068F2-61AD-4E9A-819D-0E97629191BB}</Project>
+      <Name>CSF.Configuration.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Data\CSF.Data.csproj">
+      <Project>{27BC821D-03D4-42A0-B379-F93D021E56EC}</Project>
+      <Name>CSF.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Data.Entities\CSF.Data.Entities.csproj">
+      <Project>{3EF001E2-A559-42DB-A2DB-1A8629E7486D}</Project>
+      <Name>CSF.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Data.Serialization\CSF.Data.Serialization.csproj">
+      <Project>{37CA11C1-DCCD-46A4-AA45-DEC6C5403148}</Project>
+      <Name>CSF.Data.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Entities\CSF.Entities.csproj">
+      <Project>{7D7899E6-5920-4ACC-8F63-62A984DF156B}</Project>
+      <Name>CSF.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Reflection\CSF.Reflection.csproj">
+      <Project>{275413F6-0651-4AD4-A426-07EDA165C07E}</Project>
+      <Name>CSF.Reflection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj">
+      <Project>{C4446BF2-FF24-4C05-893E-0C9E195FBF82}</Project>
+      <Name>CSF.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Globalization\CSF.Globalization.csproj">
+      <Project>{571419F1-C643-4ADE-B5E0-C819AF67B32E}</Project>
+      <Name>CSF.Globalization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.TabularData\CSF.TabularData.csproj">
+      <Project>{3E2E21A6-4751-4604-98D5-0CA8E9BA229E}</Project>
+      <Name>CSF.TabularData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.IniDocuments\CSF.IniDocuments.csproj">
+      <Project>{EF897908-7BAC-47F6-9495-6C827D532228}</Project>
+      <Name>CSF.IniDocuments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Caches\CSF.Caches.csproj">
+      <Project>{6644C95A-70A7-4A7B-903D-E087037FDA26}</Project>
+      <Name>CSF.Caches</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Security\CSF.Security.csproj">
+      <Project>{D46ED91C-6D2F-4B18-82B3-6EB2F001C121}</Project>
+      <Name>CSF.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSF.Calculator\CSF.Calculator.csproj">
+      <Project>{E592306B-14CF-4FF1-9E04-38F16F88DD2A}</Project>
+      <Name>CSF.Calculator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IO\" />
+    <Folder Include="Collections\" />
+    <Folder Include="Reflection\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Mocks\" />
+    <Folder Include="Security\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Globalization\" />
+    <Folder Include="Data\" />
+    <Folder Include="Collections\Legacy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reflection\TestResource.txt">
+      <LogicalName>TestResource.txt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reflection\TestResourceType.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test.CSF.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
