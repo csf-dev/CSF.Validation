@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C4446BF2-FF24-4C05-893E-0C9E195FBF82}</ProjectGuid>
+    <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CSF.Validation</RootNamespace>
-    <AssemblyName>CSF.Validation</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Test.CSF</RootNamespace>
+    <AssemblyName>Test.CSF</AssemblyName>
     <ReleaseVersion>4.1.1</ReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,30 +21,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IValidationTest.cs" />
-    <Compile Include="IValidator.cs" />
-    <Compile Include="ValidationFailureException.cs" />
-    <Compile Include="ValidationFailureException`1.cs" />
-    <Compile Include="ValidationFunction.cs" />
-    <Compile Include="ValidationTest`1.cs" />
-    <Compile Include="ValidationTest`2.cs" />
-    <Compile Include="ValidationTestList.cs" />
-    <Compile Include="ValidationTests.cs" />
-    <Compile Include="Validator.cs" />
+    <Compile Include="Validation\TestValidator.cs" />
+    <Compile Include="Validation\TestValidationFailureList.cs" />
+    <Compile Include="Validation\TestValidationTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Validation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
 </Project>
