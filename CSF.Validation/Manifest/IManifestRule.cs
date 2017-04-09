@@ -1,10 +1,10 @@
 ﻿//
-// AssemblyInfo.cs
+// IManifestRule.cs
 //
 // Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+//       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2016 Craig Fowler
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+using CSF.Validation.ValidationRuns;
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Validation")]
-[assembly: AssemblyDescription("A business logic validator")]
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
+namespace CSF.Validation.Manifest
+{
+  /// <summary>
+  /// Represents a single rule in a manifest of validation rules.
+  /// </summary>
+  public interface IManifestRule
+  {
+    /// <summary>
+    /// Gets the identity associated with the current instance.
+    /// </summary>
+    /// <value>The identity.</value>
+    object Identity { get; }
 
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
-
-[assembly: AssemblyVersion("0.0.1")]
-
+    /// <summary>
+    /// Creates the rule, ready to be executed.
+    /// </summary>
+    /// <returns>The runnable rule.</returns>
+    IRunnableRule CreateRunnableRule();
+  }
+}

@@ -1,10 +1,10 @@
 ﻿//
-// AssemblyInfo.cs
+// IValidationResult.cs
 //
 // Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+//       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2016 Craig Fowler
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using CSF.Validation.Rules;
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Validation")]
-[assembly: AssemblyDescription("A business logic validator")]
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
+namespace CSF.Validation
+{
+  /// <summary>
+  /// Represents the result of validation.
+  /// </summary>
+  public interface IValidationResult
+  {
+    /// <summary>
+    /// Gets a value indicating whether or not the current instance has no failures or errors.
+    /// That is - all of the rule results are either <see cref="RuleOutcome.Success"/> or
+    /// <see cref="RuleOutcome.Inconclusive"/>.
+    /// </summary>
+    /// <value><c>true</c> if the current instance has no failures or errors; otherwise, <c>false</c>.</value>
+    bool HasNoFailuresOrErrors { get; }
 
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
-
-[assembly: AssemblyVersion("0.0.1")]
-
+    /// <summary>
+    /// Gets a collection of the results from each of the rules which was executed.
+    /// </summary>
+    /// <value>The rule results.</value>
+    IEnumerable<IRuleResult> RuleResults { get; }
+  }
+}

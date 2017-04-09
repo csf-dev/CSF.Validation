@@ -1,10 +1,10 @@
-//
-// ValidationFailureException.cs
+﻿//
+// IRuleResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2015 CSF Software Limited
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,46 +23,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Base type for an exception that is thrown as a result of a validation failure.
+  /// Represents the result from executing a single validation rule.
   /// </summary>
-  /// <remarks>
-  /// This exception may be thrown if the validator is configured to throw exceptions on failed validation, or if an
-  /// individual validation test raises an exception.
-  /// </remarks>
-  public abstract class ValidationFailureException : Exception
+  public interface IRuleResult
   {
-    #region properties
-    
     /// <summary>
-    /// Gets the type of the object that was being validated.
+    /// Gets the outcome.
     /// </summary>
-    /// <value>
-    /// The <see cref="System.Type"/> of the target object.
-    /// </value>
-    public abstract Type TargetType { get; }
-    
-    #endregion
-    
-    #region constructor
-    
+    /// <value>The outcome.</value>
+    RuleOutcome Outcome { get; }
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="CSF.Validation.ValidationFailureException"/> class.
+    /// Gets the object which was validated.
     /// </summary>
-    /// <param name='message'>
-    /// Message.
-    /// </param>
-    /// <param name='inner'>
-    /// Inner.
-    /// </param>
-    public ValidationFailureException(string message, Exception inner) : base(message, inner) {}
-    
-    #endregion
+    /// <value>The validated.</value>
+    object Validated { get; }
   }
 }
-

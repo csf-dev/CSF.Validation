@@ -1,10 +1,10 @@
 ﻿//
-// AssemblyInfo.cs
+// StubValidatedObject.cs
 //
 // Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+//       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2016 Craig Fowler
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+namespace Test.CSF
+{
+  public class StubValidatedObject
+  {
+    public string StringProperty { get; set; }
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Validation")]
-[assembly: AssemblyDescription("A business logic validator")]
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
+    public int? NullableIntegerProperty { get; set; }
 
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
+    public int IntegerProperty { get; set; }
 
-[assembly: AssemblyVersion("0.0.1")]
+    public decimal? NullableDecimalProperty { get; set; }
 
+    public decimal DecimalProperty { get; set; }
+  }
+}

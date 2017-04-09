@@ -1,10 +1,10 @@
-//
-// ValidationFunction.cs
+﻿//
+// RuleOptions.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2015 CSF Software Limited
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,14 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-
-namespace CSF.Validation
+using System;
+namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Delegate representing a function/method that performs validation upon a value and returns a
-  /// <see cref="System.Boolean"/> indicating whether the <paramref name="value"/> was valid or not.
+  /// Represents options affecting the behaviour of a single rule in a validation manifest.
   /// </summary>
-  public delegate bool ValidationFunction<TValue>(TValue value);
+  public class RuleOptions
+  {
+  }
 }
-

@@ -1,9 +1,7 @@
 bin/
 obj/
 TestResult.xml
-TestResult.formatted.xml
-*.pidb
-*.VisualState.xml
 *.userprefs
 *.orig
-*.directory
+.directory
+packages/*/

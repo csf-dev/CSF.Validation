@@ -1,10 +1,10 @@
 ﻿//
-// AssemblyInfo.cs
+// RuleResult.cs
 //
 // Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+//       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2016 Craig Fowler
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+namespace CSF.Validation.Rules
+{
+  /// <summary>
+  /// Concrete type representing the result of a standard validation rule run.
+  /// </summary>
+  public class RuleResult : IRuleResult
+  {
+    readonly RuleOutcome outcome;
+    readonly object validated;
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Validation")]
-[assembly: AssemblyDescription("A business logic validator")]
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
+    /// <summary>
+    /// Gets the outcome.
+    /// </summary>
+    /// <value>The outcome.</value>
+    public RuleOutcome Outcome => outcome;
 
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
+    /// <summary>
+    /// Gets the object which was validated.
+    /// </summary>
+    /// <value>The validated.</value>
+    public object Validated => validated;
 
-[assembly: AssemblyVersion("0.0.1")]
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.Rules.RuleResult"/> class.
+    /// </summary>
+    /// <param name="outcome">Outcome.</param>
+    /// <param name="validated">Validated.</param>
+    public RuleResult(RuleOutcome outcome, object validated)
+    {
+      outcome.RequireDefinedValue(nameof(outcome));
 
+      this.validated = validated;
+      this.outcome = outcome;
+    }
+  }
+}

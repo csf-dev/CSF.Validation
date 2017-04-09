@@ -1,10 +1,10 @@
 ﻿//
-// AssemblyInfo.cs
+// RuleOutcome.cs
 //
 // Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+//       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2016 Craig Fowler
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Validation")]
-[assembly: AssemblyDescription("A business logic validator")]
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
+namespace CSF.Validation.Rules
+{
+  /// <summary>
+  /// Enumerates the possible outcomes of running a single validation rule.
+  /// </summary>
+  public enum RuleOutcome
+  {
+    /// <summary>
+    /// The outcome is inconclusive, neither success nor failure.
+    /// </summary>
+    Inconclusive = 0,
 
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
+    /// <summary>
+    /// The outcome indicates successful execution of the rule.
+    /// </summary>
+    Success,
 
-[assembly: AssemblyVersion("0.0.1")]
+    /// <summary>
+    /// The outcome indicates that the rule executed and returned a failure response.
+    /// </summary>
+    Failure,
 
+    /// <summary>
+    /// The outcome indicates that the rule raised an unexpected error during execution.
+    /// </summary>
+    Error,
+
+    /// <summary>
+    /// The rule was not executed.
+    /// </summary>
+    WasNotExecuted,
+  }
+}

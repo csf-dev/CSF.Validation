@@ -1,10 +1,10 @@
 ﻿//
-// AssemblyInfo.cs
+// IValidationRun.cs
 //
 // Author:
-//       Craig Fowler <craig@craigfowler.me.uk>
+//       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2016 Craig Fowler
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
-[assembly: CLSCompliant(true)]
-[assembly: AssemblyTitle("CSF.Validation")]
-[assembly: AssemblyDescription("A business logic validator")]
-[assembly: AssemblyCompany("CSF Software Limited")]
-[assembly: AssemblyCopyright("CSF Software Limited")]
-
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
-
-[assembly: AssemblyVersion("0.0.1")]
-
+namespace CSF.Validation.ValidationRuns
+{
+  /// <summary>
+  /// This context type holds the state of a the validation operation which is in-progress, whilst it completes
+  /// the full validation procedure.
+  /// </summary>
+  public interface IValidationRunContext
+  {
+    /// <summary>
+    /// Gets a collection of the validation rules which are to be executed in the current validation operation.
+    /// </summary>
+    /// <value>The rules.</value>
+    IEnumerable<IRunnableRule> Rules { get; }
+  }
+}

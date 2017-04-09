@@ -8,7 +8,7 @@
     <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Test.CSF</RootNamespace>
-    <AssemblyName>Test.CSF</AssemblyName>
+    <AssemblyName>CSF.Validation.Tests</AssemblyName>
     <ReleaseVersion>4.1.1</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -31,16 +31,30 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="Validation\TestValidator.cs" />
-    <Compile Include="Validation\TestValidationFailureList.cs" />
-    <Compile Include="Validation\TestValidationTest.cs" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Validation\" />
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj">
+      <Project>{C4446BF2-FF24-4C05-893E-0C9E195FBF82}</Project>
+      <Name>CSF.Validation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StockRules\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StockRules\NotNullRuleTests.cs" />
+    <Compile Include="RuleRunner.cs" />
+    <Compile Include="StockRules\NotNullValueRuleTests.cs" />
+    <Compile Include="StubValidatedObject.cs" />
+    <Compile Include="OutcomeAssert.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
