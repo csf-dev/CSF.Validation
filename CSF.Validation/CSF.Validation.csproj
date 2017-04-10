@@ -65,7 +65,6 @@
     <Compile Include="Manifest\IManifestRule.cs" />
     <Compile Include="Manifest\IValidationManifest.cs" />
     <Compile Include="Manifest\ManifestRule.cs" />
-    <Compile Include="Manifest\RuleOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

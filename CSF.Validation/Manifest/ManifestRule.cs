@@ -24,6 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using CSF.Validation.Rules;
 using CSF.Validation.ValidationRuns;
 
@@ -34,6 +36,8 @@ namespace CSF.Validation.Manifest
   /// </summary>
   public class ManifestRule<TRule> : IManifestRule where TRule : IRule
   {
+    #region properties
+
     /// <summary>
     /// Gets the identity associated with the current instance.
     /// </summary>
@@ -53,58 +57,66 @@ namespace CSF.Validation.Manifest
     public virtual Func<TRule> RuleFactory { get; private set; }
 
     /// <summary>
-    /// Gets the options which apply to the current rule in the manifest.
+    /// Gets a collection of the dependency identifiers.
     /// </summary>
-    /// <value>The options.</value>
-    public RuleOptions Options { get; private set; }
+    /// <value>The dependency identifiers.</value>
+    public virtual IEnumerable<object> DependencyIdentifiers { get; private set; }
+
+    #endregion
+
+    #region methods
 
     /// <summary>
-    /// Creates the rule, ready to be executed.
-    /// </summary>
-    /// <returns>The runnable rule.</returns>
-    public virtual IRunnableRule CreateRunnableRule()
-    {
-      // var rule = GetConfiguredRule();
-
-      // TODO: Write this implementation
-      throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Creates and returns the <see cref="IRule"/> instance, in a fully-configured state.
-    /// </summary>
-    /// <returns>The configured rule.</returns>
-    protected virtual TRule GetConfiguredRule()
-    {
-      var rule = CreateRule();
-      ConfigureRule(rule);
-      return rule;
-    }
-
-    /// <summary>
-    /// Creates the rule, either from a factory method, or from a parameterless constructor.
-    /// </summary>
-    /// <returns>The rule.</returns>
-    protected virtual TRule CreateRule()
-    {
-      if(RuleFactory != null)
-      {
-        return RuleFactory();
-      }
-
-      return Activator.CreateInstance<TRule>();
-    }
-
-    /// <summary>
-    /// Configures the rule, using the <see cref="RuleConfiguration"/> delegate if provided.
+    /// Configures the given rule.
     /// </summary>
     /// <param name="rule">Rule.</param>
-    protected virtual void ConfigureRule(TRule rule)
+    public virtual void Configure(IRule rule)
     {
       if(RuleConfiguration != null)
       {
-        RuleConfiguration(rule);
+        RuleConfiguration((TRule) rule);
       }
     }
+
+    #endregion
+
+    #region IManifestRule implementation
+
+    Func<IRule> IManifestRule.RuleFactory
+    {
+      get {
+        if(RuleFactory == null)
+          return null;
+
+        return () => RuleFactory();
+      }
+    }
+
+    #endregion
+
+    #region constructor
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.Manifest.ManifestRule`1"/> class.
+    /// </summary>
+    /// <param name="identity">The rule identity.</param>
+    /// <param name="configuration">An optional configuration action.</param>
+    /// <param name="factory">An optional factory function.</param>
+    /// <param name="dependencyIdentifiers">An optional collection of dependency identifiers.</param>
+    public ManifestRule(object identity,
+                        Action<TRule> configuration = null,
+                        Func<TRule> factory = null,
+                        IEnumerable<object> dependencyIdentifiers = null)
+    {
+      if(identity == null)
+        throw new ArgumentNullException(nameof(identity));
+
+      Identity = identity;
+      RuleConfiguration = configuration;
+      RuleFactory = factory;
+      DependencyIdentifiers = dependencyIdentifiers?? Enumerable.Empty<object>();
+    }
+
+    #endregion
   }
 }

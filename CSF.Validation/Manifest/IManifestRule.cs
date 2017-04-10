@@ -24,6 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
+using CSF.Validation.Rules;
 using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation.Manifest
@@ -40,9 +42,21 @@ namespace CSF.Validation.Manifest
     object Identity { get; }
 
     /// <summary>
-    /// Creates the rule, ready to be executed.
+    /// Gets an optional function which creates the rule instance.
     /// </summary>
-    /// <returns>The runnable rule.</returns>
-    IRunnableRule CreateRunnableRule();
+    /// <value>The rule factory.</value>
+    Func<IRule> RuleFactory { get; }
+
+    /// <summary>
+    /// Configures the given rule.
+    /// </summary>
+    /// <param name="rule">Rule.</param>
+    void Configure(IRule rule);
+
+    /// <summary>
+    /// Gets a collection of the dependency identifiers.
+    /// </summary>
+    /// <value>The dependency identifiers.</value>
+    IEnumerable<object> DependencyIdentifiers { get; }
   }
 }
