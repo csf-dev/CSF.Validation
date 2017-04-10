@@ -10,4 +10,4 @@ Below are links to the most recent build statuses for these two CI platforms.
 Platform | Status
 -------- | ------
 Linux/Mono (Travis) | [![Travis Status](https://travis-ci.org/csf-dev/CSF.Validation.svg?branch=master)](https://travis-ci.org/csf-dev/CSF.Validation)
-Windows/.NET (AppVeyor) | [![AppVeyor status](https://ci.appveyor.com/api/projects/status/ra0bx9w820gnudx6?svg=true)](https://ci.appveyor.com/project/craigfowler/CSF.Validation)
+Windows/.NET (AppVeyor) | [![AppVeyor status](https://ci.appveyor.com/api/projects/status/ra0bx9w820gnudx6?svg=true)](https://ci.appveyor.com/project/craigfowler/csf-validation)
