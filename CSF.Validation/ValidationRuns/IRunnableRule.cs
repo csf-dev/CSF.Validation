@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidationRuns
@@ -41,21 +42,30 @@ namespace CSF.Validation.ValidationRuns
 
     /// <summary>
     /// Gets a value indicating whether this rule has already been executed in the context of the current
-    /// validation operation.
+    /// validation operation and thus has a result which may be observed via <see cref="GetResult"/>.
     /// </summary>
     /// <value><c>true</c> if the rule has already been executed; otherwise, <c>false</c>.</value>
-    bool HasAlreadyExecuted { get; }
+    bool HasResult { get; }
 
     /// <summary>
     /// Gets the result of the rule's execution.
     /// </summary>
     /// <returns>The result.</returns>
+    /// <exception cref="InvalidOperationException">If <see cref="HasResult"/> is <c>false</c>.</exception>
     IRunnableRuleResult GetResult();
 
     /// <summary>
     /// Execute the current rule, for the given validated object.
     /// </summary>
     /// <param name="validated">Validated.</param>
+    /// <exception cref="InvalidOperationException">If <see cref="HasResult"/> is <c>true</c>.</exception>
     void Execute(object validated);
+
+    /// <summary>
+    /// A call-once method which sets the dependencies for the current instance to the given collection of rules.
+    /// </summary>
+    /// <param name="rules">The other rules which the current instance depends-upon.</param>
+    /// <exception cref="InvalidOperationException">If dependencies have already been provided.</exception>
+    void ProvideDependencies(IEnumerable<IRunnableRule> rules);
   }
 }

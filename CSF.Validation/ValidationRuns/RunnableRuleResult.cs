@@ -1,5 +1,5 @@
 ﻿//
-// RuleResult.cs
+// SkippedRuleResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,30 +24,45 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace CSF.Validation.Rules
+using CSF.Validation.Rules;
+
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Concrete type representing the result of a standard validation rule run.
+  /// Represents the result from an <see cref="IRunnableRule"/>.
   /// </summary>
-  public class RuleResult : IRuleResult
+  public class RunnableRuleResult : RuleResult, IRunnableRuleResult
   {
-    readonly RuleOutcome outcome;
+    readonly object manifestIdentity;
 
     /// <summary>
-    /// Gets the outcome.
+    /// Gets the identity of the rule within the rule manifest.
     /// </summary>
-    /// <value>The outcome.</value>
-    public RuleOutcome Outcome => outcome;
+    /// <value>The identity of the rule in the manifest.</value>
+    public object ManifestIdentity => manifestIdentity;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:CSF.Validation.Rules.RuleResult"/> class.
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.ValidationRuns.RunnableRuleResult"/> class.
     /// </summary>
+    /// <param name="manifestIdentity">Manifest identity.</param>
     /// <param name="outcome">Outcome.</param>
-    public RuleResult(RuleOutcome outcome)
+    public RunnableRuleResult(object manifestIdentity, RuleOutcome outcome) : base(outcome)
     {
-      outcome.RequireDefinedValue(nameof(outcome));
+      if(manifestIdentity == null)
+        throw new ArgumentNullException(nameof(manifestIdentity));
 
-      this.outcome = outcome;
+      this.manifestIdentity = manifestIdentity;
+    }
+
+    /// <summary>
+    /// Static factory method which creates an instance of <see cref="RunnableRuleResult"/> from an
+    /// <see cref="IRuleResult"/> and a manifest identity.
+    /// </summary>
+    /// <param name="manifestIdentity">Manifest identity.</param>
+    /// <param name="ruleResult">Rule result.</param>
+    internal static RunnableRuleResult Create(object manifestIdentity, IRuleResult ruleResult)
+    {
+      return new RunnableRuleResult(manifestIdentity, ruleResult.Outcome);
     }
   }
 }

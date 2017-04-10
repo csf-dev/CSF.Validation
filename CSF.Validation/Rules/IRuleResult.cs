@@ -36,11 +36,5 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <value>The outcome.</value>
     RuleOutcome Outcome { get; }
-
-    /// <summary>
-    /// Gets the object which was validated.
-    /// </summary>
-    /// <value>The validated.</value>
-    object Validated { get; }
   }
 }

@@ -41,11 +41,6 @@ namespace Test.CSF
       IsExpected(outcome, x => x == RuleOutcome.Failure);
     }
 
-    public static void IsInconclusive(RuleOutcome outcome)
-    {
-      IsExpected(outcome, x => x == RuleOutcome.Inconclusive);
-    }
-
     public static void IsError(RuleOutcome outcome)
     {
       IsExpected(outcome, x => x == RuleOutcome.Error);
@@ -61,12 +56,6 @@ namespace Test.CSF
     {
       Assert.NotNull(result);
       IsFailure(result.Outcome);
-    }
-
-    public static void IsInconclusive(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsInconclusive(result.Outcome);
     }
 
     public static void IsError(IRuleResult result)

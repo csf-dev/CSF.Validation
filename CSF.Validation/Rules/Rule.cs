@@ -32,7 +32,6 @@ namespace CSF.Validation.Rules
   public abstract class Rule : IRule
   {
     RuleOutcome
-      inconclusive = RuleOutcome.Inconclusive,
       success = RuleOutcome.Success,
       failure = RuleOutcome.Failure,
       error = RuleOutcome.Error;
@@ -42,19 +41,13 @@ namespace CSF.Validation.Rules
       try
       {
         var outcome = GetOutcome(validated);
-        return new RuleResult(outcome, validated);
+        return new RuleResult(outcome);
       }
       catch(Exception ex)
       {
-        return new ExceptionResult(ex, validated);
+        return new ExceptionResult(ex);
       }
     }
-
-    /// <summary>
-    /// Gets an inconclusive result.
-    /// </summary>
-    /// <value>An inconclusive result.</value>
-    protected RuleOutcome Inconclusive => inconclusive;
 
     /// <summary>
     /// Gets a success result.

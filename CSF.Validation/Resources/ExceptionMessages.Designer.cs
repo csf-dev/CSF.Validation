@@ -64,5 +64,29 @@ namespace CSF.Validation.Resources {
                 return ResourceManager.GetString("LengthMustNotBeNegative", resourceCulture);
             }
         }
+        
+        internal static string DependencyMustHaveAResult {
+            get {
+                return ResourceManager.GetString("DependencyMustHaveAResult", resourceCulture);
+            }
+        }
+        
+        internal static string RuleMayNotBeExecuted {
+            get {
+                return ResourceManager.GetString("RuleMayNotBeExecuted", resourceCulture);
+            }
+        }
+        
+        internal static string RuleMustHaveAResult {
+            get {
+                return ResourceManager.GetString("RuleMustHaveAResult", resourceCulture);
+            }
+        }
+        
+        internal static string ProvideDependenciesMayOnlyBeCalledOnce {
+            get {
+                return ResourceManager.GetString("ProvideDependenciesMayOnlyBeCalledOnce", resourceCulture);
+            }
+        }
     }
 }

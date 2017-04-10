@@ -42,11 +42,11 @@ namespace CSF.Validation.Rules
       {
         var typedValidated = (TValidated) validated;
         var outcome = GetOutcome(typedValidated);
-        return new RuleResult(outcome, validated);
+        return new RuleResult(outcome);
       }
       catch(Exception ex)
       {
-        return new ExceptionResult(ex, validated);
+        return new ExceptionResult(ex);
       }
     }
 

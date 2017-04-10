@@ -1,5 +1,5 @@
 ﻿//
-// ExceptionResult.cs
+// StubRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,30 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace CSF.Validation.Rules
+using CSF.Validation.Rules;
+using Moq;
+
+namespace Test.CSF
 {
-  /// <summary>
-  /// Specialization of <see cref="RuleResult"/> for instances where a rule raised an exception.
-  /// </summary>
-  public class ExceptionResult : RuleResult
+  public static class StubRule
   {
-    readonly Exception exception;
+    public static IRule Success => Create(RuleOutcome.Success);
+    public static IRule Failure => Create(RuleOutcome.Failure);
+    public static IRule Error => Create(RuleOutcome.Error);
+    public static IRule SkippedDueToDependencyFailure => Create(RuleOutcome.SkippedDueToDependencyFailure);
 
-    /// <summary>
-    /// Gets the exception raised by executing the rule.
-    /// </summary>
-    /// <value>The exception.</value>
-    public Exception Exception => exception;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="T:CSF.Validation.Rules.ExceptionResult"/> class.
-    /// </summary>
-    /// <param name="exception">Exception.</param>
-    public ExceptionResult(Exception exception) : base(RuleOutcome.Error)
+    public static IRule Create(RuleOutcome outcome)
     {
-      if(exception == null)
-        throw new ArgumentNullException(nameof(exception));
-      this.exception = exception;
+      var result = new Mock<IRuleResult>();
+      result
+        .SetupGet(x => x.Outcome)
+        .Returns(outcome);
+
+      var output = new Mock<IRule>();
+      output
+        .Setup(x => x.GetResult(It.IsAny<object>()))
+        .Returns(result.Object);
+
+      return output.Object;
     }
   }
 }

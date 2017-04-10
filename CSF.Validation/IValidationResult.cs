@@ -35,12 +35,11 @@ namespace CSF.Validation
   public interface IValidationResult
   {
     /// <summary>
-    /// Gets a value indicating whether or not the current instance has no failures or errors.
-    /// That is - all of the rule results are either <see cref="RuleOutcome.Success"/> or
-    /// <see cref="RuleOutcome.Inconclusive"/>.
+    /// Gets a value indicating whether or not the current instance has only successful results.
+    /// That is - all of the rule results are <see cref="RuleOutcome.Success"/>.
     /// </summary>
-    /// <value><c>true</c> if the current instance has no failures or errors; otherwise, <c>false</c>.</value>
-    bool HasNoFailuresOrErrors { get; }
+    /// <value><c>true</c> if the current instance indicates a success; otherwise, <c>false</c>.</value>
+    bool IsSuccess { get; }
 
     /// <summary>
     /// Gets a collection of the results from each of the rules which was executed.

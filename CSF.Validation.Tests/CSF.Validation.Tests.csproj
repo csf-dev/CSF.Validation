@@ -37,6 +37,12 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.7.8\lib\net45\Moq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj">
@@ -46,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StockRules\" />
+    <Folder Include="ValidationRuns\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StockRules\NotNullRuleTests.cs" />
@@ -53,6 +60,8 @@
     <Compile Include="StockRules\NotNullValueRuleTests.cs" />
     <Compile Include="StubValidatedObject.cs" />
     <Compile Include="OutcomeAssert.cs" />
+    <Compile Include="StubRule.cs" />
+    <Compile Include="ValidationRuns\RunnableRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

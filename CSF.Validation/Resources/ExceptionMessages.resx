@@ -21,4 +21,16 @@
   <data name="LengthMustNotBeNegative" xml:space="preserve">
     <value>Impossible validation rule: A minimum or maximum length must not be negative.</value>
   </data>
+  <data name="DependencyMustHaveAResult" xml:space="preserve">
+    <value>The dependency rule must have a result.</value>
+  </data>
+  <data name="RuleMayNotBeExecuted" xml:space="preserve">
+    <value>The rule is not marked as ready for execution.</value>
+  </data>
+  <data name="RuleMustHaveAResult" xml:space="preserve">
+    <value>The rule must have a result; please check {0} first.</value>
+  </data>
+  <data name="ProvideDependenciesMayOnlyBeCalledOnce" xml:space="preserve">
+    <value>The {0} method may only be called once for a given `{1}' instance.</value>
+  </data>
 </root>
