@@ -52,5 +52,10 @@ namespace CSF.Validation.Rules
     /// depended returned a failure outcome.
     /// </summary>
     SkippedDueToDependencyFailure,
+
+    /// <summary>
+    /// The rule was not executed, however it was intentionally skipped and should be treated as if successful.
+    /// </summary>
+    IntentionallySkipped
   }
 }
