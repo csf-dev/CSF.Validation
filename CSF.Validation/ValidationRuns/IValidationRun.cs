@@ -29,21 +29,14 @@ using System.Collections.Generic;
 namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// This context type holds the state of a the validation operation which is in-progress, whilst it completes
-  /// the full validation procedure.
+  /// Represents a validation procedure which may be executed.
   /// </summary>
-  public interface IValidationRunContext
+  public interface IValidationRun
   {
     /// <summary>
-    /// Gets a reference to the validation run with which the current context is associated.
+    /// Gets a collection of the validation rules which are to be executed in the current validation operation.
     /// </summary>
-    /// <value>The validation run.</value>
-    IValidationRun ValidationRun { get; }
-
-    /// <summary>
-    /// Gets a reference to the object under validation.
-    /// </summary>
-    /// <value>The validated object.</value>
-    object Validated { get; }
+    /// <value>The rules.</value>
+    IEnumerable<IRunnableRule> Rules { get; }
   }
 }

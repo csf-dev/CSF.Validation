@@ -67,6 +67,7 @@
     <Compile Include="Manifest\ManifestRule.cs" />
     <Compile Include="ValidationRuns\RunnableRule.cs" />
     <Compile Include="ValidationRuns\RunnableRuleResult.cs" />
+    <Compile Include="ValidationRuns\IValidationRun.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
