@@ -1,5 +1,5 @@
 ﻿//
-// IValidationResult.cs
+// ValidationResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,26 +25,52 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using CSF.Validation.ValidationRuns;
+using System.Linq;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Represents the result of validation.
+  /// Concrete implementation of <see cref="IValidationResult"/>, holding the rule results.
   /// </summary>
-  public interface IValidationResult
+  public class ValidationResult : IValidationResult
   {
+    static readonly RuleOutcome[]
+      OutcomesToTreatAsSucceses = { RuleOutcome.Success, RuleOutcome.IntentionallySkipped };
+
+    readonly IEnumerable<IRunnableRuleResult> ruleResults;
+
     /// <summary>
     /// Gets a value indicating whether or not the current instance has only successful results.
     /// That is - all of the rule results should be treated as successes.
     /// </summary>
     /// <value><c>true</c> if the current instance indicates a success; otherwise, <c>false</c>.</value>
-    bool IsSuccess { get; }
+    public bool IsSuccess => RuleResults.All(TreatAsSuccess);
 
     /// <summary>
     /// Gets a collection of the results from each of the rules which was executed.
     /// </summary>
     /// <value>The rule results.</value>
-    IEnumerable<IRunnableRuleResult> RuleResults { get; }
+    public IEnumerable<IRunnableRuleResult> RuleResults => ruleResults;
+
+    bool TreatAsSuccess(IRunnableRuleResult result)
+    {
+      if(result == null)
+        throw new ArgumentNullException(nameof(result));
+
+      return OutcomesToTreatAsSucceses.Contains(result.Outcome);
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.ValidationRuns.ValidationResult"/> class.
+    /// </summary>
+    /// <param name="ruleResults">Rule results.</param>
+    public ValidationResult(IEnumerable<IRunnableRuleResult> ruleResults)
+    {
+      if(ruleResults == null)
+        throw new ArgumentNullException(nameof(ruleResults));
+
+      this.ruleResults = ruleResults;
+    }
   }
 }
