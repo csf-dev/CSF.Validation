@@ -62,6 +62,7 @@
     <Compile Include="OutcomeAssert.cs" />
     <Compile Include="StubRule.cs" />
     <Compile Include="ValidationRuns\RunnableRuleTests.cs" />
+    <Compile Include="ValidationRuns\ValidationRunnerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,5 @@
 ﻿//
-// RuleOutcome.cs
+// IValidatorFactory.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,38 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using CSF.Validation.Manifest;
 
-namespace CSF.Validation.Rules
+namespace CSF.Validation
 {
   /// <summary>
-  /// Enumerates the possible outcomes of running a single validation rule.
+  /// Represents a factory type which creates validators.
   /// </summary>
-  public enum RuleOutcome
+  public interface IValidatorFactory
   {
     /// <summary>
-    /// The outcome indicates that the rule raised an unexpected error during execution.
+    /// Gets a validator instance for the given validation manifest.
     /// </summary>
-    Error = 0,
-
-    /// <summary>
-    /// The outcome indicates that the rule executed and returned a failure response.
-    /// </summary>
-    Failure,
-
-    /// <summary>
-    /// The outcome indicates successful execution of the rule.
-    /// </summary>
-    Success,
-
-    /// <summary>
-    /// The rule was not executed, because one or more other rules upon which it
-    /// depended returned a failure outcome.
-    /// </summary>
-    SkippedDueToDependencyFailure,
-
-    /// <summary>
-    /// The rule was not executed, however it was intentionally skipped and should be treated as if successful.
-    /// </summary>
-    IntentionallySkipped
+    /// <returns>The validator.</returns>
+    /// <param name="manifest">The validation manifest.</param>
+    IValidator GetValidator(IValidationManifest manifest);
   }
 }
