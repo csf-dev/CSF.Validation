@@ -58,7 +58,7 @@ namespace CSF.Validation.ValidationRuns
       if(result == null)
         throw new ArgumentNullException(nameof(result));
 
-      return OutcomesToTreatAsSucceses.Contains(result.Outcome);
+      return OutcomesToTreatAsSucceses.Contains(result.RuleResult.Outcome);
     }
 
     /// <summary>

@@ -231,7 +231,26 @@ namespace Test.CSF.ValidationRuns
       var result = sut.GetResult();
 
       // Assert
-      Assert.AreEqual(RuleOutcome.SkippedDueToDependencyFailure, result.Outcome);
+      Assert.AreEqual(RuleOutcome.SkippedDueToDependencyFailure, result.RuleResult.Outcome);
+    }
+
+    [Test]
+    public void GetResult_returns_result_with_validated_object_when_dependency_rule_failed()
+    {
+      // Arrange
+      var dependency = new RunnableRule(new object(), StubRule.Failure);
+      dependency.Execute(new object());
+
+      var validated = new object();
+      var sut = new RunnableRule(validated, StubRule.Success);
+      sut.ProvideDependencies(new [] { dependency });
+      sut.Execute(validated);
+
+      // Act
+      var result = sut.GetResult();
+
+      // Assert
+      Assert.AreSame(validated, result.Validated);
     }
 
     [TestCase(RuleOutcome.Success)]
@@ -247,7 +266,7 @@ namespace Test.CSF.ValidationRuns
       var result = sut.GetResult();
 
       // Assert
-      Assert.AreEqual(underlyingOutcome, result.Outcome);
+      Assert.AreEqual(underlyingOutcome, result.RuleResult.Outcome);
     }
 
     [Test]
@@ -263,6 +282,21 @@ namespace Test.CSF.ValidationRuns
 
       // Assert
       Assert.AreSame(identifier, result.ManifestIdentity);
+    }
+
+    [Test]
+    public void GetResult_returns_result_with_validated_object()
+    {
+      // Arrange
+      var sut = new RunnableRule(new object(), StubRule.Success);
+      var validated = new object();
+      sut.Execute(validated);
+
+      // Act
+      var result = sut.GetResult();
+
+      // Assert
+      Assert.AreSame(validated, result.Validated);
     }
   }
 }

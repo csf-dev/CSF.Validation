@@ -31,12 +31,24 @@ namespace CSF.Validation.ValidationRuns
   /// <summary>
   /// Represents the result of an <see cref="IRunnableRule"/>.
   /// </summary>
-  public interface IRunnableRuleResult : IRuleResult
+  public interface IRunnableRuleResult
   {
     /// <summary>
     /// Gets the identity of the rule within the rule manifest.
     /// </summary>
     /// <value>The identity of the rule in the manifest.</value>
     object ManifestIdentity { get; }
+
+    /// <summary>
+    /// Gets a reference to the object under validation.
+    /// </summary>
+    /// <value>The validated object.</value>
+    object Validated { get; }
+
+    /// <summary>
+    /// Gets the original <see cref="IRuleResult"/> from which the current instance was created.
+    /// </summary>
+    /// <value>The source result.</value>
+    IRuleResult RuleResult { get; }
   }
 }

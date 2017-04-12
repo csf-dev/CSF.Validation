@@ -38,11 +38,11 @@ namespace CSF.Validation.ValidationRuns
   {
     #region fields
 
-    bool skippedDueToDependencyFailure;
-    IRuleResult result;
     readonly IRule underlyingRule;
-    IEnumerable<IRunnableRule> dependencies;
     readonly object manifestIdentity;
+    IRuleResult result;
+    object validated;
+    IEnumerable<IRunnableRule> dependencies;
 
     #endregion
 
@@ -54,7 +54,7 @@ namespace CSF.Validation.ValidationRuns
     /// </summary>
     /// <value><c>true</c> if the rule has already been executed; otherwise, <c>false</c>.</value>
     public virtual bool HasResult
-    { get { return skippedDueToDependencyFailure || result != null; } }
+    { get { return result != null; } }
 
     /// <summary>
     /// Gets a value indicating whether or not the rule wrapped by the current instance may be executed or not.
@@ -96,9 +96,11 @@ namespace CSF.Validation.ValidationRuns
       if(!MayBeExecuted)
         throw new InvalidOperationException(Resources.ExceptionMessages.RuleMayNotBeExecuted);
 
+      this.validated = validated;
+
       if(Dependencies.Any(IsDependencyFailure))
       {
-        skippedDueToDependencyFailure = true;
+        result = new RuleResult(RuleOutcome.SkippedDueToDependencyFailure);
         return;
       }
 
@@ -118,12 +120,7 @@ namespace CSF.Validation.ValidationRuns
         throw new InvalidOperationException(message);
       }
 
-      if(skippedDueToDependencyFailure)
-      {
-        return new RunnableRuleResult(manifestIdentity, RuleOutcome.SkippedDueToDependencyFailure);
-      }
-
-      return RunnableRuleResult.Create(manifestIdentity, result);
+      return new RunnableRuleResult(manifestIdentity, result, validated);
     }
 
     /// <summary>
@@ -156,7 +153,7 @@ namespace CSF.Validation.ValidationRuns
       if(!dependency.HasResult)
         throw new ArgumentException(Resources.ExceptionMessages.DependencyMustHaveAResult, nameof(dependency));
 
-      var outcome = dependency.GetResult().Outcome;
+      var outcome = dependency.GetResult().RuleResult.Outcome;
 
       switch(outcome)
       {
