@@ -68,6 +68,7 @@
     <Compile Include="ValidationRuns\RunnableRule.cs" />
     <Compile Include="ValidationRuns\RunnableRuleResult.cs" />
     <Compile Include="ValidationRuns\IValidationRun.cs" />
+    <Compile Include="IValidatorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
