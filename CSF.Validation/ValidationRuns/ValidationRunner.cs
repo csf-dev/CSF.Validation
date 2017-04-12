@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSF.Validation.ValidationRuns
 {
@@ -40,7 +41,40 @@ namespace CSF.Validation.ValidationRuns
     /// <param name="validationContext">The validation context.</param>
     public IEnumerable<IRunnableRuleResult> ExecuteRunAndGetResults(IValidationRunContext validationContext)
     {
-      throw new NotImplementedException();
+      var rules = validationContext.ValidationRun.Rules;
+      var readyToExecute = GetRulesReadyForExecution(rules);
+
+      while(readyToExecute.Any())
+      {
+        foreach(var rule in readyToExecute)
+        {
+          rule.Execute(validationContext.Validated);
+        }
+
+        readyToExecute = GetRulesReadyForExecution(rules);
+      }
+
+      CheckForRulesThatHaveNotRun(rules);
+
+      return rules.Select(x => x.GetResult()).ToArray();
+    }
+
+    /// <summary>
+    /// Gets a subset of the given rules, returning those which are ready to execute.
+    /// </summary>
+    /// <returns>The rules which are ready for execution.</returns>
+    /// <param name="rules">A collection of runnable rules.</param>
+    protected virtual IEnumerable<IRunnableRule> GetRulesReadyForExecution(IEnumerable<IRunnableRule> rules)
+    {
+      return rules.Where(x => x.MayBeExecuted).ToArray();
+    }
+
+    void CheckForRulesThatHaveNotRun(IEnumerable<IRunnableRule> rules)
+    {
+      if(rules.Any(x => !x.HasResult))
+      {
+        throw new StalledValidationRunException(Resources.ExceptionMessages.SomeValidationRulesCouldNotBeRun);
+      }
     }
   }
 }
