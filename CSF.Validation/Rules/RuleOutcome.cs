@@ -33,19 +33,19 @@ namespace CSF.Validation.Rules
   public enum RuleOutcome
   {
     /// <summary>
+    /// The outcome indicates that the rule raised an unexpected error during execution.
+    /// </summary>
+    Error = 0,
+
+    /// <summary>
     /// The outcome indicates that the rule executed and returned a failure response.
     /// </summary>
-    Failure = 0,
+    Failure,
 
     /// <summary>
     /// The outcome indicates successful execution of the rule.
     /// </summary>
     Success,
-
-    /// <summary>
-    /// The outcome indicates that the rule raised an unexpected error during execution.
-    /// </summary>
-    Error,
 
     /// <summary>
     /// The rule was not executed, because one or more other rules upon which it
