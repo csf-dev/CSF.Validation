@@ -88,5 +88,11 @@ namespace CSF.Validation.Resources {
                 return ResourceManager.GetString("ProvideDependenciesMayOnlyBeCalledOnce", resourceCulture);
             }
         }
+        
+        internal static string SomeValidationRulesCouldNotBeRun {
+            get {
+                return ResourceManager.GetString("SomeValidationRulesCouldNotBeRun", resourceCulture);
+            }
+        }
     }
 }

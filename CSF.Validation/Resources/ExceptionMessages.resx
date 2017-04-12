@@ -33,4 +33,7 @@
   <data name="ProvideDependenciesMayOnlyBeCalledOnce" xml:space="preserve">
     <value>The {0} method may only be called once for a given `{1}' instance.</value>
   </data>
+  <data name="SomeValidationRulesCouldNotBeRun" xml:space="preserve">
+    <value>Validation has stalled - one or more validation rules have yet to be executed but there are none in the validation run which report that they may be.</value>
+  </data>
 </root>
