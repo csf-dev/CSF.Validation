@@ -73,6 +73,7 @@
     <Compile Include="ValidationRuns\ValidationResult.cs" />
     <Compile Include="ValidationRuns\ValidationRunner.cs" />
     <Compile Include="ValidationRuns\StalledValidationRunException.cs" />
+    <Compile Include="Manifest\DefaultManifestIdentity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
