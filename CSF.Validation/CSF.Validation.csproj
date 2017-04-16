@@ -79,6 +79,11 @@
     <Compile Include="Manifest\IManifestMetadata.cs" />
     <Compile Include="Manifest\StandardMetadataName.cs" />
     <Compile Include="Manifest\ManifestMetadata.cs" />
+    <Compile Include="ValidationRuns\IValidationRunFactory.cs" />
+    <Compile Include="ValidationRuns\ValidationRunFactory.cs" />
+    <Compile Include="Rules\IRuleResolver.cs" />
+    <Compile Include="ValidationRuns\ValidationRun.cs" />
+    <Compile Include="Rules\SimpleRuleResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

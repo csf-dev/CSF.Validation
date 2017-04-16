@@ -78,6 +78,12 @@ namespace CSF.Validation.ValidationRuns
     }
 
     /// <summary>
+    /// Gets the identity for the current instance.
+    /// </summary>
+    /// <value>The identity.</value>
+    public virtual object Identity => manifestIdentity;
+
+    /// <summary>
     /// Gets the metadata describing the rule in its original manifest.
     /// </summary>
     /// <value>The metadata.</value>

@@ -36,6 +36,12 @@ namespace CSF.Validation.ValidationRuns
   public interface IRunnableRule
   {
     /// <summary>
+    /// Gets the identity for the current instance.
+    /// </summary>
+    /// <value>The identity.</value>
+    object Identity { get; }
+
+    /// <summary>
     /// Gets a value indicating whether or not the rule wrapped by the current instance may be executed or not.
     /// </summary>
     /// <value><c>true</c> if the current instance may be executed; otherwise, <c>false</c>.</value>

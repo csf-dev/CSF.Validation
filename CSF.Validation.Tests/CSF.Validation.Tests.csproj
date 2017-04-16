@@ -68,6 +68,7 @@
     <Compile Include="ValidationRuns\RunnableRuleTests.cs" />
     <Compile Include="ValidationRuns\ValidationRunnerTests.cs" />
     <Compile Include="Manifest\DefaultManifestIdentityTests.cs" />
+    <Compile Include="ValidationRuns\ValidationRunFactoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
