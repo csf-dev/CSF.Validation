@@ -1,5 +1,5 @@
 ﻿//
-// OutcomeAssert.cs
+// IRuleResolver.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,54 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Rules;
-using NUnit.Framework;
+using CSF.Validation.Manifest;
 
-namespace CSF.Validation.Tests
+namespace CSF.Validation.Rules
 {
-  public class OutcomeAssert
+  /// <summary>
+  /// A service which resolves instances of <see cref="IRule"/>.
+  /// </summary>
+  public interface IRuleResolver
   {
-    public static void IsSuccess(RuleOutcome outcome)
-    {
-      IsExpected(outcome, x => x == RuleOutcome.Success);
-    }
-
-    public static void IsFailure(RuleOutcome outcome)
-    {
-      IsExpected(outcome, x => x == RuleOutcome.Failure);
-    }
-
-    public static void IsError(RuleOutcome outcome)
-    {
-      IsExpected(outcome, x => x == RuleOutcome.Error);
-    }
-
-    public static void IsSuccess(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsSuccess(result.Outcome);
-    }
-
-    public static void IsFailure(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsFailure(result.Outcome);
-    }
-
-    public static void IsError(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsError(result.Outcome);
-    }
-
-    private static void IsExpected(RuleOutcome actualOutcome, Func<RuleOutcome,bool> predicate)
-    {
-      if(predicate == null)
-      {
-        throw new ArgumentNullException(nameof(predicate));
-      }
-
-      Assert.That(predicate(actualOutcome), $"Actual outcome: {actualOutcome}, was not as expected");
-    }
+    /// <summary>
+    /// Resolve an <see cref="IRule"/> instance from its corresponding manifest item.
+    /// </summary>
+    /// <param name="manifest">The manifest item.</param>
+    IRule Resolve(IManifestRule manifest);
   }
 }

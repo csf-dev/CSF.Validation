@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidationRuns
@@ -40,6 +41,7 @@ namespace CSF.Validation.ValidationRuns
 
     readonly IRule underlyingRule;
     readonly object manifestIdentity;
+    readonly IManifestMetadata metadata;
     IRuleResult result;
     object validated;
     IEnumerable<IRunnableRule> dependencies;
@@ -74,6 +76,18 @@ namespace CSF.Validation.ValidationRuns
         return true;
       }
     }
+
+    /// <summary>
+    /// Gets the identity for the current instance.
+    /// </summary>
+    /// <value>The identity.</value>
+    public virtual object Identity => manifestIdentity;
+
+    /// <summary>
+    /// Gets the metadata describing the rule in its original manifest.
+    /// </summary>
+    /// <value>The metadata.</value>
+    public virtual IManifestMetadata Metadata => metadata;
 
     /// <summary>
     /// Gets a collection of the dependency rules.  Returns an empty collection if
@@ -173,8 +187,13 @@ namespace CSF.Validation.ValidationRuns
     /// </summary>
     /// <param name="manifestIdentity">Manifest identity.</param>
     /// <param name="rule">Rule.</param>
-    public RunnableRule(object manifestIdentity, IRule rule)
+    /// <param name="metadata">The rule metadata in its manifest.</param>
+    public RunnableRule(object manifestIdentity,
+                        IManifestMetadata metadata,
+                        IRule rule)
     {
+      if(metadata == null)
+        throw new ArgumentNullException(nameof(metadata));
       if(rule == null)
         throw new ArgumentNullException(nameof(rule));
       if(manifestIdentity == null)
@@ -182,6 +201,7 @@ namespace CSF.Validation.ValidationRuns
 
       this.manifestIdentity = manifestIdentity;
       this.underlyingRule = rule;
+      this.metadata = metadata;
     }
 
     #endregion

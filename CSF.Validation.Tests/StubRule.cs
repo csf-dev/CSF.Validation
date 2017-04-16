@@ -27,7 +27,7 @@ using System;
 using CSF.Validation.Rules;
 using Moq;
 
-namespace Test.CSF
+namespace CSF.Validation.Tests
 {
   public static class StubRule
   {

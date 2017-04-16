@@ -1,5 +1,5 @@
 ﻿//
-// OutcomeAssert.cs
+// ValidationRun.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,54 +24,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Rules;
-using NUnit.Framework;
+using System.Collections.Generic;
 
-namespace CSF.Validation.Tests
+namespace CSF.Validation.ValidationRuns
 {
-  public class OutcomeAssert
+  /// <summary>
+  /// Default implementation of <see cref="IValidationRun"/>, representing a constructed validation run.
+  /// </summary>
+  public class ValidationRun : IValidationRun
   {
-    public static void IsSuccess(RuleOutcome outcome)
-    {
-      IsExpected(outcome, x => x == RuleOutcome.Success);
-    }
+    readonly IEnumerable<IRunnableRule> rules;
 
-    public static void IsFailure(RuleOutcome outcome)
-    {
-      IsExpected(outcome, x => x == RuleOutcome.Failure);
-    }
+    /// <summary>
+    /// Gets the rules contained within the current run.
+    /// </summary>
+    /// <value>The rules.</value>
+    public IEnumerable<IRunnableRule> Rules => rules;
 
-    public static void IsError(RuleOutcome outcome)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValidationRun"/> class.
+    /// </summary>
+    /// <param name="rules">Rules.</param>
+    public ValidationRun(IEnumerable<IRunnableRule> rules)
     {
-      IsExpected(outcome, x => x == RuleOutcome.Error);
-    }
+      if(rules == null)
+        throw new ArgumentNullException(nameof(rules));
 
-    public static void IsSuccess(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsSuccess(result.Outcome);
-    }
-
-    public static void IsFailure(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsFailure(result.Outcome);
-    }
-
-    public static void IsError(IRuleResult result)
-    {
-      Assert.NotNull(result);
-      IsError(result.Outcome);
-    }
-
-    private static void IsExpected(RuleOutcome actualOutcome, Func<RuleOutcome,bool> predicate)
-    {
-      if(predicate == null)
-      {
-        throw new ArgumentNullException(nameof(predicate));
-      }
-
-      Assert.That(predicate(actualOutcome), $"Actual outcome: {actualOutcome}, was not as expected");
+      this.rules = rules;
     }
   }
 }

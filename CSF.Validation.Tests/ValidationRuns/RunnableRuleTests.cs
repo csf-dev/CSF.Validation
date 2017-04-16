@@ -29,17 +29,20 @@ using CSF.Validation.ValidationRuns;
 using Moq;
 using System.Linq;
 using CSF.Validation.Rules;
+using CSF.Validation.Manifest;
 
-namespace Test.CSF.ValidationRuns
+namespace CSF.Validation.Tests.ValidationRuns
 {
   [TestFixture]
   public class RunnableRuleTests
   {
+    #region tests
+
     [Test]
     public void MayBeExecuted_returns_true_when_rule_has_not_yet_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
 
       // Act
       var result = sut.MayBeExecuted;
@@ -52,7 +55,7 @@ namespace Test.CSF.ValidationRuns
     public void MayBeExecuted_returns_false_when_rule_has_already_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.Execute(new object());
 
       // Act
@@ -66,7 +69,7 @@ namespace Test.CSF.ValidationRuns
     public void MayBeExecuted_returns_false_when_rule_dependencies_which_have_not_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.ProvideDependencies(new [] { Mock.Of<IRunnableRule>(x => x.HasResult == false) });
 
       // Act
@@ -80,7 +83,7 @@ namespace Test.CSF.ValidationRuns
     public void HasResult_returns_false_when_rule_has_not_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
 
       // Act
       var result = sut.HasResult;
@@ -93,7 +96,7 @@ namespace Test.CSF.ValidationRuns
     public void HasResult_returns_true_after_rule_has_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.Execute(new object());
 
       // Act
@@ -107,10 +110,10 @@ namespace Test.CSF.ValidationRuns
     public void HasResult_returns_true_when_rule_has_been_skipped_due_to_dependency_failure()
     {
       // Arrange
-      var dependency = new RunnableRule(new object(), StubRule.Failure);
+      var dependency = CreateRunnableRule(rule: StubRule.Failure);
       dependency.Execute(new object());
 
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.ProvideDependencies(new [] { dependency });
       sut.Execute(new object());
 
@@ -125,7 +128,7 @@ namespace Test.CSF.ValidationRuns
     public void Execute_throws_exception_if_rule_has_already_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.Execute(new object());
 
       // Act & assert
@@ -136,7 +139,7 @@ namespace Test.CSF.ValidationRuns
     public void Execute_throws_exception_when_rule_dependencies_which_have_not_been_run()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.ProvideDependencies(new [] { Mock.Of<IRunnableRule>(x => x.HasResult == false) });
 
       // Act & assert
@@ -147,12 +150,12 @@ namespace Test.CSF.ValidationRuns
     public void Execute_does_not_execute_underlying_rule_if_a_dependency_rule_has_failed()
     {
       // Arrange
-      var dependency = new RunnableRule(new object(), StubRule.Failure);
+      var dependency = CreateRunnableRule(rule: StubRule.Failure);
       dependency.Execute(new object());
 
       var underlying = StubRule.Success;
 
-      var sut = new RunnableRule(new object(), underlying);
+      var sut = CreateRunnableRule(rule: underlying);
       sut.ProvideDependencies(new [] { dependency });
 
       // Act
@@ -166,12 +169,12 @@ namespace Test.CSF.ValidationRuns
     public void Execute_executes_underlying_rule_if_all_dependencies_are_successful()
     {
       // Arrange
-      var dependency = new RunnableRule(new object(), StubRule.Success);
+      var dependency = CreateRunnableRule();
       dependency.Execute(new object());
 
       var underlying = StubRule.Success;
 
-      var sut = new RunnableRule(new object(), underlying);
+      var sut = CreateRunnableRule(rule: underlying);
       sut.ProvideDependencies(new [] { dependency });
 
       // Act
@@ -186,7 +189,7 @@ namespace Test.CSF.ValidationRuns
     {
       // Arrange
       var underlying = StubRule.Success;
-      var sut = new RunnableRule(new object(), underlying);
+      var sut = CreateRunnableRule(rule: underlying);
 
       // Act
       sut.Execute(new object());
@@ -199,7 +202,7 @@ namespace Test.CSF.ValidationRuns
     public void ProvideDependencies_throws_exception_if_called_twice()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
 
       // Act & assert
       sut.ProvideDependencies(Enumerable.Empty<IRunnableRule>());
@@ -210,7 +213,7 @@ namespace Test.CSF.ValidationRuns
     public void GetResult_throws_exception_if_rule_has_not_been_executed()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
 
       // Act & assert
       Assert.Throws<InvalidOperationException>(() => sut.GetResult());
@@ -220,10 +223,10 @@ namespace Test.CSF.ValidationRuns
     public void GetResult_returns_result_with_skipped_outcome_if_dependency_rule_failed()
     {
       // Arrange
-      var dependency = new RunnableRule(new object(), StubRule.Failure);
+      var dependency = CreateRunnableRule(rule: StubRule.Failure);
       dependency.Execute(new object());
 
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.ProvideDependencies(new [] { dependency });
       sut.Execute(new object());
 
@@ -238,11 +241,11 @@ namespace Test.CSF.ValidationRuns
     public void GetResult_returns_result_with_validated_object_when_dependency_rule_failed()
     {
       // Arrange
-      var dependency = new RunnableRule(new object(), StubRule.Failure);
+      var dependency = CreateRunnableRule(rule: StubRule.Failure);
       dependency.Execute(new object());
 
       var validated = new object();
-      var sut = new RunnableRule(validated, StubRule.Success);
+      var sut = CreateRunnableRule();
       sut.ProvideDependencies(new [] { dependency });
       sut.Execute(validated);
 
@@ -259,7 +262,7 @@ namespace Test.CSF.ValidationRuns
     public void GetResult_returns_result_with_same_outcome_as_underlying_rule(RuleOutcome underlyingOutcome)
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Create(underlyingOutcome));
+      var sut = CreateRunnableRule(rule: StubRule.Create(underlyingOutcome));
       sut.Execute(new object());
 
       // Act
@@ -274,7 +277,7 @@ namespace Test.CSF.ValidationRuns
     {
       // Arrange
       var identifier = new object();
-      var sut = new RunnableRule(identifier, StubRule.Success);
+      var sut = CreateRunnableRule(identity: identifier);
       sut.Execute(new object());
 
       // Act
@@ -288,7 +291,7 @@ namespace Test.CSF.ValidationRuns
     public void GetResult_returns_result_with_validated_object()
     {
       // Arrange
-      var sut = new RunnableRule(new object(), StubRule.Success);
+      var sut = CreateRunnableRule();
       var validated = new object();
       sut.Execute(validated);
 
@@ -298,5 +301,20 @@ namespace Test.CSF.ValidationRuns
       // Assert
       Assert.AreSame(validated, result.Validated);
     }
+
+    #endregion
+
+    #region methods
+
+    private RunnableRule CreateRunnableRule(object identity = null,
+                                            IManifestMetadata metadata = null,
+                                            IRule rule = null)
+    {
+      return new RunnableRule(identity?? new object(),
+                              metadata?? Mock.Of<IManifestMetadata>(),
+                              rule?? StubRule.Success);
+    }
+
+    #endregion
   }
 }

@@ -30,7 +30,7 @@ using CSF.Validation.ValidationRuns;
 using Moq;
 using NUnit.Framework;
 
-namespace Test.CSF.ValidationRuns
+namespace CSF.Validation.Tests.ValidationRuns
 {
   [TestFixture]
   public class ValidationRunnerTests

@@ -28,7 +28,7 @@ using CSF.Reflection;
 using CSF.Validation.Manifest;
 using NUnit.Framework;
 
-namespace Test.CSF.Manifest
+namespace CSF.Validation.Tests.Manifest
 {
   [TestFixture]
   public class DefaultManifestIdentityTests

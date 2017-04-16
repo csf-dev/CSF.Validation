@@ -26,7 +26,7 @@
 using System;
 using CSF.Validation.Rules;
 
-namespace Test.CSF
+namespace CSF.Validation.Tests
 {
   public static class RuleRunner
   {

@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidationRuns
@@ -34,6 +35,12 @@ namespace CSF.Validation.ValidationRuns
   /// </summary>
   public interface IRunnableRule
   {
+    /// <summary>
+    /// Gets the identity for the current instance.
+    /// </summary>
+    /// <value>The identity.</value>
+    object Identity { get; }
+
     /// <summary>
     /// Gets a value indicating whether or not the rule wrapped by the current instance may be executed or not.
     /// </summary>
@@ -67,5 +74,11 @@ namespace CSF.Validation.ValidationRuns
     /// <param name="rules">The other rules which the current instance depends-upon.</param>
     /// <exception cref="InvalidOperationException">If dependencies have already been provided.</exception>
     void ProvideDependencies(IEnumerable<IRunnableRule> rules);
+
+    /// <summary>
+    /// Gets the metadata describing the rule in its original manifest.
+    /// </summary>
+    /// <value>The metadata.</value>
+    IManifestMetadata Metadata { get; }
   }
 }
