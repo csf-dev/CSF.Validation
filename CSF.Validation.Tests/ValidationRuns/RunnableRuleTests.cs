@@ -31,7 +31,7 @@ using System.Linq;
 using CSF.Validation.Rules;
 using CSF.Validation.Manifest;
 
-namespace Test.CSF.ValidationRuns
+namespace CSF.Validation.Tests.ValidationRuns
 {
   [TestFixture]
   public class RunnableRuleTests

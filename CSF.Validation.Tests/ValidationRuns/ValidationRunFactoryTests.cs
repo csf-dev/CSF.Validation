@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using NUnit.Framework;
 using System;
-namespace Test.CSF.ValidationRuns
+namespace CSF.Validation.Tests.ValidationRuns
 {
   [TestFixture]
   public class ValidationRunFactoryTests

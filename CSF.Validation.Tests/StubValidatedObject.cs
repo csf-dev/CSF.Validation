@@ -24,7 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace Test.CSF
+namespace CSF.Validation.Tests
 {
   public class StubValidatedObject
   {

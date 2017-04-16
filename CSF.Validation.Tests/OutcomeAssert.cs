@@ -27,7 +27,7 @@ using System;
 using CSF.Validation.Rules;
 using NUnit.Framework;
 
-namespace Test.CSF
+namespace CSF.Validation.Tests
 {
   public class OutcomeAssert
   {

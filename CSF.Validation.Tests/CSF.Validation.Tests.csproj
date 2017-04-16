@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Test.CSF</RootNamespace>
+    <RootNamespace>CSF.Validation.Tests</RootNamespace>
     <AssemblyName>CSF.Validation.Tests</AssemblyName>
     <ReleaseVersion>4.1.1</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>

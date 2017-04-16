@@ -28,7 +28,7 @@ using System;
 using CSF.Validation.Rules;
 using CSF.Validation.StockRules;
 
-namespace Test.CSF.StockRules
+namespace CSF.Validation.Tests.StockRules
 {
   [TestFixture]
   public class NotNullValueRuleTests
