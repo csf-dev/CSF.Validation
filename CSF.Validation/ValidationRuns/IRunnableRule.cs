@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidationRuns
@@ -67,5 +68,11 @@ namespace CSF.Validation.ValidationRuns
     /// <param name="rules">The other rules which the current instance depends-upon.</param>
     /// <exception cref="InvalidOperationException">If dependencies have already been provided.</exception>
     void ProvideDependencies(IEnumerable<IRunnableRule> rules);
+
+    /// <summary>
+    /// Gets the metadata describing the rule in its original manifest.
+    /// </summary>
+    /// <value>The metadata.</value>
+    IManifestMetadata Metadata { get; }
   }
 }
