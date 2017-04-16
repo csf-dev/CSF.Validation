@@ -63,19 +63,32 @@ namespace CSF.Validation.ValidationRuns
       if(manifestRules == null)
         throw new ArgumentNullException(nameof(manifestRules));
       
-      var manifestsAndRules = manifestRules
-        .Select(x => new { Manifest = x, Rule = CreateRunnableRule(x) })
-        .ToArray();
-      var allRules = manifestsAndRules
-        .Select(x => x.Rule)
+      var rulesWithManifests = manifestRules
+        .Select(x => new Tuple<IRunnableRule,IManifestRule>(CreateRunnableRule(x), x))
         .ToArray();
 
-      foreach(var manifestAndRule in manifestsAndRules)
+      FindAndProvideDependencies(rulesWithManifests);
+
+      return rulesWithManifests
+        .Select(x => x.Item1)
+        .ToArray();
+    }
+
+    /// <summary>
+    /// Finds the rules which are dependencies for each of the given rules,
+    /// and then provides these dependencies to the rule via <see cref="IRunnableRule.ProvideDependencies"/>.
+    /// </summary>
+    /// <param name="rulesWithManifests">The collection of all of the validation rules and their manifests.</param>
+    public virtual void FindAndProvideDependencies(IEnumerable<Tuple<IRunnableRule,IManifestRule>> rulesWithManifests)
+    {
+      var allRules = rulesWithManifests
+        .Select(x => x.Item1)
+        .ToArray();
+
+      foreach(var manifestAndRule in rulesWithManifests)
       {
-        FindAndProvideDependencies(manifestAndRule.Rule, manifestAndRule.Manifest, allRules);
+        FindAndProvideDependencies(manifestAndRule.Item1, manifestAndRule.Item2, allRules);
       }
-
-      return allRules;
     }
 
     /// <summary>
@@ -100,7 +113,7 @@ namespace CSF.Validation.ValidationRuns
     /// </summary>
     /// <returns>The rule.</returns>
     /// <param name="manifestRule">Manifest rule.</param>
-    public virtual IRule CreateRule(IManifestRule manifestRule)
+    private IRule CreateRule(IManifestRule manifestRule)
     {
       if(manifestRule == null)
         throw new ArgumentNullException(nameof(manifestRule));
@@ -130,6 +143,18 @@ namespace CSF.Validation.ValidationRuns
         .ToArray();
       
       currentRule.ProvideDependencies(dependencies);
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.ValidationRuns.ValidationRunFactory"/> class.
+    /// </summary>
+    /// <param name="resolver">Resolver.</param>
+    /// <param name="identityGenerator">Identity generator.</param>
+    public ValidationRunFactory(IRuleResolver resolver = null,
+                                IManifestIdentityGenerator identityGenerator = null)
+    {
+      this.resolver = resolver?? new SimpleRuleResolver();
+      this.identityGenerator = identityGenerator?? new DefaultManifestIdentityGenerator();
     }
   }
 }
