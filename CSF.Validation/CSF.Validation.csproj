@@ -74,6 +74,9 @@
     <Compile Include="ValidationRuns\ValidationRunner.cs" />
     <Compile Include="ValidationRuns\StalledValidationRunException.cs" />
     <Compile Include="Manifest\DefaultManifestIdentity.cs" />
+    <Compile Include="Manifest\IManifestMetadata.cs" />
+    <Compile Include="Manifest\StandardMetadataName.cs" />
+    <Compile Include="Manifest\ManifestMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

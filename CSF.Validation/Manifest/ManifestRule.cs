@@ -62,6 +62,12 @@ namespace CSF.Validation.Manifest
     /// <value>The dependency identifiers.</value>
     public virtual IEnumerable<object> DependencyIdentifiers { get; private set; }
 
+    /// <summary>
+    /// Gets the metadata describing the current rule instance.
+    /// </summary>
+    /// <value>The metadata.</value>
+    public virtual IManifestMetadata Metadata { get; private set; }
+
     #endregion
 
     #region methods
@@ -100,18 +106,23 @@ namespace CSF.Validation.Manifest
     /// Initializes a new instance of the <see cref="T:CSF.Validation.Manifest.ManifestRule`1"/> class.
     /// </summary>
     /// <param name="identity">The rule identity.</param>
+    /// <param name="metadata">The rule metadata.</param>
     /// <param name="configuration">An optional configuration action.</param>
     /// <param name="factory">An optional factory function.</param>
     /// <param name="dependencyIdentifiers">An optional collection of dependency identifiers.</param>
     public ManifestRule(object identity,
+                        IManifestMetadata metadata,
                         Action<TRule> configuration = null,
                         Func<TRule> factory = null,
                         IEnumerable<object> dependencyIdentifiers = null)
     {
+      if(metadata == null)
+        throw new ArgumentNullException(nameof(metadata));
       if(identity == null)
         throw new ArgumentNullException(nameof(identity));
 
       Identity = identity;
+      Metadata = metadata;
       RuleConfiguration = configuration;
       RuleFactory = factory;
       DependencyIdentifiers = dependencyIdentifiers?? Enumerable.Empty<object>();

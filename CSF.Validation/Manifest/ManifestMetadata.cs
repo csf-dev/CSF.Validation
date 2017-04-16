@@ -1,5 +1,5 @@
 ﻿//
-// IManifestRule.cs
+// ManifestMetadata.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,44 +25,50 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using CSF.Validation.Rules;
-using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a single rule in a manifest of validation rules.
+  /// Default implementation of <see cref="IManifestMetadata"/>, which wraps a dictionary of strings and objects.
   /// </summary>
-  public interface IManifestRule
+  public class ManifestMetadata : IManifestMetadata
   {
-    /// <summary>
-    /// Gets the identity associated with the current instance.
-    /// </summary>
-    /// <value>The identity.</value>
-    object Identity { get; }
+    readonly IDictionary<string,object> metadata;
 
     /// <summary>
-    /// Gets an optional function which creates the rule instance.
+    /// Gets the value with the specified name, or a <c>null</c> reference if it does not exist.
     /// </summary>
-    /// <value>The rule factory.</value>
-    Func<IRule> RuleFactory { get; }
+    /// <param name="name">The metadata name.</param>
+    public object Get(string name)
+    {
+      if(!metadata.ContainsKey(name))
+        return null;
+
+      return metadata[name];
+    }
 
     /// <summary>
-    /// Configures the given rule.
+    /// Gets the value with the specified name, of the associated type, or a <c>null</c> reference if it does not exist.
+    /// Note that this method will return <c>null</c> if called with an incorrect type, even if the item did exist as
+    /// an instance of a different type.
     /// </summary>
-    /// <param name="rule">Rule.</param>
-    void Configure(IRule rule);
+    /// <param name="name">The metadata name.</param>
+    /// <typeparam name="T">The desired metadata object type.</typeparam>
+    public T Get<T>(string name) where T : class
+    {
+      return Get(name) as T;
+    }
 
     /// <summary>
-    /// Gets a collection of the dependency identifiers.
+    /// Initializes a new instance of the <see cref="ManifestMetadata"/> class.
     /// </summary>
-    /// <value>The dependency identifiers.</value>
-    IEnumerable<object> DependencyIdentifiers { get; }
+    /// <param name="metadata">Metadata.</param>
+    public ManifestMetadata(IDictionary<string,object> metadata)
+    {
+      if(metadata == null)
+        throw new ArgumentNullException(nameof(metadata));
 
-    /// <summary>
-    /// Gets the metadata describing the current rule instance.
-    /// </summary>
-    /// <value>The metadata.</value>
-    IManifestMetadata Metadata { get; }
+      this.metadata = metadata;
+    }
   }
 }
