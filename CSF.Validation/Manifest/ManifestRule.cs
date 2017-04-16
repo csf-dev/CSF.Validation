@@ -45,6 +45,12 @@ namespace CSF.Validation.Manifest
     public virtual object Identity { get; private set; }
 
     /// <summary>
+    /// Gets the <c>System.Type</c> of the rule which this manifest item represents.
+    /// </summary>
+    /// <value>The type of the rule.</value>
+    public virtual Type RuleType { get; private set; }
+
+    /// <summary>
     /// Gets an optional operation which performs configuration upon the rule before it is executed.
     /// </summary>
     /// <value>The rule configuration.</value>
@@ -107,15 +113,19 @@ namespace CSF.Validation.Manifest
     /// </summary>
     /// <param name="identity">The rule identity.</param>
     /// <param name="metadata">The rule metadata.</param>
+    /// <param name="ruleType">The rule type.</param>
     /// <param name="configuration">An optional configuration action.</param>
     /// <param name="factory">An optional factory function.</param>
     /// <param name="dependencyIdentifiers">An optional collection of dependency identifiers.</param>
     public ManifestRule(object identity,
                         IManifestMetadata metadata,
+                        Type ruleType,
                         Action<TRule> configuration = null,
                         Func<TRule> factory = null,
                         IEnumerable<object> dependencyIdentifiers = null)
     {
+      if(ruleType == null)
+        throw new ArgumentNullException(nameof(ruleType));
       if(metadata == null)
         throw new ArgumentNullException(nameof(metadata));
       if(identity == null)
@@ -123,6 +133,7 @@ namespace CSF.Validation.Manifest
 
       Identity = identity;
       Metadata = metadata;
+      RuleType = ruleType;
       RuleConfiguration = configuration;
       RuleFactory = factory;
       DependencyIdentifiers = dependencyIdentifiers?? Enumerable.Empty<object>();

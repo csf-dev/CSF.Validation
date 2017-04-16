@@ -26,7 +26,6 @@
 using System;
 using System.Collections.Generic;
 using CSF.Validation.Rules;
-using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation.Manifest
 {
@@ -40,6 +39,12 @@ namespace CSF.Validation.Manifest
     /// </summary>
     /// <value>The identity.</value>
     object Identity { get; }
+
+    /// <summary>
+    /// Gets the <c>System.Type</c> of the rule which this manifest item represents.
+    /// </summary>
+    /// <value>The type of the rule.</value>
+    Type RuleType { get; }
 
     /// <summary>
     /// Gets an optional function which creates the rule instance.
