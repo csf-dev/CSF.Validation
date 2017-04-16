@@ -1,5 +1,5 @@
 ﻿//
-// IManifestRule.cs
+// IManifestMetadata.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,45 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using CSF.Validation.Rules;
-using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a single rule in a manifest of validation rules.
+  /// Describes a type which provides access to arbitrary information about an <see cref="IManifestRule"/>.
   /// </summary>
-  public interface IManifestRule
+  public interface IManifestMetadata
   {
     /// <summary>
-    /// Gets the identity associated with the current instance.
+    /// Gets the value with the specified name, or a <c>null</c> reference if it does not exist.
     /// </summary>
-    /// <value>The identity.</value>
-    object Identity { get; }
+    /// <param name="name">The metadata name.</param>
+    object Get(string name);
 
     /// <summary>
-    /// Gets an optional function which creates the rule instance.
+    /// Gets the value with the specified name, of the associated type, or a <c>null</c> reference if it does not exist.
+    /// Note that this method will return <c>null</c> if called with an incorrect type, even if the item did exist as
+    /// an instance of a different type.
     /// </summary>
-    /// <value>The rule factory.</value>
-    Func<IRule> RuleFactory { get; }
-
-    /// <summary>
-    /// Configures the given rule.
-    /// </summary>
-    /// <param name="rule">Rule.</param>
-    void Configure(IRule rule);
-
-    /// <summary>
-    /// Gets a collection of the dependency identifiers.
-    /// </summary>
-    /// <value>The dependency identifiers.</value>
-    IEnumerable<object> DependencyIdentifiers { get; }
-
-    /// <summary>
-    /// Gets the metadata describing the current rule instance.
-    /// </summary>
-    /// <value>The metadata.</value>
-    IManifestMetadata Metadata { get; }
+    /// <param name="name">The metadata name.</param>
+    /// <typeparam name="T">The desired metadata object type.</typeparam>
+    T Get<T>(string name) where T : class;
   }
 }

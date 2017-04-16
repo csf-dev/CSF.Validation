@@ -1,5 +1,5 @@
 ﻿//
-// IManifestRule.cs
+// IManifestIdentityGenerator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,45 +24,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using CSF.Validation.Rules;
-using CSF.Validation.ValidationRuns;
-
 namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a single rule in a manifest of validation rules.
+  /// A service which creates a manifest identity for a given <see cref="IManifestRule"/>.
   /// </summary>
-  public interface IManifestRule
+  public interface IManifestIdentityGenerator
   {
     /// <summary>
-    /// Gets the identity associated with the current instance.
+    /// Gets the identity for the given rule.
     /// </summary>
-    /// <value>The identity.</value>
-    object Identity { get; }
-
-    /// <summary>
-    /// Gets an optional function which creates the rule instance.
-    /// </summary>
-    /// <value>The rule factory.</value>
-    Func<IRule> RuleFactory { get; }
-
-    /// <summary>
-    /// Configures the given rule.
-    /// </summary>
+    /// <returns>An identity object.</returns>
     /// <param name="rule">Rule.</param>
-    void Configure(IRule rule);
+    object GetIdentity(IManifestRule rule);
 
     /// <summary>
-    /// Gets a collection of the dependency identifiers.
+    /// Gets the identity for the given rule.
     /// </summary>
-    /// <value>The dependency identifiers.</value>
-    IEnumerable<object> DependencyIdentifiers { get; }
-
-    /// <summary>
-    /// Gets the metadata describing the current rule instance.
-    /// </summary>
-    /// <value>The metadata.</value>
-    IManifestMetadata Metadata { get; }
+    /// <returns>An identity object.</returns>
+    /// <param name="rule">Rule.</param>
+    /// <param name="parentIdentity">An object representing the identity of the parent rule.</param>
+    object GetIdentity(IManifestRule rule, object parentIdentity);
   }
 }

@@ -1,5 +1,5 @@
 ﻿//
-// IManifestRule.cs
+// DefaultManifestIdentityGenerator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,45 +24,44 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using CSF.Validation.Rules;
-using CSF.Validation.ValidationRuns;
+using System.Reflection;
+using name = CSF.Validation.Manifest.StandardMetadataName;
 
 namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a single rule in a manifest of validation rules.
+  /// Default implementation of <see cref="IManifestIdentityGenerator"/>.
   /// </summary>
-  public interface IManifestRule
+  public class DefaultManifestIdentityGenerator : IManifestIdentityGenerator
   {
     /// <summary>
-    /// Gets the identity associated with the current instance.
+    /// Gets the identity for the given rule.
     /// </summary>
-    /// <value>The identity.</value>
-    object Identity { get; }
-
-    /// <summary>
-    /// Gets an optional function which creates the rule instance.
-    /// </summary>
-    /// <value>The rule factory.</value>
-    Func<IRule> RuleFactory { get; }
-
-    /// <summary>
-    /// Configures the given rule.
-    /// </summary>
+    /// <returns>An identity object.</returns>
     /// <param name="rule">Rule.</param>
-    void Configure(IRule rule);
+    public object GetIdentity(IManifestRule rule)
+    {
+      return GetIdentity(rule, null);
+    }
 
     /// <summary>
-    /// Gets a collection of the dependency identifiers.
+    /// Gets the identity for the given rule.
     /// </summary>
-    /// <value>The dependency identifiers.</value>
-    IEnumerable<object> DependencyIdentifiers { get; }
+    /// <returns>An identity object.</returns>
+    /// <param name="rule">Rule.</param>
+    /// <param name="parentIdentity">An object representing the identity of the parent rule.</param>
+    public object GetIdentity(IManifestRule rule, object parentIdentity)
+    {
+      if(rule == null)
+        throw new ArgumentNullException(nameof(rule));
 
-    /// <summary>
-    /// Gets the metadata describing the current rule instance.
-    /// </summary>
-    /// <value>The metadata.</value>
-    IManifestMetadata Metadata { get; }
+      var metadata = rule.Metadata;
+
+      return new DefaultManifestIdentity(validatedType: metadata.Get<Type>(name.ValidatedType),
+                                         ruleType: metadata.Get<Type>(name.ValidatedType),
+                                         name: metadata.Get<string>(name.RuleName),
+                                         validatedMember: metadata.Get<MemberInfo>(name.ValidatedMember),
+                                         parentIdentity: parentIdentity as DefaultManifestIdentity);
+    }
   }
 }
