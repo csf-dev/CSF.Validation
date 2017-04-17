@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSF.Validation.Options;
 
 namespace CSF.Validation.ValidationRuns
 {
@@ -43,12 +44,20 @@ namespace CSF.Validation.ValidationRuns
     {
       var rules = validationContext.ValidationRun.Rules;
       var readyToExecute = GetRulesReadyForExecution(rules);
+      var skipOptions = validationContext.Options.GetRuleSkippingOptions();
 
       while(readyToExecute.Any())
       {
         foreach(var rule in readyToExecute)
         {
-          rule.Execute(validationContext.Validated);
+          if(ShouldSkipRule(rule, skipOptions, rules))
+          {
+            rule.IntentionallySkip(validationContext.Validated);
+          }
+          else
+          {
+            rule.Execute(validationContext.Validated);
+          }
         }
 
         readyToExecute = GetRulesReadyForExecution(rules);
@@ -67,6 +76,29 @@ namespace CSF.Validation.ValidationRuns
     protected virtual IEnumerable<IRunnableRule> GetRulesReadyForExecution(IEnumerable<IRunnableRule> rules)
     {
       return rules.Where(x => x.MayBeExecuted).ToArray();
+    }
+
+    /// <summary>
+    /// Determines whether or not the current rule should be skipped or not.
+    /// This implementation avoids skipping a rule if it has any rules dependant upon it, which themselves should not
+    /// be skipped.
+    /// </summary>
+    /// <returns><c>true</c>, if rule should be skipped, <c>false</c> otherwise.</returns>
+    /// <param name="rule">Rule.</param>
+    /// <param name="skipOptions">Skip options.</param>
+    /// <param name="allRules">All rules.</param>
+    protected virtual bool ShouldSkipRule(IRunnableRule rule,
+                                          IEnumerable<IRuleSkippingOption> skipOptions,
+                                          IEnumerable<IRunnableRule> allRules)
+    {
+      var rulesWhichDependUponThisRule = allRules
+        .Where(x => x.GetDependencies().Any(d => d == rule))
+        .ToArray();
+
+      if(rulesWhichDependUponThisRule.Any(x => !ShouldSkipRule(x, skipOptions, allRules)))
+        return false;
+
+      return skipOptions.Any(x => x.ShouldSkipRule(rule));
     }
 
     void CheckForRulesThatHaveNotRun(IEnumerable<IRunnableRule> rules)

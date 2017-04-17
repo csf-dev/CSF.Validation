@@ -84,6 +84,10 @@
     <Compile Include="Rules\IRuleResolver.cs" />
     <Compile Include="ValidationRuns\ValidationRun.cs" />
     <Compile Include="Rules\SimpleRuleResolver.cs" />
+    <Compile Include="Options\RuleSelectionOption.cs" />
+    <Compile Include="Options\IValidationOptions.cs" />
+    <Compile Include="Options\ValidationOptionsContainer.cs" />
+    <Compile Include="Options\IRuleSkippingOption.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
@@ -91,6 +95,7 @@
     <Folder Include="Resources\" />
     <Folder Include="StockRules\" />
     <Folder Include="Manifest\" />
+    <Folder Include="Options\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,5 @@
 ﻿//
-// IValidationRun.cs
+// IRuleSkippingOption.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,32 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation.ValidationRuns
+namespace CSF.Validation.Options
 {
   /// <summary>
-  /// This context type holds the state of a the validation operation which is in-progress, whilst it completes
-  /// the full validation procedure.
+  /// Gets an option which indicates whether or not a given rule should be skipped or not.
   /// </summary>
-  public interface IValidationRunContext
+  public interface IRuleSkippingOption
   {
     /// <summary>
-    /// Gets a reference to the validation run with which the current context is associated.
+    /// Indicates whether the given rule should be skipped or not.
     /// </summary>
-    /// <value>The validation run.</value>
-    IValidationRun ValidationRun { get; }
-
-    /// <summary>
-    /// Gets a reference to the object under validation.
-    /// </summary>
-    /// <value>The validated object.</value>
-    object Validated { get; }
-
-    /// <summary>
-    /// Gets the options applied to the current validation run.
-    /// </summary>
-    IValidationOptions Options { get; }
+    /// <returns><c>true</c>, if rule should be skipped, <c>false</c> otherwise.</returns>
+    /// <param name="rule">Rule.</param>
+    bool ShouldSkipRule(IRunnableRule rule);
   }
 }

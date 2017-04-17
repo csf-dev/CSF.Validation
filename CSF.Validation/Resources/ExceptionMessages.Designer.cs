@@ -89,6 +89,12 @@ namespace CSF.Validation.Resources {
             }
         }
         
+        internal static string DependenciesCannotBeRetrievedUntilProvided {
+            get {
+                return ResourceManager.GetString("DependenciesCannotBeRetrievedUntilProvided", resourceCulture);
+            }
+        }
+        
         internal static string SomeValidationRulesCouldNotBeRun {
             get {
                 return ResourceManager.GetString("SomeValidationRulesCouldNotBeRun", resourceCulture);

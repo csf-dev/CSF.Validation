@@ -1,5 +1,5 @@
 ﻿//
-// IValidationRun.cs
+// RuleSelectionOption.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,32 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation.ValidationRuns
+namespace CSF.Validation.Options
 {
-  /// <summary>
-  /// This context type holds the state of a the validation operation which is in-progress, whilst it completes
-  /// the full validation procedure.
-  /// </summary>
-  public interface IValidationRunContext
+  public class RuleSelectionOption : IRuleSkippingOption
   {
-    /// <summary>
-    /// Gets a reference to the validation run with which the current context is associated.
-    /// </summary>
-    /// <value>The validation run.</value>
-    IValidationRun ValidationRun { get; }
+    readonly Func<IRunnableRule,bool> predicate;
 
-    /// <summary>
-    /// Gets a reference to the object under validation.
-    /// </summary>
-    /// <value>The validated object.</value>
-    object Validated { get; }
+    public Func<IRunnableRule,bool> Predicate => predicate;
 
-    /// <summary>
-    /// Gets the options applied to the current validation run.
-    /// </summary>
-    IValidationOptions Options { get; }
+    bool IRuleSkippingOption.ShouldSkipRule(IRunnableRule rule)
+    {
+      return !Predicate(rule);
+    }
+
+    public RuleSelectionOption(Func<IRunnableRule,bool> predicate)
+    {
+      if(predicate == null)
+        throw new ArgumentNullException(nameof(predicate));
+
+      this.predicate = predicate;
+    }
   }
 }

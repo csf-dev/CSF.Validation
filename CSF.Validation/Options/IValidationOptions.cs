@@ -1,5 +1,5 @@
 ﻿//
-// IValidationRun.cs
+// IValidationOptions.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,31 +25,25 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using CSF.Validation.Options;
 
-namespace CSF.Validation.ValidationRuns
+namespace CSF.Validation.Options
 {
   /// <summary>
-  /// This context type holds the state of a the validation operation which is in-progress, whilst it completes
-  /// the full validation procedure.
+  /// Container type for validation options.
   /// </summary>
-  public interface IValidationRunContext
+  public interface IValidationOptions
   {
     /// <summary>
-    /// Gets a reference to the validation run with which the current context is associated.
+    /// Gets an option of the given type, or a <c>null</c> reference if no such option is present.
     /// </summary>
-    /// <value>The validation run.</value>
-    IValidationRun ValidationRun { get; }
+    /// <returns>The option.</returns>
+    /// <typeparam name="T">The desired option type.</typeparam>
+    T GetOption<T>() where T : class;
 
     /// <summary>
-    /// Gets a reference to the object under validation.
+    /// Gets a collection of the options which cause validation rules to be skipped.
     /// </summary>
-    /// <value>The validated object.</value>
-    object Validated { get; }
-
-    /// <summary>
-    /// Gets the options applied to the current validation run.
-    /// </summary>
-    IValidationOptions Options { get; }
+    /// <returns>The rule skipping options.</returns>
+    IEnumerable<IRuleSkippingOption> GetRuleSkippingOptions();
   }
 }
