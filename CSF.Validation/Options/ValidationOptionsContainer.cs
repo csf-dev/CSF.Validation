@@ -34,6 +34,7 @@ namespace CSF.Validation.Options
   /// </summary>
   public class ValidationOptionsContainer : IValidationOptions
   {
+    static readonly IValidationOptions empty;
     readonly IDictionary<Type,object> options;
 
     /// <summary>
@@ -74,5 +75,19 @@ namespace CSF.Validation.Options
 
       this.options = options.ToDictionary(k => k.GetType(), v => v);
     }
+
+    /// <summary>
+    /// Initializes the <see cref="T:CSF.Validation.Options.ValidationOptionsContainer"/> class.
+    /// </summary>
+    static ValidationOptionsContainer()
+    {
+      empty = new ValidationOptionsContainer(Enumerable.Empty<object>());
+    }
+
+    /// <summary>
+    /// Gets an empty set of validation options.
+    /// </summary>
+    /// <value>An empty options container.</value>
+    public static IValidationOptions Empty => empty;
   }
 }

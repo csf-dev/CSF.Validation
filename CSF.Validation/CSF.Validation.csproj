@@ -88,6 +88,9 @@
     <Compile Include="Options\IValidationOptions.cs" />
     <Compile Include="Options\ValidationOptionsContainer.cs" />
     <Compile Include="Options\IRuleSkippingOption.cs" />
+    <Compile Include="ValidatorFactory.cs" />
+    <Compile Include="Validator.cs" />
+    <Compile Include="ValidationRuns\ValidationRunContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

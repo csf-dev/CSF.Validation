@@ -24,6 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using CSF.Validation.Options;
+
 namespace CSF.Validation
 {
   /// <summary>
@@ -36,5 +38,12 @@ namespace CSF.Validation
     /// </summary>
     /// <param name="validated">Validated.</param>
     IValidationResult Validate(object validated);
+
+    /// <summary>
+    /// Validate the specified object and get the result.
+    /// </summary>
+    /// <param name="validated">Validated.</param>
+    /// <param name="options">Validation options.</param>
+    IValidationResult Validate(object validated, IValidationOptions options);
   }
 }
