@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSF.Validation.Options;
 using CSF.Validation.ValidationRuns;
 using Moq;
 using NUnit.Framework;
@@ -41,7 +42,7 @@ namespace CSF.Validation.Tests.ValidationRuns
       // Arrange
       var rules = Enumerable.Range(0, 5).Select(x => GetRunnableRule()).ToArray();
       var validated = new object();
-      var validationRun = Mock.Of<IValidationRunContext>(x => x.ValidationRun.Rules == rules && x.Validated == validated);
+      var validationRun = GetContext(rules, validated);
       var sut = new ValidationRunner();
 
       // Act
@@ -63,7 +64,7 @@ namespace CSF.Validation.Tests.ValidationRuns
         return new { Result = result, Rule = GetRunnableRule(result: result) };
       }).ToArray();
       var validated = new object();
-      var validationRun = Mock.Of<IValidationRunContext>(x => x.ValidationRun.Rules == rules.Select(r => r.Rule).ToArray() && x.Validated == validated);
+      var validationRun = GetContext(rules.Select(r => r.Rule).ToArray(), validated);
       var sut = new ValidationRunner();
 
       // Act
@@ -82,7 +83,7 @@ namespace CSF.Validation.Tests.ValidationRuns
         Mock.Of<IRunnableRule>(x => x.MayBeExecuted == false),
       };
       var validated = new object();
-      var validationRun = Mock.Of<IValidationRunContext>(x => x.ValidationRun.Rules == rules && x.Validated == validated);
+      var validationRun = GetContext(rules, validated);
       var sut = new ValidationRunner();
 
       // Act & Assert
@@ -102,7 +103,7 @@ namespace CSF.Validation.Tests.ValidationRuns
       var rules = new [] { ruleOne, ruleTwo, ruleThree, ruleFour, ruleFive };
 
       var validated = new object();
-      var validationRun = Mock.Of<IValidationRunContext>(x => x.ValidationRun.Rules == rules && x.Validated == validated);
+      var validationRun = GetContext(rules, validated);
       var sut = new ValidationRunner();
 
       // Act
@@ -113,6 +114,115 @@ namespace CSF.Validation.Tests.ValidationRuns
       {
         Mock.Get(rule).Verify(x => x.Execute(validated), Times.Once());
       }
+    }
+
+    [Test]
+    public void ExecuteRunAndGetResults_skips_unwanted_rules()
+    {
+      // Arrange
+      var ruleOne = GetRunnableRule();
+      var ruleTwo = GetRunnableRule();
+      var ruleThree = GetRunnableRule();
+
+      var rules = new [] { ruleOne, ruleTwo, ruleThree };
+
+      var option = new Mock<IRuleSkippingOption>();
+      option
+        .Setup(x => x.ShouldSkipRule(It.IsAny<IRunnableRule>()))
+        .Returns((IRunnableRule rule) => ReferenceEquals(rule, ruleTwo));
+
+      var validated = new object();
+      var validationRun = GetContext(rules, validated, new [] { option.Object });
+      var sut = new ValidationRunner();
+
+      // Act
+      sut.ExecuteRunAndGetResults(validationRun);
+
+      // Assert
+      Mock.Get(ruleTwo).Verify(x => x.IntentionallySkip(validated), Times.Once());
+    }
+
+    [Test]
+    public void ExecuteRunAndGetResults_executes_desired_rules()
+    {
+      // Arrange
+      var ruleOne = GetRunnableRule();
+      var ruleTwo = GetRunnableRule();
+      var ruleThree = GetRunnableRule();
+
+      var rules = new [] { ruleOne, ruleTwo, ruleThree };
+
+      var option = new Mock<IRuleSkippingOption>();
+      option
+        .Setup(x => x.ShouldSkipRule(It.IsAny<IRunnableRule>()))
+        .Returns((IRunnableRule rule) => ReferenceEquals(rule, ruleTwo));
+
+      var validated = new object();
+      var validationRun = GetContext(rules, validated, new [] { option.Object });
+      var sut = new ValidationRunner();
+
+      // Act
+      sut.ExecuteRunAndGetResults(validationRun);
+
+      // Assert
+      Mock.Get(ruleOne).Verify(x => x.Execute(validated), Times.Once());
+      Mock.Get(ruleThree).Verify(x => x.Execute(validated), Times.Once());
+    }
+
+    [Test]
+    public void ExecuteRunAndGetResults_does_not_skip_rules_which_are_dependencies_of_desired_rules()
+    {
+      // Arrange
+      var ruleOne = GetRunnableRule();
+      var ruleTwo = GetRunnableRule();
+      var ruleThree = GetRunnableRule(dependencies: new [] { ruleTwo });
+
+      var rules = new [] { ruleOne, ruleTwo, ruleThree };
+
+      var option = new Mock<IRuleSkippingOption>();
+      option
+        .Setup(x => x.ShouldSkipRule(It.IsAny<IRunnableRule>()))
+        .Returns((IRunnableRule rule) => !ReferenceEquals(rule, ruleThree));
+
+      var validated = new object();
+      var validationRun = GetContext(rules, validated, new [] { option.Object });
+      var sut = new ValidationRunner();
+
+      // Act
+      sut.ExecuteRunAndGetResults(validationRun);
+
+      // Assert
+      Mock.Get(ruleOne).Verify(x => x.IntentionallySkip(validated), Times.Once());
+      Mock.Get(ruleTwo).Verify(x => x.Execute(validated), Times.Once());
+      Mock.Get(ruleThree).Verify(x => x.Execute(validated), Times.Once());
+    }
+
+    [Test]
+    public void ExecuteRunAndGetResults_does_not_skip_multi_tier_dependencies()
+    {
+      // Arrange
+      var ruleOne = GetRunnableRule();
+      var ruleTwo = GetRunnableRule(dependencies: new [] { ruleOne });
+      var ruleThree = GetRunnableRule(dependencies: new [] { ruleTwo });
+
+      var rules = new [] { ruleOne, ruleTwo, ruleThree };
+
+      var option = new Mock<IRuleSkippingOption>();
+      option
+        .Setup(x => x.ShouldSkipRule(It.IsAny<IRunnableRule>()))
+        .Returns((IRunnableRule rule) => !ReferenceEquals(rule, ruleThree));
+
+      var validated = new object();
+      var validationRun = GetContext(rules, validated, new [] { option.Object });
+      var sut = new ValidationRunner();
+
+      // Act
+      sut.ExecuteRunAndGetResults(validationRun);
+
+      // Assert
+      Mock.Get(ruleOne).Verify(x => x.Execute(validated), Times.Once());
+      Mock.Get(ruleTwo).Verify(x => x.Execute(validated), Times.Once());
+      Mock.Get(ruleThree).Verify(x => x.Execute(validated), Times.Once());
     }
 
     IRunnableRule GetRunnableRule(IRunnableRuleResult result = null,
@@ -138,8 +248,31 @@ namespace CSF.Validation.Tests.ValidationRuns
       rule
         .Setup(x => x.Execute(It.IsAny<object>()))
         .Callback((object val) => hasRun = true);
+      rule
+        .Setup(x => x.IntentionallySkip(It.IsAny<object>()))
+        .Callback((object val) => hasRun = true);
+
+      rule
+        .Setup(x => x.GetDependencies())
+        .Returns(dependencies);
 
       return rule.Object;
+    }
+
+    IValidationRunContext GetContext(IEnumerable<IRunnableRule> rules,
+                                     object validated,
+                                     IEnumerable<IRuleSkippingOption> ruleSkippingOptions = null)
+    {
+      if(validated == null)
+        throw new ArgumentNullException(nameof(validated));
+      if(rules == null)
+        throw new ArgumentNullException(nameof(rules));
+
+      ruleSkippingOptions = ruleSkippingOptions?? Enumerable.Empty<IRuleSkippingOption>();
+
+      return Mock.Of<IValidationRunContext>(x => x.ValidationRun.Rules == rules
+                                                 && x.Validated == validated
+                                                 && x.Options.GetRuleSkippingOptions() == ruleSkippingOptions);
     }
   }
 }
