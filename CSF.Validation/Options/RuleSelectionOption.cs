@@ -28,10 +28,18 @@ using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation.Options
 {
+  /// <summary>
+  /// Represents a validation option which determines whether a given validation rule should be executed or not.
+  /// </summary>
   public class RuleSelectionOption : IRuleSkippingOption
   {
     readonly Func<IRunnableRule,bool> predicate;
 
+    /// <summary>
+    /// Gets a predicate which examines a validation rule.  It should return <c>true</c> if the rule should be executed
+    /// or <c>false</c> if it should be skipped.
+    /// </summary>
+    /// <value>The rule-selection predicate.</value>
     public Func<IRunnableRule,bool> Predicate => predicate;
 
     bool IRuleSkippingOption.ShouldSkipRule(IRunnableRule rule)
@@ -39,6 +47,10 @@ namespace CSF.Validation.Options
       return !Predicate(rule);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RuleSelectionOption"/> class.
+    /// </summary>
+    /// <param name="predicate">Predicate.</param>
     public RuleSelectionOption(Func<IRunnableRule,bool> predicate)
     {
       if(predicate == null)
