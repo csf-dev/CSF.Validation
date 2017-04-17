@@ -122,6 +122,20 @@ namespace CSF.Validation.ValidationRuns
     }
 
     /// <summary>
+    /// Intentionally skips execution of the current rule instance, marking it as such.
+    /// </summary>
+    /// <param name="validated">Validated.</param>
+    public virtual void IntentionallySkip(object validated)
+    {
+      if(!MayBeExecuted)
+        throw new InvalidOperationException(Resources.ExceptionMessages.RuleMayNotBeExecuted);
+
+      this.validated = validated;
+
+      result = new RuleResult(RuleOutcome.IntentionallySkipped);
+    }
+
+    /// <summary>
     /// Gets the result of the rule's execution.
     /// </summary>
     /// <returns>The result.</returns>
@@ -135,6 +149,23 @@ namespace CSF.Validation.ValidationRuns
       }
 
       return new RunnableRuleResult(manifestIdentity, result, validated);
+    }
+
+    /// <summary>
+    /// Gets a collection of the dependencies for the current instance.
+    /// </summary>
+    /// <returns>The dependencies.</returns>
+    public virtual IEnumerable<IRunnableRule> GetDependencies()
+    {
+      if(dependencies == null)
+      {
+        string message = String.Format(Resources.ExceptionMessages.DependenciesCannotBeRetrievedUntilProvided,
+                                       nameof(GetDependencies),
+                                       nameof(ProvideDependencies));
+        throw new InvalidOperationException(message);
+      }
+
+      return dependencies;
     }
 
     /// <summary>

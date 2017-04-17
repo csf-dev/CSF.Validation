@@ -62,11 +62,23 @@ namespace CSF.Validation.ValidationRuns
     IRunnableRuleResult GetResult();
 
     /// <summary>
+    /// Gets a collection of the dependencies for the current instance.
+    /// </summary>
+    /// <returns>The dependencies.</returns>
+    IEnumerable<IRunnableRule> GetDependencies();
+
+    /// <summary>
     /// Execute the current rule, for the given validated object.
     /// </summary>
     /// <param name="validated">Validated.</param>
     /// <exception cref="InvalidOperationException">If <see cref="HasResult"/> is <c>true</c>.</exception>
     void Execute(object validated);
+
+    /// <summary>
+    /// Intentionally skips execution of the current rule instance, marking it as such.
+    /// </summary>
+    /// <param name="validated">Validated.</param>
+    void IntentionallySkip(object validated);
 
     /// <summary>
     /// A call-once method which sets the dependencies for the current instance to the given collection of rules.
