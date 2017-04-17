@@ -3,3 +3,7 @@ before_build:
 - cmd: nuget restore CSF.Validation.sln
 build:
   verbosity: minimal
+test:
+  assemblies:
+    except:
+    - '**\Ploeh.AutoFixture.NUnit3.dll'
