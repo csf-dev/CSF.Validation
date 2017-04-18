@@ -100,5 +100,17 @@ namespace CSF.Validation.Resources {
                 return ResourceManager.GetString("SomeValidationRulesCouldNotBeRun", resourceCulture);
             }
         }
+        
+        internal static string ParentRuleIdentityMustBeTypeOrNull {
+            get {
+                return ResourceManager.GetString("ParentRuleIdentityMustBeTypeOrNull", resourceCulture);
+            }
+        }
+        
+        internal static string MemberMustBelongToValidatedType {
+            get {
+                return ResourceManager.GetString("MemberMustBelongToValidatedType", resourceCulture);
+            }
+        }
     }
 }

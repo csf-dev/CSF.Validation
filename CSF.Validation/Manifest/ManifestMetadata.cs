@@ -25,6 +25,8 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace CSF.Validation.Manifest
 {
@@ -69,6 +71,52 @@ namespace CSF.Validation.Manifest
         throw new ArgumentNullException(nameof(metadata));
 
       this.metadata = metadata;
+    }
+
+    /// <summary>
+    /// Creates a manifest metadata instance from the given parameter values.
+    /// </summary>
+    /// <param name="validatedType">The validated type.</param>
+    /// <param name="ruleType">The rule type.</param>
+    /// <param name="validatedMember">An optional validated member.</param>
+    /// <param name="ruleName">An optional rule name.</param>
+    /// <param name="parentIdentity">An optional identity for a parent rule.</param>
+    /// <param name="supplementalMetadata">Optional supplemental metadata.</param>
+    public static IManifestMetadata Create(Type validatedType,
+                                           Type ruleType,
+                                           MemberInfo validatedMember = null,
+                                           string ruleName = null,
+                                           object parentIdentity = null,
+                                           IDictionary<string,object> supplementalMetadata = null)
+    {
+      var metadataDictionary = new Dictionary<string,object>();
+
+      metadataDictionary.Add(StandardMetadataName.ValidatedType, validatedType);
+      metadataDictionary.Add(StandardMetadataName.RuleType, ruleType);
+
+      if(!ReferenceEquals(validatedMember, null))
+      {
+        metadataDictionary.Add(StandardMetadataName.ValidatedMember, validatedMember);
+      }
+
+      if(!ReferenceEquals(ruleName, null))
+      {
+        metadataDictionary.Add(StandardMetadataName.RuleName, ruleName);
+      }
+
+      if(!ReferenceEquals(parentIdentity, null))
+      {
+        metadataDictionary.Add(StandardMetadataName.ParentRuleIdentifier, parentIdentity);
+      }
+
+      if(supplementalMetadata != null)
+      {
+        metadataDictionary = metadataDictionary
+          .Union(supplementalMetadata)
+          .ToDictionary(k => k.Key, v => v.Value);
+      }
+
+      return new ManifestMetadata(metadataDictionary);
     }
   }
 }

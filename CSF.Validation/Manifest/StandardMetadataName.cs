@@ -36,7 +36,7 @@ namespace CSF.Validation.Manifest
       ruleType = "Rule type",
       ruleName = "Rule name",
       validatedMember = "Validated member",
-      parentRule = "Parent rule manifest";
+      parentRule = "Parent rule identifier";
 
     /// <summary>
     /// Gets the metadata name which indicates the <c>System.Type</c> of the validated object.
@@ -65,10 +65,10 @@ namespace CSF.Validation.Manifest
     public static string ValidatedMember => validatedMember;
 
     /// <summary>
-    /// Gets the metadata name which indicates a <see cref="IManifestRule"/> representing the parent validation
-    /// rule (if any).
+    /// Gets the metadata name which indicates the identifier for a <see cref="IManifestRule"/> representing
+    /// the parent validation rule (if any).
     /// </summary>
     /// <value>The parent rule.</value>
-    public static string ParentRule => parentRule;
+    public static string ParentRuleIdentifier => parentRule;
   }
 }
