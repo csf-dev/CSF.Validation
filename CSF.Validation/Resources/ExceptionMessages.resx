@@ -39,4 +39,11 @@
   <data name="SomeValidationRulesCouldNotBeRun" xml:space="preserve">
     <value>Validation has stalled - one or more validation rules have yet to be executed but there are none in the validation run which report that they may be.</value>
   </data>
+  <data name="ParentRuleIdentityMustBeTypeOrNull" xml:space="preserve">
+    <value>The identity of the parent validation rule must be either an instance of `{0}' or it must be null.</value>
+  </data>
+  <data name="MemberMustBelongToValidatedType" xml:space="preserve">
+    <value>The member must belong to the validated type `{0}'.
+Member name: {1}</value>
+  </data>
 </root>

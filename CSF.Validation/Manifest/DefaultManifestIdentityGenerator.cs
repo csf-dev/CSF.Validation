@@ -58,7 +58,7 @@ namespace CSF.Validation.Manifest
       var metadata = rule.Metadata;
 
       return new DefaultManifestIdentity(validatedType: metadata.Get<Type>(name.ValidatedType),
-                                         ruleType: metadata.Get<Type>(name.ValidatedType),
+                                         ruleType: metadata.Get<Type>(name.RuleType),
                                          name: metadata.Get<string>(name.RuleName),
                                          validatedMember: metadata.Get<MemberInfo>(name.ValidatedMember),
                                          parentIdentity: parentIdentity as DefaultManifestIdentity);

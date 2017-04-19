@@ -38,6 +38,9 @@
     <Reference Include="CSF.Utils">
       <HintPath>..\packages\CSF.Utils.6.0.0\lib\net45\CSF.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="CSF.Reflection">
+      <HintPath>..\packages\CSF.Reflection.1.0.1\lib\net45\CSF.Reflection.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,6 +94,16 @@
     <Compile Include="ValidatorFactory.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="ValidationRuns\ValidationRunContext.cs" />
+    <Compile Include="Manifest\Fluent\IManifestBuilder.cs" />
+    <Compile Include="Manifest\Fluent\IRuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\RuleBuilderExtensions.cs" />
+    <Compile Include="Manifest\Fluent\RuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\ManifestBuilder`1.cs" />
+    <Compile Include="Manifest\ValidationManifest.cs" />
+    <Compile Include="Rules\IValueRule.cs" />
+    <Compile Include="Manifest\Fluent\ValueRuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
+    <Compile Include="StockRules\NullableNumericRangeValueRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
@@ -99,6 +112,7 @@
     <Folder Include="StockRules\" />
     <Folder Include="Manifest\" />
     <Folder Include="Options\" />
+    <Folder Include="Manifest\Fluent\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

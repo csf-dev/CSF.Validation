@@ -1,5 +1,5 @@
 ﻿//
-// NumericRangeValueRule.cs
+// NullableNumericRangeValueRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -31,9 +31,10 @@ namespace CSF.Validation.StockRules
   /// <summary>
   /// Validation rule which fails validation if a numeric value is less than or greater than given
   /// minimum/maximum values.
-  /// This rule cannot be used on nullable types.
+  /// Note that this rule will pass if the input value is <c>null</c>.  Combine this with another rule if the value
+  /// must not be null.
   /// </summary>
-  public class NumericRangeValueRule<TValidated,TValue> : ValueRule<TValidated,TValue>
+  public class NullableNumericRangeValueRule<TValidated, TValue> : ValueRule<TValidated, TValue?>
     where TValue : struct
   {
     /// <summary>
@@ -54,17 +55,20 @@ namespace CSF.Validation.StockRules
     /// <returns>The outcome.</returns>
     /// <param name="validated">Validated.</param>
     /// <param name="value">Value.</param>
-    protected override RuleOutcome GetOutcome(TValidated validated, TValue value)
+    protected override RuleOutcome GetOutcome(TValidated validated, TValue? value)
     {
+      if(!value.HasValue)
+        return Success;
+
       if(Min.HasValue
          && Max.HasValue
          && Convert.ToDouble(Min.Value) > Convert.ToDouble(Max.Value))
         throw new InvalidValidationeRuleException(Resources.ExceptionMessages.MinMustNotBeGreaterThanMax);
 
-      if(Min.HasValue && Convert.ToDouble(value) < Convert.ToDouble(Min.Value))
+      if(Min.HasValue && Convert.ToDouble(value.Value) < Convert.ToDouble(Min.Value))
         return Failure;
 
-      if(Max.HasValue && Convert.ToDouble(value) > Convert.ToDouble(Max.Value))
+      if(Max.HasValue && Convert.ToDouble(value.Value) > Convert.ToDouble(Max.Value))
         return Failure;
 
       return Success;

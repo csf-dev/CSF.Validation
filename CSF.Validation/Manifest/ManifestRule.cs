@@ -48,7 +48,7 @@ namespace CSF.Validation.Manifest
     /// Gets the <c>System.Type</c> of the rule which this manifest item represents.
     /// </summary>
     /// <value>The type of the rule.</value>
-    public virtual Type RuleType { get; private set; }
+    public virtual Type RuleType => typeof(TRule);
 
     /// <summary>
     /// Gets an optional operation which performs configuration upon the rule before it is executed.
@@ -109,31 +109,24 @@ namespace CSF.Validation.Manifest
     #region constructor
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:CSF.Validation.Manifest.ManifestRule`1"/> class.
+    /// Initializes a new instance of the <see cref="T:ManifestRule{TRule}"/> class.
     /// </summary>
-    /// <param name="identity">The rule identity.</param>
     /// <param name="metadata">The rule metadata.</param>
-    /// <param name="ruleType">The rule type.</param>
+    /// <param name="identity">An optional rule identity.</param>
     /// <param name="configuration">An optional configuration action.</param>
     /// <param name="factory">An optional factory function.</param>
     /// <param name="dependencyIdentifiers">An optional collection of dependency identifiers.</param>
-    public ManifestRule(object identity,
-                        IManifestMetadata metadata,
-                        Type ruleType,
+    public ManifestRule(IManifestMetadata metadata,
+                        object identity = null,
                         Action<TRule> configuration = null,
                         Func<TRule> factory = null,
                         IEnumerable<object> dependencyIdentifiers = null)
     {
-      if(ruleType == null)
-        throw new ArgumentNullException(nameof(ruleType));
       if(metadata == null)
         throw new ArgumentNullException(nameof(metadata));
-      if(identity == null)
-        throw new ArgumentNullException(nameof(identity));
 
       Identity = identity;
       Metadata = metadata;
-      RuleType = ruleType;
       RuleConfiguration = configuration;
       RuleFactory = factory;
       DependencyIdentifiers = dependencyIdentifiers?? Enumerable.Empty<object>();

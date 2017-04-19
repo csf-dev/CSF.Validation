@@ -30,7 +30,7 @@ namespace CSF.Validation.Rules
   /// A validation rule which operates upon a single value (such as the value of a single object member, like
   /// a property).
   /// </summary>
-  public abstract class ValueRule<TValidated,TValue> : Rule<TValidated>
+  public abstract class ValueRule<TValidated,TValue> : Rule<TValidated>, IValueRule<TValidated,TValue>
   {
     /// <summary>
     /// Gets or sets the accessor for that value, based upon the object under validation.
