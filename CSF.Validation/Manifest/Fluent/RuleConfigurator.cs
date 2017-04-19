@@ -121,6 +121,7 @@ namespace CSF.Validation.Manifest.Fluent
     {
       this.parentRuleIdentity = parentRuleIdentity;
       this.supplementalMetadata = new Dictionary<string,object>();
+      this.dependencies = new HashSet<object>();
     }
 
     #endregion

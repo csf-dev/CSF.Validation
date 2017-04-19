@@ -66,6 +66,7 @@
     <Folder Include="StockRules\" />
     <Folder Include="ValidationRuns\" />
     <Folder Include="Manifest\" />
+    <Folder Include="Integration\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StockRules\NotNullRuleTests.cs" />
@@ -79,6 +80,10 @@
     <Compile Include="Manifest\DefaultManifestIdentityTests.cs" />
     <Compile Include="ValidationRuns\ValidationRunFactoryTests.cs" />
     <Compile Include="AutoMoqDataAttribute.cs" />
+    <Compile Include="Integration\IValidatorCreator.cs" />
+    <Compile Include="Integration\StringPropertyFluentManifestCreator.cs" />
+    <Compile Include="Integration\RuleRegistry.cs" />
+    <Compile Include="Integration\StringPropertyIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

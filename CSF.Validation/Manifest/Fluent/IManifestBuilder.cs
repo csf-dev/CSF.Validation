@@ -35,37 +35,54 @@ namespace CSF.Validation.Manifest.Fluent
   public interface IManifestBuilder<TValidated> where TValidated : class
   {
     /// <summary>
+    /// Creates and returns a validation manifest from the current builder instance.
+    /// </summary>
+    /// <returns>The manifest.</returns>
+    IValidationManifest GetManifest();
+
+    /// <summary>
     /// Adds a validation rule to the manifest.
     /// </summary>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    void AddRule<TRule>()
+    void AddRule<TRule>(Func<TValidated,TRule> ruleDelegate)
       where TRule : class,IRule;
 
     /// <summary>
     /// Adds a validation rule to the manifest.
     /// </summary>
     /// <param name="configuration">A callback which configures the rule in the manifest.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    void AddRule<TRule>(Action<IRuleConfigurator<TValidated,TRule>> configuration)
+    void AddRule<TRule>(Func<TValidated,TRule> ruleDelegate,
+                        Action<IRuleConfigurator<TValidated,TRule>> configuration)
       where TRule : class,IRule;
 
     /// <summary>
     /// Adds a validation rule to the manifest, where the rule is specific to a value from the validated type.
     /// </summary>
     /// <param name="valueAccessor">A function which gets the value to be validated by this rule.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
     /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
-    void AddValueRule<TRule,TValue>(Func<TValidated,TValue> valueAccessor)
+    void AddValueRule<TRule,TValue>(Func<TValidated,TValue> valueAccessor,
+                                    Func<TValidated,TValue,TRule> ruleDelegate)
       where TRule : class,IValueRule<TValidated,TValue>;
 
     /// <summary>
     /// Adds a validation rule to the manifest, where the rule is specific to a value from the validated type.
     /// </summary>
     /// <param name="valueAccessor">A function which gets the value to be validated by this rule.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <param name="configuration">A callback which configures the rule in the manifest.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
     /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
     void AddValueRule<TRule,TValue>(Func<TValidated,TValue> valueAccessor,
+                                    Func<TValidated,TValue,TRule> ruleDelegate,
                                     Action<IRuleConfigurator<TValidated,TRule>> configuration)
       where TRule : class,IValueRule<TValidated,TValue>;
 
@@ -74,9 +91,12 @@ namespace CSF.Validation.Manifest.Fluent
     /// validated type.
     /// </summary>
     /// <param name="memberExpression">An expression which indicates the member holding the value to be validated by this rule.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
     /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
-    void AddMemberRule<TRule,TValue>(Expression<Func<TValidated,TValue>> memberExpression)
+    void AddMemberRule<TRule,TValue>(Expression<Func<TValidated,TValue>> memberExpression,
+                                     Func<TValidated,TValue,TRule> ruleDelegate)
       where TRule : class,IValueRule<TValidated,TValue>;
 
     /// <summary>
@@ -84,10 +104,13 @@ namespace CSF.Validation.Manifest.Fluent
     /// validated type.
     /// </summary>
     /// <param name="memberExpression">An expression which indicates the member holding the value to be validated by this rule.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <param name="configuration">A callback which configures the rule in the manifest.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
     /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
     void AddMemberRule<TRule,TValue>(Expression<Func<TValidated,TValue>> memberExpression,
+                                     Func<TValidated,TValue,TRule> ruleDelegate,
                                      Action<IRuleConfigurator<TValidated,TRule>> configuration)
       where TRule : class,IValueRule<TValidated,TValue>;
   }

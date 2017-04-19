@@ -1,5 +1,5 @@
 ﻿//
-// ManifestBuilder1.cs
+// RuleRegistry.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,20 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace CSF.Validation.Manifest.Fluent
+using CSF.Validation.StockRules;
+
+namespace CSF.Validation.Tests.Integration
 {
-  /// <summary>
-  /// Static methods relating to <see cref="T:IManifestBuilder{T}"/>.
-  /// </summary>
-  public static class ManifestBuilder
+  public static class RuleRegistry
   {
-    /// <summary>
-    /// Creates and returns a new manifest builder instance.
-    /// </summary>
-    /// <typeparam name="T">The 1st type parameter.</typeparam>
-    public static IManifestBuilder<T> Create<T>() where T : class
-    {
-      return new ManifestBuilder<T>();
-    }
+    public static NotNullRule NotNullObject<TValidated>(TValidated v1)
+      => new NotNullRule();
+
+    public static NotNullValueRule<TValidated,TValue> NotNull<TValidated,TValue>(TValidated v1, TValue v2)
+      => new NotNullValueRule<TValidated,TValue>();
+
+    public static NumericRangeValueRule<TValidated,TValue> NumericRange<TValidated,TValue>(TValidated v1, TValue v2) where TValue : struct
+      => new NumericRangeValueRule<TValidated,TValue>();
+
+    public static StringLengthValueRule<TValidated> StringLength<TValidated>(TValidated v1, string v2)
+      => new StringLengthValueRule<TValidated>();
   }
 }

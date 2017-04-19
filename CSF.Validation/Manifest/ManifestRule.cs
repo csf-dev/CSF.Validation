@@ -111,21 +111,19 @@ namespace CSF.Validation.Manifest
     /// <summary>
     /// Initializes a new instance of the <see cref="T:ManifestRule{TRule}"/> class.
     /// </summary>
-    /// <param name="identity">The rule identity.</param>
     /// <param name="metadata">The rule metadata.</param>
+    /// <param name="identity">An optional rule identity.</param>
     /// <param name="configuration">An optional configuration action.</param>
     /// <param name="factory">An optional factory function.</param>
     /// <param name="dependencyIdentifiers">An optional collection of dependency identifiers.</param>
-    public ManifestRule(object identity,
-                        IManifestMetadata metadata,
+    public ManifestRule(IManifestMetadata metadata,
+                        object identity = null,
                         Action<TRule> configuration = null,
                         Func<TRule> factory = null,
                         IEnumerable<object> dependencyIdentifiers = null)
     {
       if(metadata == null)
         throw new ArgumentNullException(nameof(metadata));
-      if(identity == null)
-        throw new ArgumentNullException(nameof(identity));
 
       Identity = identity;
       Metadata = metadata;

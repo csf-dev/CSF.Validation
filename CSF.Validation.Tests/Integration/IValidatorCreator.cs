@@ -1,5 +1,5 @@
 ﻿//
-// ManifestBuilder1.cs
+// IValidationManifestCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,20 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace CSF.Validation.Manifest.Fluent
+using CSF.Validation.Manifest;
+
+namespace CSF.Validation.Tests.Integration
 {
-  /// <summary>
-  /// Static methods relating to <see cref="T:IManifestBuilder{T}"/>.
-  /// </summary>
-  public static class ManifestBuilder
+  public interface IValidatorCreator
   {
-    /// <summary>
-    /// Creates and returns a new manifest builder instance.
-    /// </summary>
-    /// <typeparam name="T">The 1st type parameter.</typeparam>
-    public static IManifestBuilder<T> Create<T>() where T : class
-    {
-      return new ManifestBuilder<T>();
-    }
+    IValidationManifest CreateManifest();
+
+    IValidator CreateValidator();
   }
 }

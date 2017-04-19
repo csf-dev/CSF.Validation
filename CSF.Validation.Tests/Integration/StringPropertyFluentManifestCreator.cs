@@ -1,5 +1,5 @@
 ﻿//
-// ManifestBuilder1.cs
+// StandardFluentManifestCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,20 +24,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace CSF.Validation.Manifest.Fluent
+using CSF.Validation.Manifest;
+using CSF.Validation.Manifest.Fluent;
+
+namespace CSF.Validation.Tests.Integration
 {
-  /// <summary>
-  /// Static methods relating to <see cref="T:IManifestBuilder{T}"/>.
-  /// </summary>
-  public static class ManifestBuilder
+  public class StringPropertyFluentManifestCreator : IValidatorCreator
   {
-    /// <summary>
-    /// Creates and returns a new manifest builder instance.
-    /// </summary>
-    /// <typeparam name="T">The 1st type parameter.</typeparam>
-    public static IManifestBuilder<T> Create<T>() where T : class
+    public IValidationManifest CreateManifest()
     {
-      return new ManifestBuilder<T>();
+      var builder = ManifestBuilder.Create<StubValidatedObject>();
+
+      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.NotNull);
+
+      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.StringLength, c => {
+        c.Configure(r => {
+          r.MinLength = 5;
+          r.MaxLength = 10;
+        });
+
+        c.AddDependency(x => x.StringProperty, RuleRegistry.NotNull);
+      });
+
+      return builder.GetManifest();
+    }
+
+    public IValidator CreateValidator()
+    {
+      var manifest = CreateManifest();
+      var factory = new ValidatorFactory();
+      return factory.GetValidator(manifest);
     }
   }
 }

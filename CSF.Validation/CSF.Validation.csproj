@@ -98,10 +98,11 @@
     <Compile Include="Manifest\Fluent\IRuleConfigurator.cs" />
     <Compile Include="Manifest\Fluent\RuleBuilderExtensions.cs" />
     <Compile Include="Manifest\Fluent\RuleConfigurator.cs" />
-    <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
+    <Compile Include="Manifest\Fluent\ManifestBuilder`1.cs" />
     <Compile Include="Manifest\ValidationManifest.cs" />
     <Compile Include="Rules\IValueRule.cs" />
     <Compile Include="Manifest\Fluent\ValueRuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

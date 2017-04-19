@@ -41,17 +41,20 @@ namespace CSF.Validation.Manifest.Fluent
     /// rule via properties of its <see cref="DefaultManifestIdentity"/>.
     /// </summary>
     /// <param name="builder">The rule builder.</param>
-    /// <param name="ruleType">The rule type depended-upon.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <param name="name">The name of the depended-upon rule.</param>
     /// <typeparam name="TValidated">The validated type.</typeparam>
     /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
-    public static void AddDependency<TValidated,TRule>(this IRuleConfigurator<TValidated,TRule> builder,
-                                                       Type ruleType,
-                                                       string name = null)
+    /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
+    public static void AddDependency<TValidated,TRule,TOtherRule>(this IRuleConfigurator<TValidated,TRule> builder,
+                                                                  Func<TValidated,TOtherRule> ruleDelegate,
+                                                                  string name = null)
       where TValidated : class
       where TRule : class,IRule
+      where TOtherRule : class,IRule
     {
-      AddDependency(builder, ruleType, (MemberInfo) null, name);
+      AddDependency<TValidated,TRule,TOtherRule>(builder, (MemberInfo) null, name);
     }
 
     /// <summary>
@@ -59,20 +62,24 @@ namespace CSF.Validation.Manifest.Fluent
     /// rule via properties of its <see cref="DefaultManifestIdentity"/>.
     /// </summary>
     /// <param name="builder">The rule builder.</param>
-    /// <param name="ruleType">The rule type depended-upon.</param>
+    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
+    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <param name="memberExpression">An expression identifying the member for the depended-upon rule.</param>
     /// <param name="name">The name of the depended-upon rule.</param>
     /// <typeparam name="TValidated">The validated type.</typeparam>
+    /// <typeparam name="TValue">The type of value which <typeparamref name="TOtherRule"/> validates.</typeparam>
     /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
-    public static void AddDependency<TValidated,TRule>(this IRuleConfigurator<TValidated,TRule> builder,
-                                                       Type ruleType,
-                                                       Expression<Func<TValidated,object>> memberExpression,
-                                                       string name = null)
+    /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
+    public static void AddDependency<TValidated,TValue,TRule,TOtherRule>(this IRuleConfigurator<TValidated,TRule> builder,
+                                                                         Expression<Func<TValidated,TValue>> memberExpression,
+                                                                         Func<TValidated,TValue,TOtherRule> ruleDelegate,
+                                                                         string name = null)
       where TValidated : class
       where TRule : class,IRule
+      where TOtherRule : class,IRule
     {
       var member = Reflect.Member(memberExpression);
-      AddDependency(builder, ruleType, member, name);
+      AddDependency<TValidated,TRule,TOtherRule>(builder, member, name);
     }
 
     /// <summary>
@@ -80,20 +87,18 @@ namespace CSF.Validation.Manifest.Fluent
     /// rule via properties of its <see cref="DefaultManifestIdentity"/>.
     /// </summary>
     /// <param name="builder">The rule builder.</param>
-    /// <param name="ruleType">The rule type depended-upon.</param>
     /// <param name="member">The member for the depended-upon rule.</param>
     /// <param name="name">The name of the depended-upon rule.</param>
     /// <typeparam name="TValidated">The validated type.</typeparam>
     /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
-    public static void AddDependency<TValidated,TRule>(this IRuleConfigurator<TValidated,TRule> builder,
-                                                       Type ruleType,
-                                                       MemberInfo member,
-                                                       string name = null)
+    /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
+    static void AddDependency<TValidated,TRule,TOtherRule>(this IRuleConfigurator<TValidated,TRule> builder,
+                                                           MemberInfo member,
+                                                           string name = null)
       where TValidated : class
       where TRule : class,IRule
+      where TOtherRule : class,IRule
     {
-      if(ruleType == null)
-        throw new ArgumentNullException(nameof(ruleType));
       if(builder == null)
         throw new ArgumentNullException(nameof(builder));
       if(!ReferenceEquals(builder.ParentRuleIdentity, null)
@@ -105,7 +110,7 @@ namespace CSF.Validation.Manifest.Fluent
       }
         
       var identity = new DefaultManifestIdentity(typeof(TValidated),
-                                                 ruleType,
+                                                 typeof(TOtherRule),
                                                  name,
                                                  member,
                                                  (DefaultManifestIdentity) builder.ParentRuleIdentity);
