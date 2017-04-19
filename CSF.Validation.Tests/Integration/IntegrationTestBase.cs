@@ -1,5 +1,5 @@
 ﻿//
-// RuleRegistry.cs
+// IntegrationTestBase.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,25 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.StockRules;
+using NUnit.Framework;
 
 namespace CSF.Validation.Tests.Integration
 {
-  public static class RuleRegistry
+  [TestFixture]
+  public abstract class IntegrationTestBase<TValidatorCreator> where TValidatorCreator : IValidatorCreator,new()
   {
-    public static NotNullRule NotNullObject<TValidated>(TValidated v1)
-      => new NotNullRule();
-
-    public static NotNullValueRule<TValidated,TValue> NotNull<TValidated,TValue>(TValidated v1, TValue v2)
-      => new NotNullValueRule<TValidated,TValue>();
-
-    public static NumericRangeValueRule<TValidated,TValue> NumericRange<TValidated,TValue>(TValidated v1, TValue v2) where TValue : struct
-      => new NumericRangeValueRule<TValidated,TValue>();
-
-    public static NullableNumericRangeValueRule<TValidated,TValue> NullableNumericRange<TValidated,TValue>(TValidated v1, TValue? v2) where TValue : struct
-      => new NullableNumericRangeValueRule<TValidated,TValue>();
-
-    public static StringLengthValueRule<TValidated> StringLength<TValidated>(TValidated v1, string v2)
-      => new StringLengthValueRule<TValidated>();
+    protected virtual IValidator GetValidator()
+    {
+      var creator = new TValidatorCreator();
+      return creator.CreateValidator();
+    }
   }
 }

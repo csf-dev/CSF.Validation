@@ -103,6 +103,7 @@
     <Compile Include="Rules\IValueRule.cs" />
     <Compile Include="Manifest\Fluent\ValueRuleConfigurator.cs" />
     <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
+    <Compile Include="StockRules\NullableNumericRangeValueRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

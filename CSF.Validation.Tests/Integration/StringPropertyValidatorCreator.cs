@@ -1,5 +1,5 @@
 ﻿//
-// RuleRegistry.cs
+// StandardFluentManifestCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,25 +24,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.StockRules;
+using CSF.Validation.Manifest;
+using CSF.Validation.Manifest.Fluent;
 
 namespace CSF.Validation.Tests.Integration
 {
-  public static class RuleRegistry
+  public class StringPropertyValidatorCreator : IValidatorCreator
   {
-    public static NotNullRule NotNullObject<TValidated>(TValidated v1)
-      => new NotNullRule();
+    public virtual IValidationManifest CreateManifest()
+    {
+      var builder = ManifestBuilder.Create<StubValidatedObject>();
 
-    public static NotNullValueRule<TValidated,TValue> NotNull<TValidated,TValue>(TValidated v1, TValue v2)
-      => new NotNullValueRule<TValidated,TValue>();
+      ConfigureManifest(builder);
 
-    public static NumericRangeValueRule<TValidated,TValue> NumericRange<TValidated,TValue>(TValidated v1, TValue v2) where TValue : struct
-      => new NumericRangeValueRule<TValidated,TValue>();
+      return builder.GetManifest();
+    }
 
-    public static NullableNumericRangeValueRule<TValidated,TValue> NullableNumericRange<TValidated,TValue>(TValidated v1, TValue? v2) where TValue : struct
-      => new NullableNumericRangeValueRule<TValidated,TValue>();
+    protected virtual void ConfigureManifest(IManifestBuilder<StubValidatedObject> builder)
+    {
+      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.NotNull);
 
-    public static StringLengthValueRule<TValidated> StringLength<TValidated>(TValidated v1, string v2)
-      => new StringLengthValueRule<TValidated>();
+      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.StringLength, c => {
+        c.Configure(r => {
+          r.MinLength = 5;
+          r.MaxLength = 10;
+        });
+
+        c.AddDependency(x => x.StringProperty, RuleRegistry.NotNull);
+      });
+    }
+
+    public virtual IValidator CreateValidator()
+    {
+      var manifest = CreateManifest();
+      var factory = new ValidatorFactory();
+      return factory.GetValidator(manifest);
+    }
   }
 }

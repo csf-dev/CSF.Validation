@@ -1,5 +1,5 @@
 ﻿//
-// StandardFluentManifestCreator.cs
+// StringAndDecimalPropertyValidatorCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,36 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Manifest;
-using CSF.Validation.Manifest.Fluent;
-
 namespace CSF.Validation.Tests.Integration
 {
-  public class StringPropertyFluentManifestCreator : IValidatorCreator
+  public class StringAndDecimalPropertyValidatorCreator : StringPropertyValidatorCreator
   {
-    public IValidationManifest CreateManifest()
+    protected override void ConfigureManifest(Validation.Manifest.Fluent.IManifestBuilder<StubValidatedObject> builder)
     {
-      var builder = ManifestBuilder.Create<StubValidatedObject>();
+      base.ConfigureManifest(builder);
 
-      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.NotNull);
-
-      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.StringLength, c => {
+      builder.AddMemberRule(x => x.NullableDecimalProperty, RuleRegistry.NullableNumericRange, c => {
         c.Configure(r => {
-          r.MinLength = 5;
-          r.MaxLength = 10;
+          r.Min = 10;
+          r.Max = 20;
         });
-
-        c.AddDependency(x => x.StringProperty, RuleRegistry.NotNull);
       });
-
-      return builder.GetManifest();
-    }
-
-    public IValidator CreateValidator()
-    {
-      var manifest = CreateManifest();
-      var factory = new ValidatorFactory();
-      return factory.GetValidator(manifest);
     }
   }
 }

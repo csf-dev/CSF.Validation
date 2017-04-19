@@ -1,5 +1,5 @@
 ﻿//
-// StringPropertyIntegrationTests.cs
+// StringAndDecimalPropertyIntegrationTests.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -29,52 +29,42 @@ using NUnit.Framework;
 
 namespace CSF.Validation.Tests.Integration
 {
-  public class StringPropertyIntegrationTests : IntegrationTestBase<StringPropertyValidatorCreator>
+  public class StringAndDecimalPropertyIntegrationTests : IntegrationTestBase<StringAndDecimalPropertyValidatorCreator>
   {
     [Test]
-    public void Validate_with_null_value_returns_failure_result()
+    public void Validate_with_valid_values_returns_success_result()
     {
       // Arrange
       var sut = GetValidator();
-      var validated = new StubValidatedObject { StringProperty = null };
-
-      // Act
-      var result = sut.Validate(validated);
-
-      // Assert
-      Assert.IsFalse(result.IsSuccess);
-    }
-
-    [Test]
-    public void Validate_with_null_value_returns_one_failure_and_one_skipped_rule()
-    {
-      // Arrange
-      var sut = GetValidator();
-      var validated = new StubValidatedObject { StringProperty = null };
-
-      // Act
-      var result = sut.Validate(validated);
-
-      // Assert
-      Assert.AreEqual(2, result.RuleResults.Count(), "Overall count of results");
-      Assert.IsTrue(result.RuleResults.Any(x => x.RuleResult.Outcome == Rules.RuleOutcome.Failure),
-                    "One failure result");
-      Assert.IsTrue(result.RuleResults.Any(x => x.RuleResult.Outcome == Rules.RuleOutcome.SkippedDueToDependencyFailure),
-                    "One skipped result");
-    }
-
-    [Test]
-    public void Validate_with_valid_value_returns_success_result()
-    {
-      // Arrange
-      var sut = GetValidator();
-      var validated = new StubValidatedObject { StringProperty = "abcdef" };
+      var validated = new StubValidatedObject { StringProperty = "abcdef", NullableDecimalProperty = 15 };
 
       // Act
       var result = sut.Validate(validated);
 
       // Assert
       Assert.IsTrue(result.IsSuccess);
+    }
+
+    [Test]
+    public void Validate_with_valid_string_but_invalid_number_returns_two_successes_and_one_failure()
+    {
+      // Arrange
+      var sut = GetValidator();
+      var validated = new StubValidatedObject { StringProperty = "abcdef", NullableDecimalProperty = 55 };
+
+      // Act
+      var result = sut.Validate(validated);
+
+      // Assert
+      Assert.AreEqual(3,
+                      result.RuleResults.Count(),
+                      "Overall result count");
+      Assert.AreEqual(2,
+                      result.RuleResults.Count(x => x.RuleResult.Outcome == Rules.RuleOutcome.Success),
+                      "Count of successes");
+      Assert.AreEqual(1,
+                      result.RuleResults.Count(x => x.RuleResult.Outcome == Rules.RuleOutcome.Failure),
+                      "Count of failures");
     }
   }
 }
