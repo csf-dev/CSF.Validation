@@ -42,15 +42,15 @@ namespace CSF.Validation.Tests.Integration
 
     protected virtual void ConfigureManifest(IManifestBuilder<StubValidatedObject> builder)
     {
-      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.NotNull);
+      builder.AddMemberRule(x => x.StringProperty, RuleChooser.NotNull);
 
-      builder.AddMemberRule(x => x.StringProperty, RuleRegistry.StringLength, c => {
+      builder.AddMemberRule(x => x.StringProperty, RuleChooser.StringLength, c => {
         c.Configure(r => {
           r.MinLength = 5;
           r.MaxLength = 10;
         });
 
-        c.AddDependency(x => x.StringProperty, RuleRegistry.NotNull);
+        c.AddDependency(x => x.StringProperty, RuleChooser.NotNull);
       });
     }
 

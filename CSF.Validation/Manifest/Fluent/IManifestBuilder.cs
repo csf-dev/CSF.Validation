@@ -32,7 +32,8 @@ namespace CSF.Validation.Manifest.Fluent
   /// <summary>
   /// Builder type, providing a fluent interface, for creating validation manifests in code.
   /// </summary>
-  public interface IManifestBuilder<TValidated> where TValidated : class
+  public interface IManifestBuilder<TValidated>
+    where TValidated : class
   {
     /// <summary>
     /// Creates and returns a validation manifest from the current builder instance.

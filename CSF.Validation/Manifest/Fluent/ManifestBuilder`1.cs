@@ -32,7 +32,8 @@ using CSF.Validation.Rules;
 
 namespace CSF.Validation.Manifest.Fluent
 {
-  class ManifestBuilder<TValidated> : IManifestBuilder<TValidated> where TValidated : class
+  class ManifestBuilder<TValidated> : IManifestBuilder<TValidated>
+    where TValidated : class
   {
     #region fields
 
@@ -158,13 +159,13 @@ namespace CSF.Validation.Manifest.Fluent
     }
 
     void IManifestBuilder<TValidated>.AddValueRule<TRule, TValue>(Func<TValidated, TValue> valueAccessor,
-                                                                  Func<TValidated,TValue,TRule> ruleDelegate)
+                                                                               Func<TValidated,TValue,TRule> ruleDelegate)
     {
       AddValueRule<TRule, TValue>(valueAccessor, null, null);
     }
 
     void IManifestBuilder<TValidated>.AddValueRule<TRule, TValue>(Func<TValidated, TValue> valueAccessor,
-                                                                  Func<TValidated,TValue,TRule> ruleDelegate,
+                                                                               Func<TValidated,TValue,TRule> ruleDelegate,
                                                                   Action<IRuleConfigurator<TValidated, TRule>> configuration)
     {
       AddValueRule(valueAccessor, null, configuration);

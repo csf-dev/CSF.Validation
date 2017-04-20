@@ -82,7 +82,6 @@
     <Compile Include="AutoMoqDataAttribute.cs" />
     <Compile Include="Integration\IValidatorCreator.cs" />
     <Compile Include="Integration\StringPropertyValidatorCreator.cs" />
-    <Compile Include="Integration\RuleRegistry.cs" />
     <Compile Include="Integration\StringPropertyIntegrationTests.cs" />
     <Compile Include="Integration\IntegrationTestBase.cs" />
     <Compile Include="Integration\StringAndDecimalPropertyValidatorCreator.cs" />

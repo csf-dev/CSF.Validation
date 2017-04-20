@@ -35,7 +35,8 @@ namespace CSF.Validation.Manifest.Fluent
     /// Creates and returns a new manifest builder instance.
     /// </summary>
     /// <typeparam name="T">The 1st type parameter.</typeparam>
-    public static IManifestBuilder<T> Create<T>() where T : class
+    public static IManifestBuilder<T> Create<T>()
+      where T : class
     {
       return new ManifestBuilder<T>();
     }

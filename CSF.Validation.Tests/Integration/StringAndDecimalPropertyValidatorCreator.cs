@@ -24,15 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using CSF.Validation.Manifest.Fluent;
+
 namespace CSF.Validation.Tests.Integration
 {
   public class StringAndDecimalPropertyValidatorCreator : StringPropertyValidatorCreator
   {
-    protected override void ConfigureManifest(Validation.Manifest.Fluent.IManifestBuilder<StubValidatedObject> builder)
+    protected override void ConfigureManifest(IManifestBuilder<StubValidatedObject> builder)
     {
       base.ConfigureManifest(builder);
 
-      builder.AddMemberRule(x => x.NullableDecimalProperty, RuleRegistry.NullableNumericRange, c => {
+      builder.AddMemberRule(x => x.NullableDecimalProperty, RuleChooser.NumericRange, c => {
         c.Configure(r => {
           r.Min = 10;
           r.Max = 20;
