@@ -47,6 +47,8 @@ namespace CSF.Validation.Manifest.Fluent
 
     #region IRuleConfigurator implementation
 
+    public Type ValidatedType => typeof(TValidated);
+
     public object ParentRuleIdentity => parentRuleIdentity;
 
     public void AddDependency(object identity)

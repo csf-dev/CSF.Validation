@@ -37,8 +37,8 @@ namespace CSF.Validation.Tests.StockRules
     public void GetResult_returns_success_when_value_is_not_null()
     {
       // Arrange
-      var sut = new NotNullValueRule<StubValidatedObject,string>();
-      sut.Accessor = v => v.StringProperty;
+      var sut = CreateSut();
+      sut.Accessor = CreateAccessor(x => x.StringProperty);
       var validated = new StubValidatedObject { StringProperty = "I am not null" };
 
       // Act
@@ -52,8 +52,8 @@ namespace CSF.Validation.Tests.StockRules
     public void GetResult_returns_failure_when_value_is_null_string()
     {
       // Arrange
-      var sut = new NotNullValueRule<StubValidatedObject,string>();
-      sut.Accessor = v => v.StringProperty;
+      var sut = CreateSut();
+      sut.Accessor = CreateAccessor(x => x.StringProperty);
       var validated = new StubValidatedObject();
 
       // Act
@@ -67,8 +67,8 @@ namespace CSF.Validation.Tests.StockRules
     public void GetResult_returns_failure_when_value_is_null_nullable_integer()
     {
       // Arrange
-      var sut = new NotNullValueRule<StubValidatedObject,int?>();
-      sut.Accessor = v => v.NullableIntegerProperty;
+      var sut = CreateSut();
+      sut.Accessor = CreateAccessor(x => x.NullableIntegerProperty);
       var validated = new StubValidatedObject();
 
       // Act
@@ -82,8 +82,8 @@ namespace CSF.Validation.Tests.StockRules
     public void GetResult_returns_error_when_parent_value_is_null()
     {
       // Arrange
-      var sut = new NotNullValueRule<StubValidatedObject,int?>();
-      sut.Accessor = v => v.NullableIntegerProperty;
+      var sut = CreateSut();
+      sut.Accessor = CreateAccessor(x => x.NullableIntegerProperty);
       StubValidatedObject validated = null;
 
       // Act
@@ -91,6 +91,16 @@ namespace CSF.Validation.Tests.StockRules
 
       // Assert
       OutcomeAssert.IsError(result);
+    }
+
+    Func<object,object> CreateAccessor(Func<StubValidatedObject,object> accessor)
+    {
+      return x => accessor((StubValidatedObject) x);
+    }
+
+    NotNullValueRule CreateSut()
+    {
+      return new NotNullValueRule();
     }
   }
 }

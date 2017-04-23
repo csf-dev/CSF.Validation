@@ -1,5 +1,5 @@
 ﻿//
-// NullableNumericRangeValueRule.cs
+// ValueRule2.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,62 +24,58 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Rules;
-
-namespace CSF.Validation.StockRules
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Validation rule which fails validation if a numeric value is less than or greater than given
-  /// minimum/maximum values.
-  /// Note that this rule will pass if the input value is <c>null</c>.  Combine this with another rule if the value
-  /// must not be null.
+  /// A validation rule which operates upon a single value (such as the value of a single object member, like
+  /// a property).
   /// </summary>
-  public class NullableNumericRangeValueRule : ValueRule<double?>
+  public abstract class ValueRule<TValidated,TValue> : Rule, IValueRule<TValidated,TValue>, IValueRule
   {
     /// <summary>
-    /// Gets or sets the minimum value.
+    /// Gets or sets the accessor for that value, based upon the object under validation.
     /// </summary>
-    /// <value>The minimum.</value>
-    public double? Min { get; set; }
+    /// <value>The accessor.</value>
+    public virtual Func<TValidated,TValue> Accessor { get; set; }
 
-    /// <summary>
-    /// Gets or sets the maximum.
-    /// </summary>
-    /// <value>The max.</value>
-    public double? Max { get; set; }
+    Func<object, object> IValueRule.Accessor
+    {
+      get { return x => Accessor((TValidated) x); }
+      set { Accessor = x => ConvertValue(value(x)); }
+    }
 
     /// <summary>
     /// Converts a value from an object to the value type under validation.
     /// </summary>
     /// <returns>The value.</returns>
     /// <param name="toConvert">The object to convert.</param>
-    protected override double? ConvertValue(object toConvert)
+    protected virtual TValue ConvertValue(object toConvert)
     {
-      return Convert.ToDouble(toConvert);
+      return (TValue) toConvert;
     }
 
     /// <summary>
-    /// Gets the outcome.
+    /// Sealed implementation of <see cref="M:GetOutcome(TValidated)"/>.
     /// </summary>
     /// <returns>The outcome.</returns>
-    /// <param name="value">Value.</param>
-    protected override RuleOutcome GetValueOutcome(double? value)
+    /// <param name="validated">The object undergoing validation.</param>
+    protected sealed override RuleOutcome GetOutcome(object validated)
     {
-      if(!value.HasValue)
-        return Success;
+      if(Accessor == null)
+        throw new InvalidOperationException(Resources.ExceptionMessages.AccessorFunctionMustNotBeNull);
 
-      if(Min.HasValue
-         && Max.HasValue
-         && Min.Value > Max.Value)
-        throw new InvalidValidationeRuleException(Resources.ExceptionMessages.MinMustNotBeGreaterThanMax);
+      var typedValidated = (TValidated) validated;
 
-      if(Min.HasValue && value.Value < Min.Value)
-        return Failure;
+      var value = Accessor(typedValidated);
 
-      if(Max.HasValue && value.Value > Max.Value)
-        return Failure;
-
-      return Success;
+      return GetOutcome(typedValidated, value);
     }
+
+    /// <summary>
+    /// Gets the outcome of the validation, override this method in derived types.
+    /// </summary>
+    /// <returns>The outcome.</returns>
+    /// <param name="value">The value for validation.</param>
+    protected abstract RuleOutcome GetOutcome(TValidated validated, TValue value);
   }
 }

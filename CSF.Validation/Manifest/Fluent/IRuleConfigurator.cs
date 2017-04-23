@@ -31,9 +31,7 @@ namespace CSF.Validation.Manifest.Fluent
   /// <summary>
   /// Helper type which configures a single validation rule.
   /// </summary>
-  public interface IRuleConfigurator<TValidated,TRule>
-    where TValidated : class
-    where TRule : class,IRule
+  public interface IRuleConfigurator
   {
     /// <summary>
     /// Gets the identity of the parent validation rule (if any).
@@ -42,16 +40,10 @@ namespace CSF.Validation.Manifest.Fluent
     object ParentRuleIdentity { get; }
 
     /// <summary>
-    /// Sets a custom factory function which will create the validation rule instance.
+    /// Gets the type of the validated object.
     /// </summary>
-    /// <param name="factory">Factory.</param>
-    void Factory(Func<TRule> factory);
-
-    /// <summary>
-    /// Sets a custom callback which will be used to configure the validation rule after it is instantiated.
-    /// </summary>
-    /// <param name="callback">Callback.</param>
-    void Configure(Action<TRule> callback);
+    /// <value>The type of the validated object.</value>
+    Type ValidatedType { get; }
 
     /// <summary>
     /// Explicitly sets the identity of this validation rule.
@@ -77,5 +69,25 @@ namespace CSF.Validation.Manifest.Fluent
     /// <param name="key">Key.</param>
     /// <param name="value">Value.</param>
     void AddMetadata(string key, object value);
+  }
+
+  /// <summary>
+  /// Helper type which configures a single validation rule.
+  /// </summary>
+  public interface IRuleConfigurator<TValidated,TRule> : IRuleConfigurator
+    where TValidated : class
+    where TRule : class,IRule
+  {
+    /// <summary>
+    /// Sets a custom factory function which will create the validation rule instance.
+    /// </summary>
+    /// <param name="factory">Factory.</param>
+    void Factory(Func<TRule> factory);
+
+    /// <summary>
+    /// Sets a custom callback which will be used to configure the validation rule after it is instantiated.
+    /// </summary>
+    /// <param name="callback">Callback.</param>
+    void Configure(Action<TRule> callback);
   }
 }

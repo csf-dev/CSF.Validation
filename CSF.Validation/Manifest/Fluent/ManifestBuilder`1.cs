@@ -54,15 +54,15 @@ namespace CSF.Validation.Manifest.Fluent
 
     #region methods
 
-    void AddValueRule<TRule,TValue>(Func<TValidated, TValue> valueAccessor,
-                                    Expression<Func<TValidated, TValue>> memberExpression,
-                                    Action<IRuleConfigurator<TValidated, TRule>> configuration)
-      where TRule : class,IValueRule<TValidated,TValue>
+    void AddValueRule<TRule>(Func<TValidated, object> valueAccessor,
+                             Expression<Func<TValidated, object>> memberExpression,
+                             Action<IRuleConfigurator<TValidated, TRule>> configuration)
+      where TRule : class,IValueRule
     {
       if(valueAccessor == null)
         throw new ArgumentNullException(nameof(valueAccessor));
 
-      var configurator = new ValueRuleConfigurator<TValidated,TRule,TValue>(parentRuleIdentity, valueAccessor);
+      var configurator = new ValueRuleConfigurator<TValidated,TRule>(parentRuleIdentity, x => valueAccessor((TValidated) x));
       if(configuration != null)
       {
         configuration(configurator);
@@ -104,7 +104,7 @@ namespace CSF.Validation.Manifest.Fluent
                                      configurator.Dependencies);
     }
 
-    MemberInfo GetMember<TValue>(Expression<Func<TValidated, TValue>> memberExpression)
+    MemberInfo GetMember(Expression<Func<TValidated, object>> memberExpression)
     {
       if(memberExpression != null)
       {
@@ -134,41 +134,36 @@ namespace CSF.Validation.Manifest.Fluent
 
     #region IManifestBuilder implementation
 
-    void IManifestBuilder<TValidated>.AddMemberRule<TRule, TValue>(Expression<Func<TValidated, TValue>> memberExpression,
-                                                                   Func<TValidated,TValue,TRule> ruleDelegate)
-    {
-      AddValueRule<TRule, TValue>(memberExpression.Compile(), memberExpression, null);
-    }
-
-    void IManifestBuilder<TValidated>.AddMemberRule<TRule, TValue>(Expression<Func<TValidated, TValue>> memberExpression,
-                                                                   Func<TValidated,TValue,TRule> ruleDelegate,
-                                                                   Action<IRuleConfigurator<TValidated, TRule>> configuration)
-    {
-      AddValueRule<TRule, TValue>(memberExpression.Compile(), memberExpression, configuration);
-    }
-
-    void IManifestBuilder<TValidated>.AddRule<TRule>(Func<TValidated,TRule> ruleDelegate)
+    void IManifestBuilder<TValidated>.AddRule<TRule>()
     {
       AddRule<TRule>(null);
     }
 
-    void IManifestBuilder<TValidated>.AddRule<TRule>(Func<TValidated,TRule> ruleDelegate,
-                                                     Action<IRuleConfigurator<TValidated, TRule>> configuration)
+    void IManifestBuilder<TValidated>.AddRule<TRule>(Action<IRuleConfigurator<TValidated,TRule>> configuration)
     {
-      AddRule<TRule>(configuration);
+      AddRule(configuration);
     }
 
-    void IManifestBuilder<TValidated>.AddValueRule<TRule, TValue>(Func<TValidated, TValue> valueAccessor,
-                                                                               Func<TValidated,TValue,TRule> ruleDelegate)
+    void IManifestBuilder<TValidated>.AddValueRule<TRule>(Func<TValidated,object> accessor,
+                                                          Action<IRuleConfigurator<TValidated,TRule>> configuration)
     {
-      AddValueRule<TRule, TValue>(valueAccessor, null, null);
+      AddValueRule(accessor, null, configuration);
     }
 
-    void IManifestBuilder<TValidated>.AddValueRule<TRule, TValue>(Func<TValidated, TValue> valueAccessor,
-                                                                               Func<TValidated,TValue,TRule> ruleDelegate,
-                                                                  Action<IRuleConfigurator<TValidated, TRule>> configuration)
+    void IManifestBuilder<TValidated>.AddMemberRule<TRule>(Expression<Func<TValidated,object>> memberExpression,
+                                                           Action<IRuleConfigurator<TValidated,TRule>> configuration)
     {
-      AddValueRule(valueAccessor, null, configuration);
+      AddValueRule(memberExpression.Compile(), memberExpression, configuration);
+    }
+
+    void IManifestBuilder<TValidated>.AddValueRule<TRule>(Func<TValidated,object> accessor)
+    {
+      AddValueRule<TRule>(accessor, null, null);
+    }
+
+    void IManifestBuilder<TValidated>.AddMemberRule<TRule>(Expression<Func<TValidated,object>> memberExpression)
+    {
+      AddValueRule<TRule>(memberExpression.Compile(), memberExpression, null);
     }
 
     #endregion

@@ -34,7 +34,7 @@ namespace CSF.Validation.StockRules
   /// Note that this rule will pass if the string is <c>null</c>.  Combine this with another rule if the string
   /// must not be null.
   /// </summary>
-  public class StringLengthValueRule<TValidated> : ValueRule<TValidated,string>
+  public class StringLengthValueRule : ValueRule<string>
   {
     /// <summary>
     /// Gets or sets the minimum length.
@@ -54,7 +54,7 @@ namespace CSF.Validation.StockRules
     /// <returns>The outcome.</returns>
     /// <param name="validated">Validated.</param>
     /// <param name="value">Value.</param>
-    protected override RuleOutcome GetOutcome(TValidated validated, string value)
+    protected override RuleOutcome GetValueOutcome(string value)
     {
       if(MinLength.HasValue
          && MaxLength.HasValue

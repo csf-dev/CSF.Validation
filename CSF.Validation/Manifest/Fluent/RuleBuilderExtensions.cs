@@ -47,14 +47,11 @@ namespace CSF.Validation.Manifest.Fluent
     /// <typeparam name="TValidated">The validated type.</typeparam>
     /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
     /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
-    public static void AddDependency<TValidated,TRule,TOtherRule>(this IRuleConfigurator<TValidated,TRule> builder,
-                                                                  Func<TValidated,TOtherRule> ruleDelegate,
+    public static void AddDependency<TOtherRule>(this IRuleConfigurator builder,
                                                                   string name = null)
-      where TValidated : class
-      where TRule : class,IRule
       where TOtherRule : class,IRule
     {
-      AddDependency<TValidated,TRule,TOtherRule>(builder, (MemberInfo) null, name);
+      AddDependency<TOtherRule>(builder, null, name);
     }
 
     /// <summary>
@@ -70,16 +67,14 @@ namespace CSF.Validation.Manifest.Fluent
     /// <typeparam name="TValue">The type of value which <typeparamref name="TOtherRule"/> validates.</typeparam>
     /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
     /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
-    public static void AddDependency<TValidated,TValue,TRule,TOtherRule>(this IRuleConfigurator<TValidated,TRule> builder,
-                                                                         Expression<Func<TValidated,TValue>> memberExpression,
-                                                                         Func<TValidated,TValue,TOtherRule> ruleDelegate,
-                                                                         string name = null)
-      where TValidated : class
-      where TRule : class,IRule
+    public static void AddDependency<TOtherRule,TValidated>(this IRuleConfigurator builder,
+                                                            Expression<Func<TValidated,object>> memberExpression,
+                                                            string name = null)
       where TOtherRule : class,IRule
+      where TValidated : class
     {
       var member = Reflect.Member(memberExpression);
-      AddDependency<TValidated,TRule,TOtherRule>(builder, member, name);
+      AddDependency<TOtherRule>(builder, member, name);
     }
 
     /// <summary>
@@ -92,11 +87,9 @@ namespace CSF.Validation.Manifest.Fluent
     /// <typeparam name="TValidated">The validated type.</typeparam>
     /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
     /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
-    static void AddDependency<TValidated,TRule,TOtherRule>(this IRuleConfigurator<TValidated,TRule> builder,
-                                                           MemberInfo member,
-                                                           string name = null)
-      where TValidated : class
-      where TRule : class,IRule
+    static void AddDependency<TOtherRule>(IRuleConfigurator builder,
+                                          MemberInfo member,
+                                          string name = null)
       where TOtherRule : class,IRule
     {
       if(builder == null)
@@ -109,7 +102,7 @@ namespace CSF.Validation.Manifest.Fluent
         throw new ArgumentException(message, nameof(builder));
       }
         
-      var identity = new DefaultManifestIdentity(typeof(TValidated),
+      var identity = new DefaultManifestIdentity(builder.ValidatedType,
                                                  typeof(TOtherRule),
                                                  name,
                                                  member,

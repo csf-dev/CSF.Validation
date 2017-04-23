@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using CSF.Validation.Manifest.Fluent;
+using CSF.Validation.StockRules;
 
 namespace CSF.Validation.Tests.Integration
 {
@@ -34,7 +35,7 @@ namespace CSF.Validation.Tests.Integration
     {
       base.ConfigureManifest(builder);
 
-      builder.AddMemberRule(x => x.NullableDecimalProperty, RuleChooser.NumericRange, c => {
+      builder.AddMemberRule<NumericRangeValueRule>(x => x.NullableDecimalProperty, c => {
         c.Configure(r => {
           r.Min = 10;
           r.Max = 20;

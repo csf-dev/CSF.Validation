@@ -44,75 +44,54 @@ namespace CSF.Validation.Manifest.Fluent
     /// <summary>
     /// Adds a validation rule to the manifest.
     /// </summary>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    void AddRule<TRule>(Func<TValidated,TRule> ruleDelegate)
+    void AddRule<TRule>()
       where TRule : class,IRule;
 
     /// <summary>
     /// Adds a validation rule to the manifest.
     /// </summary>
     /// <param name="configuration">A callback which configures the rule in the manifest.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    void AddRule<TRule>(Func<TValidated,TRule> ruleDelegate,
-                        Action<IRuleConfigurator<TValidated,TRule>> configuration)
+    void AddRule<TRule>(Action<IRuleConfigurator<TValidated,TRule>> configuration)
       where TRule : class,IRule;
 
     /// <summary>
-    /// Adds a validation rule to the manifest, where the rule is specific to a value from the validated type.
+    /// Adds a validation rule to the manifest.
     /// </summary>
-    /// <param name="valueAccessor">A function which gets the value to be validated by this rule.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
+    /// <param name="accessor">A function which gets the value from the validated type.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
-    void AddValueRule<TRule,TValue>(Func<TValidated,TValue> valueAccessor,
-                                    Func<TValidated,TValue,TRule> ruleDelegate)
-      where TRule : class,IValueRule<TValidated,TValue>;
+    void AddValueRule<TRule>(Func<TValidated,object> accessor)
+      where TRule : class,IValueRule;
 
     /// <summary>
-    /// Adds a validation rule to the manifest, where the rule is specific to a value from the validated type.
+    /// Adds a validation rule to the manifest.
     /// </summary>
-    /// <param name="valueAccessor">A function which gets the value to be validated by this rule.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
+    /// <param name="accessor">A function which gets the value from the validated type.</param>
     /// <param name="configuration">A callback which configures the rule in the manifest.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
-    void AddValueRule<TRule,TValue>(Func<TValidated,TValue> valueAccessor,
-                                    Func<TValidated,TValue,TRule> ruleDelegate,
-                                    Action<IRuleConfigurator<TValidated,TRule>> configuration)
-      where TRule : class,IValueRule<TValidated,TValue>;
+    void AddValueRule<TRule>(Func<TValidated,object> accessor,
+                             Action<IRuleConfigurator<TValidated,TRule>> configuration)
+      where TRule : class,IValueRule;
 
     /// <summary>
     /// Adds a validation rule to the manifest, where the rule is specific to a value returned from a member of the
     /// validated type.
     /// </summary>
-    /// <param name="memberExpression">An expression which indicates the member holding the value to be validated by this rule.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
+    /// <param name="memberExpression">An expression which indicates the member whose value is to be validated.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
-    void AddMemberRule<TRule,TValue>(Expression<Func<TValidated,TValue>> memberExpression,
-                                     Func<TValidated,TValue,TRule> ruleDelegate)
-      where TRule : class,IValueRule<TValidated,TValue>;
+    void AddMemberRule<TRule>(Expression<Func<TValidated,object>> memberExpression)
+      where TRule : class,IValueRule;
 
     /// <summary>
     /// Adds a validation rule to the manifest, where the rule is specific to a value returned from a member of the
     /// validated type.
     /// </summary>
-    /// <param name="memberExpression">An expression which indicates the member holding the value to be validated by this rule.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
+    /// <param name="memberExpression">An expression which indicates the member whose value is to be validated.</param>
     /// <param name="configuration">A callback which configures the rule in the manifest.</param>
     /// <typeparam name="TRule">The valiation rule type.</typeparam>
-    /// <typeparam name="TValue">The type of the value which will be validated by this rule.</typeparam>
-    void AddMemberRule<TRule,TValue>(Expression<Func<TValidated,TValue>> memberExpression,
-                                     Func<TValidated,TValue,TRule> ruleDelegate,
-                                     Action<IRuleConfigurator<TValidated,TRule>> configuration)
-      where TRule : class,IValueRule<TValidated,TValue>;
+    void AddMemberRule<TRule>(Expression<Func<TValidated,object>> memberExpression,
+                              Action<IRuleConfigurator<TValidated,TRule>> configuration)
+      where TRule : class,IValueRule;
   }
 }

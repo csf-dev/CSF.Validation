@@ -29,13 +29,39 @@ namespace CSF.Validation.Rules
   /// <summary>
   /// Represents an <see cref="IRule"/> which validates a single value associated with the validated type.
   /// </summary>
-  public interface IValueRule<TValidated,TValue> : IRule
+  public interface IValueRule : IRule
   {
     /// <summary>
     /// Gets or sets the accessor function which is used to retrieve the value from the primary
     /// object under validation.
     /// </summary>
     /// <value>The accessor function.</value>
-    Func<TValidated,TValue> Accessor { get; set; }
+    Func<object,object> Accessor { get; set; }
+  }
+
+  /// <summary>
+  /// Represents an <see cref="IRule"/> which validates a single value associated with the validated type.
+  /// </summary>
+  public interface IValueRule<TValue> : IRule, IValueRule
+  {
+    /// <summary>
+    /// Gets or sets the accessor function which is used to retrieve the value from the primary
+    /// object under validation.
+    /// </summary>
+    /// <value>The accessor function.</value>
+    new Func<object,TValue> Accessor { get; set; }
+  }
+
+  /// <summary>
+  /// Represents an <see cref="IRule"/> which validates a single value associated with the validated type.
+  /// </summary>
+  public interface IValueRule<TValidated,TValue> : IRule, IValueRule
+  {
+    /// <summary>
+    /// Gets or sets the accessor function which is used to retrieve the value from the primary
+    /// object under validation.
+    /// </summary>
+    /// <value>The accessor function.</value>
+    new Func<TValidated,TValue> Accessor { get; set; }
   }
 }

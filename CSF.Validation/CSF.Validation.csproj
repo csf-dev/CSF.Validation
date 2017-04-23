@@ -56,7 +56,7 @@
     <Compile Include="ValidationRuns\IRunnableRule.cs" />
     <Compile Include="ValidationRuns\IValidationRunContext.cs" />
     <Compile Include="ValidationRuns\IRunnableRuleResult.cs" />
-    <Compile Include="Rules\ValueRule.cs" />
+    <Compile Include="Rules\ValueRule`1.cs" />
     <Compile Include="Resources\ExceptionMessages.Designer.cs">
       <DependentUpon>ExceptionMessages.resx</DependentUpon>
     </Compile>
@@ -104,7 +104,7 @@
     <Compile Include="Manifest\Fluent\ValueRuleConfigurator.cs" />
     <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
     <Compile Include="StockRules\NullableNumericRangeValueRule.cs" />
-    <Compile Include="Manifest\Fluent\RuleChooser.cs" />
+    <Compile Include="Rules\ValueRule`2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

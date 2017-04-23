@@ -26,6 +26,7 @@
 using System;
 using CSF.Validation.Manifest;
 using CSF.Validation.Manifest.Fluent;
+using CSF.Validation.StockRules;
 
 namespace CSF.Validation.Tests.Integration
 {
@@ -42,15 +43,15 @@ namespace CSF.Validation.Tests.Integration
 
     protected virtual void ConfigureManifest(IManifestBuilder<StubValidatedObject> builder)
     {
-      builder.AddMemberRule(x => x.StringProperty, RuleChooser.NotNull);
+      builder.AddMemberRule<NotNullValueRule>(x => x.StringProperty);
 
-      builder.AddMemberRule(x => x.StringProperty, RuleChooser.StringLength, c => {
+      builder.AddMemberRule<StringLengthValueRule>(x => x.StringProperty, c => {
         c.Configure(r => {
           r.MinLength = 5;
           r.MaxLength = 10;
         });
 
-        c.AddDependency(x => x.StringProperty, RuleChooser.NotNull);
+        c.AddDependency<NotNullValueRule,StubValidatedObject>(x => x.StringProperty);
       });
     }
 

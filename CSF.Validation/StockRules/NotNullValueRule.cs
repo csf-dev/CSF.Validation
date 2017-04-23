@@ -31,15 +31,14 @@ namespace CSF.Validation.StockRules
   /// <summary>
   /// Rule which fails validation if a single value is <c>null</c>.
   /// </summary>
-  public class NotNullValueRule<TValidated,TValue> : ValueRule<TValidated,TValue>
+  public class NotNullValueRule : ValueRule<object>
   {
     /// <summary>
     /// Gets the outcome.
     /// </summary>
     /// <returns>The outcome.</returns>
-    /// <param name="validated">Validated.</param>
     /// <param name="value">Value.</param>
-    protected override RuleOutcome GetOutcome(TValidated validated, TValue value)
+    protected override RuleOutcome GetValueOutcome(object value)
     {
       if(Equals(value, null))
         return Failure;

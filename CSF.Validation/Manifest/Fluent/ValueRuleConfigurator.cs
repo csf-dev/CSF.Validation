@@ -28,11 +28,11 @@ using CSF.Validation.Rules;
 
 namespace CSF.Validation.Manifest.Fluent
 {
-  internal class ValueRuleConfigurator<TValidated,TRule,TValue> : RuleConfigurator<TValidated, TRule>
+  internal class ValueRuleConfigurator<TValidated,TRule> : RuleConfigurator<TValidated, TRule>
     where TValidated : class
-    where TRule : class, IValueRule<TValidated, TValue>
+    where TRule : class, IValueRule
   {
-    readonly Func<TValidated,TValue> accessor;
+    readonly Func<object,object> accessor;
 
     internal override Action<TRule> ConfigurationCallback
     {
@@ -49,7 +49,7 @@ namespace CSF.Validation.Manifest.Fluent
     }
 
     public ValueRuleConfigurator(object parentIdentity,
-                                 Func<TValidated,TValue> accessor) : base(parentIdentity)
+                                 Func<object,object> accessor) : base(parentIdentity)
     {
       if(accessor == null)
         throw new ArgumentNullException(nameof(accessor));

@@ -30,35 +30,50 @@ namespace CSF.Validation.Rules
   /// A validation rule which operates upon a single value (such as the value of a single object member, like
   /// a property).
   /// </summary>
-  public abstract class ValueRule<TValidated,TValue> : Rule<TValidated>, IValueRule<TValidated,TValue>
+  public abstract class ValueRule<TValue> : Rule, IValueRule<TValue>,IValueRule
   {
     /// <summary>
     /// Gets or sets the accessor for that value, based upon the object under validation.
     /// </summary>
     /// <value>The accessor.</value>
-    public virtual Func<TValidated,TValue> Accessor { get; set; }
+    public virtual Func<object,TValue> Accessor { get; set; }
+
+    Func<object, object> IValueRule.Accessor
+    {
+      get { return x => Accessor(x); }
+      set { Accessor = x => ConvertValue(value(x)); }
+    }
+
+    /// <summary>
+    /// Converts a value from an object to the value type under validation.
+    /// </summary>
+    /// <returns>The value.</returns>
+    /// <param name="toConvert">The object to convert.</param>
+    protected virtual TValue ConvertValue(object toConvert)
+    {
+      return (TValue) toConvert;
+    }
 
     /// <summary>
     /// Sealed implementation of <see cref="M:GetOutcome(TValidated)"/>.
     /// </summary>
     /// <returns>The outcome.</returns>
     /// <param name="validated">The object undergoing validation.</param>
-    protected sealed override RuleOutcome GetOutcome(TValidated validated)
+    protected sealed override RuleOutcome GetOutcome(object validated)
     {
       if(Accessor == null)
         throw new InvalidOperationException(Resources.ExceptionMessages.AccessorFunctionMustNotBeNull);
 
       var value = Accessor(validated);
 
-      return GetOutcome(validated, value);
+      return GetValueOutcome(value);
     }
 
     /// <summary>
     /// Gets the outcome of the validation, override this method in derived types.
     /// </summary>
     /// <returns>The outcome.</returns>
-    /// <param name="validated">The object undergoing validation.</param>
     /// <param name="value">The value for validation.</param>
-    protected abstract RuleOutcome GetOutcome(TValidated validated, TValue value);
+    protected abstract RuleOutcome GetValueOutcome(TValue value);
   }
 }

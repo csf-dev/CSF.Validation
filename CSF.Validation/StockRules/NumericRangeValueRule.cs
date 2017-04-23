@@ -33,38 +33,46 @@ namespace CSF.Validation.StockRules
   /// minimum/maximum values.
   /// This rule cannot be used on nullable types.
   /// </summary>
-  public class NumericRangeValueRule<TValidated,TValue> : ValueRule<TValidated,TValue>
-    where TValue : struct
+  public class NumericRangeValueRule : ValueRule<double>
   {
     /// <summary>
     /// Gets or sets the minimum value.
     /// </summary>
     /// <value>The minimum.</value>
-    public TValue? Min { get; set; }
+    public double? Min { get; set; }
 
     /// <summary>
     /// Gets or sets the maximum.
     /// </summary>
     /// <value>The max.</value>
-    public TValue? Max { get; set; }
+    public double? Max { get; set; }
+
+    /// <summary>
+    /// Converts a value from an object to the value type under validation.
+    /// </summary>
+    /// <returns>The value.</returns>
+    /// <param name="toConvert">The object to convert.</param>
+    protected override double ConvertValue(object toConvert)
+    {
+      return Convert.ToDouble(toConvert);
+    }
 
     /// <summary>
     /// Gets the outcome.
     /// </summary>
     /// <returns>The outcome.</returns>
-    /// <param name="validated">Validated.</param>
     /// <param name="value">Value.</param>
-    protected override RuleOutcome GetOutcome(TValidated validated, TValue value)
+    protected override RuleOutcome GetValueOutcome(double value)
     {
       if(Min.HasValue
          && Max.HasValue
-         && Convert.ToDouble(Min.Value) > Convert.ToDouble(Max.Value))
+         && Min.Value > Max.Value)
         throw new InvalidValidationeRuleException(Resources.ExceptionMessages.MinMustNotBeGreaterThanMax);
 
-      if(Min.HasValue && Convert.ToDouble(value) < Convert.ToDouble(Min.Value))
+      if(Min.HasValue && value < Min.Value)
         return Failure;
 
-      if(Max.HasValue && Convert.ToDouble(value) > Convert.ToDouble(Max.Value))
+      if(Max.HasValue && value > Max.Value)
         return Failure;
 
       return Success;
