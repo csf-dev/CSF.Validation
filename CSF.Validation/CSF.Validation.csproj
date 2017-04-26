@@ -106,6 +106,8 @@
     <Compile Include="StockRules\NullableNumericRangeValueRule.cs" />
     <Compile Include="Rules\ValueRule`2.cs" />
     <Compile Include="Rules\TypeConversionException.cs" />
+    <Compile Include="StockRules\DateTimeRangeValueRule.cs" />
+    <Compile Include="StockRules\NullableDateTimeRangeValueRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

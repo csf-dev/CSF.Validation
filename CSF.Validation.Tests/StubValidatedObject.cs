@@ -37,5 +37,9 @@ namespace CSF.Validation.Tests
     public decimal? NullableDecimalProperty { get; set; }
 
     public decimal DecimalProperty { get; set; }
+
+    public DateTime DateTimeProperty { get; set; }
+
+    public DateTime? NullableDateTimeProperty { get; set; }
   }
 }
