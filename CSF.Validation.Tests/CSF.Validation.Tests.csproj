@@ -88,6 +88,9 @@
     <Compile Include="Integration\StringAndDecimalPropertyValidatorCreator.cs" />
     <Compile Include="Integration\StringAndDecimalPropertyIntegrationTests.cs" />
     <Compile Include="Rules\ValueRuleTests.cs" />
+    <Compile Include="StockRules\NullableNumericRangeValueRuleTests.cs" />
+    <Compile Include="StockRules\NumericRangeValueRuleTests.cs" />
+    <Compile Include="StockRules\StringLengthValueRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
