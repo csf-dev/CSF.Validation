@@ -93,6 +93,8 @@
     <Compile Include="StockRules\StringLengthValueRuleTests.cs" />
     <Compile Include="StockRules\DateTimeRangeValueRuleTests.cs" />
     <Compile Include="StockRules\NullableDateTimeRangeValueRuleTests.cs" />
+    <Compile Include="StockRules\IsDefinedEnumMemberValueRuleTests.cs" />
+    <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

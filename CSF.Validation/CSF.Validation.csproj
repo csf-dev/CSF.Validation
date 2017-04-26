@@ -108,6 +108,8 @@
     <Compile Include="Rules\TypeConversionException.cs" />
     <Compile Include="StockRules\DateTimeRangeValueRule.cs" />
     <Compile Include="StockRules\NullableDateTimeRangeValueRule.cs" />
+    <Compile Include="StockRules\IsDefinedEnumMemberValueRule.cs" />
+    <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

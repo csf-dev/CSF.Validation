@@ -1,5 +1,5 @@
 ﻿//
-// StubValidatedObject.cs
+// IsDefinedEnumMemberValueRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,35 +24,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-namespace CSF.Validation.Tests
+using CSF.Validation.Rules;
+
+namespace CSF.Validation.StockRules
 {
-  public class StubValidatedObject
+  /// <summary>
+  /// Validation rule which ensures that the passed value is a defined enumeration constant.
+  /// </summary>
+  public class IsDefinedEnumMemberValueRule<TEnum> : ValueRule<TEnum> where TEnum : struct
   {
-    public string StringProperty { get; set; }
+    /// <summary>
+    /// Gets the outcome.
+    /// </summary>
+    /// <returns>The outcome.</returns>
+    /// <param name="value">Value.</param>
+    protected override RuleOutcome GetValueOutcome(TEnum value)
+    {
+      if(value.IsDefinedValue())
+        return Success;
 
-    public int? NullableIntegerProperty { get; set; }
-
-    public int IntegerProperty { get; set; }
-
-    public decimal? NullableDecimalProperty { get; set; }
-
-    public decimal DecimalProperty { get; set; }
-
-    public DateTime DateTimeProperty { get; set; }
-
-    public DateTime? NullableDateTimeProperty { get; set; }
-
-    public StubEnum EnumProperty { get; set; }
-
-    public StubEnum? NullableEnumProperty { get; set; }
-  }
-
-  public enum StubEnum
-  {
-    One = 1,
-
-    Two = 2,
-
-    Three = 3
+      return Failure;
+    }
   }
 }
