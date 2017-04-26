@@ -41,14 +41,10 @@ namespace CSF.Validation.Manifest.Fluent
     /// rule via properties of its <see cref="DefaultManifestIdentity"/>.
     /// </summary>
     /// <param name="builder">The rule builder.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <param name="name">The name of the depended-upon rule.</param>
-    /// <typeparam name="TValidated">The validated type.</typeparam>
-    /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
     /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
     public static void AddDependency<TOtherRule>(this IRuleConfigurator builder,
-                                                                  string name = null)
+                                                 string name = null)
       where TOtherRule : class,IRule
     {
       AddDependency<TOtherRule>(builder, null, name);
@@ -59,13 +55,9 @@ namespace CSF.Validation.Manifest.Fluent
     /// rule via properties of its <see cref="DefaultManifestIdentity"/>.
     /// </summary>
     /// <param name="builder">The rule builder.</param>
-    /// <param name="ruleDelegate">An expression or delegate used to indicate the rule type.
-    /// This method is not executed, it is only used to determine the rule type.</param>
     /// <param name="memberExpression">An expression identifying the member for the depended-upon rule.</param>
     /// <param name="name">The name of the depended-upon rule.</param>
     /// <typeparam name="TValidated">The validated type.</typeparam>
-    /// <typeparam name="TValue">The type of value which <typeparamref name="TOtherRule"/> validates.</typeparam>
-    /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
     /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
     public static void AddDependency<TOtherRule,TValidated>(this IRuleConfigurator builder,
                                                             Expression<Func<TValidated,object>> memberExpression,
@@ -84,8 +76,6 @@ namespace CSF.Validation.Manifest.Fluent
     /// <param name="builder">The rule builder.</param>
     /// <param name="member">The member for the depended-upon rule.</param>
     /// <param name="name">The name of the depended-upon rule.</param>
-    /// <typeparam name="TValidated">The validated type.</typeparam>
-    /// <typeparam name="TRule">The type of the current validation rule.</typeparam>
     /// <typeparam name="TOtherRule">The type of the validation rule being depended upon.</typeparam>
     static void AddDependency<TOtherRule>(IRuleConfigurator builder,
                                           MemberInfo member,

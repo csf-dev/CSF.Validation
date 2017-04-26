@@ -67,6 +67,7 @@
     <Folder Include="ValidationRuns\" />
     <Folder Include="Manifest\" />
     <Folder Include="Integration\" />
+    <Folder Include="Rules\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StockRules\NotNullRuleTests.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Integration\IntegrationTestBase.cs" />
     <Compile Include="Integration\StringAndDecimalPropertyValidatorCreator.cs" />
     <Compile Include="Integration\StringAndDecimalPropertyIntegrationTests.cs" />
+    <Compile Include="Rules\ValueRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

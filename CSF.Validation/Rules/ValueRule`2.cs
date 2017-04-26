@@ -40,7 +40,7 @@ namespace CSF.Validation.Rules
 
     Func<object, object> IValueRule.Accessor
     {
-      get { return x => Accessor((TValidated) x); }
+      get { return x => Accessor(ConvertValidatedObject(x)); }
       set { Accessor = x => ConvertValue(value(x)); }
     }
 
@@ -51,7 +51,41 @@ namespace CSF.Validation.Rules
     /// <param name="toConvert">The object to convert.</param>
     protected virtual TValue ConvertValue(object toConvert)
     {
+      try
+      {
+        return ConvertValueUnsafe(toConvert);
+      }
+      catch(Exception ex)
+      {
+        throw TypeConversionException.CreateForValue(ex, toConvert, typeof(TValue));
+      }
+    }
+
+    /// <summary>
+    /// Converts an object to the type which we intend to validate.  This method may raise exceptions if applicable.
+    /// </summary>
+    /// <returns>The converted value.</returns>
+    /// <param name="toConvert">The value to convert.</param>
+    protected virtual TValue ConvertValueUnsafe(object toConvert)
+    {
       return (TValue) toConvert;
+    }
+
+    /// <summary>
+    /// Converts the object under validation to the appropriate type.
+    /// </summary>
+    /// <returns>The validated object, as an instance of the applicable generic type.</returns>
+    /// <param name="validated">The validated object.</param>
+    protected virtual TValidated ConvertValidatedObject(object validated)
+    {
+      try
+      {
+        return (TValidated) validated;
+      }
+      catch(Exception ex)
+      {
+        throw TypeConversionException.CreateForValidated(ex, validated, typeof(TValidated));
+      }
     }
 
     /// <summary>
@@ -64,7 +98,7 @@ namespace CSF.Validation.Rules
       if(Accessor == null)
         throw new InvalidOperationException(Resources.ExceptionMessages.AccessorFunctionMustNotBeNull);
 
-      var typedValidated = (TValidated) validated;
+      var typedValidated = ConvertValidatedObject(validated);
 
       var value = Accessor(typedValidated);
 
@@ -76,6 +110,7 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <returns>The outcome.</returns>
     /// <param name="value">The value for validation.</param>
+    /// <param name="validated">The object under validation.</param>
     protected abstract RuleOutcome GetOutcome(TValidated validated, TValue value);
   }
 }

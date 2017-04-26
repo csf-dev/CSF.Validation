@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
+using CSF.Validation.Rules;
 using NUnit.Framework;
 
 namespace CSF.Validation.Tests.Integration
@@ -60,10 +61,10 @@ namespace CSF.Validation.Tests.Integration
                       result.RuleResults.Count(),
                       "Overall result count");
       Assert.AreEqual(2,
-                      result.RuleResults.Count(x => x.RuleResult.Outcome == Rules.RuleOutcome.Success),
+                      result.RuleResults.Count(x => x.RuleResult.Outcome == RuleOutcome.Success),
                       "Count of successes");
       Assert.AreEqual(1,
-                      result.RuleResults.Count(x => x.RuleResult.Outcome == Rules.RuleOutcome.Failure),
+                      result.RuleResults.Count(x => x.RuleResult.Outcome == RuleOutcome.Failure),
                       "Count of failures");
     }
   }

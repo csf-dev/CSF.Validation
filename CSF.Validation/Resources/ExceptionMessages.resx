@@ -46,4 +46,14 @@
     <value>The member must belong to the validated type `{0}'.
 Member name: {1}</value>
   </data>
+  <data name="ValueTypeConversionFailureFormat" xml:space="preserve">
+    <value>The value provided to the current 'value' validation rule must be of an appropriate type.
+Expected type:`{0}'
+Actual type:{1}</value>
+  </data>
+  <data name="ValidatedObjectTypeConversionFailureFormat" xml:space="preserve">
+    <value>The object under validation, provided to the current validation rule, must be of an appropriate type.
+Expected type:`{0}'
+Actual type:{1}</value>
+  </data>
 </root>

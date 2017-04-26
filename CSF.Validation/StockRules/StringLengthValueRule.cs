@@ -52,7 +52,6 @@ namespace CSF.Validation.StockRules
     /// Gets the outcome.
     /// </summary>
     /// <returns>The outcome.</returns>
-    /// <param name="validated">Validated.</param>
     /// <param name="value">Value.</param>
     protected override RuleOutcome GetValueOutcome(string value)
     {

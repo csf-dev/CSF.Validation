@@ -49,11 +49,11 @@ namespace CSF.Validation.StockRules
     public double? Max { get; set; }
 
     /// <summary>
-    /// Converts a value from an object to the value type under validation.
+    /// Converts an object to the type which we intend to validate.  This method may raise exceptions if applicable.
     /// </summary>
-    /// <returns>The value.</returns>
-    /// <param name="toConvert">The object to convert.</param>
-    protected override double? ConvertValue(object toConvert)
+    /// <returns>The converted value.</returns>
+    /// <param name="toConvert">The value to convert.</param>
+    protected override double? ConvertValueUnsafe(object toConvert)
     {
       return Convert.ToDouble(toConvert);
     }

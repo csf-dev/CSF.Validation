@@ -40,7 +40,7 @@ namespace CSF.Validation.Rules
     {
       try
       {
-        var typedValidated = (TValidated) validated;
+        var typedValidated = ConvertValidatedObject(validated);
         var outcome = GetOutcome(typedValidated);
         return new RuleResult(outcome);
       }
@@ -51,13 +51,30 @@ namespace CSF.Validation.Rules
     }
 
     /// <summary>
+    /// Converts the object under validation to the appropriate type.
+    /// </summary>
+    /// <returns>The validated object, as an instance of the applicable generic type.</returns>
+    /// <param name="validated">The validated object.</param>
+    protected virtual TValidated ConvertValidatedObject(object validated)
+    {
+      try
+      {
+        return (TValidated) validated;
+      }
+      catch(Exception ex)
+      {
+        throw TypeConversionException.CreateForValidated(ex, validated, typeof(TValidated));
+      }
+    }
+
+    /// <summary>
     /// Sealed implementation of the non-generic <see cref="GetOutcome(object)"/>.
     /// </summary>
     /// <returns>The outcome.</returns>
     /// <param name="validated">The object undergoing validation.</param>
     protected sealed override RuleOutcome GetOutcome(object validated)
     {
-      return GetOutcome((TValidated) validated);
+      return GetOutcome(ConvertValidatedObject(validated));
     }
 
     /// <summary>

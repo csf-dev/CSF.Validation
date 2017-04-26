@@ -51,6 +51,23 @@ namespace CSF.Validation.Rules
     /// <param name="toConvert">The object to convert.</param>
     protected virtual TValue ConvertValue(object toConvert)
     {
+      try
+      {
+        return ConvertValueUnsafe(toConvert);
+      }
+      catch(Exception ex)
+      {
+        throw TypeConversionException.CreateForValue(ex, toConvert, typeof(TValue));
+      }
+    }
+
+    /// <summary>
+    /// Converts an object to the type which we intend to validate.  This method may raise exceptions if applicable.
+    /// </summary>
+    /// <returns>The converted value.</returns>
+    /// <param name="toConvert">The value to convert.</param>
+    protected virtual TValue ConvertValueUnsafe(object toConvert)
+    {
       return (TValue) toConvert;
     }
 

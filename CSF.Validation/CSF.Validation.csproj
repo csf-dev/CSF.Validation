@@ -105,6 +105,7 @@
     <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
     <Compile Include="StockRules\NullableNumericRangeValueRule.cs" />
     <Compile Include="Rules\ValueRule`2.cs" />
+    <Compile Include="Rules\TypeConversionException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

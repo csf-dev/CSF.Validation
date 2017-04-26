@@ -112,5 +112,17 @@ namespace CSF.Validation.Resources {
                 return ResourceManager.GetString("MemberMustBelongToValidatedType", resourceCulture);
             }
         }
+        
+        internal static string ValueTypeConversionFailureFormat {
+            get {
+                return ResourceManager.GetString("ValueTypeConversionFailureFormat", resourceCulture);
+            }
+        }
+        
+        internal static string ValidatedObjectTypeConversionFailureFormat {
+            get {
+                return ResourceManager.GetString("ValidatedObjectTypeConversionFailureFormat", resourceCulture);
+            }
+        }
     }
 }
