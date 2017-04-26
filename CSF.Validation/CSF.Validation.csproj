@@ -110,6 +110,7 @@
     <Compile Include="StockRules\NullableDateTimeRangeValueRule.cs" />
     <Compile Include="StockRules\IsDefinedEnumMemberValueRule.cs" />
     <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRule.cs" />
+    <Compile Include="StockRules\RegexMatchValueRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />

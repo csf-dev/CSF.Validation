@@ -95,6 +95,7 @@
     <Compile Include="StockRules\NullableDateTimeRangeValueRuleTests.cs" />
     <Compile Include="StockRules\IsDefinedEnumMemberValueRuleTests.cs" />
     <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRuleTests.cs" />
+    <Compile Include="StockRules\RegexMatchValueRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
