@@ -111,6 +111,15 @@
     <Compile Include="StockRules\IsDefinedEnumMemberValueRule.cs" />
     <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRule.cs" />
     <Compile Include="StockRules\RegexMatchValueRule.cs" />
+    <Compile Include="Messages\IMessageProvider.cs" />
+    <Compile Include="Messages\IMessageFormatter.cs" />
+    <Compile Include="Messages\NoOpFailureMessageFormatter.cs" />
+    <Compile Include="Messages\PlaceholderMessageFormatter.cs" />
+    <Compile Include="Messages\IFormatterProvider.cs" />
+    <Compile Include="Messages\ByIdentityFormatterProvider.cs" />
+    <Compile Include="Messages\ITemplateProvider.cs" />
+    <Compile Include="Messages\ResourceFileTemplateProvider.cs" />
+    <Compile Include="Messages\MessageProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
@@ -120,6 +129,7 @@
     <Folder Include="Manifest\" />
     <Folder Include="Options\" />
     <Folder Include="Manifest\Fluent\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -68,6 +68,8 @@
     <Folder Include="Manifest\" />
     <Folder Include="Integration\" />
     <Folder Include="Rules\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StockRules\NotNullRuleTests.cs" />
@@ -96,9 +98,16 @@
     <Compile Include="StockRules\IsDefinedEnumMemberValueRuleTests.cs" />
     <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRuleTests.cs" />
     <Compile Include="StockRules\RegexMatchValueRuleTests.cs" />
+    <Compile Include="Resources\FailureMessageTemplates.cs" />
+    <Compile Include="Messages\MessageProviderIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FailureMessageTemplates.resx">
+      <LastGenOutput>FailureMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
