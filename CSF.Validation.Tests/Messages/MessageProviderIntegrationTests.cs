@@ -86,23 +86,18 @@ namespace CSF.Validation.Tests.Messages
       var templateProvider = new FailureMessageTemplates();
       var provider = new ByIdentityFormatterProvider();
 
-      object identity;
-      PlaceholderMessageFormatter<StubValidatedObject> formatter;
+      provider.RegisterPlaceholderFormatter<StubValidatedObject>(typeof(NumericRangeValueRule),
+                                                                 x => x.IntegerProperty,
+                                                                 r => {
+        r.Placeholder("{min}", 5);
+        r.Placeholder("{max}", 20);
+      });
 
-      identity = new DefaultManifestIdentity(typeof(StubValidatedObject),
-                                             typeof(NumericRangeValueRule),
-                                             validatedMember: Reflect.Member<StubValidatedObject>(x => x.IntegerProperty));
-      formatter = new PlaceholderMessageFormatter<StubValidatedObject>();
-      formatter.AddPlaceholder("{min}", 5);
-      formatter.AddPlaceholder("{max}", 20);
-      provider.RegisteredFormatters.Add(identity, formatter);
-
-      identity = new DefaultManifestIdentity(typeof(StubValidatedObject),
-                                             typeof(DateTimeRangeValueRule),
-                                             validatedMember: Reflect.Member<StubValidatedObject>(x => x.DateTimeProperty));
-      formatter = new PlaceholderMessageFormatter<StubValidatedObject>();
-      formatter.AddPlaceholder("{actual}", x => x.DateTimeProperty.Year);
-      provider.RegisteredFormatters.Add(identity, formatter);
+      provider.RegisterPlaceholderFormatter<StubValidatedObject>(typeof(DateTimeRangeValueRule),
+                                                                 x => x.DateTimeProperty,
+                                                                 r => {
+        r.Placeholder("{actual}", x => x.DateTimeProperty.Year);
+      });
 
       return new MessageProvider(templateProvider, provider);
     }

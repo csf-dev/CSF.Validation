@@ -33,6 +33,7 @@ namespace CSF.Validation.Messages
   /// A message formatter which makes placeholder replacements of data into the message template.
   /// </summary>
   public class PlaceholderMessageFormatter<TValidated> : NoOpFailureMessageFormatter
+    where TValidated : class
   {
     readonly IDictionary<string,Func<TValidated,object>> placeholderFillers;
 

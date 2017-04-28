@@ -120,6 +120,8 @@
     <Compile Include="Messages\ITemplateProvider.cs" />
     <Compile Include="Messages\ResourceFileTemplateProvider.cs" />
     <Compile Include="Messages\MessageProvider.cs" />
+    <Compile Include="Messages\PlaceholderRegistrationHelper.cs" />
+    <Compile Include="Messages\ByIdentityFormatterProviderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rules\" />
