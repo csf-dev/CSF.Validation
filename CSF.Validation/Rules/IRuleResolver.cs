@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IRuleResolver.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Manifest;
 
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// A service which resolves instances of <see cref="IRule"/>.
   /// </summary>
-  public interface IValidator
+  public interface IRuleResolver
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Resolve an <see cref="IRule"/> instance from its corresponding manifest item.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <param name="manifest">The manifest item.</param>
+    IRule Resolve(IManifestRule manifest);
   }
 }

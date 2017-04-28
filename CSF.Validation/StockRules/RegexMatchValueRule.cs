@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// RegexMatchValueRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,51 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
+using System.Text.RegularExpressions;
 
-namespace CSF.Validation
+namespace CSF.Validation.StockRules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Validation rule which checks for a match with a given regular expression pattern.
+  /// This rule will indicate success if the input value is <c>null</c>.
   /// </summary>
-  public interface IValidator
+  public class RegexMatchValueRule : ValueRule<string>
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets or sets the regex pattern against which to test.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <value>The pattern.</value>
+    public string Pattern { get; set; }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets or sets the regex options.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The options.</value>
+    public RegexOptions Options { get; set; }
+
+    /// <summary>
+    /// Gets the outcome.
+    /// </summary>
+    /// <returns>The outcome.</returns>
+    /// <param name="value">Value.</param>
+    protected override RuleOutcome GetValueOutcome(string value)
+    {
+      if(ReferenceEquals(value, null))
+        return Success;
+
+      if(Regex.IsMatch(value, Pattern, Options))
+        return Success;
+
+      return Failure;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.StockRules.RegexMatchValueRule"/> class.
+    /// </summary>
+    public RegexMatchValueRule()
+    {
+      Options = RegexOptions.None;
+    }
   }
 }

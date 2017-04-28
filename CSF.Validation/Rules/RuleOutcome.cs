@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// RuleOutcome.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
 
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Enumerates the possible outcomes of running a single validation rule.
   /// </summary>
-  public interface IValidator
+  public enum RuleOutcome
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// The outcome indicates that the rule raised an unexpected error during execution.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    Error = 0,
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// The outcome indicates that the rule executed and returned a failure response.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    Failure,
+
+    /// <summary>
+    /// The outcome indicates successful execution of the rule.
+    /// </summary>
+    Success,
+
+    /// <summary>
+    /// The rule was not executed, because one or more other rules upon which it
+    /// depended returned a failure outcome.
+    /// </summary>
+    SkippedDueToDependencyFailure,
+
+    /// <summary>
+    /// The rule was not executed, however it was intentionally skipped and should be treated as if successful.
+    /// </summary>
+    IntentionallySkipped
   }
 }

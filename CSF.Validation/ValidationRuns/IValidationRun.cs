@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationRun.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
 
-namespace CSF.Validation
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents a validation procedure which may be executed.
   /// </summary>
-  public interface IValidator
+  public interface IValidationRun
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a collection of the validation rules which are to be executed in the current validation operation.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The rules.</value>
+    IEnumerable<IRunnableRule> Rules { get; }
   }
 }

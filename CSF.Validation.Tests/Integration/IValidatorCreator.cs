@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationManifestCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Manifest;
 
-namespace CSF.Validation
+namespace CSF.Validation.Tests.Integration
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  public interface IValidatorCreator
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    IValidationManifest CreateManifest();
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    IValidator CreateValidator();
   }
 }

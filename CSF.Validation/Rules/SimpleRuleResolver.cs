@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// RuleResolver.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Manifest;
 
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Simple implementation of <see cref="IRuleResolver"/> which makes use of a provided factory method if available, but
+  /// otherwise makes use of a public parameterless constructor.
   /// </summary>
-  public interface IValidator
+  public class SimpleRuleResolver : IRuleResolver
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Resolve an <see cref="IRule"/> instance from its corresponding manifest item.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <param name="manifest">The manifest item.</param>
+    public IRule Resolve(IManifestRule manifest)
+    {
+      if(manifest == null)
+        throw new ArgumentNullException(nameof(manifest));
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+      if(manifest.RuleFactory != null)
+        return manifest.RuleFactory();
+
+      return (IRule) Activator.CreateInstance(manifest.RuleType);
+    }
   }
 }

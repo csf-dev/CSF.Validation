@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationRun.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using CSF.Validation.Options;
 
-namespace CSF.Validation
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// This context type holds the state of a the validation operation which is in-progress, whilst it completes
+  /// the full validation procedure.
   /// </summary>
-  public interface IValidator
+  public interface IValidationRunContext
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a reference to the validation run with which the current context is associated.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <value>The validation run.</value>
+    IValidationRun ValidationRun { get; }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a reference to the object under validation.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The validated object.</value>
+    object Validated { get; }
+
+    /// <summary>
+    /// Gets the options applied to the current validation run.
+    /// </summary>
+    IValidationOptions Options { get; }
   }
 }

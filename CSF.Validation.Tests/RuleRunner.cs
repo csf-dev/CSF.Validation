@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// RuleRunner.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.Tests
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  public static class RuleRunner
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    public static IRuleResult Run(IRule rule, object validated)
+    {
+      return rule.GetResult(validated);
+    }
   }
 }

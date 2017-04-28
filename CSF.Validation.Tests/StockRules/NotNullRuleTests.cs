@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// NotNullRuleTests.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,55 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
+using CSF.Validation.StockRules;
+using NUnit.Framework;
 
-namespace CSF.Validation
+namespace CSF.Validation.Tests.StockRules
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  [TestFixture]
+  public class NotNullRuleTests
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    [Test]
+    public void GetResult_returns_success_when_validated_object_is_not_null()
+    {
+      // Arrange
+      var sut = new NotNullRule();
+      var validated = "I am not null";
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+      // Act
+      var result = RuleRunner.Run(sut, validated);
+
+      // Assert
+      OutcomeAssert.IsSuccess(result);
+    }
+
+    [Test]
+    public void GetResult_returns_failure_when_validated_object_is_null()
+    {
+      // Arrange
+      var sut = new NotNullRule();
+      object validated = null;
+
+      // Act
+      var result = RuleRunner.Run(sut, validated);
+
+      // Assert
+      OutcomeAssert.IsFailure(result);
+    }
+
+    [Test]
+    public void GetResult_returns_failure_when_validated_object_is_null_nullable()
+    {
+      // Arrange
+      var sut = new NotNullRule();
+      DateTime? validated = null;
+
+      // Act
+      var result = RuleRunner.Run(sut, validated);
+
+      // Assert
+      OutcomeAssert.IsFailure(result);
+    }
   }
 }

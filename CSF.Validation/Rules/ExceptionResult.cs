@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// ExceptionResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
-
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Specialization of <see cref="RuleResult"/> for instances where a rule raised an exception.
   /// </summary>
-  public interface IValidator
+  public class ExceptionResult : RuleResult
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    readonly Exception exception;
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the exception raised by executing the rule.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The exception.</value>
+    public Exception Exception => exception;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.Rules.ExceptionResult"/> class.
+    /// </summary>
+    /// <param name="exception">Exception.</param>
+    public ExceptionResult(Exception exception) : base(RuleOutcome.Error)
+    {
+      if(exception == null)
+        throw new ArgumentNullException(nameof(exception));
+      this.exception = exception;
+    }
   }
 }

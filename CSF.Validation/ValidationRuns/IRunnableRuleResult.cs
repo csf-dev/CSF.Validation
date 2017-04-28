@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IRunnableRuleResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents the result of an <see cref="IRunnableRule"/>.
   /// </summary>
-  public interface IValidator
+  public interface IRunnableRuleResult
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the identity of the rule within the rule manifest.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <value>The identity of the rule in the manifest.</value>
+    object ManifestIdentity { get; }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a reference to the object under validation.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The validated object.</value>
+    object Validated { get; }
+
+    /// <summary>
+    /// Gets the original <see cref="IRuleResult"/> from which the current instance was created.
+    /// </summary>
+    /// <value>The source result.</value>
+    IRuleResult RuleResult { get; }
   }
 }

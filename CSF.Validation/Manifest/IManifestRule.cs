@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IManifestRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,50 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents a single rule in a manifest of validation rules.
   /// </summary>
-  public interface IValidator
+  public interface IManifestRule
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the identity associated with the current instance.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <value>The identity.</value>
+    object Identity { get; }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the <c>System.Type</c> of the rule which this manifest item represents.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The type of the rule.</value>
+    Type RuleType { get; }
+
+    /// <summary>
+    /// Gets an optional function which creates the rule instance.
+    /// </summary>
+    /// <value>The rule factory.</value>
+    Func<IRule> RuleFactory { get; }
+
+    /// <summary>
+    /// Configures the given rule.
+    /// </summary>
+    /// <param name="rule">Rule.</param>
+    void Configure(IRule rule);
+
+    /// <summary>
+    /// Gets a collection of the dependency identifiers.
+    /// </summary>
+    /// <value>The dependency identifiers.</value>
+    IEnumerable<object> DependencyIdentifiers { get; }
+
+    /// <summary>
+    /// Gets the metadata describing the current rule instance.
+    /// </summary>
+    /// <value>The metadata.</value>
+    IManifestMetadata Metadata { get; }
   }
 }

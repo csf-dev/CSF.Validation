@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationRunFactory.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Manifest;
 
-namespace CSF.Validation
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// A service which creates a validation run instances.
   /// </summary>
-  public interface IValidator
+  public interface IValidationRunFactory
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Creates the run from the given manifest.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>The constructed validation run.</returns>
+    /// <param name="manifest">A validation manifest.</param>
+    IValidationRun CreateRun(IValidationManifest manifest);
   }
 }

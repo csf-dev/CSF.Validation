@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationOptions.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
 
-namespace CSF.Validation
+namespace CSF.Validation.Options
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Container type for validation options.
   /// </summary>
-  public interface IValidator
+  public interface IValidationOptions
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets an option of the given type, or a <c>null</c> reference if no such option is present.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <returns>The option.</returns>
+    /// <typeparam name="T">The desired option type.</typeparam>
+    T GetOption<T>() where T : class;
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a collection of the options which cause validation rules to be skipped.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>The rule skipping options.</returns>
+    IEnumerable<IRuleSkippingOption> GetRuleSkippingOptions();
   }
 }

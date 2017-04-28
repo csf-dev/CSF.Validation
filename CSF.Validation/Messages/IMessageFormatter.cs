@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IFailureMessageCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation
+namespace CSF.Validation.Messages
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// A service which formats a given validation failure message.
   /// </summary>
-  public interface IValidator
+  public interface IMessageFormatter
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Formats the message template and returns the message.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>The message.</returns>
+    /// <param name="messageTemplate">Message template.</param>
+    /// <param name="result">Result.</param>
+    string FormatMessage(string messageTemplate, IRunnableRuleResult result);
   }
 }

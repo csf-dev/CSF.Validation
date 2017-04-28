@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IFormatterChooser.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation
+namespace CSF.Validation.Messages
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Service which selects and returns an appropriate <see cref="IMessageFormatter"/> to format the
+  /// failure message associated with a given <see cref="IRunnableRuleResult"/>.
   /// </summary>
-  public interface IValidator
+  public interface IFormatterProvider
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the message formatter.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>The formatter.</returns>
+    /// <param name="result">Result.</param>
+    IMessageFormatter GetFormatter(IRunnableRuleResult result);
   }
 }

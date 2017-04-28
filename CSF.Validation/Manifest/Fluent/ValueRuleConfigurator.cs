@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// ValueRuleConfigurator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.Manifest.Fluent
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  internal class ValueRuleConfigurator<TValidated,TRule> : RuleConfigurator<TValidated, TRule>
+    where TValidated : class
+    where TRule : class, IValueRule
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    readonly Func<object,object> accessor;
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    internal override Action<TRule> ConfigurationCallback
+    {
+      get {
+        var baseCallback = base.ConfigurationCallback;
+
+        return rule => {
+          rule.Accessor = accessor;
+
+          if(baseCallback != null)
+            baseCallback(rule);
+        };
+      }
+    }
+
+    public ValueRuleConfigurator(object parentIdentity,
+                                 Func<object,object> accessor) : base(parentIdentity)
+    {
+      if(accessor == null)
+        throw new ArgumentNullException(nameof(accessor));
+
+      this.accessor = accessor;
+    }
   }
 }

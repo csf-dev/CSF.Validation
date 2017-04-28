@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidatorFactory.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents a factory type which creates validators.
   /// </summary>
-  public interface IValidator
+  public interface IValidatorFactory
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a validator instance for the given validation manifest.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>The validator.</returns>
+    /// <param name="manifest">The validation manifest.</param>
+    IValidator GetValidator(IValidationManifest manifest);
   }
 }

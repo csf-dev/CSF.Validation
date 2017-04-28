@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
+using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents the result of validation.
   /// </summary>
-  public interface IValidator
+  public interface IValidationResult
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a value indicating whether or not the current instance has only successful results.
+    /// That is - all of the rule results should be treated as successes.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <value><c>true</c> if the current instance indicates a success; otherwise, <c>false</c>.</value>
+    bool IsSuccess { get; }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a collection of the results from each of the rules which was executed.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The rule results.</value>
+    IEnumerable<IRunnableRuleResult> RuleResults { get; }
   }
 }

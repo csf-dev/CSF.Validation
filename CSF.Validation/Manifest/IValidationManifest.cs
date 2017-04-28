@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IValidationManifest.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
 
-namespace CSF.Validation
+namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents the manifest, describing the validation which a validator is to perform.
+  /// This type provides sufficient information to construct the validation task, for the validator to perform.
   /// </summary>
-  public interface IValidator
+  public interface IValidationManifest
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the validation rules contained within the current instance.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The rules.</value>
+    IEnumerable<IManifestRule> Rules { get; }
   }
 }

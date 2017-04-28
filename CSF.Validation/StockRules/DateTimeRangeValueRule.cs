@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// DateTimeValueRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.StockRules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Validation rule which fails validation if a <c>DateTime</c> earlier than or later than given
+  /// minimum/maximum values.
+  /// This rule cannot be used on nullable types.
   /// </summary>
-  public interface IValidator
+  public class DateTimeRangeValueRule : ValueRule<DateTime>
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets or sets the minimum (earliest) <c>DateTime</c> which is accepted.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <value>The minimum.</value>
+    public DateTime? Min { get; set; }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets or sets the maximum (latest) <c>DateTime</c> which is accepted.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The max.</value>
+    public DateTime? Max { get; set; }
+
+    /// <summary>
+    /// Gets the outcome.
+    /// </summary>
+    /// <returns>The outcome.</returns>
+    /// <param name="value">Value.</param>
+    protected override RuleOutcome GetValueOutcome(DateTime value)
+    {
+      if(Min.HasValue
+         && Max.HasValue
+         && Min.Value > Max.Value)
+        throw new InvalidValidationeRuleException(Resources.ExceptionMessages.MinMustNotBeGreaterThanMax);
+
+      if(Min.HasValue && value < Min.Value)
+        return Failure;
+
+      if(Max.HasValue && value > Max.Value)
+        return Failure;
+
+      return Success;
+    }
   }
 }

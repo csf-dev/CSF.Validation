@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// NotNullRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.StockRules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Rule which fails validation if the object under validation is <c>null</c>.
   /// </summary>
-  public interface IValidator
+  public class NotNullRule : Rule
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the outcome.
     /// </summary>
+    /// <returns>The outcome.</returns>
     /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    protected override RuleOutcome GetOutcome(object validated)
+    {
+      if(Equals(validated, null))
+        return Failure;
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+      return Success;
+    }
   }
 }

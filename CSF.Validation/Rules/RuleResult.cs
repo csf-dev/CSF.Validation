@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// RuleResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
-
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Concrete type representing the result of a standard validation rule run.
   /// </summary>
-  public interface IValidator
+  public class RuleResult : IRuleResult
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    readonly RuleOutcome outcome;
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the outcome.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The outcome.</value>
+    public RuleOutcome Outcome => outcome;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.Rules.RuleResult"/> class.
+    /// </summary>
+    /// <param name="outcome">Outcome.</param>
+    public RuleResult(RuleOutcome outcome)
+    {
+      outcome.RequireDefinedValue(nameof(outcome));
+
+      this.outcome = outcome;
+    }
   }
 }

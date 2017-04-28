@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IFailureMessageProvider.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation
+namespace CSF.Validation.Messages
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Interface for a service which provides failure messages for validation rules.
   /// </summary>
-  public interface IValidator
+  public interface IMessageProvider
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the failure message for a single failed rule.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>The failure message.</returns>
+    /// <param name="result">Result.</param>
+    string GetFailureMessage(IRunnableRuleResult result);
   }
 }

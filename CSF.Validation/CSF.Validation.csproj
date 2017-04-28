@@ -10,6 +10,7 @@
     <RootNamespace>CSF.Validation</RootNamespace>
     <AssemblyName>CSF.Validation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,37 +20,128 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\CSF.Validation.xml</DocumentationFile>
     <ConsolePause>false</ConsolePause>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+    <DebugType></DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\CSF.Validation.xml</DocumentationFile>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="CSF.Utils">
+      <HintPath>..\packages\CSF.Utils.6.0.0\lib\net45\CSF.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="CSF.Reflection">
+      <HintPath>..\packages\CSF.Reflection.1.0.1\lib\net45\CSF.Reflection.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IValidationTest.cs" />
+    <Compile Include="Rules\RuleOutcome.cs" />
+    <Compile Include="Rules\IRuleResult.cs" />
+    <Compile Include="Rules\IRule.cs" />
+    <Compile Include="Rules\RuleResult.cs" />
+    <Compile Include="Rules\ExceptionResult.cs" />
+    <Compile Include="Rules\Rule.cs" />
+    <Compile Include="Rules\Rule`1.cs" />
+    <Compile Include="IValidationResult.cs" />
     <Compile Include="IValidator.cs" />
-    <Compile Include="ValidationFailureException.cs" />
-    <Compile Include="ValidationFailureException`1.cs" />
-    <Compile Include="ValidationFunction.cs" />
-    <Compile Include="ValidationTest`1.cs" />
-    <Compile Include="ValidationTest`2.cs" />
-    <Compile Include="ValidationTestList.cs" />
-    <Compile Include="ValidationTests.cs" />
+    <Compile Include="ValidationRuns\IRunnableRule.cs" />
+    <Compile Include="ValidationRuns\IValidationRunContext.cs" />
+    <Compile Include="ValidationRuns\IRunnableRuleResult.cs" />
+    <Compile Include="Rules\ValueRule`1.cs" />
+    <Compile Include="Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StockRules\NotNullRule.cs" />
+    <Compile Include="StockRules\NotNullValueRule.cs" />
+    <Compile Include="StockRules\StringLengthValueRule.cs" />
+    <Compile Include="Rules\InvalidValidationeRuleException.cs" />
+    <Compile Include="StockRules\NumericRangeValueRule.cs" />
+    <Compile Include="Manifest\IManifestRule.cs" />
+    <Compile Include="Manifest\IValidationManifest.cs" />
+    <Compile Include="Manifest\ManifestRule.cs" />
+    <Compile Include="ValidationRuns\RunnableRule.cs" />
+    <Compile Include="ValidationRuns\RunnableRuleResult.cs" />
+    <Compile Include="ValidationRuns\IValidationRun.cs" />
+    <Compile Include="IValidatorFactory.cs" />
+    <Compile Include="ValidationRuns\IValidationRunner.cs" />
+    <Compile Include="ValidationRuns\ValidationResult.cs" />
+    <Compile Include="ValidationRuns\ValidationRunner.cs" />
+    <Compile Include="ValidationRuns\StalledValidationRunException.cs" />
+    <Compile Include="Manifest\DefaultManifestIdentity.cs" />
+    <Compile Include="Manifest\IManifestIdentityGenerator.cs" />
+    <Compile Include="Manifest\DefaultManifestIdentityGenerator.cs" />
+    <Compile Include="Manifest\IManifestMetadata.cs" />
+    <Compile Include="Manifest\StandardMetadataName.cs" />
+    <Compile Include="Manifest\ManifestMetadata.cs" />
+    <Compile Include="ValidationRuns\IValidationRunFactory.cs" />
+    <Compile Include="ValidationRuns\ValidationRunFactory.cs" />
+    <Compile Include="Rules\IRuleResolver.cs" />
+    <Compile Include="ValidationRuns\ValidationRun.cs" />
+    <Compile Include="Rules\SimpleRuleResolver.cs" />
+    <Compile Include="Options\RuleSelectionOption.cs" />
+    <Compile Include="Options\IValidationOptions.cs" />
+    <Compile Include="Options\ValidationOptionsContainer.cs" />
+    <Compile Include="Options\IRuleSkippingOption.cs" />
+    <Compile Include="ValidatorFactory.cs" />
     <Compile Include="Validator.cs" />
+    <Compile Include="ValidationRuns\ValidationRunContext.cs" />
+    <Compile Include="Manifest\Fluent\IManifestBuilder.cs" />
+    <Compile Include="Manifest\Fluent\IRuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\RuleBuilderExtensions.cs" />
+    <Compile Include="Manifest\Fluent\RuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\ManifestBuilder`1.cs" />
+    <Compile Include="Manifest\ValidationManifest.cs" />
+    <Compile Include="Rules\IValueRule.cs" />
+    <Compile Include="Manifest\Fluent\ValueRuleConfigurator.cs" />
+    <Compile Include="Manifest\Fluent\ManifestBuilder.cs" />
+    <Compile Include="StockRules\NullableNumericRangeValueRule.cs" />
+    <Compile Include="Rules\ValueRule`2.cs" />
+    <Compile Include="Rules\TypeConversionException.cs" />
+    <Compile Include="StockRules\DateTimeRangeValueRule.cs" />
+    <Compile Include="StockRules\NullableDateTimeRangeValueRule.cs" />
+    <Compile Include="StockRules\IsDefinedEnumMemberValueRule.cs" />
+    <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRule.cs" />
+    <Compile Include="StockRules\RegexMatchValueRule.cs" />
+    <Compile Include="Messages\IMessageProvider.cs" />
+    <Compile Include="Messages\IMessageFormatter.cs" />
+    <Compile Include="Messages\NoOpFailureMessageFormatter.cs" />
+    <Compile Include="Messages\PlaceholderMessageFormatter.cs" />
+    <Compile Include="Messages\IFormatterProvider.cs" />
+    <Compile Include="Messages\ByIdentityFormatterProvider.cs" />
+    <Compile Include="Messages\ITemplateProvider.cs" />
+    <Compile Include="Messages\ResourceFileTemplateProvider.cs" />
+    <Compile Include="Messages\MessageProvider.cs" />
+    <Compile Include="Messages\PlaceholderRegistrationHelper.cs" />
+    <Compile Include="Messages\ByIdentityFormatterProviderExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rules\" />
+    <Folder Include="ValidationRuns\" />
+    <Folder Include="Resources\" />
+    <Folder Include="StockRules\" />
+    <Folder Include="Manifest\" />
+    <Folder Include="Options\" />
+    <Folder Include="Manifest\Fluent\" />
+    <Folder Include="Messages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="CSF.Validation.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\CSF.Reflection\CSF.Reflection.csproj">
-      <Project>{275413F6-0651-4AD4-A426-07EDA165C07E}</Project>
-      <Name>CSF.Reflection</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

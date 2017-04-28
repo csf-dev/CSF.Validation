@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// StubValidatedObject.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
-
-namespace CSF.Validation
+namespace CSF.Validation.Tests
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  public class StubValidatedObject
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    public string StringProperty { get; set; }
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    public int? NullableIntegerProperty { get; set; }
+
+    public int IntegerProperty { get; set; }
+
+    public decimal? NullableDecimalProperty { get; set; }
+
+    public decimal DecimalProperty { get; set; }
+
+    public DateTime DateTimeProperty { get; set; }
+
+    public DateTime? NullableDateTimeProperty { get; set; }
+
+    public StubEnum EnumProperty { get; set; }
+
+    public StubEnum? NullableEnumProperty { get; set; }
+  }
+
+  public enum StubEnum
+  {
+    One = 1,
+
+    Two = 2,
+
+    Three = 3
   }
 }

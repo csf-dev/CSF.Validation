@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// StubRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
+using Moq;
 
-namespace CSF.Validation
+namespace CSF.Validation.Tests
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  public static class StubRule
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    public static IRule Success => Create(RuleOutcome.Success);
+    public static IRule Failure => Create(RuleOutcome.Failure);
+    public static IRule Error => Create(RuleOutcome.Error);
+    public static IRule SkippedDueToDependencyFailure => Create(RuleOutcome.SkippedDueToDependencyFailure);
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    public static IRule Create(RuleOutcome outcome)
+    {
+      var result = new Mock<IRuleResult>();
+      result
+        .SetupGet(x => x.Outcome)
+        .Returns(outcome);
+
+      var output = new Mock<IRule>();
+      output
+        .Setup(x => x.GetResult(It.IsAny<object>()))
+        .Returns(result.Object);
+
+      return output.Object;
+    }
   }
 }

@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// StandardFluentManifestCreator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Manifest;
+using CSF.Validation.Manifest.Fluent;
+using CSF.Validation.StockRules;
 
-namespace CSF.Validation
+namespace CSF.Validation.Tests.Integration
 {
-  /// <summary>
-  /// Represents a validator instance.
-  /// </summary>
-  public interface IValidator
+  public class StringPropertyValidatorCreator : IValidatorCreator
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    public virtual IValidationManifest CreateManifest()
+    {
+      var builder = ManifestBuilder.Create<StubValidatedObject>();
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+      ConfigureManifest(builder);
+
+      return builder.GetManifest();
+    }
+
+    protected virtual void ConfigureManifest(IManifestBuilder<StubValidatedObject> builder)
+    {
+      builder.AddMemberRule<NotNullValueRule>(x => x.StringProperty);
+
+      builder.AddMemberRule<StringLengthValueRule>(x => x.StringProperty, c => {
+        c.Configure(r => {
+          r.MinLength = 5;
+          r.MaxLength = 10;
+        });
+
+        c.AddDependency<NotNullValueRule,StubValidatedObject>(x => x.StringProperty);
+      });
+    }
+
+    public virtual IValidator CreateValidator()
+    {
+      var manifest = CreateManifest();
+      var factory = new ValidatorFactory();
+      return factory.GetValidator(manifest);
+    }
   }
 }

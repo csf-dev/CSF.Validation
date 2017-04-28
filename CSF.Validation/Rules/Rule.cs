@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// Rule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,54 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
-
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Base type for a validation rule.
   /// </summary>
-  public interface IValidator
+  public abstract class Rule : IRule
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    RuleOutcome
+      success = RuleOutcome.Success,
+      failure = RuleOutcome.Failure,
+      error = RuleOutcome.Error;
+
+    IRuleResult IRule.GetResult(object validated)
+    {
+      try
+      {
+        var outcome = GetOutcome(validated);
+        return new RuleResult(outcome);
+      }
+      catch(Exception ex)
+      {
+        return new ExceptionResult(ex);
+      }
+    }
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a success result.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>A success result.</value>
+    protected RuleOutcome Success => success;
+
+    /// <summary>
+    /// Gets a failure result.
+    /// </summary>
+    /// <value>A failure result.</value>
+    protected RuleOutcome Failure => failure;
+
+    /// <summary>
+    /// Gets an error result.
+    /// </summary>
+    /// <value>An error result.</value>
+    protected RuleOutcome Error => error;
+
+    /// <summary>
+    /// Gets the outcome of the validation, override this method in derived types.
+    /// </summary>
+    /// <returns>The outcome.</returns>
+    /// <param name="validated">The object undergoing validation.</param>
+    protected abstract RuleOutcome GetOutcome(object validated);
   }
 }

@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// RuleSelectionOption.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation
+namespace CSF.Validation.Options
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents a validation option which determines whether a given validation rule should be executed or not.
   /// </summary>
-  public interface IValidator
+  public class RuleSelectionOption : IRuleSkippingOption
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    readonly Func<IRunnableRule,bool> predicate;
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a predicate which examines a validation rule.  It should return <c>true</c> if the rule should be executed
+    /// or <c>false</c> if it should be skipped.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The rule-selection predicate.</value>
+    public Func<IRunnableRule,bool> Predicate => predicate;
+
+    bool IRuleSkippingOption.ShouldSkipRule(IRunnableRule rule)
+    {
+      return !Predicate(rule);
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RuleSelectionOption"/> class.
+    /// </summary>
+    /// <param name="predicate">Predicate.</param>
+    public RuleSelectionOption(Func<IRunnableRule,bool> predicate)
+    {
+      if(predicate == null)
+        throw new ArgumentNullException(nameof(predicate));
+
+      this.predicate = predicate;
+    }
   }
 }

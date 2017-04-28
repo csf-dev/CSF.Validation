@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IManifestMetadata.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
 
-namespace CSF.Validation
+namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Describes a type which provides access to arbitrary information about an <see cref="IManifestRule"/>.
   /// </summary>
-  public interface IValidator
+  public interface IManifestMetadata
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the value with the specified name, or a <c>null</c> reference if it does not exist.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <param name="name">The metadata name.</param>
+    object Get(string name);
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the value with the specified name, of the associated type, or a <c>null</c> reference if it does not exist.
+    /// Note that this method will return <c>null</c> if called with an incorrect type, even if the item did exist as
+    /// an instance of a different type.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <param name="name">The metadata name.</param>
+    /// <typeparam name="T">The desired metadata object type.</typeparam>
+    T Get<T>(string name) where T : class;
   }
 }

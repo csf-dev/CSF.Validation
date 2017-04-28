@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// NullableIsDefinedEnumMemberValueRule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation
+namespace CSF.Validation.StockRules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Validation rule which ensures that the passed value is a defined enumeration constant.
+  /// This variant of the rule may be used on nullable enumeration instances; it will result in
+  /// validation success if the value to validate is <c>null</c>.
   /// </summary>
-  public interface IValidator
+  public class NullableIsDefinedEnumMemberValueRule<TEnum> : ValueRule<TEnum?> where TEnum : struct
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the outcome.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <returns>The outcome.</returns>
+    /// <param name="value">Value.</param>
+    protected override RuleOutcome GetValueOutcome(TEnum? value)
+    {
+      if(!value.HasValue)
+        return Success;
+      
+      if(value.Value.IsDefinedValue())
+        return Success;
 
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+      return Failure;
+    }
   }
 }

@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IManifestIdentityGenerator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
-
-namespace CSF.Validation
+namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// A service which creates a manifest identity for a given <see cref="IManifestRule"/>.
   /// </summary>
-  public interface IValidator
+  public interface IManifestIdentityGenerator
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the identity for the given rule.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    /// <returns>An identity object.</returns>
+    /// <param name="rule">Rule.</param>
+    object GetIdentity(IManifestRule rule);
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the identity for the given rule.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns>An identity object.</returns>
+    /// <param name="rule">Rule.</param>
+    /// <param name="parentIdentity">An object representing the identity of the parent rule.</param>
+    object GetIdentity(IManifestRule rule, object parentIdentity);
   }
 }

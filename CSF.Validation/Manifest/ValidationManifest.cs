@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// ValidationManifest.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
 
-namespace CSF.Validation
+namespace CSF.Validation.Manifest
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents a validation manifest instance.
   /// </summary>
-  public interface IValidator
+  public class ValidationManifest : IValidationManifest
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    readonly IEnumerable<IManifestRule> rules;
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets a collection of the rules contained within the current instance
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The rules.</value>
+    public IEnumerable<IManifestRule> Rules => rules;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:CSF.Validation.Manifest.ValidationManifest"/> class.
+    /// </summary>
+    /// <param name="rules">Rules.</param>
+    public ValidationManifest(IEnumerable<IManifestRule> rules)
+    {
+      if(rules == null)
+        throw new ArgumentNullException(nameof(rules));
+      
+      this.rules = rules;
+    }
   }
 }

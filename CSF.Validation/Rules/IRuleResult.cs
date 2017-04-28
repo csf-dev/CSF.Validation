@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IRuleResult.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
-
-namespace CSF.Validation
+namespace CSF.Validation.Rules
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Represents the result from executing a single validation rule.
   /// </summary>
-  public interface IValidator
+  public interface IRuleResult
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the outcome.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The outcome.</value>
+    RuleOutcome Outcome { get; }
   }
 }

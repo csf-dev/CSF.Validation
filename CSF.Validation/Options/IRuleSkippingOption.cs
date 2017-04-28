@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// IRuleSkippingOption.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
-namespace CSF.Validation
+namespace CSF.Validation.Options
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Gets an option which indicates whether or not a given rule should be skipped or not.
   /// </summary>
-  public interface IValidator
+  public interface IRuleSkippingOption
   {
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Indicates whether the given rule should be skipped or not.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
-
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <returns><c>true</c>, if rule should be skipped, <c>false</c> otherwise.</returns>
+    /// <param name="rule">Rule.</param>
+    bool ShouldSkipRule(IRunnableRule rule);
   }
 }

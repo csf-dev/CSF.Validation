@@ -1,10 +1,10 @@
-//
+﻿//
 // Validator.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
 //
-// Copyright (c) 2015 CSF Software Limited
+// Copyright (c) 2017 Craig Fowler
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,310 +23,81 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Reflection;
-using CSF.Reflection;
+using CSF.Validation.Options;
+using CSF.Validation.ValidationRuns;
 
 namespace CSF.Validation
 {
   /// <summary>
-  /// Validator type that provides validation services for object instances against a registered set of validation
-  /// tests.
+  /// Default implementation of <see cref="IValidator"/> which coordinates between components and returns the overall
+  /// result.
   /// </summary>
-  /// <typeparam name='TTarget'>
-  /// The type of object that this validator targets and provides validation for.
-  /// </typeparam>
-  public class Validator<TTarget> : IValidator<TTarget>
+  public class Validator : IValidator
   {
-    #region fields
-    
-    private IList<IValidationTest<TTarget>> _tests;
-    private bool _throwOnFailure;
-    
-    #endregion
-    
-    #region properties
-  
+    readonly IValidationRun run;
+    readonly IValidationRunner runner;
+
     /// <summary>
-    /// Gets or sets a collection of the validation tests defined for the current instance.
+    /// Validate the specified object and get the result.
     /// </summary>
-    /// <value>
-    /// A collection of the validation rules.
-    /// </value>
-    /// <exception cref='ArgumentNullException'>
-    /// Is thrown when an argument passed to a method is invalid because it is <see langword="null" /> .
-    /// </exception>
-    public IList<IValidationTest<TTarget>> Tests
+    /// <param name="validated">Validated.</param>
+    public virtual IValidationResult Validate(object validated)
     {
-      get {
-        return _tests;
-      }
-      set {
-        if(value == null)
-        {
-          throw new ArgumentNullException ("value");
-        }
-        
-        _tests = value;
-      }
-    }
-    
-    #endregion
-    
-    #region test registration
-    
-    /// <summary>
-    /// Adds a new validation test to the current instance.  The test will validate an object in general terms, without
-    /// an association to a particular member of the instance.
-    /// </summary>
-    /// <returns>
-    /// The current instance, permitting method-chaining (such as adding many tests together).
-    /// </returns>
-    /// <param name='test'>
-    /// The test to add.
-    /// </param>
-    public IValidator<TTarget> AddTest(ValidationFunction<TTarget> test)
-    {
-      return this.AddTest(test, null);
-    }
-    
-    /// <summary>
-    /// Adds a new validation test to the current instance.  The test will validate an object in general terms, without
-    /// an association to a particular member of the instance.
-    /// </summary>
-    /// <returns>
-    /// The current instance, permitting method-chaining (such as adding many tests together).
-    /// </returns>
-    /// <param name='test'>
-    /// The test to add.
-    /// </param>
-    /// <param name='testIdentifier'>
-    /// An identifier for the test, that allows it to be distinguished from other tests.
-    /// </param>
-    public IValidator<TTarget> AddTest(ValidationFunction<TTarget> test,
-                                       object testIdentifier)
-    {
-      this.Tests.Add(new ValidationTest<TTarget>(test, testIdentifier));
-      return this;
-    }
-    
-    /// <summary>
-    /// Adds a new validation test to the current instance.  The test is associated with a specific member of the
-    /// target object being validated and will be performed against the value of that member.
-    /// </summary>
-    /// <returns>
-    /// The current instance, permitting method-chaining (such as adding many tests together).
-    /// </returns>
-    /// <param name='member'>
-    /// The member that this test is to be associated with.
-    /// </param>
-    /// <param name='test'>
-    /// The test to add.
-    /// </param>
-    /// <typeparam name='TMember'>
-    /// The output/return type of the <paramref name="member"/> that this test is associated with.
-    /// </typeparam>
-    public IValidator<TTarget> AddTest<TMember>(Expression<Func<TTarget, TMember>> member,
-                                                ValidationFunction<TMember> test)
-    {
-      return this.AddTest<TMember>(member, test, null);
-    }
-    
-    /// <summary>
-    /// Adds a new validation test to the current instance.  The test is associated with a specific member of the
-    /// target object being validated and will be performed against the value of that member.
-    /// </summary>
-    /// <returns>
-    /// The current instance, permitting method-chaining (such as adding many tests together).
-    /// </returns>
-    /// <param name='member'>
-    /// The member that this test is to be associated with.
-    /// </param>
-    /// <param name='test'>
-    /// The test to add.
-    /// </param>
-    /// <typeparam name='TMember'>
-    /// The output/return type of the <paramref name="member"/> that this test is associated with.
-    /// </typeparam>
-    public IValidator<TTarget> AddTest<TMember>(MemberInfo member,
-                                                ValidationFunction<TMember> test)
-    {
-      return this.AddTest<TMember>(member, test, null);
-    }
-    
-    /// <summary>
-    /// Adds a new validation test to the current instance.  The test is associated with a specific member of the
-    /// target object being validated and will be performed against the value of that member.
-    /// </summary>
-    /// <returns>
-    /// The current instance, permitting method-chaining (such as adding many tests together).
-    /// </returns>
-    /// <param name='member'>
-    /// The member that this test is to be associated with.
-    /// </param>
-    /// <param name='test'>
-    /// The test to add.
-    /// </param>
-    /// <param name='testIdentifier'>
-    /// An identifier for the test, that allows it to be distinguished from other tests.
-    /// </param>
-    /// <typeparam name='TMember'>
-    /// The output/return type of the <paramref name="member"/> that this test is associated with.
-    /// </typeparam>
-    public IValidator<TTarget> AddTest<TMember>(Expression<Func<TTarget, TMember>> member,
-                                                ValidationFunction<TMember> test,
-                                                object testIdentifier)
-    {
-      return this.AddTest<TMember>(Reflect.Member<TTarget,TMember>(member), test, testIdentifier);
-    }
-    
-    /// <summary>
-    /// Adds a new validation test to the current instance.  The test is associated with a specific member of the
-    /// target object being validated and will be performed against the value of that member.
-    /// </summary>
-    /// <returns>
-    /// The current instance, permitting method-chaining (such as adding many tests together).
-    /// </returns>
-    /// <param name='member'>
-    /// The member that this test is to be associated with.
-    /// </param>
-    /// <param name='test'>
-    /// The test to add.
-    /// </param>
-    /// <param name='testIdentifier'>
-    /// An identifier for the test, that allows it to be distinguished from other tests.
-    /// </param>
-    /// <typeparam name='TMember'>
-    /// The output/return type of the <paramref name="member"/> that this test is associated with.
-    /// </typeparam>
-    public IValidator<TTarget> AddTest<TMember>(MemberInfo member,
-                                                ValidationFunction<TMember> test,
-                                                object testIdentifier)
-    {
-      this.Tests.Add(new ValidationTest<TTarget, TMember>(test, member, testIdentifier));
-      return this;
+      return Validate(validated, ValidationOptionsContainer.Empty);
     }
 
     /// <summary>
-    /// Configures this validator instance such that it will throw an exception on a validation failure, instead of
-    /// returning false.
+    /// Validate the specified object and get the result.
     /// </summary>
-    /// <returns>
-    /// A reference to the validator instance.
-    /// </returns>
-    public IValidator<TTarget> ThrowOnFailure()
+    /// <param name="validated">Validated.</param>
+    /// <param name="options">Validation options.</param>
+    public virtual IValidationResult Validate(object validated, IValidationOptions options)
     {
-      return this.ThrowOnFailure(true);
+      var context = GetContext(validated, options);
+
+      var ruleResults = runner.ExecuteRunAndGetResults(context);
+
+      return GetResult(ruleResults);
     }
 
     /// <summary>
-    /// Configures this validator instance, determining whether or not it will throw an exception on a validation
-    /// failure, instead of simply returning false.
+    /// Gets a validation context for the given validated object and options.
     /// </summary>
-    /// <returns>
-    /// A reference to the validator instance.
-    /// </returns>
-    /// <param name='throwOnFailure'>
-    /// A value that indicates whether the 'throw on failure' functionality should be enabled or disabled.
-    /// </param>
-    public IValidator<TTarget> ThrowOnFailure(bool throwOnFailure)
+    /// <returns>The validation run context.</returns>
+    /// <param name="validated">Validated.</param>
+    /// <param name="options">Options.</param>
+    protected virtual IValidationRunContext GetContext(object validated, IValidationOptions options)
     {
-      _throwOnFailure = throwOnFailure;
-      return this;
+      return new ValidationRunContext(options, validated, run);
     }
-    
-    #endregion
-    
-    #region validation
-    
-    /// <summary>
-    /// Validates the specified object instance.
-    /// </summary>
-    /// <returns>
-    /// A value that indicates whether validation was successful or not.
-    /// </returns>
-    /// <param name='target'>
-    /// The target object instance to validate.
-    /// </param>
-    /// <exception cref="ArgumentNullException">
-    /// Thrown if <paramref name="target"/> is null.
-    /// </exception>
-    public bool Validate (TTarget target)
-    {
-      ValidationTestList<TTarget> failures;
-      bool output = this.Validate(target, out failures);
-      
-      if(_throwOnFailure && !output)
-      {
-        throw new ValidationFailureException<TTarget>(failures);
-      }
-      
-      return output;
-    }
-  
-    /// <summary>
-    /// Validates the specified object instance.
-    /// </summary>
-    /// <returns>
-    /// A value that indicates whether validation was successful or not.
-    /// </returns>
-    /// <param name='target'>
-    /// The target object instance to validate.
-    /// </param>
-    /// <param name='failures'>
-    /// Exposes a collection of the validation failures.  If validation is a success this collection will be empty.
-    /// </param>
-    /// <exception cref="ArgumentNullException">
-    /// Thrown if <paramref name="target"/> is null.
-    /// </exception>
-    public bool Validate (TTarget target, out ValidationTestList<TTarget> failures)
-    {
-      if(target == null)
-      {
-        throw new ArgumentNullException ("target");
-      }
-      
-      failures = new ValidationTestList<TTarget>();
-      
-      foreach(IValidationTest<TTarget> test in this.Tests)
-      {
-        try
-        {
-          bool testPassed = test.Execute(target);
 
-          if(!testPassed)
-          {
-            failures.Add(test);
-          }
-        }
-        catch(Exception ex)
-        {
-          failures = new ValidationTestList<TTarget>();
-          failures.Add(test);
-          throw new ValidationFailureException<TTarget>(failures, ex);
-        }
-      }
-      
-      return (failures.Count == 0);
-    }
-    
-    #endregion
-    
-    #region constructor
-    
     /// <summary>
-    /// Initializes a new validator instance.
+    /// Gets the overall validation result from the rule results.
     /// </summary>
-    public Validator()
+    /// <returns>The result.</returns>
+    /// <param name="ruleResults">Rule results.</param>
+    protected virtual IValidationResult GetResult(IEnumerable<IRunnableRuleResult> ruleResults)
     {
-      _throwOnFailure = false;
-      this.Tests = new List<IValidationTest<TTarget>>();
+      return new ValidationResult(ruleResults);
     }
-    
-    #endregion
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Validator"/> class.
+    /// </summary>
+    /// <param name="run">Run.</param>
+    /// <param name="runner">Runner.</param>
+    public Validator(IValidationRun run,
+                     IValidationRunner runner)
+    {
+      if(runner == null)
+        throw new ArgumentNullException(nameof(runner));
+      if(run == null)
+        throw new ArgumentNullException(nameof(run));
+
+      this.run = run;
+      this.runner = runner;
+    }
   }
 }
-

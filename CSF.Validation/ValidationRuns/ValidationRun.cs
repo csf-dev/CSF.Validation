@@ -1,5 +1,5 @@
 ﻿//
-// IValidator.cs
+// ValidationRun.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,26 +24,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using CSF.Validation.Options;
+using System.Collections.Generic;
 
-namespace CSF.Validation
+namespace CSF.Validation.ValidationRuns
 {
   /// <summary>
-  /// Represents a validator instance.
+  /// Default implementation of <see cref="IValidationRun"/>, representing a constructed validation run.
   /// </summary>
-  public interface IValidator
+  public class ValidationRun : IValidationRun
   {
-    /// <summary>
-    /// Validate the specified object and get the result.
-    /// </summary>
-    /// <param name="validated">Validated.</param>
-    IValidationResult Validate(object validated);
+    readonly IEnumerable<IRunnableRule> rules;
 
     /// <summary>
-    /// Validate the specified object and get the result.
+    /// Gets the rules contained within the current run.
     /// </summary>
-    /// <param name="validated">Validated.</param>
-    /// <param name="options">Validation options.</param>
-    IValidationResult Validate(object validated, IValidationOptions options);
+    /// <value>The rules.</value>
+    public IEnumerable<IRunnableRule> Rules => rules;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValidationRun"/> class.
+    /// </summary>
+    /// <param name="rules">Rules.</param>
+    public ValidationRun(IEnumerable<IRunnableRule> rules)
+    {
+      if(rules == null)
+        throw new ArgumentNullException(nameof(rules));
+
+      this.rules = rules;
+    }
   }
 }
