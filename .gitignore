@@ -6,3 +6,4 @@ TestResult.formatted.xml
 *.orig
 .directory
 packages/*/
+.vs/
