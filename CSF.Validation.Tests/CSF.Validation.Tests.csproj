@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,6 +33,12 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Reference Include="CSF.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83989bab8a1a4730, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSF.Reflection.2.0.0\lib\netstandard1.0\CSF.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="CSF.Specifications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83989bab8a1a4730, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSF.Specifications.1.1.0\lib\netstandard1.0\CSF.Specifications.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
@@ -53,12 +59,18 @@
     <Reference Include="Ploeh.AutoFixture.AutoMoq">
       <HintPath>..\packages\AutoFixture.AutoMoq.3.50.2\lib\net40\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
     </Reference>
-    <Reference Include="CSF.Reflection">
-      <HintPath>..\packages\CSF.Reflection.1.0.3\lib\net45\CSF.Reflection.dll</HintPath>
-    </Reference>
     <Reference Include="CSF.Utils">
       <HintPath>..\packages\CSF.Utils.6.1.1\lib\net45\CSF.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj">
@@ -66,15 +78,7 @@
       <Name>CSF.Validation</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="StockRules\" />
-    <Folder Include="ValidationRuns\" />
-    <Folder Include="Manifest\" />
-    <Folder Include="Integration\" />
-    <Folder Include="Rules\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Messages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="StockRules\NotNullRuleTests.cs" />
     <Compile Include="RuleRunner.cs" />

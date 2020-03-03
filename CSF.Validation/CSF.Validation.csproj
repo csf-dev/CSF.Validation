@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,7 +27,8 @@
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -36,15 +37,26 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="CSF.Reflection">
-      <HintPath>..\packages\CSF.Reflection.1.0.3\lib\net45\CSF.Reflection.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="CSF.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83989bab8a1a4730, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSF.Reflection.2.0.0\lib\netstandard1.0\CSF.Reflection.dll</HintPath>
     </Reference>
+    <Reference Include="CSF.Specifications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83989bab8a1a4730, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSF.Specifications.1.1.0\lib\netstandard1.0\CSF.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="CSF.Utils">
       <HintPath>..\packages\CSF.Utils.6.1.1\lib\net45\CSF.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,16 +139,7 @@
     <Compile Include="Messages\PlaceholderRegistrationHelper.cs" />
     <Compile Include="Messages\ByIdentityFormatterProviderExtensions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Rules\" />
-    <Folder Include="ValidationRuns\" />
-    <Folder Include="Resources\" />
-    <Folder Include="StockRules\" />
-    <Folder Include="Manifest\" />
-    <Folder Include="Options\" />
-    <Folder Include="Manifest\Fluent\" />
-    <Folder Include="Messages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="CSF.Validation.nuspec" />
