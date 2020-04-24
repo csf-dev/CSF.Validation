@@ -1,121 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>CSF.Validation.Tests</RootNamespace>
-    <AssemblyName>CSF.Validation.Tests</AssemblyName>
-    <ReleaseVersion>1.0.2</ReleaseVersion>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ReleaseVersion>2.0.2</ReleaseVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
   <ItemGroup>
-    <Reference Include="CSF.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83989bab8a1a4730, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSF.Reflection.2.0.0\lib\netstandard1.0\CSF.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="CSF.Specifications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83989bab8a1a4730, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSF.Specifications.1.1.0\lib\netstandard1.0\CSF.Specifications.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
-      <Package>nunit</Package>
-    </Reference>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.7.8\lib\net45\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture">
-      <HintPath>..\packages\AutoFixture.3.50.2\lib\net40\Ploeh.AutoFixture.dll</HintPath>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture.NUnit3">
-      <HintPath>..\packages\AutoFixture.NUnit3.3.50.2\lib\net40\Ploeh.AutoFixture.NUnit3.dll</HintPath>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture.AutoMoq">
-      <HintPath>..\packages\AutoFixture.AutoMoq.3.50.2\lib\net40\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
-    </Reference>
-    <Reference Include="CSF.Utils">
-      <HintPath>..\packages\CSF.Utils.6.1.1\lib\net45\CSF.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
+    <PackageReference Include="AutoFixture" Version="4.11.0" />
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
+    <PackageReference Include="AutoFixture.NUnit3" Version="4.11.0" />
+    <PackageReference Include="coverlet.msbuild" Version="2.8.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="NunitXml.TestLogger" Version="2.1.41" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj">
-      <Project>{C4446BF2-FF24-4C05-893E-0C9E195FBF82}</Project>
-      <Name>CSF.Validation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Compile Include="StockRules\NotNullRuleTests.cs" />
-    <Compile Include="RuleRunner.cs" />
-    <Compile Include="StockRules\NotNullValueRuleTests.cs" />
-    <Compile Include="StubValidatedObject.cs" />
-    <Compile Include="OutcomeAssert.cs" />
-    <Compile Include="StubRule.cs" />
-    <Compile Include="ValidationRuns\RunnableRuleTests.cs" />
-    <Compile Include="ValidationRuns\ValidationRunnerTests.cs" />
-    <Compile Include="Manifest\DefaultManifestIdentityTests.cs" />
-    <Compile Include="ValidationRuns\ValidationRunFactoryTests.cs" />
-    <Compile Include="AutoMoqDataAttribute.cs" />
-    <Compile Include="Integration\IValidatorCreator.cs" />
-    <Compile Include="Integration\StringPropertyValidatorCreator.cs" />
-    <Compile Include="Integration\StringPropertyIntegrationTests.cs" />
-    <Compile Include="Integration\IntegrationTestBase.cs" />
-    <Compile Include="Integration\StringAndDecimalPropertyValidatorCreator.cs" />
-    <Compile Include="Integration\StringAndDecimalPropertyIntegrationTests.cs" />
-    <Compile Include="Rules\ValueRuleTests.cs" />
-    <Compile Include="StockRules\NullableNumericRangeValueRuleTests.cs" />
-    <Compile Include="StockRules\NumericRangeValueRuleTests.cs" />
-    <Compile Include="StockRules\StringLengthValueRuleTests.cs" />
-    <Compile Include="StockRules\DateTimeRangeValueRuleTests.cs" />
-    <Compile Include="StockRules\NullableDateTimeRangeValueRuleTests.cs" />
-    <Compile Include="StockRules\IsDefinedEnumMemberValueRuleTests.cs" />
-    <Compile Include="StockRules\NullableIsDefinedEnumMemberValueRuleTests.cs" />
-    <Compile Include="StockRules\RegexMatchValueRuleTests.cs" />
-    <Compile Include="Resources\FailureMessageTemplates.cs" />
-    <Compile Include="Messages\MessageProviderIntegrationTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\FailureMessageTemplates.resx">
-      <LastGenOutput>FailureMessages.Designer.cs</LastGenOutput>
+    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Resources\FailureMessageTemplates.resx">
+      <LogicalName>FailureMessageTemplates.resx</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
   </ItemGroup>
 </Project>

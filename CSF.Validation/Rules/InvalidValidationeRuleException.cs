@@ -29,18 +29,20 @@ namespace CSF.Validation.Rules
   /// <summary>
   /// Exception raised when a validation rule itself is invalid.
   /// </summary>
+#if !NETSTANDARD1_0
   [System.Serializable]
+#endif
   public class InvalidValidationeRuleException : Exception
   {
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:InvalidValidationeRuleException"/> class
+    /// Initializes a new instance of the <see cref="InvalidValidationeRuleException"/> class
     /// </summary>
     public InvalidValidationeRuleException()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:MyException"/> class
+    /// Initializes a new instance of the <see cref="InvalidValidationeRuleException"/> class
     /// </summary>
     /// <param name="message">A <see cref="T:System.String"/> that describes the exception. </param>
     public InvalidValidationeRuleException(string message) : base(message)
@@ -48,7 +50,7 @@ namespace CSF.Validation.Rules
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:MyException"/> class
+    /// Initializes a new instance of the <see cref="InvalidValidationeRuleException"/> class
     /// </summary>
     /// <param name="message">A <see cref="T:System.String"/> that describes the exception. </param>
     /// <param name="inner">The exception that is the cause of the current exception. </param>
@@ -56,13 +58,15 @@ namespace CSF.Validation.Rules
     {
     }
 
+#if !NETSTANDARD1_0
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:MyException"/> class
+    /// Initializes a new instance of the <see cref="InvalidValidationeRuleException"/> class
     /// </summary>
     /// <param name="context">The contextual information about the source or destination.</param>
     /// <param name="info">The object that holds the serialized object data.</param>
     protected InvalidValidationeRuleException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context)
     {
     }
+#endif
   }
 }

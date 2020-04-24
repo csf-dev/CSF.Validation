@@ -165,7 +165,7 @@ namespace CSF.Validation.Manifest
 
       var output = type.Name;
 
-      if(type.IsGenericType)
+      if(type.GetTypeInfo().IsGenericType)
       {
         var typeName = output.Split(GenericIndicator)[0];
         var genericNames = type.GenericTypeArguments.Select(x => FormatTypeName(x));
