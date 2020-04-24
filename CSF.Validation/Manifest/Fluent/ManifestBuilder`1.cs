@@ -121,7 +121,11 @@ namespace CSF.Validation.Manifest.Fluent
       if(member == null)
         throw new ArgumentNullException(nameof(member));
 
-      if(member.ReflectedType != typeof(TValidated))
+#if NETSTANDARD1_0
+      if (member.DeclaringType != typeof(TValidated))
+#else
+      if (member.ReflectedType != typeof(TValidated))
+#endif
       {
         string message = String.Format(Resources.ExceptionMessages.MemberMustBelongToValidatedType,
                                        typeof(TValidated).Name,
@@ -130,9 +134,9 @@ namespace CSF.Validation.Manifest.Fluent
       }
     }
 
-    #endregion
+#endregion
 
-    #region IManifestBuilder implementation
+#region IManifestBuilder implementation
 
     void IManifestBuilder<TValidated>.AddRule<TRule>()
     {
@@ -166,9 +170,9 @@ namespace CSF.Validation.Manifest.Fluent
       AddValueRule<TRule>(memberExpression.Compile(), memberExpression, null);
     }
 
-    #endregion
+#endregion
 
-    #region constructor
+#region constructor
 
     internal ManifestBuilder(object parentIdentity = null)
     {
@@ -176,6 +180,6 @@ namespace CSF.Validation.Manifest.Fluent
       this.rules = new HashSet<IManifestRule>();
     }
 
-    #endregion
+#endregion
   }
 }

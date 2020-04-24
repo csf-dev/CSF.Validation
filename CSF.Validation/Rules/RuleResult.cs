@@ -45,7 +45,7 @@ namespace CSF.Validation.Rules
     /// <param name="outcome">Outcome.</param>
     public RuleResult(RuleOutcome outcome)
     {
-      outcome.RequireDefinedValue(nameof(outcome));
+      outcome.AssertIsDefined(nameof(outcome));
 
       this.outcome = outcome;
     }

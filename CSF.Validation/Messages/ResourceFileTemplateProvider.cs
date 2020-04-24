@@ -76,7 +76,7 @@ namespace CSF.Validation.Messages
       if(resourceManager == null)
       {
         var type = GetType();
-        resourceManager = new ResourceManager(type.FullName, Assembly.GetAssembly(type));
+        resourceManager = new ResourceManager(type.FullName, type.GetTypeInfo().Assembly);
       }
 
       return resourceManager;
