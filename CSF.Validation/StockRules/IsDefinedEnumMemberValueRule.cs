@@ -40,7 +40,7 @@ namespace CSF.Validation.StockRules
     /// <param name="value">Value.</param>
     protected override RuleOutcome GetValueOutcome(TEnum value)
     {
-      if(value.IsDefinedValue())
+      if(value.IsDefined())
         return Success;
 
       return Failure;

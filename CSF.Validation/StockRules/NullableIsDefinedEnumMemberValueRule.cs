@@ -45,7 +45,7 @@ namespace CSF.Validation.StockRules
       if(!value.HasValue)
         return Success;
       
-      if(value.Value.IsDefinedValue())
+      if(value.Value.IsDefined())
         return Success;
 
       return Failure;

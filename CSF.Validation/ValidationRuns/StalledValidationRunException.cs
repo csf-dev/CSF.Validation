@@ -30,18 +30,20 @@ namespace CSF.Validation.ValidationRuns
   /// Exception raised when a validation run has stalled - that is - it cannot proceed because no rules indicate that they
   /// are runnable, but not all have yet completed.
   /// </summary>
+#if !NETSTANDARD1_0
   [System.Serializable]
+#endif
   public class StalledValidationRunException : System.Exception
   {
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:StalledValidationRunException"/> class
+    /// Initializes a new instance of the <see cref="StalledValidationRunException"/> class
     /// </summary>
     public StalledValidationRunException()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:MyException"/> class
+    /// Initializes a new instance of the <see cref="StalledValidationRunException"/> class
     /// </summary>
     /// <param name="message">A <see cref="T:System.String"/> that describes the exception. </param>
     public StalledValidationRunException(string message) : base(message)
@@ -49,7 +51,7 @@ namespace CSF.Validation.ValidationRuns
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:MyException"/> class
+    /// Initializes a new instance of the <see cref="StalledValidationRunException"/> class
     /// </summary>
     /// <param name="message">A <see cref="T:System.String"/> that describes the exception. </param>
     /// <param name="inner">The exception that is the cause of the current exception. </param>
@@ -57,13 +59,15 @@ namespace CSF.Validation.ValidationRuns
     {
     }
 
+#if !NETSTANDARD1_0
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:MyException"/> class
+    /// Initializes a new instance of the <see cref="StalledValidationRunException"/> class
     /// </summary>
     /// <param name="context">The contextual information about the source or destination.</param>
     /// <param name="info">The object that holds the serialized object data.</param>
     protected StalledValidationRunException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context)
     {
     }
+#endif
   }
 }
