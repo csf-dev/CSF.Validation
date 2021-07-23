@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;netstandard1.0</TargetFrameworks>
     <ReleaseVersion>2.0.0</ReleaseVersion>
     <PackageId>CSF.Validation</PackageId>
     <Authors>craigfowler</Authors>

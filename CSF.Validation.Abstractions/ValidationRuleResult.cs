@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using CSF.Validation.Rules;
 
-namespace CSF.Validation.Rules
+namespace CSF.Validation
 {
     /// <summary>
     /// Represents information about the result of running a single validation rule.

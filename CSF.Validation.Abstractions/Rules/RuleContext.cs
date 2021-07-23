@@ -80,7 +80,7 @@ namespace CSF.Validation.Rules
         {
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
             ValidatedType = validatedType ?? throw new ArgumentNullException(nameof(validatedType));
-            AncestorContexts = ancestorContexts ?? Array.Empty<AncestorRuleContext>();
+            AncestorContexts = ancestorContexts ?? new AncestorRuleContext[0];
         }
     }
 }

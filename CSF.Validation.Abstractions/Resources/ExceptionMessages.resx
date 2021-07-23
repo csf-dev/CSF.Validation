@@ -121,4 +121,16 @@
     <value>A {0} may not have a non-null exception if its outcome is not {1}.</value>
     <comment/>
   </data>
+  <data name="RelativeIdentityMayNotHaveBothObjectIdentityAndAncestorLevels" xml:space="preserve">
+    <value>A {0} may not have both a non-null object identity and also number of ancestor levels.</value>
+    <comment/>
+  </data>
+  <data name="BuilderTypeMustBeForSelectedValidatedType" xml:space="preserve">
+    <value>The builder type must implement {0}.</value>
+    <comment/>
+  </data>
+  <data name="ValidatedTypeMustBeSelectedValidatedType" xml:space="preserve">
+    <value>The manifest must validate the type {0}.</value>
+    <comment/>
+  </data>
 </root>

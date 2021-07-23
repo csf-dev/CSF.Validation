@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.Tests", "CSF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.Abstractions", "CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj", "{BD382C21-4D6E-4F8B-9F42-30D44D9E0310}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.ValidationMessages.Abstractions", "CSF.ValidationMessages.Abstractions\CSF.ValidationMessages.Abstractions.csproj", "{5255213E-D4EC-4CE9-9B15-1606CF2EFCDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{BD382C21-4D6E-4F8B-9F42-30D44D9E0310}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD382C21-4D6E-4F8B-9F42-30D44D9E0310}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD382C21-4D6E-4F8B-9F42-30D44D9E0310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5255213E-D4EC-4CE9-9B15-1606CF2EFCDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5255213E-D4EC-4CE9-9B15-1606CF2EFCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5255213E-D4EC-4CE9-9B15-1606CF2EFCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5255213E-D4EC-4CE9-9B15-1606CF2EFCDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

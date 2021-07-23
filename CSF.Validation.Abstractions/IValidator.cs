@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSF.Validation.Abstractions
+namespace CSF.Validation
 {
     public interface IValidator
     {

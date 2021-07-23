@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using CSF.Validation.Resources;
+using static CSF.Validation.Resources.ExceptionMessages;
 
 namespace CSF.Validation.Rules
 {
@@ -49,7 +49,7 @@ namespace CSF.Validation.Rules
         {
             if(outcome != RuleOutcome.Errored && !(exception is null))
             {
-                var message = String.Format(ExceptionMessages.GetMessage("MayNotHaveExceptionIfNotErroredOutcome"),
+                var message = String.Format(GetExceptionMessage("MayNotHaveExceptionIfNotErroredOutcome"),
                                             nameof(RuleResult),
                                             $"{nameof(RuleOutcome)}.{nameof(RuleOutcome.Errored)}");
                 throw new ArgumentException(message, nameof(exception));

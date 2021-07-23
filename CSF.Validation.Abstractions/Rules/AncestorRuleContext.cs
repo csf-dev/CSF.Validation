@@ -97,6 +97,14 @@ namespace CSF.Validation.Rules
         /// </remarks>
         public int? CollectionIndex { get; }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="AncestorRuleContext"/>.
+        /// </summary>
+        /// <param name="objectIdentity">The object identity associated with this ancestor context.</param>
+        /// <param name="obj">The object being validated in this ancestor context.</param>
+        /// <param name="validatedType">The type under validation for this ancestor context.</param>
+        /// <param name="childMember">The child member by which you would traverse from this ancestor context to its immediate child (where applicable).</param>
+        /// <param name="collectionIndex">The collection index by which you would traverse from this ancestor context to its immediate child (where applicable).</param>
         public AncestorRuleContext(object objectIdentity, object obj, Type validatedType, MemberInfo childMember = null, int? collectionIndex = null)
         {
             ObjectIdentity = objectIdentity ?? throw new ArgumentNullException(nameof(objectIdentity));

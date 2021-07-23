@@ -5,6 +5,10 @@ using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidatorBuilding
 {
+    /// <summary>
+    /// A helper object which may be used to configure a validator as it is being built.
+    /// </summary>
+    /// <typeparam name="TValidated"></typeparam>
     public interface IConfiguresValidator<TValidated> : IConfiguresObjectIdentity<TValidated>
     {
         void AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleConfig = default) where TRule : IRule<TValidated>;
