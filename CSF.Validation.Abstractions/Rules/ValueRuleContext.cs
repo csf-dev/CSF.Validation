@@ -5,7 +5,7 @@ using System.Reflection;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// Contextual information related to the execution of a value-oriented validation rule.
+    /// A model for contextual information related to the execution of a value-oriented validation rule.
     /// </summary>
     public class ValueRuleContext : RuleContext
     {

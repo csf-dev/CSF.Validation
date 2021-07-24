@@ -5,11 +5,13 @@ using static CSF.Validation.Resources.ExceptionMessages;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// Represents information about the result of running a single validation rule.
-    /// Typically this is a class which implements either <see cref="IRule{TValidated}"/>
-    /// or <see cref="IValueRule{TValue, TValidated}"/>.
+    /// A model for information about the result of running a single validation rule.
     /// </summary>
     /// <remarks>
+    /// <para>
+    /// Validation rules are typically classes which implement either <see cref="IRule{TValidated}"/>
+    /// or <see cref="IValueRule{TValue, TValidated}"/>.
+    /// </para>
     /// <para>
     /// This class deals only with the possible information which could be returned by executing a validation
     /// rule.  It does not contain any other contextual information which would be 'backfilled' by the validation
@@ -45,6 +47,10 @@ namespace CSF.Validation.Rules
         /// An optional exception which caused the validation process to error.  This parameter must be <see langword="null"/>
         /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
         /// </param>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
+        /// is not <see langword="null"/>.
+        /// </exception>
         public RuleResult(RuleOutcome outcome, IDictionary<string,object> data = null, Exception exception = null)
         {
             if(outcome != RuleOutcome.Errored && !(exception is null))

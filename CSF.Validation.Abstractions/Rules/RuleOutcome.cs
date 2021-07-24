@@ -8,7 +8,7 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// The rule executed and it explicitly passed.
         /// </summary>
-        Passed,
+        Passed = 1,
 
         /// <summary>
         /// The rule executed and it explicitly failed.

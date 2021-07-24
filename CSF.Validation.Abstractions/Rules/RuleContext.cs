@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// Contextual information related to the execution of a validation rule.
+    /// A model for contextual information related to the execution of a validation rule.
     /// </summary>
     public class RuleContext
     {

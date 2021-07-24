@@ -13,7 +13,7 @@ namespace CSF.Validation
         /// <remarks>
         /// <para>This is the default behaviour and is recommended for normal use.</para>
         /// </remarks>
-        OnError,
+        OnError = 0,
 
         /// <summary>
         /// The validator will throw an exception at any time when the validation fails, even if the reason

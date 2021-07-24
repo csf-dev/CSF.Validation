@@ -4,7 +4,7 @@ using System.Reflection;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// Represents contextual information about an 'ancestor context' for an executing validation rule.
+    /// A model providing contextual information about an 'ancestor context' for an executing validation rule.
     /// </summary>
     public class AncestorRuleContext
     {
@@ -55,7 +55,7 @@ namespace CSF.Validation.Rules
         /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValidator{TValidated}.ForMember{TValue}(System.Linq.Expressions.Expression{Func{TValidated, TValue}}, Action{ValidatorBuilding.IConfiguresValueAccessor{TValidated, TValue}})"/></description>
         /// </item>
         /// <item>
-        /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValidator{TValidated}.ForItemsMember{TValue}(System.Linq.Expressions.Expression{Func{TValidated, System.Collections.Generic.IEnumerable{TValue}}}, Action{ValidatorBuilding.IConfiguresValueAccessor{TValidated, TValue}})"/></description>
+        /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValidator{TValidated}.ForMemberItems{TValue}(System.Linq.Expressions.Expression{Func{TValidated, System.Collections.Generic.IEnumerable{TValue}}}, Action{ValidatorBuilding.IConfiguresValueAccessor{TValidated, TValue}})"/></description>
         /// </item>
         /// </list>
         /// <para>
@@ -81,7 +81,7 @@ namespace CSF.Validation.Rules
         /// </para>
         /// <list type="bullet">
         /// <item>
-        /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValidator{TValidated}.ForItemsMember{TValue}(System.Linq.Expressions.Expression{Func{TValidated, System.Collections.Generic.IEnumerable{TValue}}}, Action{ValidatorBuilding.IConfiguresValueAccessor{TValidated, TValue}})"/></description>
+        /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValidator{TValidated}.ForMemberItems{TValue}(System.Linq.Expressions.Expression{Func{TValidated, System.Collections.Generic.IEnumerable{TValue}}}, Action{ValidatorBuilding.IConfiguresValueAccessor{TValidated, TValue}})"/></description>
         /// </item>
         /// <item>
         /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValidator{TValidated}.ForValues{TValue}(Func{TValidated, System.Collections.Generic.IEnumerable{TValue}}, Action{ValidatorBuilding.IConfiguresValueAccessor{TValidated, TValue}})"/></description>

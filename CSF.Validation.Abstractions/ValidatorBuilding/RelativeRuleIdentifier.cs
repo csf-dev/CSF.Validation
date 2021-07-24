@@ -4,7 +4,7 @@ using static CSF.Validation.Resources.ExceptionMessages;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// Represents information which may uniquely identity a validation rule, based upon
+    /// A model for information which may uniquely identity a validation rule, based upon
     /// the logical 'position' (within a validator) of another rule.  In other words, it uniquely
     /// identifies a rule, based upon a current rule.
     /// </summary>
@@ -63,6 +63,8 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="ruleName">An optional rule name.</param>
         /// <param name="ancestorLevels">An optional number of ancestor levels.</param>
         /// <param name="objectIdentity">An optional object identity.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="ruleType"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">If both <paramref name="objectIdentity"/> &amp; <paramref name="ancestorLevels"/> have non-<see langword="null"/> values.</exception>
         public RelativeRuleIdentifier(Type ruleType,
                                       string memberName = default,
                                       string ruleName = default,

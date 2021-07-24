@@ -38,11 +38,14 @@ namespace CSF.Validation
         /// <param name="objectIdentity">An optional object identity predicate.</param>
         /// <param name="ruleTypeName">An optional validation-rule-type name predicate.</param>
         /// <param name="ruleName">An optional rule-name predicate.</param>
+        /// <param name="outcome">Optionally specifies a required outcome predicate.</param>
         /// <returns>A collection of the validation rule results for the specified member, which also match all of the provided predicate values.</returns>
+        /// <exception cref="ArgumentNullException">If the <paramref name="memberAccessor"/> is <see langword="null"/>.</exception>
         IEnumerable<ValidationRuleResult> QueryByMember<TValidated>(Expression<Func<TValidated, object>> memberAccessor,
                                                                     object objectIdentity = null,
                                                                     string ruleTypeName = null,
-                                                                    string ruleName = null);
+                                                                    string ruleName = null,
+                                                                    Rules.RuleOutcome outcome = default);
 
         /// <summary>
         /// Queries for validation rule results which match all of the specified predicate values.
@@ -58,9 +61,11 @@ namespace CSF.Validation
         /// <param name="objectIdentity">An optional object identity predicate.</param>
         /// <param name="ruleTypeName">An optional validation-rule-type name predicate.</param>
         /// <param name="ruleName">An optional rule-name predicate.</param>
+        /// <param name="outcome">Optionally specifies a required outcome predicate.</param>
         /// <returns>A collection of the validation rule results which match all of the provided predicate values.</returns>
         IEnumerable<ValidationRuleResult> Query(object objectIdentity = null,
                                                 string ruleTypeName = null,
-                                                string ruleName = null);
+                                                string ruleName = null,
+                                                Rules.RuleOutcome outcome = default);
     }
 }

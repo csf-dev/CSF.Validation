@@ -3,7 +3,7 @@ using System;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// Represents information which uniquely identifies a validation rule within the validation process.
+    /// A model for information which uniquely identifies a validation rule within the validation process.
     /// </summary>
     public class RuleIdentifier
     {

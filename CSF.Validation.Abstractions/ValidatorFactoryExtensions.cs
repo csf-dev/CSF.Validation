@@ -4,8 +4,22 @@ using static CSF.Validation.Resources.ExceptionMessages;
 
 namespace CSF.Validation
 {
+    /// <summary>
+    /// Extensionm methods for <see cref="IGetsValidator"/>.
+    /// </summary>
     public static class ValidatorFactoryExtensions
     {
+        /// <summary>
+        /// Gets a validator instance for a specified generic type, using a specified builder type.
+        /// The builder type must implement <see cref="IBuildsValidator{TValidated}"/> for the generic
+        /// type <typeparamref name="TValidated"/>.
+        /// </summary>
+        /// <typeparam name="TValidated">The type of object to validate.</typeparam>
+        /// <param name="factory">The validator factory.</param>
+        /// <param name="builderType">A type indicating the type of validator-builder service to use.</param>
+        /// <returns>A strongly-typed validator implementation.</returns>
+        /// <exception cref="ArgumentNullException">If either <paramref name="factory"/> or <paramref name="builderType"/> are <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">If <paramref name="builderType"/> is not of a type appropriate to validate <typeparamref name="TValidated"/>.</exception>
         public static IValidator<TValidated> GetValidator<TValidated>(this IGetsValidator factory, Type builderType)
         {
             if (factory is null)
@@ -18,6 +32,16 @@ namespace CSF.Validation
             return (IValidator<TValidated>) factory.GetValidator(builderType);
         }
 
+        /// <summary>
+        /// Gets a validator instance for a specified generic type, using a specified validation manifest.
+        /// The manifest must describe a validator which is able to validate the object type <typeparamref name="TValidated"/>.
+        /// </summary>
+        /// <typeparam name="TValidated">The type of object to validate.</typeparam>
+        /// <param name="factory">The validator factory.</param>
+        /// <param name="manifest">The validation manifest.</param>
+        /// <returns>A strongly-typed validator implementation.</returns>
+        /// <exception cref="ArgumentNullException">If either <paramref name="factory"/> or <paramref name="manifest"/> are <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">If <paramref name="manifest"/> does not describe a validator for <typeparamref name="TValidated"/>.</exception>
         public static IValidator<TValidated> GetValidator<TValidated>(this IGetsValidator factory, Manifest.ValidationManifest manifest)
         {
             if (factory is null)

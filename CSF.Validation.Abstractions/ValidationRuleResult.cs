@@ -33,6 +33,22 @@ namespace CSF.Validation
         /// An optional exception which caused the validation process to error.  This parameter must be <see langword="null"/>
         /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
         /// </param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="identifier"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If the <paramref name="outcome"/> is not a defined enumeration constant.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
+        /// is not <see langword="null"/>.
+        /// </description>
+        /// </item>
+        /// </list>
+        /// </exception>
         public ValidationRuleResult(RuleIdentifier identifier,
                                     RuleOutcome outcome,
                                     IDictionary<string,object> data = null,
@@ -48,6 +64,7 @@ namespace CSF.Validation
         /// <param name="result">An existing instance of <see cref="RuleResult"/>.</param>
         /// <param name="identifier">A unique identifier for the rule to which this result corresponds.</param>
         /// <returns>An instance of <see cref="ValidationRuleResult"/> created from the provided information.</returns>
+        /// <exception cref="ArgumentNullException">If either <paramref name="result"/> or <paramref name="identifier"/> is <see langword="null"/>.</exception>
         public static ValidationRuleResult FromRuleResult(RuleResult result, RuleIdentifier identifier)
         {
             if (result is null)

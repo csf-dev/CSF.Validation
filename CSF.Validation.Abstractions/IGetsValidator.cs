@@ -12,7 +12,17 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="builderType">The type of a class which implements <see cref="IBuildsValidator{TValidated}"/> for the desired validated type.</param>
         /// <returns>A validator implementation.</returns>
+        /// <exception cref="ArgumentNullException">If the <paramref name="builderType"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">If the <paramref name="builderType"/> is not a concrete (non-abstract) class derived from <see cref="IBuildsValidator{TValidated}"/>.</exception>
         IValidator GetValidator(Type builderType);
+
+        /// <summary>
+        /// Gets a validator instance using a specified validator-builder instance which specifies a validator via code.
+        /// </summary>
+        /// <typeparam name="TValidated">The type of object to be validated.</typeparam>
+        /// <param name="builder">An instance of a validator-builder.</param>
+        /// <returns>A strongly-typed validator implementation.</returns>
+        IValidator<TValidated> GetValidator<TValidated>(IBuildsValidator<TValidated> builder);
 
         /// <summary>
         /// Gets a validator instance using a specified validation manifest.
@@ -20,6 +30,8 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="manifest">The validation manifest.</param>
         /// <returns>A validator implementation.</returns>
+        /// <exception cref="ArgumentNullException">If the <paramref name="manifest"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ValidationException">If the <paramref name="manifest"/> is not valid to create a validator instance.</exception>
         IValidator GetValidator(Manifest.ValidationManifest manifest);
     }
 }
