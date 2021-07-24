@@ -8,8 +8,8 @@ namespace CSF.Validation.Resources
     /// </summary>
     internal static class ExceptionMessages
     {
-        static readonly ResourceManager resourceManager = new ResourceManager("CSF.Validation.Resources.ExceptionMessages.resx",
-                                                                              typeof(ExceptionMessages).GetTypeInfo().Assembly);
+        static readonly System.Type thisType = typeof(ExceptionMessages);
+        static readonly ResourceManager resourceManager = new ResourceManager(thisType.FullName, thisType.GetTypeInfo().Assembly);
 
         /// <summary>
         /// Gets the named exception message.
