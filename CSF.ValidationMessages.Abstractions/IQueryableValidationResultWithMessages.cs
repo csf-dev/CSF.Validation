@@ -42,6 +42,7 @@ namespace CSF.ValidationMessages
         /// <param name="ruleName">An optional rule-name predicate.</param>
         /// <param name="outcome">Optionally specifies a required outcome predicate.</param>
         /// <returns>A collection of the validation rule results for the specified member, which also match all of the provided predicate values.</returns>
+        /// <exception cref="ArgumentNullException">If the <paramref name="memberAccessor"/> is <see langword="null"/>.</exception>
         IEnumerable<ValidationRuleResultWithMessage> QueryByMember<TValidated>(Expression<Func<TValidated, object>> memberAccessor,
                                                                                object objectIdentity = null,
                                                                                string ruleTypeName = null,

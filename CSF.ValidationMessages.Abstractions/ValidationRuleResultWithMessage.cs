@@ -6,7 +6,8 @@ using CSF.Validation.Rules;
 namespace CSF.ValidationMessages
 {
     /// <summary>
-    /// A <see cref="ValidationRuleResult"/> which may additionally have an associated human-readable feedback message.
+    /// A model which is a specialisation of <see cref="ValidationRuleResult"/> that may additionally have
+    /// an associated human-readable feedback message.
     /// </summary>
     public class ValidationRuleResultWithMessage : ValidationRuleResult
     {
@@ -26,6 +27,22 @@ namespace CSF.ValidationMessages
         /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
         /// </param>
         /// <param name="message">The feedback message associated with this validation rule.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="identifier"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If the <paramref name="outcome"/> is not a defined enumeration constant.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
+        /// is not <see langword="null"/>.
+        /// </description>
+        /// </item>
+        /// </list>
+        /// </exception>
         public ValidationRuleResultWithMessage(RuleIdentifier identifier,
                                                RuleOutcome outcome,
                                                IDictionary<string,object> data = null,

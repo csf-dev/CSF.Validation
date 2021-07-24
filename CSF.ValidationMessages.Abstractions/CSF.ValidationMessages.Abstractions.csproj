@@ -3,6 +3,20 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461;netstandard1.0</TargetFrameworks>
     <RootNamespace>CSF.ValidationMessages</RootNamespace>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.ValidationMessages.Abstractions.xml</DocumentationFile>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
+    <PackageId>CSF.ValidationMessages.Abstractions</PackageId>
+    <Authors>craigfowler</Authors>
+    <Title>CSF.ValidationMessages.Abstractions</Title>
+    <Description>A framework for adding human-readable feedback messages to validation results - abstractions package</Description>
+    <Version>$(ReleaseVersion)</Version>
+    <PackageVersion>$(ReleaseVersion)</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
+    <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

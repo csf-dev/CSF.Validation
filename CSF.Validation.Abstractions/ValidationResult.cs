@@ -10,6 +10,6 @@ namespace CSF.Validation
         /// <summary>
         /// Gets a collection of the results of individual validation rules.
         /// </summary>
-        IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
+        public IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
     }
 }
