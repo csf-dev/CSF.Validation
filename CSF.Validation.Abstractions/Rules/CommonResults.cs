@@ -33,7 +33,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> PassSync(Dictionary<string, object> data) => Task.FromResult(Pass(data));
+        public static Task<RuleResult> PassAsync(Dictionary<string, object> data) => Task.FromResult(Pass(data));
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for passing validation, returned within a completed task.
@@ -41,7 +41,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> PassSync(IDictionary<string, object> data = null) => Task.FromResult(Pass(data));
+        public static Task<RuleResult> PassAsync(IDictionary<string, object> data = null) => Task.FromResult(Pass(data));
 
         #endregion
 
@@ -67,7 +67,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> FailSync(Dictionary<string, object> data) => Task.FromResult(Fail(data));
+        public static Task<RuleResult> FailAsync(Dictionary<string, object> data) => Task.FromResult(Fail(data));
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for failing validation, returned within a completed task.
@@ -75,7 +75,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> FailSync(IDictionary<string, object> data = null) => Task.FromResult(Fail(data));
+        public static Task<RuleResult> FailAsync(IDictionary<string, object> data = null) => Task.FromResult(Fail(data));
 
         #endregion
 
@@ -146,7 +146,7 @@ namespace CSF.Validation.Rules
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ErrorSync(Dictionary<string, object> data, Exception exception = null)
+        public static Task<RuleResult> ErrorAsync(Dictionary<string, object> data, Exception exception = null)
             => Task.FromResult(Error(data, exception));
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace CSF.Validation.Rules
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ErrorSync(IDictionary<string, object> data = null, Exception exception = null)
+        public static Task<RuleResult> ErrorAsync(IDictionary<string, object> data = null, Exception exception = null)
             => Task.FromResult(Error(data, exception));
 
         #endregion

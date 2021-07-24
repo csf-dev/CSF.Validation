@@ -64,7 +64,7 @@ namespace CSF.Validation
         public class SampleSpecificRule : IRule<StubValidatedObject>
         {
             public Task<RuleResult> GetResultAsync(StubValidatedObject validated, RuleContext context, CancellationToken token = default)
-                => PassSync();
+                => PassAsync();
         }
 
         public class SampleObjectRule : IRule<object>
@@ -72,13 +72,13 @@ namespace CSF.Validation
             public string RuleProperty { get; set; }
 
             public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
-                => PassSync();
+                => PassAsync();
         }
 
         public class StringValueRule : IValueRule<string, object>
         {
             public Task<RuleResult> GetResultAsync(string value, object validated, ValueRuleContext context, CancellationToken token = default)
-                => PassSync();
+                => PassAsync();
         }
 
         #endregion
@@ -101,7 +101,7 @@ namespace CSF.Validation
         public class IntegerValueRule : IValueRule<int, object>
         {
             public Task<RuleResult> GetResultAsync(int value, object validated, ValueRuleContext context, CancellationToken token = default)
-                => PassSync();
+                => PassAsync();
         }
 
         #endregion

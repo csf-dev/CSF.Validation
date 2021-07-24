@@ -8,7 +8,8 @@ namespace CSF.Validation.Resources
     /// </summary>
     internal static class ExceptionMessages
     {
-        static readonly ResourceManager resourceManager;
+        static readonly ResourceManager resourceManager = new ResourceManager("CSF.Validation.Resources.ExceptionMessages.resx",
+                                                                              typeof(ExceptionMessages).GetTypeInfo().Assembly);
 
         /// <summary>
         /// Gets the named exception message.
@@ -16,13 +17,5 @@ namespace CSF.Validation.Resources
         /// <param name="name">The exception message name.</param>
         /// <returns>The exception message string.</returns>
         internal static string GetExceptionMessage(string name) => resourceManager.GetString(name);
-
-        static ExceptionMessages()
-        {
-            var thisTypeInfo = typeof(ExceptionMessages).GetTypeInfo();
-            var thisAssembly = thisTypeInfo.Assembly;
-
-            resourceManager = new ResourceManager("CSF.Validation.Resources.ExceptionMessages.resx", thisAssembly);
-        }
     }
 }

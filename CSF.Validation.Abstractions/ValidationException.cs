@@ -47,7 +47,7 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="info">Serialisation info.</param>
         /// <param name="context">Streaming context.</param>
-        public ValidationException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context) {}
+        protected ValidationException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context) {}
 #endif
     }
 }
