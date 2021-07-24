@@ -1,7 +1,4 @@
 ﻿version: '{branch}-{build}'
-image:
-    - Visual Studio 2019
-    - Ubuntu
 
 environment:
     matrix:
