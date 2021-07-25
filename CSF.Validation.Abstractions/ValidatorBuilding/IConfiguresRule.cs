@@ -22,7 +22,7 @@ namespace CSF.Validation.ValidatorBuilding
         string Name { get; set; }
 
         /// <summary>
-        /// Gets a collection of the relative identifiers of other validation rules upon which the current
+        /// Gets or sets a collection of the relative identifiers of other validation rules upon which the current
         /// rule depends.
         /// </summary>
         /// <remarks>
@@ -45,6 +45,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// In case it is not obvious, specifying a circular set of validation rule dependencies is not allowed.
         /// </para>
         /// </remarks>
-        ICollection<RelativeRuleIdentifier> Dependencies { get; }
+        ICollection<RelativeRuleIdentifier> Dependencies { get; set; }
     }
 }

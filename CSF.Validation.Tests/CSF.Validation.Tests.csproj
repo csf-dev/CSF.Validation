@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
+    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
