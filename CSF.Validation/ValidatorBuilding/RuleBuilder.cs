@@ -9,7 +9,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to define &amp; configure a single instance of a validation rule.
     /// </summary>
     /// <typeparam name="TRule">The concrete type of the configured validation rule.</typeparam>
-    public class RuleBuilder<TRule> : IConfiguresRule<TRule>, IGetsManifestRules
+    public class RuleBuilder<TRule> : IBuildsRule<TRule>
     {
         readonly RuleBuilderContext context;
         readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter;

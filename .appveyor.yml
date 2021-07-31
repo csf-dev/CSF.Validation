@@ -7,6 +7,9 @@ environment:
         - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
           JAVA_HOME: /usr/lib/jvm/jdk13
 
+# A note/reminder for readers: Script items prefixed "cmd:" are executed on Windows-only environments.
+# Items with no prefix are run on all environments (Windows & Linux)
+
 init:
     - cmd: git config --global core.autocrlf true
     

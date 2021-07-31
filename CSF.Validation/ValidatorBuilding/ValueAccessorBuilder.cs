@@ -11,7 +11,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// </summary>
     /// <typeparam name="TValidated">The type of the overall object being validated.</typeparam>
     /// <typeparam name="TValue">The type of this specific value being validated.</typeparam>
-    public class ValueAccessorBuilder<TValidated, TValue> : IConfiguresValueAccessor<TValidated, TValue>, IGetsManifestRules
+    public class ValueAccessorBuilder<TValidated, TValue> : IBuildsValueAccessor<TValidated, TValue>
     {
         readonly RuleBuilderContext context;
         readonly IGetsRuleBuilder ruleBuilderFactory;

@@ -12,6 +12,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TValue">The type of the derived value to be validated.</typeparam>
         /// <param name="ruleBuilderContext">Contextual information about how validation rules should be built.</param>
         /// <returns>A builder for validating the derived value.</returns>
-        ValueAccessorBuilder<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(RuleBuilderContext ruleBuilderContext);
+        IBuildsValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(RuleBuilderContext ruleBuilderContext);
     }
 }
