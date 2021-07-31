@@ -65,7 +65,7 @@ namespace CSF.Validation.ValidatorBuilding
             return builder;
         }
 
-        Type GetValidatedType(Type definitionType)
+        static Type GetValidatedType(Type definitionType)
         {
             if (definitionType is null)
                 throw new ArgumentNullException(nameof(definitionType));
