@@ -18,7 +18,13 @@ namespace CSF.Validation.ValidatorBuilding
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<RuleBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
-                .Returns(() => Mock.Of<IBuildsRule<StringValueRule>>(m => m.GetManifestRules() == new[] { rule }));
+                .Returns(() => {
+                    var ruleBuilder = new Mock<IBuildsRule<StringValueRule>>();
+                    ruleBuilder
+                        .Setup(x => x.GetManifestRules())
+                        .Returns(() => new[] { rule });
+                    return ruleBuilder.Object;
+                });
 
             sut.AddRule<StringValueRule>();
             sut.AddRule<StringValueRule>();
@@ -31,11 +37,15 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void AddRuleShouldProvideConfigFunctionToRuleBuilder([Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValueAccessorBuilder<ValidatedObject,string> sut,
+                                                                    IBuildsRule<StringValueRule> ruleBuilder,
                                                                     ManifestRule rule)
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<RuleBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
-                .Returns(() => Mock.Of<IBuildsRule<StringValueRule>>(m => m.GetManifestRules() == new[] { rule }));
+                .Returns(ruleBuilder);
+            Mock.Get(ruleBuilder)
+                .Setup(x => x.GetManifestRules())
+                .Returns(() => new[] { rule });
 
             Action<IConfiguresRule<StringValueRule>> configFunction = r => { };
             sut.AddRule<StringValueRule>(configFunction);

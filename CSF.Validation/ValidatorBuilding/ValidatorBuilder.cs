@@ -124,9 +124,7 @@ namespace CSF.Validation.ValidatorBuilding
         public IConfiguresValidator<TValidated> ForMember<TValue>(Expression<Func<TValidated, TValue>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
             var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, context);
-            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
-            valueConfig(valueBuilder);
-            ruleBuilders.Add(valueBuilder);
+            AddValueValidation(valueConfig, ruleContext);
             return this;
         }
 
@@ -157,9 +155,7 @@ namespace CSF.Validation.ValidatorBuilding
         public IConfiguresValidator<TValidated> ForMemberItems<TValue>(Expression<Func<TValidated, IEnumerable<TValue>>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
             var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, context, true);
-            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
-            valueConfig(valueBuilder);
-            ruleBuilders.Add(valueBuilder);
+            AddValueValidation(valueConfig, ruleContext);
             return this;
         }
 
@@ -181,9 +177,7 @@ namespace CSF.Validation.ValidatorBuilding
         public IConfiguresValidator<TValidated> ForValue<TValue>(Func<TValidated, TValue> valueAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
             var ruleContext = ruleContextFactory.GetContextForValue(valueAccessor, context);
-            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
-            valueConfig(valueBuilder);
-            ruleBuilders.Add(valueBuilder);
+            AddValueValidation(valueConfig, ruleContext);
             return this;
         }
 
@@ -209,9 +203,7 @@ namespace CSF.Validation.ValidatorBuilding
         public IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
             var ruleContext = ruleContextFactory.GetContextForValue(valuesAccessor, context, true);
-            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
-            valueConfig(valueBuilder);
-            ruleBuilders.Add(valueBuilder);
+            AddValueValidation(valueConfig, ruleContext);
             return this;
         }
         
@@ -223,6 +215,13 @@ namespace CSF.Validation.ValidatorBuilding
         public IEnumerable<ManifestRule> GetManifestRules()
             => ruleBuilders.SelectMany(x => x.GetManifestRules()).ToList();
 
+        void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, RuleBuilderContext context)
+        {
+            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(context);
+            valueConfig(valueBuilder);
+            ruleBuilders.Add(valueBuilder);
+        }
+        
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatorBuilder{TValidated}"/>.
         /// </summary>
