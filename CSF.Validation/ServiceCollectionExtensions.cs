@@ -13,16 +13,22 @@ namespace CSF.Validation
         /// Adds the validation framework to the service collection, such that it may be injected by its interfaces.
         /// </summary>
         /// <param name="serviceCollection">The service collection to which the validation framework should be added.</param>
-        public static void UseValidationFramework(this IServiceCollection serviceCollection)
+        public static IServiceCollection UseValidationFramework(this IServiceCollection serviceCollection)
         {
-            serviceCollection
+            return serviceCollection
+                .AddValidatorBuildingServices();
+        }
+
+        static IServiceCollection AddValidatorBuildingServices(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection
                 .AddTransient<CSF.Reflection.IStaticallyReflects,CSF.Reflection.Reflector>()
                 .AddTransient<IGetsRuleBuilderContext,RuleBuilderContextFactory>()
                 .AddTransient<IGetsRuleBuilder,RuleBuilderFactory>()
                 .AddTransient<IGetsValueAccessorBuilder,ValueAccessorBuilderFactory>()
+                .AddTransient<IGetsValidatorManifest,ImportedValidatorBuilderManifestFactory>()
                 .AddTransientFactory<IGetsManifestRuleIdentifierFromRelativeIdentifier>()
-                .AddTransientFactory<IGetsRuleBuilder>()
-                ;
+                .AddTransientFactory<IGetsRuleBuilder>();
         }
 
         static IServiceCollection AddTransientFactory<T>(this IServiceCollection serviceCollection)
