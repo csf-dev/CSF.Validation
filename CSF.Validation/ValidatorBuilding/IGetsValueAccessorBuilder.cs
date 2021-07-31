@@ -1,3 +1,5 @@
+using System;
+
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
@@ -11,7 +13,8 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TValidated">The type of the primary object under validation.</typeparam>
         /// <typeparam name="TValue">The type of the derived value to be validated.</typeparam>
         /// <param name="ruleBuilderContext">Contextual information about how validation rules should be built.</param>
+        /// <param name="valueConfig">An action which configures the value accessor-builder.</param>
         /// <returns>A builder for validating the derived value.</returns>
-        IBuildsValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(RuleBuilderContext ruleBuilderContext);
+        IBuildsValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(RuleBuilderContext ruleBuilderContext, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
     }
 }

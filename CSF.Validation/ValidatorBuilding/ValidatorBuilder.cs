@@ -217,8 +217,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, RuleBuilderContext context)
         {
-            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(context);
-            valueConfig(valueBuilder);
+            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(context, valueConfig);
             ruleBuilders.Add(valueBuilder);
         }
         

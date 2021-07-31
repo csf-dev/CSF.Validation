@@ -106,7 +106,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
@@ -130,7 +130,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
@@ -154,7 +154,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,string>>(), context, false))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
@@ -178,7 +178,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
@@ -190,7 +190,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForMemberShouldExecuteConfigurationActionOnBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForMemberShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
                                                                        [Frozen] IGetsRuleBuilderContext ruleContextFactory,
                                                                        [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                        ValidatorBuilder<ValidatedObject> sut,
@@ -202,20 +202,21 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            sut.ForMember(x => x.AProperty, c => c.AddRule<StringValueRule>());
+            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddRule<StringValueRule>();
+            sut.ForMember(x => x.AProperty, configAction);
 
-            Mock.Get(valueBuilder)
-                .Verify(x => x.AddRule<StringValueRule>(null), Times.Once);
+            Mock.Get(valueBuilderFactory)
+                .Verify(x => x.GetValueAccessorBuilder<ValidatedObject, string>(ruleContext, configAction), Times.Once);
         }
 
         [Test,AutoMoqData]
-        public void ForMemberItemsShouldExecuteConfigurationActionOnBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForMemberItemsShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
                                                                             [Frozen] IGetsRuleBuilderContext ruleContextFactory,
                                                                             [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                             ValidatorBuilder<ValidatedObject> sut,
@@ -227,20 +228,21 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            sut.ForMemberItems(x => x.AProperty, c => c.AddRule<CharValueRule>());
+            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddRule<CharValueRule>();
+            sut.ForMemberItems(x => x.AProperty, configAction);
 
-            Mock.Get(valueBuilder)
-                .Verify(x => x.AddRule<CharValueRule>(null), Times.Once);
+            Mock.Get(valueBuilderFactory)
+                .Verify(x => x.GetValueAccessorBuilder<ValidatedObject, char>(ruleContext, configAction), Times.Once);
         }
 
         [Test,AutoMoqData]
-        public void ForValueShouldExecuteConfigurationActionOnBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForValueShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
                                                                       [Frozen] IGetsRuleBuilderContext ruleContextFactory,
                                                                       [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                       ValidatorBuilder<ValidatedObject> sut,
@@ -252,20 +254,21 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,string>>(), context, false))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            sut.ForValue(x => x.AProperty, c => c.AddRule<StringValueRule>());
+            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddRule<StringValueRule>();
+            sut.ForValue(x => x.AProperty, configAction);
 
-            Mock.Get(valueBuilder)
-                .Verify(x => x.AddRule<StringValueRule>(null), Times.Once);
+            Mock.Get(valueBuilderFactory)
+                .Verify(x => x.GetValueAccessorBuilder<ValidatedObject, string>(ruleContext, configAction), Times.Once);
         }
 
         [Test,AutoMoqData]
-        public void ForValuesShouldExecuteConfigurationActionOnBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForValuesShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
                                                                        [Frozen] IGetsRuleBuilderContext ruleContextFactory,
                                                                        [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                        ValidatorBuilder<ValidatedObject> sut,
@@ -277,16 +280,17 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
-                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext))
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            sut.ForValues(x => x.AProperty, c => c.AddRule<CharValueRule>());
+            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddRule<CharValueRule>();
+            sut.ForValues(x => x.AProperty, configAction);
 
-            Mock.Get(valueBuilder)
-                .Verify(x => x.AddRule<CharValueRule>(null), Times.Once);
+            Mock.Get(valueBuilderFactory)
+                .Verify(x => x.GetValueAccessorBuilder<ValidatedObject, char>(ruleContext, configAction), Times.Once);
         }
     }
 }
