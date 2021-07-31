@@ -1,16 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// A builder service which may be used to configure a validator as it is being built.
+    /// A builder which is used to configure how an object should be validated.
     /// </summary>
-    /// <typeparam name="TValidated">The validated object type.</typeparam>
-    public interface IConfiguresValidator<TValidated>
+    /// <typeparam name="TValidated">The type of the object being validated.</typeparam>
+    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestRules
     {
+        readonly ValidatorBuilderContext context;
+        readonly IGetsRuleBuilderContext ruleContextFactory;
+        readonly IGetsRuleBuilder ruleBuilderFactory;
+        readonly IGetsValueAccessorBuilder valueBuilderFactory;
+        readonly IGetsValidatorManifest validatorManifestFactory;
+        readonly ICollection<IGetsManifestRules> ruleBuilders = new HashSet<IGetsManifestRules>();
+
         /// <summary>
         /// Specifies an accessor function which should be used to get the identity of the validated object.
         /// </summary>
@@ -51,7 +60,11 @@ namespace CSF.Validation.ValidatorBuilding
         /// </example>
         /// <param name="identityAccessor">The accessor function.</param>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> UseObjectIdentity(Func<TValidated, object> identityAccessor);
+        public IConfiguresValidator<TValidated> UseObjectIdentity(Func<TValidated, object> identityAccessor)
+        {
+            context.ObjectIdentityAccessor = o => identityAccessor((TValidated) o);
+            return this;
+        }
 
         /// <summary>
         /// Adds a validation rule to validate the validated object instance.
@@ -61,7 +74,13 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
         /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IRule<TValidated>;
+        public IConfiguresValidator<TValidated> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IRule<TValidated>
+        {
+            var ruleContext = ruleContextFactory.GetContext(context);
+            var ruleBuilder = ruleBuilderFactory.GetRuleBuilder(ruleContext, ruleDefinition);
+            ruleBuilders.Add(ruleBuilder);
+            return this;
+        }
 
         /// <summary>
         /// Adds/imports rules from an object that implements <see cref="IBuildsValidator{TValidated}"/>.
@@ -76,7 +95,12 @@ namespace CSF.Validation.ValidatorBuilding
         /// The type of a class implementing <see cref="IBuildsValidator{TValidated}"/>, specifying how a validator should be built.
         /// </typeparam>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValidated>;
+        public IConfiguresValidator<TValidated> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValidated>
+        {
+            var importedRules = validatorManifestFactory.GetValidatorManifest(typeof(TBuilder), context);
+            ruleBuilders.Add(importedRules);
+            return this;
+        }
 
         /// <summary>
         /// Allows addition of validation which will work upon the value of a specific member of the validated object.
@@ -97,7 +121,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="valueConfig">Configuration which indicates what validation will be performed upon the member's value.</param>
         /// <exception cref="ArgumentNullException">If either <paramref name="memberAccessor"/> or <paramref name="valueConfig"/> are <see langword="null"/>.</exception>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> ForMember<TValue>(Expression<Func<TValidated, TValue>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
+        public IConfiguresValidator<TValidated> ForMember<TValue>(Expression<Func<TValidated, TValue>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
+        {
+            var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, context);
+            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
+            valueConfig(valueBuilder);
+            ruleBuilders.Add(valueBuilder);
+            return this;
+        }
 
         /// <summary>
         /// Allows addition of validation which will work upon each of the items exposed by a specific member of the
@@ -123,7 +154,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="valueConfig">Configuration which indicates what validation will be performed upon the collection items.</param>
         /// <exception cref="ArgumentNullException">If either <paramref name="memberAccessor"/> or <paramref name="valueConfig"/> are <see langword="null"/>.</exception>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> ForMemberItems<TValue>(Expression<Func<TValidated, IEnumerable<TValue>>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
+        public IConfiguresValidator<TValidated> ForMemberItems<TValue>(Expression<Func<TValidated, IEnumerable<TValue>>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
+        {
+            var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, context, true);
+            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
+            valueConfig(valueBuilder);
+            ruleBuilders.Add(valueBuilder);
+            return this;
+        }
 
         /// <summary>
         /// Allows addition of validation which will work upon an arbitrary value derived from the validated object.
@@ -140,7 +178,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="valueConfig">Configuration which indicates what validation will be performed upon the value.</param>
         /// <exception cref="ArgumentNullException">If either <paramref name="valueAccessor"/> or <paramref name="valueConfig"/> are <see langword="null"/>.</exception>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> ForValue<TValue>(Func<TValidated, TValue> valueAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
+        public IConfiguresValidator<TValidated> ForValue<TValue>(Func<TValidated, TValue> valueAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
+        {
+            var ruleContext = ruleContextFactory.GetContextForValue(valueAccessor, context);
+            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
+            valueConfig(valueBuilder);
+            ruleBuilders.Add(valueBuilder);
+            return this;
+        }
 
         /// <summary>
         /// Allows addition of validation which will work upon each of the items exposed by an arbitrary collection, derived from the
@@ -161,6 +206,45 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="valueConfig">Configuration which indicates what validation will be performed upon the collection items.</param>
         /// <exception cref="ArgumentNullException">If either <paramref name="valuesAccessor"/> or <paramref name="valueConfig"/> are <see langword="null"/>.</exception>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
+        public IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
+        {
+            var ruleContext = ruleContextFactory.GetContextForValue(valuesAccessor, context, true);
+            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext);
+            valueConfig(valueBuilder);
+            ruleBuilders.Add(valueBuilder);
+            return this;
+        }
+        
+        /// <summary>
+        /// Gets a collection of manifest rules, aggregating all of the rules from all of the rule-builders
+        /// which are referenced by this instance.
+        /// </summary>
+        /// <returns>A collection of manifest rules.</returns>
+        public IEnumerable<ManifestRule> GetManifestRules()
+            => ruleBuilders.SelectMany(x => x.GetManifestRules()).ToList();
+
+        /// <summary>
+        /// Initialises a new instance of <see cref="ValidatorBuilder{TValidated}"/>.
+        /// </summary>
+        /// <param name="ruleContextFactory">A factory for rule contexts.</param>
+        /// <param name="ruleBuilderFactory">A factory for rule builders.</param>
+        /// <param name="valueBuilderFactory">A factory for validator builders.</param>
+        /// <param name="validatorManifestFactory">A factory for validator manifests.</param>
+        /// <param name="context">
+        /// An optional conttext for this validator builder to use; if this is
+        /// <see langword="null"/> then a new/empty context will be created.
+        /// </param>
+        public ValidatorBuilder(IGetsRuleBuilderContext ruleContextFactory,
+                                IGetsRuleBuilder ruleBuilderFactory,
+                                IGetsValueAccessorBuilder valueBuilderFactory,
+                                IGetsValidatorManifest validatorManifestFactory,
+                                ValidatorBuilderContext context = default)
+        {
+            this.ruleContextFactory = ruleContextFactory ?? throw new ArgumentNullException(nameof(ruleContextFactory));
+            this.ruleBuilderFactory = ruleBuilderFactory ?? throw new ArgumentNullException(nameof(ruleBuilderFactory));
+            this.valueBuilderFactory = valueBuilderFactory ?? throw new ArgumentNullException(nameof(valueBuilderFactory));
+            this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));
+            this.context = context ?? new ValidatorBuilderContext();
+        }
     }
 }

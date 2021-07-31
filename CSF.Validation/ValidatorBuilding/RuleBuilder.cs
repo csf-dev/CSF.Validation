@@ -9,7 +9,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to define &amp; configure a single instance of a validation rule.
     /// </summary>
     /// <typeparam name="TRule">The concrete type of the configured validation rule.</typeparam>
-    public class RuleBuilder<TRule> : IConfiguresRule<TRule>, IGetsManifestRule
+    public class RuleBuilder<TRule> : IConfiguresRule<TRule>, IGetsManifestRules
     {
         readonly RuleBuilderContext context;
         readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter;
@@ -62,23 +62,27 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <summary>
-        /// Gets a manifest rule from the state of the current instance.
+        /// Gets a collection of manifest rules from the state of the current instance.
+        /// This method will always return precisely one rule.
         /// </summary>
-        /// <returns>A manifest rule.</returns>
-        public ManifestRule GetManifestRule()
+        /// <returns>A collection of one manifest rule.</returns>
+        public IEnumerable<ManifestRule> GetManifestRules()
         {
-            var identifier = new ManifestRuleIdentifier(context.ObjectIdentityAccessor, typeof(TRule), context.MemberName, Name);
-            var dependencies = Dependencies
+            var identifier = new ManifestRuleIdentifier(context.ValidatorBuilderContext.ObjectIdentityAccessor, typeof(TRule), context.MemberName, Name);
+            var dependencyRules = Dependencies
                 .Select(x => relativeToManifestIdentityConverter.GetManifestRuleIdentifier(x))
                 .ToList();
 
-            return new ManifestRule
+            return new[]
             {
-                Identifier = identifier,
-                RuleConfiguration = r => ruleConfig((TRule)r),
-                ValueAccessor = context.ValueAccessor,
-                ValidatedObjectAccessor = context.ValidatedObjectAccessor,
-                DependencyRules = dependencies,
+                new ManifestRule
+                {
+                    Identifier = identifier,
+                    RuleConfiguration = r => ruleConfig((TRule)r),
+                    ValueAccessor = context.ValueAccessor,
+                    ValidatedObjectAccessor = context.ValidatorBuilderContext.ValidatedObjectAccessor,
+                    DependencyRules = dependencyRules,
+                }
             };
         }
 

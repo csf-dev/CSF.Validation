@@ -9,9 +9,8 @@ namespace CSF.Validation.ValidatorBuilding
     /// </summary>
     /// <typeparam name="TValidated">The type of the validated object.</typeparam>
     /// <typeparam name="TValue">The type of the value, derived from the <typeparamref name="TValidated"/> object.</typeparam>
-    public interface IConfiguresValueAccessor<TValidated, TValue> : IConfiguresObjectIdentity<TValue>
+    public interface IConfiguresValueAccessor<TValidated, TValue>
     {
-
         /// <summary>
         /// Adds a "value validation rule" to validate the value &amp; the validated object instance.
         /// The rule type must be a class that implements <see cref="IValueRule{TValue, TValidated}"/> for the same
@@ -19,7 +18,8 @@ namespace CSF.Validation.ValidatorBuilding
         /// </summary>
         /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
         /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
-        void AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IValueRule<TValue,TValidated>;
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        IConfiguresValueAccessor<TValidated, TValue> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IValueRule<TValue,TValidated>;
 
         /// <summary>
         /// Adds/imports rules from an object that implements <see cref="IBuildsValidator{TValidated}"/> for the generic
@@ -36,6 +36,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TBuilder">
         /// The type of a class implementing <see cref="IBuildsValidator{TValue}"/>, specifying how a validator should be built.
         /// </typeparam>
-        void AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValue>;
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        IConfiguresValueAccessor<TValidated, TValue> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValue>;
     }
 }

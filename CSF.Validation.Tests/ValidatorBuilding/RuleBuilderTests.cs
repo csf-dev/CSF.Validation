@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
 using Moq;
@@ -14,17 +15,17 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                   RuleBuilder<SampleRule> sut)
         {
             Func<object, object> GetFunc(Func<object, object> input) => input;
-            context.ObjectIdentityAccessor =  GetFunc(x => new object());
+            context.ValidatorBuilderContext.ObjectIdentityAccessor =  GetFunc(x => new object());
             sut.Dependencies.Clear();
 
             sut.Name = "Rule name";
 
-            var result = sut.GetManifestRule();
+            var result = sut.GetManifestRules().Single();
 
             Assert.Multiple(() =>
             {
                 Assert.That(result.Identifier, Has.Property(nameof(ManifestRuleIdentifier.MemberName)).EqualTo(context.MemberName));
-                Assert.That(result.Identifier, Has.Property(nameof(ManifestRuleIdentifier.ObjectIdentityAccessor)).SameAs(context.ObjectIdentityAccessor));
+                Assert.That(result.Identifier, Has.Property(nameof(ManifestRuleIdentifier.ObjectIdentityAccessor)).SameAs(context.ValidatorBuilderContext.ObjectIdentityAccessor));
                 Assert.That(result.Identifier, Has.Property(nameof(ManifestRuleIdentifier.RuleName)).EqualTo("Rule name"));
                 Assert.That(result.Identifier, Has.Property(nameof(ManifestRuleIdentifier.RuleType)).EqualTo(typeof(SampleRule)));
             });
@@ -36,7 +37,7 @@ namespace CSF.Validation.ValidatorBuilding
             sut.ConfigureRule(r => r.StringProp = "Property value");
             sut.Dependencies.Clear();
 
-            var result = sut.GetManifestRule();
+            var result = sut.GetManifestRules().Single();
 
             var sampleRule = new SampleRule();
             result.RuleConfiguration(sampleRule);
@@ -59,7 +60,7 @@ namespace CSF.Validation.ValidatorBuilding
 
             sut.Dependencies = new[] { relativeId1, relativeId2, relativeId3 };
 
-            var result = sut.GetManifestRule();
+            var result = sut.GetManifestRules().Single();
 
             Assert.That(result, Has.Property(nameof(ManifestRule.DependencyRules)).EquivalentTo(new[] { manifestId1, manifestId2, manifestId3 }));
         }
@@ -70,17 +71,17 @@ namespace CSF.Validation.ValidatorBuilding
         {
             Func<object, object> GetFunc(Func<object, object> input) => input;
 
-            context.ValidatedObjectAccessor =  GetFunc(x => new object());
+            context.ValidatorBuilderContext.ValidatedObjectAccessor =  GetFunc(x => new object());
             context.ValueAccessor =  GetFunc(x => new object());
-            context.ObjectIdentityAccessor =  GetFunc(x => new object());
+            context.ValidatorBuilderContext.ObjectIdentityAccessor =  GetFunc(x => new object());
             sut.Dependencies.Clear();
 
-            var result = sut.GetManifestRule();
+            var result = sut.GetManifestRules().Single();
 
             Assert.Multiple(() =>
             {
                 Assert.That(result, Has.Property(nameof(ManifestRule.ValueAccessor)).SameAs(context.ValueAccessor));
-                Assert.That(result, Has.Property(nameof(ManifestRule.ValidatedObjectAccessor)).SameAs(context.ValidatedObjectAccessor));
+                Assert.That(result, Has.Property(nameof(ManifestRule.ValidatedObjectAccessor)).SameAs(context.ValidatorBuilderContext.ValidatedObjectAccessor));
             });
         }
         

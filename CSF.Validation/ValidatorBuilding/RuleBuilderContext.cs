@@ -8,12 +8,9 @@ namespace CSF.Validation.ValidatorBuilding
     public class RuleBuilderContext
     {
         /// <summary>
-        /// Gets or sets an accessor function which is used to get the primary
-        /// object under validation for this rule.  The input to this function is
-        /// the original object under validation for the validator at the root of
-        /// the manifest.
+        /// Gets contextual information about the validator which contains this rule building context.
         /// </summary>
-        public Func<object,object> ValidatedObjectAccessor { get; set; }
+        public ValidatorBuilderContext ValidatorBuilderContext { get; }
 
         /// <summary>
         /// Gets or sets an accessor function which is used to get a value to be
@@ -29,14 +26,23 @@ namespace CSF.Validation.ValidatorBuilding
         public Func<object,object> ValueAccessor { get; set; }
 
         /// <summary>
-        /// Gets or sets a function which retrieves a unique identity of the object being
-        /// validated, given a reference to that object being validated.
-        /// </summary>
-        public Func<object,object> ObjectIdentityAccessor { get; set; }
-
-        /// <summary>
         /// Gets or sets a member name associated with the rule builder context.
         /// </summary>
         public string MemberName { get; set; }
+
+        /// <summary>
+        /// Gets or sets a valud which indicates whether or not the value retrieved from <see cref="ValueAccessor"/>
+        /// should be enumerated and each of its items validated independently.
+        /// </summary>
+        public bool EnumerateValueItems { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="RuleBuilderContext"/>.
+        /// </summary>
+        /// <param name="validatorBuilderContext">The validator-building context.</param>
+        public RuleBuilderContext(ValidatorBuilderContext validatorBuilderContext)
+        {
+            ValidatorBuilderContext = validatorBuilderContext ?? throw new ArgumentNullException(nameof(validatorBuilderContext));
+        }
     }
 }

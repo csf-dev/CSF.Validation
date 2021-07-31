@@ -23,24 +23,21 @@ namespace CSF.Validation
     {
         public void ConfigureValidator(IConfiguresValidator<StubValidatedObject> config)
         {
-            config.UseObjectIdentity(x => x.Identity);
-
-            config.AddRule<SampleSpecificRule>(r => {
-                r.Name = "My rule";
-                r.Dependencies.Add(new RelativeRuleIdentifier(typeof(SampleObjectRule), ruleName: "A rule name"));
-            });
-
-            config.AddRule<SampleObjectRule>(r => r.ConfigureRule(c => c.RuleProperty = "A value"));
-
-            config.ForMember(x => x.StringProperty, m =>
-            {
-                m.AddRule<StringValueRule>();
-            });
-
-            config.ForMemberItems(x => x.ObjectCollection, m =>
-            {
-                m.AddRules<ContainedObjectValidator>();
-            });
+            config
+                .UseObjectIdentity(x => x.Identity)
+                .AddRule<SampleSpecificRule>(r => {
+                    r.Name = "My rule";
+                    r.Dependencies.Add(new RelativeRuleIdentifier(typeof(SampleObjectRule), ruleName: "A rule name"));
+                })
+                .AddRule<SampleObjectRule>(r => r.ConfigureRule(c => c.RuleProperty = "A value"))
+                .ForMember(x => x.StringProperty, m =>
+                {
+                    m.AddRule<StringValueRule>();
+                })
+                .ForMemberItems(x => x.ObjectCollection, m =>
+                {
+                    m.AddRules<ContainedObjectValidator>();
+                });
         }
 
         #region Stub types
