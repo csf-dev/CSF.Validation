@@ -5,16 +5,15 @@ using System.Linq.Expressions;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// An object which gets <see cref="RuleBuilderContext"/> instances for a number of common scenarios.
+    /// An object which gets <see cref="ValidatorBuilderContext"/> instances for a number of common scenarios.
     /// </summary>
-    public interface IGetsRuleBuilderContext
+    public interface IGetsValidatorBuilderContext
     {
         /// <summary>
-        /// Gets a rule builder context for a specified validator builder context.
+        /// Gets the root validator builder context.
         /// </summary>
-        /// <param name="validatorContext">Contextual information relating to how a validator is built.</param>
-        /// <returns>A context object for building validation rules.</returns>
-        RuleBuilderContext GetContext(ValidatorBuilderContext validatorContext);
+        /// <returns>A validator builder context.</returns>
+        ValidatorBuilderContext GetRootContext();
 
         /// <summary>
         /// Gets the rule builder context for validating values of a specified member of a validated object.
@@ -29,9 +28,9 @@ namespace CSF.Validation.ValidatorBuilding
         /// <see cref="IEnumerable{T}"/>.
         /// </param>
         /// <returns>A context object for building validation rules.</returns>
-        RuleBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor,
-                                                                   ValidatorBuilderContext validatorContext,
-                                                                   bool enumerateItems = false);
+        ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor,
+                                                                        ValidatorBuilderContext validatorContext,
+                                                                        bool enumerateItems = false);
 
         /// <summary>
         /// Gets the rule builder context for validating values that have been derived from a validated object.
@@ -46,8 +45,8 @@ namespace CSF.Validation.ValidatorBuilding
         /// <see cref="IEnumerable{T}"/>.
         /// </param>
         /// <returns>A context object for building validation rules.</returns>
-        RuleBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor,
-                                                                  ValidatorBuilderContext validatorContext,
-                                                                  bool enumerateItems = false);
+        ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor,
+                                                                       ValidatorBuilderContext validatorContext,
+                                                                       bool enumerateItems = false);
     }
 }

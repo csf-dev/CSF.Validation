@@ -14,7 +14,7 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestRules
     {
         readonly ValidatorBuilderContext context;
-        readonly IGetsRuleBuilderContext ruleContextFactory;
+        readonly IGetsValidatorBuilderContext ruleContextFactory;
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValueAccessorBuilder valueBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
@@ -62,7 +62,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
         public IConfiguresValidator<TValidated> UseObjectIdentity(Func<TValidated, object> identityAccessor)
         {
-            context.ObjectIdentityAccessor = o => identityAccessor((TValidated) o);
+            context.ManifestValue.IdentityAccessor = o => identityAccessor((TValidated) o);
             return this;
         }
 
@@ -76,8 +76,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
         public IConfiguresValidator<TValidated> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IRule<TValidated>
         {
-            var ruleContext = ruleContextFactory.GetContext(context);
-            var ruleBuilder = ruleBuilderFactory.GetRuleBuilder(ruleContext, ruleDefinition);
+            var ruleBuilder = ruleBuilderFactory.GetRuleBuilder(context, ruleDefinition);
             ruleBuilders.Add(ruleBuilder);
             return this;
         }
@@ -215,7 +214,7 @@ namespace CSF.Validation.ValidatorBuilding
         public IEnumerable<ManifestRule> GetManifestRules()
             => ruleBuilders.SelectMany(x => x.GetManifestRules()).ToList();
 
-        void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, RuleBuilderContext context)
+        void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, ValidatorBuilderContext context)
         {
             var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(context, valueConfig);
             ruleBuilders.Add(valueBuilder);
@@ -232,7 +231,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// An optional conttext for this validator builder to use; if this is
         /// <see langword="null"/> then a new/empty context will be created.
         /// </param>
-        public ValidatorBuilder(IGetsRuleBuilderContext ruleContextFactory,
+        public ValidatorBuilder(IGetsValidatorBuilderContext ruleContextFactory,
                                 IGetsRuleBuilder ruleBuilderFactory,
                                 IGetsValueAccessorBuilder valueBuilderFactory,
                                 IGetsValidatorManifest validatorManifestFactory,
@@ -242,7 +241,7 @@ namespace CSF.Validation.ValidatorBuilding
             this.ruleBuilderFactory = ruleBuilderFactory ?? throw new ArgumentNullException(nameof(ruleBuilderFactory));
             this.valueBuilderFactory = valueBuilderFactory ?? throw new ArgumentNullException(nameof(valueBuilderFactory));
             this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));
-            this.context = context ?? new ValidatorBuilderContext();
+            this.context = context ?? ruleContextFactory.GetRootContext();
         }
     }
 }

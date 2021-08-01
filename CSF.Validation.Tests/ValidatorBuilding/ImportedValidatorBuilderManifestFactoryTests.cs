@@ -12,13 +12,13 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetValidatorManifestShouldReturnAValidatorBuilder([Frozen] IServiceProvider serviceProvider,
                                                                       ImportedValidatorBuilderManifestFactory sut,
-                                                                      IGetsRuleBuilderContext ruleContextFactory,
+                                                                      IGetsValidatorBuilderContext ruleContextFactory,
                                                                       IGetsRuleBuilder ruleBuilderFactory,
                                                                       IGetsValueAccessorBuilder valueBuilderFactory,
                                                                       IGetsValidatorManifest validatorManifestFactory,
                                                                       ValidatorBuilderContext context)
         {
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilderContext))).Returns(ruleContextFactory);
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
@@ -32,14 +32,14 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetValidatorManifestShouldExecuteConfigureValidatorFromDefinitionUponBuilder([Frozen] IServiceProvider serviceProvider,
                                                                                                 ImportedValidatorBuilderManifestFactory sut,
-                                                                                                IGetsRuleBuilderContext ruleContextFactory,
+                                                                                                IGetsValidatorBuilderContext ruleContextFactory,
                                                                                                 IGetsRuleBuilder ruleBuilderFactory,
                                                                                                 IGetsValueAccessorBuilder valueBuilderFactory,
                                                                                                 IGetsValidatorManifest validatorManifestFactory,
                                                                                                 ValidatorBuilderContext context,
                                                                                                 ValidatedObject obj)
         {
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilderContext))).Returns(ruleContextFactory);
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
@@ -47,7 +47,7 @@ namespace CSF.Validation.ValidatorBuilding
 
             sut.GetValidatorManifest(typeof(ValidatedObjectDefinition), context);
 
-            Assert.That(() => context.ObjectIdentityAccessor(obj),
+            Assert.That(() => context.ManifestValue.IdentityAccessor(obj),
                         Is.EqualTo(obj.Identity),
                         $@"Because the definition sets up the context to use the {nameof(ValidatedObject.Identity)} property
 for identity, asserting that they are equal proves that the configuration function was executed.");
@@ -70,13 +70,13 @@ for identity, asserting that they are equal proves that the configuration functi
         [Test,AutoMoqData]
         public void GetValidatorManifestWithRuleContextShouldReturnAValidatorBuilder([Frozen] IServiceProvider serviceProvider,
                                                                                      ImportedValidatorBuilderManifestFactory sut,
-                                                                                     IGetsRuleBuilderContext ruleContextFactory,
+                                                                                     IGetsValidatorBuilderContext ruleContextFactory,
                                                                                      IGetsRuleBuilder ruleBuilderFactory,
                                                                                      IGetsValueAccessorBuilder valueBuilderFactory,
                                                                                      IGetsValidatorManifest validatorManifestFactory,
-                                                                                     RuleBuilderContext context)
+                                                                                     ValidatorBuilderContext context)
         {
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilderContext))).Returns(ruleContextFactory);
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);

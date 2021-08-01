@@ -1,5 +1,5 @@
 using System;
-using static CSF.Validation.Resources.ExceptionMessages;
+using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidatorBuilding
 {
@@ -8,28 +8,18 @@ namespace CSF.Validation.ValidatorBuilding
     /// the logical 'position' (within a validator) of another rule.  In other words, it uniquely
     /// identifies a rule, based upon a current rule.
     /// </summary>
-    public class RelativeRuleIdentifier
+    public class RelativeRuleIdentifier : RuleIdentifierBase
     {
-        /// <summary>
-        /// Gets the type of the validation rule.
-        /// </summary>
-        public Type RuleType { get; }
-
-        /// <summary>
-        /// Gets the name of the member which the rule validates, where that rule validates a specific member value.
-        /// </summary>
-        public string MemberName { get; }
-
-        /// <summary>
-        /// Gets the name of the rule, where that rule has a name.
-        /// </summary>
-        public string RuleName { get; }
-
         /// <summary>
         /// Gets the number of levels of ancestry (within the parent/child validation hierarchy) which must be traversed
         /// from the 'current' rule, in order to reach the validator which contains the identified rule.
         /// </summary>
         public int? AncestorLevels { get; }
+
+        /// <summary>
+        /// Where the referenced rule is for a member of a value/object, this property gets the member name.
+        /// </summary>
+        public string MemberName { get; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="RelativeRuleIdentifier"/>.
@@ -42,11 +32,9 @@ namespace CSF.Validation.ValidatorBuilding
         public RelativeRuleIdentifier(Type ruleType,
                                       string memberName = default,
                                       string ruleName = default,
-                                      int? ancestorLevels = default)
+                                      int? ancestorLevels = default) : base(ruleType, ruleName)
         {
-            RuleType = ruleType ?? throw new ArgumentNullException(nameof(ruleType));
             MemberName = memberName;
-            RuleName = ruleName;
             AncestorLevels = ancestorLevels;
         }
     }

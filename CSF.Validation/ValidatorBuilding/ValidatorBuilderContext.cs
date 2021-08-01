@@ -1,4 +1,5 @@
 using System;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ValidatorBuilding
 {
@@ -8,38 +9,17 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValidatorBuilderContext
     {
         /// <summary>
-        /// Gets an optional rule builder context from which this validator context has been created.
-        /// If this is not <see langword="null"/> then this represents a 'child' validation context.
+        /// Gets the <see cref="ManifestValue"/> instance associated with the current context.
         /// </summary>
-        public RuleBuilderContext RuleBuilderContext { get; }
-
-        /// <summary>
-        /// Gets or sets an accessor function which is used to get the primary
-        /// object under validation for this rule.  The input to this function is
-        /// the original object under validation for the validator at the root of
-        /// the manifest.
-        /// </summary>
-        public Func<object,object> ValidatedObjectAccessor { get; set; }
-
-        /// <summary>
-        /// Gets or sets a function which retrieves a unique identity of the object being
-        /// validated, given a reference to that object being validated.
-        /// </summary>
-        public Func<object,object> ObjectIdentityAccessor { get; set; }
+        public ManifestValue ManifestValue { get; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatorBuilderContext"/>.
         /// </summary>
-        public ValidatorBuilderContext() {}
-
-        /// <summary>
-        /// Initialises a new instance of <see cref="ValidatorBuilderContext"/> which shall be a child
-        /// context of a specified rule-building context.
-        /// </summary>
-        /// <param name="ruleBuilderContext">A parent rule builder context.</param>
-        public ValidatorBuilderContext(RuleBuilderContext ruleBuilderContext)
+        /// <param name="manifestValue">The manifest value associated with the current context.</param>
+        public ValidatorBuilderContext(ManifestValue manifestValue)
         {
-            RuleBuilderContext = ruleBuilderContext ?? throw new ArgumentNullException(nameof(ruleBuilderContext));
+            ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
         }
     }
 }

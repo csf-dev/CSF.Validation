@@ -23,7 +23,7 @@ namespace CSF.Validation
         {
             return serviceCollection
                 .AddTransient<CSF.Reflection.IStaticallyReflects,CSF.Reflection.Reflector>()
-                .AddTransient<IGetsRuleBuilderContext,RuleBuilderContextFactory>()
+                .AddTransient<IGetsValidatorBuilderContext,ValidatorBuilderContextFactory>()
                 .AddTransient<IGetsRuleBuilder,RuleBuilderFactory>()
                 .AddTransient<IGetsValueAccessorBuilder,ValueAccessorBuilderFactory>()
                 .AddTransient<IGetsValidatorManifest,ImportedValidatorBuilderManifestFactory>()

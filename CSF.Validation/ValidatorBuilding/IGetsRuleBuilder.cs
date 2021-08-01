@@ -15,6 +15,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">Contextual information from which to build this rule.</param>
         /// <param name="ruleDefinition">An optional configuration/definition action which will be used to customise the rule.</param>
         /// <returns>A rule builder object.</returns>
-        IBuildsRule<TRule> GetRuleBuilder<TRule>(RuleBuilderContext context, Action<IConfiguresRule<TRule>> ruleDefinition);
+        IBuildsRule<TRule> GetRuleBuilder<TRule>(ValidatorBuilderContext context, Action<IConfiguresRule<TRule>> ruleDefinition);
     }
 }

@@ -2,22 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using CSF.Reflection;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// A factory service for getting instances of <see cref="RuleBuilderContext"/>.
+    /// A factory service for getting instances of <see cref="ValidatorBuilderContext"/>.
     /// </summary>
-    public class RuleBuilderContextFactory : IGetsRuleBuilderContext
+    public class ValidatorBuilderContextFactory : IGetsValidatorBuilderContext
     {
         readonly IStaticallyReflects reflect;
 
         /// <summary>
-        /// Gets a rule builder context for a specified validator builder context.
+        /// Gets the root validator builder context.
         /// </summary>
-        /// <param name="validatorContext">Contextual information relating to how a validator is built.</param>
-        /// <returns>A context object for building validation rules.</returns>
-        public RuleBuilderContext GetContext(ValidatorBuilderContext validatorContext) => new RuleBuilderContext(validatorContext);
+        /// <returns>A validator builder context.</returns>
+        public ValidatorBuilderContext GetRootContext() => new ValidatorBuilderContext(new ManifestValue());
 
         /// <summary>
         /// Gets the rule builder context for validating values of a specified member of a validated object.
@@ -32,17 +32,13 @@ namespace CSF.Validation.ValidatorBuilding
         /// <see cref="IEnumerable{T}"/>.
         /// </param>
         /// <returns>A context object for building validation rules.</returns>
-        public RuleBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
+        public ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
             var member = reflect.Member(memberAccessor);
             var accessor = memberAccessor.Compile();
 
-            return new RuleBuilderContext(validatorContext)
-            {
-                EnumerateValueItems = enumerateItems,
-                MemberName = member.Name,
-                ValueAccessor = obj => accessor((TValidated) obj),
-            };
+            var manifestValue = new ManifestValue(validatorContext.ManifestValue, obj => accessor((TValidated)obj), member.Name, enumerateItems);
+            return new ValidatorBuilderContext(manifestValue);
         }
 
         /// <summary>
@@ -58,20 +54,17 @@ namespace CSF.Validation.ValidatorBuilding
         /// <see cref="IEnumerable{T}"/>.
         /// </param>
         /// <returns>A context object for building validation rules.</returns>
-        public RuleBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
+        public ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
-            return new RuleBuilderContext(validatorContext)
-            {
-                EnumerateValueItems = enumerateItems,
-                ValueAccessor = obj => valueAccessor((TValidated) obj),
-            };
+            var manifestValue = new ManifestValue(validatorContext.ManifestValue, obj => valueAccessor((TValidated) obj), enumerateItems: enumerateItems);
+            return new ValidatorBuilderContext(manifestValue);
         }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="RuleBuilderContextFactory"/>.
+        /// Initialises a new instance of <see cref="ValidatorBuilderContextFactory"/>.
         /// </summary>
         /// <param name="reflect">A service which provides static reflection.</param>
-        public RuleBuilderContextFactory(IStaticallyReflects reflect)
+        public ValidatorBuilderContextFactory(IStaticallyReflects reflect)
         {
             this.reflect = reflect ?? throw new ArgumentNullException(nameof(reflect));
         }

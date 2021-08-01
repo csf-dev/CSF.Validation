@@ -21,14 +21,5 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>An object which provides a collection of <see cref="Manifest.ManifestRule"/> instances.</returns>
         /// <exception cref="ArgumentException">If the <paramref name="definitionType"/> does not implement <see cref="IBuildsValidator{TValidated}"/>.</exception>
         IGetsManifestRules GetValidatorManifest(Type definitionType, ValidatorBuilderContext context);
-
-        /// <summary>
-        /// Gets an object which provides manifest rules from a specified validator-builder type.
-        /// </summary>
-        /// <param name="definitionType">A type which must implement <see cref="IBuildsValidator{TValidated}"/>.</param>
-        /// <param name="context">Contextual information about how validation rules should be built.</param>
-        /// <returns>An object which provides a collection of <see cref="Manifest.ManifestRule"/> instances.</returns>
-        /// <exception cref="ArgumentException">If the <paramref name="definitionType"/> does not implement <see cref="IBuildsValidator{TValidated}"/>.</exception>
-        IGetsManifestRules GetValidatorManifest(Type definitionType, RuleBuilderContext context);
     }
 }

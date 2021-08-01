@@ -13,7 +13,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// <typeparam name="TValue">The type of this specific value being validated.</typeparam>
     public class ValueAccessorBuilder<TValidated, TValue> : IBuildsValueAccessor<TValidated, TValue>
     {
-        readonly RuleBuilderContext context;
+        readonly ValidatorBuilderContext context;
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
         readonly ICollection<IGetsManifestRules> ruleBuilders = new HashSet<IGetsManifestRules>();
@@ -70,7 +70,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">The context which should be used for newly-added rule-builders.</param>
         /// <param name="ruleBuilderFactory">A factory for rule-builder instances.</param>
         /// <param name="validatorManifestFactory">A factory for validator manifest instances.</param>
-        public ValueAccessorBuilder(RuleBuilderContext context, IGetsRuleBuilder ruleBuilderFactory, IGetsValidatorManifest validatorManifestFactory)
+        public ValueAccessorBuilder(ValidatorBuilderContext context, IGetsRuleBuilder ruleBuilderFactory, IGetsValidatorManifest validatorManifestFactory)
         {
             this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));
             this.context = context ?? throw new ArgumentNullException(nameof(context));

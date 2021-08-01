@@ -9,24 +9,22 @@ namespace CSF.Validation.Manifest
     public class ManifestRuleIdentifier : RuleIdentifierBase
     {
         /// <summary>
-        /// A function which retrieves a unique identity of the object being
-        /// validated, given a reference to that object being validated.
+        /// Gets the manifest object to which this rule relates.
         /// </summary>
-        public Func<object,object> ObjectIdentityAccessor { get; }
+        public ManifestValue ManifestValue { get; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="RuleIdentifier"/>.
         /// </summary>
-        /// <param name="objectIdentityAccessor">The function to get the object identity.</param>
+        /// <param name="manifestValue">The manifest value/object which 'contains' this rule.</param>
         /// <param name="ruleType">The rule type.</param>
-        /// <param name="memberName">An optional member name.</param>
         /// <param name="ruleName">An optional rule name.</param>
-        public ManifestRuleIdentifier(Func<object,object> objectIdentityAccessor,
+        /// <exception cref="ArgumentNullException">If <paramref name="ruleType"/> or <paramref name="manifestValue"/> are <see langword="null"/>.</exception>
+        public ManifestRuleIdentifier(ManifestValue manifestValue,
                                       Type ruleType,
-                                      string memberName = default,
-                                      string ruleName = default) : base(ruleType, memberName, ruleName)
+                                      string ruleName = default) : base(ruleType, ruleName)
         {
-            ObjectIdentityAccessor = objectIdentityAccessor;
+            ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
         }
     }
 }

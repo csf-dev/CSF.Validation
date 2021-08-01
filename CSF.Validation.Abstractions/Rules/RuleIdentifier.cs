@@ -13,18 +13,24 @@ namespace CSF.Validation.Rules
         public object ObjectIdentity { get; }
 
         /// <summary>
+        /// Gets the name of the member whose value is being validated by this rule.
+        /// </summary>
+        public string MemberName { get; }
+
+        /// <summary>
         /// Initializes a new instance of <see cref="RuleIdentifier"/>.
         /// </summary>
-        /// <param name="objectIdentity">The object identity.</param>
         /// <param name="ruleType">The rule type.</param>
+        /// <param name="objectIdentity">The object identity.</param>
         /// <param name="memberName">An optional member name.</param>
         /// <param name="ruleName">An optional rule name.</param>
-        public RuleIdentifier(object objectIdentity,
-                              Type ruleType,
+        public RuleIdentifier(Type ruleType,
+                              object objectIdentity,
                               string memberName = default,
-                              string ruleName = default) : base(ruleType, memberName, ruleName)
+                              string ruleName = default) : base(ruleType, ruleName)
         {
             ObjectIdentity = objectIdentity;
+            MemberName = memberName;
         }
     }
 }

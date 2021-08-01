@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.Manifest
@@ -12,34 +13,13 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets or sets the rule's unique identifier, including its type.
         /// </summary>
-        public ManifestRuleIdentifier Identifier { get; set; }
+        public ManifestRuleIdentifier Identifier { get; }
         
         /// <summary>
         /// Gets or sets an optional action which is used to configure the rule
         /// instance after it has been instantiated.
         /// </summary>
-        public Action<object> RuleConfiguration { get; set; }
-
-        /// <summary>
-        /// Gets or sets an accessor function which is used to get the primary
-        /// object under validation for this rule.  The input to this function is
-        /// the original object under validation for the validator at the root of
-        /// the manifest.
-        /// </summary>
-        public Func<object,object> ValidatedObjectAccessor { get; set; }
-
-        /// <summary>
-        /// Gets or sets an accessor function which is used to get a value to be
-        /// validated for this rule.  The input to this function is
-        /// the original object under validation for the validator at the root of
-        /// the manifest.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// For a rule that does not validate a specific value, this property will be <see langword="null"/>.
-        /// </para>
-        /// </remarks>
-        public Func<object,object> ValueAccessor { get; set; }
+        public Action<object> RuleConfiguration { get; }
 
         /// <summary>
         /// Gets or sets a collection of identifiers upon which the current rule depends.
@@ -52,6 +32,19 @@ namespace CSF.Validation.Manifest
         /// outcome.
         /// </para>
         /// </remarks>
-        public ICollection<ManifestRuleIdentifier> DependencyRules { get; set; }
+        public IReadOnlyCollection<ManifestRuleIdentifier> DependencyRules { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="ruleConfiguration"></param>
+        /// <param name="dependencyRules"></param>
+        public ManifestRule(ManifestRuleIdentifier identifier, Action<object> ruleConfiguration = default, IEnumerable<ManifestRuleIdentifier> dependencyRules = default)
+        {
+            Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
+            RuleConfiguration = ruleConfiguration ?? (r => {});
+            DependencyRules = new List<ManifestRuleIdentifier>(dependencyRules ?? Enumerable.Empty<ManifestRuleIdentifier>());
+        }
     }
 }

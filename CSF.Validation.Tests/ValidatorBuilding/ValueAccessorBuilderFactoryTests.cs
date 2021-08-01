@@ -9,7 +9,7 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValueAccessorBuilderFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetValueAccessorBuilderShouldReturnAnAccessorBuilder(RuleBuilderContext context,
+        public void GetValueAccessorBuilderShouldReturnAnAccessorBuilder(ValidatorBuilderContext context,
                                                                          IGetsRuleBuilder ruleBuilderFactory,
                                                                          IGetsValidatorManifest validatorManifestFactory)
         {
@@ -18,7 +18,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetValueAccessorBuilderShouldExecuteConfigurationUponBuilder(RuleBuilderContext context,
+        public void GetValueAccessorBuilderShouldExecuteConfigurationUponBuilder(ValidatorBuilderContext context,
                                                                                  IGetsRuleBuilder ruleBuilderFactory,
                                                                                  IGetsValidatorManifest validatorManifestFactory)
         {

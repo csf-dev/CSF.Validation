@@ -11,8 +11,10 @@ namespace CSF.Validation.ValidatorBuilding
     /// <typeparam name="TRule">The concrete type of the configured validation rule.</typeparam>
     public class RuleBuilder<TRule> : IBuildsRule<TRule>
     {
-        readonly RuleBuilderContext context;
+        readonly ValidatorBuilderContext context;
         readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter;
+        readonly IGetsManifestRuleIdentifier identifierFactory;
+
         ICollection<RelativeRuleIdentifier> dependencies = new HashSet<RelativeRuleIdentifier>();
         Action<TRule> ruleConfig = r => { };
 
@@ -68,21 +70,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A collection of one manifest rule.</returns>
         public IEnumerable<ManifestRule> GetManifestRules()
         {
-            var identifier = new ManifestRuleIdentifier(context.ValidatorBuilderContext.ObjectIdentityAccessor, typeof(TRule), context.MemberName, Name);
+            var identifier = identifierFactory.GetManifestRuleIdentifier(typeof(TRule), context, Name);
             var dependencyRules = Dependencies
-                .Select(x => relativeToManifestIdentityConverter.GetManifestRuleIdentifier(x))
+                .Select(x => relativeToManifestIdentityConverter.GetManifestRuleIdentifier(identifier, x))
                 .ToList();
 
             return new[]
             {
-                new ManifestRule
-                {
-                    Identifier = identifier,
-                    RuleConfiguration = r => ruleConfig((TRule)r),
-                    ValueAccessor = context.ValueAccessor,
-                    ValidatedObjectAccessor = context.ValidatorBuilderContext.ValidatedObjectAccessor,
-                    DependencyRules = dependencyRules,
-                }
+                new ManifestRule(identifier, rule => ruleConfig((TRule) rule), dependencyRules),
             };
         }
 
@@ -91,10 +86,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// </summary>
         /// <param name="context">The rule-building context</param>
         /// <param name="relativeToManifestIdentityConverter">A service which converts relative rule identifiers to absolute ones.</param>
-        public RuleBuilder(RuleBuilderContext context, IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter)
+        /// <param name="identifierFactory">A factory which creates manifest identifiers.</param>
+        public RuleBuilder(ValidatorBuilderContext context,
+                           IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter,
+                           IGetsManifestRuleIdentifier identifierFactory)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
             this.relativeToManifestIdentityConverter = relativeToManifestIdentityConverter ?? throw new ArgumentNullException(nameof(relativeToManifestIdentityConverter));
+            this.identifierFactory = identifierFactory ?? throw new ArgumentNullException(nameof(identifierFactory));
         }
     }
 }

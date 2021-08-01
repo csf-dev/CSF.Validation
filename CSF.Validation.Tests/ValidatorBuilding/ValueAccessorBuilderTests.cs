@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using AutoFixture.NUnit3;
+using CSF.Validation.Autofixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;
@@ -14,10 +15,10 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetManifestRulesShouldReturnOneRulePerRuleAdded([Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValueAccessorBuilder<ValidatedObject,string> sut,
-                                                                    ManifestRule rule)
+                                                                    [ManifestModel] ManifestRule rule)
         {
             Mock.Get(ruleBuilderFactory)
-                .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<RuleBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
+                .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
                 .Returns(() => {
                     var ruleBuilder = new Mock<IBuildsRule<StringValueRule>>();
                     ruleBuilder
@@ -38,10 +39,10 @@ namespace CSF.Validation.ValidatorBuilding
         public void AddRuleShouldProvideConfigFunctionToRuleBuilder([Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValueAccessorBuilder<ValidatedObject,string> sut,
                                                                     IBuildsRule<StringValueRule> ruleBuilder,
-                                                                    ManifestRule rule)
+                                                                    [ManifestModel] ManifestRule rule)
         {
             Mock.Get(ruleBuilderFactory)
-                .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<RuleBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
+                .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
                 .Returns(ruleBuilder);
             Mock.Get(ruleBuilder)
                 .Setup(x => x.GetManifestRules())
@@ -51,15 +52,15 @@ namespace CSF.Validation.ValidatorBuilding
             sut.AddRule<StringValueRule>(configFunction);
 
             Mock.Get(ruleBuilderFactory)
-                .Verify(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<RuleBuilderContext>(), configFunction), Times.Once);
+                .Verify(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), configFunction), Times.Once);
         }
 
         [Test,AutoMoqData]
         public void AddRulesShouldAddBuilderReturnedFromManifestFactory([Frozen] IGetsValidatorManifest manifestFactory,
-                                                                        [Frozen] RuleBuilderContext context,
+                                                                        [Frozen] ValidatorBuilderContext context,
                                                                         ValueAccessorBuilder<ValidatedObject,string> sut,
                                                                         IGetsManifestRules manifest,
-                                                                        ManifestRule rule)
+                                                                        [ManifestModel] ManifestRule rule)
         {
             Mock.Get(manifestFactory)
                 .Setup(x => x.GetValidatorManifest(typeof(StringValidator), context))

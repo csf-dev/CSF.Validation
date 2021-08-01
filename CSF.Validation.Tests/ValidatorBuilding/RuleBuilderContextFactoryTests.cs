@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using AutoFixture.NUnit3;
 using CSF.Reflection;
+using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;
@@ -12,16 +13,15 @@ namespace CSF.Validation.ValidatorBuilding
     public class RuleBuilderContextFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetContextShouldReturnContextUsingValidationContext(ValidatorBuilderContext validationContext, RuleBuilderContextFactory sut)
+        public void GetRootContextShouldReturnANewContext(ValidatorBuilderContext validationContext, ValidatorBuilderContextFactory sut)
         {
-            var result = sut.GetContext(validationContext);
-            Assert.That(result, Has.Property(nameof(RuleBuilderContext.ValidatorBuilderContext)).SameAs(validationContext));
+            Assert.That(() => sut.GetRootContext(), Is.Not.Null);
         }
 
         [Test,AutoMoqData]
         public void GetContextForMemberShouldReturnContextWithMemberName([Frozen] IStaticallyReflects reflect,
                                                                          ValidatorBuilderContext validationContext,
-                                                                         RuleBuilderContextFactory sut,
+                                                                         ValidatorBuilderContextFactory sut,
                                                                          bool enumerate)
         {
             Mock.Get(reflect)
@@ -32,45 +32,43 @@ namespace CSF.Validation.ValidatorBuilding
 
             Assert.Multiple(() =>
             {
-                Assert.That(result, Has.Property(nameof(RuleBuilderContext.ValidatorBuilderContext)).SameAs(validationContext));
-                Assert.That(result, Has.Property(nameof(RuleBuilderContext.MemberName)).EqualTo(nameof(ValidatedObject.AProperty)));
-                Assert.That(result, Has.Property(nameof(RuleBuilderContext.EnumerateValueItems)).EqualTo(enumerate));
+                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(nameof(ValidatedObject.AProperty)));
+                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.EnumerateItems)).EqualTo(enumerate));
             });
         }
 
         [Test,AutoMoqData]
         public void GetContextForValueShouldReturnContextWithoutMemberName(ValidatorBuilderContext validationContext,
-                                                                           RuleBuilderContextFactory sut,
+                                                                           ValidatorBuilderContextFactory sut,
                                                                            bool enumerate)
         {
             var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext, enumerate);
 
             Assert.Multiple(() =>
             {
-                Assert.That(result, Has.Property(nameof(RuleBuilderContext.ValidatorBuilderContext)).SameAs(validationContext));
-                Assert.That(result, Has.Property(nameof(RuleBuilderContext.MemberName)).Null);
-                Assert.That(result, Has.Property(nameof(RuleBuilderContext.EnumerateValueItems)).EqualTo(enumerate));
+                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).Null);
+                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.EnumerateItems)).EqualTo(enumerate));
             });
         }
 
         [Test,AutoMoqData]
         public void GetContextForMemberShouldReturnContextWithCorrectAccessor(ValidatorBuilderContext validationContext,
-                                                                              RuleBuilderContextFactory sut,
+                                                                              ValidatorBuilderContextFactory sut,
                                                                               ValidatedObject obj)
         {
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(() => result.ValueAccessor(obj), Is.EqualTo(obj.AProperty));
+            Assert.That(() => result.ManifestValue.AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
 
         [Test,AutoMoqData]
         public void GetContextForValueShouldReturnContextWithCorrectAccessor(ValidatorBuilderContext validationContext,
-                                                                             RuleBuilderContextFactory sut,
+                                                                             ValidatorBuilderContextFactory sut,
                                                                              ValidatedObject obj)
         {
             var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(() => result.ValueAccessor(obj), Is.EqualTo(obj.AProperty));
+            Assert.That(() => result.ManifestValue.AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
     }
 }
