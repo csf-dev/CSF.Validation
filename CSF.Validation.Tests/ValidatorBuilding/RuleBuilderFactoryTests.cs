@@ -1,3 +1,4 @@
+using CSF.Validation.Autofixture;
 using CSF.Validation.Stubs;
 using NUnit.Framework;
 
@@ -9,7 +10,7 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetRuleBuilderShouldReturnBuilder(IGetsManifestRuleIdentifierFromRelativeIdentifier identifierConverter,
                                                       IGetsManifestRuleIdentifier identifierFactory,
-                                                      ValidatorBuilderContext context)
+                                                      [ManifestModel] ValidatorBuilderContext context)
         {
             var sut = new RuleBuilderFactory(() => identifierConverter, () => identifierFactory);
             Assert.That(() => sut.GetRuleBuilder<ObjectRule>(context, c => { }), Is.Not.Null);
@@ -18,7 +19,7 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetRuleBuilderShouldExecuteConfigurationUponBuilder(IGetsManifestRuleIdentifierFromRelativeIdentifier identifierConverter,
                                                                         IGetsManifestRuleIdentifier identifierFactory,
-                                                                        ValidatorBuilderContext context,
+                                                                        [ManifestModel] ValidatorBuilderContext context,
                                                                         string name)
         {
             var sut = new RuleBuilderFactory(() => identifierConverter, () => identifierFactory);

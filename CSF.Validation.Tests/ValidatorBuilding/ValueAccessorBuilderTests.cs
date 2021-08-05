@@ -13,7 +13,8 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValueAccessorBuilderTests
     {
         [Test,AutoMoqData]
-        public void GetManifestRulesShouldReturnOneRulePerRuleAdded([Frozen] IGetsRuleBuilder ruleBuilderFactory,
+        public void GetManifestRulesShouldReturnOneRulePerRuleAdded([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                    [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValueAccessorBuilder<ValidatedObject,string> sut,
                                                                     [ManifestModel] ManifestRule rule)
         {
@@ -37,6 +38,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void AddRuleShouldProvideConfigFunctionToRuleBuilder([Frozen] IGetsRuleBuilder ruleBuilderFactory,
+                                                                    [Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                     ValueAccessorBuilder<ValidatedObject,string> sut,
                                                                     IBuildsRule<StringValueRule> ruleBuilder,
                                                                     [ManifestModel] ManifestRule rule)
@@ -57,7 +59,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void AddRulesShouldAddBuilderReturnedFromManifestFactory([Frozen] IGetsValidatorManifest manifestFactory,
-                                                                        [Frozen] ValidatorBuilderContext context,
+                                                                        [Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                         ValueAccessorBuilder<ValidatedObject,string> sut,
                                                                         IGetsManifestRules manifest,
                                                                         [ManifestModel] ManifestRule rule)

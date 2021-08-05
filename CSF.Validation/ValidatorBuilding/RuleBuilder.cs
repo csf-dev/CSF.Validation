@@ -12,7 +12,7 @@ namespace CSF.Validation.ValidatorBuilding
     public class RuleBuilder<TRule> : IBuildsRule<TRule>
     {
         readonly ValidatorBuilderContext context;
-        readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter;
+        readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestId;
         readonly IGetsManifestRuleIdentifier identifierFactory;
 
         ICollection<RelativeRuleIdentifier> dependencies = new HashSet<RelativeRuleIdentifier>();
@@ -72,12 +72,16 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var identifier = identifierFactory.GetManifestRuleIdentifier(typeof(TRule), context, Name);
             var dependencyRules = Dependencies
-                .Select(x => relativeToManifestIdentityConverter.GetManifestRuleIdentifier(identifier, x))
+                .Select(relativeIdentifier => relativeToManifestId.GetManifestRuleIdentifier(context.ManifestValue, relativeIdentifier))
                 .ToList();
 
             return new[]
             {
-                new ManifestRule(identifier, rule => ruleConfig((TRule) rule), dependencyRules),
+                new ManifestRule(context.ManifestValue, identifier)
+                {
+                    RuleConfiguration = rule => ruleConfig((TRule) rule),
+                    DependencyRules = dependencyRules,
+                },
             };
         }
 
@@ -92,7 +96,7 @@ namespace CSF.Validation.ValidatorBuilding
                            IGetsManifestRuleIdentifier identifierFactory)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
-            this.relativeToManifestIdentityConverter = relativeToManifestIdentityConverter ?? throw new ArgumentNullException(nameof(relativeToManifestIdentityConverter));
+            this.relativeToManifestId = relativeToManifestIdentityConverter ?? throw new ArgumentNullException(nameof(relativeToManifestIdentityConverter));
             this.identifierFactory = identifierFactory ?? throw new ArgumentNullException(nameof(identifierFactory));
         }
     }

@@ -15,7 +15,7 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValidatorBuilderTests
     {
         [Test,AutoMoqData]
-        public void UseObjectIdentityShouldAddIdentityAccessorToTheContext([Frozen] ValidatorBuilderContext context,
+        public void UseObjectIdentityShouldAddIdentityAccessorToTheContext([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                            ValidatorBuilder<ValidatedObject> sut,
                                                                            ValidatedObject obj)
         {
@@ -25,7 +25,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void AddRuleShouldAddRuleCreatedFromFactoryUsingContext([Frozen] ValidatorBuilderContext context,
+        public void AddRuleShouldAddRuleCreatedFromFactoryUsingContext([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                        [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                        [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                        IBuildsRule<ObjectRule> ruleBuilder,
@@ -45,7 +45,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetManifestRulesShouldReturnOneRulePerRuleAdded([Frozen] ValidatorBuilderContext context,
+        public void GetManifestRulesShouldReturnOneRulePerRuleAdded([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                     [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                     [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValidatorBuilder<ValidatedObject> sut,
@@ -70,7 +70,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void AddRulesShouldAddBuilderReturnedFromManifestFactory([Frozen] ValidatorBuilderContext context,
+        public void AddRulesShouldAddBuilderReturnedFromManifestFactory([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                         [Frozen] IGetsValidatorManifest manifestFactory,
                                                                         ValidatorBuilder<ValidatedObject> sut,
                                                                         IGetsManifestRules manifest,
@@ -87,7 +87,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForMemberShouldAddBuilderReturnedFromValueBuilderFactory([Frozen] ValidatorBuilderContext context,
+        public void ForMemberShouldAddBuilderReturnedFromValueBuilderFactory([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                              [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                              [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                              ValidatorBuilder<ValidatedObject> sut,
@@ -111,11 +111,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForMemberItemsShouldAddBuilderReturnedFromValueBuilderFactory([Frozen] ValidatorBuilderContext context,
+        public void ForMemberItemsShouldAddBuilderReturnedFromValueBuilderFactory([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                   [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                                   [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                                   ValidatorBuilder<ValidatedObject> sut,
-                                                                                  ValidatorBuilderContext ruleContext,
+                                                                                  [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                                   IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
                                                                                   [ManifestModel] ManifestRule rule)
         {
@@ -135,11 +135,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForValueShouldAddBuilderReturnedFromValueBuilderFactory([Frozen] ValidatorBuilderContext context,
+        public void ForValueShouldAddBuilderReturnedFromValueBuilderFactory([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                             [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                             [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                             ValidatorBuilder<ValidatedObject> sut,
-                                                                            ValidatorBuilderContext ruleContext,
+                                                                            [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                             IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
                                                                             [ManifestModel] ManifestRule rule)
         {
@@ -159,11 +159,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForValuesShouldAddBuilderReturnedFromValueBuilderFactory([Frozen] ValidatorBuilderContext context,
+        public void ForValuesShouldAddBuilderReturnedFromValueBuilderFactory([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                              [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                              [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                              ValidatorBuilder<ValidatedObject> sut,
-                                                                             ValidatorBuilderContext ruleContext,
+                                                                             [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                              IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
                                                                              [ManifestModel] ManifestRule rule)
         {
@@ -183,11 +183,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForMemberShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForMemberShouldPassConfigurationActionToBuilder([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                        [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                        [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                        ValidatorBuilder<ValidatedObject> sut,
-                                                                       ValidatorBuilderContext ruleContext,
+                                                                       [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                        IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
                                                                        [ManifestModel] ManifestRule rule)
         {
@@ -209,11 +209,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForMemberItemsShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForMemberItemsShouldPassConfigurationActionToBuilder([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                             [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                             [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                             ValidatorBuilder<ValidatedObject> sut,
-                                                                            ValidatorBuilderContext ruleContext,
+                                                                            [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                             IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
                                                                             [ManifestModel] ManifestRule rule)
         {
@@ -235,11 +235,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForValueShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForValueShouldPassConfigurationActionToBuilder([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                       [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                       [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                       ValidatorBuilder<ValidatedObject> sut,
-                                                                      ValidatorBuilderContext ruleContext,
+                                                                      [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                       IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
                                                                       [ManifestModel] ManifestRule rule)
         {
@@ -261,11 +261,11 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void ForValuesShouldPassConfigurationActionToBuilder([Frozen] ValidatorBuilderContext context,
+        public void ForValuesShouldPassConfigurationActionToBuilder([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                        [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                        [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
                                                                        ValidatorBuilder<ValidatedObject> sut,
-                                                                       ValidatorBuilderContext ruleContext,
+                                                                       [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                        IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
                                                                        [ManifestModel] ManifestRule rule)
         {

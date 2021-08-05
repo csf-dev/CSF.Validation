@@ -14,7 +14,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// Gets the number of levels of ancestry (within the parent/child validation hierarchy) which must be traversed
         /// from the 'current' rule, in order to reach the validator which contains the identified rule.
         /// </summary>
-        public int? AncestorLevels { get; }
+        public int AncestorLevels { get; }
 
         /// <summary>
         /// Where the referenced rule is for a member of a value/object, this property gets the member name.
@@ -29,11 +29,15 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="ruleName">An optional rule name.</param>
         /// <param name="ancestorLevels">An optional number of ancestor levels.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="ruleType"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="ancestorLevels"/> is less than zero.</exception>
         public RelativeRuleIdentifier(Type ruleType,
                                       string memberName = default,
                                       string ruleName = default,
-                                      int? ancestorLevels = default) : base(ruleType, ruleName)
+                                      int ancestorLevels = 0) : base(ruleType, ruleName)
         {
+            if(ancestorLevels < 0)
+                throw new ArgumentOutOfRangeException(nameof(ancestorLevels));
+            
             MemberName = memberName;
             AncestorLevels = ancestorLevels;
         }

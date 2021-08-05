@@ -1,4 +1,5 @@
 using System;
+using CSF.Validation.Autofixture;
 using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;
@@ -9,7 +10,7 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValueAccessorBuilderFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetValueAccessorBuilderShouldReturnAnAccessorBuilder(ValidatorBuilderContext context,
+        public void GetValueAccessorBuilderShouldReturnAnAccessorBuilder([ManifestModel] ValidatorBuilderContext context,
                                                                          IGetsRuleBuilder ruleBuilderFactory,
                                                                          IGetsValidatorManifest validatorManifestFactory)
         {
@@ -18,7 +19,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetValueAccessorBuilderShouldExecuteConfigurationUponBuilder(ValidatorBuilderContext context,
+        public void GetValueAccessorBuilderShouldExecuteConfigurationUponBuilder([ManifestModel] ValidatorBuilderContext context,
                                                                                  IGetsRuleBuilder ruleBuilderFactory,
                                                                                  IGetsValidatorManifest validatorManifestFactory)
         {

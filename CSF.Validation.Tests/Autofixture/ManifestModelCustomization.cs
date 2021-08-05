@@ -22,9 +22,13 @@ namespace CSF.Validation.Autofixture
     {
         public void Customize(IFixture fixture)
         {
-            fixture.Customize<ManifestValue>(c => c.FromFactory(() => new ManifestValue()));
+            fixture.Customize<ManifestValue>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules));
             fixture.Customize<ManifestRuleIdentifier>(c => c.FromFactory((ManifestValue val, Type ruleType) => new ManifestRuleIdentifier(val, ruleType)));
-            fixture.Customize<ManifestRule>(c => c.FromFactory((ManifestRuleIdentifier id) => new ManifestRule(id)));
+            fixture.Customize<ManifestRule>(c => {
+                return c
+                    .FromFactory((ManifestValue val, ManifestRuleIdentifier id) => new ManifestRule(val, id))
+                    .Without(x => x.DependencyRules);
+            });
         }
     }
 }

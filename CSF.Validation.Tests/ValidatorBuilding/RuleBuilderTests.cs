@@ -12,7 +12,7 @@ namespace CSF.Validation.ValidatorBuilding
     public class RuleBuilderTests
     {
         [Test,AutoMoqData]
-        public void GetManifestRuleShouldReturnAManifestRulewithCorrectIdentifierFromService([Frozen] ValidatorBuilderContext context,
+        public void GetManifestRuleShouldReturnAManifestRulewithCorrectIdentifierFromService([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                              [Frozen] IGetsManifestRuleIdentifier identifierFactory,
                                                                                              RuleBuilder<SampleRule> sut,
                                                                                              [ManifestModel] ManifestRuleIdentifier identifier)
@@ -33,6 +33,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetManifestRuleShouldReturnAManifestRuleWithCorrectConfigurationAction([Frozen] IGetsManifestRuleIdentifier identifierFactory,
+                                                                                           [Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                            RuleBuilder<SampleRule> sut,
                                                                                            [ManifestModel] ManifestRuleIdentifier identifier,
                                                                                            string stringPropValue)
@@ -53,6 +54,7 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetManifestRuleShouldReturnAManifestRuleWithCorrectDependencies([Frozen] IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter,
                                                                                     [Frozen] IGetsManifestRuleIdentifier identifierFactory,
+                                                                                    [Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                     RuleBuilder<SampleRule> sut,
                                                                                     [ManifestModel] ManifestRuleIdentifier identifier,
                                                                                     RelativeRuleIdentifier relativeId1,
@@ -65,9 +67,9 @@ namespace CSF.Validation.ValidatorBuilding
             Mock.Get(identifierFactory)
                 .Setup(x => x.GetManifestRuleIdentifier(typeof(SampleRule), It.IsAny<ValidatorBuilderContext>(), It.IsAny<string>()))
                 .Returns(identifier);
-            Mock.Get(relativeToManifestIdentityConverter).Setup(x => x.GetManifestRuleIdentifier(identifier, relativeId1)).Returns(manifestId1);
-            Mock.Get(relativeToManifestIdentityConverter).Setup(x => x.GetManifestRuleIdentifier(identifier, relativeId2)).Returns(manifestId2);
-            Mock.Get(relativeToManifestIdentityConverter).Setup(x => x.GetManifestRuleIdentifier(identifier, relativeId3)).Returns(manifestId3);
+            Mock.Get(relativeToManifestIdentityConverter).Setup(x => x.GetManifestRuleIdentifier(context.ManifestValue, relativeId1)).Returns(manifestId1);
+            Mock.Get(relativeToManifestIdentityConverter).Setup(x => x.GetManifestRuleIdentifier(context.ManifestValue, relativeId2)).Returns(manifestId2);
+            Mock.Get(relativeToManifestIdentityConverter).Setup(x => x.GetManifestRuleIdentifier(context.ManifestValue, relativeId3)).Returns(manifestId3);
 
             sut.Dependencies = new[] { relativeId1, relativeId2, relativeId3 };
 

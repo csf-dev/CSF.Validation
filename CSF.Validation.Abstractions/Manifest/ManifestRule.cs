@@ -10,16 +10,28 @@ namespace CSF.Validation.Manifest
     /// </summary>
     public class ManifestRule
     {
+        ICollection<ManifestRuleIdentifier> dependencyRules = new List<ManifestRuleIdentifier>();
+        Action<object> ruleConfiguration = o => { };
+
+        /// <summary>
+        /// Gets the manifest value to which this rule applies.
+        /// </summary>
+        public ManifestValue ManifestValue { get; }
+
         /// <summary>
         /// Gets or sets the rule's unique identifier, including its type.
         /// </summary>
         public ManifestRuleIdentifier Identifier { get; }
-        
+
         /// <summary>
         /// Gets or sets an optional action which is used to configure the rule
         /// instance after it has been instantiated.
         /// </summary>
-        public Action<object> RuleConfiguration { get; }
+        public Action<object> RuleConfiguration
+        {
+            get => ruleConfiguration;
+            set => ruleConfiguration = value ?? throw new ArgumentNullException(nameof(value));
+        }
 
         /// <summary>
         /// Gets or sets a collection of identifiers upon which the current rule depends.
@@ -32,19 +44,21 @@ namespace CSF.Validation.Manifest
         /// outcome.
         /// </para>
         /// </remarks>
-        public IReadOnlyCollection<ManifestRuleIdentifier> DependencyRules { get; }
+        public ICollection<ManifestRuleIdentifier> DependencyRules
+        {
+            get => dependencyRules;
+            set => dependencyRules = value ?? throw new ArgumentNullException(nameof(value));
+        }
 
         /// <summary>
-        /// 
+        /// Initialises a new instance of <see cref="ManifestRule"/>.
         /// </summary>
-        /// <param name="identifier"></param>
-        /// <param name="ruleConfiguration"></param>
-        /// <param name="dependencyRules"></param>
-        public ManifestRule(ManifestRuleIdentifier identifier, Action<object> ruleConfiguration = default, IEnumerable<ManifestRuleIdentifier> dependencyRules = default)
+        /// <param name="manifestValue">The manifest value for which this rule applies.</param>
+        /// <param name="identifier">The identifier for this rule.</param>
+        public ManifestRule(ManifestValue manifestValue, ManifestRuleIdentifier identifier)
         {
+            ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
-            RuleConfiguration = ruleConfiguration ?? (r => {});
-            DependencyRules = new List<ManifestRuleIdentifier>(dependencyRules ?? Enumerable.Empty<ManifestRuleIdentifier>());
         }
     }
 }

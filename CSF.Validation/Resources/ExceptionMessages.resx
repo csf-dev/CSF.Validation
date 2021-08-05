@@ -125,4 +125,12 @@
     <value>The validation definition type must implement {0}&lt;T&gt; a maximum of once, for one generic validated type.</value>
     <comment/>
   </data>
+  <data name="ManifestValueDoesNotHaveSufficientAncestorLevels" xml:space="preserve">
+    <value>The {0} must have at least {1} level(s) of ancestors.</value>
+    <comment/>
+  </data>
+  <data name="ManifestValueDoesNotHaveChildMember" xml:space="preserve">
+    <value>The {0} must have configuration for a member named "{1}".</value>
+    <comment/>
+  </data>
 </root>

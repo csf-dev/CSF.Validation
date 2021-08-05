@@ -1,5 +1,6 @@
 using System;
 using AutoFixture.NUnit3;
+using CSF.Validation.Autofixture;
 using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;
@@ -16,7 +17,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                       IGetsRuleBuilder ruleBuilderFactory,
                                                                       IGetsValueAccessorBuilder valueBuilderFactory,
                                                                       IGetsValidatorManifest validatorManifestFactory,
-                                                                      ValidatorBuilderContext context)
+                                                                      [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
@@ -36,7 +37,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                                 IGetsRuleBuilder ruleBuilderFactory,
                                                                                                 IGetsValueAccessorBuilder valueBuilderFactory,
                                                                                                 IGetsValidatorManifest validatorManifestFactory,
-                                                                                                ValidatorBuilderContext context,
+                                                                                                [ManifestModel] ValidatorBuilderContext context,
                                                                                                 ValidatedObject obj)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
@@ -55,14 +56,14 @@ for identity, asserting that they are equal proves that the configuration functi
 
         [Test,AutoMoqData]
         public void GetValidatorManifestShouldThrowForAnInvalidDefinitionWithNoInterface(ImportedValidatorBuilderManifestFactory sut,
-                                                                                         ValidatorBuilderContext context)
+                                                                                         [ManifestModel] ValidatorBuilderContext context)
         {
             Assert.That(() => sut.GetValidatorManifest(typeof(InvalidDefinitionWithNoInterface), context),
                         Throws.ArgumentException.And.Message.StartWith("The validation definition type must implement IBuildsValidator<T>."));
         }
 
         [Test,AutoMoqData]
-        public void GetValidatorManifestShouldThrowForAnInvalidDefinitionWithTwoInterfaces(ImportedValidatorBuilderManifestFactory sut, ValidatorBuilderContext context)
+        public void GetValidatorManifestShouldThrowForAnInvalidDefinitionWithTwoInterfaces(ImportedValidatorBuilderManifestFactory sut, [ManifestModel] ValidatorBuilderContext context)
         {
             Assert.That(() => sut.GetValidatorManifest(typeof(InvalidDefinitionWithTwoInterfaces), context),
                         Throws.ArgumentException.And.Message.StartWith("The validation definition type must implement IBuildsValidator<T> a maximum of once, for one generic validated type."));
@@ -74,7 +75,7 @@ for identity, asserting that they are equal proves that the configuration functi
                                                                                      IGetsRuleBuilder ruleBuilderFactory,
                                                                                      IGetsValueAccessorBuilder valueBuilderFactory,
                                                                                      IGetsValidatorManifest validatorManifestFactory,
-                                                                                     ValidatorBuilderContext context)
+                                                                                     [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);

@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using AutoFixture.NUnit3;
 using CSF.Reflection;
+using CSF.Validation.Autofixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;
@@ -13,14 +14,14 @@ namespace CSF.Validation.ValidatorBuilding
     public class RuleBuilderContextFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetRootContextShouldReturnANewContext(ValidatorBuilderContext validationContext, ValidatorBuilderContextFactory sut)
+        public void GetRootContextShouldReturnANewContext([ManifestModel] ValidatorBuilderContext validationContext, ValidatorBuilderContextFactory sut)
         {
             Assert.That(() => sut.GetRootContext(), Is.Not.Null);
         }
 
         [Test,AutoMoqData]
         public void GetContextForMemberShouldReturnContextWithMemberName([Frozen] IStaticallyReflects reflect,
-                                                                         ValidatorBuilderContext validationContext,
+                                                                         [ManifestModel] ValidatorBuilderContext validationContext,
                                                                          ValidatorBuilderContextFactory sut,
                                                                          bool enumerate)
         {
@@ -38,7 +39,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetContextForValueShouldReturnContextWithoutMemberName(ValidatorBuilderContext validationContext,
+        public void GetContextForValueShouldReturnContextWithoutMemberName([ManifestModel] ValidatorBuilderContext validationContext,
                                                                            ValidatorBuilderContextFactory sut,
                                                                            bool enumerate)
         {
@@ -52,7 +53,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetContextForMemberShouldReturnContextWithCorrectAccessor(ValidatorBuilderContext validationContext,
+        public void GetContextForMemberShouldReturnContextWithCorrectAccessor([ManifestModel] ValidatorBuilderContext validationContext,
                                                                               ValidatorBuilderContextFactory sut,
                                                                               ValidatedObject obj)
         {
@@ -62,7 +63,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetContextForValueShouldReturnContextWithCorrectAccessor(ValidatorBuilderContext validationContext,
+        public void GetContextForValueShouldReturnContextWithCorrectAccessor([ManifestModel] ValidatorBuilderContext validationContext,
                                                                              ValidatorBuilderContextFactory sut,
                                                                              ValidatedObject obj)
         {

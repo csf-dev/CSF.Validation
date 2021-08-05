@@ -37,7 +37,14 @@ namespace CSF.Validation.ValidatorBuilding
             var member = reflect.Member(memberAccessor);
             var accessor = memberAccessor.Compile();
 
-            var manifestValue = new ManifestValue(validatorContext.ManifestValue, obj => accessor((TValidated)obj), member.Name, enumerateItems);
+            var manifestValue = new ManifestValue
+            {
+                Parent = validatorContext.ManifestValue,
+                AccessorFromParent = obj => accessor((TValidated) obj),
+                MemberName = member.Name,
+                EnumerateItems = enumerateItems,
+            };
+            validatorContext.ManifestValue.Children.Add(manifestValue);
             return new ValidatorBuilderContext(manifestValue);
         }
 
@@ -56,7 +63,13 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A context object for building validation rules.</returns>
         public ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
-            var manifestValue = new ManifestValue(validatorContext.ManifestValue, obj => valueAccessor((TValidated) obj), enumerateItems: enumerateItems);
+            var manifestValue = new ManifestValue
+            {
+                Parent = validatorContext.ManifestValue,
+                AccessorFromParent = obj => valueAccessor((TValidated) obj),
+                EnumerateItems = enumerateItems,
+            };
+            validatorContext.ManifestValue.Children.Add(manifestValue);
             return new ValidatorBuilderContext(manifestValue);
         }
 
