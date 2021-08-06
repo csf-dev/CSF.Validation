@@ -32,7 +32,7 @@ namespace CSF.Validation
                 .AddRule<SampleObjectRule>(r => r.ConfigureRule(c => c.RuleProperty = "A value"))
                 .ForMember(x => x.StringProperty, m =>
                 {
-                    m.AddRule<StringValueRule>();
+                    m.AddValueRule<StringValueRule>();
                 })
                 .ForMemberItems(x => x.ObjectCollection, m =>
                 {
@@ -89,7 +89,7 @@ namespace CSF.Validation
             
             config.ForMember(x => x.NumericProperty, m =>
             {
-                m.AddRule<IntegerValueRule>();
+                m.AddValueRule<IntegerValueRule>();
             });
         }
 

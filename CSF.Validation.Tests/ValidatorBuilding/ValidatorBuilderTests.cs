@@ -201,7 +201,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddRule<StringValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddValueRule<StringValueRule>();
             sut.ForMember(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
@@ -227,7 +227,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddRule<CharValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddValueRule<CharValueRule>();
             sut.ForMemberItems(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
@@ -253,7 +253,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddRule<StringValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddValueRule<StringValueRule>();
             sut.ForValue(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
@@ -279,7 +279,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestRules())
                 .Returns(() => new[] { rule });
 
-            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddRule<CharValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddValueRule<CharValueRule>();
             sut.ForValues(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)

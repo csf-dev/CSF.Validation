@@ -19,7 +19,17 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
         /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        IConfiguresValueAccessor<TValidated, TValue> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IValueRule<TValue,TValidated>;
+        IConfiguresValueAccessor<TValidated, TValue> AddValueRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IValueRule<TValue,TValidated>;
+
+        /// <summary>
+        /// Adds a validation rule to validate the value indicated by the value accessor.
+        /// The rule type must be a class that implements <see cref="IRule{TValue}"/> for the same
+        /// (or compatible contravariant) generic type <typeparamref name="TValue"/>.
+        /// </summary>
+        /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
+        /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        IConfiguresValueAccessor<TValidated, TValue> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IRule<TValue>;
 
         /// <summary>
         /// Adds/imports rules from an object that implements <see cref="IBuildsValidator{TValidated}"/> for the generic

@@ -4,6 +4,7 @@ using System.Reflection;
 using CSF.Reflection;
 using CSF.Specifications;
 using Microsoft.Extensions.DependencyInjection;
+using static CSF.Validation.Resources.ExceptionMessages;
 
 namespace CSF.Validation.ValidatorBuilding
 {
@@ -46,10 +47,28 @@ namespace CSF.Validation.ValidatorBuilding
 
         IGetsManifestRules GetValidatorManifestGeneric<T>(Type definitionType, ValidatorBuilderContext context)
         {
-            var definition = (IBuildsValidator<T>) serviceProvider.GetService(definitionType);
+            var definition = GetValidatorBuilder<T>(definitionType);
             var builder = new ValidatorBuilder<T>(RuleContextFactory, RuleBuilderFactory, ValueBuilderFactory, ValidatorManifestFactory, context);
             definition.ConfigureValidator(builder);
             return builder;
+        }
+
+        IBuildsValidator<T> GetValidatorBuilder<T>(Type definitionType)
+        {
+            var builderFromDi = serviceProvider.GetService(definitionType);
+            if(builderFromDi is IBuildsValidator<T> output) return output;
+
+            try
+            {
+                return (IBuildsValidator<T>) Activator.CreateInstance(definitionType);
+            }
+            catch(Exception e)
+            {
+                var message = String.Format(GetExceptionMessage("CannotGetImportedValidatorBuilder"),
+                                            nameof(ImportedValidatorBuilderManifestFactory),
+                                            definitionType.FullName);
+                throw new ArgumentException(message, nameof(definitionType), e);
+            }
         }
 
         static Type GetValidatedType(Type definitionType)
