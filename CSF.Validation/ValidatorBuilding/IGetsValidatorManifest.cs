@@ -3,7 +3,7 @@ using System;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// An object which gets an <see cref="IGetsManifestRules"/> (which in turn may get a collection of manifest validation rules)
+    /// An object which gets an <see cref="IGetsManifestValue"/> (which in turn may get a collection of manifest validation rules)
     /// from a specified type that implements <see cref="IBuildsValidator{TValidated}"/>.
     /// </summary>
     /// <remarks>
@@ -20,6 +20,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">Contextual information about how a validator should be built.</param>
         /// <returns>An object which provides a collection of <see cref="Manifest.ManifestRule"/> instances.</returns>
         /// <exception cref="ArgumentException">If the <paramref name="definitionType"/> does not implement <see cref="IBuildsValidator{TValidated}"/>.</exception>
-        IGetsManifestRules GetValidatorManifest(Type definitionType, ValidatorBuilderContext context);
+        IGetsManifestValue GetValidatorManifest(Type definitionType, ValidatorBuilderContext context);
     }
 }

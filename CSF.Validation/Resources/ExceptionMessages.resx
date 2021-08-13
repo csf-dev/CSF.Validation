@@ -134,9 +134,7 @@
     <comment/>
   </data>
   <data name="CannotGetImportedValidatorBuilder" xml:space="preserve">
-    <value>The {0} was unable to get the imported validator builder of type {1}.
-The type must either be resolvable via dependency injection (it is not) or it must have a public parameterless constructor.
-Refer to the inner exception for further details.</value>
+    <value>The {0} was unable to get the imported validator builder of type {1}.The type must either be resolvable via dependency injection (it is not) or it must have a public parameterless constructor.Refer to the inner exception for further details.</value>
     <comment/>
   </data>
 </root>

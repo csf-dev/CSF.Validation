@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CSF.Validation.Manifest;
+using static CSF.Validation.Resources.ExceptionMessages;
 
 namespace CSF.Validation.ValidatorBuilding
 {
@@ -14,6 +15,7 @@ namespace CSF.Validation.ValidatorBuilding
         readonly ValidatorBuilderContext context;
         readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestId;
         readonly IGetsManifestRuleIdentifier identifierFactory;
+        bool ruleCreated;
 
         ICollection<RelativeRuleIdentifier> dependencies = new HashSet<RelativeRuleIdentifier>();
         Action<TRule> ruleConfig = r => { };
@@ -64,25 +66,34 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <summary>
-        /// Gets a collection of manifest rules from the state of the current instance.
-        /// This method will always return precisely one rule.
+        /// Gets a manifest value from the current instance, which will be the same manifest value instance passed via the
+        /// <see cref="ValidatorBuilderContext"/> constructor parameter as <see cref="ValidatorBuilderContext.ManifestValue"/>,
+        /// but which will also have received one additional rule added.
         /// </summary>
-        /// <returns>A collection of one manifest rule.</returns>
-        public IEnumerable<ManifestRule> GetManifestRules()
+        /// <remarks>
+        /// <para>
+        /// This method may be called a maximum of once.
+        /// </para>
+        /// </remarks>
+        /// <returns>A manifest value.</returns>
+        public ManifestValue GetManifestValue()
         {
+            if(ruleCreated)
+                return context.ManifestValue;
+                
             var identifier = identifierFactory.GetManifestRuleIdentifier(typeof(TRule), context, Name);
             var dependencyRules = Dependencies
                 .Select(relativeIdentifier => relativeToManifestId.GetManifestRuleIdentifier(context.ManifestValue, relativeIdentifier))
                 .ToList();
 
-            return new[]
+            var rule = new ManifestRule(context.ManifestValue, identifier)
             {
-                new ManifestRule(context.ManifestValue, identifier)
-                {
-                    RuleConfiguration = rule => ruleConfig((TRule) rule),
-                    DependencyRules = dependencyRules,
-                },
+                RuleConfiguration = r => ruleConfig((TRule) r),
+                DependencyRules = dependencyRules,
             };
+            context.ManifestValue.Rules.Add(rule);
+            ruleCreated = true;
+            return context.ManifestValue;
         }
 
         /// <summary>

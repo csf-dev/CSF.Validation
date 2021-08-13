@@ -12,8 +12,9 @@ namespace CSF.Validation.Manifest
         ICollection<ManifestRule> rules = new List<ManifestRule>();
 
         /// <summary>
-        /// Gets or sets an optional parent object, indicating that this instance is a descendent of the root of the
-        /// validation hierarchy.
+        /// Gets or sets an optional parent manifest value.
+        /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
+        /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
         /// </summary>
         public ManifestValue Parent { get; set; }
 

@@ -16,7 +16,7 @@ namespace CSF.Validation.ValidatorBuilding
         readonly ValidatorBuilderContext context;
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
-        readonly ICollection<IGetsManifestRules> ruleBuilders = new HashSet<IGetsManifestRules>();
+        readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
 
         /// <summary>
         /// Adds a "value validation rule" to validate the value &amp; the validated object instance.
@@ -71,12 +71,21 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <summary>
-        /// Gets a collection of manifest rules, aggregating all of the rules from all of the rule-builders
-        /// which are referenced by this instance.
+        /// Gets a manifest value from the current instance.
         /// </summary>
-        /// <returns>A collection of manifest rules.</returns>
-        public IEnumerable<ManifestRule> GetManifestRules()
-            => ruleBuilders.SelectMany(x => x.GetManifestRules()).ToList();
+        /// <returns>A manifest value.</returns>
+        public ManifestValue GetManifestValue()
+        {
+            var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
+            
+            foreach(var manifestValue in manifestValues)
+            {
+                if(manifestValue == context.ManifestValue) continue;
+                context.ManifestValue.Children.Add(manifestValue);
+            }
+
+            return context.ManifestValue;
+        }
 
         /// <summary>
         /// Initializes a new instance of <see cref="ValueAccessorBuilder{TValidated, TValue}"/>.

@@ -30,60 +30,62 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                        IBuildsRule<ObjectRule> ruleBuilder,
                                                                        ValidatorBuilder<ValidatedObject> sut,
-                                                                       [ManifestModel] ManifestRule rule)
+                                                                       [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<ObjectRule>(context, It.IsAny<Action<IConfiguresRule<ObjectRule>>>()))
                 .Returns(ruleBuilder);
             Mock.Get(ruleBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
             
             sut.AddRule<ObjectRule>();
 
-            Assert.That(() => sut.GetManifestRules(), Is.EqualTo(new[] { rule }));
+            Assert.That(() => sut.GetManifestValue().Children.Single(), Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
-        public void GetManifestRulesShouldReturnOneRulePerRuleAdded([Frozen, ManifestModel] ValidatorBuilderContext context,
+        public void GetManifestRulesShouldIterateOverEveryRuleAdded([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                     [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                     [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValidatorBuilder<ValidatedObject> sut,
-                                                                    [ManifestModel] ManifestRule rule)
+                                                                    [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<ObjectRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<ObjectRule>>>()))
                 .Returns(() => {
                     var ruleBuilder = new Mock<IBuildsRule<ObjectRule>>();
                     ruleBuilder
-                        .Setup(x => x.GetManifestRules())
-                        .Returns(() => new[] { rule });
+                        .Setup(x => x.GetManifestValue())
+                        .Returns(() => value);
                     return ruleBuilder.Object;
                 });
 
             sut.AddRule<ObjectRule>();
             sut.AddRule<ObjectRule>();
 
-            var manifestRules = sut.GetManifestRules().ToList();
+            sut.GetManifestValue();
 
-            Assert.That(manifestRules, Has.Count.EqualTo(2));
+            Mock.Get(ruleBuilderFactory)
+                .Verify(x => x.GetRuleBuilder<ObjectRule>(context, It.IsAny<Action<IConfiguresRule<ObjectRule>>>()),
+                        Times.Exactly(2));
         }
 
         [Test,AutoMoqData]
         public void AddRulesShouldAddBuilderReturnedFromManifestFactory([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                         [Frozen] IGetsValidatorManifest manifestFactory,
                                                                         ValidatorBuilder<ValidatedObject> sut,
-                                                                        IGetsManifestRules manifest,
-                                                                        [ManifestModel] ManifestRule rule)
+                                                                        IGetsManifestValue manifest,
+                                                                        [ManifestModel] ManifestValue value)
         {
             Mock.Get(manifestFactory)
                 .Setup(x => x.GetValidatorManifest(typeof(ValidatedObjectValidator), context))
                 .Returns(manifest);
-            Mock.Get(manifest).Setup(x => x.GetManifestRules()).Returns(() => new[] { rule });
+            Mock.Get(manifest).Setup(x => x.GetManifestValue()).Returns(() => value);
 
             sut.AddRules<ValidatedObjectValidator>();
 
-            Assert.That(sut.GetManifestRules(), Is.EqualTo(new[] { rule }));
+            Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
@@ -93,7 +95,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                              ValidatorBuilder<ValidatedObject> sut,
                                                                              ValidatorBuilderContext ruleContext,
                                                                              IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                             [ManifestModel] ManifestRule rule)
+                                                                             [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
@@ -102,12 +104,12 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             sut.ForMember(x => x.AProperty, c => {});
 
-            Assert.That(sut.GetManifestRules(), Is.EqualTo(new[] { rule }));
+            Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
@@ -117,7 +119,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                   ValidatorBuilder<ValidatedObject> sut,
                                                                                   [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                                   IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                                  [ManifestModel] ManifestRule rule)
+                                                                                  [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, true))
@@ -126,12 +128,12 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             sut.ForMemberItems(x => x.AProperty, c => {});
 
-            Assert.That(sut.GetManifestRules(), Is.EqualTo(new[] { rule }));
+            Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
@@ -141,7 +143,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                             ValidatorBuilder<ValidatedObject> sut,
                                                                             [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                             IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                            [ManifestModel] ManifestRule rule)
+                                                                            [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,string>>(), context, false))
@@ -150,12 +152,12 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             sut.ForValue(x => x.AProperty, c => {});
 
-            Assert.That(sut.GetManifestRules(), Is.EqualTo(new[] { rule }));
+            Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
@@ -165,7 +167,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                              ValidatorBuilder<ValidatedObject> sut,
                                                                              [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                              IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                             [ManifestModel] ManifestRule rule)
+                                                                             [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, true))
@@ -174,12 +176,12 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             sut.ForValues(x => x.AProperty, c => {});
 
-            Assert.That(sut.GetManifestRules(), Is.EqualTo(new[] { rule }));
+            Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
@@ -189,7 +191,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        ValidatorBuilder<ValidatedObject> sut,
                                                                        [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                        IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                       [ManifestModel] ManifestRule rule)
+                                                                       [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
@@ -198,8 +200,8 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddValueRule<StringValueRule>();
             sut.ForMember(x => x.AProperty, configAction);
@@ -215,7 +217,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                             ValidatorBuilder<ValidatedObject> sut,
                                                                             [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                             IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                            [ManifestModel] ManifestRule rule)
+                                                                            [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, true))
@@ -224,8 +226,8 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddValueRule<CharValueRule>();
             sut.ForMemberItems(x => x.AProperty, configAction);
@@ -241,7 +243,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                       ValidatorBuilder<ValidatedObject> sut,
                                                                       [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                       IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                      [ManifestModel] ManifestRule rule)
+                                                                      [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,string>>(), context, false))
@@ -250,8 +252,8 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddValueRule<StringValueRule>();
             sut.ForValue(x => x.AProperty, configAction);
@@ -267,7 +269,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        ValidatorBuilder<ValidatedObject> sut,
                                                                        [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                        IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                       [ManifestModel] ManifestRule rule)
+                                                                       [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, true))
@@ -276,8 +278,8 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(valueBuilder);
             Mock.Get(valueBuilder)
-                .Setup(x => x.GetManifestRules())
-                .Returns(() => new[] { rule });
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
 
             Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddValueRule<CharValueRule>();
             sut.ForValues(x => x.AProperty, configAction);

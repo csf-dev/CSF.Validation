@@ -14,11 +14,11 @@ namespace CSF.Validation.ValidatorBuilding
         public void GetManifestRulesShouldNotReturnNull([IntegrationTesting] IServiceProvider services)
         {
             var sut = GetValidatorBuilderForComplexObjectValidator(services);
-            var rules = sut.GetManifestRules();
+            var rules = sut.GetManifestValue();
             Assert.That(rules, Is.Not.Null);
         }
 
-        static IGetsManifestRules GetValidatorBuilderForComplexObjectValidator(IServiceProvider services)
+        static IGetsManifestValue GetValidatorBuilderForComplexObjectValidator(IServiceProvider services)
         {
             var factory = services.GetRequiredService<IGetsValidatorBuilder>();
             var sut = factory.GetValidatorBuilder<ComplexObject>();

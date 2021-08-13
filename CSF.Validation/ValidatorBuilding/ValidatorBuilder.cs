@@ -11,14 +11,14 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to configure how an object should be validated.
     /// </summary>
     /// <typeparam name="TValidated">The type of the object being validated.</typeparam>
-    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestRules
+    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestValue
     {
         readonly ValidatorBuilderContext context;
         readonly IGetsValidatorBuilderContext ruleContextFactory;
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValueAccessorBuilder valueBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
-        readonly ICollection<IGetsManifestRules> ruleBuilders = new HashSet<IGetsManifestRules>();
+        readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
 
         /// <summary>
         /// Specifies an accessor function which should be used to get the identity of the validated object.
@@ -207,12 +207,21 @@ namespace CSF.Validation.ValidatorBuilding
         }
         
         /// <summary>
-        /// Gets a collection of manifest rules, aggregating all of the rules from all of the rule-builders
-        /// which are referenced by this instance.
+        /// Gets a manifest value from the current instance.
         /// </summary>
-        /// <returns>A collection of manifest rules.</returns>
-        public IEnumerable<ManifestRule> GetManifestRules()
-            => ruleBuilders.SelectMany(x => x.GetManifestRules()).ToList();
+        /// <returns>A manifest value.</returns>
+        public ManifestValue GetManifestValue()
+        {
+            var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
+            
+            foreach(var manifestValue in manifestValues)
+            {
+                if(manifestValue == context.ManifestValue) continue;
+                context.ManifestValue.Children.Add(manifestValue);
+            }
+
+            return context.ManifestValue;
+        }
 
         void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, ValidatorBuilderContext context)
         {

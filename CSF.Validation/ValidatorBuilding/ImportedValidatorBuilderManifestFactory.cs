@@ -9,7 +9,7 @@ using static CSF.Validation.Resources.ExceptionMessages;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// A factory service which creates an implementation of <see cref="IGetsManifestRules"/> based upon a
+    /// A factory service which creates an implementation of <see cref="IGetsManifestValue"/> based upon a
     /// type that implements <see cref="IBuildsValidator{TValidated}"/>.
     /// </summary>
     public class ImportedValidatorBuilderManifestFactory : IGetsValidatorManifest
@@ -37,15 +37,15 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">Contextual information about how a validator should be built.</param>
         /// <returns>An object which provides a collection of <see cref="Manifest.ManifestRule"/> instances.</returns>
         /// <exception cref="ArgumentException">If the <paramref name="definitionType"/> does not implement <see cref="IBuildsValidator{TValidated}"/>.</exception>
-        public IGetsManifestRules GetValidatorManifest(Type definitionType, ValidatorBuilderContext context)
+        public IGetsManifestValue GetValidatorManifest(Type definitionType, ValidatorBuilderContext context)
         {
             var validatedType = GetValidatedType(definitionType);
 
             var method = getValidatorManifestGenericMethod.MakeGenericMethod(validatedType);
-            return (IGetsManifestRules) method.Invoke(this, new object[] { definitionType, context });
+            return (IGetsManifestValue) method.Invoke(this, new object[] { definitionType, context });
         }
 
-        IGetsManifestRules GetValidatorManifestGeneric<T>(Type definitionType, ValidatorBuilderContext context)
+        IGetsManifestValue GetValidatorManifestGeneric<T>(Type definitionType, ValidatorBuilderContext context)
         {
             var definition = GetValidatorBuilder<T>(definitionType);
             var builder = new ValidatorBuilder<T>(RuleContextFactory, RuleBuilderFactory, ValueBuilderFactory, ValidatorManifestFactory, context);
