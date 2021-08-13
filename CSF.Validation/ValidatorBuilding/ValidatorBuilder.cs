@@ -217,6 +217,7 @@ namespace CSF.Validation.ValidatorBuilding
             foreach(var manifestValue in manifestValues)
             {
                 if(manifestValue == context.ManifestValue) continue;
+                if(context.ManifestValue.Children.Contains(manifestValue)) continue;
                 context.ManifestValue.Children.Add(manifestValue);
             }
 

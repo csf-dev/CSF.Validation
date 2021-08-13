@@ -1,5 +1,6 @@
 
 using System;
+using System.Linq;
 using CSF.Validation.Autofixture;
 using CSF.Validation.Stubs;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,11 +12,67 @@ namespace CSF.Validation.ValidatorBuilding
     public partial class ValidatorBuilderIntegrationTests
     {
         [Test,AutoMoqData]
-        public void GetManifestRulesShouldNotReturnNull([IntegrationTesting] IServiceProvider services)
+        public void GetManifestValueShouldNotReturnNull([IntegrationTesting] IServiceProvider services)
         {
             var sut = GetValidatorBuilderForComplexObjectValidator(services);
-            var rules = sut.GetManifestValue();
-            Assert.That(rules, Is.Not.Null);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue, Is.Not.Null);
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldHavePreciselyOneRuleAtTheRootLevel([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Rules, Has.Count.EqualTo(1));
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldHavePreciselyThreeChildValues([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Children, Has.Count.EqualTo(3));
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldHaveTwoRulesForTheStringPropertyValue([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.StringProperty)).Rules, Has.Count.EqualTo(2));
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldEnumerateItemsInTheChildrenValue([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Children)).EnumerateItems, Is.True);
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldNotEnumerateItemsInTheAssociatedValue([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).EnumerateItems, Is.False);
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldHaveTwoChildValuesForTheAssociatedValue([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).Children, Has.Count.EqualTo(2));
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldHaveOneRuleForTheAssociatedValue([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).Rules, Has.Count.EqualTo(1));
         }
 
         static IGetsManifestValue GetValidatorBuilderForComplexObjectValidator(IServiceProvider services)
