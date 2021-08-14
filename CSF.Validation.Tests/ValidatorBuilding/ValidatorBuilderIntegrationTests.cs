@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using CSF.Validation.Autofixture;
+using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
@@ -73,6 +74,28 @@ namespace CSF.Validation.ValidatorBuilding
             var sut = GetValidatorBuilderForComplexObjectValidator(services);
             var manifestValue = sut.GetManifestValue();
             Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).Rules, Has.Count.EqualTo(1));
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldHaveARuleAtChildLevelWithTheCorrectDependency([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifestValue = sut.GetManifestValue();
+            var childRule = manifestValue
+                .Children
+                .Single(x => x.MemberName == nameof(ComplexObject.Associated))
+                .Children
+                .Single(x => x.MemberName != nameof(ComplexObject.StringProperty))
+                .Rules
+                .Single();
+            var expectedManifestValue = manifestValue
+                .Children
+                .Single(x => x.MemberName == nameof(ComplexObject.Associated))
+                .Children
+                .Single(x => x.MemberName == nameof(ComplexObject.StringProperty));
+            var expectedIdentifier = new ManifestRuleIdentifier(expectedManifestValue, typeof(StringValueRule));
+
+            Assert.That(childRule.DependencyRules, Has.Count.EqualTo(1).And.One.EqualTo(expectedIdentifier));
         }
 
         static IGetsManifestValue GetValidatorBuilderForComplexObjectValidator(IServiceProvider services)

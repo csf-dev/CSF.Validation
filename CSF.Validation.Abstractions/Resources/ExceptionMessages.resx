@@ -133,4 +133,8 @@
     <value>The manifest must validate the type {0}.</value>
     <comment/>
   </data>
+  <data name="RelativeIdentityBuilderFuncMustReturnCorrectType" xml:space="preserve">
+    <value>The dependency identity builder function must return an instance of {0}.</value>
+    <comment/>
+  </data>
 </root>

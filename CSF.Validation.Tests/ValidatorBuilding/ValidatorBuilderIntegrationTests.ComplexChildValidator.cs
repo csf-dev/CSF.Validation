@@ -14,7 +14,9 @@ namespace CSF.Validation.ValidatorBuilding
 
                 config.ForMember(x => x.StringProperty, m => m.AddValueRule<StringValueRule>());
 
-                config.ForValue(x => x.IntegerMethod(), m => m.AddRule<IntegerRule>());
+                config.ForValue(x => x.IntegerMethod(), m => m.AddRule<IntegerRule>(r => {
+                    r.AddDependency(d => d.RuleType<StringValueRule>().FromAncestorLevel(1).ForMember(nameof(ComplexObject.StringProperty)));
+                }));
             }
         }
     }
