@@ -6,7 +6,7 @@ namespace CSF.Validation.Manifest
     /// <summary>
     /// A model for information which uniquely identifies a validation rule within a validation manifest.
     /// </summary>
-    public class ManifestRuleIdentifier : RuleIdentifierBase, IEquatable<ManifestRuleIdentifier>
+    public sealed class ManifestRuleIdentifier : RuleIdentifierBase, IEquatable<ManifestRuleIdentifier>
     {
         /// <summary>
         /// Gets the manifest object to which this rule relates.
