@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace CSF.Validation.Manifest
 {
@@ -15,8 +14,8 @@ namespace CSF.Validation.Manifest
         public Type ValidatedType { get; set; }
 
         /// <summary>
-        /// Gets or sets a collection of the rules contained within this validation manifest.
+        /// Gets or sets the root value for the current manifest.
         /// </summary>
-        public ICollection<ManifestRule> Rules { get; set; }
+        public ManifestValue RootValue { get; set; }
     }
 }

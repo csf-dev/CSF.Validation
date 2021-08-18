@@ -11,7 +11,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to configure how an object should be validated.
     /// </summary>
     /// <typeparam name="TValidated">The type of the object being validated.</typeparam>
-    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestValue
+    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestValue, IGetsValidationManifest
     {
         readonly ValidatorBuilderContext context;
         readonly IGetsValidatorBuilderContext ruleContextFactory;
@@ -224,12 +224,25 @@ namespace CSF.Validation.ValidatorBuilding
             return context.ManifestValue;
         }
 
+        /// <summary>
+        /// Gets a manifest from the current instance.
+        /// </summary>
+        /// <returns>A validation manifest.</returns>
+        public ValidationManifest GetManifest()
+        {
+            return new ValidationManifest
+            {
+                RootValue = GetManifestValue(),
+                ValidatedType = typeof(TValidated),
+            };
+        }
+
         void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, ValidatorBuilderContext context)
         {
             var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(context, valueConfig);
             ruleBuilders.Add(valueBuilder);
         }
-        
+
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatorBuilder{TValidated}"/>.
         /// </summary>

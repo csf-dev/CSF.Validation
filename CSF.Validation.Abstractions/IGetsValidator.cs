@@ -31,7 +31,19 @@ namespace CSF.Validation
         /// <param name="manifest">The validation manifest.</param>
         /// <returns>A validator implementation.</returns>
         /// <exception cref="ArgumentNullException">If the <paramref name="manifest"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ValidationException">If the <paramref name="manifest"/> is not valid to create a validator instance.</exception>
+        /// <exception cref="ValidatorBuildingException">If the <paramref name="manifest"/> is not valid to create a validator instance.</exception>
         IValidator GetValidator(Manifest.ValidationManifest manifest);
+
+        /// <summary>
+        /// Gets a validator instance using a specified validation manifest.
+        /// A validation manifest is a model which may specify a validator using data.
+        /// This overload uses a simplified/serialization-friendly model.
+        /// </summary>
+        /// <param name="manifestModel">A simplified validation manifest model.</param>
+        /// <param name="validatedType">The type of object to be validated.</param>
+        /// <returns>A validator implementation.</returns>
+        /// <exception cref="ArgumentNullException">If the <paramref name="manifestModel"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ValidatorBuildingException">If the <paramref name="manifestModel"/> is not valid to create a validator instance.</exception>
+        IValidator GetValidator(ManifestModel.Value manifestModel, Type validatedType);
     }
 }

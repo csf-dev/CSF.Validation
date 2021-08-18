@@ -37,9 +37,9 @@ namespace CSF.Validation.Manifest
         public string MemberName { get; set; }
 
         /// <summary>
-        /// Gets or sets <see langword="true"/> <see cref="AccessorFromParent"/> returns an <see cref="IEnumerable{T}"/> which
-        /// should be enumerated and each of its items validated independently.
-        /// This should be set to <see langword="false"/> if not.
+        /// This should be set to <see langword="true"/> if the <see cref="AccessorFromParent"/> returns
+        /// an <see cref="IEnumerable{T}"/> which should be enumerated and each of its items validated
+        /// independently. This should be set to <see langword="false"/> if not.
         /// </summary>
         public bool EnumerateItems { get; set; }
 
