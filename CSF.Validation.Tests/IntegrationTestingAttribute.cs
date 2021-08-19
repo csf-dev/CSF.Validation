@@ -3,7 +3,7 @@ using System.Reflection;
 using AutoFixture;
 using AutoFixture.NUnit3;
 
-namespace CSF.Validation.Autofixture
+namespace CSF.Validation
 {
     public class IntegrationTestingAttribute : CustomizeAttribute
     {

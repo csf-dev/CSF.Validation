@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using AutoFixture.NUnit3;
-using CSF.Validation.Autofixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;

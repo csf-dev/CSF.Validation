@@ -29,8 +29,9 @@ namespace CSF.Validation.ManifestModel
             var openList = new Queue<ModelToManifestConversionContext>(new [] { context });
             var result = new ModelToManifestValueConversionResult();
 
-            for (var current = openList.Dequeue(); openList.Count != 0; current = openList.Dequeue())
+            while (openList.Count != 0)
             {
+                var current = openList.Dequeue();
                 var manifestValue = ConvertToManifestValue(current);
 
                 foreach (var child in current.CurrentValue.Children)

@@ -1,5 +1,4 @@
 using System;
-using CSF.Validation.Autofixture;
 using CSF.Validation.Manifest;
 using NUnit.Framework;
 

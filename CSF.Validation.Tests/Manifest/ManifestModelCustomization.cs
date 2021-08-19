@@ -1,8 +1,8 @@
 using System;
 using AutoFixture;
-using CSF.Validation.Manifest;
+using CSF.Validation.ManifestModel;
 
-namespace CSF.Validation.Autofixture
+namespace CSF.Validation.Manifest
 {
     /// <summary>
     /// Instructs Autofixture to create validation manifest objects in a simple but valid manner
@@ -29,6 +29,8 @@ namespace CSF.Validation.Autofixture
                     .FromFactory((ManifestValue val, ManifestRuleIdentifier id) => new ManifestRule(val, id))
                     .Without(x => x.DependencyRules);
             });
+            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules));
+            fixture.Customize<Rule>(c => c.Without(x => x.Dependencies));
         }
     }
 }

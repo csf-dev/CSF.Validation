@@ -1,4 +1,4 @@
-using CSF.Validation.Autofixture;
+using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using NUnit.Framework;
 

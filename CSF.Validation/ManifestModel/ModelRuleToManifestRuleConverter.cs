@@ -34,11 +34,15 @@ namespace CSF.Validation.ManifestModel
         /// <param name="values">A collection of <see cref="ModelAndManifestValuePair"/>.</param>
         public void ConvertAllRulesAndAddToManifestValues(IEnumerable<ModelAndManifestValuePair> values)
         {
-            foreach (var value in values)
-            foreach (var rule in value.ModelValue.Rules)
+            var valuesAndRules = (from value in values
+                                  from rule in value.ModelValue.Rules
+                                  select new { Value = value, Rule = rule })
+                .ToList();
+
+            foreach (var valueAndRule in valuesAndRules)
             {
-                var convertedRule = ConvertRule(rule, value.ManifestValue);
-                value.ManifestValue.Rules.Add(convertedRule);
+                var convertedRule = ConvertRule(valueAndRule.Rule, valueAndRule.Value.ManifestValue);
+                valueAndRule.Value.ManifestValue.Rules.Add(convertedRule);
             }
         }
 

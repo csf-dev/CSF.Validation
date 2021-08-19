@@ -1,9 +1,8 @@
 using System.Reflection;
 using AutoFixture;
 using AutoFixture.NUnit3;
-using CSF.Validation.Manifest;
 
-namespace CSF.Validation.Autofixture
+namespace CSF.Validation.Manifest
 {
     /// <summary>
     /// Instructs Autofixture to create validation manifest objects in a simple but valid manner

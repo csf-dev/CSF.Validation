@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CSF.Validation.Autofixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.ValidatorBuilding;
 using Moq;

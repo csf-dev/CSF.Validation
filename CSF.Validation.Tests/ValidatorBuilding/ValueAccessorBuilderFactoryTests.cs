@@ -1,5 +1,5 @@
 using System;
-using CSF.Validation.Autofixture;
+using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;

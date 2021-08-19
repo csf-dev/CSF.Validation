@@ -2,7 +2,7 @@ using System;
 using AutoFixture;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CSF.Validation.Autofixture
+namespace CSF.Validation
 {
     public class IntegrationTestingCustomization : ICustomization
     {

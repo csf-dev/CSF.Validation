@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using AutoFixture.NUnit3;
-using CSF.Validation.Autofixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;
