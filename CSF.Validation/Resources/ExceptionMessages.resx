@@ -137,4 +137,28 @@
     <value>The {0} was unable to get the imported validator builder of type {1}.The type must either be resolvable via dependency injection (it is not) or it must have a public parameterless constructor.Refer to the inner exception for further details.</value>
     <comment/>
   </data>
+  <data name="MissingMember" xml:space="preserve">
+    <value>The type {0} does not have an accessible member named "{1}".</value>
+    <comment/>
+  </data>
+  <data name="MustBeAGettableMember" xml:space="preserve">
+    <value>The member {0}.{1} must be a member that may provide a value: A readable property, a field or a parameterless method with a non-void return type.</value>
+    <comment/>
+  </data>
+  <data name="PropertyMustBeReadable" xml:space="preserve">
+    <value>The property {0}.{1} must be readable.</value>
+    <comment/>
+  </data>
+  <data name="PropertyMustNotBeIndexer" xml:space="preserve">
+    <value>The property {0}.{1} must be parameterless; it must not be an indexer.</value>
+    <comment/>
+  </data>
+  <data name="MethodMustHaveNonVoidReturn" xml:space="preserve">
+    <value>The method {0}.{1} must have a non-void return type.</value>
+    <comment/>
+  </data>
+  <data name="MethodMustNotHaveParameters" xml:space="preserve">
+    <value>The method {0}.{1} must not have any parameters (including generic type arguments).</value>
+    <comment/>
+  </data>
 </root>
