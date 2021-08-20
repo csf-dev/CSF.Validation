@@ -14,12 +14,6 @@ namespace CSF.Validation.ValidatorBuilding
         readonly IStaticallyReflects reflect;
 
         /// <summary>
-        /// Gets the root validator builder context.
-        /// </summary>
-        /// <returns>A validator builder context.</returns>
-        public ValidatorBuilderContext GetRootContext() => new ValidatorBuilderContext(new ManifestValue());
-
-        /// <summary>
         /// Gets the rule builder context for validating values of a specified member of a validated object.
         /// </summary>
         /// <typeparam name="TValidated">The type of the primary object under validation.</typeparam>
@@ -40,9 +34,10 @@ namespace CSF.Validation.ValidatorBuilding
             var manifestValue = new ManifestValue
             {
                 Parent = validatorContext.ManifestValue,
-                AccessorFromParent = obj => accessor((TValidated) obj),
+                AccessorFromParent = obj => accessor((TValidated)obj),
                 MemberName = member.Name,
                 EnumerateItems = enumerateItems,
+                ValidatedType = typeof(TValidated),
             };
             validatorContext.ManifestValue.Children.Add(manifestValue);
             return new ValidatorBuilderContext(manifestValue);
@@ -66,8 +61,9 @@ namespace CSF.Validation.ValidatorBuilding
             var manifestValue = new ManifestValue
             {
                 Parent = validatorContext.ManifestValue,
-                AccessorFromParent = obj => valueAccessor((TValidated) obj),
+                AccessorFromParent = obj => valueAccessor((TValidated)obj),
                 EnumerateItems = enumerateItems,
+                ValidatedType = typeof(TValidated),
             };
             validatorContext.ManifestValue.Children.Add(manifestValue);
             return new ValidatorBuilderContext(manifestValue);

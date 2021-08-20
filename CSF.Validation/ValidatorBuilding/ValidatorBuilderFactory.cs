@@ -21,7 +21,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A validator builder.</returns>
         public ValidatorBuilder<TValidated> GetValidatorBuilder<TValidated>(ValidatorBuilderContext context = null)
         {
-            var builderContext = context ?? CreateEmptyContext();
+            var builderContext = context ?? CreateEmptyContext(typeof(TValidated));
 
             return new ValidatorBuilder<TValidated>(ruleContextFactory(),
                                                     ruleBuilderFactory(),
@@ -30,9 +30,12 @@ namespace CSF.Validation.ValidatorBuilding
                                                     builderContext);
         }
 
-        static ValidatorBuilderContext CreateEmptyContext()
+        static ValidatorBuilderContext CreateEmptyContext(Type validatedType)
         {
-            var value = new ManifestValue();
+            var value = new ManifestValue
+            {
+                ValidatedType = validatedType
+            };
             return new ValidatorBuilderContext(value);
         }
 

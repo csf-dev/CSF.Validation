@@ -13,6 +13,7 @@ namespace CSF.Validation.ManifestModel
     public class ModelValueToManifestValueConverter : IConvertsModelValuesToManifestValues
     {
         readonly IGetsAccessorFunction accessorFactory;
+        readonly IGetsValidatedType validatedTypeProvider;
 
         /// <summary>
         /// Converts all of the hierarchy of <see cref="Value"/> instances within the specified context into
@@ -28,7 +29,7 @@ namespace CSF.Validation.ManifestModel
             if (context is null)
                 throw new ArgumentNullException(nameof(context));
 
-            var openList = new Queue<ModelToManifestConversionContext>(new [] { context });
+            var openList = new Queue<ModelToManifestConversionContext>(new[] { context });
             var result = new ModelToManifestValueConversionResult();
 
             while (openList.Count != 0)
@@ -42,7 +43,7 @@ namespace CSF.Validation.ManifestModel
                     openList.Enqueue(childContext);
                 }
 
-                if(result.RootValue is null)
+                if (result.RootValue is null)
                     result.RootValue = manifestValue;
 
                 result.ConvertedValues.Add(new ModelAndManifestValuePair
@@ -57,21 +58,21 @@ namespace CSF.Validation.ManifestModel
 
         ManifestValue ConvertToManifestValue(ModelToManifestConversionContext context)
         {
+            var validatedType = validatedTypeProvider.GetValidatedType(context.ValidatedType, context.CurrentValue.EnumerateItems);
+
             var manifestValue = new ManifestValue
             {
                 Parent = context.ParentManifestValue,
                 MemberName = context.MemberName,
                 AccessorFromParent = context.AccessorFromParent,
                 EnumerateItems = context.CurrentValue.EnumerateItems,
+                ValidatedType = validatedType,
             };
 
             if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
-            {
-                var valueType = GetValueType(context.ValidatedType, context.CurrentValue.EnumerateItems);
-                manifestValue.IdentityAccessor = accessorFactory.GetAccessorFunction(valueType, context.CurrentValue.IdentityMemberName).AccessorFunction;
-            }
+                manifestValue.IdentityAccessor = accessorFactory.GetAccessorFunction(validatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
 
-            if(context.ParentManifestValue != null)
+            if (context.ParentManifestValue != null)
                 context.ParentManifestValue.Children.Add(manifestValue);
 
             return manifestValue;
@@ -82,8 +83,8 @@ namespace CSF.Validation.ManifestModel
                                                          ModelToManifestConversionContext parentContext,
                                                          ManifestValue parentValue)
         {
-                var valueType = GetValueType(parentContext.ValidatedType, parentContext.CurrentValue.EnumerateItems);
-            var accessor = accessorFactory.GetAccessorFunction(valueType, memberName);
+            var parentValidatedType = validatedTypeProvider.GetValidatedType(parentContext.ValidatedType, parentContext.CurrentValue.EnumerateItems);
+            var accessor = accessorFactory.GetAccessorFunction(parentValidatedType, memberName);
 
             return new ModelToManifestConversionContext
             {
@@ -95,25 +96,14 @@ namespace CSF.Validation.ManifestModel
             };
         }
 
-        static Type GetValueType(Type type, bool enumerateItems)
-        {
-            if(!enumerateItems) return type;
-
-            return (from @interface in type.GetTypeInfo().ImplementedInterfaces
-                    let interfaceInfo = @interface.GetTypeInfo()
-                    where
-                        interfaceInfo.IsGenericType
-                     && interfaceInfo.GetGenericTypeDefinition() == typeof(IEnumerable<>)
-                    select @interface.GenericTypeArguments.Single())
-                .First();
-        }
-
         /// <summary>
         /// Initialises an instance of <see cref="ModelValueToManifestValueConverter"/>.
         /// </summary>
         /// <param name="accessorFactory">A factory for accessor functions.</param>
-        public ModelValueToManifestValueConverter(IGetsAccessorFunction accessorFactory)
+        /// <param name="validatedTypeProvider">A service that gets the validated type.</param>
+        public ModelValueToManifestValueConverter(IGetsAccessorFunction accessorFactory, IGetsValidatedType validatedTypeProvider)
         {
+            this.validatedTypeProvider = validatedTypeProvider ?? throw new ArgumentNullException(nameof(validatedTypeProvider));
             this.accessorFactory = accessorFactory ?? throw new ArgumentNullException(nameof(accessorFactory));
         }
     }

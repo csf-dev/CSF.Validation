@@ -13,12 +13,6 @@ namespace CSF.Validation.ValidatorBuilding
     public class RuleBuilderContextFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetRootContextShouldReturnANewContext([ManifestModel] ValidatorBuilderContext validationContext, ValidatorBuilderContextFactory sut)
-        {
-            Assert.That(() => sut.GetRootContext(), Is.Not.Null);
-        }
-
-        [Test,AutoMoqData]
         public void GetContextForMemberShouldReturnContextWithMemberName([Frozen] IStaticallyReflects reflect,
                                                                          [ManifestModel] ValidatorBuilderContext validationContext,
                                                                          ValidatorBuilderContextFactory sut,

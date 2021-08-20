@@ -251,20 +251,19 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="valueBuilderFactory">A factory for validator builders.</param>
         /// <param name="validatorManifestFactory">A factory for validator manifests.</param>
         /// <param name="context">
-        /// An optional conttext for this validator builder to use; if this is
-        /// <see langword="null"/> then a new/empty context will be created.
+        /// A validator builder context for this validator builder to use.
         /// </param>
         public ValidatorBuilder(IGetsValidatorBuilderContext ruleContextFactory,
                                 IGetsRuleBuilder ruleBuilderFactory,
                                 IGetsValueAccessorBuilder valueBuilderFactory,
                                 IGetsValidatorManifest validatorManifestFactory,
-                                ValidatorBuilderContext context = default)
+                                ValidatorBuilderContext context)
         {
             this.ruleContextFactory = ruleContextFactory ?? throw new ArgumentNullException(nameof(ruleContextFactory));
             this.ruleBuilderFactory = ruleBuilderFactory ?? throw new ArgumentNullException(nameof(ruleBuilderFactory));
             this.valueBuilderFactory = valueBuilderFactory ?? throw new ArgumentNullException(nameof(valueBuilderFactory));
             this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));
-            this.context = context ?? ruleContextFactory.GetRootContext();
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
     }
 }

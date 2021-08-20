@@ -10,6 +10,13 @@ namespace CSF.Validation.Manifest
     {
         ICollection<ManifestValue> children = new List<ManifestValue>();
         ICollection<ManifestRule> rules = new List<ManifestRule>();
+        
+        /// <summary>
+        /// Gets or sets the type of the object which shall be validated in this value.
+        /// Where <see cref="EnumerateItems"/> is <see langword="true"/>, this property should
+        /// contain the type of the collection items, not the collection itself.
+        /// </summary>
+        public Type ValidatedType { get; set; }
 
         /// <summary>
         /// Gets or sets an optional parent manifest value.

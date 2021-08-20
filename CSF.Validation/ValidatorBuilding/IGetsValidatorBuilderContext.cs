@@ -10,12 +10,6 @@ namespace CSF.Validation.ValidatorBuilding
     public interface IGetsValidatorBuilderContext
     {
         /// <summary>
-        /// Gets the root validator builder context.
-        /// </summary>
-        /// <returns>A validator builder context.</returns>
-        ValidatorBuilderContext GetRootContext();
-
-        /// <summary>
         /// Gets the rule builder context for validating values of a specified member of a validated object.
         /// </summary>
         /// <typeparam name="TValidated">The type of the primary object under validation.</typeparam>

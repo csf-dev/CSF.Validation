@@ -19,6 +19,7 @@ namespace CSF.Validation
             return serviceCollection
                 .AddExternalDependencyServices()
                 .AddValidatorBuildingServices()
+                .AddManifestServices()
                 .AddManifestModelServices()
                 ;
         }

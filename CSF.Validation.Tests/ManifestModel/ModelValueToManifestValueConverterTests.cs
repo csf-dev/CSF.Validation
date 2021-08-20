@@ -14,6 +14,7 @@ namespace CSF.Validation.ManifestModel
     {
         [Test,AutoMoqData]
         public void ConvertAllValuesShouldSuccessfullyConvertASingleRootModelValue([Frozen] IGetsAccessorFunction accessorFactory,
+                                                                                   [Frozen] IGetsValidatedType validatedTypeProvider,
                                                                                    ModelValueToManifestValueConverter sut,
                                                                                    [ManifestModel] ModelToManifestConversionContext context,
                                                                                    AccessorFunctionAndType accessor)
@@ -21,6 +22,9 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(accessorFactory)
                 .Setup(x => x.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName))
                 .Returns(accessor);
+            Mock.Get(validatedTypeProvider)
+                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
+                .Returns((Type t, bool b) => t);
 
             var result = sut.ConvertAllValues(context);
 
@@ -40,6 +44,7 @@ namespace CSF.Validation.ManifestModel
 
         [Test,AutoMoqData]
         public void ConvertAllValuesShouldSuccessfullyConvertAMultiLevelValueHierarchy([Frozen] IGetsAccessorFunction accessorFactory,
+                                                                                       [Frozen] IGetsValidatedType validatedTypeProvider,
                                                                                        ModelValueToManifestValueConverter sut,
                                                                                        [ManifestModel] ModelToManifestConversionContext context,
                                                                                        [ManifestModel] Value child1,
@@ -51,6 +56,9 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(accessorFactory)
                 .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
                 .Returns(accessor);
+            Mock.Get(validatedTypeProvider)
+                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
+                .Returns((Type t, bool b) => t);
             context.CurrentValue.Children.Add("Foo", child1);
             context.CurrentValue.Children.Add("Bar", child2);
             child1.Children.Add("Foo", grandchild1);
@@ -67,6 +75,7 @@ namespace CSF.Validation.ManifestModel
 
         [Test,AutoMoqData]
         public void ConvertAllValuesShouldCreateChildAccessorFromEnumeratedTypeWhereAppropriate([Frozen] IGetsAccessorFunction accessorFactory,
+                                                                                                [Frozen] IGetsValidatedType validatedTypeProvider,
                                                                                                 ModelValueToManifestValueConverter sut,
                                                                                                 [ManifestModel] ModelToManifestConversionContext context,
                                                                                                 [ManifestModel] Value collectionChild,
@@ -75,6 +84,12 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(accessorFactory)
                 .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
                 .Returns(accessor);
+            Mock.Get(validatedTypeProvider)
+                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
+                .Returns((Type t, bool b) => t);
+            Mock.Get(validatedTypeProvider)
+                .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
+                .Returns(typeof(ComplexObject));
             context.CurrentValue.Children.Add("Foo", collectionChild);
             context.CurrentValue.EnumerateItems = true;
             context.ValidatedType = typeof(List<ComplexObject>);
@@ -86,6 +101,7 @@ namespace CSF.Validation.ManifestModel
 
         [Test,AutoMoqData]
         public void ConvertAllValuesShouldCreateIdentityAccessorFromEnumeratedTypeWhereAppropriate([Frozen] IGetsAccessorFunction accessorFactory,
+                                                                                                   [Frozen] IGetsValidatedType validatedTypeProvider,
                                                                                                    ModelValueToManifestValueConverter sut,
                                                                                                    [ManifestModel] ModelToManifestConversionContext context,
                                                                                                    AccessorFunctionAndType accessor)
@@ -93,6 +109,12 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(accessorFactory)
                 .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
                 .Returns(accessor);
+            Mock.Get(validatedTypeProvider)
+                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
+                .Returns((Type t, bool b) => t);
+            Mock.Get(validatedTypeProvider)
+                .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
+                .Returns(typeof(ComplexObject));
             context.CurrentValue.EnumerateItems = true;
             context.CurrentValue.IdentityMemberName = "Foo";
             context.ValidatedType = typeof(List<ComplexObject>);
