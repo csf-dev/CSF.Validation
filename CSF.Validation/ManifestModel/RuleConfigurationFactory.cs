@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSF.Validation.ManifestModel
 {
@@ -9,6 +10,8 @@ namespace CSF.Validation.ManifestModel
     /// </summary>
     public class RuleConfigurationFactory : IGetsRuleConfiguration
     {
+        readonly IGetsPropertySetterAction setterFactory;
+
         /// <summary>
         /// Gets the configuration action which sets the specified property values upon a rule instance.
         /// </summary>
@@ -22,7 +25,27 @@ namespace CSF.Validation.ManifestModel
         /// </exception>
         public Action<object> GetRuleConfigurationAction(Type ruleType, IDictionary<string, object> rulePropertyValues)
         {
-            throw new NotImplementedException();
+            var setters = rulePropertyValues
+                .Select(nameAndValue => new { Setter = setterFactory.GetSetterAction(ruleType, nameAndValue.Key), nameAndValue.Value })
+                .ToList();
+
+            return obj =>
+            {
+                if (obj is null)
+                    throw new ArgumentNullException(nameof(obj));
+                
+                foreach (var setter in setters)
+                    setter.Setter(obj, setter.Value);
+            };
+        }
+
+        /// <summary>
+        /// Initialises an instance of <see cref="RuleConfigurationFactory"/>.
+        /// </summary>
+        /// <param name="setterFactory"></param>
+        public RuleConfigurationFactory(IGetsPropertySetterAction setterFactory)
+        {
+            this.setterFactory = setterFactory ?? throw new ArgumentNullException(nameof(setterFactory));
         }
     }
 }

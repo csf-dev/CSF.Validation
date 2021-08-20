@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.Tests", "CSF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation", "CSF.Validation\CSF.Validation.csproj", "{07CA0DD4-6E82-47BF-81BC-27BBFE67952E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.Tests.SamplePlugin", "CSF.Validation.Tests.SamplePlugin\CSF.Validation.Tests.SamplePlugin.csproj", "{E304568E-C502-45E1-BF98-BDA7E7FD8EC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{07CA0DD4-6E82-47BF-81BC-27BBFE67952E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07CA0DD4-6E82-47BF-81BC-27BBFE67952E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07CA0DD4-6E82-47BF-81BC-27BBFE67952E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E304568E-C502-45E1-BF98-BDA7E7FD8EC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E304568E-C502-45E1-BF98-BDA7E7FD8EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E304568E-C502-45E1-BF98-BDA7E7FD8EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E304568E-C502-45E1-BF98-BDA7E7FD8EC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

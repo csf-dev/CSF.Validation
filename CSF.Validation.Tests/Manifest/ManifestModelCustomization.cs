@@ -29,7 +29,7 @@ namespace CSF.Validation.Manifest
                     .FromFactory((ManifestValue val, ManifestRuleIdentifier id) => new ManifestRule(val, id))
                     .Without(x => x.DependencyRules);
             });
-            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules));
+            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules).With(x => x.EnumerateItems, false));
             fixture.Customize<Rule>(c => c.Without(x => x.Dependencies));
         }
     }

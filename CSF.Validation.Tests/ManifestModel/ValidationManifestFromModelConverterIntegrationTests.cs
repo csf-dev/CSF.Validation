@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ManifestModel
 {
-    [TestFixture,Parallelizable,Ignore("Not ready to run yet")]
+    [TestFixture,Parallelizable]
     public class ValidationManifestFromModelConverterIntegrationTests
     {
         [Test,AutoMoqData]
@@ -53,10 +53,10 @@ namespace CSF.Validation.ManifestModel
         }
 
         [Test,AutoMoqData]
-        public void GetValidationManifestShouldHaveTwoChildValuesForTheAssociatedValue([IntegrationTesting] IServiceProvider services)
+        public void GetValidationManifestShouldHaveOneChildValueForTheAssociatedValue([IntegrationTesting] IServiceProvider services)
         {
             var result = GetValidationManifest(services);
-            Assert.That(result.RootValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).Children, Has.Count.EqualTo(2));
+            Assert.That(result.RootValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).Children, Has.Count.EqualTo(1));
         }
 
         [Test,AutoMoqData]
@@ -79,18 +79,18 @@ namespace CSF.Validation.ManifestModel
             {
                 IdentityMemberName = nameof(ComplexObject.Identity),
                 Rules =  {
-                    new Rule { RuleTypeName = nameof(ObjectRule), }
+                    new Rule { RuleTypeName = typeof(ObjectRule).AssemblyQualifiedName, }
                 },
                 Children = {
                     { nameof(ComplexObject.Associated), new Value {
                         IdentityMemberName = nameof(ComplexObject.Identity),
                         Rules =  {
-                            new Rule { RuleTypeName = nameof(ObjectRule), }
+                            new Rule { RuleTypeName = typeof(ObjectRule).AssemblyQualifiedName, }
                         },
                         Children = {
                             { nameof(ComplexObject.StringProperty), new Value {
                                 Rules = {
-                                    new Rule { RuleTypeName = nameof(StringValueRule) },
+                                    new Rule { RuleTypeName = typeof(StringValueRule).AssemblyQualifiedName },
                                 }
                             } },
                         },
@@ -99,20 +99,20 @@ namespace CSF.Validation.ManifestModel
                         IdentityMemberName = nameof(ComplexObject.Identity),
                         EnumerateItems = true,
                         Rules =  {
-                            new Rule { RuleTypeName = nameof(ObjectRule), }
+                            new Rule { RuleTypeName = typeof(ObjectRule).AssemblyQualifiedName, }
                         },
                         Children = {
                             { nameof(ComplexObject.StringProperty), new Value {
                                 Rules = {
-                                    new Rule { RuleTypeName = nameof(StringValueRule) },
+                                    new Rule { RuleTypeName = typeof(StringValueRule).AssemblyQualifiedName },
                                 }
                             } },
                         },
                     } },
                     { nameof(ComplexObject.StringProperty), new Value {
                         Rules = {
-                            new Rule { RuleTypeName = nameof(StringValueRule) },
-                            new Rule { RuleTypeName = nameof(ObjectRule) },
+                            new Rule { RuleTypeName = typeof(StringValueRule).AssemblyQualifiedName },
+                            new Rule { RuleTypeName = typeof(ObjectRule).AssemblyQualifiedName },
                         }
                     } },
                 },

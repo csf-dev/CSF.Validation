@@ -13,7 +13,8 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IConvertsModelRulesToManifestRules,ModelRuleToManifestRuleConverter>()
                 .AddTransient<IGetsRuleConfiguration,RuleConfigurationFactory>()
                 .AddTransient<IResolvesRuleType,RuleTypeResolver>()
-                .AddTransient<IGetsAccessorFunction,ReflectionAccessorFunctionFactory>()
+                .AddTransient<IGetsAccessorFunction,ReflectionDelegateFactory>()
+                .AddTransient<IGetsPropertySetterAction,ReflectionDelegateFactory>()
                 ;
         }
     }

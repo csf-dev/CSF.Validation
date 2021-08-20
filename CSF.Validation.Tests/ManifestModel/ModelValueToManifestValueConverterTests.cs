@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
+using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;
 
@@ -61,6 +63,43 @@ namespace CSF.Validation.ManifestModel
                 Assert.That(result.ConvertedValues, Has.Count.EqualTo(5), "Count of converted values");
                 Assert.That(result.RootValue, Has.Property(nameof(ManifestValue.Parent)).SameAs(context.ParentManifestValue), "Correct parent for root value");
             });
+        }
+
+        [Test,AutoMoqData]
+        public void ConvertAllValuesShouldCreateChildAccessorFromEnumeratedTypeWhereAppropriate([Frozen] IGetsAccessorFunction accessorFactory,
+                                                                                                ModelValueToManifestValueConverter sut,
+                                                                                                [ManifestModel] ModelToManifestConversionContext context,
+                                                                                                [ManifestModel] Value collectionChild,
+                                                                                                AccessorFunctionAndType accessor)
+        {
+            Mock.Get(accessorFactory)
+                .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
+                .Returns(accessor);
+            context.CurrentValue.Children.Add("Foo", collectionChild);
+            context.CurrentValue.EnumerateItems = true;
+            context.ValidatedType = typeof(List<ComplexObject>);
+
+            var result = sut.ConvertAllValues(context);
+
+            Mock.Get(accessorFactory).Verify(x => x.GetAccessorFunction(typeof(ComplexObject), "Foo"), Times.Once);
+        }
+
+        [Test,AutoMoqData]
+        public void ConvertAllValuesShouldCreateIdentityAccessorFromEnumeratedTypeWhereAppropriate([Frozen] IGetsAccessorFunction accessorFactory,
+                                                                                                   ModelValueToManifestValueConverter sut,
+                                                                                                   [ManifestModel] ModelToManifestConversionContext context,
+                                                                                                   AccessorFunctionAndType accessor)
+        {
+            Mock.Get(accessorFactory)
+                .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
+                .Returns(accessor);
+            context.CurrentValue.EnumerateItems = true;
+            context.CurrentValue.IdentityMemberName = "Foo";
+            context.ValidatedType = typeof(List<ComplexObject>);
+
+            var result = sut.ConvertAllValues(context);
+
+            Mock.Get(accessorFactory).Verify(x => x.GetAccessorFunction(typeof(ComplexObject), "Foo"), Times.Once);
         }
     }
 }

@@ -161,4 +161,12 @@
     <value>The method {0}.{1} must not have any parameters (including generic type arguments).</value>
     <comment/>
   </data>
+  <data name="MissingProperty" xml:space="preserve">
+    <value>The type {0} does not have an accessible property named "{1}".</value>
+    <comment/>
+  </data>
+  <data name="PropertyMustBeWritable" xml:space="preserve">
+    <value>The property {0}.{1} must be writable.</value>
+    <comment/>
+  </data>
 </root>

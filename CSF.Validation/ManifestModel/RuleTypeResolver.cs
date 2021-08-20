@@ -12,9 +12,6 @@ namespace CSF.Validation.ManifestModel
         /// </summary>
         /// <param name="ruleTypeName">A rule-type name</param>
         /// <returns>A type, or <see langword="null"/> if the name could not be resolved.</returns>
-        public Type GetRuleType(string ruleTypeName)
-        {
-            throw new NotImplementedException();
-        }
+        public Type GetRuleType(string ruleTypeName) => Type.GetType(ruleTypeName);
     }
 }

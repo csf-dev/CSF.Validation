@@ -9,6 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
+    <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\\CSF.Validation.Tests.SamplePlugin.csproj"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +28,13 @@
     <PackageReference Include="NunitXml.TestLogger" Version="3.0.107" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.0.0" />
   </ItemGroup>
+
+  <Target Name="CopyPluginAssembly" AfterTargets="Build">
+    <ItemGroup>
+      <SamplePluginAssembly Include="..\CSF.Validation.Tests.SamplePlugin\bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Tests.SamplePlugin.dll" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SamplePluginAssembly)" DestinationFolder="$(OutputPath)" />
+  </Target>
 
 </Project>

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ManifestModel
@@ -63,8 +65,11 @@ namespace CSF.Validation.ManifestModel
                 EnumerateItems = context.CurrentValue.EnumerateItems,
             };
 
-            if(!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
-                manifestValue.IdentityAccessor = accessorFactory.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
+            if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
+            {
+                var valueType = GetValueType(context.ValidatedType, context.CurrentValue.EnumerateItems);
+                manifestValue.IdentityAccessor = accessorFactory.GetAccessorFunction(valueType, context.CurrentValue.IdentityMemberName).AccessorFunction;
+            }
 
             if(context.ParentManifestValue != null)
                 context.ParentManifestValue.Children.Add(manifestValue);
@@ -77,7 +82,8 @@ namespace CSF.Validation.ManifestModel
                                                          ModelToManifestConversionContext parentContext,
                                                          ManifestValue parentValue)
         {
-            var accessor = accessorFactory.GetAccessorFunction(parentContext.ValidatedType, memberName);
+                var valueType = GetValueType(parentContext.ValidatedType, parentContext.CurrentValue.EnumerateItems);
+            var accessor = accessorFactory.GetAccessorFunction(valueType, memberName);
 
             return new ModelToManifestConversionContext
             {
@@ -87,6 +93,19 @@ namespace CSF.Validation.ManifestModel
                 ParentManifestValue = parentValue,
                 ValidatedType = accessor.ExpectedType,
             };
+        }
+
+        static Type GetValueType(Type type, bool enumerateItems)
+        {
+            if(!enumerateItems) return type;
+
+            return (from @interface in type.GetTypeInfo().ImplementedInterfaces
+                    let interfaceInfo = @interface.GetTypeInfo()
+                    where
+                        interfaceInfo.IsGenericType
+                     && interfaceInfo.GetGenericTypeDefinition() == typeof(IEnumerable<>)
+                    select @interface.GenericTypeArguments.Single())
+                .First();
         }
 
         /// <summary>
