@@ -37,6 +37,6 @@ namespace CSF.Validation.Rules
         /// <param name="context">Contextual information about the validation</param>
         /// <param name="token">An object which may be used to cancel the process</param>
         /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        Task<RuleResult> GetResultAsync(TValue value, TValidated validated, ValueRuleContext context, CancellationToken token = default);
+        Task<RuleResult> GetResultAsync(TValue value, TValidated validated, RuleContext context, CancellationToken token = default);
     }
 }

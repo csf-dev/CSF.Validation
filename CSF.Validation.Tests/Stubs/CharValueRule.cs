@@ -7,7 +7,7 @@ namespace CSF.Validation.Stubs
 {
     public class CharValueRule : IValueRule<char, ValidatedObject>
     {
-        public Task<RuleResult> GetResultAsync(char value, ValidatedObject validated, ValueRuleContext context, CancellationToken token = default)
+        public Task<RuleResult> GetResultAsync(char value, ValidatedObject validated, RuleContext context, CancellationToken token = default)
             => throw new NotImplementedException();
     }
 }

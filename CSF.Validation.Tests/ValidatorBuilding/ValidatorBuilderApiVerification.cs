@@ -74,7 +74,7 @@ namespace CSF.Validation
 
         public class StringValueRule : IValueRule<string, object>
         {
-            public Task<RuleResult> GetResultAsync(string value, object validated, ValueRuleContext context, CancellationToken token = default)
+            public Task<RuleResult> GetResultAsync(string value, object validated, RuleContext context, CancellationToken token = default)
                 => PassAsync();
         }
 
@@ -97,7 +97,7 @@ namespace CSF.Validation
 
         public class IntegerValueRule : IValueRule<int, object>
         {
-            public Task<RuleResult> GetResultAsync(int value, object validated, ValueRuleContext context, CancellationToken token = default)
+            public Task<RuleResult> GetResultAsync(int value, object validated, RuleContext context, CancellationToken token = default)
                 => PassAsync();
         }
 

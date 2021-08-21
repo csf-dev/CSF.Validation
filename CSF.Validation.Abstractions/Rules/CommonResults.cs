@@ -97,11 +97,11 @@ namespace CSF.Validation.Rules
         /// exception before returning the error result or when the "error" does not involve an uncaught exception.
         /// </para>
         /// </remarks>
-        /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
+        /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static RuleResult Error(Dictionary<string, object> data, Exception exception = null)
-            => Error((IDictionary<string, object>) data, exception);
+        public static RuleResult Error(Exception exception, Dictionary<string, object> data)
+            => Error(exception, (IDictionary<string, object>) data);
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for validation which has encountered an unexpected error.
@@ -119,10 +119,10 @@ namespace CSF.Validation.Rules
         /// exception before returning the error result or when the "error" does not involve an uncaught exception.
         /// </para>
         /// </remarks>
-        /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
+        /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static RuleResult Error(IDictionary<string, object> data = null, Exception exception = null)
+        public static RuleResult Error(Exception exception = null, IDictionary<string, object> data = null)
             => new RuleResult(RuleOutcome.Errored, data, exception);
 
         /// <summary>
@@ -146,8 +146,8 @@ namespace CSF.Validation.Rules
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ErrorAsync(Dictionary<string, object> data, Exception exception = null)
-            => Task.FromResult(Error(data, exception));
+        public static Task<RuleResult> ErrorAsync(Exception exception, Dictionary<string, object> data)
+            => Task.FromResult(Error(exception, data));
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for validation which has encountered an unexpected error,
@@ -170,8 +170,8 @@ namespace CSF.Validation.Rules
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ErrorAsync(IDictionary<string, object> data = null, Exception exception = null)
-            => Task.FromResult(Error(data, exception));
+        public static Task<RuleResult> ErrorAsync(Exception exception = null, IDictionary<string, object> data = null)
+            => Task.FromResult(Error(exception, data));
 
         #endregion
     }
