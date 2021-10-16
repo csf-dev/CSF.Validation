@@ -17,6 +17,7 @@ namespace CSF.Validation.ValidatorBuilding
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
         readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
+        bool ignoreAccessorExceptions;
 
         /// <summary>
         /// Adds a "value validation rule" to validate the value &amp; the validated object instance.
@@ -71,6 +72,32 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <summary>
+        /// Configures the validator to ignore any exceptions encountered whilst getting the value from this accessor.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This option is irrelevant if <see cref="ValidationOptions.IgnoreValueAccessExceptions"/> is set to <see langword="true"/>,
+        /// because that option ignores all value-access exceptions globally.
+        /// </para>
+        /// <para>
+        /// If the global validation options are not configured to globally-ignore value access exceptions then this option may be
+        /// used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
+        /// hiding of logic errors within the accessor.
+        /// </para>
+        /// <para>
+        /// See the information about the global setting for more information about what it means to ignore exceptions for
+        /// value accessors.
+        /// </para>
+        /// </remarks>
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
+        public IConfiguresValueAccessor<TValidated, TValue> IgnoreExceptions()
+        {
+            ignoreAccessorExceptions = true;
+            return this;
+        }
+
+        /// <summary>
         /// Gets a manifest value from the current instance.
         /// </summary>
         /// <returns>A manifest value.</returns>
@@ -83,6 +110,9 @@ namespace CSF.Validation.ValidatorBuilding
                 if(manifestValue == context.ManifestValue) continue;
                 context.ManifestValue.Children.Add(manifestValue);
             }
+
+            if(ignoreAccessorExceptions)
+                context.ManifestValue.IgnoreAccessorExceptions = true;
 
             return context.ManifestValue;
         }

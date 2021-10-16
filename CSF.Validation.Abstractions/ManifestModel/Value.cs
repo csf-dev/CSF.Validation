@@ -44,5 +44,27 @@ namespace CSF.Validation.ManifestModel
         /// This should be set to <see langword="false"/> if not.
         /// </summary>
         public bool EnumerateItems { get; set; }
+
+        /// <summary>
+        /// Indicates that the validator should ignore any exceptions encountered whilst getting the value from
+        /// the member accessor for this value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This option is irrelevant if <see cref="ValidationOptions.IgnoreValueAccessExceptions"/> is set to <see langword="true"/>,
+        /// because that option ignores all value-access exceptions globally.
+        /// </para>
+        /// <para>
+        /// If the global validation options are not configured to globally-ignore value access exceptions then this option may be
+        /// used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
+        /// hiding of logic errors within the accessor.
+        /// </para>
+        /// <para>
+        /// See the information about the global setting for more information about what it means to ignore exceptions for
+        /// value accessors.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
+        public bool IgnoreAccessorExceptions { get; set; }
     }
 }

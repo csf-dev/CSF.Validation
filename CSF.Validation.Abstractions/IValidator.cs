@@ -20,7 +20,7 @@ namespace CSF.Validation
         /// If the <paramref name="validatedObject"/> is of an inappropriate type to be validated by the validator.
         /// </exception>
         /// <exception cref="ValidationException">
-        /// If the validation process fails or errors and the <see cref="ValidationOptions.ThrowingBehaviour"/>
+        /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
         Task<ValidationResult> ValidateAsync(object validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
@@ -40,7 +40,7 @@ namespace CSF.Validation
         /// <param name="cancellationToken">An optional object which enables premature cancellation of the validation process.</param>
         /// <returns>A task containing the result of the validation process.</returns>
         /// <exception cref="ValidationException">
-        /// If the validation process fails or errors and the <see cref="ValidationOptions.ThrowingBehaviour"/>
+        /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
         Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);

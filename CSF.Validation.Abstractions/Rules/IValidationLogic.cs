@@ -5,9 +5,20 @@ namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A generalised/non-generic interface for executing validation logic and getting the results.
-    /// Implementors of this interface will generally be adapters/wrappers for interfaces such as
-    /// <see cref="IRule{TValidated}"/> or <see cref="IValueRule{TValue, TValidated}"/>.
+    /// It is not expected that developers would want to implement this interface for their own rules.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Instead of implementing this interface in order to create custom rules, developers should instead
+    /// implement one of <see cref="IRule{TValidated}"/> or <see cref="IValueRule{TValue, TValidated}"/> in their
+    /// own logic.
+    /// </para>
+    /// <para>
+    /// The validation framework comes with implementations of this interface which serve as adapters/wrappers
+    /// for those two interfaces noted above, allowing this interface to be used as a generalised mechanism for
+    /// executing rule logic, regardless of the precise interface to which that logic were originally written.
+    /// </para>
+    /// </remarks>
     public interface IValidationLogic
     {
         /// <summary>

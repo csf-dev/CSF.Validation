@@ -19,7 +19,7 @@ namespace CSF.Validation
         /// <param name="cancellationToken">An optional object which enables premature cancellation of the validation process.</param>
         /// <returns>A task containing the result of the validation process.</returns>
         /// <exception cref="ValidationException">
-        /// If the validation process fails or errors and the <see cref="ValidationOptions.ThrowingBehaviour"/>
+        /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
         public Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
