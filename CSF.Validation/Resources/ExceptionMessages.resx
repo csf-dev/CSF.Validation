@@ -169,4 +169,8 @@
     <value>The property {0}.{1} must be writable.</value>
     <comment/>
   </data>
+  <data name="UnexpectedExceptionConfiguringRule" xml:space="preserve">
+    <value>There was an unexpected exception whilst configuring {0}.</value>
+    <comment/>
+  </data>
 </root>

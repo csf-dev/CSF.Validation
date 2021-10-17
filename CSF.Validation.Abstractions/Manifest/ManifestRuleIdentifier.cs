@@ -53,6 +53,13 @@ namespace CSF.Validation.Manifest
         }
 
         /// <summary>
+        /// Gets a human-readable string representation of the current instance.
+        /// </summary>
+        /// <returns>A string that describes the current rule identifier.</returns>
+        public override string ToString()
+            => $"[{nameof(ManifestRuleIdentifier)}: {nameof(RuleType)}={RuleType.FullName}, {nameof(RuleName)}={RuleName}, Validated type={ManifestValue.ValidatedType}]";
+
+        /// <summary>
         /// Initializes a new instance of <see cref="RuleIdentifier"/>.
         /// </summary>
         /// <param name="manifestValue">The manifest value/object which 'contains' this rule.</param>

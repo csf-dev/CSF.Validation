@@ -65,7 +65,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                         ValueAccessorBuilder<ValidatedObject,string> sut,
                                                                         IGetsManifestValue manifest,
                                                                         [ManifestModel] ManifestRule rule,
-                                                                       [ManifestModel] ManifestValue value)
+                                                                        [ManifestModel] ManifestValue value)
         {
             Mock.Get(manifestFactory)
                 .Setup(x => x.GetValidatorManifest(typeof(StringValidator), context))
@@ -75,6 +75,21 @@ namespace CSF.Validation.ValidatorBuilding
             sut.AddRules<StringValidator>();
 
             Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
+        }
+
+        [Test,AutoMoqData]
+        public void IgnoreExceptionsShouldMarkTheManifestValueAsIgnoringAccessorExceptions([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                                           ValueAccessorBuilder<ValidatedObject, string> sut)
+        {
+            sut.IgnoreExceptions();
+            Assert.That(() => sut.GetManifestValue()?.IgnoreAccessorExceptions, Is.True);
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestValueShouldNotMarkTheManifestValueAsIgnoringAccessorExceptionsIfIgnoreExceptionsWasNotCalled([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                                                                            ValueAccessorBuilder<ValidatedObject, string> sut)
+        {
+            Assert.That(() => sut.GetManifestValue()?.IgnoreAccessorExceptions, Is.False);
         }
     }
 }

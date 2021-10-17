@@ -18,17 +18,69 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="ruleDefinition">A manifest rule definition.</param>
         /// <returns>A validation logic instance by which the rule's logic may be executed in a generalised manner.</returns>
+        /// <exception cref="ValidatorBuildingException">If the <see cref="ManifestRule.RuleConfiguration"/> action is not null and throws an exception.</exception>
         public IValidationLogic GetValidationLogic(ManifestRule ruleDefinition)
         {
             if (ruleDefinition is null)
                 throw new ArgumentNullException(nameof(ruleDefinition));
 
-            var ruleInterface = GetBestRuleInterface(ruleDefinition);
+            var ruleLogic = GetRuleLogic(ruleDefinition);
+            return WrapRuleLogicWithAdapter(ruleDefinition, ruleLogic);
+        }
+
+        /// <summary>
+        /// Gets the underlying rule logic.
+        /// This is returned as <see cref="object"/> because we cannot be sure as to which rule interface is being used.
+        /// </summary>
+        /// <param name="ruleDefinition">The rule definition</param>
+        /// <returns>The rule logic</returns>
+        /// <seealso cref="IValueRule{TValue, TValidated}"/>
+        /// <seealso cref="IRule{TValidated}"/>
+        /// <exception cref="ValidatorBuildingException">If the <see cref="ManifestRule.RuleConfiguration"/> action is not null and throws an exception.</exception>
+        object GetRuleLogic(ManifestRule ruleDefinition)
+        {
             var rule = ruleResolver.ResolveRule(ruleDefinition.Identifier.RuleType);
+            ConfigureRule(rule, ruleDefinition);
+            return rule;
+        }
+
+        /// <summary>
+        /// Where <see cref="ManifestRule.RuleConfiguration"/> is not null, this method applies that configuration
+        /// to the <paramref name="rule"/> instance.
+        /// </summary>
+        /// <param name="rule">The rule object to be configured.</param>
+        /// <param name="ruleDefinition">The rule definition.</param>
+        /// <exception cref="ValidatorBuildingException">If the configuration action throws an exception.</exception>
+        static void ConfigureRule(object rule, ManifestRule ruleDefinition)
+        {
+            if(ruleDefinition.RuleConfiguration is null) return;
+
+            try
+            {
+                ruleDefinition.RuleConfiguration(rule);
+            }
+            catch(Exception e)
+            {
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("UnexpectedExceptionConfiguringRule"), ruleDefinition.Identifier);
+                throw new ValidatorBuildingException(message, e);
+            }
+        }
+
+        /// <summary>
+        /// Wraps the <paramref name="ruleLogic"/> object with an adapter that allows it to be used via
+        /// the interface <see cref="IValidationLogic"/>.
+        /// </summary>
+        /// <param name="ruleDefinition">The manifest rule definition.</param>
+        /// <param name="ruleLogic">The rule logic object.</param>
+        /// <returns>The rule logic object wrapped with an adapter allowing it to be executed via the interface <see cref="IValidationLogic"/>.</returns>
+        static IValidationLogic WrapRuleLogicWithAdapter(ManifestRule ruleDefinition, object ruleLogic)
+        {
+            var ruleInterface = GetBestRuleInterface(ruleDefinition);
 
             var ruleAdapter = ruleInterface.GetGenericTypeDefinition() == typeof(IRule<>)
-                ? GetRuleAdapter(ruleInterface.GenericTypeArguments[0], rule)
-                : GetValueRuleAdapter(ruleInterface.GenericTypeArguments[0], ruleInterface.GenericTypeArguments[1], rule);
+                ? GetRuleAdapter(ruleInterface.GenericTypeArguments[0], ruleLogic)
+                : GetValueRuleAdapter(ruleInterface.GenericTypeArguments[0], ruleInterface.GenericTypeArguments[1], ruleLogic);
+            
             ruleAdapter = WrapWithExceptionHandlingDecorator(ruleAdapter);
 
             return ruleAdapter;
@@ -49,6 +101,32 @@ namespace CSF.Validation.Rules
         static IValidationLogic WrapWithExceptionHandlingDecorator(IValidationLogic logic)
             => new ExceptionHandlingRuleLogicDecorator(logic);
 
+        /// <summary>
+        /// Selects the rule-logic interface with the best/closest match to the rule type and the way in which it is
+        /// to be used by the validator.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// If the validation rule has a parent validated type - the <seealso cref="ManifestValue.Parent"/> property
+        /// of the <see cref="ManifestRule.ManifestValue"/> is not <see langword="null"/> - and the rule type implements
+        /// <see cref="IValueRule{TValue, TValidated}"/> of the appropriate generic types the type of the value rule
+        /// interface will be returned.
+        /// </para>
+        /// <para>
+        /// A second attempt will be made if the rule has no parent validated type, or if it does not implement the <see cref="IValueRule{TValue, TValidated}"/>
+        /// interface with appropriare generic types.  If it implements <see cref="IRule{TValidated}"/> with the
+        /// appropriate generic type then the type of that interface will be returned.
+        /// </para>
+        /// <para>
+        /// If neither mechanism above succeeds in getting a rule interface then an exception will be raised.
+        /// </para>
+        /// </remarks>
+        /// <param name="ruleDefinition">The rule definition.</param>
+        /// <returns>The interface-type which most closely matches the rule and its usage.</returns>
+        /// <seealso cref="IValueRule{TValue, TValidated}"/>
+        /// <seealso cref="IRule{TValidated}"/>
+        /// <exception cref="ValidatorBuildingException">If the rule class does not implement either <see cref="IValueRule{TValue, TValidated}"/>
+        /// or <see cref="IRule{TValidated}"/> with appropriate generic types.</exception>
         static Type GetBestRuleInterface(ManifestRule ruleDefinition)
         {
             var ruleType = ruleDefinition.Identifier.RuleType;

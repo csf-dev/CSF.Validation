@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoFixture.NUnit3;
@@ -13,7 +14,10 @@ namespace CSF.Validation.Rules
     public class ValidationLogicFactoryTests
     {
         [Test,AutoMoqData]
-        public async Task GetValidationLogicShouldReturnWorkingLogicForNormalRule([Frozen] IResolvesRule ruleResolver, ValidationLogicFactory sut, string str, RuleIdentifier id)
+        public async Task GetValidationLogicShouldReturnWorkingLogicForNormalRule([Frozen] IResolvesRule ruleResolver,
+                                                                                  ValidationLogicFactory sut,
+                                                                                  string str,
+                                                                                  RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
@@ -28,7 +32,10 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public async Task GetValidationLogicShouldReturnWorkingLogicForValueRule([Frozen] IResolvesRule ruleResolver, ValidationLogicFactory sut, string str, RuleIdentifier id)
+        public async Task GetValidationLogicShouldReturnWorkingLogicForValueRule([Frozen] IResolvesRule ruleResolver,
+                                                                                 ValidationLogicFactory sut,
+                                                                                 string str,
+                                                                                 RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string), Parent = new ManifestValue { ValidatedType = typeof(ComplexObject) } };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
@@ -43,7 +50,10 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public async Task GetValidationLogicShouldReturnUsableLogicForRuleWithNoParent([Frozen] IResolvesRule ruleResolver, ValidationLogicFactory sut, string str, RuleIdentifier id)
+        public async Task GetValidationLogicShouldReturnRuleThatUsesCorrectInterfaceWhenOriginalLogicWasAmbiguousBetweenRuleAndValueRule([Frozen] IResolvesRule ruleResolver,
+                                                                                                                                         ValidationLogicFactory sut,
+                                                                                                                                         string str,
+                                                                                                                                         RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
@@ -57,9 +67,46 @@ namespace CSF.Validation.Rules
             Assert.That(ruleBody.ExecutedAsRule, Is.True);
         }
 
+        [Test,AutoMoqData]
+        public void GetValidationLogicShouldConfigureRuleWithConfigurationAction([Frozen] IResolvesRule ruleResolver,
+                                                                                 ValidationLogicFactory sut,
+                                                                                 string str,
+                                                                                 RuleIdentifier id,
+                                                                                 string configValue)
+        {
+            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
+            rule.RuleConfiguration = obj => ((StringRule)obj).ConfigurableValue = configValue;
+            value.Rules.Add(rule);
+            var ruleBody = new StringRule();
+            Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
+
+            var result = sut.GetValidationLogic(rule);
+
+            Assert.That(ruleBody.ConfigurableValue, Is.EqualTo(configValue));
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfTheRuleConfigurationActionThrowsAnException([Frozen] IResolvesRule ruleResolver,
+                                                                                                                         ValidationLogicFactory sut,
+                                                                                                                         string str,
+                                                                                                                         RuleIdentifier id)
+        {
+            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
+            rule.RuleConfiguration = obj => throw new Exception();
+            value.Rules.Add(rule);
+            var ruleBody = new StringRule();
+            Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
+
+            Assert.That(() => sut.GetValidationLogic(rule), Throws.InstanceOf<ValidatorBuildingException>());
+        }
+
         public class StringRule : IRule<string>
         {
             public bool Executed { get; private set; }
+
+            public string ConfigurableValue { get; set; }
 
             public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
             {
