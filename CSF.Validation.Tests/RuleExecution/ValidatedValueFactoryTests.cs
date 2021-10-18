@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
+using CSF.Validation.Rules;
 using CSF.Validation.Stubs;
+using Moq;
 using NUnit.Framework;
 
 namespace CSF.Validation.RuleExecution
@@ -258,6 +260,35 @@ namespace CSF.Validation.RuleExecution
             var result = sut.GetValidatedValue(manifestValue, null);
 
             Assert.That(result.ChildValues, Is.Empty);
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatedValueShouldReturnValueWithAnExecutableRuleForEachManifestRule([Frozen] IGetsValidationLogic logicFactory,
+                                                                                              ValidatedValueFactory sut,
+                                                                                              object validatedValue,
+                                                                                              IValidationLogic logic1,
+                                                                                              IValidationLogic logic2,
+                                                                                              IValidationLogic logic3,
+                                                                                              [ManifestModel] ManifestRuleIdentifier id1,
+                                                                                              [ManifestModel] ManifestRuleIdentifier id2,
+                                                                                              [ManifestModel] ManifestRuleIdentifier id3)
+        {
+            var manifestValue = new ManifestValue
+            {
+                ValidatedType = typeof(object),
+            };
+
+            var rule1 = new ManifestRule(manifestValue, id1);
+            var rule2 = new ManifestRule(manifestValue, id2);
+            var rule3 = new ManifestRule(manifestValue, id3);
+            manifestValue.Rules = new[] { rule1, rule2, rule3 };
+            Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule1)).Returns(logic1);
+            Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule2)).Returns(logic2);
+            Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule3)).Returns(logic3);
+
+            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+
+            Assert.That(result.Rules?.Select(x => x.RuleLogic), Is.EqualTo(new[] { logic1, logic2, logic3 }));
         }
     }
 }
