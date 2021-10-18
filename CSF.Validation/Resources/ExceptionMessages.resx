@@ -173,4 +173,12 @@
     <value>There was an unexpected exception whilst configuring {0}.</value>
     <comment/>
   </data>
+  <data name="ObjectMustBeEnumerable" xml:space="preserve">
+    <value>The value must implement {0} in order to enumerate items, but {1} is not.</value>
+    <comment/>
+  </data>
+  <data name="ErrorAccessingValue" xml:space="preserve">
+    <value>An unexpected error occurred when accessing a value from an instance of {0}.  Please refer to the inner exception for further details.</value>
+    <comment/>
+  </data>
 </root>
