@@ -47,25 +47,7 @@ namespace CSF.Validation.RuleExecution
                 var currentValue = GetValidatedValue(currentBasis);
                 if(rootValidatedValue is null) rootValidatedValue = currentValue;
 
-                foreach(var childManifestValue in currentBasis.ManifestValue.Children)
-                {
-                    if(!TryGetActualValue(childManifestValue, currentBasis.ActualValue, out var childActualValue))
-                        continue;
-
-                    if(childManifestValue.EnumerateItems)
-                    {
-                        if(childActualValue is null) continue;
-                        var enumerableChildValue = GetEnumerable(childActualValue);
-
-                        long itemOrder = 0;
-                        foreach(var item in enumerableChildValue)
-                            openList.Enqueue(new ValidatedValueBasis(childManifestValue, item, currentValue, itemOrder++));
-                    }
-                    else
-                    {
-                        openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
-                    }
-                }
+                FindAndAddChildrenToOpenList(currentBasis, currentValue, openList);
             }
 
             return rootValidatedValue;
@@ -102,6 +84,29 @@ namespace CSF.Validation.RuleExecution
                 .ToList();
 
             return value;
+        }
+
+        void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis, ValidatedValue currentValue, Queue<ValidatedValueBasis> openList)
+        {
+            foreach(var childManifestValue in currentBasis.ManifestValue.Children)
+            {
+                if(!TryGetActualValue(childManifestValue, currentBasis.ActualValue, out var childActualValue))
+                    continue;
+
+                if(childManifestValue.EnumerateItems)
+                {
+                    if(childActualValue is null) continue;
+                    var enumerableChildValue = GetEnumerable(childActualValue);
+
+                    long itemOrder = 0;
+                    foreach(var item in enumerableChildValue)
+                        openList.Enqueue(new ValidatedValueBasis(childManifestValue, item, currentValue, itemOrder++));
+                }
+                else
+                {
+                    openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
+                }
+            }
         }
 
         bool TryGetActualValue(ManifestValue manifestValue, object parentValue, out object actualValue)
@@ -146,7 +151,7 @@ namespace CSF.Validation.RuleExecution
         /// A small model used just within this class.  It holds the information required in order to get
         /// a <see cref="ValidatedValue"/> at a point in the future.
         /// </summary>
-        private class ValidatedValueBasis
+        private sealed class ValidatedValueBasis
         {
             internal ManifestValue ManifestValue { get; }
             internal object ActualValue { get; }
