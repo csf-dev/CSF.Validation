@@ -11,29 +11,21 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets the value to be validated by the current rule.
         /// </summary>
-        public ValidatedValue ValidatedValue { get; }
+        public ValidatedValue ValidatedValue { get; set; }
 
         /// <summary>
         /// Gets the manifest rule which the current instance corresponds to.
         /// </summary>
-        public ManifestRule ManifestRule { get; }
+        public ManifestRule ManifestRule { get; set; }
 
         /// <summary>
         /// Gets the executable rule logic.
         /// </summary>
-        public IValidationLogic RuleLogic { get; }
+        public IValidationLogic RuleLogic { get; set; }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="ExecutableRule"/>.
+        /// Gets or sets the rule's result.
         /// </summary>
-        /// <param name="validatedValue">The validated value.</param>
-        /// <param name="manifestRule">The corresponding manifest rule.</param>
-        /// <param name="ruleLogic">The executable rule logic.</param>
-        public ExecutableRule(ValidatedValue validatedValue, ManifestRule manifestRule, IValidationLogic ruleLogic)
-        {
-            this.ValidatedValue = validatedValue ?? throw new System.ArgumentNullException(nameof(validatedValue));
-            this.ManifestRule = manifestRule ?? throw new System.ArgumentNullException(nameof(manifestRule));
-            this.RuleLogic = ruleLogic ?? throw new System.ArgumentNullException(nameof(ruleLogic));
-        }
+        public RuleResult Result { get; set; }
     }
 }

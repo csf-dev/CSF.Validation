@@ -10,10 +10,10 @@ namespace CSF.Validation.RuleExecution
     public class ValidatedValue
     {
         /// <summary>
-        /// Gets the manifest value to which the current instance relates.
+        /// Gets or sets the manifest value to which the current instance relates.
         /// </summary>
-        public ManifestValue ManifestValue { get; }
-        
+        public ManifestValue ManifestValue { get; set;  }
+
         /// <summary>
         /// Gets or sets the actual value to be validated.
         /// </summary>
@@ -37,7 +37,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets a collection of the rules which should be executed upon the current value.
         /// </summary>
-        public IList<ExecutableRule> Rules { get; set; }
+        public IList<ExecutableRule> Rules { get; set; } = new List<ExecutableRule>();
 
         /// <summary>
         /// Gets or sets a numeric item order, indicating the order in which this value was retrieved from a collection.
@@ -55,15 +55,5 @@ namespace CSF.Validation.RuleExecution
         /// </para>
         /// </remarks>
         public long CollectionItemOrder { get; set; }
-
-        /// <summary>
-        /// Initialises an instance of <see cref="ValidatedValue"/>.
-        /// </summary>
-        /// <param name="manifestValue">The manifest value to which this value relates.</param>
-        /// <exception cref="System.ArgumentNullException">If the <paramref name="manifestValue"/> is <see langword="null"/>.</exception>
-        public ValidatedValue(ManifestValue manifestValue)
-        {
-            ManifestValue = manifestValue ?? throw new System.ArgumentNullException(nameof(manifestValue));
-        }
     }
 }

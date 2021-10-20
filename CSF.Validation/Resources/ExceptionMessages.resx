@@ -181,4 +181,12 @@
     <value>An unexpected error occurred when accessing a value from an instance of {0}.  Please refer to the inner exception for further details.</value>
     <comment/>
   </data>
+  <data name="CannotGetMatchingValueForDependency" xml:space="preserve">
+    <value>Rule {0} depends upon rule {1}.  The dependency rule must be available upon either the same manifest value, an ancestor value or a direct sibling of the same or any ancestor value.</value>
+    <comment/>
+  </data>
+  <data name="DependencyRuleNotOnMatchingValue" xml:space="preserve">
+    <value>Rule {0} depends upon rule {1}.  A matching validated value for this dependency was found but the dependency rule was not found upon that value.  Dependency rules must be available upon the matching validated value.</value>
+    <comment/>
+  </data>
 </root>

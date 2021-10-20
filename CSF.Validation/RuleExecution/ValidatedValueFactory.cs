@@ -36,8 +36,7 @@ namespace CSF.Validation.RuleExecution
             if (manifestValue is null)
                 throw new ArgumentNullException(nameof(manifestValue));
 
-            var openList = new Queue<ValidatedValueBasis>();
-            openList.Enqueue(new ValidatedValueBasis(manifestValue, objectToBeValidated, null));
+            var openList = new Queue<ValidatedValueBasis>(new [] { new ValidatedValueBasis(manifestValue, objectToBeValidated, null) });
             ValidatedValue rootValidatedValue = null;
 
             while(openList.Any())
@@ -66,8 +65,9 @@ namespace CSF.Validation.RuleExecution
 
         ValidatedValue GetValidatedValue(ValidatedValueBasis basis)
         {
-            var value = new ValidatedValue(basis.ManifestValue)
+            var value = new ValidatedValue
             {
+                ManifestValue = basis.ManifestValue,
                 ActualValue = basis.ActualValue,
                 ValueIdentity = basis.ManifestValue.IdentityAccessor is null
                                     ? null
@@ -80,7 +80,12 @@ namespace CSF.Validation.RuleExecution
                 basis.Parent.ChildValues.Add(value);
 
             value.Rules = basis.ManifestValue.Rules
-                .Select(manifestRule => new ExecutableRule(value, manifestRule, validationLogicFactory.GetValidationLogic(manifestRule)))
+                .Select(manifestRule => new ExecutableRule
+                        {
+                            ValidatedValue = value,
+                            ManifestRule = manifestRule,
+                            RuleLogic = validationLogicFactory.GetValidationLogic(manifestRule)
+                        })
                 .ToList();
 
             return value;
