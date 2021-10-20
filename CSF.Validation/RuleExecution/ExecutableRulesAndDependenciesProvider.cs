@@ -42,8 +42,7 @@ namespace CSF.Validation.RuleExecution
         static ExecutableRule GetDependency(ManifestRuleIdentifier dependencyIdentifier, ExecutableRule rule)
         {
             var matchingValidatedValue = GetCandidateValidatedValueMatches(dependencyIdentifier, rule)
-                .Where(x => !(x is null))
-                .FirstOrDefault();
+                .FirstOrDefault(x => !(x is null));
 
             if(matchingValidatedValue is null)
             {
@@ -78,13 +77,8 @@ namespace CSF.Validation.RuleExecution
             if(Equals(validatedValue.ManifestValue, dependencyIdentifier.ManifestValue))
                 return validatedValue;
 
-            foreach(var childValue in validatedValue.ChildValues)
-            {
-                if(Equals(childValue.ManifestValue, dependencyIdentifier.ManifestValue))
-                    return childValue;
-            }
-
-            return null;
+            return validatedValue.ChildValues
+                .FirstOrDefault(child => Equals(child.ManifestValue, dependencyIdentifier.ManifestValue));
         }
 
         /// <summary>

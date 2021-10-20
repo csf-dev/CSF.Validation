@@ -34,7 +34,7 @@ namespace CSF.Validation.RuleExecution
         /// </remarks>
         /// <param name="validatedValue">The root validated value for which to get all rules.</param>
         /// <returns>A flattened collection of executable rules from the manifest value.</returns>
-        IEnumerable<ExecutableRule> GetFlattenedExecutableRules(ValidatedValue validatedValue)
+        static IEnumerable<ExecutableRule> GetFlattenedExecutableRules(ValidatedValue validatedValue)
         {
             var openList = new Queue<ValidatedValue>(new [] { validatedValue });
 
