@@ -10,8 +10,8 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets a collection of any circular dependencies which are detected.
         /// </summary>
-        /// <param name="rulesAndDependencies"></param>
-        /// <returns></returns>
+        /// <param name="rulesAndDependencies">A collection of the all of the rules and dependencies</param>
+        /// <returns>A collection of circular dependency models, indicating the circular dependencies detected.</returns>
         IEnumerable<CircularDependency> GetCircularDependencies(IEnumerable<ExecutableRuleAndDependencies> rulesAndDependencies);
     }
 }
