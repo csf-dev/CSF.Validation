@@ -189,4 +189,8 @@
     <value>Rule {0} depends upon rule {1}.  A matching validated value for this dependency was found but the dependency rule was not found upon that value.  Dependency rules must be available upon the matching validated value.</value>
     <comment/>
   </data>
+  <data name="CircularDependenciesNotAllowedInRules" xml:space="preserve">
+    <value>Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first {0}.</value>
+    <comment/>
+  </data>
 </root>
