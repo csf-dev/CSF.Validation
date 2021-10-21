@@ -31,6 +31,11 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         public RuleResult Result { get; set; }
 
+        string RuleTypeName => ManifestRule?.Identifier?.RuleType.FullName;
+        string RuleName => ManifestRule?.Identifier?.RuleName;
+        string ValidatedType => ValidatedValue?.ActualValue?.GetType().FullName ?? "null";
+        string ValidatedIdentity => ValidatedValue?.ValueIdentity?.ToString();
+
         /// <summary>
         /// Gets a string which represents the current executable rule.
         /// </summary>
@@ -39,10 +44,10 @@ namespace CSF.Validation.RuleExecution
         {
             var properties = new Dictionary<string, string>
                 {
-                    { "Type", ManifestRule?.Identifier?.RuleType.FullName },
-                    { "Name", ManifestRule?.Identifier?.RuleName },
-                    { "Validated type", ValidatedValue?.ActualValue?.GetType().FullName ?? "null" },
-                    { "Validated identity", ValidatedValue?.ValueIdentity?.ToString() ?? null },
+                    { "Type", RuleTypeName },
+                    { "Name", RuleName },
+                    { "Validated type", ValidatedType },
+                    { "Validated identity", ValidatedIdentity },
                 }
                 .Where(x => x.Value != null)
                 .ToDictionary(x => x.Key, x => x.Value);
