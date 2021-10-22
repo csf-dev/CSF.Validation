@@ -13,7 +13,8 @@ namespace CSF.Validation
         /// <param name="builderType">The type of a class which implements <see cref="IBuildsValidator{TValidated}"/> for the desired validated type.</param>
         /// <returns>A validator implementation.</returns>
         /// <exception cref="ArgumentNullException">If the <paramref name="builderType"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ArgumentException">If the <paramref name="builderType"/> is not a concrete (non-abstract) class derived from <see cref="IBuildsValidator{TValidated}"/>.</exception>
+        /// <exception cref="ArgumentException">If the <paramref name="builderType"/> is not a concrete (non-abstract) class
+        /// derived from <see cref="IBuildsValidator{TValidated}"/> or if it implements that interface more than once for different generic types.</exception>
         IValidator GetValidator(Type builderType);
 
         /// <summary>

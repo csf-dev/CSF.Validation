@@ -193,4 +193,16 @@
     <value>Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first {0}.</value>
     <comment/>
   </data>
+  <data name="BuilderTypeDoesNotImplementBuilderInterface" xml:space="preserve">
+    <value>The type {0} must implement {1} to be used as a validator-builder with this method.</value>
+    <comment/>
+  </data>
+  <data name="BuilderTypeImplementsTooManyBuilderInterfaces" xml:space="preserve">
+    <value>The type {0} must implements {1} only once to be used as a validator-builder with this method.</value>
+    <comment/>
+  </data>
+  <data name="BuilderTypeMustBeResolvable" xml:space="preserve">
+    <value>The builder type {0} must not be abstract and must be resolvable either via dependency injection or it must have a public parameterless constructor.</value>
+    <comment/>
+  </data>
 </root>

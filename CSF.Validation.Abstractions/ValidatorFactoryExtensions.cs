@@ -54,6 +54,25 @@ namespace CSF.Validation
             return (IValidator<TValidated>) factory.GetValidator(manifest);
         }
 
+        /// <summary>
+        /// Gets a validator instance for a specified generic type, using a specified manifest model.
+        /// The model must describe a validator which is able to validate the object type <typeparamref name="TValidated"/>.
+        /// </summary>
+        /// <typeparam name="TValidated">The type of object to validate.</typeparam>
+        /// <param name="factory">The validator factory.</param>
+        /// <param name="manifestModel">The validation manifest model.</param>
+        /// <returns>A strongly-typed validator implementation.</returns>
+        /// <exception cref="ArgumentNullException">If either <paramref name="factory"/> or <paramref name="manifestModel"/> are <see langword="null"/>.</exception>
+        public static IValidator<TValidated> GetValidator<TValidated>(this IGetsValidator factory, ManifestModel.Value manifestModel)
+        {
+            if (factory is null)
+                throw new ArgumentNullException(nameof(factory));
+            if (manifestModel is null)
+                throw new ArgumentNullException(nameof(manifestModel));
+
+            return (IValidator<TValidated>) factory.GetValidator(manifestModel, typeof(TValidated));
+        }
+
         static string GetBuilderType<T>() => $"{nameof(IBuildsValidator<object>)}<{typeof(T).Name}>";
 
         static bool IsCorrectBuilderType<T>(Type builderType)

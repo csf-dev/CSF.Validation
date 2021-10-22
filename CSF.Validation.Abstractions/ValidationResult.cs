@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSF.Validation
 {
@@ -11,5 +13,18 @@ namespace CSF.Validation
         /// Gets a collection of the results of individual validation rules.
         /// </summary>
         public IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
+
+        /// <summary>
+        /// Initialises a new instance of <see cref="ValidationResult"/>.
+        /// </summary>
+        /// <param name="ruleResults">The rule results.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="ruleResults"/> is <see langword="null" />.</exception>
+        public ValidationResult(IEnumerable<ValidationRuleResult> ruleResults)
+        {
+            if (ruleResults is null)
+                throw new ArgumentNullException(nameof(ruleResults));
+
+            RuleResults = ruleResults.ToList();
+        }
     }
 }

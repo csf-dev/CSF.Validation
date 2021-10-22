@@ -29,7 +29,7 @@ namespace CSF.Validation
     /// <summary>
     /// An object which may be used to validate instances of a specified object type and get a validation result. 
     /// </summary>
-    /// <typeparam name="TValidated"></typeparam>
+    /// <typeparam name="TValidated">The type of object which will be validated.</typeparam>
     public interface IValidator<TValidated>
     {
         /// <summary>
