@@ -60,8 +60,9 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldThrowArgExIfTheBuilderTypeCannotBeConstructed(ValidatorFactory sut)
+        public void GetValidatorFromBuilderTypeShouldThrowArgExIfTheBuilderTypeCannotBeConstructed([Frozen] IServiceProvider resolver, ValidatorFactory sut)
         {
+            Mock.Get(resolver).Setup(x => x.GetService(typeof(InvalidTypeValidator))).Returns(() => null);
             Assert.That(() => sut.GetValidator(typeof(InvalidTypeValidator)), Throws.ArgumentException);
         }
 
@@ -114,7 +115,7 @@ namespace CSF.Validation
             Mock.Get(manifestFromModelProvider).Setup(x => x.GetValidationManifest(manifestModel, validatedType)).Returns(manifest);
             Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
 
-            Assert.That(() => sut.GetValidator(manifest), Is.SameAs(expectedValidator));
+            Assert.That(() => sut.GetValidator(manifestModel, validatedType), Is.SameAs(expectedValidator));
         }
 
         class MultiTypeValidator : IBuildsValidator<string>, IBuildsValidator<int>
