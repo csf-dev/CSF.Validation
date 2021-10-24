@@ -31,34 +31,15 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         public RuleResult Result { get; set; }
 
-        string RuleTypeName => ManifestRule?.Identifier?.RuleType.FullName;
-        string RuleName => ManifestRule?.Identifier?.RuleName;
-        string ValidatedType => ValidatedValue?.ActualValue?.GetType().FullName ?? "null";
-        string ValidatedIdentity => ValidatedValue?.ValueIdentity?.ToString();
+        /// <summary>
+        /// Gets or sets the identifier for this particular rule.
+        /// </summary>
+        public RuleIdentifier RuleIdentifier { get; set; }
 
         /// <summary>
         /// Gets a string which represents the current executable rule.
         /// </summary>
         /// <returns>A human-readable string.</returns>
-        public override string ToString()
-        {
-            var properties = new Dictionary<string, string>
-                {
-                    { "Type", RuleTypeName },
-                    { "Name", RuleName },
-                    { "Validated type", ValidatedType },
-                    { "Validated identity", ValidatedIdentity },
-                }
-                .Where(x => x.Value != null)
-                .ToDictionary(x => x.Key, x => x.Value);
-
-            var longestKey = GetLongestKey(properties);
-            return String.Join(Environment.NewLine, properties.Select(prop => String.Concat(FormatKey(prop.Key, longestKey), prop.Value)));
-        }
-
-        static string FormatKey(string key, int width) => key.PadRight(width) + " = ";
-
-        static int GetLongestKey(Dictionary<string, string> properties)
-            => (from prop in properties orderby prop.Key.Length descending select prop.Key).First().Length;
+        public override string ToString() => RuleIdentifier?.ToString() ?? "Unidentified executable rule";
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
+using CSF.Validation.Rules;
 using Moq;
 using NUnit.Framework;
 
@@ -42,7 +43,7 @@ Name               = Foo
 Validated type     = System.Int32
 Validated identity = Identity 1
 ->  Type           = System.DateTime
-    Validated type = System.Int32
+    Validated type = System.Int64
     ->  Type               = System.String
         Name               = Foo
         Validated type     = System.Int32
@@ -53,7 +54,7 @@ Name               = Bar
 Validated type     = System.Int32
 Validated identity = Identity 2
 ->  Type           = System.Object
-    Validated type = System.Int32
+    Validated type = System.Int64
     ->  Type               = System.String
         Name               = Bar
         Validated type     = System.Int32
@@ -78,31 +79,11 @@ Validated identity = Identity 2
                     DependencyChain = new List<ExecutableRule>
                     {
                         new ExecutableRule
-                        {
-                            ManifestRule = new ManifestRule(manifestValue, new ManifestRuleIdentifier(manifestValue, typeof(string), "Foo")),
-                            ValidatedValue = new ValidatedValue
-                            {
-                                ActualValue = 5,
-                                ValueIdentity = "Identity 1"
-                            }
-                        },
+                        { RuleIdentifier = new RuleIdentifier(typeof(string), typeof(int), "Identity 1", ruleName: "Foo"), },
                         new ExecutableRule
-                        {
-                            ManifestRule = new ManifestRule(manifestValue, new ManifestRuleIdentifier(manifestValue, typeof(DateTime))),
-                            ValidatedValue = new ValidatedValue
-                            {
-                                ActualValue = 8
-                            }
-                        },
+                        { RuleIdentifier = new RuleIdentifier(typeof(DateTime), typeof(long), null), },
                         new ExecutableRule
-                        {
-                            ManifestRule = new ManifestRule(manifestValue, new ManifestRuleIdentifier(manifestValue, typeof(string), "Foo")),
-                            ValidatedValue = new ValidatedValue
-                            {
-                                ActualValue = 5,
-                                ValueIdentity = "Identity 1"
-                            }
-                        },
+                        { RuleIdentifier = new RuleIdentifier(typeof(string), typeof(int), "Identity 1", ruleName: "Foo"), },
                     },
                 },
                 new CircularDependency
@@ -110,31 +91,11 @@ Validated identity = Identity 2
                     DependencyChain = new List<ExecutableRule>
                     {
                         new ExecutableRule
-                        {
-                            ManifestRule = new ManifestRule(manifestValue, new ManifestRuleIdentifier(manifestValue, typeof(string), "Bar")),
-                            ValidatedValue = new ValidatedValue
-                            {
-                                ActualValue = 5,
-                                ValueIdentity = "Identity 2"
-                            }
-                        },
+                        { RuleIdentifier = new RuleIdentifier(typeof(string), typeof(int), "Identity 2", ruleName: "Bar"), },
                         new ExecutableRule
-                        {
-                            ManifestRule = new ManifestRule(manifestValue, new ManifestRuleIdentifier(manifestValue, typeof(object))),
-                            ValidatedValue = new ValidatedValue
-                            {
-                                ActualValue = 8
-                            }
-                        },
+                        { RuleIdentifier = new RuleIdentifier(typeof(object), typeof(long), null), },
                         new ExecutableRule
-                        {
-                            ManifestRule = new ManifestRule(manifestValue, new ManifestRuleIdentifier(manifestValue, typeof(string), "Bar")),
-                            ValidatedValue = new ValidatedValue
-                            {
-                                ActualValue = 5,
-                                ValueIdentity = "Identity 2"
-                            }
-                        },
+                        { RuleIdentifier = new RuleIdentifier(typeof(string), typeof(int), "Identity 2", ruleName: "Bar"), },
                     },
                 },
             };

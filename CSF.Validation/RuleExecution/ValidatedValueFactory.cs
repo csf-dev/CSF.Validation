@@ -65,13 +65,15 @@ namespace CSF.Validation.RuleExecution
 
         ValidatedValue GetValidatedValue(ValidatedValueBasis basis)
         {
+            var valueIdentity = basis.ManifestValue.IdentityAccessor is null
+                ? null
+                : basis.ManifestValue.IdentityAccessor(basis.ActualValue);
+            
             var value = new ValidatedValue
             {
                 ManifestValue = basis.ManifestValue,
                 ActualValue = basis.ActualValue,
-                ValueIdentity = basis.ManifestValue.IdentityAccessor is null
-                                    ? null
-                                    : basis.ManifestValue.IdentityAccessor(basis.ActualValue),
+                ValueIdentity = valueIdentity,
                 ParentValue = basis.Parent,
                 CollectionItemOrder = basis.CollectionOrder,
             };
@@ -84,7 +86,8 @@ namespace CSF.Validation.RuleExecution
                         {
                             ValidatedValue = value,
                             ManifestRule = manifestRule,
-                            RuleLogic = validationLogicFactory.GetValidationLogic(manifestRule)
+                            RuleLogic = validationLogicFactory.GetValidationLogic(manifestRule),
+                            RuleIdentifier = new RuleIdentifier(manifestRule, valueIdentity),
                         })
                 .ToList();
 

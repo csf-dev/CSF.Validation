@@ -14,7 +14,7 @@ namespace CSF.Validation.Rules
                                                                     RuleAdapter<string> sut,
                                                                     string value,
                                                                     object parentValue,
-                                                                    RuleContext context,
+                                                                    [RuleId] RuleContext context,
                                                                     [RuleResult] RuleResult result)
         {
             Mock.Get(wrapped)

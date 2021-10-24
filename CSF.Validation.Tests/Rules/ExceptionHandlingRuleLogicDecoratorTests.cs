@@ -15,7 +15,7 @@ namespace CSF.Validation.Rules
                                                                                     ExceptionHandlingRuleLogicDecorator sut,
                                                                                     object value,
                                                                                     object parentValue,
-                                                                                    RuleContext context,
+                                                                                    [RuleId] RuleContext context,
                                                                                     [RuleResult] RuleResult result)
         {
             Mock.Get(wrapped)
@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
                                                                     ExceptionHandlingRuleLogicDecorator sut,
                                                                     object value,
                                                                     object parentValue,
-                                                                    RuleContext context,
+                                                                    [RuleId] RuleContext context,
                                                                     Exception exception)
         {
             Mock.Get(wrapped)
@@ -44,7 +44,7 @@ namespace CSF.Validation.Rules
                                                                                      ExceptionHandlingRuleLogicDecorator sut,
                                                                                      object value,
                                                                                      object parentValue,
-                                                                                     RuleContext context,
+                                                                                     [RuleId] RuleContext context,
                                                                                      Exception exception)
         {
             Mock.Get(wrapped)

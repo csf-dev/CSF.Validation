@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
+using CSF.Validation.ManifestModel;
 using CSF.Validation.ValidatorBuilding;
 using Moq;
 using NUnit.Framework;
@@ -38,6 +39,18 @@ namespace CSF.Validation
             manifest.ValidatedType = typeof(ValidatedObject);
 
             Assert.That(() => factory.GetValidator<ValidatedObject>(manifest), Is.SameAs(validator));
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatorShouldReturnCorrectGenericValidatorForModel(IGetsValidator factory,
+                                                                               StubValidator validator,
+                                                                               [ManifestModel] Value model)
+        {
+            Mock.Get(factory)
+                .Setup(x => x.GetValidator(model, typeof(ValidatedObject)))
+                .Returns(validator);
+
+            Assert.That(() => factory.GetValidator<ValidatedObject>(model), Is.SameAs(validator));
         }
         
         [Test,AutoMoqData]

@@ -10,6 +10,7 @@ namespace CSF.Validation.RuleExecution
 
             fixture.Customize<ValidatedValue>(c => c.Without(x => x.ParentValue).Without(x => x.Rules));
             fixture.Customize<ExecutableRule>(c => c.Without(x => x.Result));
+            fixture.Customize<ExecutableRuleAndDependencies>(c => c.FromFactory((ExecutableRule rule) => new ExecutableRuleAndDependencies(rule)));
         }
     }
 }

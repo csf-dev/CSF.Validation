@@ -34,13 +34,20 @@ namespace CSF.Validation.Rules
         public string RuleName { get; }
 
         /// <summary>
+        /// Gets the <see cref="Type"/> of value that the rule validates.
+        /// </summary>
+        public Type ValidatedType { get; }
+
+        /// <summary>
         /// Initializes a new instance of <see cref="RuleIdentifierBase"/>.
         /// </summary>
         /// <param name="ruleType">The rule type.</param>
+        /// <param name="validatedType">The type of value that the rule validates.</param>
         /// <param name="ruleName">An optional rule name.</param>
-        protected RuleIdentifierBase(Type ruleType, string ruleName = default)
+        protected RuleIdentifierBase(Type ruleType, Type validatedType, string ruleName = default)
         {
             RuleType = ruleType ?? throw new ArgumentNullException(nameof(ruleType));
+            ValidatedType = validatedType ?? throw new ArgumentNullException(nameof(validatedType));
             RuleName = ruleName;
         }
     }

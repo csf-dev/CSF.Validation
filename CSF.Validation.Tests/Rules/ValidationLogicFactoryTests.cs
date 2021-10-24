@@ -17,7 +17,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnWorkingLogicForNormalRule([Frozen] IResolvesRule ruleResolver,
                                                                                   ValidationLogicFactory sut,
                                                                                   string str,
-                                                                                  RuleIdentifier id)
+                                                                                  [RuleId] RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
@@ -35,7 +35,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnWorkingLogicForValueRule([Frozen] IResolvesRule ruleResolver,
                                                                                  ValidationLogicFactory sut,
                                                                                  string str,
-                                                                                 RuleIdentifier id)
+                                                                                 [RuleId] RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string), Parent = new ManifestValue { ValidatedType = typeof(ComplexObject) } };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
@@ -53,7 +53,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnRuleThatUsesCorrectInterfaceWhenOriginalLogicWasAmbiguousBetweenRuleAndValueRule([Frozen] IResolvesRule ruleResolver,
                                                                                                                                          ValidationLogicFactory sut,
                                                                                                                                          string str,
-                                                                                                                                         RuleIdentifier id)
+                                                                                                                                         [RuleId] RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
@@ -71,7 +71,7 @@ namespace CSF.Validation.Rules
         public void GetValidationLogicShouldConfigureRuleWithConfigurationAction([Frozen] IResolvesRule ruleResolver,
                                                                                  ValidationLogicFactory sut,
                                                                                  string str,
-                                                                                 RuleIdentifier id,
+                                                                                 [RuleId] RuleIdentifier id,
                                                                                  string configValue)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
@@ -90,7 +90,7 @@ namespace CSF.Validation.Rules
         public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfTheRuleConfigurationActionThrowsAnException([Frozen] IResolvesRule ruleResolver,
                                                                                                                          ValidationLogicFactory sut,
                                                                                                                          string str,
-                                                                                                                         RuleIdentifier id)
+                                                                                                                         [RuleId] RuleIdentifier id)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));

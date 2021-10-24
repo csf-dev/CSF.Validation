@@ -15,7 +15,7 @@ namespace CSF.Validation.Rules
                                                                     ValueRuleAdapter<string,ComplexObject> sut,
                                                                     string value,
                                                                     [NoAutoProperties] ComplexObject parentValue,
-                                                                    RuleContext context,
+                                                                    [RuleId] RuleContext context,
                                                                     [RuleResult] RuleResult result)
         {
             Mock.Get(wrapped)
