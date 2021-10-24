@@ -205,4 +205,8 @@
     <value>The builder type {0} must not be abstract and must be resolvable either via dependency injection or it must have a public parameterless constructor.</value>
     <comment/>
   </data>
+  <data name="CannotResolveRule" xml:space="preserve">
+    <value>The rule type {0} could not be resolved.  Instances of rule types must either be resolvable via Dependency Injection or they must have a public parameterless constructor.</value>
+    <comment/>
+  </data>
 </root>

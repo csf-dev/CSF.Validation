@@ -1,5 +1,7 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation.RuleExecution
 {
@@ -8,6 +10,8 @@ namespace CSF.Validation.RuleExecution
     /// </summary>
     public class RuleExecutorFactory : IGetsRuleExecutor
     {
+        readonly IServiceProvider resolver;
+
         /// <summary>
         /// Gets the rule-execution service using an async API.
         /// </summary>
@@ -16,7 +20,24 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A task which contains the rule-execution service implementation.</returns>
         public Task<IExecutesAllRules> GetRuleExecutorAsync(ValidationOptions options, CancellationToken token = default)
         {
-            throw new System.NotImplementedException();
+            IExecutesAllRules result;
+
+            result = new SerialRuleExecutor(resolver.GetService<IGetsRuleDependencyTracker>(),
+                                            resolver.GetService<IGetsSingleRuleExecutor>(),
+                                            options,
+                                            resolver.GetService<IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures>());
+            
+            return Task.FromResult(result);
+        }
+
+        /// <summary>
+        /// Initialises a new instance of <see cref="RuleExecutorFactory"/>.
+        /// </summary>
+        /// <param name="resolver">A service resolver.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="resolver"/> is <see langword="null" />.</exception>
+        public RuleExecutorFactory(IServiceProvider resolver)
+        {
+            this.resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
     }
 }
