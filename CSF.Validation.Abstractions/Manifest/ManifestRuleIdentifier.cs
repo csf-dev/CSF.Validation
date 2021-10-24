@@ -68,7 +68,7 @@ namespace CSF.Validation.Manifest
         /// <exception cref="ArgumentNullException">If <paramref name="ruleType"/> or <paramref name="manifestValue"/> are <see langword="null"/>.</exception>
         public ManifestRuleIdentifier(ManifestValue manifestValue,
                                       Type ruleType,
-                                      string ruleName = default) : base(ruleType, manifestValue.ValidatedType, ruleName)
+                                      string ruleName = default) : base(ruleType, manifestValue?.ValidatedType, ruleName)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
         }

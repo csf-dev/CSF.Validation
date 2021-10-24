@@ -67,7 +67,7 @@ namespace CSF.Validation.RuleExecution
 
             foreach(var rule in availableRules)
             {
-                var result = await ruleExecutor.ExecuteRuleAsync(rule, cancellationToken);
+                var result = await ruleExecutor.ExecuteRuleAsync(rule, cancellationToken).ConfigureAwait(false);
                 rule.Result = result;
                 results.Add(result);
             }
