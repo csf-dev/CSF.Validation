@@ -19,26 +19,6 @@ namespace CSF.Validation.Rules
         public object ObjectIdentity => Identifier.ObjectIdentity;
 
         /// <summary>
-        /// Gets the type of object which the rule is validating, as selected by the validator itself.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This might not be the same as the actual runtime type of the first parameter of
-        /// <see cref="IRule{TValidated}.GetResultAsync(TValidated, RuleContext, System.Threading.CancellationToken)"/>.
-        /// However, that validated object is certain to be a type which is either the same as
-        /// this Validated Type property or a type derived from this Validated Type property.
-        /// </para>
-        /// </remarks>
-        /// <example>
-        /// <para>
-        /// For example, if this ValidatedType property is <c>typeof(Animal)</c> then the actual validated object
-        /// might be an instance of <c>Animal</c> or it might be an instance of a more derived type such as
-        /// <c>Dog</c> or <c>Cat</c>.
-        /// </para>
-        /// </example>
-        public Type ValidatedType { get; }
-
-        /// <summary>
         /// Gets a collection of the ancestor validation contexts.
         /// </summary>
         /// <remarks>
@@ -71,46 +51,15 @@ namespace CSF.Validation.Rules
         public IReadOnlyList<AncestorRuleContext> AncestorContexts { get; }
 
         /// <summary>
-        /// If the value being validated was retrieved from a specified member (for example a property
-        /// or method) of the validated object, then this property gets the name of that member.
-        /// Otherwise it will be <see langword="null"/>.
-        /// </summary>
-        public string MemberName { get; }
-
-        /// <summary>
-        /// If the value being validated was retrieved from a collection of items (from the validated object)
-        /// then this property will be the zero-based collection index of the current item.  Otherwise, this
-        /// property will be <see langword="null"/>.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Please note that the index will represent the order in which the item came from the
-        /// <see cref="System.Collections.Generic.IEnumerable{T}"/>.  In most implementations of enumerable, the index will
-        /// be stable, but note that the interface does not guarantee a stable order.  In other words, enumerating the same
-        /// collection twice is not certain to provide the results in the same order each time.
-        /// </para>
-        /// </remarks>
-        public int? CollectionIndex { get; }
-
-        /// <summary>
         /// Initialises a new instance of <see cref="RuleContext"/>.
         /// </summary>
         /// <param name="identifier">The rule identifier.</param>
-        /// <param name="validatedType">The validated type.</param>
         /// <param name="ancestorContexts">An optional collection of ancestor contexts.</param>
-        /// <param name="memberName">An optional name of the member which provides the current value being validated.</param>
-        /// <param name="collectionIndex">An optional collection index.</param>
         public RuleContext(RuleIdentifier identifier,
-                           Type validatedType,
-                           IReadOnlyList<AncestorRuleContext> ancestorContexts = null,
-                           string memberName = null,
-                           int? collectionIndex = null)
+                           IReadOnlyList<AncestorRuleContext> ancestorContexts = null)
         {
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
-            ValidatedType = validatedType ?? throw new ArgumentNullException(nameof(validatedType));
             AncestorContexts = ancestorContexts ?? new AncestorRuleContext[0];
-            MemberName = memberName;
-            CollectionIndex = collectionIndex;
         }
     }
 }

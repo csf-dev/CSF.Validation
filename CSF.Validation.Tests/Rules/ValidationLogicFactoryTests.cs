@@ -26,7 +26,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id, typeof(string)));
+            await result.GetResultAsync(str, null, new RuleContext(id));
 
             Assert.That(ruleBody.Executed, Is.True);
         }
@@ -44,7 +44,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringValueRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id, typeof(string)));
+            await result.GetResultAsync(str, null, new RuleContext(id));
 
             Assert.That(ruleBody.ExecutedAsValueRule, Is.True);
         }
@@ -62,7 +62,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringValueRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id, typeof(string)));
+            await result.GetResultAsync(str, null, new RuleContext(id));
 
             Assert.That(ruleBody.ExecutedAsRule, Is.True);
         }
