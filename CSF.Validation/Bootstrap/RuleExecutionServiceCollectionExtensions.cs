@@ -14,6 +14,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures, FailedDependencyUpdaterAndResultProvider>()
                 .AddTransient<IGetsRuleExecutor, RuleExecutorFactory>()
                 .AddTransient<IGetsValidatedValue, ValidatedValueFactory>()
+                .AddTransient<IGetsSingleRuleExecutor, SingleRuleExecutorFactory>()
                 ;
 
         }

@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461;netstandard1.0</TargetFrameworks>
-    <RootNamespace>CSF.Validation</RootNamespace>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Abstractions.xml</DocumentationFile>
+    <RootNamespace>CSF.Validation.Rules</RootNamespace>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Rules.xml</DocumentationFile>
     <ReleaseVersion>3.0.0</ReleaseVersion>
-    <PackageId>CSF.Validation.Abstractions</PackageId>
+    <PackageId>CSF.Validation.StandardRules</PackageId>
     <Authors>craigfowler</Authors>
-    <Title>CSF.Validation.Abstractions</Title>
-    <Description>A framework for business rule validation - abstractions package</Description>
+    <Title>CSF.Validation.StandardRules</Title>
+    <Description>A library of stock validation rules for general usage.</Description>
     <Version>$(ReleaseVersion)</Version>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -21,6 +21,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" Condition="'$(TargetFramework)' == 'net461'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
