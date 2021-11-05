@@ -56,8 +56,8 @@ namespace CSF.Validation.Rules
         /// <returns>A task which provides a result object, indicating the result of validation</returns>
         public Task<RuleResult> GetResultAsync(DateTime validated, RuleContext context, CancellationToken token = default)
         {
-            var result = (Start.HasValue ? Start.Value <= validated : true)
-                      && (End.HasValue   ? validated   <= End.Value : true);
+            var result = (!Start.HasValue || Start.Value <= validated)
+                      && (!End.HasValue   || validated   <= End.Value);
             return result ? PassAsync() : FailAsync();
         }
     }

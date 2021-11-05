@@ -46,8 +46,8 @@ namespace CSF.Validation.Rules
         public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            var result = (Min.HasValue ? Min.Value        <= validated.Length : true)
-                      && (Max.HasValue ? validated.Length <= Max.Value        : true);
+            var result = (!Min.HasValue || Min.Value        <= validated.Length)
+                      && (!Max.HasValue || validated.Length <= Max.Value);
             return result ? PassAsync() : FailAsync();
         }
     }
