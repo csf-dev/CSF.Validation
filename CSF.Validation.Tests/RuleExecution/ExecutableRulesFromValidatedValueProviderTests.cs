@@ -24,7 +24,8 @@ namespace CSF.Validation.RuleExecution
                                                                                                               [ExecutableModel] ExecutableRule rule7,
                                                                                                               ExecutableRulesFromValidatedValueProvider sut,
                                                                                                               [ManifestModel] ManifestValue manifestValue,
-                                                                                                              object valueToBeValidated)
+                                                                                                              object valueToBeValidated,
+                                                                                                              ValidationOptions validationOptions)
         {
             rootValue.ChildValues.Add(childVal1);
             rootValue.ChildValues.Add(childVal2);
@@ -37,11 +38,11 @@ namespace CSF.Validation.RuleExecution
             grandchildVal1.Rules.Add(rule5);
             grandchildVal2.Rules.Add(rule6);
             grandchildVal2.Rules.Add(rule7);
-            Mock.Get(validatedValueProvider).Setup(x => x.GetValidatedValue(manifestValue, valueToBeValidated)).Returns(rootValue);
+            Mock.Get(validatedValueProvider).Setup(x => x.GetValidatedValue(manifestValue, valueToBeValidated, validationOptions)).Returns(rootValue);
 
             var expected = new[] { rule1, rule2, rule3, rule4, rule5, rule6, rule7 };
 
-            Assert.That(() => sut.GetExecutableRules(manifestValue, valueToBeValidated), Is.EquivalentTo(expected));
+            Assert.That(() => sut.GetExecutableRules(manifestValue, valueToBeValidated, validationOptions), Is.EquivalentTo(expected));
         }
     }
 }

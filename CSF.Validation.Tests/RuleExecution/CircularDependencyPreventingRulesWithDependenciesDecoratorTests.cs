@@ -17,15 +17,16 @@ namespace CSF.Validation.RuleExecution
                                                                                            [Frozen] IDetectsCircularDependencies circularDependencyDetector,
                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
                                                                                            [ManifestModel] ManifestValue manifestValue,
-                                                                                           object objectToBeValidated)
+                                                                                           object objectToBeValidated,
+                                                                                           ValidationOptions validationOptions)
         {
             Mock.Get(wrapped)
-                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>()))
+                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
                 .Returns(new ExecutableRuleAndDependencies[0]);
             Mock.Get(circularDependencyDetector)
                 .Setup(x => x.GetCircularDependencies(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>()))
                 .Returns(Enumerable.Empty<CircularDependency>());
-            Assert.That(() => sut.GetRulesWithDependencies(manifestValue, objectToBeValidated), Throws.Nothing);
+            Assert.That(() => sut.GetRulesWithDependencies(manifestValue, objectToBeValidated, validationOptions), Throws.Nothing);
         }
 
         [Test,AutoMoqData]
@@ -33,7 +34,8 @@ namespace CSF.Validation.RuleExecution
                                                                                                                            [Frozen] IDetectsCircularDependencies circularDependencyDetector,
                                                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
                                                                                                                            [ManifestModel] ManifestValue manifestValue,
-                                                                                                                           object objectToBeValidated)
+                                                                                                                           object objectToBeValidated,
+                                                                                                                           ValidationOptions validationOptions)
         {
             var circularDependencies = GetSomeCircularDependencies(manifestValue);
             var expectedMessage = @"Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first 10.
@@ -62,13 +64,13 @@ Validated identity = Identity 2
 ";
 
             Mock.Get(wrapped)
-                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>()))
+                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
                 .Returns(new ExecutableRuleAndDependencies[0]);
             Mock.Get(circularDependencyDetector)
                 .Setup(x => x.GetCircularDependencies(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>()))
                 .Returns(circularDependencies);
             
-            Assert.That(() => sut.GetRulesWithDependencies(manifestValue, objectToBeValidated), Throws.InstanceOf<ValidationException>().And.Message.EqualTo(expectedMessage));
+            Assert.That(() => sut.GetRulesWithDependencies(manifestValue, objectToBeValidated, validationOptions), Throws.InstanceOf<ValidationException>().And.Message.EqualTo(expectedMessage));
         }
 
         static IEnumerable<CircularDependency> GetSomeCircularDependencies(ManifestValue manifestValue)

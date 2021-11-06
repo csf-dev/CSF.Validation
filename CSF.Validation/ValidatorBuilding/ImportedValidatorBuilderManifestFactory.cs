@@ -22,13 +22,13 @@ namespace CSF.Validation.ValidatorBuilding
 
         readonly IServiceProvider serviceProvider;
 
-        IGetsValidatorBuilderContext RuleContextFactory => serviceProvider.GetService<IGetsValidatorBuilderContext>();
+        IGetsValidatorBuilderContext RuleContextFactory => serviceProvider.GetRequiredService<IGetsValidatorBuilderContext>();
 
-        IGetsRuleBuilder RuleBuilderFactory => serviceProvider.GetService<IGetsRuleBuilder>();
+        IGetsRuleBuilder RuleBuilderFactory => serviceProvider.GetRequiredService<IGetsRuleBuilder>();
 
-        IGetsValueAccessorBuilder ValueBuilderFactory => serviceProvider.GetService<IGetsValueAccessorBuilder>();
+        IGetsValueAccessorBuilder ValueBuilderFactory => serviceProvider.GetRequiredService<IGetsValueAccessorBuilder>();
 
-        IGetsValidatorManifest ValidatorManifestFactory => serviceProvider.GetService<IGetsValidatorManifest>();
+        IGetsValidatorManifest ValidatorManifestFactory => serviceProvider.GetRequiredService<IGetsValidatorManifest>();
 
         /// <summary>
         /// Gets an object which provides manifest rules from a specified validator-builder type.

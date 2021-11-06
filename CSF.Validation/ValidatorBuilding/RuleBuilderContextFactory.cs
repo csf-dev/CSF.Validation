@@ -37,7 +37,7 @@ namespace CSF.Validation.ValidatorBuilding
                 AccessorFromParent = obj => accessor((TValidated)obj),
                 MemberName = member.Name,
                 EnumerateItems = enumerateItems,
-                ValidatedType = typeof(TValidated),
+                ValidatedType = typeof(TValue),
             };
             validatorContext.ManifestValue.Children.Add(manifestValue);
             return new ValidatorBuilderContext(manifestValue);

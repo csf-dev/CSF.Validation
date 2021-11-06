@@ -13,14 +13,16 @@ namespace CSF.Validation.RuleExecution
     public class ValidatedValueFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnSingleValueForManifestValueWithNoParentOrChildrenOrRules(ValidatedValueFactory sut, object validatedValue)
+        public void GetValidatedValueShouldReturnSingleValueForManifestValueWithNoParentOrChildrenOrRules(ValidatedValueFactory sut,
+                                                                                                          object validatedValue,
+                                                                                                          ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
                 ValidatedType = typeof(object),
             };
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.Multiple(() =>
             {
@@ -34,7 +36,8 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetValidatedValueShouldReturnParentAndChildValuesForObjectWithAChild(ValidatedValueFactory sut,
                                                                                          [NoAutoProperties] ComplexObject validatedValue,
-                                                                                         [NoAutoProperties] ComplexObject childValue)
+                                                                                         [NoAutoProperties] ComplexObject childValue,
+                                                                                         ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -48,7 +51,7 @@ namespace CSF.Validation.RuleExecution
             manifestValue.Children.Add(childManifest);
             validatedValue.Associated = childValue;
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.That(result.ChildValues,
                         Has.One.Matches<ValidatedValue>(v => v.ManifestValue == childManifest
@@ -57,7 +60,7 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldThrowIfAChildAccessorThrowsAndExceptionsAreNotIgnored([Frozen] ValidationOptions options,
+        public void GetValidatedValueShouldThrowIfAChildAccessorThrowsAndExceptionsAreNotIgnored(ValidationOptions options,
                                                                                                  ValidatedValueFactory sut,
                                                                                                  [NoAutoProperties] ComplexObject validatedValue,
                                                                                                  Exception exception)
@@ -75,11 +78,11 @@ namespace CSF.Validation.RuleExecution
             manifestValue.Children.Add(childManifest);
             options.IgnoreValueAccessExceptions = false;
 
-            Assert.That(() => sut.GetValidatedValue(manifestValue, validatedValue), Throws.InstanceOf<ValidationException>().And.InnerException.SameAs(exception));
+            Assert.That(() => sut.GetValidatedValue(manifestValue, validatedValue, options), Throws.InstanceOf<ValidationException>().And.InnerException.SameAs(exception));
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldNotThrowIfAChildAccessorThrowsButExceptionsAreIgnoredGlobally([Frozen] ValidationOptions options,
+        public void GetValidatedValueShouldNotThrowIfAChildAccessorThrowsButExceptionsAreIgnoredGlobally(ValidationOptions options,
                                                                                                          ValidatedValueFactory sut,
                                                                                                          [NoAutoProperties] ComplexObject validatedValue,
                                                                                                          Exception exception)
@@ -100,13 +103,13 @@ namespace CSF.Validation.RuleExecution
             ValidatedValue result = null;
             Assert.Multiple(() =>
             {
-                Assert.That(() => result = sut.GetValidatedValue(manifestValue, validatedValue), Throws.Nothing, "Throws no exception");
+                Assert.That(() => result = sut.GetValidatedValue(manifestValue, validatedValue, options), Throws.Nothing, "Throws no exception");
                 Assert.That(result?.ChildValues.Single().ActualValue, Is.Null, "Actual value has been set to null");
             });
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldNotThrowIfAChildAccessorThrowsButExceptionsAreIgnoredForThisManifestValue([Frozen] ValidationOptions options,
+        public void GetValidatedValueShouldNotThrowIfAChildAccessorThrowsButExceptionsAreIgnoredForThisManifestValue(ValidationOptions options,
                                                                                                                      ValidatedValueFactory sut,
                                                                                                                      [NoAutoProperties] ComplexObject validatedValue,
                                                                                                                      Exception exception)
@@ -128,13 +131,15 @@ namespace CSF.Validation.RuleExecution
             ValidatedValue result = null;
             Assert.Multiple(() =>
             {
-                Assert.That(() => result = sut.GetValidatedValue(manifestValue, validatedValue), Throws.Nothing, "Throws no exception");
+                Assert.That(() => result = sut.GetValidatedValue(manifestValue, validatedValue, options), Throws.Nothing, "Throws no exception");
                 Assert.That(result?.ChildValues.Single().ActualValue, Is.Null, "Actual value has been set to null");
             });
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnValueUsingIdentityIfAnAccessorIsProvided(ValidatedValueFactory sut, [NoAutoProperties] ComplexObject validatedValue)
+        public void GetValidatedValueShouldReturnValueUsingIdentityIfAnAccessorIsProvided(ValidatedValueFactory sut,
+                                                                                          [NoAutoProperties] ComplexObject validatedValue,
+                                                                                          ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -142,20 +147,22 @@ namespace CSF.Validation.RuleExecution
                 IdentityAccessor = obj => ((ComplexObject) obj).Identity,
             };
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.That(result.ValueIdentity, Is.EqualTo(validatedValue.Identity));
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnValueWithNullIdentityIfAccessorIsNotProvided(ValidatedValueFactory sut, [NoAutoProperties] ComplexObject validatedValue)
+        public void GetValidatedValueShouldReturnValueWithNullIdentityIfAccessorIsNotProvided(ValidatedValueFactory sut,
+                                                                                              [NoAutoProperties] ComplexObject validatedValue,
+                                                                                              ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
                 ValidatedType = typeof(ComplexObject),
             };
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.That(result.ValueIdentity, Is.Null);
         }
@@ -165,7 +172,8 @@ namespace CSF.Validation.RuleExecution
                                                                                                      [NoAutoProperties] ComplexObject validatedValue,
                                                                                                      [NoAutoProperties] ComplexObject child1,
                                                                                                      [NoAutoProperties] ComplexObject child2,
-                                                                                                     [NoAutoProperties] ComplexObject child3)
+                                                                                                     [NoAutoProperties] ComplexObject child3,
+                                                                                                     ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -182,7 +190,7 @@ namespace CSF.Validation.RuleExecution
             validatedValue.Children.Add(child2);
             validatedValue.Children.Add(child3);
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.Multiple(() =>
             {
@@ -195,7 +203,8 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetValidatedValueShouldThrowIfEnumerateItemsIsEnabledButValueIsNotEnumerable(ValidatedValueFactory sut,
                                                                                                  [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                 [NoAutoProperties] ComplexObject childValue)
+                                                                                                 [NoAutoProperties] ComplexObject childValue,
+                                                                                                 ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -210,14 +219,15 @@ namespace CSF.Validation.RuleExecution
             manifestValue.Children.Add(childManifest);
             validatedValue.Associated = childValue;
 
-            Assert.That(() => sut.GetValidatedValue(manifestValue, validatedValue), Throws.InstanceOf<ValidationException>());
+            Assert.That(() => sut.GetValidatedValue(manifestValue, validatedValue, validationOptions), Throws.InstanceOf<ValidationException>());
         }
 
         [Test,AutoMoqData]
         public void GetValidatedValueShouldReturnParentThroughGrandchildForObjectWithAGrandchild(ValidatedValueFactory sut,
                                                                                                  [NoAutoProperties] ComplexObject validatedValue,
                                                                                                  [NoAutoProperties] ComplexObject childValue,
-                                                                                                 [NoAutoProperties] ComplexObject grandchildValue)
+                                                                                                 [NoAutoProperties] ComplexObject grandchildValue,
+                                                                                                 ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -238,13 +248,14 @@ namespace CSF.Validation.RuleExecution
             validatedValue.Associated = childValue;
             childValue.Associated = grandchildValue;
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.That(result.ChildValues.Single().ChildValues.Single().ActualValue, Is.SameAs(grandchildValue));
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldNotIncludeAChildObjectIfTheParentIsNull(ValidatedValueFactory sut)
+        public void GetValidatedValueShouldNotIncludeAChildObjectIfTheParentIsNull(ValidatedValueFactory sut,
+                                                                                   ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -257,7 +268,7 @@ namespace CSF.Validation.RuleExecution
             };
             manifestValue.Children.Add(childManifest);
 
-            var result = sut.GetValidatedValue(manifestValue, null);
+            var result = sut.GetValidatedValue(manifestValue, null, validationOptions);
 
             Assert.That(result.ChildValues, Is.Empty);
         }
@@ -271,7 +282,8 @@ namespace CSF.Validation.RuleExecution
                                                                                               IValidationLogic logic3,
                                                                                               [ManifestModel] ManifestRuleIdentifier id1,
                                                                                               [ManifestModel] ManifestRuleIdentifier id2,
-                                                                                              [ManifestModel] ManifestRuleIdentifier id3)
+                                                                                              [ManifestModel] ManifestRuleIdentifier id3,
+                                                                                              ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -286,7 +298,7 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule2)).Returns(logic2);
             Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule3)).Returns(logic3);
 
-            var result = sut.GetValidatedValue(manifestValue, validatedValue);
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
             Assert.That(result.Rules?.Select(x => x.RuleLogic), Is.EqualTo(new[] { logic1, logic2, logic3 }));
         }

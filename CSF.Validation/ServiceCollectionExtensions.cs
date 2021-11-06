@@ -23,6 +23,7 @@ namespace CSF.Validation
                 .AddRuleExecutionServices()
                 .AddRulesServices()
                 .AddValidatorBuildingServices()
+                .AddValidatorFactory()
                 ;
         }
 

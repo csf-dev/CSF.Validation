@@ -15,6 +15,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsRuleExecutor, RuleExecutorFactory>()
                 .AddTransient<IGetsValidatedValue, ValidatedValueFactory>()
                 .AddTransient<IGetsSingleRuleExecutor, SingleRuleExecutorFactory>()
+                .AddTransient<IGetsAllExecutableRules, ExecutableRulesFromValidatedValueProvider>()
                 ;
 
         }
@@ -23,8 +24,8 @@ namespace CSF.Validation.Bootstrap
         {
             IGetsAllExecutableRulesWithDependencies output;
 
-            output = new ExecutableRulesAndDependenciesProvider(resolver.GetService<IGetsAllExecutableRules>());
-            output = new CircularDependencyPreventingRulesWithDependenciesDecorator(output, resolver.GetService<IDetectsCircularDependencies>());
+            output = new ExecutableRulesAndDependenciesProvider(resolver.GetRequiredService<IGetsAllExecutableRules>());
+            output = new CircularDependencyPreventingRulesWithDependenciesDecorator(output, resolver.GetRequiredService<IDetectsCircularDependencies>());
 
             return output;
         }

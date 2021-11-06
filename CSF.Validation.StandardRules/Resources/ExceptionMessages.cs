@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Resources;
 
-namespace CSF.Validation.Rules.Resources
+namespace CSF.Validation.Resources
 {
     /// <summary>
     /// A singleton service class which gets human-readable exception messages for the current assembly.

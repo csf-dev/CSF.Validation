@@ -209,4 +209,16 @@
     <value>The rule type {0} could not be resolved.  Instances of rule types must either be resolvable via Dependency Injection or they must have a public parameterless constructor.</value>
     <comment/>
   </data>
+  <data name="RuleTypeMustImplementAppropriateRuleOrValueRuleInterface" xml:space="preserve">
+    <value>The rule type {0} must implement either {3}&lt;{1}&gt; or {4}&lt;{1}, {2}&gt;.</value>
+    <comment/>
+  </data>
+  <data name="RuleTypeMustImplementAppropriateRuleInterface" xml:space="preserve">
+    <value>The rule type {0} must implement {3}&lt;{1}&gt;.</value>
+    <comment/>
+  </data>
+  <data name="EnumerateItemsIsTrueButValueIsNotEnumerable" xml:space="preserve">
+    <value>For value accessors where {0} is true, the value {1} must implement {2}&lt;T&gt;.</value>
+    <comment/>
+  </data>
 </root>

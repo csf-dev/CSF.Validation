@@ -21,20 +21,23 @@ namespace CSF.Validation.RuleExecution
     public class ValidatedValueFactory : IGetsValidatedValue
     {
         readonly IGetsValidationLogic validationLogicFactory;
-        readonly ValidationOptions validationOptions;
 
         /// <summary>
         /// Gets the validated value from the specified manifest value and object to be validated.
         /// </summary>
         /// <param name="manifestValue">The manifest value.</param>
         /// <param name="objectToBeValidated">The object to be validated.</param>
+        /// <param name="options">The validation options.</param>
         /// <returns>A validated value, including a hierarchy of descendent values and
         /// the rules which may be executed upon those values.</returns>
         public ValidatedValue GetValidatedValue(ManifestValue manifestValue,
-                                                object objectToBeValidated)
+                                                object objectToBeValidated,
+                                                ValidationOptions options)
         {
             if (manifestValue is null)
                 throw new ArgumentNullException(nameof(manifestValue));
+            if (options is null)
+                throw new ArgumentNullException(nameof(options));
 
             var openList = new Queue<ValidatedValueBasis>(new [] { new ValidatedValueBasis(manifestValue, objectToBeValidated, null) });
             ValidatedValue rootValidatedValue = null;
@@ -46,7 +49,7 @@ namespace CSF.Validation.RuleExecution
                 var currentValue = GetValidatedValue(currentBasis);
                 if(rootValidatedValue is null) rootValidatedValue = currentValue;
 
-                FindAndAddChildrenToOpenList(currentBasis, currentValue, openList);
+                FindAndAddChildrenToOpenList(currentBasis, currentValue, openList, options);
             }
 
             return rootValidatedValue;
@@ -94,11 +97,14 @@ namespace CSF.Validation.RuleExecution
             return value;
         }
 
-        void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis, ValidatedValue currentValue, Queue<ValidatedValueBasis> openList)
+        void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
+                                          ValidatedValue currentValue,
+                                          Queue<ValidatedValueBasis> openList,
+                                          ValidationOptions options)
         {
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {
-                if(!TryGetActualValue(childManifestValue, currentBasis.ActualValue, out var childActualValue))
+                if(!TryGetActualValue(childManifestValue, currentBasis.ActualValue, options, out var childActualValue))
                     continue;
 
                 if(childManifestValue.EnumerateItems)
@@ -117,7 +123,10 @@ namespace CSF.Validation.RuleExecution
             }
         }
 
-        bool TryGetActualValue(ManifestValue manifestValue, object parentValue, out object actualValue)
+        bool TryGetActualValue(ManifestValue manifestValue,
+                               object parentValue,
+                               ValidationOptions validationOptions,
+                               out object actualValue)
         {
             actualValue = null;
             if(parentValue is null) return false;
@@ -147,12 +156,10 @@ namespace CSF.Validation.RuleExecution
         /// Initialises a new instance of <see cref="ValidatedValueFactory"/>.
         /// </summary>
         /// <param name="validationLogicFactory">The validation logic factory.</param>
-        /// <param name="validationOptions">The current validation options.</param>
-        /// <exception cref="ArgumentNullException">If either <paramref name="validationLogicFactory"/> or <paramref name="validationOptions"/> is null.</exception>
-        public ValidatedValueFactory(IGetsValidationLogic validationLogicFactory, ValidationOptions validationOptions)
+        /// <exception cref="ArgumentNullException">If either <paramref name="validationLogicFactory"/> is null.</exception>
+        public ValidatedValueFactory(IGetsValidationLogic validationLogicFactory)
         {
             this.validationLogicFactory = validationLogicFactory ?? throw new ArgumentNullException(nameof(validationLogicFactory));
-            this.validationOptions = validationOptions ?? throw new ArgumentNullException(nameof(validationOptions));
         }
 
         /// <summary>

@@ -10,7 +10,8 @@ namespace CSF.Validation.Bootstrap
             return serviceCollection
                 .AddTransient<IGetsValidatedType, ValidatedTypeProvider>()
                 .AddTransient<IGetsValidatorFromManifest, ValidatorFromManifestFactory>()
-                ;
+                .AddTransient<IGetsManifestFromBuilder, ManifestFromBuilderProvider>();
+            ;
         }
     }
 }

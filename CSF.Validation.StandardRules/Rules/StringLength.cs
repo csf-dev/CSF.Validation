@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CSF.Validation.Rules;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules

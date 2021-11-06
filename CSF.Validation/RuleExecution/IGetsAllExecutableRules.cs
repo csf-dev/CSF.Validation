@@ -19,8 +19,10 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <param name="manifestValue">The manifest value.</param>
         /// <param name="objectToBeValidated">The object to be validated.</param>
+        /// <param name="options">The validation options.</param>
         /// <returns>A flattened collection of executable rules from the manifest value and the value's descendents.</returns>
         IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestValue manifestValue,
-                                                         object objectToBeValidated);
+                                                         object objectToBeValidated,
+                                                         ValidationOptions options);
     }
 }

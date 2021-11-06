@@ -22,10 +22,10 @@ namespace CSF.Validation.RuleExecution
         {
             IExecutesAllRules result;
 
-            result = new SerialRuleExecutor(resolver.GetService<IGetsRuleDependencyTracker>(),
-                                            resolver.GetService<IGetsSingleRuleExecutor>(),
+            result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsRuleDependencyTracker>(),
+                                            resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
                                             options,
-                                            resolver.GetService<IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures>());
+                                            resolver.GetRequiredService<IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures>());
             
             return Task.FromResult(result);
         }

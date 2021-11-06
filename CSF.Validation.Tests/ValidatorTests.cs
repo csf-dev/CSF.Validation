@@ -32,7 +32,7 @@ namespace CSF.Validation
                 .Setup(x => x.ExecuteAllRulesAsync(ruleAndDependencies, cancellationToken))
                 .Returns(Task.FromResult((IReadOnlyCollection<ValidationRuleResult>) results));
             Mock.Get(ruleFactory)
-                .Setup(x => x.GetRulesWithDependencies(manifest.RootValue, validatedObject))
+                .Setup(x => x.GetRulesWithDependencies(manifest.RootValue, validatedObject, options))
                 .Returns(ruleAndDependencies);
 
             var result = await sut.ValidateAsync(validatedObject, options, cancellationToken);

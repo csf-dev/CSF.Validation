@@ -30,7 +30,9 @@ namespace CSF.Validation
         /// </exception>
         public async Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
-            var rules = ruleFactory.GetRulesWithDependencies(manifest.RootValue, validatedObject);
+            options = options ?? new ValidationOptions();
+            
+            var rules = ruleFactory.GetRulesWithDependencies(manifest.RootValue, validatedObject, options);
             var executor = await executorFactory.GetRuleExecutorAsync(options, cancellationToken).ConfigureAwait(false);
             var ruleResults = await executor.ExecuteAllRulesAsync(rules, cancellationToken).ConfigureAwait(false);
 
