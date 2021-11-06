@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoFixture.NUnit3;
@@ -95,6 +96,76 @@ namespace CSF.Validation.Rules
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
             rule.RuleConfiguration = obj => throw new Exception();
+            value.Rules.Add(rule);
+            var ruleBody = new StringRule();
+            Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
+
+            Assert.That(() => sut.GetValidationLogic(rule), Throws.InstanceOf<ValidatorBuildingException>());
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfRuleIsWrongInterfaceForRule([Frozen] IResolvesRule ruleResolver,
+                                                                                                         ValidationLogicFactory sut,
+                                                                                                         string str,
+                                                                                                         [RuleId] RuleIdentifier id)
+        {
+            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(object)));
+            value.Rules.Add(rule);
+            var ruleBody = new object();
+            Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(object))).Returns(ruleBody);
+
+            Assert.That(() => sut.GetValidationLogic(rule), Throws.InstanceOf<ValidatorBuildingException>());
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfRuleIsWrongInterfaceForValueRule([Frozen] IResolvesRule ruleResolver,
+                                                                                                              ValidationLogicFactory sut,
+                                                                                                              string str,
+                                                                                                              [RuleId] RuleIdentifier id)
+        {
+            var value = new ManifestValue
+            {
+                ValidatedType = typeof(string),
+                Parent = new ManifestValue
+                {
+                    ValidatedType = typeof(int),
+                }
+            };
+            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(object)));
+            value.Rules.Add(rule);
+            var ruleBody = new object();
+            Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(object))).Returns(ruleBody);
+
+            Assert.That(() => sut.GetValidationLogic(rule), Throws.InstanceOf<ValidatorBuildingException>());
+        }
+
+        [Test,AutoMoqData]
+        public async Task GetValidationLogicShouldReturnWorkingLogicForRuleWhichOperatesOnCollectionOfStrings([Frozen] IResolvesRule ruleResolver,
+                                                                                                              ValidationLogicFactory sut,
+                                                                                                              string str,
+                                                                                                              [RuleId] RuleIdentifier id)
+        {
+            var value = new ManifestValue { ValidatedType = typeof(IEnumerable<string>), EnumerateItems = true, };
+            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
+            value.Rules.Add(rule);
+            var ruleBody = new StringRule();
+            Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
+
+            var result = sut.GetValidationLogic(rule);
+            await result.GetResultAsync(str, null, new RuleContext(id));
+
+            Assert.That(ruleBody.Executed, Is.True);
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfEnumerateItemsIsTrueButTheValueIsNotEnumerable([Frozen] IResolvesRule ruleResolver,
+                                                                                                                            ValidationLogicFactory sut,
+                                                                                                                            string str,
+                                                                                                                            [RuleId] RuleIdentifier id)
+        {
+            var value = new ManifestValue { ValidatedType = typeof(int), EnumerateItems = true, };
+            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
             value.Rules.Add(rule);
             var ruleBody = new StringRule();
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);

@@ -4,11 +4,13 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture,NonParallelizable,Ignore("These integration tests do not yet pass as there is more work to be done on the library.")]
+    [TestFixture,NonParallelizable
+        ,Ignore("These integration tests do not yet pass as there is more work to be done on the library.")
+    ]
     public class ValidationIntegrationTests
     {
         [Test,AutoMoqData]
-        public async Task ValidateAsyncShouldReturnPassResultForValidObject([IntegrationValidatorFactory] IGetsValidator validatorFactory)
+        public async Task ValidateAsyncShouldReturnPassResultForValidObject([IntegrationTesting] IGetsValidator validatorFactory)
         {
             var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
 

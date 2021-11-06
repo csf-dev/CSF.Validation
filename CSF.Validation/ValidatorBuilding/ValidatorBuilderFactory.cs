@@ -4,7 +4,7 @@ using CSF.Validation.Manifest;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// A factory service which gets instances of <see cref="ValidatorBuilder{TValidated}"/>.
+    /// A factory service which gets instances of <see cref="IValidatorBuilder{TValidated}"/>.
     /// </summary>
     public class ValidatorBuilderFactory : IGetsValidatorBuilder
     {
@@ -19,7 +19,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TValidated">The type of object to be validated.</typeparam>
         /// <param name="context">An optional validator builder context; if <see langword="null"/> then a new/empty context will be created.</param>
         /// <returns>A validator builder.</returns>
-        public ValidatorBuilder<TValidated> GetValidatorBuilder<TValidated>(ValidatorBuilderContext context = null)
+        public IValidatorBuilder<TValidated> GetValidatorBuilder<TValidated>(ValidatorBuilderContext context = null)
         {
             var builderContext = context ?? CreateEmptyContext(typeof(TValidated));
 

@@ -11,6 +11,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TValidated">The type of object to be validated.</typeparam>
         /// <param name="context">An optional validator builder context; if <see langword="null"/> then a new/empty context will be created.</param>
         /// <returns>A validator builder.</returns>
-        ValidatorBuilder<TValidated> GetValidatorBuilder<TValidated>(ValidatorBuilderContext context = default);
+        IValidatorBuilder<TValidated> GetValidatorBuilder<TValidated>(ValidatorBuilderContext context = default);
     }
 }

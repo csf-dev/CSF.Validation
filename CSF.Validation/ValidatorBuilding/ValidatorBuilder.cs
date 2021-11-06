@@ -11,7 +11,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to configure how an object should be validated.
     /// </summary>
     /// <typeparam name="TValidated">The type of the object being validated.</typeparam>
-    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IGetsManifestValue, IGetsValidationManifest
+    public class ValidatorBuilder<TValidated> : IValidatorBuilder<TValidated>
     {
         readonly ValidatorBuilderContext context;
         readonly IGetsValidatorBuilderContext ruleContextFactory;

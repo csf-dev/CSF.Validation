@@ -8,14 +8,18 @@ namespace CSF.Validation
     {
         public void Customize(IFixture fixture)
         {
-            fixture.Customize<IServiceProvider>(c => c.FromFactory(GetServiceProvider));
+            var provider = GetServiceProvider();
+            fixture.Inject(provider);
+            fixture.Customize<IGetsValidator>(c => c.FromFactory((IServiceProvider resolver) => resolver.GetRequiredService<IGetsValidator>()));
         }
 
         static IServiceProvider GetServiceProvider()
         {
-            var services = new ServiceCollection();
-            services.UseValidationFramework();
-            return services.BuildServiceProvider();
+            var serviceCollection = new ServiceCollection();
+            serviceCollection
+                .UseValidationFramework()
+                .UseStandardValidationRules();
+            return serviceCollection.BuildServiceProvider();
         }
     }
 }

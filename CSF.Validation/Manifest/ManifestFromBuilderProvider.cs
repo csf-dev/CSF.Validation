@@ -7,7 +7,7 @@ namespace CSF.Validation.Manifest
     /// </summary>
     public class ManifestFromBuilderProvider : IGetsManifestFromBuilder
     {
-        private readonly IGetsValidatorBuilder builderFactory;
+        readonly IGetsValidatorBuilder builderFactory;
 
         /// <summary>
         /// Gets a validation manifest from the validator-builder.
