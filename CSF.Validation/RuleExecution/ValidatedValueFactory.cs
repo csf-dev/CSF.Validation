@@ -97,10 +97,10 @@ namespace CSF.Validation.RuleExecution
             return value;
         }
 
-        void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
-                                          ValidatedValue currentValue,
-                                          Queue<ValidatedValueBasis> openList,
-                                          ValidationOptions options)
+        static void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
+                                                 ValidatedValue currentValue,
+                                                 Queue<ValidatedValueBasis> openList,
+                                                 ValidationOptions options)
         {
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {
@@ -123,10 +123,10 @@ namespace CSF.Validation.RuleExecution
             }
         }
 
-        bool TryGetActualValue(ManifestValue manifestValue,
-                               object parentValue,
-                               ValidationOptions validationOptions,
-                               out object actualValue)
+        static bool TryGetActualValue(ManifestValue manifestValue,
+                                      object parentValue,
+                                      ValidationOptions validationOptions,
+                                      out object actualValue)
         {
             actualValue = null;
             if(parentValue is null) return false;
