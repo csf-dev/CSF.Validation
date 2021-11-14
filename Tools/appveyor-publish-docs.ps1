@@ -1,11 +1,5 @@
 $ErrorActionPreference = "Stop"
 
-# Skip publishing if we're not building in Windows
-if ($Env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Ubuntu") {
-    Write-Host "We only publish the docs site from a Windows build configuration, not Ubuntu"
-    exit 0
-}
-
 # Choose a base directory for the site to be published from,
 # if this branch is production then it's the main "docs/"" dir,
 # if master then it's "docs/_vnext/".
