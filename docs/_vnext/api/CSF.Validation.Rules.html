@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace CSF.Validation.Rules
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace CSF.Validation.Rules
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Rules">
+  
+  <h1 id="CSF_Validation_Rules" data-uid="CSF.Validation.Rules" class="text-break">Namespace CSF.Validation.Rules
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="CSF.Validation.Rules.AncestorRuleContext.html">AncestorRuleContext</a></h4>
+      <section><p>A model providing contextual information about an 'ancestor context' for an executing validation rule.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.CommonResults.html">CommonResults</a></h4>
+      <section><p>Helper class to create instances of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> instances from commonly-used scenarios.
+For simplicity of usage consider including <code>using static CSF.Validation.Rules.CommonResults;</code> in
+your rule implementations.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.DateTimeInRange.html">DateTimeInRange</a></h4>
+      <section><p>A validation rule which passes if the validated <span class="xref">System.DateTime</span> or <span class="xref">System.Nullable&lt;T&gt;</span> DateTime is within an inclusive
+<a class="xref" href="CSF.Validation.Rules.DateTimeInRange.html#CSF_Validation_Rules_DateTimeInRange_Start">Start</a> &amp; <a class="xref" href="CSF.Validation.Rules.DateTimeInRange.html#CSF_Validation_Rules_DateTimeInRange_End">End</a> range.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.DecimalInRange.html">DecimalInRange</a></h4>
+      <section><p>A validation rule which passes if the validated <span class="xref">System.Decimal</span> or <span class="xref">System.Nullable&lt;T&gt;</span> decimal is within
+an inclusive <a class="xref" href="CSF.Validation.Rules.DecimalInRange.html#CSF_Validation_Rules_DecimalInRange_Min">Min</a> &amp; <a class="xref" href="CSF.Validation.Rules.DecimalInRange.html#CSF_Validation_Rules_DecimalInRange_Max">Max</a> range.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.html">ExceptionHandlingRuleLogicDecorator</a></h4>
+      <section><p>A decorator class for the <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> interface which catches
+unhandled exceptions raised by the wrapped rule logic and instead returns a <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>
+with <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.FloatingInRange.html">FloatingInRange</a></h4>
+      <section><p>A validation rule which passes if the validated floating-point number or <span class="xref">System.Nullable&lt;T&gt;</span> floating-point number is within
+an inclusive <a class="xref" href="CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_Min">Min</a> &amp; <a class="xref" href="CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_Max">Max</a> range.  This rule works with all of the CLR-standard floating-point number types.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IntegerInRange.html">IntegerInRange</a></h4>
+      <section><p>A validation rule which passes if the validated integer or <span class="xref">System.Nullable&lt;T&gt;</span> integer is within an inclusive
+<a class="xref" href="CSF.Validation.Rules.IntegerInRange.html#CSF_Validation_Rules_IntegerInRange_Min">Min</a> &amp; <a class="xref" href="CSF.Validation.Rules.IntegerInRange.html#CSF_Validation_Rules_IntegerInRange_Max">Max</a> range.  This rule works with all of the CLR-standard integer types.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.MatchesRegex.html">MatchesRegex</a></h4>
+      <section><p>A rule which passes if the validated string is either <span class="xref">null</span> or is a match for the specified
+regular expression.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NotNull.html">NotNull</a></h4>
+      <section><p>A validation rule which passes if the value being validated is not <span class="xref">null</span> and fails if it is.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NotNullOrEmptyString.html">NotNullOrEmptyString</a></h4>
+      <section><p>A validation rule which passes if the string being validated is not <span class="xref">null</span> and
+not empty.  The rule fails if it is either.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleAdapter-1.html">RuleAdapter&lt;TValidated&gt;</a></h4>
+      <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>, which
+allows their logic to be executed as if they were instances of the
+non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> interface.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></h4>
+      <section><p>A model for contextual information related to the execution of a validation rule.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleIdentifier.html">RuleIdentifier</a></h4>
+      <section><p>A model for information which uniquely identifies a validation rule within the validation process.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleIdentifierBase.html">RuleIdentifierBase</a></h4>
+      <section><p>Base model for rule identifiers.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleResolver.html">RuleResolver</a></h4>
+      <section><p>A service that provides resolution to get concrete implementations of rule types.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a></h4>
+      <section><p>A model for information about the result of running a single validation rule.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.StringLength.html">StringLength</a></h4>
+      <section><p>A rule that passes is a validated string is between an inclusive minimum/maximum length.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ValidationLogicFactory.html">ValidationLogicFactory</a></h4>
+      <section><p>A factory service which creates instances of <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a>
+from <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a> definitions.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ValueRuleAdapter-2.html">ValueRuleAdapter&lt;TValue, TValidated&gt;</a></h4>
+      <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IValueRule-2.html">IValueRule&lt;TValue, TValidated&gt;</a>, which
+allows their logic to be executed as if they were instances of the
+non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> interface.</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="CSF.Validation.Rules.IGetsValidationLogic.html">IGetsValidationLogic</a></h4>
+      <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> for a specified
+<a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IResolvesRule.html">IResolvesRule</a></h4>
+      <section><p>An object which can get/resolve instances of validation rule types based upon their concrete <span class="xref">System.Type</span>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IRule.html">IRule</a></h4>
+      <section><p>A service for a validation rule which may validate any object.
+Generally-speaking custom validation rules should not implement this interface, preferring either
+<a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a> or <a class="xref" href="CSF.Validation.Rules.IValueRule-2.html">IValueRule&lt;TValue, TValidated&gt;</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a></h4>
+      <section><p>A service for a validation rule which validates an instance of a specified object type.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a></h4>
+      <section><p>A generalised/non-generic interface for executing validation logic and getting the results.
+It is not expected that developers would want to implement this interface for their own rules.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IValueRule-2.html">IValueRule&lt;TValue, TValidated&gt;</a></h4>
+      <section><p>A service for a validation rule which validates a value of a specified type, which is
+retrieved (in some way) from an instance of a specified object type.</p>
+</section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleOutcome.html">RuleOutcome</a></h4>
+      <section><p>Enumerates the possible outcomes from an attempt to run a single validation rule.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
