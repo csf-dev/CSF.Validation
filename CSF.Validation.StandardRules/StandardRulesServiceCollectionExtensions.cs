@@ -10,7 +10,7 @@ namespace CSF.Validation
     /// <summary>
     /// Extension methods to add validation to a dependency injection container.
     /// </summary>
-    public static class ServiceCollectionExtensions
+    public static class StandardRulesServiceCollectionExtensions
     {
         /// <summary>
         /// Adds the standard validation rules to the service collection, so that they may be used.
@@ -29,7 +29,7 @@ namespace CSF.Validation
 
         static IEnumerable<Type> GetRuleTypes()
         {
-            return (from type in typeof(ServiceCollectionExtensions).GetTypeInfo().Assembly.DefinedTypes
+            return (from type in typeof(StandardRulesServiceCollectionExtensions).GetTypeInfo().Assembly.DefinedTypes
                     where type.Namespace == typeof(NotNull).Namespace
                     select type.AsType())
                 .ToList();
