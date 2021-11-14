@@ -1,38 +1,41 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <ReleaseVersion>2.0.0</ReleaseVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>CSF.Validation</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
   <ItemGroup>
-    <PackageReference Include="AutoFixture" Version="4.11.0" />
-    <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
-    <PackageReference Include="AutoFixture.NUnit3" Version="4.11.0" />
-    <PackageReference Include="coverlet.msbuild" Version="2.8.0">
+    <ProjectReference Include="..\CSF.Validation.StandardRules\CSF.Validation.StandardRules.csproj" />
+    <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
+    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
+    <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\\CSF.Validation.Tests.SamplePlugin.csproj"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0"/>
+    <PackageReference Include="AutoFixture" Version="4.17.0" />
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
+    <PackageReference Include="AutoFixture.NUnit3" Version="4.17.0" />
+    <PackageReference Include="coverlet.msbuild" Version="3.1.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
-    <PackageReference Include="NUnit" Version="3.12.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-    <PackageReference Include="Moq" Version="4.13.1" />
-    <PackageReference Include="NunitXml.TestLogger" Version="2.1.41" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="NunitXml.TestLogger" Version="3.0.107" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Resources\FailureMessageTemplates.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\FailureMessageTemplates.cs">
-      <DependentUpon>FailureMessageTemplates.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
-  </ItemGroup>
+
+  <Target Name="CopyPluginAssembly" AfterTargets="Build">
+    <ItemGroup>
+      <SamplePluginAssembly Include="..\CSF.Validation.Tests.SamplePlugin\bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Tests.SamplePlugin.dll" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SamplePluginAssembly)" DestinationFolder="$(OutputPath)" />
+  </Target>
+
 </Project>

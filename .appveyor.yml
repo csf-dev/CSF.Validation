@@ -1,23 +1,33 @@
 ﻿version: '{branch}-{build}'
-image: Visual Studio 2017
+
+environment:
+    matrix:
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+          JAVA_HOME: C:\Program Files\Java\jdk13
+        - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
+          JAVA_HOME: /usr/lib/jvm/jdk13
+
+# A note/reminder for readers: Script items prefixed "cmd:" are executed on Windows-only environments.
+# Items with no prefix are run on all environments (Windows & Linux)
 
 init:
     - cmd: git config --global core.autocrlf true
     
 install:
-    - cmd: git submodule update --init --recursive
+    - git submodule update --init --recursive
     - cmd: dotnet tool install --global dotnet-sonarscanner
     
 before_build:
-    - cmd: dotnet --version
-    - cmd: dotnet restore --verbosity m
+    - dotnet --version
+    - dotnet restore --verbosity m
     - cmd: dotnet-sonarscanner begin /k:"CSF.Validation" /v:AppVeyor_build_%APPVEYOR_BUILD_NUMBER% /o:craigfowler-github /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=%SONARCLOUD_SECRET_KEY% /d:sonar.cs.nunit.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\TestResults.xml /d:sonar.cs.opencover.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\coverage.opencover.xml
 
 build_script:
-    - cmd: dotnet build
+    - dotnet build
 
 test_script:
-    - cmd: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=\"json,opencover\" /p:CoverletOutput=\"TestResults/\"  --test-adapter-path:. --logger:\"nunit\"
+    - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=\"json,opencover\" /p:CoverletOutput=\"TestResults/\"  --test-adapter-path:. --logger:\"nunit\"
 
 after_test:
     - cmd: dotnet-sonarscanner end /d:"sonar.login=%SONARCLOUD_SECRET_KEY%"
+    - ps: Tools\appveyor-publish-docs.ps1
