@@ -33,11 +33,11 @@ else {
 }
 
 Write-Host "Copying built docs site to $BaseDir ..."
-Copy-Item -Path "ZptSharp.Documentation/_site/*" -Destination $BaseDir -Recurse
-if ($Env:APPVEYOR_REPO_BRANCH -eq "production") {
-    Write-Host "Copying Google site auth file to $BaseDir ..."
+Copy-Item -Path "CSF.Validation.Documentation/_site/*" -Destination $BaseDir -Recurse
+# if ($Env:APPVEYOR_REPO_BRANCH -eq "production") {
+    # Write-Host "Copying Google site auth file to $BaseDir ..."
     # Copy-Item -Path Tools/googled08187801d097dd8.html $BaseDir
-}
+# }
 
 if($Env:APPVEYOR -eq "True") {
     Write-Host "Setting up git to publish site"
