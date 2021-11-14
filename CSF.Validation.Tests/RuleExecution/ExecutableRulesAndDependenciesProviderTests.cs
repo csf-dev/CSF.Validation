@@ -54,6 +54,32 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
+        public void GetRulesWithDependenciesShouldReturnAnObjectWhichIncludesRulesDependingUponTheCurrentRule([Frozen] IGetsAllExecutableRules executableRulesProvider,
+                                                                                                              [ManifestModel] ManifestValue manifestValue,
+                                                                                                              object objectToBeValidated,
+                                                                                                              IValidationLogic logic,
+                                                                                                              ManifestRule manifestRule,
+                                                                                                              ManifestRule manifestDependency,
+                                                                                                              [ExecutableModel] ValidatedValue validatedValue,
+                                                                                                              ExecutableRulesAndDependenciesProvider sut,
+                                                                                                              ValidationOptions validationOptions)
+        {
+            var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
+            var dependency = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestDependency, RuleLogic = logic };
+            validatedValue.ManifestValue = manifestDependency.Identifier.ManifestValue;
+            validatedValue.Rules.Add(dependency);
+            Mock.Get(executableRulesProvider)
+                .Setup(x => x.GetExecutableRules(manifestValue, objectToBeValidated, validationOptions))
+                .Returns(new [] { rule, dependency });
+            rule.ManifestRule.DependencyRules.Clear();
+            rule.ManifestRule.DependencyRules.Add(manifestDependency.Identifier);
+
+            var result = sut.GetRulesWithDependencies(manifestValue, objectToBeValidated, validationOptions);
+
+            Assert.That(result.First(x => x.ExecutableRule == dependency).DependedUponBy, Is.EqualTo(new[] { rule }));
+        }
+
+        [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldReturnAnObjectWithDependencyExecutableRulesWhereItHasADependencyUponAParentValue([Frozen] IGetsAllExecutableRules executableRulesProvider,
                                                                                                                                    [ManifestModel] ManifestValue manifestValue,
                                                                                                                                    object objectToBeValidated,

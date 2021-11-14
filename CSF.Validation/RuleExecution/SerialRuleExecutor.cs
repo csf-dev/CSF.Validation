@@ -23,8 +23,7 @@ namespace CSF.Validation.RuleExecution
     /// </para>
     /// <para>
     /// This process continues until the dependency-tracker object fails to yield any available rules, at which point
-    /// the rule execution stops and any remaining rules are marked as having dependency failures via an instance of
-    /// <see cref="IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures"/>.
+    /// the rule execution stops and further results are added based upon those rules which have dependency failures.
     /// </para>
     /// </remarks>
     public class SerialRuleExecutor : IExecutesAllRules
@@ -32,7 +31,6 @@ namespace CSF.Validation.RuleExecution
         readonly IGetsRuleDependencyTracker dependencyTrackerFactory;
         readonly IGetsSingleRuleExecutor ruleExecutorFactory;
         readonly ValidationOptions options;
-        readonly IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures dependencyFailureResultProvider;
 
         /// <summary>
         /// Execute all of the specified validation rules and return their results.
@@ -50,17 +48,20 @@ namespace CSF.Validation.RuleExecution
                  availableRules.Any();
                  availableRules = dependencyTracker.GetRulesWhichMayBeExecuted())
             {
-                var ruleResults = await ExecuteAvailableRulesAsync(availableRules, ruleExecutor, cancellationToken).ConfigureAwait(false);
+                var ruleResults = await ExecuteAvailableRulesAsync(availableRules, ruleExecutor, dependencyTracker, cancellationToken)
+                    .ConfigureAwait(false);
                 results.AddRange(ruleResults);
             }
 
-            results.AddRange(dependencyFailureResultProvider.GetResultsAndUpdateRules(dependencyTracker));
+            var rulesWithDependencyFailures = dependencyTracker.GetRulesWhoseDependenciesHaveFailed();
+            results.AddRange(rulesWithDependencyFailures.Select(x => ValidationRuleResult.FromRuleResult(x.Result, x.RuleIdentifier)));
 
             return results;
         }
 
         static async Task<IEnumerable<ValidationRuleResult>> ExecuteAvailableRulesAsync(IEnumerable<ExecutableRule> availableRules,
                                                                                         IExeucutesSingleRule ruleExecutor,
+                                                                                        ITracksRuleDependencies dependencyTracker,
                                                                                         CancellationToken cancellationToken)
         {
             var results = new List<ValidationRuleResult>();
@@ -69,6 +70,7 @@ namespace CSF.Validation.RuleExecution
             {
                 var result = await ruleExecutor.ExecuteRuleAsync(rule, cancellationToken).ConfigureAwait(false);
                 rule.Result = result;
+                dependencyTracker.HandleValidationRuleResult(rule);
                 results.Add(result);
             }
 
@@ -81,17 +83,14 @@ namespace CSF.Validation.RuleExecution
         /// <param name="dependencyTrackerFactory">The factory for an object that tracks rule dependencies.</param>
         /// <param name="ruleExecutorFactory">The factory for an object which executes rules.</param>
         /// <param name="options">The validation options.</param>
-        /// <param name="dependencyFailureResultProvider">An object that gets results for rules with failed dependencies.</param>
         /// <exception cref="ArgumentNullException">If any parameter value is <see langword="null" />.</exception>
         public SerialRuleExecutor(IGetsRuleDependencyTracker dependencyTrackerFactory,
                                   IGetsSingleRuleExecutor ruleExecutorFactory,
-                                  ValidationOptions options,
-                                  IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures dependencyFailureResultProvider)
+                                  ValidationOptions options)
         {
             this.dependencyTrackerFactory = dependencyTrackerFactory ?? throw new ArgumentNullException(nameof(dependencyTrackerFactory));
             this.ruleExecutorFactory = ruleExecutorFactory ?? throw new ArgumentNullException(nameof(ruleExecutorFactory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
-            this.dependencyFailureResultProvider = dependencyFailureResultProvider ?? throw new ArgumentNullException(nameof(dependencyFailureResultProvider));
         }
     }
 }

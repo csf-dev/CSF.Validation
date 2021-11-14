@@ -65,7 +65,7 @@ namespace CSF.Validation.Rules
         /// <param name="collectionIndex">The collection index by which you would traverse from this ancestor context to its immediate child (where applicable).</param>
         public AncestorRuleContext(object objectIdentity, object obj, ManifestValue manifestValue, long? collectionIndex = null)
         {
-            ObjectIdentity = objectIdentity ?? throw new ArgumentNullException(nameof(objectIdentity));
+            ObjectIdentity = objectIdentity;
             Object = obj ?? throw new ArgumentNullException(nameof(obj));
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
             CollectionIndex = collectionIndex;

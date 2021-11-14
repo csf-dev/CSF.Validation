@@ -221,4 +221,8 @@
     <value>For value accessors where {0} is true, the value {1} must implement {2}&lt;T&gt;.</value>
     <comment/>
   </data>
+  <data name="RuleResultMustNotBeNull" xml:space="preserve">
+    <value>The {0} property of the rule must not be null.</value>
+    <comment/>
+  </data>
 </root>

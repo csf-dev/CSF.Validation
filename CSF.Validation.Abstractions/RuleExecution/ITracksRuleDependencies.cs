@@ -22,5 +22,11 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <returns>A collection of rules which have failed dependencies.</returns>
         IEnumerable<ExecutableRule> GetRulesWhoseDependenciesHaveFailed();
+
+        /// <summary>
+        /// Handles the alteration of dependency chains and available rules based upon a single validation rule receiving a result.
+        /// </summary>
+        /// <param name="rule">The rule which now has a non-<see langword="null" /> <see cref="ExecutableRule.Result"/> property.</param>
+        void HandleValidationRuleResult(ExecutableRule rule);
     }
 }

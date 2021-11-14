@@ -121,27 +121,5 @@ namespace CSF.Validation.RuleExecution
             Assert.That(async () => await sut.ExecuteAllRulesAsync(allRules, default),
                         Is.EquivalentTo(new[] { result1, result2, result3 }));
         }
-
-        [Test,AutoMoqData]
-        public async Task ExecuteAllRulesAsyncShouldMarkDependantRulesThatHaveFailedUsingService([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
-                                                                                                 [Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                                                 [Frozen] ValidationOptions options,
-                                                                                                 [Frozen] IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures dependencyFailureResultProvider,
-                                                                                                 SerialRuleExecutor sut,
-                                                                                                 [ExecutableModel] ExecutableRuleAndDependencies rule,
-                                                                                                 ITracksRuleDependencies dependencyTracker,
-                                                                                                 IExeucutesSingleRule ruleExecutor,
-                                                                                                 [RuleResult] ValidationRuleResult result)
-        {
-            var allRules = new[] { rule };
-            Mock.Get(dependencyTrackerFactory).Setup(x => x.GetDependencyTracker(allRules, options)).Returns(dependencyTracker);
-            Mock.Get(dependencyTracker).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => Enumerable.Empty<ExecutableRule>());
-            Mock.Get(ruleExecutorFactory).Setup(x => x.GetRuleExecutor(options)).Returns(ruleExecutor);
-            Mock.Get(dependencyFailureResultProvider).Setup(x => x.GetResultsAndUpdateRules(dependencyTracker)).Returns(new[] { result });
-
-            var results = await sut.ExecuteAllRulesAsync(allRules);
-
-            Assert.That(results, Is.EqualTo(new[] { result }));
-        }
     }
 }

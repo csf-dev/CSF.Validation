@@ -30,9 +30,21 @@ namespace CSF.Validation.RuleExecution
 
         static IEnumerable<ExecutableRuleAndDependencies> GetRulesWithDependencies(IEnumerable<ExecutableRule> allRules)
         {
-            return from rule in allRules
-                   let dependencies = GetDependencies(rule)
-                   select new ExecutableRuleAndDependencies(rule, dependencies);
+            var rulesAndDependencies = from rule in allRules
+                                       let dependencies = GetDependencies(rule)
+                                       select new { Rule = rule, Dependencies = dependencies };
+
+            var dependedUponBy = from ruleAndDependencies in rulesAndDependencies
+                                 from dependency in ruleAndDependencies.Dependencies
+                                 group ruleAndDependencies by dependency into d
+                                 select new { Rule = d.Key, DependedUponBy = d.Select(x => x.Rule) };
+
+            return from rule in rulesAndDependencies
+                   join d in dependedUponBy
+                       on rule.Rule equals d.Rule
+                       into depUpon
+                   from dependedUpon in depUpon.DefaultIfEmpty()
+                   select new ExecutableRuleAndDependencies(rule.Rule, rule.Dependencies, dependedUpon?.DependedUponBy);
         }
 
         static IEnumerable<ExecutableRule> GetDependencies(ExecutableRule rule)

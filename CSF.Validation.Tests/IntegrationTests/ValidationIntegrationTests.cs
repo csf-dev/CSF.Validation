@@ -4,9 +4,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture,NonParallelizable
-        ,Ignore("These integration tests do not yet pass as there is more work to be done on the library.")
-    ]
+    [TestFixture,Parallelizable]
     public class ValidationIntegrationTests
     {
         [Test,AutoMoqData]

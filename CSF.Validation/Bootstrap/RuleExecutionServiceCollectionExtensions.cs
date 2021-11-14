@@ -11,11 +11,11 @@ namespace CSF.Validation.Bootstrap
             return serviceCollection
                 .AddTransient<IDetectsCircularDependencies, CircularDependencyDetector>()
                 .AddTransient<IGetsAllExecutableRulesWithDependencies>(GetExecutableRulesAndDependenciesProvider)
-                .AddTransient<IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures, FailedDependencyUpdaterAndResultProvider>()
                 .AddTransient<IGetsRuleExecutor, RuleExecutorFactory>()
                 .AddTransient<IGetsValidatedValue, ValidatedValueFactory>()
                 .AddTransient<IGetsSingleRuleExecutor, SingleRuleExecutorFactory>()
                 .AddTransient<IGetsAllExecutableRules, ExecutableRulesFromValidatedValueProvider>()
+                .AddTransient<IGetsRuleDependencyTracker, RuleDependencyTrackerFactory>()
                 ;
 
         }

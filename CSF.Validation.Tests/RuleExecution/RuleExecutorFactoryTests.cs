@@ -14,8 +14,7 @@ namespace CSF.Validation.RuleExecution
                                                                                    RuleExecutorFactory sut,
                                                                                    ValidationOptions options,
                                                                                    IGetsRuleDependencyTracker dependencyTrackerFactory,
-                                                                                   IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                                   IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures dependencyFailureResultProvider)
+                                                                                   IGetsSingleRuleExecutor ruleExecutorFactory)
         {
             Mock.Get(resolver)
                 .Setup(x => x.GetService(typeof(IGetsRuleDependencyTracker)))
@@ -23,9 +22,6 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(resolver)
                 .Setup(x => x.GetService(typeof(IGetsSingleRuleExecutor)))
                 .Returns(ruleExecutorFactory);
-            Mock.Get(resolver)
-                .Setup(x => x.GetService(typeof(IGetsResultsAndUpdatesRulesWhichHaveDependencyFailures)))
-                .Returns(dependencyFailureResultProvider);
 
             Assert.That(async () => await sut.GetRuleExecutorAsync(options), Is.InstanceOf<SerialRuleExecutor>());
         }
