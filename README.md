@@ -10,7 +10,7 @@ A validator may be defined in code via a declarative/fluent builder API, or it m
 
 Detailed instructions & tutorials on how to use this framework are available on **[the documentation website]**.
 
-[the documentation website]: https://csf-dev.github.io/CSF.Validation/
+[the documentation website]: https://csf-dev.github.io/CSF.Validation/_vnext/
 
 ## Source control branches
 
