@@ -13,8 +13,14 @@ namespace CSF.Validation
     public static class StandardRulesServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds the standard validation rules to the service collection, so that they may be used.
+        /// Adds the standard validation rules to the service collection, so that they may be used in validators.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This adds all of the standard validation rules contained in this package to dependency injection.
+        /// This allows those rules to be consumed by any validator which is built using the same DI container.
+        /// </para>
+        /// </remarks>
         /// <param name="serviceCollection">The service collection to which the standard rules should be added.</param>
         /// <returns>The service collection, so that calls may be chained.</returns>
         public static IServiceCollection UseStandardValidationRules(this IServiceCollection serviceCollection)
@@ -33,7 +39,6 @@ namespace CSF.Validation
                     where type.Namespace == typeof(NotNull).Namespace
                     select type.AsType())
                 .ToList();
-
         }
     }
 }

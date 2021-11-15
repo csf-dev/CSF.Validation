@@ -30,6 +30,20 @@
                 "kind": "test",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Serve documentation website",
+            "command": "docfx",
+            "type": "process",
+            "args": [
+                "serve",
+                "CSF.Validation.Documentation/_site"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "never",
+                "panel": "shared"
+            }
         }
     ]
 }

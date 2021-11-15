@@ -1,2 +1,15 @@
 - name: Introduction
-  href: intro.md
+  href: Introduction.md
+- name: Configuration
+  href: ConfigureTheFramework.md
+- name: Defining validators
+  topicHref: DefiningValidators.md
+  items:
+    - name: Creating rules
+      href: WritingValidationRules.md
+    - name: Validator builders
+      href: WritingValidationBuilders.md
+    - name: The validator model
+      href: UsingTheValidationModel.md
+- name: Performing validation
+  href: ConsumingValidators.md

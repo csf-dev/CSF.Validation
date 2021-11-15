@@ -6,8 +6,7 @@ To add the validation framework to DI, add a reference to [the **CSF.Validation*
 
 Optionally, if you plan to use [the standard rules package], add a reference to that also and use [the `UseStandardValidationRules()` extension method].
 
-[the **CSF.Validation** NuGet package]: https://www.nuget.org/packages/CSF.Validation/
-[the standard rules package]: https://www.nuget.org/packages/CSF.Validation.StandardRules/
-
-[the `UseValidationFramework()` extension method]: xref:CSF.Validation.ServiceCollectionExtensions#UseValidationFramework
-[the `UseStandardValidationRules()` extension method]: xref:CSF.Validation.StandardRulesServiceCollectionExtensions#Use StandardValidationRules
+[the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
+[the standard rules package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
+[the `UseValidationFramework()` extension method]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+[the `UseStandardValidationRules()` extension method]:xref:CSF.Validation.StandardRulesServiceCollectionExtensions.UseStandardValidationRules(Microsoft.Extensions.DependencyInjection.IServiceCollection)

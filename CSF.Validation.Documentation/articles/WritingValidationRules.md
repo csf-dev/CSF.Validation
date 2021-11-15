@@ -1,3 +1,1 @@
-# WritingValidationRules
-
-[CreatingValidators](CreatingValidators.md)
+# Writing Validation Rules
