@@ -1637,11 +1637,65 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "articles/ConfigureTheFramework.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/ConfigureTheFramework.html",
+          "hash": "lPDIqPoKQa9I7Q2HP2Pq15j+l/sdgvjStQpvMWf6sIk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CreatingValidators.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CreatingValidators.html",
+          "hash": "XbxXgFCGnkBTJKU7C2dbdQhlS9bcxvOmqB8nUT1P5Ac="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/DocsPlanning.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/DocsPlanning.html",
+          "hash": "Uvla1CseA0pzx9qwT1QOM/TcEyyqw8rGUdZkBg0fUIo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/WritingValidationRules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/WritingValidationRules.html",
+          "hash": "trQU/UwL6n4Uz8911DtBIgCLOXTRmxHpHw/Fg1vk9xw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "Ku2BVghYl66f8Li6/KGhUKGxo9+qj7ef/eRCE5VPqUs="
+          "hash": "gCG5+MkbFHXW4t2Yhk0V1JbsN/7BthU6M1BN83IcrSg="
         }
       },
       "is_incremental": false,
@@ -1698,7 +1752,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 3,
+          "total_file_count": 7,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
