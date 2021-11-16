@@ -18,7 +18,7 @@ namespace CSF.Validation.ValidatorBuilding
 
                 config.ForMember(x => x.StringProperty, m =>
                 {
-                    m.AddValueRule<StringValueRule>();
+                    m.AddRuleWithParent<StringValueRule>();
                     m.AddRule<ObjectRule>();
                 });
             }

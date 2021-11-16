@@ -20,9 +20,8 @@ namespace CSF.Validation.Rules
     /// may be used as if it were an <c>IRule&lt;Dog,Customer&gt;</c>.
     /// </para>
     /// <para>
-    /// This covariance may be used to craft value rules which are neutral to the overall validated object type.
-    /// For example an <c>IRule&lt;string,object&gt;</c> may be used to validate a string that is taken from
-    /// any object.
+    /// You are encouraged to read more at <xref href="WritingValidationRules?text=the+documentation+for+writing+rule+classes"/>
+    /// &amp; <xref href="ValidationRuleBestPractices?text=best+practices+for+writing+rules"/>.
     /// </para>
     /// </remarks>
     /// <typeparam name="TValue">The type of the value which this rule validates</typeparam>

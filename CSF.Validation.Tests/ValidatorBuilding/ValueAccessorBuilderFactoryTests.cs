@@ -24,7 +24,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                  IGetsValidatorManifest validatorManifestFactory)
         {
             var sut = new ValueAccessorBuilderFactory(() => ruleBuilderFactory, () => validatorManifestFactory);
-            sut.GetValueAccessorBuilder<ValidatedObject, string>(context, c => c.AddValueRule<StringValueRule>());
+            sut.GetValueAccessorBuilder<ValidatedObject, string>(context, c => c.AddRuleWithParent<StringValueRule>());
             Mock.Get(ruleBuilderFactory)
                 .Verify(x => x.GetRuleBuilder<StringValueRule>(context, It.IsAny<Action<IConfiguresRule<StringValueRule>>>()), Times.Once);
         }

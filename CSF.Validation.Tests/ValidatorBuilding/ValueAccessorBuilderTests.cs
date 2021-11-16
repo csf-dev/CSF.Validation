@@ -27,8 +27,8 @@ namespace CSF.Validation.ValidatorBuilding
                     return ruleBuilder.Object;
                 });
 
-            sut.AddValueRule<StringValueRule>();
-            sut.AddValueRule<StringValueRule>();
+            sut.AddRuleWithParent<StringValueRule>();
+            sut.AddRuleWithParent<StringValueRule>();
 
             var manifestRules = sut.GetManifestValue().Rules.ToList();
 
@@ -53,7 +53,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Returns(() => value);
 
             Action<IConfiguresRule<StringValueRule>> configFunction = r => { };
-            sut.AddValueRule<StringValueRule>(configFunction);
+            sut.AddRuleWithParent<StringValueRule>(configFunction);
 
             Mock.Get(ruleBuilderFactory)
                 .Verify(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), configFunction), Times.Once);

@@ -18,6 +18,10 @@ namespace CSF.Validation.Rules
     /// The generic type of this interface is contravariant.  That means that (for example) an <c>IRule&lt;Animal&gt;</c>
     /// may be used as if it were an <c>IRule&lt;Dog&gt;</c>.
     /// </para>
+    /// <para>
+    /// You are encouraged to read more at <xref href="WritingValidationRules?text=the+documentation+for+writing+rule+classes"/>
+    /// &amp; <xref href="ValidationRuleBestPractices?text=best+practices+for+writing+rules"/>.
+    /// </para>
     /// </remarks>
     /// <typeparam name="TValidated">The type of the object which this rule validates</typeparam>
     public interface IRule<in TValidated>

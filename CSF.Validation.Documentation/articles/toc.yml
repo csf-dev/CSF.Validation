@@ -8,8 +8,8 @@
     - name: Creating rules
       href: WritingValidationRules.md
     - name: Validator builders
-      href: WritingValidationBuilders.md
-    - name: The validator model
-      href: UsingTheValidationModel.md
+      href: WritingValidatorBuilders.md
+    - name: The manifest model
+      href: UsingTheManifestModel.md
 - name: Performing validation
   href: ConsumingValidators.md

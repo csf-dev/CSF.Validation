@@ -27,7 +27,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
         /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        public IConfiguresValueAccessor<TValidated, TValue> AddValueRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = null) where TRule : IRule<TValue, TValidated>
+        public IConfiguresValueAccessor<TValidated, TValue> AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = null) where TRule : IRule<TValue, TValidated>
             => AddRulePrivate<TRule>(ruleDefinition);
 
         /// <summary>

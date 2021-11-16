@@ -202,7 +202,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestValue())
                 .Returns(() => value);
 
-            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddValueRule<StringValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddRuleWithParent<StringValueRule>();
             sut.ForMember(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
@@ -228,7 +228,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestValue())
                 .Returns(() => value);
 
-            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddValueRule<CharValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddRuleWithParent<CharValueRule>();
             sut.ForMemberItems(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
@@ -254,7 +254,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestValue())
                 .Returns(() => value);
 
-            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddValueRule<StringValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, string>> configAction = c => c.AddRuleWithParent<StringValueRule>();
             sut.ForValue(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
@@ -280,7 +280,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.GetManifestValue())
                 .Returns(() => value);
 
-            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddValueRule<CharValueRule>();
+            Action<IConfiguresValueAccessor<ValidatedObject, char>> configAction = c => c.AddRuleWithParent<CharValueRule>();
             sut.ForValues(x => x.AProperty, configAction);
 
             Mock.Get(valueBuilderFactory)
