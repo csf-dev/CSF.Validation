@@ -36,7 +36,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="ruleDefinition">The rule definition</param>
         /// <returns>The rule logic</returns>
-        /// <seealso cref="IValueRule{TValue, TValidated}"/>
+        /// <seealso cref="IRule{TValue, TValidated}"/>
         /// <seealso cref="IRule{TValidated}"/>
         /// <exception cref="ValidatorBuildingException">If the <see cref="ManifestRule.RuleConfiguration"/> action is not null and throws an exception.</exception>
         object GetRuleLogic(ManifestRule ruleDefinition)
@@ -111,11 +111,11 @@ namespace CSF.Validation.Rules
         /// <para>
         /// If the validation rule has a parent validated type - the <seealso cref="ManifestValue.Parent"/> property
         /// of the <see cref="ManifestRule.ManifestValue"/> is not <see langword="null"/> - and the rule type implements
-        /// <see cref="IValueRule{TValue, TValidated}"/> of the appropriate generic types the type of the value rule
+        /// <see cref="IRule{TValue, TValidated}"/> of the appropriate generic types the type of the value rule
         /// interface will be returned.
         /// </para>
         /// <para>
-        /// A second attempt will be made if the rule has no parent validated type, or if it does not implement the <see cref="IValueRule{TValue, TValidated}"/>
+        /// A second attempt will be made if the rule has no parent validated type, or if it does not implement the <see cref="IRule{TValue, TValidated}"/>
         /// interface with appropriare generic types.  If it implements <see cref="IRule{TValidated}"/> with the
         /// appropriate generic type then the type of that interface will be returned.
         /// </para>
@@ -125,9 +125,9 @@ namespace CSF.Validation.Rules
         /// </remarks>
         /// <param name="ruleDefinition">The rule definition.</param>
         /// <returns>The interface-type which most closely matches the rule and its usage.</returns>
-        /// <seealso cref="IValueRule{TValue, TValidated}"/>
+        /// <seealso cref="IRule{TValue, TValidated}"/>
         /// <seealso cref="IRule{TValidated}"/>
-        /// <exception cref="ValidatorBuildingException">If the rule class does not implement either <see cref="IValueRule{TValue, TValidated}"/>
+        /// <exception cref="ValidatorBuildingException">If the rule class does not implement either <see cref="IRule{TValue, TValidated}"/>
         /// or <see cref="IRule{TValidated}"/> with appropriate generic types.</exception>
         static Type GetBestRuleInterface(ManifestRule ruleDefinition)
         {
@@ -142,7 +142,7 @@ namespace CSF.Validation.Rules
             if(ruleInterface != null) return ruleInterface;
 
             var messageTemplate = (parentValidatedType != null) ? "RuleTypeMustImplementAppropriateRuleOrValueRuleInterface" : "RuleTypeMustImplementAppropriateRuleInterface";
-            var message = String.Format(GetExceptionMessage(messageTemplate), ruleType, validatedType, parentValidatedType, nameof(IRule<object>), nameof(IValueRule<object,object>));
+            var message = String.Format(GetExceptionMessage(messageTemplate), ruleType, validatedType, parentValidatedType, nameof(IRule<object>), nameof(IRule<object,object>));
             throw new ValidatorBuildingException(message);
         }
 
@@ -173,7 +173,7 @@ namespace CSF.Validation.Rules
         {
             if(parentValidatedType == null) return null;
 
-            var interfaceType = typeof(IValueRule<,>).MakeGenericType(validatedType, parentValidatedType);
+            var interfaceType = typeof(IRule<,>).MakeGenericType(validatedType, parentValidatedType);
             return interfaceType.GetTypeInfo().IsAssignableFrom(ruleType.GetTypeInfo()) ? interfaceType : null;
         }
 

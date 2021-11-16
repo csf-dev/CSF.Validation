@@ -186,7 +186,7 @@ namespace CSF.Validation.Rules
             }
         }
 
-        public class StringValueRule : IValueRule<string,ComplexObject>, IRule<string>
+        public class StringValueRule : IRule<string,ComplexObject>, IRule<string>
         {
             public bool ExecutedAsRule { get; private set; }
 
