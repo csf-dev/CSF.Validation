@@ -1,1 +1,1 @@
-# Using the Validation Model
+# Using the Manifest Model

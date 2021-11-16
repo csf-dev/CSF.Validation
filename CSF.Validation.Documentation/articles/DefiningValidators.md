@@ -1,11 +1,24 @@
 # Defining validators
 
-Conceptually, a validator is a collection of validation rules to be executed, along with their interdependencies. In CSF.Validation this is called _a validation manifest_.
+Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object and returns the result.
+In this validation framework a validator is created from information about those rules and any configuration related to those rules. This information is called _a validation manifest_.
 
-Each _[validation rule]_ which is used in a validation manifest should be written within a .NET class. These classes must implement at least one of the two rule interfaces.
+## Rules
 
-Whilst it is possible to create a validation manifest by-hand it's more common to write either [a validation builder] or to use [the validation model]. The builder is by-far the easiest and best approach when the collection and application of the rules can be described reliably using code. The validation model is more suited to dynamic, validation-as-data scenarios. Using the model, the rules which are applied may be stored in a serialised or data-oriented format, thus could be manipulated and altered by the application itself.
+Each _[validation rule]_ in the validation manifest is a .NET class. These rule classes must implement at least one of two generic interfaces:
+
+* [`IRule<TValidated>`]
+* [`IRule<TValidated, TParent>`]
 
 [validation rule]:WritingValidationRules.md
-[a validation builder]:WritingValidationBuilders.md
-[the validation model]:UsingTheValidationModel.md
+[`IRule<TValidated>`]:xref
+[`IRule<TValidated, TParent>`]:xref
+
+## Defining a validation manifest
+
+The simplest and most clear way to define a validation manifest is via the declarative/fluent API provided by [a validator builder]. This is _the recommended approach_ if the validator manifest model is not required.
+
+For occasions where the rules to execute or their configuration must be dynamic, [the validator manifest model] is available to define a validation manifest from a data-oriented approach.
+
+[a validator builder]:WritingValidationBuilders.md
+[the validator manifest model]:UsingTheValidationModel.md
