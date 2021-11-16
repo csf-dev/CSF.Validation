@@ -145,7 +145,7 @@ non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IV
 from <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a> definitions.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.ValueRuleAdapter-2.html">ValueRuleAdapter&lt;TValue, TValidated&gt;</a></h4>
-      <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IValueRule-2.html">IValueRule&lt;TValue, TValidated&gt;</a>, which
+      <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>, which
 allows their logic to be executed as if they were instances of the
 non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> interface.</p>
 </section>
@@ -158,21 +158,16 @@ non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IV
       <h4><a class="xref" href="CSF.Validation.Rules.IResolvesRule.html">IResolvesRule</a></h4>
       <section><p>An object which can get/resolve instances of validation rule types based upon their concrete <span class="xref">System.Type</span>.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.Rules.IRule.html">IRule</a></h4>
-      <section><p>A service for a validation rule which may validate any object.
-Generally-speaking custom validation rules should not implement this interface, preferring either
-<a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a> or <a class="xref" href="CSF.Validation.Rules.IValueRule-2.html">IValueRule&lt;TValue, TValidated&gt;</a>.</p>
-</section>
       <h4><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a></h4>
       <section><p>A service for a validation rule which validates an instance of a specified object type.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a></h4>
+      <section><p>A service for a validation rule which validates a value of a specified type and also makes use of a
+contextual 'parent' value, typically the object from which the first value was retrieved.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a></h4>
       <section><p>A generalised/non-generic interface for executing validation logic and getting the results.
 It is not expected that developers would want to implement this interface for their own rules.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Rules.IValueRule-2.html">IValueRule&lt;TValue, TValidated&gt;</a></h4>
-      <section><p>A service for a validation rule which validates a value of a specified type, which is
-retrieved (in some way) from an instance of a specified object type.</p>
 </section>
     <h3 id="enums">Enums
   </h3>

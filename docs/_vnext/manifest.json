@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-1.html",
-          "hash": "XZl/8XizLljBI9TQws+WUZ4mHFjJgiXwzuFH6upSYus="
+          "hash": "usHXWeaKkk1iIXiUjHCudtjaDRbAcP4D0VcnphT3iX4="
         }
       },
       "is_incremental": false,
@@ -893,11 +893,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CSF.Validation.Rules.IRule.yml",
+      "source_relative_path": "api/CSF.Validation.Rules.IRule-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CSF.Validation.Rules.IRule.html",
-          "hash": "wX2P0R/UBpWRDwdXklWBK0lIotqf43KGpUGZbFsPijE="
+          "relative_path": "api/CSF.Validation.Rules.IRule-2.html",
+          "hash": "XAtLZc4jqBfeFhTxNI9QCce5pxrlkN6eSRDqRLNLnFc="
         }
       },
       "is_incremental": false,
@@ -909,19 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IValidationLogic.html",
-          "hash": "I8Ul/noWWKLdkq7KKoUCx3FIMUPDUDAsTLEFNcP4IFQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CSF.Validation.Rules.IValueRule-2.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CSF.Validation.Rules.IValueRule-2.html",
-          "hash": "ZUWggW8HaokMjFuHvZNhcss3XQFiSXFkJ5YCu5rha34="
+          "hash": "zL7NdinwWxMeR4Eg0promIH5YeffqyXDtVzLW5uyr9k="
         }
       },
       "is_incremental": false,
@@ -1053,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleResult.html",
-          "hash": "oKPkLw9bNSsaPFbr8eE7pWbBCRTfskZIze3e+6p09sw="
+          "hash": "iV0TUUGqt47BAmkpxAfFGRqp3r5yYXGq+a39C9sT+98="
         }
       },
       "is_incremental": false,
@@ -1089,7 +1077,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.ValueRuleAdapter-2.html",
-          "hash": "yjYniX7IulujAktY/xfK9vV2S3DaUO8byyCLoO68cRM="
+          "hash": "vdte4NJQeP6Nd8e41QQglZi8lq0XLUjITD7wdeyanTo="
         }
       },
       "is_incremental": false,
@@ -1101,7 +1089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.html",
-          "hash": "iPGggl49V05UuLY5d2+3VC3ip+CQQWKmZCaP2s16mpQ="
+          "hash": "hSZFz7u+pBRMFpCEzekaQvn86MtNDRZZGiTTAtkNq28="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationRuleResult.html",
-          "hash": "vdXNuDwj8ouNjRjIT3lqU4bNpi1dX/+b1SgWl2Tf2SM="
+          "hash": "C3gqZbwcNsXcwxeZJMcwG2N7kJGd0NmTm2usEzMi5S8="
         }
       },
       "is_incremental": false,
@@ -1269,7 +1257,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html",
-          "hash": "/rRPRztGrkXVZ3vzHqrPGRiVqz9nWmP5nrZcTMiVi1Q="
+          "hash": "ysCoCA4NX7lEhMVVI+kzS9zdh0pegcM3JbXtuPYmtNU="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html",
-          "hash": "IkPuzfSsXGUpxJVrpUKBPJjUSyBaIc1WFZZ6fdcii4o="
+          "hash": "8fF8XyqwCHlkui6cSRwsETmfUy3gmwreRYniNwiQYKQ="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1593,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.html",
-          "hash": "OV/pHUESJYPzw8z4yxlliny30sFuJ4PhFGDXWilnjIY="
+          "hash": "IfI/fLvZIPQONWtiq9V1gjnQeAEkLVmFciQcS/QUqXE="
         }
       },
       "is_incremental": false,
@@ -1629,7 +1617,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "n6JY30bw8pYnEFj07U74EO6rSsQZITmnbeOoUEKaM50="
+          "hash": "sMyitilohmR9ZYqFCSqLdehUIGJk5ZOvOyDGVgmcm0w="
         }
       },
       "is_incremental": false,
@@ -1660,12 +1648,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/DefiningValidators.md",
       "output": {
         ".html": {
           "relative_path": "articles/DefiningValidators.html",
-          "hash": "kBd/YMm8Hb/vXSaHPLsNwYP8B7SOlQBCyF3+LytIUds="
+          "hash": "ed5iXWI9pDtQsS2tcgSSzTTEeI+AYpW6/xyUJY5K3VA="
         }
       },
       "is_incremental": false,
@@ -1701,7 +1692,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UsingTheValidationModel.html",
-          "hash": "ksjt6c9msrjyy++TOOxvX7iIPS1cHDYFTO+deXW43Gw="
+          "hash": "daQw6yM02A/a3URJw+SKWbociiR8XHVCJfKQRfbSmlE="
         }
       },
       "is_incremental": false,
@@ -1725,7 +1716,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidationBuilders.html",
-          "hash": "rnWhZp9WU8iwh3VMnOR4uhoj3fw7Lq7j5joEGuvDAio="
+          "hash": "GDuZyQbJOuh8WUdJezKmapDwfBmH9DLRVSdnqVVnIA0="
         }
       },
       "is_incremental": false,
@@ -1800,7 +1791,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 134,
+          "total_file_count": 133,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
