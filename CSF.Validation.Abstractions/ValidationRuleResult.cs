@@ -7,7 +7,7 @@ namespace CSF.Validation
     /// <summary>
     /// Represents information about the result of running a single validation rule.
     /// Typically this is a class which implements either <see cref="IRule{TValidated}"/>
-    /// or <see cref="IValueRule{TValue, TValidated}"/>.
+    /// or <see cref="IRule{TValue, TValidated}"/>.
     /// </summary>
     /// <remarks>
     /// <para>

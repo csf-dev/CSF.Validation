@@ -10,7 +10,7 @@ namespace CSF.Validation.Rules
     /// <remarks>
     /// <para>
     /// Instead of implementing this interface in order to create custom rules, developers should instead
-    /// implement one of <see cref="IRule{TValidated}"/> or <see cref="IValueRule{TValue, TValidated}"/> in their
+    /// implement one of <see cref="IRule{TValidated}"/> or <see cref="IRule{TValue, TValidated}"/> in their
     /// own logic.
     /// </para>
     /// <para>

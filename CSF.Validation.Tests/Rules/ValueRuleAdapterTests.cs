@@ -11,7 +11,7 @@ namespace CSF.Validation.Rules
     public class ValueRuleAdapterTests
     {
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnResultFromWrappedRule([Frozen] IValueRule<string,ComplexObject> wrapped,
+        public void GetResultAsyncShouldReturnResultFromWrappedRule([Frozen] IRule<string,ComplexObject> wrapped,
                                                                     ValueRuleAdapter<string,ComplexObject> sut,
                                                                     string value,
                                                                     [NoAutoProperties] ComplexObject parentValue,

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// An adapter class for instances of <see cref="IValueRule{TValue, TValidated}"/>, which
+    /// An adapter class for instances of <see cref="IRule{TValue, TValidated}"/>, which
     /// allows their logic to be executed as if they were instances of the
     /// non-generic <see cref="IValidationLogic"/> interface.
     /// </summary>
@@ -12,7 +12,7 @@ namespace CSF.Validation.Rules
     /// <typeparam name="TValidated">The type of parent object being validated by the current instance.</typeparam>
     public class ValueRuleAdapter<TValue,TValidated> : IValidationLogic
     {
-        readonly IValueRule<TValue,TValidated> wrapped;
+        readonly IRule<TValue,TValidated> wrapped;
 
         /// <summary>
         /// Executes the logic of the validation rule and returns the result.
@@ -32,7 +32,7 @@ namespace CSF.Validation.Rules
         /// Initialises an instance of <see cref="ValueRuleAdapter{TValue,TValidated}"/> from a specified rule.
         /// </summary>
         /// <param name="wrapped">The rule logic to be wrapped by the current instance.</param>
-        public ValueRuleAdapter(IValueRule<TValue,TValidated> wrapped)
+        public ValueRuleAdapter(IRule<TValue,TValidated> wrapped)
         {
             this.wrapped = wrapped ?? throw new System.ArgumentNullException(nameof(wrapped));
         }

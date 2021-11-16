@@ -72,7 +72,7 @@ namespace CSF.Validation
                 => PassAsync();
         }
 
-        public class StringValueRule : IValueRule<string, object>
+        public class StringValueRule : IRule<string, object>
         {
             public Task<RuleResult> GetResultAsync(string value, object validated, RuleContext context, CancellationToken token = default)
                 => PassAsync();
@@ -95,7 +95,7 @@ namespace CSF.Validation
 
         #region Inner validated object stub types
 
-        public class IntegerValueRule : IValueRule<int, object>
+        public class IntegerValueRule : IRule<int, object>
         {
             public Task<RuleResult> GetResultAsync(int value, object validated, RuleContext context, CancellationToken token = default)
                 => PassAsync();

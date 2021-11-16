@@ -10,7 +10,7 @@ namespace CSF.Validation.Rules
     /// <remarks>
     /// <para>
     /// Validation rules are typically classes which implement either <see cref="IRule{TValidated}"/>
-    /// or <see cref="IValueRule{TValue, TValidated}"/>.
+    /// or <see cref="IRule{TValue, TValidated}"/>.
     /// </para>
     /// <para>
     /// This class deals only with the possible information which could be returned by executing a validation
