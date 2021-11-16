@@ -4089,24 +4089,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddRules(Of TBuilder)()
   nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddRules<TBuilder>()
   nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddRules(Of TBuilder)()
-- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddValueRule*
-  name: AddValueRule
-  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddValueRule_
-  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddValueRule
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddRuleWithParent*
+  name: AddRuleWithParent
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddRuleWithParent_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddRuleWithParent
   isSpec: "True"
-  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.AddValueRule
-  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddValueRule
-  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddValueRule
-  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddValueRule
-- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddValueRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
-  name: AddValueRule<TRule>(Action<IConfiguresRule<TRule>>)
-  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddValueRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___
-  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddValueRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
-  name.vb: AddValueRule(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
-  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.AddValueRule<TRule>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresRule<TRule>>)
-  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddValueRule(Of TRule)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
-  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddValueRule<TRule>(Action<IConfiguresRule<TRule>>)
-  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddValueRule(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.AddRuleWithParent
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent
+  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddRuleWithParent
+  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddRuleWithParent``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
+  name: AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>>)
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddRuleWithParent__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___
+  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddRuleWithParent``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
+  name.vb: AddRuleWithParent(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.AddRuleWithParent<TRule>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresRule<TRule>>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent(Of TRule)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
+  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>>)
+  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
 - uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.IgnoreExceptions
   name: IgnoreExceptions()
   href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_IgnoreExceptions
@@ -5007,24 +5007,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AddRules(Of TBuilder)()
   nameWithType: ValueAccessorBuilder<TValidated, TValue>.AddRules<TBuilder>()
   nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AddRules(Of TBuilder)()
-- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddValueRule*
-  name: AddValueRule
-  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddValueRule_
-  commentId: Overload:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddValueRule
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRuleWithParent*
+  name: AddRuleWithParent
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRuleWithParent_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRuleWithParent
   isSpec: "True"
-  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.AddValueRule
-  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AddValueRule
-  nameWithType: ValueAccessorBuilder<TValidated, TValue>.AddValueRule
-  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AddValueRule
-- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddValueRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
-  name: AddValueRule<TRule>(Action<IConfiguresRule<TRule>>)
-  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddValueRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___
-  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddValueRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
-  name.vb: AddValueRule(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
-  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.AddValueRule<TRule>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresRule<TRule>>)
-  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AddValueRule(Of TRule)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
-  nameWithType: ValueAccessorBuilder<TValidated, TValue>.AddValueRule<TRule>(Action<IConfiguresRule<TRule>>)
-  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AddValueRule(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.AddRuleWithParent
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AddRuleWithParent
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.AddRuleWithParent
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AddRuleWithParent
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRuleWithParent``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
+  name: AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>>)
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRuleWithParent__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___
+  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRuleWithParent``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})
+  name.vb: AddRuleWithParent(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.AddRuleWithParent<TRule>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresRule<TRule>>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AddRuleWithParent(Of TRule)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>>)
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AddRuleWithParent(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
 - uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.GetManifestValue
   name: GetManifestValue()
   href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_GetManifestValue
@@ -5227,3 +5227,9 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidator(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
   nameWithType: ValidatorFactoryExtensions.GetValidator<TValidated>(IGetsValidator, Type)
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
+- uid: ValidationRuleBestPractices
+  name: Rule class best practices
+  href: articles/RuleClassBestPractices.html
+- uid: WritingValidationRules
+  name: Writing Validation Rules
+  href: articles/WritingValidationRules.html

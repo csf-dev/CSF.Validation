@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-1.html",
-          "hash": "usHXWeaKkk1iIXiUjHCudtjaDRbAcP4D0VcnphT3iX4="
+          "hash": "FjLWNOLIW9mzH2xaUCaoyVVZiTYJkCos3sD5lqhQ2+Y="
         }
       },
       "is_incremental": false,
@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-2.html",
-          "hash": "XAtLZc4jqBfeFhTxNI9QCce5pxrlkN6eSRDqRLNLnFc="
+          "hash": "Wd0Vx2lrlht/mnB88VwYkIMQ0JSQjQIRYIqOr583XKU="
         }
       },
       "is_incremental": false,
@@ -1221,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.IBuildsValueAccessor-2.html",
-          "hash": "uXCILP03sbD7D/Vpv96jdJ2TRVvZkQu3HCnkeNG8XVA="
+          "hash": "QEfUQkNBTXh9nrSYMVvj/C+r1th8aycXaRQV6ahpiQ8="
         }
       },
       "is_incremental": false,
@@ -1257,7 +1257,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html",
-          "hash": "ysCoCA4NX7lEhMVVI+kzS9zdh0pegcM3JbXtuPYmtNU="
+          "hash": "N+Fh4/2uo+TDhHwooVuW4HtUdlzL7SaCDZrWIVdhpYk="
         }
       },
       "is_incremental": false,
@@ -1521,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html",
-          "hash": "8fF8XyqwCHlkui6cSRwsETmfUy3gmwreRYniNwiQYKQ="
+          "hash": "ag/9c0DeEm0hmpRFsirNUGUEgvCrVMEXbFqBAnnbxUs="
         }
       },
       "is_incremental": false,
@@ -1648,15 +1648,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/DefiningValidators.md",
       "output": {
         ".html": {
           "relative_path": "articles/DefiningValidators.html",
-          "hash": "ed5iXWI9pDtQsS2tcgSSzTTEeI+AYpW6/xyUJY5K3VA="
+          "hash": "OoMZR0GSHmlpWEc/a/tstOqYLUWM8EWbQIhYZcXg0qc="
         }
       },
       "is_incremental": false,
@@ -1688,11 +1685,35 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/UsingTheValidationModel.md",
+      "source_relative_path": "articles/ResultData.md",
       "output": {
         ".html": {
-          "relative_path": "articles/UsingTheValidationModel.html",
-          "hash": "daQw6yM02A/a3URJw+SKWbociiR8XHVCJfKQRfbSmlE="
+          "relative_path": "articles/ResultData.html",
+          "hash": "/yFFKTMfyUcUM4yPOEnuVBOijLfbZgtvXSqhlHuWwd4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/RuleClassBestPractices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/RuleClassBestPractices.html",
+          "hash": "YxxWEFe+U7ZfHfB98liormjOYSnsha37Y6GxsQPYARE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UsingTheManifestModel.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UsingTheManifestModel.html",
+          "hash": "j0f+gsuKjZuQJm+RgQTnje5q154/GaQGWhHVfsIDmsw="
         }
       },
       "is_incremental": false,
@@ -1712,11 +1733,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/WritingValidationBuilders.md",
+      "source_relative_path": "articles/WorkingWithValidationManifest.md",
       "output": {
         ".html": {
-          "relative_path": "articles/WritingValidationBuilders.html",
-          "hash": "GDuZyQbJOuh8WUdJezKmapDwfBmH9DLRVSdnqVVnIA0="
+          "relative_path": "articles/WorkingWithValidationManifest.html",
+          "hash": "x1QScA7lYyeuAMRS/x0UJo96Ly9y2IZ4jn27+B4oke0="
         }
       },
       "is_incremental": false,
@@ -1728,7 +1749,19 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidationRules.html",
-          "hash": "OHFPPoLSyzXytuBiIPrl4mtJzP1TiJGQ3tD8NUpi89M="
+          "hash": "zMV2mHm3FBXCJW634BLBMEsVy4sY1BlbgPQOlHf5fqs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/WritingValidatorBuilders.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/WritingValidatorBuilders.html",
+          "hash": "yfWTeC0EDdwXspk7PDnfayw189Q2MQJNmlghtVhW73s="
         }
       },
       "is_incremental": false,
@@ -1740,7 +1773,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "Ks3T5ziWPa9LGo6v/R/1h0K/z6wyp/UhuiG58DIB2h0="
+          "hash": "dLDqPGFpPAUbhIFwkR6AT8ynrwN+9rESiJYWi7ELIO0="
         }
       },
       "is_incremental": false,
@@ -1785,7 +1818,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 11,
+          "total_file_count": 14,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {

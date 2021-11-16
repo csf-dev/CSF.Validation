@@ -66,9 +66,83 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="WritingValidationRules">
 <h1 id="writing-validation-rules">Writing Validation Rules</h1>
 
+<p>A validator is made from validation rules; each rule represents an independent piece of logic that performs a pass/fail test.
+In <strong>CSF.Validation</strong> a rule is a .NET class which implements one of the following two rule interfaces.</p>
+<ul>
+<li><a class="xref" href="../api/CSF.Validation.Rules.IRule-1.html"><code>IRule&lt;in TValidated&gt;</code></a></li>
+<li><a class="xref" href="../api/CSF.Validation.Rules.IRule-2.html"><code>IRule&lt;in TValue, in TParent&gt;</code></a></li>
+</ul>
+<p>There is no reason why a rule class cannot implement both interfaces and also no reaosn why a rule class cannot implement either of these interfaces more than once, for different generic types (if it makes sense to do so).
+For example, rules which operate upon integer values might implement the interfaces for a variety of integer types, such as <code>Byte</code>, <code>Int16</code>, <code>Int32</code> &amp; <code>Int64</code>.</p>
+<h2 id="which-interface-to-choose">Which interface to choose?</h2>
+<p>The <code>IRule&lt;in TValidated&gt;</code> interface is suitable for the majority of validation rules.
+The value to be validated is provided to <a class="xref" href="../api/CSF.Validation.Rules.IRule-1.html#CSF_Validation_Rules_IRule_1_GetResultAsync__0_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_">the <code>GetResultAsync</code> method</a> and the rule logic returns a result based upon that value.</p>
+<p>Some validation rules require access to the parent object which is being validated though.
+Imagine we are validating the following model.</p>
+<pre><code class="lang-csharp">public class LibraryBookLoan
+{
+    public long BookId { get; set; }
+    public DateTime LoanDate { get; set; }
+    public DateTime ReturnDate { get; set; }
+}
+</code></pre>
+<p>Now, we wish to write a validation rule that the <code>ReturnDate</code> (the end of the loan) must not be earlier than the <code>LoanDate</code> (the beginning of the loan).
+Whilst we could write a class which implements <code>IRule&lt;LibraryBookLoan&gt;</code>, such a rule would not be associated with the <code>ReturnDate</code> property, as it would need to be applied at the level of the loan object itself.</p>
+<p>Instead, here we would implement <code>IRule&lt;DateTime,LibraryBookLoan&gt;</code> in our rule class.
+<a class="xref" href="../api/CSF.Validation.Rules.IRule-2.html#CSF_Validation_Rules_IRule_2_GetResultAsync__0__1_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_">The <code>GetResultAsync</code> method which additionally accepts a parent value</a> will receive the <code>DateTime</code> to be validated as the primary value but additionally a reference to the 'parent' <code>LibraryBookLoan</code>, giving it access to the other properties of that object.
+This then allows us to associate the rule with the <code>ReturnDate</code> field in our validator.</p>
+<h2 id="returning-results-from-rules">Returning results from rules</h2>
+<p>In normal operation, the <code>GetResultAsync</code> method of a rule class should always do one of three things:</p>
+<ul>
+<li>Return a pass result</li>
+<li>Return a failure result</li>
+<li>Throw an exception
+<ul>
+<li>Alternatively, manually return an error result</li>
+</ul>
+</li>
+</ul>
+<h3 id="passing-or-failing-a-rule">Passing or failing a rule</h3>
+<p>In order to return pass/failure results a helper class is available; <a class="xref" href="../api/CSF.Validation.Rules.CommonResults.html">this class is named <code>CommonResults</code></a> and it is designed to be used as so.</p>
+<pre><code class="lang-csharp">using System.Threading;
+using System.Threading.Tasks;
+using CSF.Validation.Rules;
+using static CSF.Validation.Rules.CommonResults;
+
+public class MyValidationRule : IRule&lt;object&gt;
+{
+    public Task&lt;RuleResult&gt; GetResultAsync(object validated,
+                                           RuleContext context,
+                                           CancellationToken token = default)
+    {
+        // For a pass result:
+        return PassAsync();
+
+        // Or for a failure result:
+        return FailAsync();
+    }
+}
+</code></pre>
+<p>The <code>CommonResults</code> class also has helper methods named simply <code>Pass</code> and <code>Fail</code> which return results that are not contained within <code>Task&lt;T&gt;</code> instances.
+These are useful if you wish to make the <code>GetResultAsync</code> method <code>async</code> and use the <code>await</code> keyword.</p>
+<p>These methods additionally present an overload in which you may return <a href="ResultData.html">a dictionary of result data</a>.
+This allows advanced usages scenarios in which arbitrary information, related to the validation rule may be included with the outcome.</p>
+<h3 id="rules-which-encounter-errors">Rules which encounter errors</h3>
+<p>When validation rules are executed by the validation framework, they are executed within a <code>try/catch</code> which records any unhandled exceptions raised by the rule classes.
+Because of this, rule classes can often avoid boilerplate exception-catching logic of their own; <em>it is OK for the <code>GetResultAsync</code> method to throw an exception</em> if it encounters an error.</p>
+<p>An unhandled exception from a rule class is converted to an <strong>Error</strong> outcome, which behaves in the same way as a failure outcome.
+The error result will have the original exception object available as a property, so that the application can take appropriate action (for example, logging).</p>
+<p>It is also possible, using <a class="xref" href="../api/CSF.Validation.Rules.CommonResults.html">the <code>CommonResults</code> class</a> to manually create and return an error result, via either of the <code>ErrorAsync()</code> or <code>Error()</code> methods.
+The only practical difference between using these methods and allowing the rule <code>GetResultAsync</code> method to throw an exception is:</p>
+<ul>
+<li>A manually-returned error result does not require an exception</li>
+<li>A manually-returned error result may contain <a href="ResultData.html">a dictionary of result data</a></li>
+</ul>
+<h2 id="tips-for-writing-good-rules">Tips for writing good rules</h2>
+<p>This documentation contains a guide of <a href="RuleClassBestPractices.html">best practices for writing rule classes</a>.</p>
 </article>
           </div>
           
