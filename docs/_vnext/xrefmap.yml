@@ -2824,25 +2824,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.IResolvesRule.ResolveRule
   nameWithType: IResolvesRule.ResolveRule
-- uid: CSF.Validation.Rules.IRule
-  name: IRule
-  href: api/CSF.Validation.Rules.IRule.html
-  commentId: T:CSF.Validation.Rules.IRule
-  fullName: CSF.Validation.Rules.IRule
-  nameWithType: IRule
-- uid: CSF.Validation.Rules.IRule.GetResultAsync(System.Object,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name: GetResultAsync(Object, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.IRule.html#CSF_Validation_Rules_IRule_GetResultAsync_System_Object_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.IRule.GetResultAsync(System.Object,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  fullName: CSF.Validation.Rules.IRule.GetResultAsync(System.Object, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: IRule.GetResultAsync(Object, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.IRule.GetResultAsync*
-  name: GetResultAsync
-  href: api/CSF.Validation.Rules.IRule.html#CSF_Validation_Rules_IRule_GetResultAsync_
-  commentId: Overload:CSF.Validation.Rules.IRule.GetResultAsync
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.IRule.GetResultAsync
-  nameWithType: IRule.GetResultAsync
 - uid: CSF.Validation.Rules.IRule`1
   name: IRule<TValidated>
   href: api/CSF.Validation.Rules.IRule-1.html
@@ -2869,6 +2850,32 @@ references:
   fullName.vb: CSF.Validation.Rules.IRule(Of TValidated).GetResultAsync
   nameWithType: IRule<TValidated>.GetResultAsync
   nameWithType.vb: IRule(Of TValidated).GetResultAsync
+- uid: CSF.Validation.Rules.IRule`2
+  name: IRule<TValue, TParent>
+  href: api/CSF.Validation.Rules.IRule-2.html
+  commentId: T:CSF.Validation.Rules.IRule`2
+  name.vb: IRule(Of TValue, TParent)
+  fullName: CSF.Validation.Rules.IRule<TValue, TParent>
+  fullName.vb: CSF.Validation.Rules.IRule(Of TValue, TParent)
+  nameWithType: IRule<TValue, TParent>
+  nameWithType.vb: IRule(Of TValue, TParent)
+- uid: CSF.Validation.Rules.IRule`2.GetResultAsync(`0,`1,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(TValue, TParent, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.IRule-2.html#CSF_Validation_Rules_IRule_2_GetResultAsync__0__1_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.IRule`2.GetResultAsync(`0,`1,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.IRule<TValue, TParent>.GetResultAsync(TValue, TParent, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.IRule(Of TValue, TParent).GetResultAsync(TValue, TParent, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: IRule<TValue, TParent>.GetResultAsync(TValue, TParent, RuleContext, CancellationToken)
+  nameWithType.vb: IRule(Of TValue, TParent).GetResultAsync(TValue, TParent, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.IRule`2.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.IRule-2.html#CSF_Validation_Rules_IRule_2_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.IRule`2.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.IRule<TValue, TParent>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.IRule(Of TValue, TParent).GetResultAsync
+  nameWithType: IRule<TValue, TParent>.GetResultAsync
+  nameWithType.vb: IRule(Of TValue, TParent).GetResultAsync
 - uid: CSF.Validation.Rules.IValidationLogic
   name: IValidationLogic
   href: api/CSF.Validation.Rules.IValidationLogic.html
@@ -2888,32 +2895,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.IValidationLogic.GetResultAsync
   nameWithType: IValidationLogic.GetResultAsync
-- uid: CSF.Validation.Rules.IValueRule`2
-  name: IValueRule<TValue, TValidated>
-  href: api/CSF.Validation.Rules.IValueRule-2.html
-  commentId: T:CSF.Validation.Rules.IValueRule`2
-  name.vb: IValueRule(Of TValue, TValidated)
-  fullName: CSF.Validation.Rules.IValueRule<TValue, TValidated>
-  fullName.vb: CSF.Validation.Rules.IValueRule(Of TValue, TValidated)
-  nameWithType: IValueRule<TValue, TValidated>
-  nameWithType.vb: IValueRule(Of TValue, TValidated)
-- uid: CSF.Validation.Rules.IValueRule`2.GetResultAsync(`0,`1,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name: GetResultAsync(TValue, TValidated, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.IValueRule-2.html#CSF_Validation_Rules_IValueRule_2_GetResultAsync__0__1_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.IValueRule`2.GetResultAsync(`0,`1,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  fullName: CSF.Validation.Rules.IValueRule<TValue, TValidated>.GetResultAsync(TValue, TValidated, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.Rules.IValueRule(Of TValue, TValidated).GetResultAsync(TValue, TValidated, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: IValueRule<TValue, TValidated>.GetResultAsync(TValue, TValidated, RuleContext, CancellationToken)
-  nameWithType.vb: IValueRule(Of TValue, TValidated).GetResultAsync(TValue, TValidated, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.IValueRule`2.GetResultAsync*
-  name: GetResultAsync
-  href: api/CSF.Validation.Rules.IValueRule-2.html#CSF_Validation_Rules_IValueRule_2_GetResultAsync_
-  commentId: Overload:CSF.Validation.Rules.IValueRule`2.GetResultAsync
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.IValueRule<TValue, TValidated>.GetResultAsync
-  fullName.vb: CSF.Validation.Rules.IValueRule(Of TValue, TValidated).GetResultAsync
-  nameWithType: IValueRule<TValue, TValidated>.GetResultAsync
-  nameWithType.vb: IValueRule(Of TValue, TValidated).GetResultAsync
 - uid: CSF.Validation.Rules.MatchesRegex
   name: MatchesRegex
   href: api/CSF.Validation.Rules.MatchesRegex.html
@@ -3433,15 +3414,15 @@ references:
   fullName.vb: CSF.Validation.Rules.ValueRuleAdapter(Of TValue, TValidated)
   nameWithType: ValueRuleAdapter<TValue, TValidated>
   nameWithType.vb: ValueRuleAdapter(Of TValue, TValidated)
-- uid: CSF.Validation.Rules.ValueRuleAdapter`2.#ctor(CSF.Validation.Rules.IValueRule{`0,`1})
-  name: ValueRuleAdapter(IValueRule<TValue, TValidated>)
-  href: api/CSF.Validation.Rules.ValueRuleAdapter-2.html#CSF_Validation_Rules_ValueRuleAdapter_2__ctor_CSF_Validation_Rules_IValueRule__0__1__
-  commentId: M:CSF.Validation.Rules.ValueRuleAdapter`2.#ctor(CSF.Validation.Rules.IValueRule{`0,`1})
-  name.vb: ValueRuleAdapter(IValueRule(Of TValue, TValidated))
-  fullName: CSF.Validation.Rules.ValueRuleAdapter<TValue, TValidated>.ValueRuleAdapter(CSF.Validation.Rules.IValueRule<TValue, TValidated>)
-  fullName.vb: CSF.Validation.Rules.ValueRuleAdapter(Of TValue, TValidated).ValueRuleAdapter(CSF.Validation.Rules.IValueRule(Of TValue, TValidated))
-  nameWithType: ValueRuleAdapter<TValue, TValidated>.ValueRuleAdapter(IValueRule<TValue, TValidated>)
-  nameWithType.vb: ValueRuleAdapter(Of TValue, TValidated).ValueRuleAdapter(IValueRule(Of TValue, TValidated))
+- uid: CSF.Validation.Rules.ValueRuleAdapter`2.#ctor(CSF.Validation.Rules.IRule{`0,`1})
+  name: ValueRuleAdapter(IRule<TValue, TValidated>)
+  href: api/CSF.Validation.Rules.ValueRuleAdapter-2.html#CSF_Validation_Rules_ValueRuleAdapter_2__ctor_CSF_Validation_Rules_IRule__0__1__
+  commentId: M:CSF.Validation.Rules.ValueRuleAdapter`2.#ctor(CSF.Validation.Rules.IRule{`0,`1})
+  name.vb: ValueRuleAdapter(IRule(Of TValue, TValidated))
+  fullName: CSF.Validation.Rules.ValueRuleAdapter<TValue, TValidated>.ValueRuleAdapter(CSF.Validation.Rules.IRule<TValue, TValidated>)
+  fullName.vb: CSF.Validation.Rules.ValueRuleAdapter(Of TValue, TValidated).ValueRuleAdapter(CSF.Validation.Rules.IRule(Of TValue, TValidated))
+  nameWithType: ValueRuleAdapter<TValue, TValidated>.ValueRuleAdapter(IRule<TValue, TValidated>)
+  nameWithType.vb: ValueRuleAdapter(Of TValue, TValidated).ValueRuleAdapter(IRule(Of TValue, TValidated))
 - uid: CSF.Validation.Rules.ValueRuleAdapter`2.#ctor*
   name: ValueRuleAdapter
   href: api/CSF.Validation.Rules.ValueRuleAdapter-2.html#CSF_Validation_Rules_ValueRuleAdapter_2__ctor_

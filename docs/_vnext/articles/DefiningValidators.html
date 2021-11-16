@@ -69,9 +69,17 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="defining-validators">Defining validators</h1>
 
-<p>Conceptually, a validator is a collection of validation rules to be executed, along with their interdependencies. In CSF.Validation this is called <em>a validation manifest</em>.</p>
-<p>Each <em><a href="WritingValidationRules.html">validation rule</a></em> which is used in a validation manifest should be written within a .NET class. These classes must implement at least one of the two rule interfaces.</p>
-<p>Whilst it is possible to create a validation manifest by-hand it's more common to write either <a href="WritingValidationBuilders.html">a validation builder</a> or to use <a href="UsingTheValidationModel.html">the validation model</a>. The builder is by-far the easiest and best approach when the collection and application of the rules can be described reliably using code. The validation model is more suited to dynamic, validation-as-data scenarios. Using the model, the rules which are applied may be stored in a serialised or data-oriented format, thus could be manipulated and altered by the application itself.</p>
+<p>Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object and returns the result.
+In this validation framework a validator is created from information about those rules and any configuration related to those rules. This information is called <em>a validation manifest</em>.</p>
+<h2 id="rules">Rules</h2>
+<p>Each <em><a href="WritingValidationRules.html">validation rule</a></em> in the validation manifest is a .NET class. These rule classes must implement at least one of two generic interfaces:</p>
+<ul>
+<li><a href="xref"><code>IRule&lt;TValidated&gt;</code></a></li>
+<li><a href="xref"><code>IRule&lt;TValidated, TParent&gt;</code></a></li>
+</ul>
+<h2 id="defining-a-validation-manifest">Defining a validation manifest</h2>
+<p>The simplest and most clear way to define a validation manifest is via the declarative/fluent API provided by <a href="WritingValidationBuilders.html">a validator builder</a>. This is <em>the recommended approach</em> if the validator manifest model is not required.</p>
+<p>For occasions where the rules to execute or their configuration must be dynamic, <a href="UsingTheValidationModel.html">the validator manifest model</a> is available to define a validation manifest from a data-oriented approach.</p>
 </article>
           </div>
           
