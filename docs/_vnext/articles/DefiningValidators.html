@@ -72,11 +72,12 @@
 <p>Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object and returns the result.
 In this validation framework a validator is created from information about those rules and any configuration related to those rules. This information is called <em>a validation manifest</em>.</p>
 <h2 id="rules">Rules</h2>
-<p>Rules are individual, self-contained pieces of logic which fundamentally test for a pass or a fail.  <a href="WritingValidationRules.html">Each <strong>validation rule</strong></a> in the validation manifest is a .NET class. These rule classes must implement at least one of these two generic interfaces.</p>
+<p>Rules are individual, self-contained pieces of logic which fundamentally test for a pass or a fail.  Each validation rule in the validation manifest is a .NET class. These rule classes must implement at least one of these two generic interfaces.</p>
 <ul>
 <li><a class="xref" href="../api/CSF.Validation.Rules.IRule-1.html"><code>IRule&lt;in TValidated&gt;</code></a></li>
 <li><a class="xref" href="../api/CSF.Validation.Rules.IRule-2.html"><code>IRule&lt;in TValue, in TParent&gt;</code></a></li>
 </ul>
+<p>There is documentation available for <a href="WritingValidationRules.html">writing rule classes</a> and some <a href="RuleClassBestPractices.html">best practices and guidance</a> related to rules as well.</p>
 <h2 id="defining-a-validation-manifest">Defining a validation manifest</h2>
 <p>The simplest and most clear way to define a validation manifest is via the declarative/fluent API provided by <a href="WritingValidatorBuilders.html">a <strong>validator builder</strong></a>. This is <em>the recommended approach</em> if the validator manifest model is not required.</p>
 <p>For occasions where the rules to execute or their configuration must be dynamic, <a href="UsingTheManifestModel.html">the validator <strong>manifest model</strong></a> is available to define a validation manifest from a data-oriented approach.</p>
