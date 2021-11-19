@@ -69,6 +69,19 @@
             <article class="content wrap" id="_content" data-uid="ValidationRuleBestPractices">
 <h1 id="rule-class-best-practices">Rule class best practices</h1>
 
+<p>These are hints and guidance to help you write good [rule classes] that promote reuse and make good validators.</p>
+<h2 id="a-rule-should-only-fail-for-one-reason">A rule should only fail for one reason</h2>
+<p>Good rules should return a failure result for only one reason/scenario. In this way, it is perhaps better to think of a rule not as <em>&quot;Pass if these conditions are met&quot;</em> but instead as <em>&quot;Fail if one condition is not met&quot;</em>.</p>
+<p>For example, imagine you are writing a rule for the format of a <code>string</code> to validate that it is plausibly a valid US ZIP code. This rule should return a <em>Pass</em> result if the string is <code>null</code> or is empty. This is because &quot;empty&quot; or &quot;missing&quot; are conceptually different to &quot;present, but invalid&quot;.</p>
+<p>If a rule were to conflate not-null/not-empty with format-validation then such a rule could not be used with a ZIP code value which is optional. If the value is mandatory then it is easy to combine format-validation with [<code>NotNull</code>] &amp; [<code>NotEmpty</code>] rules. By using different rules to cover &quot;invalid-format&quot; and &quot;missing&quot;, you may also provide better feedback in a UI.</p>
+<p>Following on from the above, generally-speaking it is good for any rule which validates a [nullable reference type] to return a <em>Pass</em> outcome if the value is <code>null</code>.</p>
+<p>[<code>NotNull</code>]
+[<code>NotEmpty</code>]</p>
+<h2 id="avoid-unnecessary-error-results">Avoid unnecessary error results</h2>
+<p>Whilst it is OK for validation rule classes to throw unhandled exceptions, which will be translated to <em>Error</em> results by the validator, developers should continue to follow best practices for exceptions.</p>
+<p>Error results are treated like failures by the validator, but they should still only be used for truly unexpected/exceptional scenarios. It is more difficult to make use of an Error result than a Failure result.</p>
+<p>If your rule has an expectable error condition that relates to the object being validated, then year for this condition and return a <em>Pass</em> result if it is encountered. Then write &amp; use a separate rule to fail specifically on that condition. This also helps avoid confusing validation results by not returning more than one failure for the same conceptual reason.</p>
+<h2 id="inject-dependencies-into-rules">Inject dependencies into rules</h2>
 </article>
           </div>
           
