@@ -7,6 +7,11 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A validation rule which passes if the value being validated is not <see langword="null" /> and fails if it is.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This rule will always return a synchronous result.
+    /// </para>
+    /// </remarks>
     public class NotNull : IRule<object>
     {
         /// <summary>

@@ -22,6 +22,9 @@ namespace CSF.Validation.Rules
     /// of these values is negative.  Thus it is possible to set up scenarios where this rule will always return a failure
     /// result for any non-null string, as the pass criteria cannot be satisfied.
     /// </para>
+    /// <para>
+    /// This rule will always return a synchronous result.
+    /// </para>
     /// </remarks>
     public class StringLength : IRule<string>
     {

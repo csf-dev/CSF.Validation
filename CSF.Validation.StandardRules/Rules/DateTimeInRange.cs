@@ -24,6 +24,9 @@ namespace CSF.Validation.Rules
     /// The logic of this rule does not verify that the Start is not later-than the End.  Thus it is possible to set up scenarios where this rule
     /// will always return a failure result for any DateTime, as the pass criteria cannot be satisfied.
     /// </para>
+    /// <para>
+    /// This rule will always return a synchronous result.
+    /// </para>
     /// </remarks>
     public class DateTimeInRange : IRule<DateTime>, IRule<DateTime?>
     {

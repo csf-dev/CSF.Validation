@@ -19,6 +19,9 @@ namespace CSF.Validation.Rules
     /// This rule will pass if the validated string is <see langword="null" />.  Combine this rule with <see cref="NotNull"/> if null
     /// strings are not permitted.
     /// </para>
+    /// <para>
+    /// This rule will always return a synchronous result.
+    /// </para>
     /// </remarks>
     public class MatchesRegex : IRule<string>
     {

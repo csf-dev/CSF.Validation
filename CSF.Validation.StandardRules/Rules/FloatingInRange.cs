@@ -27,6 +27,9 @@ namespace CSF.Validation.Rules
     /// <para>
     /// This rule supports both non-nullable and nullable instances of <see cref="float"/> &amp; <see cref="double"/>.
     /// </para>
+    /// <para>
+    /// This rule will always return a synchronous result.
+    /// </para>
     /// </remarks>
     public class FloatingInRange : IRule<float>, IRule<double>, IRule<float?>, IRule<double?>
     {

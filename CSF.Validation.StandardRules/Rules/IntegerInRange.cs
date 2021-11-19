@@ -27,6 +27,9 @@ namespace CSF.Validation.Rules
     /// <para>
     /// This rule supports both non-nullable and nullable instances of <see cref="byte"/>, <see cref="short"/>, <see cref="int"/> &amp; <see cref="long"/>.
     /// </para>
+    /// <para>
+    /// This rule will always return a synchronous result.
+    /// </para>
     /// </remarks>
     public class IntegerInRange : IRule<byte>, IRule<short>, IRule<int>, IRule<long>, IRule<byte?>, IRule<short?>, IRule<int?>, IRule<long?>
     {

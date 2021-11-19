@@ -58,6 +58,40 @@ namespace CSF.Validation
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
+        /// </summary>
+        /// <param name="identifier">A unique identifier for the rule to which this result corresponds.</param>
+        /// <param name="outcome">The outcome of validation.</param>
+        /// <param name="data">An optional collection of arbitrary key/value data which is provided by the validation rule logic.</param>
+        /// <param name="exception">
+        /// An optional exception which caused the validation process to error.  This parameter must be <see langword="null"/>
+        /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
+        /// </param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="identifier"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If the <paramref name="outcome"/> is not a defined enumeration constant.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
+        /// is not <see langword="null"/>.
+        /// </description>
+        /// </item>
+        /// </list>
+        /// </exception>
+        ValidationRuleResult(RuleIdentifier identifier,
+                             RuleOutcome outcome,
+                             IReadOnlyDictionary<string, object> data,
+                             Exception exception = null) : base(outcome, data, exception)
+        {
+            Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
+        }
+
+        /// <summary>
         /// Serves as a 'copy constructor' of sorts to initialise an instance of <see cref="ValidationRuleResult"/>
         /// from an existing <see cref="RuleResult"/> as well as the additional information required by this type.
         /// </summary>

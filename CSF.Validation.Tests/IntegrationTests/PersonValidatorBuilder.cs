@@ -14,7 +14,7 @@ namespace CSF.Validation.IntegrationTests
 
             config.ForMember(x => x.Name, m =>
             {
-                m.AddRule<NotNullOrEmptyString>();
+                m.AddRule<NotNullOrEmpty>();
             });
 
             config.ForMember(x => x.Birthday, m =>
