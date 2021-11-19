@@ -6,10 +6,28 @@
   topicHref: DefiningValidators.md
   items:
     - name: Creating rules
-      href: WritingValidationRules.md
+      topicHref: WritingValidationRules/index.md
+      items:
+        - name: Rule interfaces
+          href: WritingValidationRules/TheRuleInterfaces.md
+        - name: Returning results
+          href: WritingValidationRules/ReturningResultsFromRules.md
+        - name: Result data
+          href: WritingValidationRules/ResultData.md
     - name: Validator builders
       href: WritingValidatorBuilders.md
     - name: The manifest model
       href: UsingTheManifestModel.md
 - name: Performing validation
   href: ConsumingValidators.md
+- name: Best practice
+  topicHref: BestPractice/index.md
+  items:
+    - name: Only fail for one reason
+      href: BestPractice/RulesShouldOnlyFailForOneReason.md
+    - name: Avoid unnecessary errors
+      href: BestPractice/RulesShouldAvoidUnnecessaryErrors.md
+    - name: Use dependency injection
+      href: BestPractice/UseDependencyInjectionForRules.md
+    - name: Use CommonResults
+      href: BestPractice/UseCommonRuleResults.md

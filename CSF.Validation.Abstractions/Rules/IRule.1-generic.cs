@@ -20,7 +20,7 @@ namespace CSF.Validation.Rules
     /// </para>
     /// <para>
     /// You are encouraged to read more at <xref href="WritingValidationRules?text=the+documentation+for+writing+rule+classes"/>
-    /// &amp; <xref href="ValidationRuleBestPractices?text=best+practices+for+writing+rules"/>.
+    /// &amp; <xref href="BestPractices?text=best+practices+for+writing+rules"/>.
     /// </para>
     /// </remarks>
     /// <typeparam name="TValidated">The type of the object which this rule validates</typeparam>

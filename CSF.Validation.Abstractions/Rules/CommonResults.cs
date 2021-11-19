@@ -25,15 +25,22 @@ namespace CSF.Validation.Rules
     /// </remarks>
     public static class CommonResults
     {
-        #region Cached tasks
+        #region Cached/singleton results
 
-        // These singleton/cached immutable task instances provide a performance optimisation for cases where a
-        // completed task is required and we're going to return the result synchronously.  These will avoid excess
-        // object allocation for lots of tasks.
+        // These immutable singleton/cached instances are flyweights which may be reused to avoid
+        // allocating new objects where the singleton would suffice.
+        // This is especially relevant for occasions where completed tasks are required for rules that
+        // run synchronously.
+        
+        static readonly RuleResult
+            passSingleton = new RuleResult(RuleOutcome.Passed),
+            failSingleton = new RuleResult(RuleOutcome.Failed),
+            errorSingleton = new RuleResult(RuleOutcome.Errored);
+
         static readonly Task<RuleResult>
-            passSingleton = Task.FromResult(Pass()),
-            failSingleton = Task.FromResult(Fail()),
-            errorSingleton = Task.FromResult(Error());
+            passTaskSingleton = Task.FromResult(passSingleton),
+            failTaskSingleton = Task.FromResult(failSingleton),
+            errorTaskSingleton = Task.FromResult(errorSingleton);
 
         #endregion
 
@@ -51,7 +58,8 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static RuleResult Pass(IDictionary<string, object> data = null) => new RuleResult(RuleOutcome.Passed, data);
+        public static RuleResult Pass(IDictionary<string, object> data = null)
+            => IsEmpty(data) ? passSingleton : new RuleResult(RuleOutcome.Passed, data);
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for passing validation, returned within a completed task.
@@ -78,7 +86,7 @@ namespace CSF.Validation.Rules
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
         public static Task<RuleResult> PassAsync(IDictionary<string, object> data = null)
-            => (data?.Count).GetValueOrDefault() == default(int) ? passSingleton : Task.FromResult(Pass(data));
+            => IsEmpty(data) ? passTaskSingleton : Task.FromResult(Pass(data));
 
         #endregion
 
@@ -96,7 +104,8 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static RuleResult Fail(IDictionary<string, object> data = null) => new RuleResult(RuleOutcome.Failed, data);
+        public static RuleResult Fail(IDictionary<string, object> data = null)
+            => IsEmpty(data) ? failSingleton : new RuleResult(RuleOutcome.Failed, data);
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for failing validation, returned within a completed task.
@@ -123,7 +132,7 @@ namespace CSF.Validation.Rules
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
         public static Task<RuleResult> FailAsync(IDictionary<string, object> data = null)
-            => (data?.Count).GetValueOrDefault() == default(int) ? failSingleton : Task.FromResult(Fail(data));
+            => IsEmpty(data) ? failTaskSingleton : Task.FromResult(Fail(data));
 
         #endregion
 
@@ -171,7 +180,7 @@ namespace CSF.Validation.Rules
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
         public static RuleResult Error(Exception exception = null, IDictionary<string, object> data = null)
-            => new RuleResult(RuleOutcome.Errored, data, exception);
+            => IsEmpty(data) && exception is null ? errorSingleton : new RuleResult(RuleOutcome.Errored, data, exception);
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for validation which has encountered an unexpected error,
@@ -225,8 +234,17 @@ namespace CSF.Validation.Rules
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
         public static Task<RuleResult> ErrorAsync(Exception exception = null, IDictionary<string, object> data = null)
-            => (data?.Count).GetValueOrDefault() == default(int) && exception is null ? errorSingleton : Task.FromResult(Error(exception, data));
+            => IsEmpty(data) && exception is null ? errorTaskSingleton : Task.FromResult(Error(exception, data));
 
         #endregion
+
+        /// <summary>
+        /// Gets a value indicating whether or not the specified data dictionary is empty or not.
+        /// </summary>
+        /// <param name="data">A data dictionary</param>
+        /// <returns>
+        /// <see langword="true" /> if the <paramref name="data"/> is <see langword="null" /> or has a count of zero; <see langword="false" /> otherwise.
+        /// </returns>
+        static bool IsEmpty(IDictionary<string, object> data) => data is null || data.Count == 0;
     }
 }

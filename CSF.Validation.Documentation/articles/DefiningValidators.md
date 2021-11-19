@@ -5,15 +5,12 @@ In this validation framework a validator is created from information about those
 
 ## Rules
 
-Rules are individual, self-contained pieces of logic which fundamentally test for a pass or a fail.  Each validation rule in the validation manifest is a .NET class. These rule classes must implement at least one of these two generic interfaces.
+Rules are individual, self-contained pieces of logic which fundamentally test for a pass or a fail.
+Each validation rule in the validation manifest is a .NET class.
+Developers are advised to read [the documentation for writing rule classes] & the [best practices and guidance] applicable to rules.
 
-* [`IRule<in TValidated>`]
-* [`IRule<in TValue, in TParent>`]
-
-There is documentation available for [writing rule classes] and some [best practices and guidance] related to rules as well.
-
-[writing rule classes]:WritingValidationRules.md
-[best practices and guidance]:RuleClassBestPractices.md
+[the documentation for writing rule classes]:WritingValidationRules/index.md
+[best practices and guidance]:BestPractice/index.md#writing-validation-rule-classes
 [`IRule<in TValidated>`]:xref:CSF.Validation.Rules.IRule`1
 [`IRule<in TValue, in TParent>`]:xref:CSF.Validation.Rules.IRule`2
 
