@@ -110,12 +110,16 @@ an inclusive <a class="xref" href="CSF.Validation.Rules.FloatingInRange.html#CSF
       <section><p>A rule which passes if the validated string is either <span class="xref">null</span> or is a match for the specified
 regular expression.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NotEmpty.html">NotEmpty</a></h4>
+      <section><p>A validation rule which passes if the value being validated is either <span class="xref">null</span> or is a collection
+that has at least one item.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.NotNull.html">NotNull</a></h4>
       <section><p>A validation rule which passes if the value being validated is not <span class="xref">null</span> and fails if it is.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.Rules.NotNullOrEmptyString.html">NotNullOrEmptyString</a></h4>
-      <section><p>A validation rule which passes if the string being validated is not <span class="xref">null</span> and
-not empty.  The rule fails if it is either.</p>
+      <h4><a class="xref" href="CSF.Validation.Rules.NotNullOrEmpty.html">NotNullOrEmpty</a></h4>
+      <section><p>A validation rule which passes if the object being validated is both not <span class="xref">null</span> and
+not an empty collection.  The rule fails if it is either.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.RuleAdapter-1.html">RuleAdapter&lt;TValidated&gt;</a></h4>
       <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>, which
