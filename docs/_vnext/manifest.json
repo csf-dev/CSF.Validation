@@ -801,7 +801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.CommonResults.html",
-          "hash": "UDe4l0QIxtnXcR0IK3wiGXFGXPwlt6kt4fVOJ7/swDI="
+          "hash": "VySjPPpHfkajfuwN5mu62yrslDE0109Jq3mItmfH2Yc="
         }
       },
       "is_incremental": false,
@@ -813,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.DateTimeInRange.html",
-          "hash": "2ndhhcHc4M/2B13uYqOua4nNbV6jdxqKG2iegHGGR8U="
+          "hash": "DR7RC+Dm7V29F812jwMXEYup9hwBPLz2Hl2gQVO8m60="
         }
       },
       "is_incremental": false,
@@ -825,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.DecimalInRange.html",
-          "hash": "Xzmms2REPVU0Idy0d2l74x/lORM/1mustC1vNP/TEMs="
+          "hash": "jAIG3MZHryCV+B948Ec5itAZ1UvLLLwxCfPDNYkMXWw="
         }
       },
       "is_incremental": false,
@@ -849,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.FloatingInRange.html",
-          "hash": "QSrYRyqMxFw6eKA408co4LS6zSmdU6W3/oyP0sEczSc="
+          "hash": "fNK/3X3XX/DANoR+7YuKVq6cPGzXl1TUlrX7FYUjKe0="
         }
       },
       "is_incremental": false,
@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-1.html",
-          "hash": "FjLWNOLIW9mzH2xaUCaoyVVZiTYJkCos3sD5lqhQ2+Y="
+          "hash": "J67Leyh/zd1pObrEvonRrTHevxj+gbFJn03jso25pZA="
         }
       },
       "is_incremental": false,
@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-2.html",
-          "hash": "Wd0Vx2lrlht/mnB88VwYkIMQ0JSQjQIRYIqOr583XKU="
+          "hash": "V410EdROu1S6oVzdUJu4QU/mULBpUWxRxotbw4+pAvs="
         }
       },
       "is_incremental": false,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IntegerInRange.html",
-          "hash": "B+tac3pzy8Puj5f+T8tRqw0vo3vMOBsdOMxOWAnTJYc="
+          "hash": "vs2ihK/itBQnut8WRv2f6BgAq+Em8Lo/lV+tkNyAtPg="
         }
       },
       "is_incremental": false,
@@ -933,7 +933,19 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.MatchesRegex.html",
-          "hash": "z3j2UDpsBntLyBvByFdu+2qiCjuy6oEnq6uEVb4FrEQ="
+          "hash": "zss7lTFb0dLO/tFnuh5MonKdpw2Nn6hw9sadE9V6P0E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Rules.NotEmpty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Rules.NotEmpty.html",
+          "hash": "M4DO4NsVlyi1u4/QUnM3ChQv7/5yTEPo38p4iBDPmYM="
         }
       },
       "is_incremental": false,
@@ -945,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.NotNull.html",
-          "hash": "xT1abjbJKcWTvz3ntR0ebr4gq3ubiVOAiYXK/PqOz90="
+          "hash": "YVit/QP/xhs/K81jiHzLV2e00da/XeqfD0L1opdzxJA="
         }
       },
       "is_incremental": false,
@@ -953,11 +965,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CSF.Validation.Rules.NotNullOrEmptyString.yml",
+      "source_relative_path": "api/CSF.Validation.Rules.NotNullOrEmpty.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CSF.Validation.Rules.NotNullOrEmptyString.html",
-          "hash": "a5ISLgc2T9Xto0RVZvKe4a9C7K1mnxmprKJXNPrNA7M="
+          "relative_path": "api/CSF.Validation.Rules.NotNullOrEmpty.html",
+          "hash": "8DVyGTF2K+5GwtoBMdR9UIwVfdFUODctwrY9dj+wjSs="
         }
       },
       "is_incremental": false,
@@ -1041,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleResult.html",
-          "hash": "iV0TUUGqt47BAmkpxAfFGRqp3r5yYXGq+a39C9sT+98="
+          "hash": "yTZP0NYxStrLgTpNc59jMSq/xH1KT7mcEXXf6dwU04M="
         }
       },
       "is_incremental": false,
@@ -1053,7 +1065,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.StringLength.html",
-          "hash": "6gHcaVBt7d3pQI7S9HT70ZFs7t8N0Ilc1vGf48N2uoI="
+          "hash": "eh66e2cGecXi3PEghE/xtCfJqSVB9OamdMiEZ5L+7UA="
         }
       },
       "is_incremental": false,
@@ -1089,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.html",
-          "hash": "hSZFz7u+pBRMFpCEzekaQvn86MtNDRZZGiTTAtkNq28="
+          "hash": "19tS9P+zswFej0Eq0Pox78OD2VwTymZAvM2npc/SLHs="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationRuleResult.html",
-          "hash": "C3gqZbwcNsXcwxeZJMcwG2N7kJGd0NmTm2usEzMi5S8="
+          "hash": "IC5Zo7puRSHM4y+TrsBw+WNveps60jjzRtC+YlXSjWc="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1629,67 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "sMyitilohmR9ZYqFCSqLdehUIGJk5ZOvOyDGVgmcm0w="
+          "hash": "GxRnWNEyA/NvowUGabTMRdOCN/Xbi+aG1RtPeddkTK0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/BestPractice/RulesShouldAvoidUnnecessaryErrors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/BestPractice/RulesShouldAvoidUnnecessaryErrors.html",
+          "hash": "1VtpDV45Gjs/VbG41rNSHS9n1TT5aL5lO/EkTwnMtws="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/BestPractice/RulesShouldOnlyFailForOneReason.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/BestPractice/RulesShouldOnlyFailForOneReason.html",
+          "hash": "SUoxuthCsvor8XGJ9N3wFtO3tyFxlIc6jgRw2k+5slg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/BestPractice/UseCommonRuleResults.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/BestPractice/UseCommonRuleResults.html",
+          "hash": "0yxpSJVQu0g10/30rkDF9vKDclYZZvDCmhfyrszaRao="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/BestPractice/UseDependencyInjectionForRules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/BestPractice/UseDependencyInjectionForRules.html",
+          "hash": "zI/VxQol+kAeavMtFXGDFfascLaiIVVeY6PxPgtUMcM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/BestPractice/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/BestPractice/index.html",
+          "hash": "A7TMeelHZBPbf7zyuBWHsxMqomKz3g0HiFg/WYOkatk="
         }
       },
       "is_incremental": false,
@@ -1653,7 +1725,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/DefiningValidators.html",
-          "hash": "Fe24sVtvTNYmBzPVj2Mu82UctF3H5RSAqK4Nwk5eOuY="
+          "hash": "YkypKCt07Lnse8cNonkWJW1PTOi9RwIew39nOCB17uw="
         }
       },
       "is_incremental": false,
@@ -1678,30 +1750,6 @@
         ".html": {
           "relative_path": "articles/Introduction.html",
           "hash": "CK5UcJh0M2OdE9fINNGoSOwgyXRwdxCgQS96lUZTeWc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "articles/ResultData.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/ResultData.html",
-          "hash": "/yFFKTMfyUcUM4yPOEnuVBOijLfbZgtvXSqhlHuWwd4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "articles/RuleClassBestPractices.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/RuleClassBestPractices.html",
-          "hash": "7mozTHf3c0Icy8RpIqqME4EXHKBfc+P7K9pgQILpO7c="
         }
       },
       "is_incremental": false,
@@ -1745,11 +1793,47 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/WritingValidationRules.md",
+      "source_relative_path": "articles/WritingValidationRules/ResultData.md",
       "output": {
         ".html": {
-          "relative_path": "articles/WritingValidationRules.html",
-          "hash": "zMV2mHm3FBXCJW634BLBMEsVy4sY1BlbgPQOlHf5fqs="
+          "relative_path": "articles/WritingValidationRules/ResultData.html",
+          "hash": "9jS9s5ovjTVqlzB5C8u1H/ll6j6UlB8dgbXpN1YAst8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/WritingValidationRules/ReturningResultsFromRules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/WritingValidationRules/ReturningResultsFromRules.html",
+          "hash": "4t21g0iHxjmdXsTLlJW/Q3Elxl+43qHotIAOS1UsPpI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/WritingValidationRules/TheRuleInterfaces.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/WritingValidationRules/TheRuleInterfaces.html",
+          "hash": "AgjRxzCknchK9drMfgreNPmdzOTg3HGeiE/jqX5MeCk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/WritingValidationRules/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/WritingValidationRules/index.html",
+          "hash": "yR5MicmdMFTdzrVBwyTt3ZSuXAcX9NrVYryd9LVaPmE="
         }
       },
       "is_incremental": false,
@@ -1773,7 +1857,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "dLDqPGFpPAUbhIFwkR6AT8ynrwN+9rESiJYWi7ELIO0="
+          "hash": "BTNm1LRG8wiUDSEDP5vs3mWv6LvUlxoHOZEZzJN0ays="
         }
       },
       "is_incremental": false,
@@ -1818,13 +1902,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 14,
+          "total_file_count": 20,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 133,
+          "total_file_count": 134,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

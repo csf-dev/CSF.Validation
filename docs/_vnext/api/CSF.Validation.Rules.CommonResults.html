@@ -113,6 +113,20 @@ your rule implementations.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class CommonResults</code></pre>
   </div>
+  <h5 id="CSF_Validation_Rules_CommonResults_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+This class also provides a small performance optimisation for the methods <a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__">PassAsync(IDictionary&lt;String, Object&gt;)</a>,
+<a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object__">FailAsync(IDictionary&lt;String, Object&gt;)</a> &amp; <a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_ErrorAsync_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__">ErrorAsync(Exception, IDictionary&lt;String, Object&gt;)</a>.
+If any of these methods are used with all parameters set to their default (<span class="xref">null</span>) values then an immutable
+cached/singleton task will be returned instead of creating/allocating a new instance.
+</p>
+<p>
+This improves performance, particularly for large validators by using what is essentially the flyweight pattern.
+Where passing results are returned synchronously without data, we do not need to allocate resources for many identical
+pass-result <span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span> instances.
+See https://en.wikipedia.org/wiki/Flyweight_pattern for more information.
+</p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -120,7 +134,7 @@ your rule implementations.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_Error_System_Exception_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.Error(System.Exception%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L103">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L160">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_Error_" data-uid="CSF.Validation.Rules.CommonResults.Error*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_Error_System_Exception_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.Error(System.Exception,System.Collections.Generic.Dictionary{System.String,System.Object})">Error(Exception, Dictionary&lt;String, Object&gt;)</h4>
@@ -189,7 +203,7 @@ exception before returning the error result or when the &quot;error&quot; does n
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_Error_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.Error(System.Exception%2CSystem.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L125">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L182">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_Error_" data-uid="CSF.Validation.Rules.CommonResults.Error*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_Error_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.Error(System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">Error(Exception, IDictionary&lt;String, Object&gt;)</h4>
@@ -258,13 +272,12 @@ exception before returning the error result or when the &quot;error&quot; does n
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_ErrorAsync_System_Exception_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.ErrorAsync(System.Exception%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L149">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L209">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_ErrorAsync_" data-uid="CSF.Validation.Rules.CommonResults.ErrorAsync*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_ErrorAsync_System_Exception_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.ErrorAsync(System.Exception,System.Collections.Generic.Dictionary{System.String,System.Object})">ErrorAsync(Exception, Dictionary&lt;String, Object&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for validation which has encountered an unexpected error,
-returned within a completed task. This API is provided for convenience when validation rules do not
-contain any asynchronous logic.</p>
+returned within a completed task.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -323,19 +336,22 @@ In normal operation the only times when a rule should explicitly return an error
 when it also wants to return a dictionary of data, when there are reasons to catch/manipulate the
 exception before returning the error result or when the &quot;error&quot; does not involve an uncaught exception.
 </p>
+<p>
+This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+which run synchronously.
+</p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_ErrorAsync_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.ErrorAsync(System.Exception%2CSystem.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L173">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L236">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_ErrorAsync_" data-uid="CSF.Validation.Rules.CommonResults.ErrorAsync*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_ErrorAsync_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.ErrorAsync(System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">ErrorAsync(Exception, IDictionary&lt;String, Object&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for validation which has encountered an unexpected error,
-returned within a completed task. This API is provided for convenience when validation rules do not
-contain any asynchronous logic.</p>
+returned within a completed task.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -394,13 +410,17 @@ In normal operation the only times when a rule should explicitly return an error
 when it also wants to return a dictionary of data, when there are reasons to catch/manipulate the
 exception before returning the error result or when the &quot;error&quot; does not involve an uncaught exception.
 </p>
+<p>
+This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+which run synchronously.
+</p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_Fail_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.Fail(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L55">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L100">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_Fail_" data-uid="CSF.Validation.Rules.CommonResults.Fail*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_Fail_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.Fail(System.Collections.Generic.Dictionary{System.String,System.Object})">Fail(Dictionary&lt;String, Object&gt;)</h4>
@@ -450,7 +470,7 @@ exception before returning the error result or when the &quot;error&quot; does n
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_Fail_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.Fail(System.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L62">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L107">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_Fail_" data-uid="CSF.Validation.Rules.CommonResults.Fail*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_Fail_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.Fail(System.Collections.Generic.IDictionary{System.String,System.Object})">Fail(IDictionary&lt;String, Object&gt;)</h4>
@@ -500,12 +520,11 @@ exception before returning the error result or when the &quot;error&quot; does n
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.FailAsync(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L70">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L121">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_FailAsync_" data-uid="CSF.Validation.Rules.CommonResults.FailAsync*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.FailAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">FailAsync(Dictionary&lt;String, Object&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for failing validation, returned within a completed task.
-This API is provided for convenience when validation rules do not contain any asynchronous logic.</p>
+  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for failing validation, returned within a completed task.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -546,17 +565,22 @@ This API is provided for convenience when validation rules do not contain any as
       </tr>
     </tbody>
   </table>
+  <h5 id="CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_Dictionary_System_String_System_Object___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+which run synchronously.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.FailAsync(System.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L78">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L134">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_FailAsync_" data-uid="CSF.Validation.Rules.CommonResults.FailAsync*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.FailAsync(System.Collections.Generic.IDictionary{System.String,System.Object})">FailAsync(IDictionary&lt;String, Object&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for failing validation, returned within a completed task.
-This API is provided for convenience when validation rules do not contain any asynchronous logic.</p>
+  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for failing validation, returned within a completed task.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -597,12 +621,18 @@ This API is provided for convenience when validation rules do not contain any as
       </tr>
     </tbody>
   </table>
+  <h5 id="CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+which run synchronously.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_Pass_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.Pass(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L21">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L54">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_Pass_" data-uid="CSF.Validation.Rules.CommonResults.Pass*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_Pass_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.Pass(System.Collections.Generic.Dictionary{System.String,System.Object})">Pass(Dictionary&lt;String, Object&gt;)</h4>
@@ -652,7 +682,7 @@ This API is provided for convenience when validation rules do not contain any as
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_Pass_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.Pass(System.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L28">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L61">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_Pass_" data-uid="CSF.Validation.Rules.CommonResults.Pass*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_Pass_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.Pass(System.Collections.Generic.IDictionary{System.String,System.Object})">Pass(IDictionary&lt;String, Object&gt;)</h4>
@@ -702,12 +732,11 @@ This API is provided for convenience when validation rules do not contain any as
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.PassAsync(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L36">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L75">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_PassAsync_" data-uid="CSF.Validation.Rules.CommonResults.PassAsync*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.PassAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">PassAsync(Dictionary&lt;String, Object&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for passing validation, returned within a completed task.
-This API is provided for convenience when validation rules do not contain any asynchronous logic.</p>
+  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for passing validation, returned within a completed task.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -748,17 +777,22 @@ This API is provided for convenience when validation rules do not contain any as
       </tr>
     </tbody>
   </table>
+  <h5 id="CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_Dictionary_System_String_System_Object___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+which run synchronously.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults.PassAsync(System.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L44">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L88">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_CommonResults_PassAsync_" data-uid="CSF.Validation.Rules.CommonResults.PassAsync*"></a>
   <h4 id="CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="CSF.Validation.Rules.CommonResults.PassAsync(System.Collections.Generic.IDictionary{System.String,System.Object})">PassAsync(IDictionary&lt;String, Object&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for passing validation, returned within a completed task.
-This API is provided for convenience when validation rules do not contain any asynchronous logic.</p>
+  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> for passing validation, returned within a completed task.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -799,6 +833,12 @@ This API is provided for convenience when validation rules do not contain any as
       </tr>
     </tbody>
   </table>
+  <h5 id="CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+which run synchronously.
+</p>
+</div>
 </article>
           </div>
           
@@ -810,7 +850,7 @@ This API is provided for convenience when validation rules do not contain any as
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_CommonResults.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.CommonResults%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Rules/CommonResults.cs/#L26" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
