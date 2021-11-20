@@ -70,11 +70,21 @@
 <h1 id="inject-dependencies-into-rules">Inject dependencies into rules</h1>
 
 <p>CSF.Validation is fully dependency-injection capable.
-It is OK for validation rules to rely upon complex logic using services and dependencies from your application.
-Register your custom rules with dependency injection using <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions.addtransient"><code>IServiceCollection.AddTransient</code></a> and they will be resolved from DI along with their dependencies before they are executed.</p>
-<h2 id="always-register-rules-as-transient-instances">Always register rules as transient instances</h2>
-<p>Ensure that you use <code>AddTransient</code> and not any methods that imply sharing single rule instances.
-Because validation rule classes may have mutable properties for the purposes of rule-configuration, <em>it is not suitable to reuse instances of rule objects</em>.</p>
+It is OK for validation rules to rely upon complex logic using services and dependencies from your application.</p>
+<h2 id="add-your-custom-rules-to-dependency-injection">Add your custom rules to dependency injection</h2>
+<p>To take advantage of dependency injection, when <a href="../ConfigureTheFramework.html">configuring the framework</a>, ensure that your own validation rule classes are added to the container.
+The most convenient way to do this, and to ensure consistency, is to use one of the following methods.</p>
+<ul>
+<li><a class="xref" href="../../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_"><code>UseValidationRulesInAssembly(Assembly)</code></a></li>
+<li><a class="xref" href="../../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___"><code>UseValidationRulesInAssemblies(params Assembly[])</code></a></li>
+<li><a class="xref" href="../../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidationRulesInAssemblies(IEnumerable&lt;Assembly&gt;)</code></a></li>
+<li><a class="xref" href="../../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRule_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_"><code>UseValidationRule(Type)</code></a></li>
+</ul>
+<p>Prefer the methods which perform assembly-scanning over <code>UseValidationRule</code>, as this leads to more concise configuration.
+What all of these methods have in common is that they add the rules to the container with a <strong>transient</strong> lifetime (AKA instance-per-dependency).</p>
+<p><em>It is crucial that rule classes are registered with DI with a transient lifetime</em>, because it is permitted for rules to have mutable properties &amp; state.
+This state contains configuration for one specific usage of the rule object.
+Because of this state, <em>rule objects are not suitable for re-use</em>, so they must be created anew upon each usage.</p>
 </article>
           </div>
           

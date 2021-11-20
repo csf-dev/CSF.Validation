@@ -4,12 +4,43 @@ references:
 - uid: BestPractices
   name: Validation best practices
   href: articles/BestPractice/index.html
+- uid: ConfiguringTheFramework
+  name: Configuring the Validation Framework
+  href: articles/ConfigureTheFramework.html
 - uid: CSF.Validation
   name: CSF.Validation
   href: api/CSF.Validation.html
   commentId: N:CSF.Validation
   fullName: CSF.Validation
   nameWithType: CSF.Validation
+- uid: CSF.Validation.Bootstrap
+  name: CSF.Validation.Bootstrap
+  href: api/CSF.Validation.Bootstrap.html
+  commentId: N:CSF.Validation.Bootstrap
+  fullName: CSF.Validation.Bootstrap
+  nameWithType: CSF.Validation.Bootstrap
+- uid: CSF.Validation.Bootstrap.RuleAssemblyScanner
+  name: RuleAssemblyScanner
+  href: api/CSF.Validation.Bootstrap.RuleAssemblyScanner.html
+  commentId: T:CSF.Validation.Bootstrap.RuleAssemblyScanner
+  fullName: CSF.Validation.Bootstrap.RuleAssemblyScanner
+  nameWithType: RuleAssemblyScanner
+- uid: CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name: GetRuleTypesFromAssemblies(IEnumerable<Assembly>)
+  href: api/CSF.Validation.Bootstrap.RuleAssemblyScanner.html#CSF_Validation_Bootstrap_RuleAssemblyScanner_GetRuleTypesFromAssemblies_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__
+  commentId: M:CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name.vb: GetRuleTypesFromAssemblies(IEnumerable(Of Assembly))
+  fullName: CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies(System.Collections.Generic.IEnumerable<System.Reflection.Assembly>)
+  fullName.vb: CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies(System.Collections.Generic.IEnumerable(Of System.Reflection.Assembly))
+  nameWithType: RuleAssemblyScanner.GetRuleTypesFromAssemblies(IEnumerable<Assembly>)
+  nameWithType.vb: RuleAssemblyScanner.GetRuleTypesFromAssemblies(IEnumerable(Of Assembly))
+- uid: CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies*
+  name: GetRuleTypesFromAssemblies
+  href: api/CSF.Validation.Bootstrap.RuleAssemblyScanner.html#CSF_Validation_Bootstrap_RuleAssemblyScanner_GetRuleTypesFromAssemblies_
+  commentId: Overload:CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies
+  isSpec: "True"
+  fullName: CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies
+  nameWithType: RuleAssemblyScanner.GetRuleTypesFromAssemblies
 - uid: CSF.Validation.IBuildsValidator`1
   name: IBuildsValidator<TValidated>
   href: api/CSF.Validation.IBuildsValidator-1.html
@@ -3591,6 +3622,57 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationFramework
   nameWithType: ServiceCollectionExtensions.UseValidationFramework
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRule(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)
+  name: UseValidationRule(IServiceCollection, Type)
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRule_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidationRule(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRule(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Type)
+  nameWithType: ServiceCollectionExtensions.UseValidationRule(IServiceCollection, Type)
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRule*
+  name: UseValidationRule
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRule_
+  commentId: Overload:CSF.Validation.ServiceCollectionExtensions.UseValidationRule
+  isSpec: "True"
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRule
+  nameWithType: ServiceCollectionExtensions.UseValidationRule
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name: UseValidationRulesInAssemblies(IServiceCollection, IEnumerable<Assembly>)
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name.vb: UseValidationRulesInAssemblies(IServiceCollection, IEnumerable(Of Assembly))
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Collections.Generic.IEnumerable<System.Reflection.Assembly>)
+  fullName.vb: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Collections.Generic.IEnumerable(Of System.Reflection.Assembly))
+  nameWithType: ServiceCollectionExtensions.UseValidationRulesInAssemblies(IServiceCollection, IEnumerable<Assembly>)
+  nameWithType.vb: ServiceCollectionExtensions.UseValidationRulesInAssemblies(IServiceCollection, IEnumerable(Of Assembly))
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name: UseValidationRulesInAssemblies(IServiceCollection, Assembly[])
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name.vb: UseValidationRulesInAssemblies(IServiceCollection, Assembly())
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly[])
+  fullName.vb: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly())
+  nameWithType: ServiceCollectionExtensions.UseValidationRulesInAssemblies(IServiceCollection, Assembly[])
+  nameWithType.vb: ServiceCollectionExtensions.UseValidationRulesInAssemblies(IServiceCollection, Assembly())
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies*
+  name: UseValidationRulesInAssemblies
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_
+  commentId: Overload:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies
+  isSpec: "True"
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies
+  nameWithType: ServiceCollectionExtensions.UseValidationRulesInAssemblies
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)
+  name: UseValidationRulesInAssembly(IServiceCollection, Assembly)
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly)
+  nameWithType: ServiceCollectionExtensions.UseValidationRulesInAssembly(IServiceCollection, Assembly)
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly*
+  name: UseValidationRulesInAssembly
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_
+  commentId: Overload:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly
+  isSpec: "True"
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly
+  nameWithType: ServiceCollectionExtensions.UseValidationRulesInAssembly
 - uid: CSF.Validation.StandardRulesServiceCollectionExtensions
   name: StandardRulesServiceCollectionExtensions
   href: api/CSF.Validation.StandardRulesServiceCollectionExtensions.html
@@ -5328,4 +5410,4 @@ references:
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
 - uid: WritingValidationRules
   name: Writing Validation Rules
-  href: articles/WritingValidationRules/index.html
+  href: articles/DefiningValidators/WritingValidationRules/index.html

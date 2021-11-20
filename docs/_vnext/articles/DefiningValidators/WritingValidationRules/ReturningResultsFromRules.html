@@ -10,11 +10,11 @@
     <meta name="title" content="Returning results from rules ">
     <meta name="generator" content="docfx 2.58.9.0">
     
-    <link rel="shortcut icon" href="../../favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <meta property="docfx:navrel" content="../../toc.html">
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
     
     
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -80,7 +80,7 @@
 </li>
 </ul>
 <h2 id="returning-a-pass-or-failure-result">Returning a pass or failure result</h2>
-<p>In order to return pass/failure results <a href="../BestPractice/UseCommonRuleResults.html">it is strongly recommended</a> to use <a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html">the static class <strong><code>CommonResults</code></strong></a>.
+<p>In order to return pass/failure results <a href="../../BestPractice/UseCommonRuleResults.html">it is strongly recommended</a> to use <a class="xref" href="../../../api/CSF.Validation.Rules.CommonResults.html">the static class <strong><code>CommonResults</code></strong></a>.
 This class is intended to be used via the <code>using static</code> syntax, as demonstrated below.</p>
 <pre><code class="lang-csharp">using static CSF.Validation.Rules.CommonResults;
 
@@ -109,16 +109,16 @@ This allows advanced usages scenarios in which supplemental information may be r
 <p>Non-trivial rules can raise unexpected exceptions, it is a simple fact of software development.
 For example a rule which must read a value from a database in order to determine validity could encounter an exception if the database is unavailable.</p>
 <p>CSF.Validation attempts to minimuse the amount of boilerplate <code>try/catch</code> that developers must write in their rule classes.
-All exceptions raised by executing validation rules are caught and translated to error results, with an outcome of <a class="xref" href="../../api/CSF.Validation.Rules.RuleOutcome.html"><code>RuleOutcome.Errored</code></a>.</p>
-<p>Additionally, where an error result is created from an exception thrown from the <code>GetResultAsync</code> method, the <a class="xref" href="../../api/CSF.Validation.ValidationRuleResult.html"><code>ValidationRuleResult</code></a> will have <a class="xref" href="../../api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Exception">a reference to the thrown exception</a>.</p>
+All exceptions raised by executing validation rules are caught and translated to error results, with an outcome of <a class="xref" href="../../../api/CSF.Validation.Rules.RuleOutcome.html"><code>RuleOutcome.Errored</code></a>.</p>
+<p>Additionally, where an error result is created from an exception thrown from the <code>GetResultAsync</code> method, the <a class="xref" href="../../../api/CSF.Validation.ValidationRuleResult.html"><code>ValidationRuleResult</code></a> will have <a class="xref" href="../../../api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Exception">a reference to the thrown exception</a>.</p>
 <h3 id="how-the-validator-treats-errors">How the validator treats errors</h3>
 <p>The validator treats error results similarly to failures.
 An error result does not count as a pass and if any of a rule's dependencies returns an error, the dependent rule will not be executed.</p>
 <p>The default behaviour is to throw an exception at the end of validation if any rule returned an error outcome.
 That exception will contain the complete validation result including all of the error results.
-This behaviour may be overridden by specifying <a class="xref" href="../../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour">the <code>RuleThrowingBehaviour</code> property</a> on <a class="xref" href="../../api/CSF.Validation.ValidationOptions.html">an instance of <code>ValidationOptions</code></a> passed to the validator.</p>
+This behaviour may be overridden by specifying <a class="xref" href="../../../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour">the <code>RuleThrowingBehaviour</code> property</a> on <a class="xref" href="../../../api/CSF.Validation.ValidationOptions.html">an instance of <code>ValidationOptions</code></a> passed to the validator.</p>
 <h3 id="returning-error-results-manually">Returning error results manually</h3>
-<p>It is also possible, using <a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html">the <code>CommonResults</code> class</a> to manually create and return an error result, via either of the <code>ErrorAsync()</code> or <code>Error()</code> methods.
+<p>It is also possible, using <a class="xref" href="../../../api/CSF.Validation.Rules.CommonResults.html">the <code>CommonResults</code> class</a> to manually create and return an error result, via either of the <code>ErrorAsync()</code> or <code>Error()</code> methods.
 The only practical difference between using these methods and allowing the rule <code>GetResultAsync</code> method to throw an exception is:</p>
 <ul>
 <li>A manually-returned error result does not require an exception</li>
@@ -132,7 +132,7 @@ The only practical difference between using these methods and allowing the rule 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/WritingValidationRules/ReturningResultsFromRules.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/DefiningValidators/WritingValidationRules/ReturningResultsFromRules.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -159,8 +159,8 @@ The only practical difference between using these methods and allowing the rule 
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
   </body>
 </html>
