@@ -1,0 +1,17 @@
+- name: Documentation home
+  topicHref: ../index.md
+- name: Creating rules
+  href: WritingValidationRules/index.md
+  items:
+    - name: Rule interfaces
+      href: WritingValidationRules/TheRuleInterfaces.md
+    - name: Returning results
+      href: WritingValidationRules/ReturningResultsFromRules.md
+    - name: Result data
+      href: WritingValidationRules/ResultData.md
+- name: Validator builders
+  href: WritingValidatorBuilders/index.md
+- name: The manifest model
+  href: UsingTheManifestModel/index.md
+- name: The validation manifest
+  href: TheValidationManifest/index.md

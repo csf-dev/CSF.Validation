@@ -1,23 +1,19 @@
 - name: Introduction
-  href: Introduction.md
+  href: index.md
 - name: Configuration
   href: ConfigureTheFramework.md
 - name: Defining validators
-  topicHref: DefiningValidators.md
+  href: DefiningValidators/
+  homepage: DefiningValidators/index.md
   items:
     - name: Creating rules
-      topicHref: WritingValidationRules/index.md
-      items:
-        - name: Rule interfaces
-          href: WritingValidationRules/TheRuleInterfaces.md
-        - name: Returning results
-          href: WritingValidationRules/ReturningResultsFromRules.md
-        - name: Result data
-          href: WritingValidationRules/ResultData.md
+      topicHref: DefiningValidators/WritingValidationRules/index.md
     - name: Validator builders
-      href: WritingValidatorBuilders.md
+      topicHref: DefiningValidators/WritingValidatorBuilders/index.md
     - name: The manifest model
-      href: UsingTheManifestModel.md
+      topicHref: DefiningValidators/UsingTheManifestModel/index.md
+    - name: The validation manifest
+      topicHref: DefiningValidators/TheValidationManifest/index.md
 - name: Performing validation
   href: ConsumingValidators.md
 - name: Best practice

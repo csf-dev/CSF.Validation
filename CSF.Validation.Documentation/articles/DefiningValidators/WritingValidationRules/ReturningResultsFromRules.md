@@ -29,7 +29,7 @@ public class NotAString : IRule<object>
 
 As well as the pass & fail scenarios here, there are also methods dealing with _error results_; we will cover these below.
 
-[it is strongly recommended]:../BestPractice/UseCommonRuleResults.md
+[it is strongly recommended]:../../BestPractice/UseCommonRuleResults.md
 [the static class **`CommonResults`**]:xref:CSF.Validation.Rules.CommonResults
 
 ### Synchronous or asynchronous operation

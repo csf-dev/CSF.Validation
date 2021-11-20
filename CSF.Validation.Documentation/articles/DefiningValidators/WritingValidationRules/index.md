@@ -15,4 +15,4 @@ You are also encouraged to read [this advice regarding best practices] for writi
 [one of the two rule interfaces]:TheRuleInterfaces.md
 [return a pass or fail result or throw an exception]:ReturningResultsFromRules.md
 [a dictionary of supplemental information]:ResultData.md
-[this advice regarding best practices]:../BestPractice/index.md
+[this advice regarding best practices]:../../BestPractice/index.md

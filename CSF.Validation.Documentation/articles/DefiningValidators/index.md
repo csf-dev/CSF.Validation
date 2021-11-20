@@ -10,7 +10,7 @@ Each validation rule in the validation manifest is a .NET class.
 Developers are advised to read [the documentation for writing rule classes] & the [best practices and guidance] applicable to rules.
 
 [the documentation for writing rule classes]:WritingValidationRules/index.md
-[best practices and guidance]:BestPractice/index.md#writing-validation-rule-classes
+[best practices and guidance]:../BestPractice/index.md#writing-validation-rule-classes
 [`IRule<in TValidated>`]:xref:CSF.Validation.Rules.IRule`1
 [`IRule<in TValue, in TParent>`]:xref:CSF.Validation.Rules.IRule`2
 
@@ -22,6 +22,6 @@ For occasions where the rules to execute or their configuration must be dynamic,
 
 It is also possible to create [a **validation manifest**] by-hand or programatically.  This might be suitable for advanced scenarios where neither a builder or model-based approach is viable.
 
-[a **validator builder**]:WritingValidatorBuilders.md
-[the validator **manifest model**]:UsingTheManifestModel.md
-[a **validation manifest**]:WorkingWithValidationManifest.md
+[a **validator builder**]:WritingValidatorBuilders/index.md
+[the validator **manifest model**]:UsingTheManifestModel/index.md
+[a **validation manifest**]:TheValidationManifest/index.md
