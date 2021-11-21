@@ -66,12 +66,35 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="ConfiguringTheFramework">
 <h1 id="configuring-the-validation-framework">Configuring the Validation Framework</h1>
 
 <p>The Validation Framework is made available for consumption via <strong>dependency injection</strong> and this is the recommended way to use it.</p>
 <p>To add the validation framework to DI, add a reference to <a href="https://www.nuget.org/packages/CSF.Validation/">the <strong>CSF.Validation</strong> NuGet package</a> into the project where you configure dependency injection. Use <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_">the <code>UseValidationFramework()</code> extension method</a> with an <code>IServiceCollection</code> to add the framework to DI.</p>
 <p>Optionally, if you plan to use <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a>, add a reference to that also and use <a class="xref" href="../api/CSF.Validation.StandardRulesServiceCollectionExtensions.html#CSF_Validation_StandardRulesServiceCollectionExtensions_UseStandardValidationRules_Microsoft_Extensions_DependencyInjection_IServiceCollection_">the <code>UseStandardValidationRules()</code> extension method</a>.</p>
+<p>Finally, the most convenient way to add your own custom rule classes to dependency injection is to use one of:</p>
+<ul>
+<li><a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_"><code>UseValidationRulesInAssembly(Assembly)</code></a></li>
+<li><a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___"><code>UseValidationRulesInAssemblies(params Assembly[])</code></a></li>
+<li><a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidationRulesInAssemblies(IEnumerable&lt;Assembly&gt;)</code></a></li>
+</ul>
+<h2 id="example">Example</h2>
+<p>Here is a brief example of how to configure the validation framework within dependency injection.</p>
+<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
+using CSF.Validation;
+
+public void ConfigureServices(IServiceCollection serviceCollection)
+{
+    // Amongst other services you are adding to the the DI service collection
+
+    serviceCollection
+        .UseValidationFramework()
+        .UseStandardValidationRules()
+        .UseValidationRulesInAssemblies(GetAssembliesWhichContainCustomRules());
+}
+</code></pre>
+<p>The last line of the example uses <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidationRulesInAssemblies</code></a>.
+This extension method is a convenience to bulk-register your own custom validation rules.</p>
 </article>
           </div>
           
