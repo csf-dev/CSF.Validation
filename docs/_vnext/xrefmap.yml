@@ -5410,4 +5410,4 @@ references:
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
 - uid: WritingValidationRules
   name: Writing Validation Rules
-  href: articles/DefiningValidators/WritingValidationRules/index.html
+  href: articles/WritingValidators/WritingValidationRules/index.html
