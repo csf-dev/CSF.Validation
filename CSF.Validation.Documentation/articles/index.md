@@ -7,7 +7,7 @@ To begin using the **CSF.Validation** framework you must follow these three conc
 3. [Perform validation]
 
 [Configure the framework]:ConfigureTheFramework.md
-[Define how objects should be validated]:DefiningValidators/index.md
+[Define how objects should be validated]:WritingValidators/index.md
 [Perform validation]:ConsumingValidators.md
 
 ## Where this framework is useful

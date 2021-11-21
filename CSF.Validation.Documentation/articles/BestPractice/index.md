@@ -14,7 +14,7 @@ These best practices relate to writing good [validation rule classes].
 * [Use dependency injection with rule classes]
 * [Use common rule results for convenience & performance]
 
-[validation rule classes]:../DefiningValidators/WritingValidationRules/index.md
+[validation rule classes]:../WritingValidators/WritingValidationRules/index.md
 [Rules should only fail for one reason]:RulesShouldOnlyFailForOneReason.md
 [Avoid raising unnecessary errors in rules]:RulesShouldAvoidUnnecessaryErrors.md
 [Use dependency injection with rule classes]:UseDependencyInjectionForRules.md

@@ -2,18 +2,18 @@
   href: index.md
 - name: Configuration
   href: ConfigureTheFramework.md
-- name: Defining validators
-  href: DefiningValidators/
-  homepage: DefiningValidators/index.md
+- name: Writing validators
+  href: WritingValidators/
+  homepage: WritingValidators/index.md
   items:
     - name: Creating rules
-      topicHref: DefiningValidators/WritingValidationRules/index.md
+      topicHref: WritingValidators/WritingValidationRules/index.md
     - name: Validator builders
-      topicHref: DefiningValidators/WritingValidatorBuilders/index.md
+      topicHref: WritingValidators/WritingValidatorBuilders/index.md
     - name: The manifest model
-      topicHref: DefiningValidators/UsingTheManifestModel/index.md
+      topicHref: WritingValidators/UsingTheManifestModel/index.md
     - name: The validation manifest
-      topicHref: DefiningValidators/TheValidationManifest/index.md
+      topicHref: WritingValidators/TheValidationManifest/index.md
 - name: Performing validation
   href: ConsumingValidators.md
 - name: Best practice
