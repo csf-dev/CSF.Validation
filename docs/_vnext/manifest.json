@@ -1888,12 +1888,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/WritingValidatorBuilders/ValidatingCollectionItems.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/ValidatingCollectionItems.html",
-          "hash": "vtU4n9TCTZrJRiqa3nTkSxyfx6xVsyLt0N7MKJWXr9E="
+          "hash": "/pnVVxW58U34OOZrNLyUDQYUs80jrh1MvEexvNQEpgY="
         }
       },
       "is_incremental": false,
