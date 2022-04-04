@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Identifying rules and objects </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Identifying rules and objects ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -67,7 +67,22 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="identifying-rules-and-objects">Identifying rules and objects</h1>
 
+<p>When validating complex object graphs, especially those which include <a href="ValidatingCollectionItems.html">collections of validated values</a>, it can be helpful to identify object instances within the validator. This allows easy matching of results back to the correct validated object instance.</p>
+<p>Additionally, sometimes it is useful to identify an individual rule with a name. This can be useful if the same rule-type must be applied more than once to the same property.</p>
+<h2 id="identifying-object-instances">Identifying object instances</h2>
+<p>Object instances within the graph of validated objects may have an identifier. The identifier is not used in any special capacity but it is associated with the corresponding result items. This can make it easier to match up results with their validated objects.</p>
+<p>Object identifiers may be added to a builder using <a href="xref:TODO">the <code>UseObjectIdentity</code> method</a>.</p>
+<p>Identities do not need to be persistent across separate invocations of the validation logic, as long as they are round-tripped forward and backward between the validator and any logic which consumes the validation result. As such, <code>Guid</code> objects make good identifiers.</p>
+<h2 id="identifyingnaming-rules">Identifying/naming rules</h2>
+<p>It is quite rare that rules need to be named. Rules are usually identified by their <code>System.Type</code> along with the type and perhaps parent type and member name that they validate.</p>
+<p>Sometimes the above is not enough, though. For example if the same object or member must be validated with the same rule type more than once, for example with different configurations.</p>
+<p>In this case, these rules must be given unique names in order to distinguish them. This is performed by setting <a href="TODO">the <code>Name</code> property</a> of the rule-configuration builder. Here is an example:</p>
+<pre><code class="lang-csharp">builder.AddRule&lt;MyRuleType&gt;(conf =&gt; {
+    conf.Name = &quot;Rule name here&quot;;
+});
+</code></pre>
 </article>
           </div>
           

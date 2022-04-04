@@ -1828,12 +1828,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/WritingValidatorBuilders/IgnoreAccessorExceptions.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/IgnoreAccessorExceptions.html",
-          "hash": "SNjXfHs3M8iSV5rdgTemuW57y7JdVhjmJfn6DuBlNVI="
+          "hash": "ukGGKUBMyh8yG/MvuUOT62u3yp30j3ZrIuHhRd9YOkM="
         }
       },
       "is_incremental": false,
@@ -1845,31 +1848,38 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/ImportingRules.html",
-          "hash": "hEd6ZVssfKh48g0DYCrJjNahNwLosrgWuAWoTYRoZII="
+          "hash": "CKNcbrwVD+lda5gt0Fc8IlVv4ZvvPLXYdeHvBQovrow="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink",
+        "UidNotFound"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/WritingValidatorBuilders/RuleAndObjectIdentifiers.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/RuleAndObjectIdentifiers.html",
-          "hash": "NMaESoeLUTTsQzMECSjy4lkGq2iG8ZyJoSJifEW8lPA="
+          "hash": "6yWgRjsCXFf0Vscc0ExEkQ0VITDm6F1EVoSOyUr7vy4="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/WritingValidatorBuilders/RulesWhichIncludeAParentObject.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/RulesWhichIncludeAParentObject.html",
-          "hash": "cGPAnW90miO3XvTx1rQbtDA8kYo1X0cRbzxHFknQGcU="
+          "hash": "BCZscExj3/w8G2o7mdv4YgGBNKD7CPs2mJv0drBiow0="
         }
       },
       "is_incremental": false,
@@ -1881,7 +1891,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/SpecifyingRuleDependencies.html",
-          "hash": "CSWoZlhw7EmXa58jV89faWTnM7NGX+B6XEnQKbnUboY="
+          "hash": "Gj7iIIgWRijN/KoXy6OkaqvDfU9tSSLHqnUAUwDD6KQ="
         }
       },
       "is_incremental": false,
@@ -1896,7 +1906,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/WritingValidatorBuilders/ValidatingCollectionItems.html",
-          "hash": "/pnVVxW58U34OOZrNLyUDQYUs80jrh1MvEexvNQEpgY="
+          "hash": "AHHCRU9eVJmYAMBp/yxlVTx0k6dkn2mnh5je46Uj3Ek="
         }
       },
       "is_incremental": false,

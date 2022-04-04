@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Rules which receive a parent value </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Rules which receive a parent value ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -67,7 +67,16 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="rules-which-receive-a-parent-value">Rules which receive a parent value</h1>
 
+<p>Many rules will validate just a single value. <em>&quot;This string must be at least 5 characters long&quot;</em> or <em>&quot;this number must not be negative&quot;</em> and so on. In both these cases it does not matter where the string or number came from.</p>
+<p>For some rules though, they require some context in the form of the object which provided the value under validation. For example <em>&quot;this date (representing a start date) must be before the end-date from the same parent object&quot;</em>.</p>
+<p>In this case, write your rules using <a href="TODO">the interface <code>IRule&lt;TValue, TParent&gt;</code></a> and add them to the builder using <a href="TODO">the <code>AddRuleWithParent</code> method</a> when configuring rules for a member or value.</p>
+<h2 id="rules-which-use-more-distant-ancestors">Rules which use more distant ancestors</h2>
+<p>The mechanism described above provides the rule with access to the value's immediate parent.
+If the rule needs access to a more distant parent object then the rule should make use of <a href="TODO">the <code>AncestorContexts</code> property</a> of the <a href="TODO"><code>RuleContext</code></a> parameter that is provided to the rule's <code>GetResultAsync</code> method.</p>
+<p>This property provides access to a depth-ordered collection (parent first, then grandparent, then great-grandparent etc) of the role contexts for ancestors of the current value.</p>
+<p>Within these ancestor contexts, <a href="TODO">the <code>Object</code> property</a> provides access to the ancestor object itself. There is no type-safe way to access this, so rule logic will need to cast/safe-cast it to the appropriate type.</p>
 </article>
           </div>
           

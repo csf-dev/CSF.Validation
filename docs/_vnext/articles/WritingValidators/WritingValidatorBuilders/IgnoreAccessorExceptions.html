@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Ignoring accessor exceptions </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Ignoring accessor exceptions ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -67,7 +67,18 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="ignoring-accessor-exceptions">Ignoring accessor exceptions</h1>
 
+<p>When validating derived values or member values, there are occasionally instances when the accessor (executing a method, or a property getter, or arbitrary accessor logic) could raise an exception.
+By default this will raise an exception across the validator and halt validation, because value accessors should not throw.
+This functionality provides a way to ignore such exceptions.</p>
+<p><em>Use this functionality with caution; it is usually a sign of poor object design if accessors such as getters raise exceptions. It is much better to create accessors which do not raise exceptions.</em></p>
+<h2 id="how-to-ignore-exceptions">How to ignore exceptions</h2>
+<p>If you are dealing with a value accessor that could throw and you wish to prevent such exceptions from blocking validation, then use <a href="TODO">the <code>IgnoreExceptions</code> method</a> when configuring the accessor. When this method is used, any exception thrown when getting the value will be caught &amp; ignored.</p>
+<h2 id="an-ignored-exception-means-the-value-is-valid">An ignored exception means the value is valid</h2>
+<p>Note that when ignoring accessor exceptions, validation for the value will not be executed.
+This means that the default behaviour for a value which raises and exception is to treat it as <strong>valid</strong>.</p>
+<p>If you wish to validate that a getter or other value-accessor does not raise an exception then you should write a validation rule for the object the provides the value. This rule should attempt to get the value, inside a <code>try</code>/<code>catch</code> block, and should return a failure result is an exception is caught.</p>
 </article>
           </div>
           

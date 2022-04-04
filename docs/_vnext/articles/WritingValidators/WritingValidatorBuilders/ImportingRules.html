@@ -71,11 +71,11 @@
 
 <p>Validator builders are used to specify which rules should be applied to an object and its directly-accessible members/values.
 They can be used as a self-contained piece of validation configuration.
-Validator builders may also consume the rules and configuration from another builder though; there are a few scenarios where this technique is useful.</p>
+Validator builders may also consume the rules and configuration from another builder; there are a few scenarios where this technique is useful.</p>
 <ul>
 <li>De-duplicating validation configuration for base types</li>
 <li>Creating alternative validation scenarios</li>
-<li>Validing referenced objects</li>
+<li>Validating referenced objects</li>
 </ul>
 <p>Using a validator builder, importing another builder is accomplished via the <code>AddRules&lt;TBuilder&gt;()</code> method from either an instance of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules__1"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> or (for validating referenced objects) from an instance of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddRules__1"><code>IConfiguresValueAccessor&lt;TValidated, TValue&gt;</code></a>.</p>
 <h2 id="example-de-duplicating-base-type-validation">Example: De-duplicating base type validation</h2>
