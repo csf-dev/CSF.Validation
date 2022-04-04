@@ -79,11 +79,18 @@ This is <em>the recommended approach</em> where it can be used.</p>
 <p>The <code>ForValues</code> method allows you to write arbitrary getter-logic to retrieve the collection.
 However, this approach will not associate any rules for the value with any particular member of the validated object.
 This could make the results to those rules harder to consume.</p>
-<h2 id="validating-the-whole-collection">Validating the whole collection</h2>
-<p>Whilst the techniques described above allows for validation within a collection, <a href="todo">the <code>ForMember</code></a> and <a href="todo"><code>ForValue</code></a> techniques remain available.
+<h2 id="validating-the-collection-as-a-whole">Validating the collection as a whole</h2>
+<p>Whilst the techniques described above allows for validation within a collection, <a href="todo">the <code>ForMember</code></a> and <a href="todo"><code>ForValue</code></a> techniques <em>remain available</em>.
 Indeed, <em>you may use both techniques</em> with a single collection.</p>
-<p>This allows you to perform validation upon the items individually and yet also validate the collection as an aggregate.</p>
-<h2 id="example-validating-collection-items">Example: Validating collection items</h2>
+<p>Use <code>ForMember</code> or <code>ForValue</code> with a collection when you wish to validate the collection in aggregate, for example the count of items or the sum of contained values.</p>
+<h2 id="import-another-builder-to-validate-collections-of-models">Import another builder to validate collections of models</h2>
+<p>If the collection items are models of any non-trivial complexity then consider defining the rules for those model items within their own validator builder. This builder <a href="ImportingRules.html">would then be imported</a> for validating items within the collection.</p>
+<p>This might look like the following:</p>
+<pre><code class="lang-csharp">builder.ForMemberItems(x =&gt; x.MyCollectionProperty, p =&gt; {
+  p.AddRules&lt;ItemValidatorBuilder&gt;();
+});
+</code></pre>
+<p>In this example, the class <code>ItemValidatorBuilder</code> is an implementation of <code>IBuildsValidator&lt;TValidated&gt;</code> for the generic type that matches the items within the collection <code>MyCollectionProperty</code>.</p>
 </article>
           </div>
           
