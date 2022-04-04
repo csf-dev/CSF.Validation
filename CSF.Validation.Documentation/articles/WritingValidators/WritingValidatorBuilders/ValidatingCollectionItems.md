@@ -17,14 +17,28 @@ The `ForValues` method allows you to write arbitrary getter-logic to retrieve th
 However, this approach will not associate any rules for the value with any particular member of the validated object.
 This could make the results to those rules harder to consume.
 
-## Validating the whole collection
+## Validating the collection as a whole
 
-Whilst the techniques described above allows for validation within a collection, [the `ForMember`] and [`ForValue`] techniques remain available.
+Whilst the techniques described above allows for validation within a collection, [the `ForMember`] and [`ForValue`] techniques _remain available_.
 Indeed, _you may use both techniques_ with a single collection.
 
-This allows you to perform validation upon the items individually and yet also validate the collection as an aggregate.
+Use `ForMember` or `ForValue` with a collection when you wish to validate the collection in aggregate, for example the count of items or the sum of contained values.
 
 [the `ForMember`]:todo
 [`ForValue`]:todo
 
-## Example: Validating collection items
+## Import another builder to validate collections of models
+
+If the collection items are models of any non-trivial complexity then consider defining the rules for those model items within their own validator builder. This builder [would then be imported] for validating items within the collection.
+
+This might look like the following:
+
+```csharp
+builder.ForMemberItems(x => x.MyCollectionProperty, p => {
+  p.AddRules<ItemValidatorBuilder>();
+});
+```
+
+In this example, the class `ItemValidatorBuilder` is an implementation of `IBuildsValidator<TValidated>` for the generic type that matches the items within the collection `MyCollectionProperty`.
+
+[would then be imported]:ImportingRules.md
