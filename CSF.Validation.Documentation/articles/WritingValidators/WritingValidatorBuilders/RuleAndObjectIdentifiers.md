@@ -8,13 +8,19 @@ Additionally, sometimes it is useful to identify an individual rule with a name.
 
 ## Identifying object instances
 
-Object instances within the graph of validated objects may have an identifier. The identifier is not used in any special capacity but it is associated with the corresponding result items. This can make it easier to match up results with their validated objects.
+A common problem when validating a complex object graph (such as one which contains collections of validated objects) is matching the validation results back to the corresponding objects.
+To simplify this, validated objects may be marked with an identity using [the `UseObjectIdentity` method] of a validator-builder.
+Validation results for these objects include the identity with each result, so that the result may be matched with its corresponding validated object.
 
-Object identifiers may be added to a builder using [the `UseObjectIdentity` method].
+Object identities in CSF.Validation have no meaning beyond the above.
+You may use an identity property/value which is already available upon the object or you may add one.
+If you are adding an identity property, consider a `System.Guid`, as it is quick and easy to create unique values.
 
-Identities do not need to be persistent across separate invocations of the validation logic, as long as they are round-tripped forward and backward between the validator and any logic which consumes the validation result. As such, `Guid` objects make good identifiers.
+Identities are ephemeral and do not need to persisted.
+All that is important is that for each invocation of the validation logic, the identity of any given validated object remains stable.
+If the validation logic is executed twice, then subsequent invocations do not need to have the same identities.
 
-[the `UseObjectIdentity` method]:xref:TODO
+[the `UseObjectIdentity` method]: xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.UseObjectIdentity(System.Func{`0,System.Object})
 
 ## Identifying/naming rules
 
@@ -30,4 +36,4 @@ builder.AddRule<MyRuleType>(conf => {
 });
 ```
 
-[the `Name` property]:TODO
+[the `Name` property]: xref:CSF.Validation.ValidatorBuilding.IConfiguresRule`1.Name

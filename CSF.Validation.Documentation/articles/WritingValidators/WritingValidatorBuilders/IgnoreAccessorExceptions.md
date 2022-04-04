@@ -10,7 +10,7 @@ _Use this functionality with caution; it is usually a sign of poor object design
 
 If you are dealing with a value accessor that could throw and you wish to prevent such exceptions from blocking validation, then use [the `IgnoreExceptions` method] when configuring the accessor. When this method is used, any exception thrown when getting the value will be caught & ignored.
 
-[the `IgnoreExceptions` method]:TODO
+[the `IgnoreExceptions` method]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.IgnoreExceptions
 
 ## An ignored exception means the value is valid
 
