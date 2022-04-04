@@ -72,13 +72,19 @@
 <p>When validating complex object graphs, especially those which include <a href="ValidatingCollectionItems.html">collections of validated values</a>, it can be helpful to identify object instances within the validator. This allows easy matching of results back to the correct validated object instance.</p>
 <p>Additionally, sometimes it is useful to identify an individual rule with a name. This can be useful if the same rule-type must be applied more than once to the same property.</p>
 <h2 id="identifying-object-instances">Identifying object instances</h2>
-<p>Object instances within the graph of validated objects may have an identifier. The identifier is not used in any special capacity but it is associated with the corresponding result items. This can make it easier to match up results with their validated objects.</p>
-<p>Object identifiers may be added to a builder using <a href="xref:TODO">the <code>UseObjectIdentity</code> method</a>.</p>
-<p>Identities do not need to be persistent across separate invocations of the validation logic, as long as they are round-tripped forward and backward between the validator and any logic which consumes the validation result. As such, <code>Guid</code> objects make good identifiers.</p>
+<p>A common problem when validating a complex object graph (such as one which contains collections of validated objects) is matching the validation results back to the corresponding objects.
+To simplify this, validated objects may be marked with an identity using <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_System_Func__0_System_Object__">the <code>UseObjectIdentity</code> method</a> of a validator-builder.
+Validation results for these objects include the identity with each result, so that the result may be matched with its corresponding validated object.</p>
+<p>Object identities in CSF.Validation have no meaning beyond the above.
+You may use an identity property/value which is already available upon the object or you may add one.
+If you are adding an identity property, consider a <code>System.Guid</code>, as it is quick and easy to create unique values.</p>
+<p>Identities are ephemeral and do not need to persisted.
+All that is important is that for each invocation of the validation logic, the identity of any given validated object remains stable.
+If the validation logic is executed twice, then subsequent invocations do not need to have the same identities.</p>
 <h2 id="identifyingnaming-rules">Identifying/naming rules</h2>
 <p>It is quite rare that rules need to be named. Rules are usually identified by their <code>System.Type</code> along with the type and perhaps parent type and member name that they validate.</p>
 <p>Sometimes the above is not enough, though. For example if the same object or member must be validated with the same rule type more than once, for example with different configurations.</p>
-<p>In this case, these rules must be given unique names in order to distinguish them. This is performed by setting <a href="TODO">the <code>Name</code> property</a> of the rule-configuration builder. Here is an example:</p>
+<p>In this case, these rules must be given unique names in order to distinguish them. This is performed by setting <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html#CSF_Validation_ValidatorBuilding_IConfiguresRule_1_Name">the <code>Name</code> property</a> of the rule-configuration builder. Here is an example:</p>
 <pre><code class="lang-csharp">builder.AddRule&lt;MyRuleType&gt;(conf =&gt; {
     conf.Name = &quot;Rule name here&quot;;
 });

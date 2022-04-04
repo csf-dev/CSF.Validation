@@ -71,7 +71,7 @@
 
 <p>Sometimes validation calls for verifying that each item within a collection of items is valid.
 Where a member or validated value is a type that implements <code>IEnumerable&lt;T&gt;</code>, it is possible to have a validator enumerate that collection and validate each item found.
-This technique is accomplished via <a href="todo">the <code>ForMemberItems()</code></a> and <a href="todo">the <code>ForValues()</code></a> methods.</p>
+This technique is accomplished via <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0____System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">the <code>ForMemberItems()</code></a> and <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues__1_System_Func__0_System_Collections_Generic_IEnumerable___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">the <code>ForValues()</code></a> methods.</p>
 <h2 id="prefer-formemberitems-when-possible">Prefer <code>ForMemberItems</code> when possible</h2>
 <p>In the majority of cases it should be possible to use <code>ForMemberItems</code>.
 Use this where the collection is exposed by a single member, like a property.
@@ -80,7 +80,7 @@ This is <em>the recommended approach</em> where it can be used.</p>
 However, this approach will not associate any rules for the value with any particular member of the validated object.
 This could make the results to those rules harder to consume.</p>
 <h2 id="validating-the-collection-as-a-whole">Validating the collection as a whole</h2>
-<p>Whilst the techniques described above allows for validation within a collection, <a href="todo">the <code>ForMember</code></a> and <a href="todo"><code>ForValue</code></a> techniques <em>remain available</em>.
+<p>Whilst the techniques described above allows for validation within a collection, <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">the <code>ForMember</code></a> and <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___"><code>ForValue</code></a> techniques <em>remain available</em>.
 Indeed, <em>you may use both techniques</em> with a single collection.</p>
 <p>Use <code>ForMember</code> or <code>ForValue</code> with a collection when you wish to validate the collection in aggregate, for example the count of items or the sum of contained values.</p>
 <h2 id="import-another-builder-to-validate-collections-of-models">Import another builder to validate collections of models</h2>

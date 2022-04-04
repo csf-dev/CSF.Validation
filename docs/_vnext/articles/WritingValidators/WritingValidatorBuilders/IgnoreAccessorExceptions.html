@@ -74,7 +74,7 @@ By default this will raise an exception across the validator and halt validation
 This functionality provides a way to ignore such exceptions.</p>
 <p><em>Use this functionality with caution; it is usually a sign of poor object design if accessors such as getters raise exceptions. It is much better to create accessors which do not raise exceptions.</em></p>
 <h2 id="how-to-ignore-exceptions">How to ignore exceptions</h2>
-<p>If you are dealing with a value accessor that could throw and you wish to prevent such exceptions from blocking validation, then use <a href="TODO">the <code>IgnoreExceptions</code> method</a> when configuring the accessor. When this method is used, any exception thrown when getting the value will be caught &amp; ignored.</p>
+<p>If you are dealing with a value accessor that could throw and you wish to prevent such exceptions from blocking validation, then use <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_IgnoreExceptions">the <code>IgnoreExceptions</code> method</a> when configuring the accessor. When this method is used, any exception thrown when getting the value will be caught &amp; ignored.</p>
 <h2 id="an-ignored-exception-means-the-value-is-valid">An ignored exception means the value is valid</h2>
 <p>Note that when ignoring accessor exceptions, validation for the value will not be executed.
 This means that the default behaviour for a value which raises and exception is to treat it as <strong>valid</strong>.</p>
