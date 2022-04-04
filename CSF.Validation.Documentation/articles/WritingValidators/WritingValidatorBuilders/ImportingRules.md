@@ -2,11 +2,11 @@
 
 Validator builders are used to specify which rules should be applied to an object and its directly-accessible members/values.
 They can be used as a self-contained piece of validation configuration.
-Validator builders may also consume the rules and configuration from another builder though; there are a few scenarios where this technique is useful.
+Validator builders may also consume the rules and configuration from another builder; there are a few scenarios where this technique is useful.
 
 * De-duplicating validation configuration for base types
 * Creating alternative validation scenarios
-* Validing referenced objects
+* Validating referenced objects
 
 Using a validator builder, importing another builder is accomplished via the `AddRules<TBuilder>()` method from either an instance of [`IConfiguresValidator<TValidated>`] or (for validating referenced objects) from an instance of [`IConfiguresValueAccessor<TValidated, TValue>`].
 

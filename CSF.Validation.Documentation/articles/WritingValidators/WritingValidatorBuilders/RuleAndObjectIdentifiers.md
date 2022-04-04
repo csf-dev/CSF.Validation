@@ -4,6 +4,8 @@ When validating complex object graphs, especially those which include [collectio
 
 Additionally, sometimes it is useful to identify an individual rule with a name. This can be useful if the same rule-type must be applied more than once to the same property.
 
+[collections of validated values]: ValidatingCollectionItems.md
+
 ## Identifying object instances
 
 Object instances within the graph of validated objects may have an identifier. The identifier is not used in any special capacity but it is associated with the corresponding result items. This can make it easier to match up results with their validated objects.
