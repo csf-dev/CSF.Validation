@@ -3,9 +3,24 @@ using System;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// A model that describes how a validator should operate, such as which
-    /// rules it should execute and how they should be configured.
+    /// The root object of a validation manifest.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This type serves as the root a model that describes how a validator should operate, such as which
+    /// rules it should execute and how they should be configured.
+    /// </para>
+    /// <para>
+    /// The validation manifest is the model by which validators are described, including how they should
+    /// validate objects and values.
+    /// </para>
+    /// <para>
+    /// The validation manifest objects are not particularly suited to serialization,
+    /// as they support the use of types that cannot be easily serialized.
+    /// If you are looking for a way to create/define a validator using serialized data then please read the
+    /// article @ManifestModelIndexPage.
+    /// </para>
+    /// </remarks>
     public class ValidationManifest
     {
         /// <summary>

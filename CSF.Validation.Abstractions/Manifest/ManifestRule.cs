@@ -7,6 +7,18 @@ namespace CSF.Validation.Manifest
     /// <summary>
     /// A model for a single validation rule within a <see cref="ValidationManifest"/>.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The validation manifest is the model by which validators are described, including how they should
+    /// validate objects and values.
+    /// </para>
+    /// <para>
+    /// The validation manifest objects are not particularly suited to serialization,
+    /// as they support the use of types that cannot be easily serialized.
+    /// If you are looking for a way to create/define a validator using serialized data then please read the
+    /// article @ManifestModelIndexPage.
+    /// </para>
+    /// </remarks>
     public class ManifestRule
     {
         ICollection<ManifestRuleIdentifier> dependencyRules = new List<ManifestRuleIdentifier>();

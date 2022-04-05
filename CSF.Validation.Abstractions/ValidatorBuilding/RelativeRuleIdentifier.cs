@@ -1,5 +1,4 @@
 using System;
-using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidatorBuilding
 {

@@ -1,11 +1,14 @@
 # Writing Validator Builders
 
 Validator builders are the simplest & clearest way to define a validator.
+Use a validator builder to create a validator from .NET code.
+Alternatively, if you would like to create a validator from data, consider using the [Manifest Model] instead.
+
 A validator builder is a class which implements the interface [`IBuildsValidator<TValidated>`].
 Developers then use the `ConfigureValidator` method and the [`IConfiguresValidator<TValidated>`] helper to specify how the validator will function.
-
 By specifying the type of object to be validated as a generic type, validator builders are very IDE/autocomplete-friendly.
 
+[Manifest Model]: ../UsingTheManifestModel/index.md
 [`IBuildsValidator<TValidated>`]:xref:CSF.Validation.IBuildsValidator`1
 [`IConfiguresValidator<TValidated>`]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1
 

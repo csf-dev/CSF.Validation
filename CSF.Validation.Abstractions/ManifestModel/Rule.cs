@@ -4,10 +4,23 @@ using System.Collections.Generic;
 namespace CSF.Validation.ManifestModel
 {
     /// <summary>
-    /// A simple model to describe a single validation rule.
-    /// The models in this namespace provide a serialization-friendly mechanism by which to describe
-    /// a validation manifest.
+    /// A manifest model class that represents a validation rule for a <see cref="Value"/>.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This type roughly corresponds to <see cref="CSF.Validation.Manifest.ManifestRule"/>.
+    /// The manifest model classes are simplified when compared with the validation manifest
+    /// and offer only a subset of functionality.  Importantly though, manifest model classes
+    /// such as this are suitable for easy serialization to/from various data formats, such as
+    /// JSON or relational database tables.
+    /// </para>
+    /// <para>
+    /// For more information about when and how to use the manifest model, see the article
+    /// @ManifestModelIndexPage
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="Value"/>
+    /// <seealso cref="RelativeIdentifier"/>
     public class Rule
     {
         IDictionary<string, object> rulePropertyValues = new Dictionary<string, object>();

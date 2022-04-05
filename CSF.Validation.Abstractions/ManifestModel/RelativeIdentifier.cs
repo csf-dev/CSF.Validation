@@ -3,11 +3,24 @@ using System;
 namespace CSF.Validation.ManifestModel
 {
     /// <summary>
-    /// A model which may be used to indicate another rule, based upon a relative position within
-    /// a validation hierarchy.  This is used to indicate dependencies between validation rules.
-    /// The models in this namespace provide a serialization-friendly mechanism by which to describe
-    /// a validation manifest.
+    /// A manifest model class that represents the relative identifier of a rule, within the context of
+    /// another validation rule.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This type roughly corresponds to <see cref="CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier"/>.
+    /// The manifest model classes are simplified when compared with the validation manifest
+    /// and offer only a subset of functionality.  Importantly though, manifest model classes
+    /// such as this are suitable for easy serialization to/from various data formats, such as
+    /// JSON or relational database tables.
+    /// </para>
+    /// <para>
+    /// For more information about when and how to use the manifest model, see the article
+    /// @ManifestModelIndexPage
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="Value"/>
+    /// <seealso cref="Rule"/>
     public class RelativeIdentifier
     {
         private int ancestorLevels;
