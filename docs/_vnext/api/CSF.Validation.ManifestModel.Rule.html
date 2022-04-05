@@ -73,9 +73,7 @@
   
   <h1 id="CSF_Validation_ManifestModel_Rule" data-uid="CSF.Validation.ManifestModel.Rule" class="text-break">Class Rule
   </h1>
-  <div class="markdown level0 summary"><p>A simple model to describe a single validation rule.
-The models in this namespace provide a serialization-friendly mechanism by which to describe
-a validation manifest.</p>
+  <div class="markdown level0 summary"><p>A manifest model class that represents a validation rule for a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -113,6 +111,19 @@ a validation manifest.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Rule</code></pre>
   </div>
+  <h5 id="CSF_Validation_ManifestModel_Rule_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+This type roughly corresponds to <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>.
+The manifest model classes are simplified when compared with the validation manifest
+and offer only a subset of functionality.  Importantly though, manifest model classes
+such as this are suitable for easy serialization to/from various data formats, such as
+JSON or relational database tables.
+</p>
+<p>
+For more information about when and how to use the manifest model, see the article
+@ManifestModelIndexPage
+</p>
+</div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
@@ -120,7 +131,7 @@ a validation manifest.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Rule_Dependencies.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Rule.Dependencies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L41">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L54">View Source</a>
   </span>
   <a id="CSF_Validation_ManifestModel_Rule_Dependencies_" data-uid="CSF.Validation.ManifestModel.Rule.Dependencies*"></a>
   <h4 id="CSF_Validation_ManifestModel_Rule_Dependencies" data-uid="CSF.Validation.ManifestModel.Rule.Dependencies">Dependencies</h4>
@@ -151,7 +162,7 @@ a validation manifest.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Rule_RuleName.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Rule.RuleName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L25">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L38">View Source</a>
   </span>
   <a id="CSF_Validation_ManifestModel_Rule_RuleName_" data-uid="CSF.Validation.ManifestModel.Rule.RuleName*"></a>
   <h4 id="CSF_Validation_ManifestModel_Rule_RuleName" data-uid="CSF.Validation.ManifestModel.Rule.RuleName">RuleName</h4>
@@ -183,7 +194,7 @@ from other rules of the same type upon the same validated value.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Rule_RulePropertyValues.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Rule.RulePropertyValues%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L32">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L45">View Source</a>
   </span>
   <a id="CSF_Validation_ManifestModel_Rule_RulePropertyValues_" data-uid="CSF.Validation.ManifestModel.Rule.RulePropertyValues*"></a>
   <h4 id="CSF_Validation_ManifestModel_Rule_RulePropertyValues" data-uid="CSF.Validation.ManifestModel.Rule.RulePropertyValues">RulePropertyValues</h4>
@@ -216,7 +227,7 @@ of rule types.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Rule_RuleTypeName.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Rule.RuleTypeName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L19">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L32">View Source</a>
   </span>
   <a id="CSF_Validation_ManifestModel_Rule_RuleTypeName_" data-uid="CSF.Validation.ManifestModel.Rule.RuleTypeName*"></a>
   <h4 id="CSF_Validation_ManifestModel_Rule_RuleTypeName" data-uid="CSF.Validation.ManifestModel.Rule.RuleTypeName">RuleTypeName</h4>
@@ -242,6 +253,11 @@ of rule types.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a></div>
+      <div><a class="xref" href="CSF.Validation.ManifestModel.RelativeIdentifier.html">RelativeIdentifier</a></div>
+  </div>
 </article>
           </div>
           
@@ -253,7 +269,7 @@ of rule types.</p>
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Rule.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Rule%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Rule.cs/#L24" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

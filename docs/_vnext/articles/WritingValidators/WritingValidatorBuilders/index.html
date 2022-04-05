@@ -70,9 +70,11 @@
 <h1 id="writing-validator-builders">Writing Validator Builders</h1>
 
 <p>Validator builders are the simplest &amp; clearest way to define a validator.
-A validator builder is a class which implements the interface <a class="xref" href="../../../api/CSF.Validation.IBuildsValidator-1.html"><code>IBuildsValidator&lt;TValidated&gt;</code></a>.
-Developers then use the <code>ConfigureValidator</code> method and the <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> helper to specify how the validator will function.</p>
-<p>By specifying the type of object to be validated as a generic type, validator builders are very IDE/autocomplete-friendly.</p>
+Use a validator builder to create a validator from .NET code.
+Alternatively, if you would like to create a validator from data, consider using the <a href="../UsingTheManifestModel/index.html">Manifest Model</a> instead.</p>
+<p>A validator builder is a class which implements the interface <a class="xref" href="../../../api/CSF.Validation.IBuildsValidator-1.html"><code>IBuildsValidator&lt;TValidated&gt;</code></a>.
+Developers then use the <code>ConfigureValidator</code> method and the <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> helper to specify how the validator will function.
+By specifying the type of object to be validated as a generic type, validator builders are very IDE/autocomplete-friendly.</p>
 <h2 id="the-basics-adding-rules-to-a-builder">The basics: Adding rules to a builder</h2>
 <p>Rules may be added to either or both of the object being validated or values derived from that object.
 Here is an example of three ways to add rules to a validator, by using a builder.</p>

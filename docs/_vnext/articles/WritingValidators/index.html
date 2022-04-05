@@ -73,25 +73,22 @@
 In order to create a validator rules are assigned to objects and values, such as properties.</p>
 <h2 id="writing-rules">Writing rules</h2>
 <p>Rules are individual, self-contained pieces of logic which fundamentally test for a pass or a fail.
-Each validation rule in the validation manifest is a .NET class.</p>
+Each validation rule is written as a self-contained .NET class.</p>
 <p>Some pre-written rules are available in <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a> but it's expected that developers will want to write their own.
 You are advised to read <a href="WritingValidationRules/index.html">the documentation for writing rule classes</a> &amp; the <a href="../BestPractice/index.html#writing-validation-rule-classes">best practices and guidance</a> applicable to rules.</p>
-<h2 id="assigning-rules">Assigning rules</h2>
+<h2 id="creating-a-validator-from-some-rules">Creating a validator from some rules</h2>
 <p>To create a usable validator, the application must specify which rule(s) should be used to validate each object or value.
-They could optionally specify how those rules should be configured.
-We call this information <em>the validation manifest</em> and CSF.Validation provides three mechanisms by which to create it.</p>
-<ul>
-<li><a href="WritingValidatorBuilders/index.html">A <strong>validator builder</strong></a> is a declarative/fluent API to specify how an object should be validated by writing a .NET class.</li>
-<li>The validator <a href="UsingTheManifestModel/index.html"><strong>manifest model</strong></a> is a way to describe how an object should be validated using very simple objects which are suitable for serialisation.</li>
-<li>You may <a href="TheValidationManifest/index.html">create a validation manifest directly</a>, using the API/object model for doing so.</li>
-</ul>
-<h3 id="which-approach-should-i-use">Which approach should I use?</h3>
-<p>All three mechanisms can produce almost the same results, so it is generally best to choose the simplest which meets your needs.
-<em>The recommended approach</em> is to use a validator builder wherever possible.
-Validator builders only limitation is that they are written in code, but they are very intuitive to read and write.</p>
-<p>The manifest model comes with some limitations compared to builders or editing a manifest directly but are suitable for serialization to persistent formats such as JSON, XML or a database.
-Thus, the manifest model permits writing <em>&quot;validation as data&quot;</em> architectures.</p>
-<p>Finally, creating a manifest directly allows for advanced scenarios, which would not be possible using the mechanisms above on their own.</p>
+They could optionally specify how those rules should be configured.</p>
+<p>This information about which rules are to be used, and how, is called <em>the validation manifest</em>.
+The CSF.Validation framework provides <em>three mechanisms</em> by which to define it, although <strong>typical applications will need use only one</strong> of them.</p>
+<ol>
+<li><a href="WritingValidatorBuilders/index.html">A <strong>validator builder</strong></a> is most suitable if your validators are to be defined using .NET code</li>
+<li>If the composition/configuration of a validator is to be <em>defined using data</em> then consider using the <a href="UsingTheManifestModel/index.html"><strong>manifest model</strong></a></li>
+<li>Developers wishing to use advanced techniques may <a href="TheValidationManifest/index.html">create or manipulate a validation manifest directly</a></li>
+</ol>
+<p>Developers are advised to use the simplest mechanism which meets their requirements.
+In most scenarios the validator builder API will be sufficient; <em>this is the recommended approach</em>.
+The manifest model is a little more limited than working with the manifest directly but the API is created from <a href="https://en.wikipedia.org/wiki/Plain_old_CLR_object">POCOs</a> which are easily serialized to/from other formats, such as JSON or databases.</p>
 </article>
           </div>
           

@@ -111,6 +111,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ManifestRule</code></pre>
   </div>
+  <h5 id="CSF_Validation_Manifest_ManifestRule_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+The validation manifest is the model by which validators are described, including how they should
+validate objects and values.
+</p>
+<p>
+The validation manifest objects are not particularly suited to serialization,
+as they support the use of types that cannot be easily serialized.
+If you are looking for a way to create/define a validator using serialized data then please read the
+article @ManifestModelIndexPage.
+</p>
+</div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
@@ -118,7 +130,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestRule__ctor_CSF_Validation_Manifest_ManifestValue_CSF_Validation_Manifest_ManifestRuleIdentifier_.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestRule.%23ctor(CSF.Validation.Manifest.ManifestValue%2CCSF.Validation.Manifest.ManifestRuleIdentifier)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L57">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L69">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ManifestRule__ctor_" data-uid="CSF.Validation.Manifest.ManifestRule.#ctor*"></a>
   <h4 id="CSF_Validation_Manifest_ManifestRule__ctor_CSF_Validation_Manifest_ManifestValue_CSF_Validation_Manifest_ManifestRuleIdentifier_" data-uid="CSF.Validation.Manifest.ManifestRule.#ctor(CSF.Validation.Manifest.ManifestValue,CSF.Validation.Manifest.ManifestRuleIdentifier)">ManifestRule(ManifestValue, ManifestRuleIdentifier)</h4>
@@ -160,7 +172,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestRule_DependencyRules.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestRule.DependencyRules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L46">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L58">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ManifestRule_DependencyRules_" data-uid="CSF.Validation.Manifest.ManifestRule.DependencyRules*"></a>
   <h4 id="CSF_Validation_Manifest_ManifestRule_DependencyRules" data-uid="CSF.Validation.Manifest.ManifestRule.DependencyRules">DependencyRules</h4>
@@ -199,7 +211,7 @@ outcome.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestRule_Identifier.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestRule.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L23">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L35">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ManifestRule_Identifier_" data-uid="CSF.Validation.Manifest.ManifestRule.Identifier*"></a>
   <h4 id="CSF_Validation_Manifest_ManifestRule_Identifier" data-uid="CSF.Validation.Manifest.ManifestRule.Identifier">Identifier</h4>
@@ -230,7 +242,7 @@ outcome.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestRule_ManifestValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestRule.ManifestValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L18">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L30">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ManifestRule_ManifestValue_" data-uid="CSF.Validation.Manifest.ManifestRule.ManifestValue*"></a>
   <h4 id="CSF_Validation_Manifest_ManifestRule_ManifestValue" data-uid="CSF.Validation.Manifest.ManifestRule.ManifestValue">ManifestValue</h4>
@@ -261,7 +273,7 @@ outcome.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestRule_RuleConfiguration.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestRule.RuleConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L29">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L41">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ManifestRule_RuleConfiguration_" data-uid="CSF.Validation.Manifest.ManifestRule.RuleConfiguration*"></a>
   <h4 id="CSF_Validation_Manifest_ManifestRule_RuleConfiguration" data-uid="CSF.Validation.Manifest.ManifestRule.RuleConfiguration">RuleConfiguration</h4>
@@ -299,7 +311,7 @@ instance after it has been instantiated.</p>
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestRule.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestRule%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestRule.cs/#L22" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

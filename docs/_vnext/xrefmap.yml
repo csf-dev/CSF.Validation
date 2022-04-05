@@ -5408,6 +5408,9 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidator(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
   nameWithType: ValidatorFactoryExtensions.GetValidator<TValidated>(IGetsValidator, Type)
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
+- uid: ManifestModelIndexPage
+  name: Using the Manifest Model
+  href: articles/WritingValidators/UsingTheManifestModel/index.html
 - uid: WritingValidationRules
   name: Writing Validation Rules
   href: articles/WritingValidators/WritingValidationRules/index.html
