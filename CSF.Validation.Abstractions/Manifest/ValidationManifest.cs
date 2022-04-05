@@ -18,9 +18,12 @@ namespace CSF.Validation.Manifest
     /// The validation manifest objects are not particularly suited to serialization,
     /// as they support the use of types that cannot be easily serialized.
     /// If you are looking for a way to create/define a validator using serialized data then please read the
-    /// article @ManifestModelIndexPage.
+    /// article <xref href="ManifestModelIndexPage?text=Using+the+Manifest+Model"/>.
     /// </para>
     /// </remarks>
+    /// <seealso cref="ManifestValue"/>
+    /// <seealso cref="ManifestRule"/>
+    /// <seealso cref="ManifestRuleIdentifier"/>
     public class ValidationManifest
     {
         /// <summary>

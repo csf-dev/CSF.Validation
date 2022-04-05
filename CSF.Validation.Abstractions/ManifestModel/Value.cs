@@ -16,7 +16,7 @@ namespace CSF.Validation.ManifestModel
     /// </para>
     /// <para>
     /// For more information about when and how to use the manifest model, see the article
-    /// @ManifestModelIndexPage
+    /// <xref href="ManifestModelIndexPage?text=Using+the+Manifest+Model"/>
     /// </para>
     /// </remarks>
     /// <seealso cref="Rule"/>
