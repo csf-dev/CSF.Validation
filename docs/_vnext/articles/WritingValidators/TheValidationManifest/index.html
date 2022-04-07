@@ -93,6 +93,21 @@ Any non-primitive values typically have <a href=":xref:CSF.Validation.Manifest.M
 Unlike <a href="../UsingTheManifestModel/index.html">The Manifest Model</a>, the validation manifest class serves as a wrapper/root object for a manifest object graph.</p>
 <p>Rules define the validation rules to be applied to values.
 The <code>ManifestRule</code> class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.</p>
+<h2 id="why-might-you-use-the-validation-manifest">Why might you use the validation manifest</h2>
+<p>A developer might wish to use the validation manifest directly in order to create advanced validation scenarios.</p>
+<p>Imagine a convention across a validated object graph whereby all <code>string</code> properties must not be <code>null</code>.
+A developer could use reflection across their validated object graph in order to detect all properties of type <code>string</code> and to add <a class="xref" href="../../../api/CSF.Validation.Rules.NotNull.html"><code>NotNull</code></a> rules for all of them automatically.</p>
+<h2 id="converting-a-builder-or-manifest-model-to-a-validation-manifest">Converting a builder or manifest model to a validation manifest</h2>
+<p>Typically when using <a href="../WritingValidatorBuilders/index.html">a validator builder</a> or <a href="../UsingTheManifestModel/index.html">the Manifest Model</a>, the developer will want to create a validator from that builder or model via a method (or extension method) of <a class="xref" href="../../../api/CSF.Validation.IGetsValidator.html"><code>IGetsValidator</code></a>.
+It is possible, however, to convert a builder or manifest model into a validation manifest.
+This is accomplished via these two interfaces:</p>
+<ul>
+<li><a class="xref" href="../../../api/CSF.Validation.Manifest.IGetsManifestFromBuilder.html"><code>IGetsManifestFromBuilder</code></a></li>
+<li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.IGetsValidationManifestFromModel.html"><code>IGetsValidationManifestFromModel</code></a></li>
+</ul>
+<p>Once a builder or manifest model has been converted to a validation manifest, it may be supplemented with further
+values and/or rules.
+Developers may write logic which combines validation definitions created via builders/models with advanced techniques achieved by manipulating the validation manifest directly.</p>
 </article>
           </div>
           

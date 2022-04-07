@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Bootstrap.RuleAssemblyScanner.html",
-          "hash": "QOEWuKhXA/tMfoMcEKND4N/xWxIYQlaFp61Ej1QCrc4="
+          "hash": "ARSzqHnafWf4x3KLMzOXRsAu7bMYG6ljHM38l2knD2U="
         }
       },
       "is_incremental": false,
@@ -813,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.AncestorRuleContext.html",
-          "hash": "wwVpgR+dSLFEoy/a0dwuWs47EFNCW2EtEpSbHBLtdgk="
+          "hash": "Cmg266l7knqdomtzvvpJb32KyQCFnRqn/yMKiwfXko8="
         }
       },
       "is_incremental": false,
@@ -909,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-1.html",
-          "hash": "xO6SzP6AaTo0DgoaQZcl4EjC8hO2xs0zptfwJLs8xKg="
+          "hash": "ps4q8RPJEwmpjaSyue7HofXOGSKp/IBQ46WT+f1YCSo="
         }
       },
       "is_incremental": false,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-2.html",
-          "hash": "Ufqr5zh6ZbIMxafY9lFKfh0zfGFzZ1oexby6qXQ0HDw="
+          "hash": "5uKfwPFxciXQR6I/xvcQLLXOCZSVzss8/fDG4MEK7KE="
         }
       },
       "is_incremental": false,
@@ -1017,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleContext.html",
-          "hash": "clL5o9R5Z33SZXYKgJoSEQ4nX54z88uKRgA6UZoDUN0="
+          "hash": "AwTK4rwrh17GBS+KxRW9IILqb1M8B4fp+0DV04gIyBA="
         }
       },
       "is_incremental": false,
@@ -1125,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.html",
-          "hash": "19tS9P+zswFej0Eq0Pox78OD2VwTymZAvM2npc/SLHs="
+          "hash": "YRmZL8qzZn9pEFyDc6c8fXmi4HFN1Fho99T62+pN5bY="
         }
       },
       "is_incremental": false,
@@ -1761,7 +1761,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/TheValidationManifest/index.html",
-          "hash": "KiODkryV9pijsNxhMScWyCdentYAPiGTFLyqOdSkGG4="
+          "hash": "QEm8bHxff6WNG5O4IQXJzzla7Y+DQwr/RtdwnYgr1H0="
         }
       },
       "is_incremental": false,
@@ -1773,22 +1773,19 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/UsingTheManifestModel/ExampleOfTheManifestModel.html",
-          "hash": "btNItlpWApifaYxK9emjmo1mKkxQc8hmQ/+ClV97Ojw="
+          "hash": "rSD0QEQHTfuPl6tlOHpgWrjLRWqazADnLNlI5mp0F64="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/UsingTheManifestModel/Limitations.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/UsingTheManifestModel/Limitations.html",
-          "hash": "okiOrpEGWNE3yYg79/xrmYoT861FzKiATEgZcOcOSG0="
+          "hash": "zF06sLVtltw59yD0W8w5O/fahbvaAWMJnL2fIvZmSZU="
         }
       },
       "is_incremental": false,
@@ -1956,7 +1953,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/toc.html",
-          "hash": "Wk7lDhFmSvBUbFW0wagl+k1p37e9Hfajv+2wX4eyPGE="
+          "hash": "uMK1vxw1XcY+PRblIW7brVNulb0zyr+YuVfCN78p0oI="
         }
       },
       "is_incremental": false,
