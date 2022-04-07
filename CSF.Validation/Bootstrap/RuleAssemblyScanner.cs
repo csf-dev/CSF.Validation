@@ -12,7 +12,7 @@ namespace CSF.Validation.Bootstrap
     /// A service, intended only for use during dependency injection configuration, which provides
     /// assembly-scanning logic for validation rule types.
     /// </summary>
-    public class RuleAssemblyScanner
+    public static class RuleAssemblyScanner
     {
         /// <summary>
         /// Gets a collection of types which are exported by any of the specified <paramref name="searchAssemblies"/>
@@ -27,7 +27,7 @@ namespace CSF.Validation.Bootstrap
         /// <param name="searchAssemblies">The assemblies to search.</param>
         /// <returns>A collection of validation rule types.</returns>
         /// <exception cref="ArgumentNullException">If <paramref name="searchAssemblies"/> is <see langword="null" />.</exception>
-        public IEnumerable<Type> GetRuleTypesFromAssemblies(IEnumerable<Assembly> searchAssemblies)
+        public static IEnumerable<Type> GetRuleTypesFromAssemblies(IEnumerable<Assembly> searchAssemblies)
         {
             if (searchAssemblies is null)
                 throw new ArgumentNullException(nameof(searchAssemblies));

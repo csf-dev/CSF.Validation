@@ -95,10 +95,10 @@ namespace CSF.Validation
         /// <returns>The service collection, so that calls may be chained.</returns>
         public static IServiceCollection UseValidationRulesInAssemblies(this IServiceCollection serviceCollection, IEnumerable<Assembly> assemblies)
         {
-            var assemblyScanner = new RuleAssemblyScanner();
-            var ruleTypes = assemblyScanner.GetRuleTypesFromAssemblies(assemblies);
+            if (assemblies is null)
+                throw new ArgumentNullException(nameof(assemblies));
 
-            foreach(var ruleType in ruleTypes)
+            foreach (var ruleType in RuleAssemblyScanner.GetRuleTypesFromAssemblies(assemblies))
                 serviceCollection.UseValidationRule(ruleType);
 
             return serviceCollection;

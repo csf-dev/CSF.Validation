@@ -21,7 +21,7 @@ namespace CSF.Validation.ManifestModel
         [Test,AutoMoqData]
         public void GetRuleTypeShouldGetTheCorrectTypeForARuleInAPluginAssemblyUsingAnAssemblyQualifiedName(RuleTypeResolver sut)
         {
-            Assert.That(() => sut.GetRuleType("CSF.Validation.SampleRule, CSF.Validation.Tests.SamplePlugin"), Is.Not.Null);
+            Assert.That(() => sut.GetRuleType(SamplePluginAssembly.SampleRuleAqn), Is.Not.Null);
         }
     }
 }
