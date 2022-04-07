@@ -41,3 +41,30 @@ The `ManifestRule` class has properties that allows you to specify the validatio
 
 [a collection of child values]::xref:CSF.Validation.Manifest.ManifestValue.Children
 [The Manifest Model]:../UsingTheManifestModel/index.md
+
+## Why might you use the validation manifest
+
+A developer might wish to use the validation manifest directly in order to create advanced validation scenarios.
+
+Imagine a convention across a validated object graph whereby all `string` properties must not be `null`.
+A developer could use reflection across their validated object graph in order to detect all properties of type `string` and to add [`NotNull`] rules for all of them automatically.
+
+[`NotNull`]:xref:CSF.Validation.Rules.NotNull
+
+## Converting a builder or manifest model to a validation manifest
+
+Typically when using [a validator builder] or [the Manifest Model], the developer will want to create a validator from that builder or model via a method (or extension method) of [`IGetsValidator`].
+It is possible, however, to convert a builder or manifest model into a validation manifest.
+This is accomplished via these two interfaces:
+
+* [`IGetsManifestFromBuilder`]
+* [`IGetsValidationManifestFromModel`]
+
+Once a builder or manifest model has been converted to a validation manifest, it may be supplemented with further
+values and/or rules.
+Developers may write logic which combines validation definitions created via builders/models with advanced techniques achieved by manipulating the validation manifest directly.
+
+[a validator builder]: ../WritingValidatorBuilders/index.md
+[`IGetsValidator`]:xref:CSF.Validation.IGetsValidator
+[`IGetsManifestFromBuilder`]:xref:CSF.Validation.Manifest.IGetsManifestFromBuilder
+[`IGetsValidationManifestFromModel`]:xref:CSF.Validation.ManifestModel.IGetsValidationManifestFromModel

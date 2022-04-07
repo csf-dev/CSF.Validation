@@ -35,11 +35,11 @@ namespace CSF.Validation.Rules
         /// <para>
         /// This method receives the value to be validated as well as an object which represents the
         /// context in which this rule is running.
-        /// It should return a <see cref="Task{RuleResult}"/>.
+        /// It should return a task of <see cref="RuleResult"/>.
         /// </para>
         /// <para>
         /// In order to create the result object, particularly if your rule logic will run synchronously,
-        /// consider using the <see cref="CommonResults"/> class via <c>using static CommonResults;</c> in your
+        /// consider using the <see cref="CommonResults"/> class via <c>using static CSF.Validation.Rules.CommonResults;</c> in your
         /// rule logic.
         /// The common results class has helper methods such as <see cref="CommonResults.PassAsync(System.Collections.Generic.IDictionary{string, object})"/>
         /// and <see cref="CommonResults.FailAsync(System.Collections.Generic.IDictionary{string, object})"/>
