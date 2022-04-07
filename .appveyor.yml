@@ -14,20 +14,36 @@ init:
     - cmd: git config --global core.autocrlf true
     
 install:
-    - git submodule update --init --recursive
     - cmd: dotnet tool install --global dotnet-sonarscanner
     
 before_build:
     - dotnet --version
     - dotnet restore --verbosity m
-    - cmd: dotnet-sonarscanner begin /k:"CSF.Validation" /v:AppVeyor_build_%APPVEYOR_BUILD_NUMBER% /o:craigfowler-github /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=%SONARCLOUD_SECRET_KEY% /d:sonar.cs.nunit.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\TestResults.xml /d:sonar.cs.opencover.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\coverage.opencover.xml
+    - cmd: >
+        dotnet-sonarscanner begin 
+        /k:"CSF.Validation"
+        /v:AppVeyor_build_%APPVEYOR_BUILD_NUMBER%
+        /o:craigfowler-github
+        /d:sonar.host.url="https://sonarcloud.io"
+        /d:sonar.login=%SONARCLOUD_SECRET_KEY%
+        /d:sonar.cs.nunit.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\TestResults.xml
+        /d:sonar.cs.opencover.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\coverage.opencover.xml
+        /s:%APPVEYOR_BUILD_FOLDER%\.sonarqube-analysisproperties.xml
 
 build_script:
     - dotnet build
 
 test_script:
-    - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=\"json,opencover\" /p:CoverletOutput=\"TestResults/\"  --test-adapter-path:. --logger:\"nunit\"
+    - >
+        dotnet test
+        /p:CollectCoverage=true
+        /p:CoverletOutputFormat=\"json,opencover\"
+        /p:CoverletOutput=\"TestResults/\"
+        --test-adapter-path:.
+        --logger:\"nunit\"
 
 after_test:
-    - cmd: dotnet-sonarscanner end /d:"sonar.login=%SONARCLOUD_SECRET_KEY%"
+    - cmd: >
+        dotnet-sonarscanner end
+        /d:"sonar.login=%SONARCLOUD_SECRET_KEY%"
     - ps: if ($isWindows) { Tools\appveyor-publish-docs.ps1 }
