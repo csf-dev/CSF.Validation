@@ -4,18 +4,31 @@ using System.Collections.Generic;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// A model for contextual information related to the execution of a validation rule.
+    /// A read-only model for contextual information related to the execution of a validation rule.
     /// </summary>
     public class RuleContext
     {
         /// <summary>
         /// Gets the identifier of the executed rule.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This object provides identifying information about the currently-executing validation
+        /// rule.
+        /// </para>
+        /// </remarks>
         public RuleIdentifier Identifier { get; }
 
         /// <summary>
-        /// Gets the identity of the object associated with the current context.
+        /// Gets the identity of the object/value associated with the current context.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The object (or value) identity is used to distinguish this value from other objects/values of
+        /// the same type.
+        /// This is particularly useful when validating collections of similar objects.
+        /// </para>
+        /// </remarks>
         public object ObjectIdentity => Identifier.ObjectIdentity;
 
         /// <summary>
@@ -23,7 +36,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// When either of the following methods is used (when building a validator), a 'child' validation context is created
+        /// When either of the following methods is used (using a validator builder), a 'child' validation context is created
         /// and the rules which are added are placed into that new child content.
         /// </para>
         /// <list type="bullet">
@@ -34,6 +47,10 @@ namespace CSF.Validation.Rules
         /// <description><see cref="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{TValidated,TValue}.AddRules{TBuilder}"/></description>
         /// </item>
         /// </list>
+        /// <para>
+        /// Equivalents to the above exist for the Manifest Model: <see cref="CSF.Validation.ManifestModel.Value.Children"/>
+        /// and also for a Validation Manifest: <see cref="CSF.Validation.Manifest.ManifestValue.Children"/>.
+        /// </para>
         /// <para>
         /// If the currently-executing validation rule lies within a child context, this property provides access to all
         /// of the ancestor contexts, such as parents &amp; grandparents.
@@ -46,6 +63,10 @@ namespace CSF.Validation.Rules
         /// <para>
         /// If the currently-executing validation rule is not part of a child context then this collection will be empty
         /// indicating that there are no ancestor contexts.
+        /// </para>
+        /// <para>
+        /// When using the <see cref="IRule{TValue, TParent}"/> interface, the first <see cref="AncestorRuleContext.Object"/> is
+        /// made available as the second parameter to <see cref="IRule{TValue, TParent}.GetResultAsync(TValue, TParent, RuleContext, System.Threading.CancellationToken)"/>.
         /// </para>
         /// </remarks>
         public IReadOnlyList<AncestorRuleContext> AncestorContexts { get; }

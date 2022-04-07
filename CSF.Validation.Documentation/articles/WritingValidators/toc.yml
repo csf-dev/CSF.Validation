@@ -11,7 +11,25 @@
       href: WritingValidationRules/ResultData.md
 - name: Validator builders
   href: WritingValidatorBuilders/index.md
+  items:
+    - name: Importing rules
+      href: WritingValidatorBuilders/ImportingRules.md
+    - name: Validating collections
+      href: WritingValidatorBuilders/ValidatingCollectionItems.md
+    - name: Identifying values & rules
+      href: WritingValidatorBuilders/RuleAndObjectIdentifiers.md
+    - name: Validating with a parent value
+      href: WritingValidatorBuilders/RulesWhichIncludeAParentObject.md
+    - name: Accessor exceptions
+      href: WritingValidatorBuilders/IgnoreAccessorExceptions.md
+    - name: Rule dependencies
+      href: WritingValidatorBuilders/SpecifyingRuleDependencies.md
 - name: The manifest model
   href: UsingTheManifestModel/index.md
+  items:
+    - name: Example
+      href: UsingTheManifestModel/ExampleOfTheManifestModel.md
+    - name: Limitations
+      href: UsingTheManifestModel/Limitations.md
 - name: The validation manifest
   href: TheValidationManifest/index.md

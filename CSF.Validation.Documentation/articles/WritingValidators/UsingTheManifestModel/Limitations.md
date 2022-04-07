@@ -2,7 +2,7 @@
 
 The manifest model provides a simplified API which is well-suited to serialization. This introduces a number of limitations into the validators that a manifest model may describe.
 
-## Child values may only be derived from member accessors
+## Limitations upon child values
 
 When using [a validator builder] or when [using the validation manifest directly], it is possible to use arbitrary accessor logic to derive child values.
 
@@ -11,8 +11,8 @@ When using [a validator builder] or when [using the validation manifest directly
 
 Using the manifest model you may only provide the `string` name of a member by which to access the child value. This could be public property, field or parameterless method.
 
-[a validator builder]:../WritingValidationBuilders/index.md
-[using the validation manifest directly]:../The ValidationManifestindex.md
-[`ForValue`]:TODO
-[`ForValues`]:TODO
-[`ManifestValue.AccessorFromParent`]:TODO
+[a validator builder]:../WritingValidatorBuilders/index.md
+[using the validation manifest directly]:../TheValidationManifest/index.md
+[`ForValue`]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForValue``1(System.Func{`0,``0},System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
+[`ForValues`]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForValues``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}},System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
+[`ManifestValue.AccessorFromParent`]:xref:CSF.Validation.Manifest.ManifestValue.AccessorFromParent

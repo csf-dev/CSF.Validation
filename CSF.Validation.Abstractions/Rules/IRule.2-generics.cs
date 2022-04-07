@@ -31,10 +31,39 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This method receives the value to be validated as well as an object which represents the
+        /// context in which this rule is running.
+        /// It should return a <see cref="Task{RuleResult}"/>.
+        /// </para>
+        /// <para>
+        /// In order to create the result object, particularly if your rule logic will run synchronously,
+        /// consider using the <see cref="CommonResults"/> class via <c>using static CommonResults;</c> in your
+        /// rule logic.
+        /// The common results class has helper methods such as <see cref="CommonResults.PassAsync(System.Collections.Generic.IDictionary{string, object})"/>
+        /// and <see cref="CommonResults.FailAsync(System.Collections.Generic.IDictionary{string, object})"/>
+        /// which include optimisations for flyweight task instances that avoid allocating additional resources
+        /// needlessly.
+        /// </para>
+        /// <para>
+        /// It is acceptable to throw an uncaught exception from this method, as the validation framework will
+        /// catch it and automatically convert it into an error result.
+        /// Generally, developers do not need to manually return a result of outcome <see cref="RuleOutcome.Errored"/>
+        /// manually.  This would be appropriate only in an unusual scenario that is considered an error, but
+        /// which does not involve the throwing of an exception.
+        /// Error results are generally harder for the consumer to deal with than failure results.
+        /// </para>
+        /// <para>
+        /// The <paramref name="context"/> parameter may be used, amongst other things, to access 'ancestor'
+        /// values.
+        /// </para>
+        /// </remarks>
         /// <param name="value">The value being validated</param>
         /// <param name="parentValue">The parent value</param>
         /// <param name="context">Contextual information about the validation</param>
         /// <param name="token">An object which may be used to cancel the process</param>
+        /// <exception cref="System.Exception">This method may raise any exception type</exception>
         /// <returns>A task which provides a result object, indicating the result of validation</returns>
         Task<RuleResult> GetResultAsync(TValue value, TParent parentValue, RuleContext context, CancellationToken token = default);
     }

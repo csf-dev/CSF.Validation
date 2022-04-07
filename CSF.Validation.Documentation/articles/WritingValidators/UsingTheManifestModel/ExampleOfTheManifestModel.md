@@ -3,7 +3,7 @@
 This is a worked example of how the Manifest Model might be used to define a validator.
 The example model is specified using JSON, assuming a simple JSON mapping to/from [the manifest model classes].
 
-[the manifest model classes]:index.md#The_Manifest_Model_classes
+[the manifest model classes]:index.md#the-manifest-model-classes
 
 ## The object model to be validated
 

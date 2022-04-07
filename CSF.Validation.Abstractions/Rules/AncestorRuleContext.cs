@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.Rules
@@ -7,21 +6,45 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A model providing contextual information about an 'ancestor context' for an executing validation rule.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Ancestor contexts allow inspection-of and access-to objects which exist at ancestor levels of the
+    /// validated object graph.
+    /// </para>
+    /// </remarks>
     public class AncestorRuleContext
     {
         /// <summary>
-        /// Gets the identity of the object which is associated with the current ancestor context.
+        /// Gets the identity of the object/value associated with the current ancestor context.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The object (or value) identity is used to distinguish this value from other objects/values of
+        /// the same type.
+        /// This is particularly useful when validating collections of similar objects.
+        /// </para>
+        /// </remarks>
         public object ObjectIdentity { get; }
 
         /// <summary>
-        /// Gets a reference to the validated object which is associated with the current ancestor context.
+        /// Gets a reference to the validated object/value which is associated with the current ancestor context.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// When using the <see cref="IRule{TValue, TParent}"/> interface, the first <see cref="AncestorRuleContext.Object"/> is
+        /// made available as the second parameter to <see cref="IRule{TValue, TParent}.GetResultAsync(TValue, TParent, RuleContext, System.Threading.CancellationToken)"/>.
+        /// </para>
+        /// </remarks>
         public object Object { get; }
 
         /// <summary>
         /// Gets the validation manifest value for the current ancestor value.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This matches the rule context back to the original <see cref="Manifest.ManifestValue"/> from which it was created.
+        /// </para>
+        /// </remarks>
         public ManifestValue ManifestValue { get; }
 
         /// <summary>
@@ -47,10 +70,14 @@ namespace CSF.Validation.Rules
         /// </item>
         /// </list>
         /// <para>
+        /// There are equivalents to the above when using the Manifest Model: <see cref="ManifestModel.Value.EnumerateItems"/> (when set to <see langword="true" />)
+        /// and for the Validation Manifest: <see cref="Manifest.ManifestValue.EnumerateItems"/> (also when set to <see langword="true" />).
+        /// </para>
+        /// <para>
         /// If the child context was not created from a collection then then this property will be <see langword="null"/>.
         /// Please note that the index will represent the order in which the item came from the
         /// <see cref="System.Collections.Generic.IEnumerable{T}"/>.  In most implementations of enumerable, the index will
-        /// be stable, but note that the interface does not guarantee a stable order.  In other words, enumerating the same
+        /// be stable, but note that the enumerable interface does not guarantee a stable order.  In other words, enumerating the same
         /// collection twice is not certain to provide the results in the same order each time.
         /// </para>
         /// </remarks>
