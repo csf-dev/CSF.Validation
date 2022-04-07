@@ -74,6 +74,25 @@
 If you wish to create a validator using .NET code then consider using a <a href="../WritingValidatorBuilders/index.html">Validator Builder</a>.
 If you would like to define a validator using data then consider the <a href="../UsingTheManifestModel/index.html">Manifest Model</a> instead.
 Working with a validation manifest directly is an advanced technique which is definitely not required in the most common scenarios.</p>
+<h2 id="validation-manifest-classes">Validation manifest classes</h2>
+<p>The validation manifest is created from the following model classes. These are all found in the <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">CSF.Validation.Abstractions</a> NuGet package and are generally in the <a class="xref" href="../../../api/CSF.Validation.Manifest.html"><code>CSF.Validation.Manifest</code></a> namespace.</p>
+<ul>
+<li><a class="xref" href="../../../api/CSF.Validation.Manifest.ValidationManifest.html"><code>VariationManifest</code></a></li>
+<li><a class="xref" href="../../../api/CSF.Validation.Manifest.ManifestValue.html"><code>ManifestValue</code></a></li>
+<li><a class="xref" href="../../../api/CSF.Validation.Manifest.ManifestRule.html"><code>ManifestRule</code></a></li>
+<li><a class="xref" href="../../../api/CSF.Validation.Manifest.ManifestRuleIdentifier.html"><code>ManifestRuleIdentifier</code></a>
+<ul>
+<li>This type is a subclass of <a class="xref" href="../../../api/CSF.Validation.Rules.RuleIdentifierBase.html"><code>RuleIdentifierBase</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="values--rules">Values &amp; rules</h2>
+<p>A validation manifest describes values (including model objects) to be validated and the rules which should be applied to those values. A <code>ManifestValue</code> represents an object to be validated; this includes your own model objects but also their property values, such as strings and numbers.
+Any non-primitive values typically have <a href=":xref:CSF.Validation.Manifest.ManifestValue.Children">a collection of child values</a> to be validated.</p>
+<p><em>A validation manifest (its manifest values) is contained within a <code>ValidationManifest</code> instance.</em>
+Unlike <a href="../UsingTheManifestModel/index.html">The Manifest Model</a>, the validation manifest class serves as a wrapper/root object for a manifest object graph.</p>
+<p>Rules define the validation rules to be applied to values.
+The <code>ManifestRule</code> class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.</p>
 </article>
           </div>
           

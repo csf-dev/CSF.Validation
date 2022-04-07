@@ -1761,7 +1761,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/TheValidationManifest/index.html",
-          "hash": "Zp0kB24MnyobDodxaw3j9cPpyUJLjnYWCxHBf/MSfOc="
+          "hash": "KiODkryV9pijsNxhMScWyCdentYAPiGTFLyqOdSkGG4="
         }
       },
       "is_incremental": false,
@@ -1780,12 +1780,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/UsingTheManifestModel/Limitations.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/UsingTheManifestModel/Limitations.html",
-          "hash": "A16Abu/aH/8vv+6H8EMtNPeIY7fq3xafEO4wa5urxTI="
+          "hash": "okiOrpEGWNE3yYg79/xrmYoT861FzKiATEgZcOcOSG0="
         }
       },
       "is_incremental": false,

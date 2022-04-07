@@ -69,7 +69,18 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="limitations-of-the-manifest-model">Limitations of the Manifest Model</h1>
 
-<p>TODO</p>
+<p>The manifest model provides a simplified API which is well-suited to serialization. This introduces a number of limitations into the validators that a manifest model may describe.</p>
+<h2 id="child-values-may-only-be-derived-from-member-accessors">Child values may only be derived from member accessors</h2>
+<p>When using <a href="../WritingValidationBuilders/index.md">a validator builder</a> or when [using the validation manifest directly], it is possible to use arbitrary accessor logic to derive child values.</p>
+<ul>
+<li>In a builder you would use [<code>ForValue</code>] or [<code>ForValues</code>]</li>
+<li>In the manifest you would set [<code>ManifestValue.AccessorFromParent</code>] to an arbitrary function</li>
+</ul>
+<p>Using the manifest model you may only provide the <code>string</code> name of a member by which to access the child value. This could be public property, field or parameterless method.</p>
+<p>[using the validation manifest directly]:../The ValidationManifestindex.md
+[<code>ForValue</code>]:TODO
+[<code>ForValues</code>]:TODO
+[<code>ManifestValue.AccessorFromParent</code>]:TODO</p>
 </article>
           </div>
           
