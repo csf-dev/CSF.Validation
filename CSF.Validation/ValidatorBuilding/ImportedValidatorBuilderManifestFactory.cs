@@ -54,22 +54,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         IBuildsValidator<T> GetValidatorBuilder<T>(Type definitionType)
-        {
-            var builderFromDi = serviceProvider.GetService(definitionType);
-            if(builderFromDi is IBuildsValidator<T> output) return output;
-
-            try
-            {
-                return (IBuildsValidator<T>) Activator.CreateInstance(definitionType);
-            }
-            catch(Exception e)
-            {
-                var message = String.Format(GetExceptionMessage("CannotGetImportedValidatorBuilder"),
-                                            nameof(ImportedValidatorBuilderManifestFactory),
-                                            definitionType.FullName);
-                throw new ArgumentException(message, nameof(definitionType), e);
-            }
-        }
+            => serviceProvider.GetRequiredService<Bootstrap.IResolvesServices>().ResolveService<IBuildsValidator<T>>(definitionType);
 
         static Type GetValidatedType(Type definitionType)
         {

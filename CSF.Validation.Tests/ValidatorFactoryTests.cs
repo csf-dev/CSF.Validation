@@ -1,5 +1,6 @@
 using System;
 using AutoFixture.NUnit3;
+using CSF.Validation.Bootstrap;
 using CSF.Validation.Manifest;
 using CSF.Validation.ManifestModel;
 using CSF.Validation.Stubs;
@@ -13,35 +14,18 @@ namespace CSF.Validation
     public class ValidatorFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldReturnValidatorUsingManifestFromBuilderResolvedFromDiIfItIsRegistered([Frozen] IServiceProvider resolver,
-                                                                                                                           [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
-                                                                                                                           [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
-                                                                                                                           ValidatorFactory sut,
-                                                                                                                           [ManifestModel] ValidationManifest manifest,
-                                                                                                                           ValidatedObjectValidator builder)
+        public void GetValidatorFromBuilderTypeShouldReturnValidatorUsingManifestFromBuilderUsingResolver([Frozen] IResolvesServices resolver,
+                                                                                                          [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
+                                                                                                          [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+                                                                                                          ValidatorFactory sut,
+                                                                                                          [ManifestModel] ValidationManifest manifest,
+                                                                                                          ValidatedObjectValidator builder)
         {
             var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
             var expectedValidator = expectedValidatorMock.As<IValidator>().Object;
 
-            Mock.Get(resolver).Setup(x => x.GetService(typeof(ValidatedObjectValidator))).Returns(builder);
+            Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(ValidatedObjectValidator))).Returns(builder);
             Mock.Get(manifestFromBuilderProvider).Setup(x => x.GetManifest(builder)).Returns(manifest);
-            Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
-
-            Assert.That(() => sut.GetValidator(typeof(ValidatedObjectValidator)), Is.SameAs(expectedValidator));
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldReturnValidatorUsingManifestFromBuilderResolvedByConstructorIfNotRegisteredInDi([Frozen] IServiceProvider resolver,
-                                                                                                                                     [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
-                                                                                                                                     [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
-                                                                                                                                     ValidatorFactory sut,
-                                                                                                                                     [ManifestModel] ValidationManifest manifest)
-        {
-            var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
-            var expectedValidator = expectedValidatorMock.As<IValidator>().Object;
-
-            Mock.Get(resolver).Setup(x => x.GetService(typeof(ValidatedObjectValidator))).Returns(() => null);
-            Mock.Get(manifestFromBuilderProvider).Setup(x => x.GetManifest(It.IsAny<ValidatedObjectValidator>())).Returns(manifest);
             Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
 
             Assert.That(() => sut.GetValidator(typeof(ValidatedObjectValidator)), Is.SameAs(expectedValidator));
@@ -57,13 +41,6 @@ namespace CSF.Validation
         public void GetValidatorFromBuilderTypeShouldThrowArgExIfTheValidatedTypeIsAmbiguous(ValidatorFactory sut)
         {
             Assert.That(() => sut.GetValidator(typeof(MultiTypeValidator)), Throws.ArgumentException);
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldThrowArgExIfTheBuilderTypeCannotBeConstructed([Frozen] IServiceProvider resolver, ValidatorFactory sut)
-        {
-            Mock.Get(resolver).Setup(x => x.GetService(typeof(InvalidTypeValidator))).Returns(() => null);
-            Assert.That(() => sut.GetValidator(typeof(InvalidTypeValidator)), Throws.ArgumentException);
         }
 
         [Test,AutoMoqData]

@@ -9,7 +9,8 @@ namespace CSF.Validation.Bootstrap
         {
             return serviceCollection
                 .AddTransient<IGetsValidationLogic, ValidationLogicFactory>()
-                .AddTransient<IResolvesRule, RuleResolver>()
+                .AddTransient<IResolvesRule, ServiceProviderOrActivatorResolver>()
+                .AddTransient<IResolvesServices, ServiceProviderOrActivatorResolver>()
                 ;
         }
     }

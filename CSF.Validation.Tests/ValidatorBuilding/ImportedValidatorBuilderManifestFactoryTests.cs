@@ -1,5 +1,6 @@
 using System;
 using AutoFixture.NUnit3;
+using CSF.Validation.Bootstrap;
 using CSF.Validation.Manifest;
 using CSF.Validation.Stubs;
 using Moq;
@@ -17,13 +18,15 @@ namespace CSF.Validation.ValidatorBuilding
                                                                       IGetsRuleBuilder ruleBuilderFactory,
                                                                       IGetsValueAccessorBuilder valueBuilderFactory,
                                                                       IGetsValidatorManifest validatorManifestFactory,
+                                                                      IResolvesServices resolver,
                                                                       [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(GenericValidatorDefinition<object>))).Returns(() => new GenericValidatorDefinition<object>());
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IResolvesServices))).Returns(resolver);
+            Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(GenericValidatorDefinition<object>))).Returns(() => new GenericValidatorDefinition<object>());
 
             var result = sut.GetValidatorManifest(typeof(GenericValidatorDefinition<object>), context);
 
@@ -32,19 +35,21 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetValidatorManifestShouldExecuteConfigureValidatorFromDefinitionUponBuilder([Frozen] IServiceProvider serviceProvider,
-                                                                                                ImportedValidatorBuilderManifestFactory sut,
-                                                                                                IGetsValidatorBuilderContext ruleContextFactory,
-                                                                                                IGetsRuleBuilder ruleBuilderFactory,
-                                                                                                IGetsValueAccessorBuilder valueBuilderFactory,
-                                                                                                IGetsValidatorManifest validatorManifestFactory,
-                                                                                                [ManifestModel] ValidatorBuilderContext context,
-                                                                                                ValidatedObject obj)
+                                                                                                 ImportedValidatorBuilderManifestFactory sut,
+                                                                                                 IGetsValidatorBuilderContext ruleContextFactory,
+                                                                                                 IGetsRuleBuilder ruleBuilderFactory,
+                                                                                                 IGetsValueAccessorBuilder valueBuilderFactory,
+                                                                                                 IGetsValidatorManifest validatorManifestFactory,
+                                                                                                 IResolvesServices resolver,
+                                                                                                 [ManifestModel] ValidatorBuilderContext context,
+                                                                                                 ValidatedObject obj)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(ValidatedObjectDefinition))).Returns(() => new ValidatedObjectDefinition());
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IResolvesServices))).Returns(resolver);
+            Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(ValidatedObjectDefinition))).Returns(() => new ValidatedObjectDefinition());
 
             sut.GetValidatorManifest(typeof(ValidatedObjectDefinition), context);
 
@@ -75,13 +80,15 @@ for identity, asserting that they are equal proves that the configuration functi
                                                                                      IGetsRuleBuilder ruleBuilderFactory,
                                                                                      IGetsValueAccessorBuilder valueBuilderFactory,
                                                                                      IGetsValidatorManifest validatorManifestFactory,
+                                                                                     IResolvesServices resolver,
                                                                                      [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(GenericValidatorDefinition<object>))).Returns(() => new GenericValidatorDefinition<object>());
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IResolvesServices))).Returns(resolver);
+            Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(GenericValidatorDefinition<object>))).Returns(() => new GenericValidatorDefinition<object>());
 
             var result = sut.GetValidatorManifest(typeof(GenericValidatorDefinition<object>), context);
 

@@ -11,7 +11,7 @@ namespace CSF.Validation
     /// </summary>
     public class ValidatorFactory : IGetsValidator
     {
-        readonly IServiceProvider resolver;
+        readonly Bootstrap.IResolvesServices resolver;
         readonly IGetsManifestFromBuilder manifestFromBuilderProvider;
         readonly IGetsValidationManifestFromModel manifestFromModelProvider;
         readonly IGetsValidatorFromManifest validatorFromManifestProvider;
@@ -108,18 +108,7 @@ namespace CSF.Validation
             }
         }
 
-        object GetValidatorBuilder(Type builderType)
-        {
-            try
-            {
-                return resolver.GetService(builderType) ?? Activator.CreateInstance(builderType);
-            }
-            catch(Exception e)
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("BuilderTypeMustBeResolvable"), builderType.FullName);
-                throw new ArgumentException(message, nameof(builderType), e);
-            }
-        }
+        object GetValidatorBuilder(Type builderType) => resolver.ResolveService<object>(builderType);
 
         static string BuilderInterfaceName => $"{typeof(IBuildsValidator<>).Namespace}.{nameof(IBuildsValidator<object>)}<T>";
 
@@ -131,7 +120,7 @@ namespace CSF.Validation
         /// <param name="manifestFromModelProvider">A service to get a validation manifest from a model.</param>
         /// <param name="validatorFromManifestProvider">A service to get a validator from a validation manifest.</param>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
-        public ValidatorFactory(IServiceProvider resolver,
+        public ValidatorFactory(Bootstrap.IResolvesServices resolver,
                                 IGetsManifestFromBuilder manifestFromBuilderProvider,
                                 IGetsValidationManifestFromModel manifestFromModelProvider,
                                 IGetsValidatorFromManifest validatorFromManifestProvider)

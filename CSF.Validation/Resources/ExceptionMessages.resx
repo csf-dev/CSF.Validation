@@ -133,10 +133,6 @@
     <value>The {0} must have configuration for a member named "{1}".</value>
     <comment/>
   </data>
-  <data name="CannotGetImportedValidatorBuilder" xml:space="preserve">
-    <value>The {0} was unable to get the imported validator builder of type {1}.The type must either be resolvable via dependency injection (it is not) or it must have a public parameterless constructor.Refer to the inner exception for further details.</value>
-    <comment/>
-  </data>
   <data name="MissingMember" xml:space="preserve">
     <value>The type {0} does not have an accessible member named "{1}".</value>
     <comment/>
@@ -201,14 +197,6 @@
     <value>The type {0} must implements {1} only once to be used as a validator-builder with this method.</value>
     <comment/>
   </data>
-  <data name="BuilderTypeMustBeResolvable" xml:space="preserve">
-    <value>The builder type {0} must not be abstract and must be resolvable either via dependency injection or it must have a public parameterless constructor.</value>
-    <comment/>
-  </data>
-  <data name="CannotResolveRule" xml:space="preserve">
-    <value>The rule type {0} could not be resolved.  Instances of rule types must either be resolvable via Dependency Injection or they must have a public parameterless constructor.</value>
-    <comment/>
-  </data>
   <data name="RuleTypeMustImplementAppropriateRuleOrValueRuleInterface" xml:space="preserve">
     <value>The rule type {0} must implement either {3}&lt;{1}&gt; or {4}&lt;{1}, {2}&gt;.</value>
     <comment/>
@@ -223,6 +211,14 @@
   </data>
   <data name="RuleResultMustNotBeNull" xml:space="preserve">
     <value>The {0} property of the rule must not be null.</value>
+    <comment/>
+  </data>
+  <data name="ImplTypeMustBeAssignableToServiceType" xml:space="preserve">
+    <value>The implementation type (0) must be assignable from the service type {1}.</value>
+    <comment/>
+  </data>
+  <data name="CouldNotResolveImplementation" xml:space="preserve">
+    <value>The implementation type {0} could not be resolved.  Please ensure that it is not abstract and that it is (ideally) registered with dependency injection or that it has a public parameterless constructor.</value>
     <comment/>
   </data>
 </root>
