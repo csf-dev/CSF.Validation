@@ -3,13 +3,13 @@ using System;
 namespace CSF.Validation.Bootstrap
 {
     /// <summary>
-    /// An object which may be used to resolve types that might be available in a <see cref="IServiceProvider"/>
+    /// An object which may be used to resolve types that might be available in a <c>IServiceProvider</c>
     /// or which might need to be constructed using <see cref="Activator.CreateInstance(Type)"/>.
     /// </summary>
     /// <remarks>
     /// <para>
     /// Generally-speaking, this should not be used for validation framework services.  Instead, use plain
-    /// dependency injection or an <see cref="IServiceProvider"/>.
+    /// dependency injection or an <c>IServiceProvider</c>.
     /// The purpose of this service is for resolution of third-party types/services which might not have been
     /// correctly set-up within dependency injection.
     /// This service provides other mechanisms by which attempts may be made to resolve the implementation,
@@ -28,7 +28,7 @@ namespace CSF.Validation.Bootstrap
         /// This might occur for user/developer-provided services, particularly if they are not correctly
         /// registered via dependency injection.
         /// This method will make attempts to resolve the service regardless, and might succeed where a plain
-        /// <see cref="IServiceProvider"/> would fail.
+        /// <c>IServiceProvider</c> would fail.
         /// </para>
         /// </remarks>
         /// <typeparam name="T">The expected type of the service.</typeparam>
