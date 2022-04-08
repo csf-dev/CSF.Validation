@@ -53,16 +53,12 @@ namespace CSF.Validation.Bootstrap
             try
             {
                 var resolved = Activator.CreateInstance(implementationType, false);
-                // Theoretically impossible for typedResolved not to be of type T given we already checked it in the calling method.
-                if(resolved is T typedResolved) return typedResolved;
+                return (T) resolved;
             }
             catch (System.Exception ex)
             {
                 throw new ResolutionException(GetResolutionExceptionMessage(implementationType), ex);
             }
-
-            // Theoretically impossible to reach this line, but hey-ho.
-            throw new ResolutionException(GetResolutionExceptionMessage(implementationType));
         }
 
         static string GetResolutionExceptionMessage(Type implementationType)
