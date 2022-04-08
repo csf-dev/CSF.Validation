@@ -6,7 +6,7 @@ namespace CSF.Validation.Bootstrap
 #if !NETSTANDARD1_0
     [System.Serializable]
 #endif
-    public class ResolutionException : ValidationException
+    public class ResolutionException : System.Exception
     {
         /// <summary>
         /// Initialises an instance of <see cref="ResolutionException"/>.
