@@ -5,6 +5,30 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Bootstrap.IResolvesServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Bootstrap.IResolvesServices.html",
+          "hash": "f/c7YLQNkjlwim9u0OtZ33NmQ2JpAi3j5MMxgg8N4G8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Bootstrap.ResolutionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Bootstrap.ResolutionException.html",
+          "hash": "WCpuQpPNcAtnwBRTHxW3gp0iNHnvjJXYhcBuBKDQc5g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Bootstrap.RuleAssemblyScanner.yml",
       "output": {
         ".html": {
@@ -17,11 +41,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html",
+          "hash": "7PJRlgU7veK8EEMSb+8RMPbTACVP5F1NgdH7uNT+Aic="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Bootstrap.yml",
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Bootstrap.html",
-          "hash": "oeXDiXz44f+2I4ln89UmSPf/YcY/8tpzw9AJdn+zhC0="
+          "hash": "sNMsqZWeyBcyD4dXlnRspQQ6PwythZ22/gEzwHSF/AI="
         }
       },
       "is_incremental": false,
@@ -1061,18 +1097,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CSF.Validation.Rules.RuleResolver.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CSF.Validation.Rules.RuleResolver.html",
-          "hash": "3UBhy/1lzbwo7OM8dgwFWQJMTP+ObzkGSTeDBCwIB+g="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Rules.RuleResult.yml",
       "output": {
         ".html": {
@@ -1125,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.html",
-          "hash": "YRmZL8qzZn9pEFyDc6c8fXmi4HFN1Fho99T62+pN5bY="
+          "hash": "mBLtJipIY8Tv1GjDFIFWXCqcuIKbgz7s2C/kehMu/nc="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationException.html",
-          "hash": "5+DfzDjuiQuLaD9B0m2DtLbBF/NQ1A3RTIAvm47Lq7Q="
+          "hash": "NdltR7qAaCMPpMihSiGhZHI0k0ufxm9mrU2dODFJxpg="
         }
       },
       "is_incremental": false,
@@ -1425,7 +1449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ImportedValidatorBuilderManifestFactory.html",
-          "hash": "y1wAw1I4HIfwPNaYEYsqT4nydVsZF77YaEU7GJsR6wk="
+          "hash": "VwExE45bEm0QFthhQtxsgyUX7xp34+Kd5Ph5NoJkWB0="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1629,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorFactory.html",
-          "hash": "tdneBKPbfiomAP53MYYlGc22zDgFTB+Ej7yVTn9eOvc="
+          "hash": "3HT0h1+Mf4dZ9RvzQWOMRJQ3AQ3jSLjaI0nYg3uD3+E="
         }
       },
       "is_incremental": false,
@@ -1653,7 +1677,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "9ueWkQpNv8OvOMv9xKtJ24tdA3hjn4T7a/rZh3+S7nc="
+          "hash": "8bqc7tN76OV/mxCQHi1+i4lq6tEeJCvp/y+wE4j5as8="
         }
       },
       "is_incremental": false,
@@ -2028,7 +2052,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 136,
+          "total_file_count": 138,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

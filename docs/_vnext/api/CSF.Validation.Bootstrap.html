@@ -77,9 +77,23 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="CSF.Validation.Bootstrap.ResolutionException.html">ResolutionException</a></h4>
+      <section><p>An exception raised by <a class="xref" href="CSF.Validation.Bootstrap.IResolvesServices.html">IResolvesServices</a> if it is unable to resolve a service instance.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Bootstrap.RuleAssemblyScanner.html">RuleAssemblyScanner</a></h4>
       <section><p>A service, intended only for use during dependency injection configuration, which provides
 assembly-scanning logic for validation rule types.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html">ServiceProviderOrActivatorResolver</a></h4>
+      <section><p>An implementation of <a class="xref" href="CSF.Validation.Bootstrap.IResolvesServices.html">IResolvesServices</a> which attempts to use an <span class="xref">System.IServiceProvider</span>,
+but will fall back upon <span class="xref">System.Activator.CreateInstance(System.Type)</span> if the service provider was unable
+to resolve the service.</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="CSF.Validation.Bootstrap.IResolvesServices.html">IResolvesServices</a></h4>
+      <section><p>An object which may be used to resolve types that might be available in a <span class="xref">System.IServiceProvider</span>
+or which might need to be constructed using <span class="xref">System.Activator.CreateInstance(System.Type)</span>.</p>
 </section>
 </article>
           </div>

@@ -19,6 +19,65 @@ references:
   commentId: N:CSF.Validation.Bootstrap
   fullName: CSF.Validation.Bootstrap
   nameWithType: CSF.Validation.Bootstrap
+- uid: CSF.Validation.Bootstrap.IResolvesServices
+  name: IResolvesServices
+  href: api/CSF.Validation.Bootstrap.IResolvesServices.html
+  commentId: T:CSF.Validation.Bootstrap.IResolvesServices
+  fullName: CSF.Validation.Bootstrap.IResolvesServices
+  nameWithType: IResolvesServices
+- uid: CSF.Validation.Bootstrap.IResolvesServices.ResolveService*
+  name: ResolveService
+  href: api/CSF.Validation.Bootstrap.IResolvesServices.html#CSF_Validation_Bootstrap_IResolvesServices_ResolveService_
+  commentId: Overload:CSF.Validation.Bootstrap.IResolvesServices.ResolveService
+  isSpec: "True"
+  fullName: CSF.Validation.Bootstrap.IResolvesServices.ResolveService
+  nameWithType: IResolvesServices.ResolveService
+- uid: CSF.Validation.Bootstrap.IResolvesServices.ResolveService``1(System.Type)
+  name: ResolveService<T>(Type)
+  href: api/CSF.Validation.Bootstrap.IResolvesServices.html#CSF_Validation_Bootstrap_IResolvesServices_ResolveService__1_System_Type_
+  commentId: M:CSF.Validation.Bootstrap.IResolvesServices.ResolveService``1(System.Type)
+  name.vb: ResolveService(Of T)(Type)
+  fullName: CSF.Validation.Bootstrap.IResolvesServices.ResolveService<T>(System.Type)
+  fullName.vb: CSF.Validation.Bootstrap.IResolvesServices.ResolveService(Of T)(System.Type)
+  nameWithType: IResolvesServices.ResolveService<T>(Type)
+  nameWithType.vb: IResolvesServices.ResolveService(Of T)(Type)
+- uid: CSF.Validation.Bootstrap.ResolutionException
+  name: ResolutionException
+  href: api/CSF.Validation.Bootstrap.ResolutionException.html
+  commentId: T:CSF.Validation.Bootstrap.ResolutionException
+  fullName: CSF.Validation.Bootstrap.ResolutionException
+  nameWithType: ResolutionException
+- uid: CSF.Validation.Bootstrap.ResolutionException.#ctor
+  name: ResolutionException()
+  href: api/CSF.Validation.Bootstrap.ResolutionException.html#CSF_Validation_Bootstrap_ResolutionException__ctor
+  commentId: M:CSF.Validation.Bootstrap.ResolutionException.#ctor
+  fullName: CSF.Validation.Bootstrap.ResolutionException.ResolutionException()
+  nameWithType: ResolutionException.ResolutionException()
+- uid: CSF.Validation.Bootstrap.ResolutionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: ResolutionException(SerializationInfo, StreamingContext)
+  href: api/CSF.Validation.Bootstrap.ResolutionException.html#CSF_Validation_Bootstrap_ResolutionException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:CSF.Validation.Bootstrap.ResolutionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  fullName: CSF.Validation.Bootstrap.ResolutionException.ResolutionException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: ResolutionException.ResolutionException(SerializationInfo, StreamingContext)
+- uid: CSF.Validation.Bootstrap.ResolutionException.#ctor(System.String)
+  name: ResolutionException(String)
+  href: api/CSF.Validation.Bootstrap.ResolutionException.html#CSF_Validation_Bootstrap_ResolutionException__ctor_System_String_
+  commentId: M:CSF.Validation.Bootstrap.ResolutionException.#ctor(System.String)
+  fullName: CSF.Validation.Bootstrap.ResolutionException.ResolutionException(System.String)
+  nameWithType: ResolutionException.ResolutionException(String)
+- uid: CSF.Validation.Bootstrap.ResolutionException.#ctor(System.String,System.Exception)
+  name: ResolutionException(String, Exception)
+  href: api/CSF.Validation.Bootstrap.ResolutionException.html#CSF_Validation_Bootstrap_ResolutionException__ctor_System_String_System_Exception_
+  commentId: M:CSF.Validation.Bootstrap.ResolutionException.#ctor(System.String,System.Exception)
+  fullName: CSF.Validation.Bootstrap.ResolutionException.ResolutionException(System.String, System.Exception)
+  nameWithType: ResolutionException.ResolutionException(String, Exception)
+- uid: CSF.Validation.Bootstrap.ResolutionException.#ctor*
+  name: ResolutionException
+  href: api/CSF.Validation.Bootstrap.ResolutionException.html#CSF_Validation_Bootstrap_ResolutionException__ctor_
+  commentId: Overload:CSF.Validation.Bootstrap.ResolutionException.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Bootstrap.ResolutionException.ResolutionException
+  nameWithType: ResolutionException.ResolutionException
 - uid: CSF.Validation.Bootstrap.RuleAssemblyScanner
   name: RuleAssemblyScanner
   href: api/CSF.Validation.Bootstrap.RuleAssemblyScanner.html
@@ -41,6 +100,58 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Bootstrap.RuleAssemblyScanner.GetRuleTypesFromAssemblies
   nameWithType: RuleAssemblyScanner.GetRuleTypesFromAssemblies
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver
+  name: ServiceProviderOrActivatorResolver
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html
+  commentId: T:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver
+  nameWithType: ServiceProviderOrActivatorResolver
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.#ctor(System.IServiceProvider)
+  name: ServiceProviderOrActivatorResolver(IServiceProvider)
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html#CSF_Validation_Bootstrap_ServiceProviderOrActivatorResolver__ctor_System_IServiceProvider_
+  commentId: M:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.#ctor(System.IServiceProvider)
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ServiceProviderOrActivatorResolver(System.IServiceProvider)
+  nameWithType: ServiceProviderOrActivatorResolver.ServiceProviderOrActivatorResolver(IServiceProvider)
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.#ctor*
+  name: ServiceProviderOrActivatorResolver
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html#CSF_Validation_Bootstrap_ServiceProviderOrActivatorResolver__ctor_
+  commentId: Overload:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ServiceProviderOrActivatorResolver
+  nameWithType: ServiceProviderOrActivatorResolver.ServiceProviderOrActivatorResolver
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.CSF#Validation#Rules#IResolvesRule#ResolveRule(System.Type)
+  name: IResolvesRule.ResolveRule(Type)
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html#CSF_Validation_Bootstrap_ServiceProviderOrActivatorResolver_CSF_Validation_Rules_IResolvesRule_ResolveRule_System_Type_
+  commentId: M:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.CSF#Validation#Rules#IResolvesRule#ResolveRule(System.Type)
+  name.vb: CSF.Validation.Rules.IResolvesRule.ResolveRule(Type)
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.CSF.Validation.Rules.IResolvesRule.ResolveRule(System.Type)
+  nameWithType: ServiceProviderOrActivatorResolver.IResolvesRule.ResolveRule(Type)
+  nameWithType.vb: ServiceProviderOrActivatorResolver.CSF.Validation.Rules.IResolvesRule.ResolveRule(Type)
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.CSF#Validation#Rules#IResolvesRule#ResolveRule*
+  name: IResolvesRule.ResolveRule
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html#CSF_Validation_Bootstrap_ServiceProviderOrActivatorResolver_CSF_Validation_Rules_IResolvesRule_ResolveRule_
+  commentId: Overload:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.CSF#Validation#Rules#IResolvesRule#ResolveRule
+  isSpec: "True"
+  name.vb: CSF.Validation.Rules.IResolvesRule.ResolveRule
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.CSF.Validation.Rules.IResolvesRule.ResolveRule
+  nameWithType: ServiceProviderOrActivatorResolver.IResolvesRule.ResolveRule
+  nameWithType.vb: ServiceProviderOrActivatorResolver.CSF.Validation.Rules.IResolvesRule.ResolveRule
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService*
+  name: ResolveService
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html#CSF_Validation_Bootstrap_ServiceProviderOrActivatorResolver_ResolveService_
+  commentId: Overload:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService
+  isSpec: "True"
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService
+  nameWithType: ServiceProviderOrActivatorResolver.ResolveService
+- uid: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService``1(System.Type)
+  name: ResolveService<T>(Type)
+  href: api/CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.html#CSF_Validation_Bootstrap_ServiceProviderOrActivatorResolver_ResolveService__1_System_Type_
+  commentId: M:CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService``1(System.Type)
+  name.vb: ResolveService(Of T)(Type)
+  fullName: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService<T>(System.Type)
+  fullName.vb: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService(Of T)(System.Type)
+  nameWithType: ServiceProviderOrActivatorResolver.ResolveService<T>(Type)
+  nameWithType.vb: ServiceProviderOrActivatorResolver.ResolveService(Of T)(Type)
 - uid: CSF.Validation.IBuildsValidator`1
   name: IBuildsValidator<TValidated>
   href: api/CSF.Validation.IBuildsValidator-1.html
@@ -3343,38 +3454,6 @@ references:
   commentId: F:CSF.Validation.Rules.RuleOutcome.Passed
   fullName: CSF.Validation.Rules.RuleOutcome.Passed
   nameWithType: RuleOutcome.Passed
-- uid: CSF.Validation.Rules.RuleResolver
-  name: RuleResolver
-  href: api/CSF.Validation.Rules.RuleResolver.html
-  commentId: T:CSF.Validation.Rules.RuleResolver
-  fullName: CSF.Validation.Rules.RuleResolver
-  nameWithType: RuleResolver
-- uid: CSF.Validation.Rules.RuleResolver.#ctor(System.IServiceProvider)
-  name: RuleResolver(IServiceProvider)
-  href: api/CSF.Validation.Rules.RuleResolver.html#CSF_Validation_Rules_RuleResolver__ctor_System_IServiceProvider_
-  commentId: M:CSF.Validation.Rules.RuleResolver.#ctor(System.IServiceProvider)
-  fullName: CSF.Validation.Rules.RuleResolver.RuleResolver(System.IServiceProvider)
-  nameWithType: RuleResolver.RuleResolver(IServiceProvider)
-- uid: CSF.Validation.Rules.RuleResolver.#ctor*
-  name: RuleResolver
-  href: api/CSF.Validation.Rules.RuleResolver.html#CSF_Validation_Rules_RuleResolver__ctor_
-  commentId: Overload:CSF.Validation.Rules.RuleResolver.#ctor
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.RuleResolver.RuleResolver
-  nameWithType: RuleResolver.RuleResolver
-- uid: CSF.Validation.Rules.RuleResolver.ResolveRule(System.Type)
-  name: ResolveRule(Type)
-  href: api/CSF.Validation.Rules.RuleResolver.html#CSF_Validation_Rules_RuleResolver_ResolveRule_System_Type_
-  commentId: M:CSF.Validation.Rules.RuleResolver.ResolveRule(System.Type)
-  fullName: CSF.Validation.Rules.RuleResolver.ResolveRule(System.Type)
-  nameWithType: RuleResolver.ResolveRule(Type)
-- uid: CSF.Validation.Rules.RuleResolver.ResolveRule*
-  name: ResolveRule
-  href: api/CSF.Validation.Rules.RuleResolver.html#CSF_Validation_Rules_RuleResolver_ResolveRule_
-  commentId: Overload:CSF.Validation.Rules.RuleResolver.ResolveRule
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.RuleResolver.ResolveRule
-  nameWithType: RuleResolver.ResolveRule
 - uid: CSF.Validation.Rules.RuleResult
   name: RuleResult
   href: api/CSF.Validation.Rules.RuleResult.html
@@ -5321,12 +5400,12 @@ references:
   commentId: T:CSF.Validation.ValidatorFactory
   fullName: CSF.Validation.ValidatorFactory
   nameWithType: ValidatorFactory
-- uid: CSF.Validation.ValidatorFactory.#ctor(System.IServiceProvider,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest)
-  name: ValidatorFactory(IServiceProvider, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest)
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory__ctor_System_IServiceProvider_CSF_Validation_Manifest_IGetsManifestFromBuilder_CSF_Validation_ManifestModel_IGetsValidationManifestFromModel_CSF_Validation_Manifest_IGetsValidatorFromManifest_
-  commentId: M:CSF.Validation.ValidatorFactory.#ctor(System.IServiceProvider,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest)
-  fullName: CSF.Validation.ValidatorFactory.ValidatorFactory(System.IServiceProvider, CSF.Validation.Manifest.IGetsManifestFromBuilder, CSF.Validation.ManifestModel.IGetsValidationManifestFromModel, CSF.Validation.Manifest.IGetsValidatorFromManifest)
-  nameWithType: ValidatorFactory.ValidatorFactory(IServiceProvider, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest)
+- uid: CSF.Validation.ValidatorFactory.#ctor(CSF.Validation.Bootstrap.IResolvesServices,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest)
+  name: ValidatorFactory(IResolvesServices, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest)
+  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory__ctor_CSF_Validation_Bootstrap_IResolvesServices_CSF_Validation_Manifest_IGetsManifestFromBuilder_CSF_Validation_ManifestModel_IGetsValidationManifestFromModel_CSF_Validation_Manifest_IGetsValidatorFromManifest_
+  commentId: M:CSF.Validation.ValidatorFactory.#ctor(CSF.Validation.Bootstrap.IResolvesServices,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest)
+  fullName: CSF.Validation.ValidatorFactory.ValidatorFactory(CSF.Validation.Bootstrap.IResolvesServices, CSF.Validation.Manifest.IGetsManifestFromBuilder, CSF.Validation.ManifestModel.IGetsValidationManifestFromModel, CSF.Validation.Manifest.IGetsValidatorFromManifest)
+  nameWithType: ValidatorFactory.ValidatorFactory(IResolvesServices, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest)
 - uid: CSF.Validation.ValidatorFactory.#ctor*
   name: ValidatorFactory
   href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory__ctor_
