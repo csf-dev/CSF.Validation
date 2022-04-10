@@ -73,7 +73,7 @@
   
   <h1 id="CSF_Validation_Bootstrap_IResolvesServices" data-uid="CSF.Validation.Bootstrap.IResolvesServices" class="text-break">Interface IResolvesServices
   </h1>
-  <div class="markdown level0 summary"><p>An object which may be used to resolve types that might be available in a <span class="xref">System.IServiceProvider</span>
+  <div class="markdown level0 summary"><p>An object which may be used to resolve types that might be available in a <code>IServiceProvider</code>
 or which might need to be constructed using <span class="xref">System.Activator.CreateInstance(System.Type)</span>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -86,7 +86,7 @@ or which might need to be constructed using <span class="xref">System.Activator.
   <h5 id="CSF_Validation_Bootstrap_IResolvesServices_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>
 Generally-speaking, this should not be used for validation framework services.  Instead, use plain
-dependency injection or an <span class="xref">System.IServiceProvider</span>.
+dependency injection or an <code>IServiceProvider</code>.
 The purpose of this service is for resolution of third-party types/services which might not have been
 correctly set-up within dependency injection.
 This service provides other mechanisms by which attempts may be made to resolve the implementation,
@@ -168,7 +168,7 @@ exception if this is not possible.
 This might occur for user/developer-provided services, particularly if they are not correctly
 registered via dependency injection.
 This method will make attempts to resolve the service regardless, and might succeed where a plain
-<span class="xref">System.IServiceProvider</span> would fail.
+<code>IServiceProvider</code> would fail.
 </p>
 </div>
   <h5 class="exceptions">Exceptions</h5>

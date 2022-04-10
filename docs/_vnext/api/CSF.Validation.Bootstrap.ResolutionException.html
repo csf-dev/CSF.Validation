@@ -80,8 +80,7 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">System.Exception</span></div>
-    <div class="level2"><a class="xref" href="CSF.Validation.ValidationException.html">ValidationException</a></div>
-    <div class="level3"><span class="xref">ResolutionException</span></div>
+    <div class="level2"><span class="xref">ResolutionException</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -89,9 +88,6 @@
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="CSF.Validation.ValidationException.html#CSF_Validation_ValidationException_ValidationResult">ValidationException.ValidationResult</a>
-    </div>
     <div>
       <span class="xref">System.Exception.GetBaseException()</span>
     </div>
@@ -152,7 +148,7 @@
   <h5 id="CSF_Validation_Bootstrap_ResolutionException_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class ResolutionException : ValidationException, ISerializable</code></pre>
+public class ResolutionException : Exception, ISerializable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -186,7 +182,7 @@ public class ResolutionException : ValidationException, ISerializable</code></pr
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ResolutionException(SerializationInfo info, StreamingContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ResolutionException(SerializationInfo info, StreamingContext context)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
