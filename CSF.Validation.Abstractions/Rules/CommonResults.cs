@@ -6,10 +6,12 @@ namespace CSF.Validation.Rules
 {
     /// <summary>
     /// Helper class to create instances of <see cref="RuleResult"/> instances from commonly-used scenarios.
-    /// For simplicity of usage consider including <c>using static CSF.Validation.Rules.CommonResults;</c> in
-    /// your rule implementations.
     /// </summary>
     /// <remarks>
+    /// <para>
+    /// For simplicity of usage consider including <c>using static CSF.Validation.Rules.CommonResults;</c> in
+    /// your rule implementations.
+    /// </para>
     /// <para>
     /// This class also provides a small performance optimisation for the methods <see cref="PassAsync(IDictionary{string, object})"/>,
     /// <see cref="FailAsync(IDictionary{string, object})"/> &amp; <see cref="ErrorAsync(Exception, IDictionary{string, object})"/>.
@@ -21,6 +23,10 @@ namespace CSF.Validation.Rules
     /// Where passing results are returned synchronously without data, we do not need to allocate resources for many identical
     /// pass-result <see cref="Task{T}"/> instances.
     /// See https://en.wikipedia.org/wiki/Flyweight_pattern for more information.
+    /// </para>
+    /// <para>
+    /// You may also use an overload of <see cref="Result(bool, IDictionary{string, object})"/> or
+    /// <see cref="ResultAsync(bool, IDictionary{string, object})"/> if you wish to use a boolean to indicate pass or failure.
     /// </para>
     /// </remarks>
     public static class CommonResults
@@ -235,6 +241,76 @@ namespace CSF.Validation.Rules
         /// <returns>A <see cref="RuleResult"/>.</returns>
         public static Task<RuleResult> ErrorAsync(Exception exception = null, IDictionary<string, object> data = null)
             => IsEmpty(data) && exception is null ? errorTaskSingleton : Task.FromResult(Error(exception, data));
+
+        #endregion
+
+        #region Result
+
+        /// <summary>
+        /// Creates an instance of <see cref="RuleResult"/> for a validation result, either a pass or a fail determined by a boolean parameter.
+        /// </summary>
+        /// <param name="pass">A value which indicates whether or not the result was a pass.
+        /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
+        /// <param name="data">A key/value collection of arbitrary validation data.</param>
+        /// <returns>A <see cref="RuleResult"/>.</returns>
+        public static RuleResult Result(bool pass, Dictionary<string, object> data)
+            => Result(pass, (IDictionary<string, object>) data);
+
+        /// <summary>
+        /// Creates an instance of <see cref="RuleResult"/> for a validation result, either a pass or a fail determined by a boolean parameter.
+        /// </summary>
+        /// <param name="pass">A value which indicates whether or not the result was a pass.
+        /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
+        /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
+        /// <returns>A <see cref="RuleResult"/>.</returns>
+        public static RuleResult Result(bool pass, IDictionary<string, object> data = null)
+        {
+            if(IsEmpty(data))
+                return pass ? passSingleton : failSingleton;
+
+            var result = pass ? RuleOutcome.Passed : RuleOutcome.Failed;
+            return new RuleResult(result, data);
+        }
+
+        /// <summary>
+        /// Creates an instance of <see cref="RuleResult"/> for a validation result, either a pass or a fail determined by
+        /// a boolean parameter, returned within a completed task.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+        /// which run synchronously.
+        /// </para>
+        /// </remarks>
+        /// <param name="pass">A value which indicates whether or not the result was a pass.
+        /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
+        /// <param name="data">A key/value collection of arbitrary validation data.</param>
+        /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
+        public static Task<RuleResult> ResultAsync(bool pass, Dictionary<string, object> data)
+            => ResultAsync(pass, (IDictionary<string, object>) data);
+
+        /// <summary>
+        /// Creates an instance of <see cref="RuleResult"/> for a validation result, either a pass or a fail determined by
+        /// a boolean parameter, returned within a completed task.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
+        /// which run synchronously.
+        /// </para>
+        /// </remarks>
+        /// <param name="pass">A value which indicates whether or not the result was a pass.
+        /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
+        /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
+        /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
+        public static Task<RuleResult> ResultAsync(bool pass, IDictionary<string, object> data = null)
+        {
+            if(IsEmpty(data))
+                return pass ? passTaskSingleton : failTaskSingleton;
+
+            var result = pass ? RuleOutcome.Passed : RuleOutcome.Failed;
+            return Task.FromResult(new RuleResult(result, data));
+        }
 
         #endregion
 
