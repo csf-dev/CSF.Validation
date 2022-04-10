@@ -15,6 +15,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsManifestRuleIdentifier,ManifestIdentifierFactory>()
                 .AddTransient<IGetsValidatorBuilder,ValidatorBuilderFactory>()
                 .AddTransient<IGetsManifestRuleIdentifierFromRelativeIdentifier,RelativeToManifestRuleIdentifierConverter>()
+                .AddTransient<IGetsValidatedTypeForBuilderType,BuilderValidatedTypeProvider>()
                 .AddTransientFactory<IGetsManifestRuleIdentifierFromRelativeIdentifier>()
                 .AddTransientFactory<IGetsRuleBuilder>()
                 .AddTransientFactory<IGetsValidatorBuilderContext>()

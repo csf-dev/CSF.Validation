@@ -40,11 +40,21 @@ namespace CSF.Validation.Bootstrap
         }
 
         [Test,AutoMoqData]
-        public void ResolveServiceShouldThrowIfServiceProviderReturnsNullAndRuleHasConstructorDependencies([Frozen] IServiceProvider resolver,
+        public void ResolveServiceShouldThrowIfServiceProviderReturnsNullAndServiceHasConstructorDependencies([Frozen] IServiceProvider resolver,
                                                                                                         ServiceProviderOrActivatorResolver sut)
         {
             Mock.Get(resolver).Setup(x => x.GetService(typeof(RuleWithConstructorDependency))).Returns(() => null);
             Assert.That(() => sut.ResolveService<object>(typeof(RuleWithConstructorDependency)), Throws.InstanceOf<ResolutionException>());
         }
+
+        [Test,AutoMoqData]
+        public void ResolveServiceShouldThrowIfServiceProviderReturnsNullAndServiceIsAbstract([Frozen] IServiceProvider resolver,
+                                                                                                        ServiceProviderOrActivatorResolver sut)
+        {
+            Mock.Get(resolver).Setup(x => x.GetService(typeof(MyAbstractClass))).Returns(() => null);
+            Assert.That(() => sut.ResolveService<object>(typeof(MyAbstractClass)), Throws.InstanceOf<ResolutionException>());
+        }
+
+        abstract class MyAbstractClass {}
     }
 }

@@ -17,6 +17,7 @@ namespace CSF.Validation
         public void GetValidatorFromBuilderTypeShouldReturnValidatorUsingManifestFromBuilderUsingResolver([Frozen] IResolvesServices resolver,
                                                                                                           [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
                                                                                                           [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+                                                                                                          [Frozen] IGetsValidatedTypeForBuilderType builderTypeProvider,
                                                                                                           ValidatorFactory sut,
                                                                                                           [ManifestModel] ValidationManifest manifest,
                                                                                                           ValidatedObjectValidator builder)
@@ -27,20 +28,9 @@ namespace CSF.Validation
             Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(ValidatedObjectValidator))).Returns(builder);
             Mock.Get(manifestFromBuilderProvider).Setup(x => x.GetManifest(builder)).Returns(manifest);
             Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
+            Mock.Get(builderTypeProvider).Setup(x => x.GetValidatedType(typeof(ValidatedObjectValidator))).Returns(typeof(ValidatedObject));
 
             Assert.That(() => sut.GetValidator(typeof(ValidatedObjectValidator)), Is.SameAs(expectedValidator));
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldThrowArgExIfTypeIsNotAValidatorBuilder(ValidatorFactory sut)
-        {
-            Assert.That(() => sut.GetValidator(typeof(object)), Throws.ArgumentException);
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldThrowArgExIfTheValidatedTypeIsAmbiguous(ValidatorFactory sut)
-        {
-            Assert.That(() => sut.GetValidator(typeof(MultiTypeValidator)), Throws.ArgumentException);
         }
 
         [Test,AutoMoqData]
@@ -93,21 +83,6 @@ namespace CSF.Validation
             Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
 
             Assert.That(() => sut.GetValidator(manifestModel, validatedType), Is.SameAs(expectedValidator));
-        }
-
-        class MultiTypeValidator : IBuildsValidator<string>, IBuildsValidator<int>
-        {
-            public void ConfigureValidator(IConfiguresValidator<string> config)
-                => throw new System.NotImplementedException();
-
-            public void ConfigureValidator(IConfiguresValidator<int> config)
-                => throw new System.NotImplementedException();
-        }
-
-        abstract class InvalidTypeValidator : IBuildsValidator<string>
-        {
-            public void ConfigureValidator(IConfiguresValidator<string> config)
-                => throw new System.NotImplementedException();
         }
     }
 }

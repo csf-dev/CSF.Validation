@@ -1,8 +1,8 @@
 using System;
 using System.Reflection;
-using System.Linq;
 using CSF.Validation.Manifest;
 using CSF.Validation.ManifestModel;
+using CSF.Validation.ValidatorBuilding;
 
 namespace CSF.Validation
 {
@@ -15,6 +15,7 @@ namespace CSF.Validation
         readonly IGetsManifestFromBuilder manifestFromBuilderProvider;
         readonly IGetsValidationManifestFromModel manifestFromModelProvider;
         readonly IGetsValidatorFromManifest validatorFromManifestProvider;
+        readonly IGetsValidatedTypeForBuilderType builderTypeProvider;
 
         /// <summary>
         /// Gets a validator instance using a specified builder type which specifies a validator via code.
@@ -26,7 +27,7 @@ namespace CSF.Validation
         /// derived from <see cref="IBuildsValidator{TValidated}"/> or if it implements that interface more than once for different generic types.</exception>
         public IValidator GetValidator(Type builderType)
         {
-            var validatedType = GetValidatedType(builderType);
+            var validatedType = builderTypeProvider.GetValidatedType(builderType);
             var validatorBuilder = GetValidatorBuilder(builderType);
 
             var method = GetType().GetTypeInfo().GetDeclaredMethod(nameof(GetValidatorPrivate)).MakeGenericMethod(validatedType);
@@ -77,40 +78,7 @@ namespace CSF.Validation
             return (IValidator<TValidated>) GetValidator(manifest);
         }
 
-        static Type GetValidatedType(Type builderType)
-        {
-            if (builderType is null)
-                throw new ArgumentNullException(nameof(builderType));
-
-            var validatedTypes = (from @interface in builderType.GetTypeInfo().ImplementedInterfaces
-                                  let interfaceInfo = @interface.GetTypeInfo()
-                                  where
-                                      interfaceInfo.IsGenericType
-                                   && interfaceInfo.GetGenericTypeDefinition() == typeof(IBuildsValidator<>)
-                                  select interfaceInfo.GenericTypeArguments.First())
-                .ToList();
-            
-            if(validatedTypes.Count == 1)
-                return validatedTypes.Single();
-            else if(!validatedTypes.Any())
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("BuilderTypeDoesNotImplementBuilderInterface"),
-                                            builderType.FullName,
-                                            BuilderInterfaceName);
-                throw new ArgumentException(message, nameof(builderType));
-            }
-            else
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("BuilderTypeImplementsTooManyBuilderInterfaces"),
-                                            builderType.FullName,
-                                            BuilderInterfaceName);
-                throw new ArgumentException(message, nameof(builderType));
-            }
-        }
-
         object GetValidatorBuilder(Type builderType) => resolver.ResolveService<object>(builderType);
-
-        static string BuilderInterfaceName => $"{typeof(IBuildsValidator<>).Namespace}.{nameof(IBuildsValidator<object>)}<T>";
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatorFactory"/>.
@@ -119,16 +87,19 @@ namespace CSF.Validation
         /// <param name="manifestFromBuilderProvider">A service to get a validation manifest from a builder.</param>
         /// <param name="manifestFromModelProvider">A service to get a validation manifest from a model.</param>
         /// <param name="validatorFromManifestProvider">A service to get a validator from a validation manifest.</param>
+        /// <param name="builderTypeProvider">A service that gets the generic type for a validator builder.</param>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
         public ValidatorFactory(Bootstrap.IResolvesServices resolver,
                                 IGetsManifestFromBuilder manifestFromBuilderProvider,
                                 IGetsValidationManifestFromModel manifestFromModelProvider,
-                                IGetsValidatorFromManifest validatorFromManifestProvider)
+                                IGetsValidatorFromManifest validatorFromManifestProvider,
+                                IGetsValidatedTypeForBuilderType builderTypeProvider)
         {
             this.resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
             this.manifestFromBuilderProvider = manifestFromBuilderProvider ?? throw new ArgumentNullException(nameof(manifestFromBuilderProvider));
             this.manifestFromModelProvider = manifestFromModelProvider ?? throw new ArgumentNullException(nameof(manifestFromModelProvider));
             this.validatorFromManifestProvider = validatorFromManifestProvider ?? throw new ArgumentNullException(nameof(validatorFromManifestProvider));
+            this.builderTypeProvider = builderTypeProvider ?? throw new ArgumentNullException(nameof(builderTypeProvider));
         }
     }
 }
