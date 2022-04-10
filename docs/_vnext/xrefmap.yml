@@ -2539,6 +2539,56 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.CommonResults.PassAsync
   nameWithType: CommonResults.PassAsync
+- uid: CSF.Validation.Rules.CommonResults.Result(System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})
+  name: Result(Boolean, Dictionary<String, Object>)
+  href: api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Result_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_Object__
+  commentId: M:CSF.Validation.Rules.CommonResults.Result(System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})
+  name.vb: Result(Boolean, Dictionary(Of String, Object))
+  fullName: CSF.Validation.Rules.CommonResults.Result(System.Boolean, System.Collections.Generic.Dictionary<System.String, System.Object>)
+  fullName.vb: CSF.Validation.Rules.CommonResults.Result(System.Boolean, System.Collections.Generic.Dictionary(Of System.String, System.Object))
+  nameWithType: CommonResults.Result(Boolean, Dictionary<String, Object>)
+  nameWithType.vb: CommonResults.Result(Boolean, Dictionary(Of String, Object))
+- uid: CSF.Validation.Rules.CommonResults.Result(System.Boolean,System.Collections.Generic.IDictionary{System.String,System.Object})
+  name: Result(Boolean, IDictionary<String, Object>)
+  href: api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Result_System_Boolean_System_Collections_Generic_IDictionary_System_String_System_Object__
+  commentId: M:CSF.Validation.Rules.CommonResults.Result(System.Boolean,System.Collections.Generic.IDictionary{System.String,System.Object})
+  name.vb: Result(Boolean, IDictionary(Of String, Object))
+  fullName: CSF.Validation.Rules.CommonResults.Result(System.Boolean, System.Collections.Generic.IDictionary<System.String, System.Object>)
+  fullName.vb: CSF.Validation.Rules.CommonResults.Result(System.Boolean, System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  nameWithType: CommonResults.Result(Boolean, IDictionary<String, Object>)
+  nameWithType.vb: CommonResults.Result(Boolean, IDictionary(Of String, Object))
+- uid: CSF.Validation.Rules.CommonResults.Result*
+  name: Result
+  href: api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Result_
+  commentId: Overload:CSF.Validation.Rules.CommonResults.Result
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.CommonResults.Result
+  nameWithType: CommonResults.Result
+- uid: CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})
+  name: ResultAsync(Boolean, Dictionary<String, Object>)
+  href: api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_ResultAsync_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_Object__
+  commentId: M:CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})
+  name.vb: ResultAsync(Boolean, Dictionary(Of String, Object))
+  fullName: CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean, System.Collections.Generic.Dictionary<System.String, System.Object>)
+  fullName.vb: CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean, System.Collections.Generic.Dictionary(Of System.String, System.Object))
+  nameWithType: CommonResults.ResultAsync(Boolean, Dictionary<String, Object>)
+  nameWithType.vb: CommonResults.ResultAsync(Boolean, Dictionary(Of String, Object))
+- uid: CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean,System.Collections.Generic.IDictionary{System.String,System.Object})
+  name: ResultAsync(Boolean, IDictionary<String, Object>)
+  href: api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_ResultAsync_System_Boolean_System_Collections_Generic_IDictionary_System_String_System_Object__
+  commentId: M:CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean,System.Collections.Generic.IDictionary{System.String,System.Object})
+  name.vb: ResultAsync(Boolean, IDictionary(Of String, Object))
+  fullName: CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean, System.Collections.Generic.IDictionary<System.String, System.Object>)
+  fullName.vb: CSF.Validation.Rules.CommonResults.ResultAsync(System.Boolean, System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  nameWithType: CommonResults.ResultAsync(Boolean, IDictionary<String, Object>)
+  nameWithType.vb: CommonResults.ResultAsync(Boolean, IDictionary(Of String, Object))
+- uid: CSF.Validation.Rules.CommonResults.ResultAsync*
+  name: ResultAsync
+  href: api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_ResultAsync_
+  commentId: Overload:CSF.Validation.Rules.CommonResults.ResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.CommonResults.ResultAsync
+  nameWithType: CommonResults.ResultAsync
 - uid: CSF.Validation.Rules.DateTimeInRange
   name: DateTimeInRange
   href: api/CSF.Validation.Rules.DateTimeInRange.html
@@ -4023,6 +4073,25 @@ references:
   commentId: N:CSF.Validation.ValidatorBuilding
   fullName: CSF.Validation.ValidatorBuilding
   nameWithType: CSF.Validation.ValidatorBuilding
+- uid: CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider
+  name: BuilderValidatedTypeProvider
+  href: api/CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.html
+  commentId: T:CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider
+  fullName: CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider
+  nameWithType: BuilderValidatedTypeProvider
+- uid: CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.GetValidatedType(System.Type)
+  name: GetValidatedType(Type)
+  href: api/CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.html#CSF_Validation_ValidatorBuilding_BuilderValidatedTypeProvider_GetValidatedType_System_Type_
+  commentId: M:CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.GetValidatedType(System.Type)
+  fullName: CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.GetValidatedType(System.Type)
+  nameWithType: BuilderValidatedTypeProvider.GetValidatedType(Type)
+- uid: CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.GetValidatedType*
+  name: GetValidatedType
+  href: api/CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.html#CSF_Validation_ValidatorBuilding_BuilderValidatedTypeProvider_GetValidatedType_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.GetValidatedType
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.GetValidatedType
+  nameWithType: BuilderValidatedTypeProvider.GetValidatedType
 - uid: CSF.Validation.ValidatorBuilding.IBuildsRelativeRuleIdentifier
   name: IBuildsRelativeRuleIdentifier
   href: api/CSF.Validation.ValidatorBuilding.IBuildsRelativeRuleIdentifier.html
@@ -4463,6 +4532,25 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IGetsRuleBuilder.GetRuleBuilder(Of TRule)(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
   nameWithType: IGetsRuleBuilder.GetRuleBuilder<TRule>(ValidatorBuilderContext, Action<IConfiguresRule<TRule>>)
   nameWithType.vb: IGetsRuleBuilder.GetRuleBuilder(Of TRule)(ValidatorBuilderContext, Action(Of IConfiguresRule(Of TRule)))
+- uid: CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType
+  name: IGetsValidatedTypeForBuilderType
+  href: api/CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.html
+  commentId: T:CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType
+  fullName: CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType
+  nameWithType: IGetsValidatedTypeForBuilderType
+- uid: CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.GetValidatedType(System.Type)
+  name: GetValidatedType(Type)
+  href: api/CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.html#CSF_Validation_ValidatorBuilding_IGetsValidatedTypeForBuilderType_GetValidatedType_System_Type_
+  commentId: M:CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.GetValidatedType(System.Type)
+  fullName: CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.GetValidatedType(System.Type)
+  nameWithType: IGetsValidatedTypeForBuilderType.GetValidatedType(Type)
+- uid: CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.GetValidatedType*
+  name: GetValidatedType
+  href: api/CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.html#CSF_Validation_ValidatorBuilding_IGetsValidatedTypeForBuilderType_GetValidatedType_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.GetValidatedType
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.GetValidatedType
+  nameWithType: IGetsValidatedTypeForBuilderType.GetValidatedType
 - uid: CSF.Validation.ValidatorBuilding.IGetsValidationManifest
   name: IGetsValidationManifest
   href: api/CSF.Validation.ValidatorBuilding.IGetsValidationManifest.html
@@ -5400,12 +5488,12 @@ references:
   commentId: T:CSF.Validation.ValidatorFactory
   fullName: CSF.Validation.ValidatorFactory
   nameWithType: ValidatorFactory
-- uid: CSF.Validation.ValidatorFactory.#ctor(CSF.Validation.Bootstrap.IResolvesServices,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest)
-  name: ValidatorFactory(IResolvesServices, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest)
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory__ctor_CSF_Validation_Bootstrap_IResolvesServices_CSF_Validation_Manifest_IGetsManifestFromBuilder_CSF_Validation_ManifestModel_IGetsValidationManifestFromModel_CSF_Validation_Manifest_IGetsValidatorFromManifest_
-  commentId: M:CSF.Validation.ValidatorFactory.#ctor(CSF.Validation.Bootstrap.IResolvesServices,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest)
-  fullName: CSF.Validation.ValidatorFactory.ValidatorFactory(CSF.Validation.Bootstrap.IResolvesServices, CSF.Validation.Manifest.IGetsManifestFromBuilder, CSF.Validation.ManifestModel.IGetsValidationManifestFromModel, CSF.Validation.Manifest.IGetsValidatorFromManifest)
-  nameWithType: ValidatorFactory.ValidatorFactory(IResolvesServices, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest)
+- uid: CSF.Validation.ValidatorFactory.#ctor(CSF.Validation.Bootstrap.IResolvesServices,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest,CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType)
+  name: ValidatorFactory(IResolvesServices, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest, IGetsValidatedTypeForBuilderType)
+  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory__ctor_CSF_Validation_Bootstrap_IResolvesServices_CSF_Validation_Manifest_IGetsManifestFromBuilder_CSF_Validation_ManifestModel_IGetsValidationManifestFromModel_CSF_Validation_Manifest_IGetsValidatorFromManifest_CSF_Validation_ValidatorBuilding_IGetsValidatedTypeForBuilderType_
+  commentId: M:CSF.Validation.ValidatorFactory.#ctor(CSF.Validation.Bootstrap.IResolvesServices,CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.ManifestModel.IGetsValidationManifestFromModel,CSF.Validation.Manifest.IGetsValidatorFromManifest,CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType)
+  fullName: CSF.Validation.ValidatorFactory.ValidatorFactory(CSF.Validation.Bootstrap.IResolvesServices, CSF.Validation.Manifest.IGetsManifestFromBuilder, CSF.Validation.ManifestModel.IGetsValidationManifestFromModel, CSF.Validation.Manifest.IGetsValidatorFromManifest, CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType)
+  nameWithType: ValidatorFactory.ValidatorFactory(IResolvesServices, IGetsManifestFromBuilder, IGetsValidationManifestFromModel, IGetsValidatorFromManifest, IGetsValidatedTypeForBuilderType)
 - uid: CSF.Validation.ValidatorFactory.#ctor*
   name: ValidatorFactory
   href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory__ctor_

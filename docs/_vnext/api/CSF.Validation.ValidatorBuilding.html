@@ -77,6 +77,10 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="CSF.Validation.ValidatorBuilding.BuilderValidatedTypeProvider.html">BuilderValidatedTypeProvider</a></h4>
+      <section><p>Default implementation of <a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.html">IGetsValidatedTypeForBuilderType</a> which uses reflection
+and Linq to determine the builder type's generic type.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.ValidatorBuilding.ImportedValidatorBuilderManifestFactory.html">ImportedValidatorBuilderManifestFactory</a></h4>
       <section><p>A factory service which creates an implementation of <a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsManifestValue.html">IGetsManifestValue</a> based upon a
 type that implements <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>.</p>
@@ -158,6 +162,10 @@ collection of rules and/or descendent values.</p>
       <h4><a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsRuleBuilder.html">IGetsRuleBuilder</a></h4>
       <section><p>An object which gets a <a class="xref" href="CSF.Validation.ValidatorBuilding.RuleBuilder-1.html">RuleBuilder&lt;TRule&gt;</a> from a specified
 context and rule definition action.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsValidatedTypeForBuilderType.html">IGetsValidatedTypeForBuilderType</a></h4>
+      <section><p>An object which can get the generic validated type, given the <span class="xref">System.Type</span> of
+a validator builder class.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsValidationManifest.html">IGetsValidationManifest</a></h4>
       <section><p>An object which can get a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>.</p>
