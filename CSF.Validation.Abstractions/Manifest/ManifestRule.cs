@@ -22,6 +22,8 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestCollectionItem"/>
     public class ManifestRule
     {
         ICollection<ManifestRuleIdentifier> dependencyRules = new List<ManifestRuleIdentifier>();
@@ -30,7 +32,7 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets the manifest value to which this rule applies.
         /// </summary>
-        public ManifestValue ManifestValue { get; }
+        public ManifestValueBase ManifestValue { get; }
 
         /// <summary>
         /// Gets or sets the rule's unique identifier, including its type.
@@ -69,7 +71,7 @@ namespace CSF.Validation.Manifest
         /// </summary>
         /// <param name="manifestValue">The manifest value for which this rule applies.</param>
         /// <param name="identifier">The identifier for this rule.</param>
-        public ManifestRule(ManifestValue manifestValue, ManifestRuleIdentifier identifier)
+        public ManifestRule(ManifestValueBase manifestValue, ManifestRuleIdentifier identifier)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));

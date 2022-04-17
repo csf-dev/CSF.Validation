@@ -40,16 +40,20 @@ namespace CSF.Validation.RuleExecution
                 throw new ArgumentNullException(nameof(options));
 
             var openList = new Queue<ValidatedValueBasis>(new [] { new ValidatedValueBasis(manifestValue, objectToBeValidated, null) });
+            if(!(manifestValue.CollectionItemValue is null))
+                openList.Enqueue(new ValidatedValueBasis(manifestValue.CollectionItemValue, objectToBeValidated, null));
             ValidatedValue rootValidatedValue = null;
 
             while(openList.Any())
             {
                 var currentBasis = openList.Dequeue();
 
-                var currentValue = GetValidatedValue(currentBasis);
-                if(rootValidatedValue is null) rootValidatedValue = currentValue;
+                var currentValues = GetValidatedValues(currentBasis);
+                if(rootValidatedValue is null && currentValues.Any())
+                    rootValidatedValue = currentValues.First();
 
-                FindAndAddChildrenToOpenList(currentBasis, currentValue, openList, options);
+                foreach(var value in currentValues)
+                    FindAndAddChildrenToOpenList(currentBasis, value, openList, options);
             }
 
             return rootValidatedValue;
@@ -64,6 +68,19 @@ namespace CSF.Validation.RuleExecution
                                         nameof(IEnumerable),
                                         value.GetType().FullName);
             throw new ValidationException(message);
+        }
+
+        IList<ValidatedValue> GetValidatedValues(ValidatedValueBasis basis)
+        {
+            if(!(basis.ManifestValue is ManifestCollectionItem collectionManifest))
+                return new[] { GetValidatedValue(basis) };
+
+            var collection = GetEnumerable(basis.ActualValue);
+            return collection
+                .Cast<object>()
+                .Select((x, idx) => new ValidatedValueBasis(basis.ManifestValue, x, basis.Parent, idx))
+                .Select(GetValidatedValue)
+                .ToList();
         }
 
         ValidatedValue GetValidatedValue(ValidatedValueBasis basis)
@@ -107,19 +124,9 @@ namespace CSF.Validation.RuleExecution
                 if(!TryGetActualValue(childManifestValue, currentBasis.ActualValue, options, out var childActualValue))
                     continue;
 
-                if(childManifestValue.EnumerateItems)
-                {
-                    if(childActualValue is null) continue;
-                    var enumerableChildValue = GetEnumerable(childActualValue);
-
-                    long itemOrder = 0;
-                    foreach(var item in enumerableChildValue)
-                        openList.Enqueue(new ValidatedValueBasis(childManifestValue, item, currentValue, itemOrder++));
-                }
-                else
-                {
-                    openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
-                }
+                openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
+                if(!(childManifestValue.CollectionItemValue is null))
+                    openList.Enqueue(new ValidatedValueBasis(childManifestValue.CollectionItemValue, childActualValue, currentValue));
             }
         }
 
@@ -168,7 +175,7 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         private sealed class ValidatedValueBasis
         {
-            internal ManifestValue ManifestValue { get; }
+            internal ManifestValueBase ManifestValue { get; }
             internal object ActualValue { get; }
             internal ValidatedValue Parent { get; }
             internal long CollectionOrder { get; }
@@ -180,7 +187,7 @@ namespace CSF.Validation.RuleExecution
             /// <param name="actualValue">The actual value for this basis.</param>
             /// <param name="parent">The parent validated value for this basis.</param>
             /// <param name="collectionOrder">An optional collection order for this basis.</param>
-            internal ValidatedValueBasis(ManifestValue manifestValue, object actualValue, ValidatedValue parent, long collectionOrder = 0)
+            internal ValidatedValueBasis(ManifestValueBase manifestValue, object actualValue, ValidatedValue parent, long collectionOrder = 0)
             {
                 ManifestValue = manifestValue;
                 ActualValue = actualValue;

@@ -168,12 +168,12 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnACollectionOfChildValuesWhenEnumerateItemsIsEnabled(ValidatedValueFactory sut,
-                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                     [NoAutoProperties] ComplexObject child1,
-                                                                                                     [NoAutoProperties] ComplexObject child2,
-                                                                                                     [NoAutoProperties] ComplexObject child3,
-                                                                                                     ValidationOptions validationOptions)
+        public void GetValidatedValueShouldReturnACollectionOfChildValuesForAValueWhichHasCollectionItems(ValidatedValueFactory sut,
+                                                                                                          [NoAutoProperties] ComplexObject validatedValue,
+                                                                                                          [NoAutoProperties] ComplexObject child1,
+                                                                                                          [NoAutoProperties] ComplexObject child2,
+                                                                                                          [NoAutoProperties] ComplexObject child3,
+                                                                                                          ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -183,7 +183,10 @@ namespace CSF.Validation.RuleExecution
             {
                 Parent = manifestValue,
                 AccessorFromParent = obj => ((ComplexObject)obj).Children,
-                EnumerateItems = true,
+                CollectionItemValue = new ManifestCollectionItem
+                {
+                    Parent = manifestValue,
+                },
             };
             manifestValue.Children.Add(childManifest);
             validatedValue.Children.Add(child1);
@@ -201,10 +204,10 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldThrowIfEnumerateItemsIsEnabledButValueIsNotEnumerable(ValidatedValueFactory sut,
-                                                                                                 [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                 [NoAutoProperties] ComplexObject childValue,
-                                                                                                 ValidationOptions validationOptions)
+        public void GetValidatedValueShouldThrowIfValueWhichHasCollectionItemsButTypeIsNotEnumerable(ValidatedValueFactory sut,
+                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
+                                                                                                     [NoAutoProperties] ComplexObject childValue,
+                                                                                                     ValidationOptions validationOptions)
         {
             var manifestValue = new ManifestValue
             {
@@ -214,7 +217,10 @@ namespace CSF.Validation.RuleExecution
             {
                 Parent = manifestValue,
                 AccessorFromParent = obj => ((ComplexObject)obj).Associated,
-                EnumerateItems = true,
+                CollectionItemValue = new ManifestCollectionItem
+                {
+                    Parent = manifestValue,
+                },
             };
             manifestValue.Children.Add(childManifest);
             validatedValue.Associated = childValue;

@@ -36,7 +36,7 @@ namespace CSF.Validation.ValidatorBuilding
                 Parent = validatorContext.ManifestValue,
                 AccessorFromParent = obj => accessor((TValidated)obj),
                 MemberName = member.Name,
-                EnumerateItems = enumerateItems,
+                // EnumerateItems = enumerateItems,
                 ValidatedType = typeof(TValue),
             };
             validatorContext.ManifestValue.Children.Add(manifestValue);
@@ -62,7 +62,7 @@ namespace CSF.Validation.ValidatorBuilding
             {
                 Parent = validatorContext.ManifestValue,
                 AccessorFromParent = obj => valueAccessor((TValidated)obj),
-                EnumerateItems = enumerateItems,
+                // EnumerateItems = enumerateItems,
                 ValidatedType = typeof(TValidated),
             };
             validatorContext.ManifestValue.Children.Add(manifestValue);

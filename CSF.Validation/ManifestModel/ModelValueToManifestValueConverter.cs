@@ -65,7 +65,7 @@ namespace CSF.Validation.ManifestModel
                 Parent = context.ParentManifestValue,
                 MemberName = context.MemberName,
                 AccessorFromParent = context.AccessorFromParent,
-                EnumerateItems = context.CurrentValue.EnumerateItems,
+                // EnumerateItems = context.CurrentValue.EnumerateItems,
                 ValidatedType = validatedType,
                 IgnoreAccessorExceptions = context.CurrentValue.IgnoreAccessorExceptions,
             };

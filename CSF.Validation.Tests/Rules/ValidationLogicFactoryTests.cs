@@ -146,8 +146,15 @@ namespace CSF.Validation.Rules
                                                                                                               string str,
                                                                                                               [RuleId] RuleIdentifier id)
         {
-            var value = new ManifestValue { ValidatedType = typeof(IEnumerable<string>), EnumerateItems = true, };
-            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
+            var value = new ManifestValue
+            {
+                ValidatedType = typeof(IEnumerable<string>),
+                CollectionItemValue = new ManifestCollectionItem
+                {
+                    ValidatedType = typeof(string),
+                },
+            };
+            var rule = new ManifestRule(value.CollectionItemValue, new ManifestRuleIdentifier(value.CollectionItemValue, typeof(StringRule)));
             value.Rules.Add(rule);
             var ruleBody = new StringRule();
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
@@ -159,13 +166,17 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfEnumerateItemsIsTrueButTheValueIsNotEnumerable([Frozen] IResolvesRule ruleResolver,
+        public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfRuleWhichOperatesOnCollectionButValueIsNotEnumerable([Frozen] IResolvesRule ruleResolver,
                                                                                                                             ValidationLogicFactory sut,
                                                                                                                             string str,
                                                                                                                             [RuleId] RuleIdentifier id)
         {
-            var value = new ManifestValue { ValidatedType = typeof(int), EnumerateItems = true, };
-            var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
+            var value = new ManifestValue
+            {
+                ValidatedType = typeof(int),
+                CollectionItemValue = new ManifestCollectionItem { ValidatedType = typeof(int) }
+            };
+            var rule = new ManifestRule(value.CollectionItemValue, new ManifestRuleIdentifier(value.CollectionItemValue, typeof(StringRule)));
             value.Rules.Add(rule);
             var ruleBody = new StringRule();
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);

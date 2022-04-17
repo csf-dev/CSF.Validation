@@ -1,14 +1,12 @@
-using System;
-
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// The root object of a validation manifest.
+    /// A model which represents an item of a collection which is to be validated individually.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This type serves as the root a model that describes how a validator should operate, such as which
-    /// rules it should execute and how they should be configured.
+    /// Instances of that type are similar to <see cref="ManifestValue"/> except that they describe items
+    /// of a collection, indicated by <see cref="ManifestValue.CollectionItemValue"/>.
     /// </para>
     /// <para>
     /// The validation manifest is the model by which validators are described, including how they should
@@ -21,21 +19,10 @@ namespace CSF.Validation.Manifest
     /// article <xref href="ManifestModelIndexPage?text=Using+the+Manifest+Model"/>.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestRule"/>
+    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ManifestValueBase"/>
-    /// <seealso cref="ManifestCollectionItem"/>
-    public class ValidationManifest
-    {
-        /// <summary>
-        /// Gets or sets the type of object which the validator should validate.
-        /// </summary>
-        public Type ValidatedType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the root value for the current manifest.
-        /// </summary>
-        public ManifestValue RootValue { get; set; }
-    }
+    /// <seealso cref="ManifestValue"/>
+    public class ManifestCollectionItem : ManifestValueBase {}
 }
