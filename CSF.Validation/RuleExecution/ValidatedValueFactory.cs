@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CSF.Validation.Manifest;
-using CSF.Validation.Rules;
 
 namespace CSF.Validation.RuleExecution
 {
@@ -20,7 +19,9 @@ namespace CSF.Validation.RuleExecution
     /// </remarks>
     public class ValidatedValueFactory : IGetsValidatedValue
     {
-        readonly IGetsValidationLogic validationLogicFactory;
+        readonly IGetsValidatedValueFromBasis valueFromBasisFactory;
+        readonly IGetsValueToBeValidated valueProvider;
+        readonly IGetsEnumerableItemsToBeValidated enumerableProvider;
 
         /// <summary>
         /// Gets the validated value from the specified manifest value and object to be validated.
@@ -39,9 +40,8 @@ namespace CSF.Validation.RuleExecution
             if (options is null)
                 throw new ArgumentNullException(nameof(options));
 
-            var openList = new Queue<ValidatedValueBasis>(new [] { new ValidatedValueBasis(manifestValue, objectToBeValidated, null) });
-            if(!(manifestValue.CollectionItemValue is null))
-                openList.Enqueue(new ValidatedValueBasis(manifestValue.CollectionItemValue, objectToBeValidated, null));
+            var openList = new Queue<ValidatedValueBasis>();
+            AddToOpenList(openList, manifestValue, objectToBeValidated);
             ValidatedValue rootValidatedValue = null;
 
             while(openList.Any())
@@ -59,141 +59,61 @@ namespace CSF.Validation.RuleExecution
             return rootValidatedValue;
         }
 
-        static IEnumerable GetEnumerable(object value)
-        {
-            if(value is IEnumerable enumerable)
-                return enumerable;
-
-            var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("ObjectMustBeEnumerable"),
-                                        nameof(IEnumerable),
-                                        value.GetType().FullName);
-            throw new ValidationException(message);
-        }
-
         IList<ValidatedValue> GetValidatedValues(ValidatedValueBasis basis)
         {
             if(!(basis.ManifestValue is ManifestCollectionItem collectionManifest))
-                return new[] { GetValidatedValue(basis) };
+                return new[] { valueFromBasisFactory.GetValidatedValue(basis) };
 
-            var collection = GetEnumerable(basis.ActualValue);
-            return collection
-                .Cast<object>()
+            return enumerableProvider
+                .GetEnumerableItems(basis.ActualValue, basis.ManifestValue.ValidatedType)
                 .Select((x, idx) => new ValidatedValueBasis(basis.ManifestValue, x, basis.Parent, idx))
-                .Select(GetValidatedValue)
+                .Select(valueFromBasisFactory.GetValidatedValue)
                 .ToList();
         }
 
-        ValidatedValue GetValidatedValue(ValidatedValueBasis basis)
-        {
-            var valueIdentity = basis.ManifestValue.IdentityAccessor is null
-                ? null
-                : basis.ManifestValue.IdentityAccessor(basis.ActualValue);
-            
-            var value = new ValidatedValue
-            {
-                ManifestValue = basis.ManifestValue,
-                ActualValue = basis.ActualValue,
-                ValueIdentity = valueIdentity,
-                ParentValue = basis.Parent,
-                CollectionItemOrder = basis.CollectionOrder,
-            };
-
-            if(!(basis.Parent is null))
-                basis.Parent.ChildValues.Add(value);
-
-            value.Rules = basis.ManifestValue.Rules
-                .Select(manifestRule => new ExecutableRule
-                        {
-                            ValidatedValue = value,
-                            ManifestRule = manifestRule,
-                            RuleLogic = validationLogicFactory.GetValidationLogic(manifestRule),
-                            RuleIdentifier = new RuleIdentifier(manifestRule, valueIdentity),
-                        })
-                .ToList();
-
-            return value;
-        }
-
-        static void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
-                                                 ValidatedValue currentValue,
-                                                 Queue<ValidatedValueBasis> openList,
-                                                 ValidationOptions options)
+        void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
+                                          ValidatedValue currentValue,
+                                          Queue<ValidatedValueBasis> openList,
+                                          ValidationOptions options)
         {
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {
-                if(!TryGetActualValue(childManifestValue, currentBasis.ActualValue, options, out var childActualValue))
+                if(!valueProvider.TryGetValueToBeValidated(childManifestValue, currentBasis.ActualValue, options, out var childActualValue))
                     continue;
-
-                openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
-                if(!(childManifestValue.CollectionItemValue is null))
-                    openList.Enqueue(new ValidatedValueBasis(childManifestValue.CollectionItemValue, childActualValue, currentValue));
+                AddToOpenList(openList, childManifestValue, childActualValue, currentValue);
             }
         }
 
-        static bool TryGetActualValue(ManifestValue manifestValue,
-                                      object parentValue,
-                                      ValidationOptions validationOptions,
-                                      out object actualValue)
+        /// <summary>
+        /// Adds a new <see cref="ValidatedValueBasis"/> to the open list, based upon a specified <see cref="ManifestValue"/>,
+        /// <see cref="object"/> to be validated and optionally a parent <see cref="ValidatedValue"/>.
+        /// </summary>
+        /// <param name="openList">The open list</param>
+        /// <param name="manifestValue">A manifest value</param>
+        /// <param name="objectToBeValidated">The actual object to be validated</param>
+        /// <param name="parent">An optional parent value</param>
+        static void AddToOpenList(Queue<ValidatedValueBasis> openList, ManifestValue manifestValue, object objectToBeValidated, ValidatedValue parent = null)
         {
-            actualValue = null;
-            if(parentValue is null) return false;
+            openList.Enqueue(new ValidatedValueBasis(manifestValue, objectToBeValidated, parent));
 
-            try
-            {
-                actualValue = manifestValue.AccessorFromParent(parentValue);
-                return true;
-            }
-            catch(Exception e)
-            {
-                if(!manifestValue.IgnoreAccessorExceptions && !validationOptions.IgnoreValueAccessExceptions)
-                {
-                    var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("ErrorAccessingValue"),
-                                                manifestValue.ValidatedType.FullName);
-                    throw new ValidationException(message, e);
-                }
-
-                actualValue = GetDefaultOfType(manifestValue.ValidatedType);
-                return true;
-            }
+            if(!(manifestValue.CollectionItemValue is null))
+                openList.Enqueue(new ValidatedValueBasis(manifestValue.CollectionItemValue, objectToBeValidated, parent));
         }
-
-        static object GetDefaultOfType(Type t) => t.GetTypeInfo().IsValueType ? Activator.CreateInstance(t) : null;
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatedValueFactory"/>.
         /// </summary>
-        /// <param name="validationLogicFactory">The validation logic factory.</param>
-        /// <exception cref="ArgumentNullException">If either <paramref name="validationLogicFactory"/> is null.</exception>
-        public ValidatedValueFactory(IGetsValidationLogic validationLogicFactory)
+        /// <param name="valueFromBasisFactory">A factory that gets the logic from a <see cref="ValidatedValueBasis"/>.</param>
+        /// <param name="valueProvider">A service to get the value to be validated.</param>
+        /// <param name="enumerableProvider">A service that gets the items of an enumerable object.</param>
+        /// <exception cref="ArgumentNullException">If any parameter value is <see langword="null" />.</exception>
+        public ValidatedValueFactory(IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                     IGetsValueToBeValidated valueProvider,
+                                     IGetsEnumerableItemsToBeValidated enumerableProvider)
         {
-            this.validationLogicFactory = validationLogicFactory ?? throw new ArgumentNullException(nameof(validationLogicFactory));
-        }
-
-        /// <summary>
-        /// A small model used just within this class.  It holds the information required in order to get
-        /// a <see cref="ValidatedValue"/> at a point in the future.
-        /// </summary>
-        private sealed class ValidatedValueBasis
-        {
-            internal ManifestValueBase ManifestValue { get; }
-            internal object ActualValue { get; }
-            internal ValidatedValue Parent { get; }
-            internal long CollectionOrder { get; }
-
-            /// <summary>
-            /// Initialises a new instance of <see cref="ValidatedValueBasis"/>.
-            /// </summary>
-            /// <param name="manifestValue">The manifest value for this basis.</param>
-            /// <param name="actualValue">The actual value for this basis.</param>
-            /// <param name="parent">The parent validated value for this basis.</param>
-            /// <param name="collectionOrder">An optional collection order for this basis.</param>
-            internal ValidatedValueBasis(ManifestValueBase manifestValue, object actualValue, ValidatedValue parent, long collectionOrder = 0)
-            {
-                ManifestValue = manifestValue;
-                ActualValue = actualValue;
-                Parent = parent;
-                CollectionOrder = collectionOrder;
-            }
+            this.valueFromBasisFactory = valueFromBasisFactory ?? throw new ArgumentNullException(nameof(valueFromBasisFactory));
+            this.valueProvider = valueProvider ?? throw new ArgumentNullException(nameof(valueProvider));
+            this.enumerableProvider = enumerableProvider ?? throw new ArgumentNullException(nameof(enumerableProvider));
         }
     }
 }

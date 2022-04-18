@@ -170,7 +170,7 @@
     <comment/>
   </data>
   <data name="ObjectMustBeEnumerable" xml:space="preserve">
-    <value>The value must implement {0} in order to enumerate items, but {1} is not.</value>
+    <value>The value must implement {0}&lt;{2}&gt; in order to enumerate items, but {1} is not.</value>
     <comment/>
   </data>
   <data name="ErrorAccessingValue" xml:space="preserve">
