@@ -31,6 +31,12 @@ namespace CSF.Validation.Manifest
         public Func<object, object> AccessorFromParent { get; set; }
 
         /// <summary>
+        /// Where the current value represents a member access invocation (such as
+        /// a property getter), this property gets or sets the name of that member.
+        /// </summary>
+        public override string MemberName { get; set; }
+
+        /// <summary>
         /// Indicates that the validator should ignore any exceptions encountered whilst getting the value from
         /// the <see cref="AccessorFromParent"/>.
         /// </summary>
@@ -51,27 +57,5 @@ namespace CSF.Validation.Manifest
         /// </remarks>
         /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
         public bool IgnoreAccessorExceptions { get; set; }
-
-        /// <summary>
-        /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// If the value representd by the current instance is a collection/enumerable of items then these items may
-        /// be validated individually.  In this scenario, the <see cref="ManifestValueBase.ValidatedType"/> must be a
-        /// type that implements <see cref="System.Collections.Generic.IEnumerable{T}"/> for at least one generic type.
-        /// </para>
-        /// <para>
-        /// If this property has a non-null value, then the <see cref="ManifestCollectionItem"/> will be used to validate
-        /// each item within that collection.
-        /// </para>
-        /// <para>
-        /// If the current manifest value does not represent a collection of items to be validated individually then this
-        /// property must by <see langword="null" />.
-        /// </para>
-        /// </remarks>
-        public ManifestCollectionItem CollectionItemValue { get; set; }
-        
-        
     }
 }

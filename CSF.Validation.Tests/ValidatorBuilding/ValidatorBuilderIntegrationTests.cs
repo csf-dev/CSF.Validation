@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ValidatorBuilding
 {
-    [TestFixture, Parallelizable,Ignore("Temporarily broken, to be restored")]
+    [TestFixture,Parallelizable]
     public partial class ValidatorBuilderIntegrationTests
     {
         [Test,AutoMoqData]

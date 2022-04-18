@@ -9,15 +9,15 @@ namespace CSF.Validation.ValidatorBuilding
     public class ValidatorBuilderContext
     {
         /// <summary>
-        /// Gets the <see cref="ManifestValue"/> instance associated with the current context.
+        /// Gets the <see cref="ManifestValueBase"/> instance associated with the current context.
         /// </summary>
-        public ManifestValue ManifestValue { get; }
+        public ManifestValueBase ManifestValue { get; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatorBuilderContext"/>.
         /// </summary>
         /// <param name="manifestValue">The manifest value associated with the current context.</param>
-        public ValidatorBuilderContext(ManifestValue manifestValue)
+        public ValidatorBuilderContext(ManifestValueBase manifestValue)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
         }

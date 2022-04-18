@@ -71,7 +71,7 @@ namespace CSF.Validation.Rules
         /// </list>
         /// <para>
         /// There are equivalents to the above when using the Manifest Model: <see cref="ManifestModel.Value.EnumerateItems"/> (when set to <see langword="true" />)
-        /// and for the Validation Manifest: <see cref="Manifest.ManifestValue.CollectionItemValue"/> (also when set to <see langword="true" />).
+        /// and for the Validation Manifest: <see cref="Manifest.ManifestValueBase.CollectionItemValue"/> (also when set to <see langword="true" />).
         /// </para>
         /// <para>
         /// If the child context was not created from a collection then then this property will be <see langword="null"/>.

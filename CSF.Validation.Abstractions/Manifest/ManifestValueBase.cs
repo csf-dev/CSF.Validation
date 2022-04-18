@@ -38,7 +38,7 @@ namespace CSF.Validation.Manifest
         /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
         /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
         /// </summary>
-        public ManifestValue Parent { get; set; }
+        public ManifestValueBase Parent { get; set; }
 
         /// <summary>
         /// Gets or sets a function which retrieves a unique identity of the object being
@@ -50,7 +50,27 @@ namespace CSF.Validation.Manifest
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets or sets the name of that member.
         /// </summary>
-        public string MemberName { get; set; }
+        public abstract string MemberName { get; set; }
+
+        /// <summary>
+        /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// If the value representd by the current instance is a collection/enumerable of items then these items may
+        /// be validated individually.  In this scenario, the <see cref="ManifestValueBase.ValidatedType"/> must be a
+        /// type that implements <see cref="System.Collections.Generic.IEnumerable{T}"/> for at least one generic type.
+        /// </para>
+        /// <para>
+        /// If this property has a non-null value, then the <see cref="ManifestCollectionItem"/> will be used to validate
+        /// each item within that collection.
+        /// </para>
+        /// <para>
+        /// If the current manifest value does not represent a collection of items to be validated individually then this
+        /// property must by <see langword="null" />.
+        /// </para>
+        /// </remarks>
+        public ManifestCollectionItem CollectionItemValue { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of the immediate descendents of the current manifest value.
@@ -69,6 +89,5 @@ namespace CSF.Validation.Manifest
             get => rules;
             set => rules = value ?? throw new ArgumentNullException(nameof(value));
         }
-
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using AutoFixture;
 using CSF.Validation.ManifestModel;
+using CSF.Validation.ValidatorBuilding;
 
 namespace CSF.Validation.Manifest
 {
@@ -23,7 +24,7 @@ namespace CSF.Validation.Manifest
         public void Customize(IFixture fixture)
         {
             fixture.Customize<ManifestValue>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
-            fixture.Customize<ManifestCollectionItem>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules));
+            fixture.Customize<ManifestCollectionItem>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
             fixture.Customize<ManifestRuleIdentifier>(c => c.FromFactory((ManifestValue val, Type ruleType) => new ManifestRuleIdentifier(val, ruleType)));
             fixture.Customize<ManifestRule>(c => {
                 return c
@@ -32,6 +33,7 @@ namespace CSF.Validation.Manifest
             });
             fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules).With(x => x.EnumerateItems, false));
             fixture.Customize<Rule>(c => c.Without(x => x.Dependencies));
+            fixture.Customize<ValidatorBuilderContext>(c => c.FromFactory((ManifestValue val) => new ValidatorBuilderContext(val)));
         }
     }
 }

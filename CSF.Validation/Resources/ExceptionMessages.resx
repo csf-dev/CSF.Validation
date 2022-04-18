@@ -221,4 +221,8 @@
     <value>The implementation type {0} could not be resolved.  Please ensure that it is not abstract and that it is (ideally) registered with dependency injection or that it has a public parameterless constructor.</value>
     <comment/>
   </data>
+  <data name="MustNotAlreadyHaveACollectionItemManifestValue" xml:space="preserve">
+    <value>The current builder context must not already have a manifest collection-item value associated.  Cannot create a new context for {0}.</value>
+    <comment/>
+  </data>
 </root>

@@ -28,19 +28,15 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A context object for building validation rules.</returns>
         public ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
+            if (enumerateItems)
+                return GetCollectionItemContext(validatorContext, typeof(TValue));
+
+            if (memberAccessor is null)
+                throw new ArgumentNullException(nameof(memberAccessor));
+
             var member = reflect.Member(memberAccessor);
             var accessor = memberAccessor.Compile();
-
-            var manifestValue = new ManifestValue
-            {
-                Parent = validatorContext.ManifestValue,
-                AccessorFromParent = obj => accessor((TValidated)obj),
-                MemberName = member.Name,
-                // EnumerateItems = enumerateItems,
-                ValidatedType = typeof(TValue),
-            };
-            validatorContext.ManifestValue.Children.Add(manifestValue);
-            return new ValidatorBuilderContext(manifestValue);
+            return GetContext(obj => accessor((TValidated)obj), validatorContext, typeof(TValue), member.Name);
         }
 
         /// <summary>
@@ -58,14 +54,40 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A context object for building validation rules.</returns>
         public ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
+            if(enumerateItems)
+                return GetCollectionItemContext(validatorContext, typeof(TValue));
+
+            return GetContext(obj => valueAccessor((TValidated)obj), validatorContext, typeof(TValue));
+        }
+
+        static ValidatorBuilderContext GetContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
+        {
             var manifestValue = new ManifestValue
             {
-                Parent = validatorContext.ManifestValue,
-                AccessorFromParent = obj => valueAccessor((TValidated)obj),
-                // EnumerateItems = enumerateItems,
-                ValidatedType = typeof(TValidated),
+                Parent = parentContext.ManifestValue,
+                AccessorFromParent = accessor,
+                MemberName = memberName,
+                ValidatedType = validatedType,
             };
-            validatorContext.ManifestValue.Children.Add(manifestValue);
+            parentContext.ManifestValue.Children.Add(manifestValue);
+            return new ValidatorBuilderContext(manifestValue);
+        }
+
+        ValidatorBuilderContext GetCollectionItemContext(ValidatorBuilderContext parentContext, Type validatedType)
+        {
+            if(parentContext.ManifestValue.CollectionItemValue != null)
+            {
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotAlreadyHaveACollectionItemManifestValue"),
+                                            validatedType.FullName);
+                throw new InvalidOperationException(message);
+            }
+
+            var manifestValue = new ManifestCollectionItem
+            {
+                Parent = parentContext.ManifestValue,
+                ValidatedType = validatedType,
+            };
+            parentContext.ManifestValue.CollectionItemValue = manifestValue;
             return new ValidatorBuilderContext(manifestValue);
         }
 

@@ -1,3 +1,5 @@
+using System;
+
 namespace CSF.Validation.Manifest
 {
     /// <summary>
@@ -6,7 +8,7 @@ namespace CSF.Validation.Manifest
     /// <remarks>
     /// <para>
     /// Instances of that type are similar to <see cref="ManifestValue"/> except that they describe items
-    /// of a collection, indicated by <see cref="ManifestValue.CollectionItemValue"/>.
+    /// of a collection, indicated by <see cref="ManifestValueBase.CollectionItemValue"/>.
     /// </para>
     /// <para>
     /// The validation manifest is the model by which validators are described, including how they should
@@ -24,5 +26,22 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ManifestValueBase"/>
     /// <seealso cref="ManifestValue"/>
-    public class ManifestCollectionItem : ManifestValueBase {}
+    public class ManifestCollectionItem : ManifestValueBase
+    {
+        /// <summary>
+        /// Where the current value represents a member access invocation (such as
+        /// a property getter), this property gets or sets the name of that member.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Note that in <see cref="ManifestCollectionItem"/>, the member name is always <see langword="null" /> and
+        /// may not be set to any other value.
+        /// </para>
+        /// </remarks>
+        public override string MemberName
+        {
+            get => null;
+            set { /* Intentional no-op */ }
+        }
+    }
 }

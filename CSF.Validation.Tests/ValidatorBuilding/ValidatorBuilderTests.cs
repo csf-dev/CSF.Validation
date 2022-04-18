@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ValidatorBuilding
 {
-    [TestFixture,Parallelizable,Ignore("Temporarily broken, to be restored")]
+    [TestFixture,Parallelizable]
     public class ValidatorBuilderTests
     {
         [Test,AutoMoqData]
@@ -121,7 +121,10 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                   [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
-                .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, true))
+                .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, false))
+                .Returns(ruleContext);
+            Mock.Get(ruleContextFactory)
+                .Setup(x => x.GetContextForMember<ValidatedObject,char>(null, ruleContext, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
@@ -169,7 +172,10 @@ namespace CSF.Validation.ValidatorBuilding
                                                                              [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
-                .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, true))
+                .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, false))
+                .Returns(ruleContext);
+            Mock.Get(ruleContextFactory)
+                .Setup(x => x.GetContextForValue<ValidatedObject,char>(null, ruleContext, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
@@ -219,7 +225,10 @@ namespace CSF.Validation.ValidatorBuilding
                                                                             [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
-                .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, true))
+                .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, false))
+                .Returns(ruleContext);
+            Mock.Get(ruleContextFactory)
+                .Setup(x => x.GetContextForMember<ValidatedObject,char>(null, ruleContext, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
@@ -271,7 +280,10 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        [ManifestModel] ManifestValue value)
         {
             Mock.Get(ruleContextFactory)
-                .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, true))
+                .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, false))
+                .Returns(ruleContext);
+            Mock.Get(ruleContextFactory)
+                .Setup(x => x.GetContextForValue<ValidatedObject,char>(null, ruleContext, true))
                 .Returns(ruleContext);
             Mock.Get(valueBuilderFactory)
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))

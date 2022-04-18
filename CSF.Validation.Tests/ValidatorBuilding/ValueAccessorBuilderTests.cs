@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ValidatorBuilding
 {
-    [TestFixture,Parallelizable,Ignore("Temporarily broken, to be restored")]
+    [TestFixture,Parallelizable]
     public class ValueAccessorBuilderTests
     {
         [Test,AutoMoqData]
@@ -81,15 +81,17 @@ namespace CSF.Validation.ValidatorBuilding
         public void IgnoreExceptionsShouldMarkTheManifestValueAsIgnoringAccessorExceptions([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                            ValueAccessorBuilder<ValidatedObject, string> sut)
         {
+            ((ManifestValue) context.ManifestValue).IgnoreAccessorExceptions = false;
             sut.IgnoreExceptions();
-            Assert.That(() => sut.GetManifestValue()?.IgnoreAccessorExceptions, Is.True);
+            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.IgnoreAccessorExceptions)).True);
         }
 
         [Test,AutoMoqData]
         public void GetManifestValueShouldNotMarkTheManifestValueAsIgnoringAccessorExceptionsIfIgnoreExceptionsWasNotCalled([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                                                             ValueAccessorBuilder<ValidatedObject, string> sut)
         {
-            Assert.That(() => sut.GetManifestValue()?.IgnoreAccessorExceptions, Is.False);
+            ((ManifestValue) context.ManifestValue).IgnoreAccessorExceptions = false;
+            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.IgnoreAccessorExceptions)).False);
         }
     }
 }

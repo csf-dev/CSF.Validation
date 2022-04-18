@@ -13,6 +13,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// Gets a manifest value from the current instance.
         /// </summary>
         /// <returns>A manifest value.</returns>
-        ManifestValue GetManifestValue();
+        ManifestValueBase GetManifestValue();
     }
 }
