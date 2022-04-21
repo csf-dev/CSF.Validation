@@ -123,9 +123,11 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(val);
+            val.ActualValue = validatedValue;
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest)))
                 .Returns(childVal);
+            childVal.ActualValue = childValue;
             object child = childValue;
             Mock.Get(valueProvider)
                 .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))

@@ -90,7 +90,7 @@ namespace CSF.Validation.RuleExecution
 
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {
-                if(!valueProvider.TryGetValueToBeValidated(childManifestValue, currentBasis.ActualValue, options, out var childActualValue))
+                if(!valueProvider.TryGetValueToBeValidated(childManifestValue, currentValue.ActualValue, options, out var childActualValue))
                     continue;
                 openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
             }

@@ -31,7 +31,7 @@ namespace CSF.Validation.ManifestModel
             Assert.That(result.RootValue.Children, Has.Count.EqualTo(3));
         }
 
-        [Test,AutoMoqData,Ignore("Temporarily broken, to be restored")]
+        [Test,AutoMoqData]
         public void GetValidationManifestShouldHaveTwoRulesForTheStringPropertyValue([IntegrationTesting] IServiceProvider services)
         {
             var result = GetValidationManifest(services);

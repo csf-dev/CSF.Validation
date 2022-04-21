@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture,Parallelizable,Ignore("Temporarily broken, to be restored")]
+    [TestFixture,Parallelizable]
     public class ValidationIntegrationTests
     {
         [Test,AutoMoqData]

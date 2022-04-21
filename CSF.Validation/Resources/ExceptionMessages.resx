@@ -174,7 +174,7 @@
     <comment/>
   </data>
   <data name="ErrorAccessingValue" xml:space="preserve">
-    <value>An unexpected error occurred when accessing a value from an instance of {0}.  Please refer to the inner exception for further details.</value>
+    <value>An unexpected error occurred when accessing a value using {0} from the object {1}.  Please refer to the inner exception for further details.</value>
     <comment/>
   </data>
   <data name="CannotGetMatchingValueForDependency" xml:space="preserve">

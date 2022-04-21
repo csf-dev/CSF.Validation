@@ -36,7 +36,8 @@ namespace CSF.Validation.RuleExecution
                 if(!manifestValue.IgnoreAccessorExceptions && !validationOptions.IgnoreValueAccessExceptions)
                 {
                     var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("ErrorAccessingValue"),
-                                                manifestValue.ValidatedType.FullName);
+                                                manifestValue,
+                                                parentValue);
                     throw new ValidationException(message, e);
                 }
 
