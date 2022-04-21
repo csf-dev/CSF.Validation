@@ -11,12 +11,19 @@ namespace CSF.Validation.RuleExecution
     /// awaiting the execution of their dependencies.  This may also be used to get a
     /// list of the rules which should not be executed because their dependencies failed.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Note that this is a stateful service, so it is not suitable to re-use instances
+    /// outside of the context of a validation run.  This object maintains and tracks the
+    /// state of a validation operation throughout the context of that operation.
+    /// For a new validation run, create a new instance of this service.
+    /// </para>
+    /// </remarks>
     public class RuleDependencyTracker : ITracksRuleDependencies
     {
         readonly IDictionary<ExecutableRule,ExecutableRuleAndDependencies> pendingRules;
         readonly IDictionary<ExecutableRule,ExecutableRuleAndDependencies> allRules;
         readonly ISet<ExecutableRule> dependencyFailures = new HashSet<ExecutableRule>();
-        readonly ValidationOptions options;
 
         /// <summary>
         /// Gets a collection of rules which are ready to be executed.  Either they have no dependencies or
@@ -92,16 +99,14 @@ namespace CSF.Validation.RuleExecution
         /// Initialises a new instance of <see cref="RuleDependencyTracker"/>.
         /// </summary>
         /// <param name="allRules">A collection of all of the rules which could be executed.</param>
-        /// <param name="options">The validation options.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="allRules"/> or <paramref name="options"/> is <see langword="null" />.</exception>
-        public RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies> allRules, ValidationOptions options)
+        /// <exception cref="ArgumentNullException">If <paramref name="allRules"/> is <see langword="null" />.</exception>
+        public RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies> allRules)
         {
             if (allRules is null)
                 throw new ArgumentNullException(nameof(allRules));
 
             this.allRules = allRules.ToDictionary(k => k.ExecutableRule, v => v);
             pendingRules = new Dictionary<ExecutableRule, ExecutableRuleAndDependencies>(this.allRules);
-            this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
     }
 }

@@ -14,6 +14,6 @@ namespace CSF.Validation.RuleExecution
         /// <param name="options">The validation of options.</param>
         /// <returns>A dependency-tracking service.</returns>
         public ITracksRuleDependencies GetDependencyTracker(IEnumerable<ExecutableRuleAndDependencies> allRules, ValidationOptions options)
-            => new RuleDependencyTracker(allRules, options);
+            => new RuleDependencyTracker(allRules);
     }
 }

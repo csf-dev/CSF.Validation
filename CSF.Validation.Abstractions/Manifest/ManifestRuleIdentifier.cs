@@ -82,10 +82,12 @@ namespace CSF.Validation.Manifest
         /// <param name="manifestValue">The manifest value/object which 'contains' this rule.</param>
         /// <param name="ruleType">The rule type.</param>
         /// <param name="ruleName">An optional rule name.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="ruleType"/> or <paramref name="manifestValue"/> are <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentNullException">If either <paramref name="ruleType"/> or <paramref name="manifestValue"/> are
+        /// <see langword="null"/> or if the <see cref="ManifestValueBase.ValidatedType"/> of the <paramref name="manifestValue"/>
+        /// is <see langword="null" />.</exception>
         public ManifestRuleIdentifier(ManifestValueBase manifestValue,
                                       Type ruleType,
-                                      string ruleName = default) : base(ruleType, manifestValue.ValidatedType, ruleName)
+                                      string ruleName = default) : base(ruleType, manifestValue?.ValidatedType, ruleName)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
         }

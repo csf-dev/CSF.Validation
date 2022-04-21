@@ -12,8 +12,7 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWhichMayBeExecutedShouldNotReturnRulesWhichHaveUnresolvedDependencies([ExecutableModel] ExecutableRule rule1,
                                                                                                   [ExecutableModel] ExecutableRule rule2,
                                                                                                   [ExecutableModel] ExecutableRule rule3,
-                                                                                                  [ExecutableModel] ExecutableRule rule4,
-                                                                                                  ValidationOptions options)
+                                                                                                  [ExecutableModel] ExecutableRule rule4)
         {
             var rulesAndDeps = new[] {
                 new ExecutableRuleAndDependencies(rule1, new[] { rule2 }),
@@ -21,7 +20,7 @@ namespace CSF.Validation.RuleExecution
                 new ExecutableRuleAndDependencies(rule3, null, new[] { rule2 }),
                 new ExecutableRuleAndDependencies(rule4)
             };
-            var sut = GetSut(rulesAndDeps, options);
+            var sut = GetSut(rulesAndDeps);
 
             Assert.That(() => sut.GetRulesWhichMayBeExecuted(), Is.EquivalentTo(new[] { rule3, rule4 }));
         }
@@ -30,8 +29,7 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWhichMayBeExecutedShouldReturnRulesWhichMayBeExecutedBecauseTheirDependenciesPassed([ExecutableModel] ExecutableRule rule1,
                                                                                                                 [ExecutableModel] ExecutableRule rule2,
                                                                                                                 [ExecutableModel] ExecutableRule rule3,
-                                                                                                                [ExecutableModel] ExecutableRule rule4,
-                                                                                                                ValidationOptions options)
+                                                                                                                [ExecutableModel] ExecutableRule rule4)
         {
             var rulesAndDeps = new[] {
                 new ExecutableRuleAndDependencies(rule1, new[] { rule2 }),
@@ -39,7 +37,7 @@ namespace CSF.Validation.RuleExecution
                 new ExecutableRuleAndDependencies(rule3, dependedUponBy: new[] { rule2 }),
                 new ExecutableRuleAndDependencies(rule4)
             };
-            var sut = GetSut(rulesAndDeps, options);
+            var sut = GetSut(rulesAndDeps);
             rule3.Result = Pass();
             sut.HandleValidationRuleResult(rule3);
 
@@ -51,8 +49,7 @@ namespace CSF.Validation.RuleExecution
                                                                                           [ExecutableModel] ExecutableRule rule2,
                                                                                           [ExecutableModel] ExecutableRule rule3,
                                                                                           [ExecutableModel] ExecutableRule rule4,
-                                                                                          [ExecutableModel] ExecutableRule rule5,
-                                                                                          ValidationOptions options)
+                                                                                          [ExecutableModel] ExecutableRule rule5)
         {
             rule1.Result = Pass();
             rule2.Result = Fail();
@@ -65,7 +62,7 @@ namespace CSF.Validation.RuleExecution
                 new ExecutableRuleAndDependencies(rule4),
                 new ExecutableRuleAndDependencies(rule5)
             };
-            var sut = GetSut(rulesAndDeps, options);
+            var sut = GetSut(rulesAndDeps);
 
             Assert.That(() => sut.GetRulesWhichMayBeExecuted(), Is.EquivalentTo(new[] { rule5 }));
         }
@@ -74,8 +71,7 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWhoseDependenciesHaveFailedShouldReturnCorrectRulesAfterHandleValidationRuleResult([ExecutableModel] ExecutableRule rule1,
                                                                                                                [ExecutableModel] ExecutableRule rule2,
                                                                                                                [ExecutableModel] ExecutableRule rule3,
-                                                                                                               [ExecutableModel] ExecutableRule rule4,
-                                                                                                               ValidationOptions options)
+                                                                                                               [ExecutableModel] ExecutableRule rule4)
         {
             var rulesAndDeps = new[] {
                 new ExecutableRuleAndDependencies(rule1, new[] { rule2 }),
@@ -83,14 +79,14 @@ namespace CSF.Validation.RuleExecution
                 new ExecutableRuleAndDependencies(rule3, null, new[] { rule2 }),
                 new ExecutableRuleAndDependencies(rule4)
             };
-            var sut = GetSut(rulesAndDeps, options);
+            var sut = GetSut(rulesAndDeps);
             rule3.Result = Fail();
             sut.HandleValidationRuleResult(rule3);
 
             Assert.That(() => sut.GetRulesWhoseDependenciesHaveFailed(), Is.EquivalentTo(new[] { rule2, rule1 }));
         }
 
-        ITracksRuleDependencies GetSut(IEnumerable<ExecutableRuleAndDependencies> rules, ValidationOptions options)
-            => new RuleDependencyTracker(rules, options);
+        ITracksRuleDependencies GetSut(IEnumerable<ExecutableRuleAndDependencies> rules)
+            => new RuleDependencyTracker(rules);
     }
 }
