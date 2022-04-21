@@ -20,6 +20,9 @@ before_build:
     - dotnet --version
     - dotnet restore --verbosity m
     - cmd: >
+        IF NOT DEFINED APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH (SET BranchName=%APPVEYOR_REPO_BRANCH%)
+        ELSE (SET BranchName=%APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH%)
+    - cmd: >
         dotnet-sonarscanner begin 
         /k:"CSF.Validation"
         /v:AppVeyor_build_%APPVEYOR_BUILD_NUMBER%
@@ -28,6 +31,8 @@ before_build:
         /d:sonar.login=%SONARCLOUD_SECRET_KEY%
         /d:sonar.cs.nunit.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\TestResults.xml
         /d:sonar.cs.opencover.reportsPaths=%APPVEYOR_BUILD_FOLDER%\CSF.Validation.Tests\TestResults\coverage.opencover.xml
+        /d:sonar.branch.name=%BranchName%
+        /d:sonar.branch.target=%APPVEYOR_REPO_BRANCH%
         /s:%APPVEYOR_BUILD_FOLDER%\.sonarqube-analysisproperties.xml
 
 build_script:

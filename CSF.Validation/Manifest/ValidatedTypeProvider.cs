@@ -20,13 +20,22 @@ namespace CSF.Validation.Manifest
         {
             if(!enumerateItems) return type;
 
-            return (from @interface in type.GetTypeInfo().ImplementedInterfaces
+            return (from @interface in GetTypeInterfaces(type)
                     let interfaceInfo = @interface.GetTypeInfo()
                     where
                         interfaceInfo.IsGenericType
                      && interfaceInfo.GetGenericTypeDefinition() == typeof(IEnumerable<>)
                     select @interface.GenericTypeArguments.Single())
                 .First();
+        }
+
+        static IEnumerable<Type> GetTypeInterfaces(Type type)
+        {
+            var typeInfo = type.GetTypeInfo();
+            if(!typeInfo.IsInterface)
+                return typeInfo.ImplementedInterfaces;
+
+            return new[] { type }.Union(typeInfo.ImplementedInterfaces);
         }
     }
 }

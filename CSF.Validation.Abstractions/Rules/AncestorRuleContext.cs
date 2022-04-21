@@ -45,7 +45,7 @@ namespace CSF.Validation.Rules
         /// This matches the rule context back to the original <see cref="Manifest.ManifestValue"/> from which it was created.
         /// </para>
         /// </remarks>
-        public ManifestValue ManifestValue { get; }
+        public ManifestValueBase ManifestValue { get; }
 
         /// <summary>
         /// Where the immediate child of this ancestor context is created from a collection item, this property provides
@@ -70,8 +70,8 @@ namespace CSF.Validation.Rules
         /// </item>
         /// </list>
         /// <para>
-        /// There are equivalents to the above when using the Manifest Model: <see cref="ManifestModel.Value.EnumerateItems"/> (when set to <see langword="true" />)
-        /// and for the Validation Manifest: <see cref="Manifest.ManifestValue.EnumerateItems"/> (also when set to <see langword="true" />).
+        /// There are equivalents to the above when using the Manifest Model: <see cref="ManifestModel.ValueBase.CollectionItemValue"/>
+        /// and for the Validation Manifest: <see cref="Manifest.ManifestValueBase.CollectionItemValue"/> (when set a non-<see langword="null" /> value).
         /// </para>
         /// <para>
         /// If the child context was not created from a collection then then this property will be <see langword="null"/>.
@@ -90,7 +90,7 @@ namespace CSF.Validation.Rules
         /// <param name="obj">The object being validated in this ancestor context.</param>
         /// <param name="manifestValue">The manifest value.</param>
         /// <param name="collectionIndex">The collection index by which you would traverse from this ancestor context to its immediate child (where applicable).</param>
-        public AncestorRuleContext(object objectIdentity, object obj, ManifestValue manifestValue, long? collectionIndex = null)
+        public AncestorRuleContext(object objectIdentity, object obj, ManifestValueBase manifestValue, long? collectionIndex = null)
         {
             ObjectIdentity = objectIdentity;
             Object = obj ?? throw new ArgumentNullException(nameof(obj));

@@ -12,7 +12,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets or sets the manifest value to which the current instance relates.
         /// </summary>
-        public ManifestValue ManifestValue { get; set;  }
+        public ManifestValueBase ManifestValue { get; set;  }
 
         /// <summary>
         /// Gets or sets the actual value to be validated.
@@ -40,6 +40,13 @@ namespace CSF.Validation.RuleExecution
         public IList<ExecutableRule> Rules { get; set; } = new List<ExecutableRule>();
 
         /// <summary>
+        /// Where this validated value represents a collection of values, and there is a separate
+        /// validated value representing the items of that collection, this property should contain
+        /// a collection of the values which represent the items of that collection.
+        /// </summary>
+        public IList<ValidatedValue> CollectionItems { get; set; } = new List<ValidatedValue>();
+
+        /// <summary>
         /// Gets or sets a numeric item order, indicating the order in which this value was retrieved from a collection.
         /// </summary>
         /// <remarks>
@@ -48,12 +55,14 @@ namespace CSF.Validation.RuleExecution
         /// might only be <see cref="IEnumerable{T}"/> and not (for example) <see cref="IList{T}"/>.
         /// Thus, the order in which values are retrieved might not be meaningful and might not even
         /// be stable.
-        /// </para>
-        /// <para>
-        /// However, for informational purposes, this value is still retrieved and made available by
+        /// For informational purposes, this value is still retrieved and made available by
         /// this property.
         /// </para>
+        /// <para>
+        /// If the current validated value does not represent an item from a collection then this property will contain
+        /// <see langword="null" />.
+        /// </para>
         /// </remarks>
-        public long CollectionItemOrder { get; set; }
+        public long? CollectionItemOrder { get; set; }
     }
 }

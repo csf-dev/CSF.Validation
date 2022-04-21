@@ -153,7 +153,8 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
         public IConfiguresValidator<TValidated> ForMemberItems<TValue>(Expression<Func<TValidated, IEnumerable<TValue>>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
-            var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, context, true);
+            var memberContext = ruleContextFactory.GetContextForMember<TValidated,IEnumerable<TValue>>(memberAccessor, context);
+            var ruleContext = ruleContextFactory.GetContextForMember<TValidated, TValue>(null, memberContext, true);
             AddValueValidation(valueConfig, ruleContext);
             return this;
         }
@@ -201,7 +202,8 @@ namespace CSF.Validation.ValidatorBuilding
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
         public IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
-            var ruleContext = ruleContextFactory.GetContextForValue(valuesAccessor, context, true);
+            var valueContext = ruleContextFactory.GetContextForValue<TValidated,IEnumerable<TValue>>(valuesAccessor, context);
+            var ruleContext = ruleContextFactory.GetContextForValue<TValidated, TValue>(null, valueContext, true);
             AddValueValidation(valueConfig, ruleContext);
             return this;
         }
@@ -210,7 +212,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// Gets a manifest value from the current instance.
         /// </summary>
         /// <returns>A manifest value.</returns>
-        public ManifestValue GetManifestValue()
+        public ManifestValueBase GetManifestValue()
         {
             var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
             
@@ -218,7 +220,8 @@ namespace CSF.Validation.ValidatorBuilding
             {
                 if(manifestValue == context.ManifestValue) continue;
                 if(context.ManifestValue.Children.Contains(manifestValue)) continue;
-                context.ManifestValue.Children.Add(manifestValue);
+                if(!(manifestValue is ManifestValue value)) continue;
+                context.ManifestValue.Children.Add(value);
             }
 
             return context.ManifestValue;
@@ -232,7 +235,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             return new ValidationManifest
             {
-                RootValue = GetManifestValue(),
+                RootValue = GetManifestValue() as ManifestValue,
                 ValidatedType = typeof(TValidated),
             };
         }

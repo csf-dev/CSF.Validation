@@ -34,7 +34,6 @@ namespace CSF.Validation.ManifestModel
                 var converted = result.ConvertedValues.Single();
                 Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.AccessorFromParent)).SameAs(context.AccessorFromParent));
                 Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.Children)).Empty);
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.EnumerateItems)).EqualTo(context.CurrentValue.EnumerateItems));
                 Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.IdentityAccessor)).SameAs(accessor.AccessorFunction));
                 Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(context.MemberName));
                 Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.Parent)).SameAs(context.ParentManifestValue));
@@ -90,8 +89,7 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(validatedTypeProvider)
                 .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
                 .Returns(typeof(ComplexObject));
-            context.CurrentValue.Children.Add("Foo", collectionChild);
-            context.CurrentValue.EnumerateItems = true;
+            context.CurrentValue.CollectionItemValue = new CollectionItemValue { Children = new Dictionary<string,Value>{ { "Foo", collectionChild } }, };
             context.ValidatedType = typeof(List<ComplexObject>);
 
             var result = sut.ConvertAllValues(context);
@@ -115,8 +113,7 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(validatedTypeProvider)
                 .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
                 .Returns(typeof(ComplexObject));
-            context.CurrentValue.EnumerateItems = true;
-            context.CurrentValue.IdentityMemberName = "Foo";
+            context.CurrentValue.CollectionItemValue = new CollectionItemValue { IdentityMemberName = "Foo" };
             context.ValidatedType = typeof(List<ComplexObject>);
 
             var result = sut.ConvertAllValues(context);

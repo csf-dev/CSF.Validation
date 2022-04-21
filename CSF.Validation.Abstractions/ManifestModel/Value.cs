@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace CSF.Validation.ManifestModel
@@ -21,66 +20,8 @@ namespace CSF.Validation.ManifestModel
     /// </remarks>
     /// <seealso cref="Rule"/>
     /// <seealso cref="RelativeIdentifier"/>
-    public class Value
+    public class Value : ValueBase
     {
-        IDictionary<string,Value> children = new Dictionary<string,Value>();
-        ICollection<Rule> rules = new List<Rule>();
-
-        /// <summary>
-        /// Gets or sets a collection of the child values from the current instance.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Each value that is directly derived from a member of the current instance
-        /// is stored in this collection.  The collection key is the member name (typically
-        /// a property name) by which the value is accessed.
-        /// </para>
-        /// <para>
-        /// This property may not be set to <see langword="null" />, and will raise <see cref="ArgumentNullException"/>
-        /// if an attempt is made to do so.
-        /// </para>
-        /// </remarks>
-        /// <example>
-        /// <para>
-        /// If the current <see cref="Value"/> instance represents an object which has a property named <c>Age</c>
-        /// which should be validated, then the Value instance for the Age property would be stored at
-        /// <c>Children["Age"]</c>.
-        /// </para>
-        /// </example>
-        public IDictionary<string,Value> Children
-        {
-            get => children;
-            set => children = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Gets or sets a collection of rules for the current value.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Each rule validates the object represented by the current value instance.  To validate values
-        /// that are accessed via members of that object, add new value instances to the <see cref="Children"/>
-        /// property of this instance and add rules to those child value instances.
-        /// </para>
-        /// </remarks>
-        public ICollection<Rule> Rules
-        {
-            get => rules;
-            set => rules = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Gets or sets an optional member name which provides the identity value for the current object.
-        /// </summary>
-        public string IdentityMemberName { get; set; }
-        
-        /// <summary>
-        /// This should be set to <see langword="true"/> if the object represented by this value is an <see cref="IEnumerable{T}"/> which
-        /// should be enumerated and each of its items validated independently.
-        /// This should be set to <see langword="false"/> if not.
-        /// </summary>
-        public bool EnumerateItems { get; set; }
-
         /// <summary>
         /// Indicates that the validator should ignore any exceptions encountered whilst getting the value from
         /// the member accessor for this value.

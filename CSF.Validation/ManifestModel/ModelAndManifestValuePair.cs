@@ -11,11 +11,11 @@ namespace CSF.Validation.ManifestModel
         /// <summary>
         /// Gets or sets the manifest value instance.
         /// </summary>
-        public ManifestValue ManifestValue { get; set; }
+        public ManifestValueBase ManifestValue { get; set; }
         
         /// <summary>
         /// Gets or sets the model value instance.
         /// </summary>
-        public Value ModelValue { get; set; }
+        public ValueBase ModelValue { get; set; }
     }
 }

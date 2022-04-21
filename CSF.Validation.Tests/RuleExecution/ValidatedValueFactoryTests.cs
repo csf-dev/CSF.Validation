@@ -1,8 +1,7 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
-using CSF.Validation.Rules;
 using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;
@@ -13,31 +12,103 @@ namespace CSF.Validation.RuleExecution
     public class ValidatedValueFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnSingleValueForManifestValueWithNoParentOrChildrenOrRules(ValidatedValueFactory sut,
+        public void GetValidatedValueShouldReturnSingleValueForManifestValueWithNoParentOrChildrenOrRules([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                          ValidatedValueFactory sut,
                                                                                                           object validatedValue,
-                                                                                                          ValidationOptions validationOptions)
+                                                                                                          ValidationOptions validationOptions,
+                                                                                                          [ExecutableModel] ValidatedValue value)
         {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(object),
-            };
+            var manifestValue = new ManifestValue { ValidatedType = typeof(object) };
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(value);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
-            Assert.Multiple(() =>
-            {
-                Assert.That(result.ActualValue, Is.SameAs(validatedValue), nameof(ValidatedValue.ActualValue));
-                Assert.That(result.ManifestValue, Is.SameAs(manifestValue), nameof(ValidatedValue.ManifestValue));
-                Assert.That(result.ParentValue, Is.Null, nameof(ValidatedValue.ParentValue));
-                Assert.That(result.ChildValues, Is.Empty, nameof(ValidatedValue.ChildValues));
-            });
+            Assert.That(result, Is.SameAs(value));
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnParentAndChildValuesForObjectWithAChild(ValidatedValueFactory sut,
-                                                                                         [NoAutoProperties] ComplexObject validatedValue,
-                                                                                         [NoAutoProperties] ComplexObject childValue,
-                                                                                         ValidationOptions validationOptions)
+        public void GetValidatedValueShouldCreateCollectionValueFromFactoryIfManifestHasACollectionItem([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                        [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
+                                                                                                        ValidatedValueFactory sut,
+                                                                                                        IEnumerable<object> validatedValue,
+                                                                                                        ValidationOptions validationOptions,
+                                                                                                        [ExecutableModel] ValidatedValue value,
+                                                                                                        [ExecutableModel] ValidatedValue collectionValue,
+                                                                                                        object item)
+        {
+            var manifestValue = new ManifestValue
+            {
+                ValidatedType = typeof(IEnumerable<object>),
+                CollectionItemValue = new ManifestCollectionItem
+                {
+                    ValidatedType = typeof(object)
+                },
+            };
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(value);
+            value.ActualValue = validatedValue;
+            Mock.Get(enumerableProvider)
+                .Setup(x => x.GetEnumerableItems(validatedValue, manifestValue.CollectionItemValue.ValidatedType))
+                .Returns(new[] { item });
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue.CollectionItemValue && b.ActualValue == item)))
+                .Returns(collectionValue);
+
+            sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
+
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue.CollectionItemValue)), Times.Once);
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatedValueShouldCreateAValueValueFromFactoryForEachCollectionItem([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                             [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
+                                                                                             ValidatedValueFactory sut,
+                                                                                             IEnumerable<object> validatedValue,
+                                                                                             ValidationOptions validationOptions,
+                                                                                             [ExecutableModel] ValidatedValue value,
+                                                                                             [ExecutableModel] ValidatedValue collectionValue,
+                                                                                             object item1,
+                                                                                             object item2,
+                                                                                             object item3)
+        {
+            var manifestValue = new ManifestValue
+            {
+                ValidatedType = typeof(IEnumerable<object>),
+                CollectionItemValue = new ManifestCollectionItem
+                {
+                    ValidatedType = typeof(object)
+                },
+            };
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(value);
+            value.ActualValue = validatedValue;
+            Mock.Get(enumerableProvider)
+                .Setup(x => x.GetEnumerableItems(validatedValue, manifestValue.CollectionItemValue.ValidatedType))
+                .Returns(new[] { item1, item2, item3 });
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue.CollectionItemValue)))
+                .Returns(collectionValue);
+
+            sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
+
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue.CollectionItemValue)), Times.Exactly(3));
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatedValueShouldProcessAChildManifestValueIfTheActualValueCanBeRetrieved([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                    [Frozen] IGetsValueToBeValidated valueProvider,
+                                                                                                    ValidatedValueFactory sut,
+                                                                                                    [NoAutoProperties] ComplexObject validatedValue,
+                                                                                                    string childValue,
+                                                                                                    ValidationOptions validationOptions,
+                                                                                                    [ExecutableModel] ValidatedValue val,
+                                                                                                    [ExecutableModel] ValidatedValue childVal)
         {
             var manifestValue = new ManifestValue
             {
@@ -46,24 +117,37 @@ namespace CSF.Validation.RuleExecution
             var childManifest = new ManifestValue
             {
                 Parent = manifestValue,
-                AccessorFromParent = obj => ((ComplexObject)obj).Associated,
+                ValidatedType = typeof(string),
             };
             manifestValue.Children.Add(childManifest);
-            validatedValue.Associated = childValue;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(val);
+            val.ActualValue = validatedValue;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest)))
+                .Returns(childVal);
+            childVal.ActualValue = childValue;
+            object child = childValue;
+            Mock.Get(valueProvider)
+                .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
+                .Returns(true);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
-            Assert.That(result.ChildValues,
-                        Has.One.Matches<ValidatedValue>(v => v.ManifestValue == childManifest
-                                                          && v.ActualValue == childValue
-                                                          && v.ParentValue == result));
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest && b.ActualValue == child)), Times.Once);
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldThrowIfAChildAccessorThrowsAndExceptionsAreNotIgnored(ValidationOptions options,
-                                                                                                 ValidatedValueFactory sut,
-                                                                                                 [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                 Exception exception)
+        public void GetValidatedValueShouldNotProcessAChildManifestValueIfTheActualValueCannotBeRetrieved([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                          [Frozen] IGetsValueToBeValidated valueProvider,
+                                                                                                          ValidatedValueFactory sut,
+                                                                                                          [NoAutoProperties] ComplexObject validatedValue,
+                                                                                                          string childValue,
+                                                                                                          ValidationOptions validationOptions,
+                                                                                                          [ExecutableModel] ValidatedValue val,
+                                                                                                          [ExecutableModel] ValidatedValue childVal)
         {
             var manifestValue = new ManifestValue
             {
@@ -72,108 +156,37 @@ namespace CSF.Validation.RuleExecution
             var childManifest = new ManifestValue
             {
                 Parent = manifestValue,
-                AccessorFromParent = obj => throw exception,
-                ValidatedType = typeof(ComplexObject),
+                ValidatedType = typeof(string),
             };
             manifestValue.Children.Add(childManifest);
-            options.IgnoreValueAccessExceptions = false;
-
-            Assert.That(() => sut.GetValidatedValue(manifestValue, validatedValue, options), Throws.InstanceOf<ValidationException>().And.InnerException.SameAs(exception));
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldNotThrowIfAChildAccessorThrowsButExceptionsAreIgnoredGlobally(ValidationOptions options,
-                                                                                                         ValidatedValueFactory sut,
-                                                                                                         [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                         Exception exception)
-        {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(ComplexObject),
-            };
-            var childManifest = new ManifestValue
-            {
-                Parent = manifestValue,
-                AccessorFromParent = obj => throw exception,
-                ValidatedType = typeof(ComplexObject),
-            };
-            manifestValue.Children.Add(childManifest);
-            options.IgnoreValueAccessExceptions = true;
-
-            ValidatedValue result = null;
-            Assert.Multiple(() =>
-            {
-                Assert.That(() => result = sut.GetValidatedValue(manifestValue, validatedValue, options), Throws.Nothing, "Throws no exception");
-                Assert.That(result?.ChildValues.Single().ActualValue, Is.Null, "Actual value has been set to null");
-            });
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldNotThrowIfAChildAccessorThrowsButExceptionsAreIgnoredForThisManifestValue(ValidationOptions options,
-                                                                                                                     ValidatedValueFactory sut,
-                                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                                     Exception exception)
-        {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(ComplexObject),
-            };
-            var childManifest = new ManifestValue
-            {
-                Parent = manifestValue,
-                AccessorFromParent = obj => throw exception,
-                IgnoreAccessorExceptions = true,
-                ValidatedType = typeof(ComplexObject),
-            };
-            manifestValue.Children.Add(childManifest);
-            options.IgnoreValueAccessExceptions = false;
-
-            ValidatedValue result = null;
-            Assert.Multiple(() =>
-            {
-                Assert.That(() => result = sut.GetValidatedValue(manifestValue, validatedValue, options), Throws.Nothing, "Throws no exception");
-                Assert.That(result?.ChildValues.Single().ActualValue, Is.Null, "Actual value has been set to null");
-            });
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnValueUsingIdentityIfAnAccessorIsProvided(ValidatedValueFactory sut,
-                                                                                          [NoAutoProperties] ComplexObject validatedValue,
-                                                                                          ValidationOptions validationOptions)
-        {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(ComplexObject),
-                IdentityAccessor = obj => ((ComplexObject) obj).Identity,
-            };
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(val);
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest)))
+                .Returns(childVal);
+            object child = childValue;
+            Mock.Get(valueProvider)
+                .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
+                .Returns(false);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
-            Assert.That(result.ValueIdentity, Is.EqualTo(validatedValue.Identity));
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest && b.ActualValue == child)), Times.Never);
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnValueWithNullIdentityIfAccessorIsNotProvided(ValidatedValueFactory sut,
-                                                                                              [NoAutoProperties] ComplexObject validatedValue,
-                                                                                              ValidationOptions validationOptions)
-        {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(ComplexObject),
-            };
-
-            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
-
-            Assert.That(result.ValueIdentity, Is.Null);
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnACollectionOfChildValuesWhenEnumerateItemsIsEnabled(ValidatedValueFactory sut,
-                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                     [NoAutoProperties] ComplexObject child1,
-                                                                                                     [NoAutoProperties] ComplexObject child2,
-                                                                                                     [NoAutoProperties] ComplexObject child3,
-                                                                                                     ValidationOptions validationOptions)
+        public void GetValidatedValueShouldBeAbleToProcessAGrandchildManifestValue([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                    [Frozen] IGetsValueToBeValidated valueProvider,
+                                                                                                    ValidatedValueFactory sut,
+                                                                                                    [NoAutoProperties] ComplexObject validatedValue,
+                                                                                                    [NoAutoProperties] ComplexObject childValue,
+                                                                                                    string grandchildValue,
+                                                                                                    ValidationOptions validationOptions,
+                                                                                                    [ExecutableModel] ValidatedValue val,
+                                                                                                    [ExecutableModel] ValidatedValue childVal,
+                                                                                                    [ExecutableModel] ValidatedValue grandchildVal)
         {
             var manifestValue = new ManifestValue
             {
@@ -182,125 +195,119 @@ namespace CSF.Validation.RuleExecution
             var childManifest = new ManifestValue
             {
                 Parent = manifestValue,
-                AccessorFromParent = obj => ((ComplexObject)obj).Children,
-                EnumerateItems = true,
-            };
-            manifestValue.Children.Add(childManifest);
-            validatedValue.Children.Add(child1);
-            validatedValue.Children.Add(child2);
-            validatedValue.Children.Add(child3);
-
-            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
-
-            Assert.Multiple(() =>
-            {
-                Assert.That(result.ChildValues, Has.One.Matches<ValidatedValue>(v => v.ActualValue == child1 && v.CollectionItemOrder == 0), "Child 1");
-                Assert.That(result.ChildValues, Has.One.Matches<ValidatedValue>(v => v.ActualValue == child2 && v.CollectionItemOrder == 1), "Child 2");
-                Assert.That(result.ChildValues, Has.One.Matches<ValidatedValue>(v => v.ActualValue == child3 && v.CollectionItemOrder == 2), "Child 3");
-            });
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldThrowIfEnumerateItemsIsEnabledButValueIsNotEnumerable(ValidatedValueFactory sut,
-                                                                                                 [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                 [NoAutoProperties] ComplexObject childValue,
-                                                                                                 ValidationOptions validationOptions)
-        {
-            var manifestValue = new ManifestValue
-            {
                 ValidatedType = typeof(ComplexObject),
-            };
-            var childManifest = new ManifestValue
-            {
-                Parent = manifestValue,
-                AccessorFromParent = obj => ((ComplexObject)obj).Associated,
-                EnumerateItems = true,
-            };
-            manifestValue.Children.Add(childManifest);
-            validatedValue.Associated = childValue;
-
-            Assert.That(() => sut.GetValidatedValue(manifestValue, validatedValue, validationOptions), Throws.InstanceOf<ValidationException>());
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnParentThroughGrandchildForObjectWithAGrandchild(ValidatedValueFactory sut,
-                                                                                                 [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                 [NoAutoProperties] ComplexObject childValue,
-                                                                                                 [NoAutoProperties] ComplexObject grandchildValue,
-                                                                                                 ValidationOptions validationOptions)
-        {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(ComplexObject),
-            };
-            var childManifest = new ManifestValue
-            {
-                Parent = manifestValue,
-                AccessorFromParent = obj => ((ComplexObject)obj).Associated,
             };
             var grandchildManifest = new ManifestValue
             {
                 Parent = childManifest,
-                AccessorFromParent = obj => ((ComplexObject)obj).Associated,
+                ValidatedType = typeof(string),
             };
             manifestValue.Children.Add(childManifest);
             childManifest.Children.Add(grandchildManifest);
-            validatedValue.Associated = childValue;
-            childValue.Associated = grandchildValue;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(val);
+            val.ActualValue = validatedValue;
+            val.ManifestValue = manifestValue;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest)))
+                .Returns(childVal);
+            childVal.ActualValue = childValue;
+            childVal.ManifestValue = childManifest;;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == grandchildManifest)))
+                .Returns(grandchildVal);
+            grandchildVal.ActualValue = grandchildValue;
+            grandchildVal.ManifestValue = grandchildManifest;
+            object child = childValue;
+            Mock.Get(valueProvider)
+                .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
+                .Returns(true);
+            object grandchild = grandchildValue;
+            Mock.Get(valueProvider)
+                .Setup(x => x.TryGetValueToBeValidated(grandchildManifest, childValue, validationOptions, out grandchild))
+                .Returns(true);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
-            Assert.That(result.ChildValues.Single().ChildValues.Single().ActualValue, Is.SameAs(grandchildValue));
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest && b.ActualValue == child)), Times.Once);
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == grandchildManifest && b.ActualValue == grandchild)), Times.Once);
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldNotIncludeAChildObjectIfTheParentIsNull(ValidatedValueFactory sut,
-                                                                                   ValidationOptions validationOptions)
+        public void GetValidatedValueShouldBeAbleToProcessACollectionWithinACollection([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                    [Frozen] IGetsValueToBeValidated valueProvider,
+                                                                                                    [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
+                                                                                                    ValidatedValueFactory sut,
+                                                                                                    [NoAutoProperties] ComplexObject validatedValue,
+                                                                                                    ValidationOptions validationOptions,
+                                                                                                    [ExecutableModel] ValidatedValue val,
+                                                                                                    [ExecutableModel] ValidatedValue firstCollection,
+                                                                                                    [ExecutableModel] ValidatedValue secondCollection,
+                                                                                                    [ExecutableModel] ValidatedValue item)
         {
             var manifestValue = new ManifestValue
             {
                 ValidatedType = typeof(ComplexObject),
+                Children = new [] {
+                    new ManifestValue
+                    {
+                        ValidatedType = typeof(ICollection<List<ComplexObject>>),
+                        MemberName = nameof(ComplexObject.DoubleCollection),
+                        AccessorFromParent = obj => ((ComplexObject) obj).DoubleCollection,
+                        CollectionItemValue = new ManifestCollectionItem
+                        {
+                            ValidatedType = typeof(List<ComplexObject>),
+                            CollectionItemValue = new ManifestCollectionItem
+                            {
+                                ValidatedType = typeof(ComplexObject),
+                            }
+                        },
+                    },
+                },
             };
-            var childManifest = new ManifestValue
-            {
-                Parent = manifestValue,
-                AccessorFromParent = obj => ((ComplexObject)obj).Associated,
-            };
-            manifestValue.Children.Add(childManifest);
-
-            var result = sut.GetValidatedValue(manifestValue, null, validationOptions);
-
-            Assert.That(result.ChildValues, Is.Empty);
-        }
-
-        [Test,AutoMoqData]
-        public void GetValidatedValueShouldReturnValueWithAnExecutableRuleForEachManifestRule([Frozen] IGetsValidationLogic logicFactory,
-                                                                                              ValidatedValueFactory sut,
-                                                                                              object validatedValue,
-                                                                                              IValidationLogic logic1,
-                                                                                              IValidationLogic logic2,
-                                                                                              IValidationLogic logic3,
-                                                                                              [ManifestModel] ManifestRuleIdentifier id1,
-                                                                                              [ManifestModel] ManifestRuleIdentifier id2,
-                                                                                              [ManifestModel] ManifestRuleIdentifier id3,
-                                                                                              ValidationOptions validationOptions)
-        {
-            var manifestValue = new ManifestValue
-            {
-                ValidatedType = typeof(object),
-            };
-
-            var rule1 = new ManifestRule(manifestValue, id1);
-            var rule2 = new ManifestRule(manifestValue, id2);
-            var rule3 = new ManifestRule(manifestValue, id3);
-            manifestValue.Rules = new[] { rule1, rule2, rule3 };
-            Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule1)).Returns(logic1);
-            Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule2)).Returns(logic2);
-            Mock.Get(logicFactory).Setup(x => x.GetValidationLogic(rule3)).Returns(logic3);
+            var child = manifestValue.Children.Single();
+            child.Parent = manifestValue;
+            child.CollectionItemValue.Parent = manifestValue;
+            child.CollectionItemValue.CollectionItemValue.Parent = manifestValue;
+            validatedValue.DoubleCollection = new List<List<ComplexObject>>{new List<ComplexObject>{new ComplexObject()}};
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(val);
+            val.ActualValue = validatedValue;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child)))
+                .Returns(firstCollection);
+            firstCollection.ActualValue = validatedValue.DoubleCollection;
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child.CollectionItemValue)))
+                .Returns(secondCollection);
+            secondCollection.ActualValue = validatedValue.DoubleCollection.First();
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child.CollectionItemValue.CollectionItemValue)))
+                .Returns(item);
+            item.ActualValue = validatedValue.DoubleCollection.First().First();
+            object validatedVal = validatedValue;
+            Mock.Get(valueProvider)
+                .Setup(x => x.TryGetValueToBeValidated(manifestValue, validatedValue, validationOptions, out validatedVal))
+                .Returns(true);
+            object doubleCollection = firstCollection.ActualValue;
+            Mock.Get(valueProvider)
+                .Setup(x => x.TryGetValueToBeValidated(child, validatedValue, validationOptions, out doubleCollection))
+                .Returns(true);
+            Mock.Get(enumerableProvider)
+                .Setup(x => x.GetEnumerableItems(validatedValue.DoubleCollection, child.CollectionItemValue.ValidatedType))
+                .Returns(validatedValue.DoubleCollection);
+            Mock.Get(enumerableProvider)
+                .Setup(x => x.GetEnumerableItems(validatedValue.DoubleCollection.First(), child.CollectionItemValue.CollectionItemValue.ValidatedType))
+                .Returns(validatedValue.DoubleCollection.First());
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
 
-            Assert.That(result.Rules?.Select(x => x.RuleLogic), Is.EqualTo(new[] { logic1, logic2, logic3 }));
+            Mock.Get(valueFromBasisFactory)
+                .Verify(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child.CollectionItemValue.CollectionItemValue)), Times.Once);
         }
     }
 }

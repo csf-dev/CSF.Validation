@@ -101,18 +101,19 @@ namespace CSF.Validation.ValidatorBuilding
         /// Gets a manifest value from the current instance.
         /// </summary>
         /// <returns>A manifest value.</returns>
-        public ManifestValue GetManifestValue()
+        public ManifestValueBase GetManifestValue()
         {
             var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
             
             foreach(var manifestValue in manifestValues)
             {
                 if(manifestValue == context.ManifestValue) continue;
-                context.ManifestValue.Children.Add(manifestValue);
+                if(!(manifestValue is ManifestValue val)) continue;
+                context.ManifestValue.Children.Add(val);
             }
 
-            if(ignoreAccessorExceptions)
-                context.ManifestValue.IgnoreAccessorExceptions = true;
+            if(ignoreAccessorExceptions && context.ManifestValue is ManifestValue value)
+                value.IgnoreAccessorExceptions = true;
 
             return context.ManifestValue;
         }

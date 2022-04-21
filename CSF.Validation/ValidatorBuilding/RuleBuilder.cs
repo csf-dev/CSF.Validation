@@ -76,7 +76,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// </para>
         /// </remarks>
         /// <returns>A manifest value.</returns>
-        public ManifestValue GetManifestValue()
+        public ManifestValueBase GetManifestValue()
         {
             if(ruleCreated)
                 return context.ManifestValue;

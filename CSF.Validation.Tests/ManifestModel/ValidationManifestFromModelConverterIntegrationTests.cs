@@ -42,14 +42,14 @@ namespace CSF.Validation.ManifestModel
         public void GetValidationManifestShouldEnumerateItemsInTheChildrenValue([IntegrationTesting] IServiceProvider services)
         {
             var result = GetValidationManifest(services);
-            Assert.That(result.RootValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Children)).EnumerateItems, Is.True);
+            Assert.That(result.RootValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Children)).CollectionItemValue, Is.Not.Null);
         }
 
         [Test,AutoMoqData]
         public void GetValidationManifestShouldNotEnumerateItemsInTheAssociatedValue([IntegrationTesting] IServiceProvider services)
         {
             var result = GetValidationManifest(services);
-            Assert.That(result.RootValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).EnumerateItems, Is.False);
+            Assert.That(result.RootValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).CollectionItemValue, Is.Null);
         }
 
         [Test,AutoMoqData]
@@ -96,18 +96,20 @@ namespace CSF.Validation.ManifestModel
                         },
                     } },
                     { nameof(ComplexObject.Children), new Value {
-                        IdentityMemberName = nameof(ComplexObject.Identity),
-                        EnumerateItems = true,
-                        Rules =  {
-                            new Rule { RuleTypeName = typeof(ObjectRule).AssemblyQualifiedName, }
-                        },
-                        Children = {
-                            { nameof(ComplexObject.StringProperty), new Value {
-                                Rules = {
-                                    new Rule { RuleTypeName = typeof(StringValueRule).AssemblyQualifiedName },
-                                }
-                            } },
-                        },
+                        CollectionItemValue = new CollectionItemValue
+                        {
+                            IdentityMemberName = nameof(ComplexObject.Identity),
+                            Rules =  {
+                                new Rule { RuleTypeName = typeof(ObjectRule).AssemblyQualifiedName, }
+                            },
+                            Children = {
+                                { nameof(ComplexObject.StringProperty), new Value {
+                                    Rules = {
+                                        new Rule { RuleTypeName = typeof(StringValueRule).AssemblyQualifiedName },
+                                    }
+                                } },
+                            },
+                        }
                     } },
                     { nameof(ComplexObject.StringProperty), new Value {
                         Rules = {

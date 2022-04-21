@@ -109,7 +109,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// If the validation rule has a parent validated type - the <seealso cref="ManifestValue.Parent"/> property
+        /// If the validation rule has a parent validated type - the <seealso cref="ManifestValueBase.Parent"/> property
         /// of the <see cref="ManifestRule.ManifestValue"/> is not <see langword="null"/> - and the rule type implements
         /// <see cref="IRule{TValue, TValidated}"/> of the appropriate generic types the type of the value rule
         /// interface will be returned.
@@ -132,8 +132,8 @@ namespace CSF.Validation.Rules
         static Type GetBestRuleInterface(ManifestRule ruleDefinition)
         {
             var ruleType = ruleDefinition.Identifier.RuleType;
-            var validatedType = GetValidatedType(ruleDefinition.ManifestValue);
-            var parentValidatedType = GetValidatedType(ruleDefinition.ManifestValue.Parent);
+            var validatedType = ruleDefinition.ManifestValue.ValidatedType;
+            var parentValidatedType = ruleDefinition.ManifestValue.Parent?.ValidatedType;
 
             var valueRuleInterface = TryGetValueRuleInterface(ruleType, validatedType, parentValidatedType);
             if(valueRuleInterface != null) return valueRuleInterface;
@@ -143,29 +143,6 @@ namespace CSF.Validation.Rules
 
             var messageTemplate = (parentValidatedType != null) ? "RuleTypeMustImplementAppropriateRuleOrValueRuleInterface" : "RuleTypeMustImplementAppropriateRuleInterface";
             var message = String.Format(GetExceptionMessage(messageTemplate), ruleType, validatedType, parentValidatedType, nameof(IRule<object>), nameof(IRule<object,object>));
-            throw new ValidatorBuildingException(message);
-        }
-
-        static Type GetValidatedType(ManifestValue manifestValue)
-        {
-            if(manifestValue is null) return null;
-            var type = manifestValue.ValidatedType;
-
-            if(!manifestValue.EnumerateItems) return type;
-
-            var itemType = (from @interface in type.GetTypeInfo().ImplementedInterfaces.Union(new [] { type })
-                            where
-                                @interface.GetTypeInfo().IsGenericType
-                             && @interface.GetGenericTypeDefinition() == typeof(IEnumerable<>)
-                            select @interface.GenericTypeArguments[0])
-                .FirstOrDefault();
-
-            if(!(itemType is null)) return itemType;
-
-            var message = String.Format(GetExceptionMessage("EnumerateItemsIsTrueButValueIsNotEnumerable"),
-                                        nameof(ManifestValue.EnumerateItems),
-                                        type,
-                                        nameof(IEnumerable<object>));
             throw new ValidatorBuildingException(message);
         }
 

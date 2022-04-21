@@ -21,12 +21,14 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
+    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestCollectionItem"/>
     public sealed class ManifestRuleIdentifier : RuleIdentifierBase, IEquatable<ManifestRuleIdentifier>
     {
         /// <summary>
         /// Gets the manifest object to which this rule relates.
         /// </summary>
-        public ManifestValue ManifestValue { get; }
+        public ManifestValueBase ManifestValue { get; }
 
         /// <summary>
         /// Gets a value that indicates whether the specified <see cref="ManifestRuleIdentifier"/>
@@ -81,9 +83,9 @@ namespace CSF.Validation.Manifest
         /// <param name="ruleType">The rule type.</param>
         /// <param name="ruleName">An optional rule name.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="ruleType"/> or <paramref name="manifestValue"/> are <see langword="null"/>.</exception>
-        public ManifestRuleIdentifier(ManifestValue manifestValue,
+        public ManifestRuleIdentifier(ManifestValueBase manifestValue,
                                       Type ruleType,
-                                      string ruleName = default) : base(ruleType, manifestValue?.ValidatedType, ruleName)
+                                      string ruleName = default) : base(ruleType, manifestValue.ValidatedType, ruleName)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
         }

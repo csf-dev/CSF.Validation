@@ -15,34 +15,52 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetContextForMemberShouldReturnContextWithMemberName([Frozen] IStaticallyReflects reflect,
                                                                          [ManifestModel] ValidatorBuilderContext validationContext,
-                                                                         ValidatorBuilderContextFactory sut,
-                                                                         bool enumerate)
+                                                                         ValidatorBuilderContextFactory sut)
         {
             Mock.Get(reflect)
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
             
-            var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext, enumerate);
+            var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.Multiple(() =>
-            {
-                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(nameof(ValidatedObject.AProperty)));
-                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.EnumerateItems)).EqualTo(enumerate));
-            });
+            Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(nameof(ValidatedObject.AProperty)));
         }
 
         [Test,AutoMoqData]
         public void GetContextForValueShouldReturnContextWithoutMemberName([ManifestModel] ValidatorBuilderContext validationContext,
-                                                                           ValidatorBuilderContextFactory sut,
-                                                                           bool enumerate)
+                                                                           ValidatorBuilderContextFactory sut)
         {
-            var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext, enumerate);
+            var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.Multiple(() =>
-            {
-                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).Null);
-                Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.EnumerateItems)).EqualTo(enumerate));
-            });
+            Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).Null);
+        }
+
+        [Test,AutoMoqData]
+        public void GetContextForMemberShouldReturnContextWithManifestValueIfNotEnumeratingItems([Frozen] IStaticallyReflects reflect,
+                                                                                                 [ManifestModel] ValidatorBuilderContext validationContext,
+                                                                                                 ValidatorBuilderContextFactory sut)
+        {
+            Mock.Get(reflect)
+                .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
+                .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
+            
+            var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
+
+            Assert.That(result.ManifestValue, Is.InstanceOf<ManifestValue>());
+        }
+
+        [Test,AutoMoqData]
+        public void GetContextForMemberShouldReturnContextWithManifestCollectionItemIfEnumeratingItems([Frozen] IStaticallyReflects reflect,
+                                                                                                       [ManifestModel] ValidatorBuilderContext validationContext,
+                                                                                                       ValidatorBuilderContextFactory sut)
+        {
+            Mock.Get(reflect)
+                .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
+                .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
+            
+            var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext, true);
+
+            Assert.That(result.ManifestValue, Is.InstanceOf<ManifestCollectionItem>());
         }
 
         [Test,AutoMoqData]
@@ -52,7 +70,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(() => result.ManifestValue.AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
+            Assert.That(() => ((ManifestValue) result.ManifestValue).AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
 
         [Test,AutoMoqData]
@@ -62,7 +80,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(() => result.ManifestValue.AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
+            Assert.That(() => ((ManifestValue) result.ManifestValue).AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
     }
 }
