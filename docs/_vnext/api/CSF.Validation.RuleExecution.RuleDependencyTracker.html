@@ -117,23 +117,31 @@ list of the rules which should not be executed because their dependencies failed
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RuleDependencyTracker : ITracksRuleDependencies</code></pre>
   </div>
+  <h5 id="CSF_Validation_RuleExecution_RuleDependencyTracker_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+Note that this is a stateful service, so it is not suitable to re-use instances
+outside of the context of a validation run.  This object maintains and tracks the
+state of a validation operation throughout the context of that operation.
+For a new validation run, create a new instance of this service.
+</p>
+</div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ValidationOptions_.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.RuleDependencyTracker.%23ctor(System.Collections.Generic.IEnumerable%7BCSF.Validation.RuleExecution.ExecutableRuleAndDependencies%7D%2CCSF.Validation.ValidationOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.RuleDependencyTracker.%23ctor(System.Collections.Generic.IEnumerable%7BCSF.Validation.RuleExecution.ExecutableRuleAndDependencies%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L97">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L103">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor*"></a>
-  <h4 id="CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ValidationOptions_" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ValidationOptions)">RuleDependencyTracker(IEnumerable&lt;ExecutableRuleAndDependencies&gt;, ValidationOptions)</h4>
+  <h4 id="CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})">RuleDependencyTracker(IEnumerable&lt;ExecutableRuleAndDependencies&gt;)</h4>
   <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.Validation.RuleExecution.RuleDependencyTracker.html">RuleDependencyTracker</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleDependencyTracker(IEnumerable&lt;ExecutableRuleAndDependencies&gt; allRules, ValidationOptions options)</code></pre>
+    <pre><code class="lang-csharp hljs">public RuleDependencyTracker(IEnumerable&lt;ExecutableRuleAndDependencies&gt; allRules)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -151,12 +159,6 @@ list of the rules which should not be executed because their dependencies failed
         <td><p>A collection of all of the rules which could be executed.</p>
 </td>
       </tr>
-      <tr>
-        <td><a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a></td>
-        <td><span class="parametername">options</span></td>
-        <td><p>The validation options.</p>
-</td>
-      </tr>
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
@@ -170,7 +172,7 @@ list of the rules which should not be executed because their dependencies failed
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p>If <code data-dev-comment-type="paramref" class="paramref">allRules</code> or <code data-dev-comment-type="paramref" class="paramref">options</code> is <span class="xref">null</span>.</p>
+        <td><p>If <code data-dev-comment-type="paramref" class="paramref">allRules</code> is <span class="xref">null</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -182,7 +184,7 @@ list of the rules which should not be executed because their dependencies failed
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhichMayBeExecuted.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L26">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L33">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhichMayBeExecuted_" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted*"></a>
   <h4 id="CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhichMayBeExecuted" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted">GetRulesWhichMayBeExecuted()</h4>
@@ -215,7 +217,7 @@ their dependencies have executed and passed.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhoseDependenciesHaveFailed.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L41">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L48">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhoseDependenciesHaveFailed_" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed*"></a>
   <h4 id="CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhoseDependenciesHaveFailed" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed">GetRulesWhoseDependenciesHaveFailed()</h4>
@@ -248,7 +250,7 @@ have failed.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_RuleDependencyTracker_HandleValidationRuleResult_CSF_Validation_RuleExecution_ExecutableRule_.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L47">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L54">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_RuleDependencyTracker_HandleValidationRuleResult_" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult*"></a>
   <h4 id="CSF_Validation_RuleExecution_RuleDependencyTracker_HandleValidationRuleResult_CSF_Validation_RuleExecution_ExecutableRule_" data-uid="CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)">HandleValidationRuleResult(ExecutableRule)</h4>
@@ -292,7 +294,7 @@ have failed.</p>
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_RuleDependencyTracker.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.RuleDependencyTracker%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/RuleExecution/RuleDependencyTracker.cs/#L22" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

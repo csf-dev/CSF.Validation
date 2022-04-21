@@ -2160,15 +2160,15 @@ references:
   commentId: T:CSF.Validation.RuleExecution.RuleDependencyTracker
   fullName: CSF.Validation.RuleExecution.RuleDependencyTracker
   nameWithType: RuleDependencyTracker
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ValidationOptions)
-  name: RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>, ValidationOptions)
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ValidationOptions)
-  name.vb: RuleDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies), ValidationOptions)
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, CSF.Validation.ValidationOptions)
-  fullName.vb: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), CSF.Validation.ValidationOptions)
-  nameWithType: RuleDependencyTracker.RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>, ValidationOptions)
-  nameWithType.vb: RuleDependencyTracker.RuleDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies), ValidationOptions)
+- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})
+  name: RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>)
+  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__
+  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})
+  name.vb: RuleDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies))
+  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>)
+  fullName.vb: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies))
+  nameWithType: RuleDependencyTracker.RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>)
+  nameWithType.vb: RuleDependencyTracker.RuleDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies))
 - uid: CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor*
   name: RuleDependencyTracker
   href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_
