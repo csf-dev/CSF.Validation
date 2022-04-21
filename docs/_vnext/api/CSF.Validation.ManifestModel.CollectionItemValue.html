@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Value
+    <title>Class CollectionItemValue
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Value
+    <meta name="title" content="Class CollectionItemValue
    ">
     <meta name="generator" content="docfx 2.58.9.0">
     
@@ -68,19 +68,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="CSF.Validation.ManifestModel.Value">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.ManifestModel.CollectionItemValue">
   
   
-  <h1 id="CSF_Validation_ManifestModel_Value" data-uid="CSF.Validation.ManifestModel.Value" class="text-break">Class Value
+  <h1 id="CSF_Validation_ManifestModel_CollectionItemValue" data-uid="CSF.Validation.ManifestModel.CollectionItemValue" class="text-break">Class CollectionItemValue
   </h1>
-  <div class="markdown level0 summary"><p>A manifest model class representing a value to be validated.</p>
+  <div class="markdown level0 summary"><p>A model which represents an item of a collection which is to be validated individually.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="CSF.Validation.ManifestModel.ValueBase.html">ValueBase</a></div>
-    <div class="level2"><span class="xref">Value</span></div>
+    <div class="level2"><span class="xref">CollectionItemValue</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -120,13 +120,17 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.ManifestModel.html">CSF.Validation.ManifestModel</a></h6>
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
-  <h5 id="CSF_Validation_ManifestModel_Value_syntax">Syntax</h5>
+  <h5 id="CSF_Validation_ManifestModel_CollectionItemValue_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Value : ValueBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class CollectionItemValue : ValueBase</code></pre>
   </div>
-  <h5 id="CSF_Validation_ManifestModel_Value_remarks"><strong>Remarks</strong></h5>
+  <h5 id="CSF_Validation_ManifestModel_CollectionItemValue_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>
-This type roughly corresponds to <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a>.
+Instances of that type are similar to <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> except that they describe items
+of a collection, indicated by <a class="xref" href="CSF.Validation.ManifestModel.ValueBase.html#CSF_Validation_ManifestModel_ValueBase_CollectionItemValue">CollectionItemValue</a>.
+</p>
+<p>
+This type roughly corresponds to <a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a>.
 The manifest model classes are simplified when compared with the validation manifest
 and offer only a subset of functionality.  Importantly though, manifest model classes
 such as this are suitable for easy serialization to/from various data formats, such as
@@ -137,63 +141,12 @@ For more information about when and how to use the manifest model, see the artic
 <a class="xref" href="../articles/WritingValidators/UsingTheManifestModel/index.html">Using the Manifest Model</a>
 </p>
 </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Value.cs/#L45">View Source</a>
-  </span>
-  <a id="CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions_" data-uid="CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions*"></a>
-  <h4 id="CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions" data-uid="CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions">IgnoreAccessorExceptions</h4>
-  <div class="markdown level1 summary"><p>Indicates that the validator should ignore any exceptions encountered whilst getting the value from
-the member accessor for this value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IgnoreAccessorExceptions { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>
-This option is irrelevant if <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_IgnoreValueAccessExceptions">IgnoreValueAccessExceptions</a> is set to <span class="xref">true</span>,
-because that option ignores all value-access exceptions globally.
-</p>
-<p>
-If the global validation options are not configured to globally-ignore value access exceptions then this option may be
-used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
-hiding of logic errors within the accessor.
-</p>
-<p>
-See the information about the global setting for more information about what it means to ignore exceptions for
-value accessors.
-</p>
-</div>
-  <h5 id="CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_IgnoreValueAccessExceptions">IgnoreValueAccessExceptions</a></div>
-  </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
       <div><a class="xref" href="CSF.Validation.ManifestModel.Rule.html">Rule</a></div>
       <div><a class="xref" href="CSF.Validation.ManifestModel.RelativeIdentifier.html">RelativeIdentifier</a></div>
+      <div><a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a></div>
+      <div><a class="xref" href="CSF.Validation.ManifestModel.ValueBase.html">ValueBase</a></div>
   </div>
 </article>
           </div>
@@ -203,10 +156,10 @@ value accessors.
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_Value.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_CollectionItemValue.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.CollectionItemValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/Value.cs/#L23" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ManifestModel/CollectionItemValue.cs/#L27" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
