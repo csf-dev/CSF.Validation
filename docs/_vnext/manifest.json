@@ -161,6 +161,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Manifest.ManifestCollectionItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Manifest.ManifestCollectionItem.html",
+          "hash": "7bCr8TEdEkxDi7Uu0Capi0AWZFC00VnzJGjQVx9TCP0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Manifest.ManifestFromBuilderProvider.yml",
       "output": {
         ".html": {
@@ -177,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Manifest.ManifestRule.html",
-          "hash": "71Z2Xvlsx01CfHR9B3ZGyVDPpq5Nzc2UXVqySO7MeFo="
+          "hash": "I2oC5zPyKemGBlYhswQ1fi6AgXBvf9sHkU4KQsH6uM0="
         }
       },
       "is_incremental": false,
@@ -189,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Manifest.ManifestRuleIdentifier.html",
-          "hash": "vii702jejD5a1/QnbrLZc0ZrjiRtrNVVPjsPAtilAJc="
+          "hash": "AhIOGO88+K+IG5/tqcf9V1H5eYTVeT/SG6WRE8mwcNE="
         }
       },
       "is_incremental": false,
@@ -201,7 +213,19 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Manifest.ManifestValue.html",
-          "hash": "eGpoWWdGHO8SlMCDwX3ym3xzRiTHYID5XA9EnsTpJTo="
+          "hash": "AiOq0AyHMwjZLjPTsHuKnnBOc3Krb70zLbXHgTgEcwU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Manifest.ManifestValueBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Manifest.ManifestValueBase.html",
+          "hash": "Jd72lCMRNzPOxtijSwIvSYdoVh2VCw2q/Dd6bqikLjQ="
         }
       },
       "is_incremental": false,
@@ -225,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Manifest.ValidationManifest.html",
-          "hash": "44Nj3nEYxgi3Gec/w+PK+mrBElVJetXgLrJVBhCk4j8="
+          "hash": "9XsJP/qTm1Py/iJ102WTKQ7xMoaWxP/t/wo7/f98GxE="
         }
       },
       "is_incremental": false,
@@ -249,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Manifest.html",
-          "hash": "lsqxOLoGcD2WRZT8p5TBBqozeqNz3O/BqTHpEsjqMkU="
+          "hash": "e04k7+vho2DTTrUMRln3qyqTRQCrmqbW0W5VXJEEpVY="
         }
       },
       "is_incremental": false,
@@ -262,6 +286,18 @@
         ".html": {
           "relative_path": "api/CSF.Validation.ManifestModel.AccessorFunctionAndType.html",
           "hash": "VZ02FhbrpGp0LV7XzqL+2ApXkuMrgSDS0oBOl2JNziQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.ManifestModel.CollectionItemValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.ManifestModel.CollectionItemValue.html",
+          "hash": "ND2pPKKfLNjG0u1Htvwl7gkVMDx4qKah/sk4cw5ZI5M="
         }
       },
       "is_incremental": false,
@@ -357,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ManifestModel.ModelAndManifestValuePair.html",
-          "hash": "Jn1Zl+y/KdyZ9UFiREJn8LJ8laD1Rsl6VGEH54CM5A0="
+          "hash": "6Bfqe9YMnc7Ql4Ak9lY/L1atoRNEh0dYXhUb5PInl+I="
         }
       },
       "is_incremental": false,
@@ -381,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html",
-          "hash": "PFGtjQH4hMyXPl96VWRo62Sonx2LuMT3BmuaIhjTaXQ="
+          "hash": "ah0FIjM1nSJtu0VyitHaDf0UCYmlf0gzAjtM/TCHers="
         }
       },
       "is_incremental": false,
@@ -405,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.html",
-          "hash": "LIceQvHLiOd1uVbOBv9pgoXBWMeHRkxPGOukShVzfKA="
+          "hash": "EF5LlWx0gVZmVc19vVA4t0+8KZbs2Sg73rIdh5P/kPA="
         }
       },
       "is_incremental": false,
@@ -489,7 +525,19 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ManifestModel.Value.html",
-          "hash": "Z4seDHXyTxYfEHJdVHc2S2zg/NKt0sP+fFWq7h+ng+o="
+          "hash": "tOa4Qm30Kli6vY1Fzb6m5jcHMaTnUUe1LSRGqLRINhQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.ManifestModel.ValueBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.ManifestModel.ValueBase.html",
+          "hash": "vM0+rSpTzO7cbbur/jnrh9nl7Y545QZ4IffruWZmq/Q="
         }
       },
       "is_incremental": false,
@@ -501,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ManifestModel.html",
-          "hash": "7VQRpS0z0ZiLM0CANSgrs7hbiImzPLw1G8blcYF8OlE="
+          "hash": "GryYEppGVyLNAhwTodUCSRAoSn9EoyofH+k+EZ3KlcU="
         }
       },
       "is_incremental": false,
@@ -550,6 +598,18 @@
         ".html": {
           "relative_path": "api/CSF.Validation.RuleExecution.CircularDependencyPreventingRulesWithDependenciesDecorator.html",
           "hash": "LaMeCkaeyGRQs+tcaxQatMdRWq76nKKcylFM+jrF4Qs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.EnumerableItemProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.EnumerableItemProvider.html",
+          "hash": "TiCGAhuWec+azzey+tLvY7w5D4XkMRmfm9D7NOYj+Jk="
         }
       },
       "is_incremental": false,
@@ -665,6 +725,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.IGetsEnumerableItemsToBeValidated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.IGetsEnumerableItemsToBeValidated.html",
+          "hash": "Gxqy3EXWaRWD+Ap063Z6QeN+9Cu7NvBFicm9f/TG4Yo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.yml",
       "output": {
         ".html": {
@@ -706,6 +778,30 @@
         ".html": {
           "relative_path": "api/CSF.Validation.RuleExecution.IGetsValidatedValue.html",
           "hash": "yIjyoeKUAh0KVzTWz7rWjIaXLYBEmpw264Eokvct6xA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.IGetsValidatedValueFromBasis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.IGetsValidatedValueFromBasis.html",
+          "hash": "XdCsLVzDoaGDfiq6auk3zWGnHbumxPOyGfKja6Fo09k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html",
+          "hash": "JU0992F7/nCXwTHYsVh2yG1asjl/o/H2VZJ4LTZiEsY="
         }
       },
       "is_incremental": false,
@@ -801,7 +897,19 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.RuleExecution.ValidatedValue.html",
-          "hash": "5zhfWvIS1/qhFUSGZQIcinxaUIxhn37jmE6+SZJp1UI="
+          "hash": "axCCwyaGoHmxvJBOCrCn89XOTHglvqLg0hs3RNKndIs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.ValidatedValueBasis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.ValidatedValueBasis.html",
+          "hash": "RQhLqh1vQoClJpxIP43QRZj4CNvCnGISWqdT6rQDhKw="
         }
       },
       "is_incremental": false,
@@ -813,7 +921,31 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.RuleExecution.ValidatedValueFactory.html",
-          "hash": "Ygy6pp8V2wyuPdyZSnjuTTVpTMdaEEbFgXhQgOojYJo="
+          "hash": "5SuPYrn+KM3e3LuJIEyXSrHoeEo1ZSftuvy+OIE21Yw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.ValidatedValueFromBasisFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.ValidatedValueFromBasisFactory.html",
+          "hash": "iIqkZK2C0FBlKdnyib+HuH17YwygqM505B/Iyi2hSMo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html",
+          "hash": "vpA4tDI/G2y11kdkzCElL0VTnVJrVTNiGpVgiNsjQQc="
         }
       },
       "is_incremental": false,
@@ -825,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.RuleExecution.html",
-          "hash": "av3RsNFph0XVrlussY3DnGu6fUeHKKKsgltR+Ee1Xp4="
+          "hash": "XFYi+5+a8RwnBxRUqCSqwDnjuZu1ZUtxXceaJjlyn7s="
         }
       },
       "is_incremental": false,
@@ -849,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.AncestorRuleContext.html",
-          "hash": "Cmg266l7knqdomtzvvpJb32KyQCFnRqn/yMKiwfXko8="
+          "hash": "G4Vc3mbbOrEEOvk07yvx71iKO8qNdQUiXlAHxV91E8k="
         }
       },
       "is_incremental": false,
@@ -1053,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleContext.html",
-          "hash": "AwTK4rwrh17GBS+KxRW9IILqb1M8B4fp+0DV04gIyBA="
+          "hash": "5iip2Tg/447t446dIoZKGnsOM4Ld1TOYHanTk6Od7G0="
         }
       },
       "is_incremental": false,
@@ -1125,7 +1257,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.ValidationLogicFactory.html",
-          "hash": "4zeQjnUPus92lEzEVK1CkkzYBAs+nR/aZsU9TfGtjhc="
+          "hash": "8y/YdNA6N69aRlqdQzw6ac72Ir2KfvvqxyiF7Kij7aw="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.html",
-          "hash": "m6Zz925cEL1dKqr1vMNngdbajrQQRC1W4qQQkXcwbus="
+          "hash": "LIbotxJbuL3N7K9tEOcB+wAU23MlOUd2zWkJnPZbt6s="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1497,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.IGetsManifestValue.html",
-          "hash": "+sZbCdX1dFWb6i+Jvu1RvYprNV/nT1cwbxg6YeS06K4="
+          "hash": "yoTo+GYY0g5t8B56l2GNDRwhDZwh5vxRzf6kJavZItM="
         }
       },
       "is_incremental": false,
@@ -1521,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.html",
-          "hash": "NgGGrqLWm9F+algWv4fAUCzhseg9mtxDF6NEdqUc+1s="
+          "hash": "H7m4POjh4xUvZdLplxPubuFy+ZuRK7bJTfNxI657W9I="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.RuleBuilder-1.html",
-          "hash": "ByBojMM3KmJ5nMwxrP3Ft3KB1irXcQ+xaPLQz1iP0Xs="
+          "hash": "EiRRoTWXkjdHfbqR17gN68x146LcymFGxIN+D5VNFU0="
         }
       },
       "is_incremental": false,
@@ -1557,7 +1689,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ValidatorBuilder-1.html",
-          "hash": "QoqIUjLg/vGv3tlGjgdUADln1EX+dWAIqXHxiViSbzc="
+          "hash": "pBZVXMrfWZO3HzCAOpjl/czpY3iBHoxjScG4RSckAYE="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1701,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html",
-          "hash": "ne9+LNBhelBR9fPNZYBzP62hr6mrcHsCfCcDI3yeZIg="
+          "hash": "JmB0rmgenCxqjOie2QmFukVkqAGYrT6JtHWOdoWOlCA="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1713,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.html",
-          "hash": "b4qzZ9Ne8l5+/EgubmPsJZ5eiZTW0q1PJsXq6zeMmlQ="
+          "hash": "K6Evl/Y/9IdNNFHwyJ0ELSpbWsozXSh53vpvJ6uwGW0="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1737,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html",
-          "hash": "ag/9c0DeEm0hmpRFsirNUGUEgvCrVMEXbFqBAnnbxUs="
+          "hash": "roKQtK2PutFUt8bq36e+tntFstf1nDpqjpewGVi7EI8="
         }
       },
       "is_incremental": false,
@@ -1701,7 +1833,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "jklYqsePnaUp+T2OBSo7Z54ZtKh0U2qbquAzNpBCUpU="
+          "hash": "jfXQDF++9Dw/zZ1CtLb8qgMSYuQeuXEfFPb6zj7G4VM="
         }
       },
       "is_incremental": false,
@@ -1828,24 +1960,30 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "UidNotFound"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/UsingTheManifestModel/Limitations.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/UsingTheManifestModel/Limitations.html",
-          "hash": "zF06sLVtltw59yD0W8w5O/fahbvaAWMJnL2fIvZmSZU="
+          "hash": "zKVw7+oe6f7vNBjANCJbI2BIGKwoexKmmPh24I2+GuU="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "UidNotFound"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/WritingValidators/UsingTheManifestModel/index.md",
       "output": {
         ".html": {
           "relative_path": "articles/WritingValidators/UsingTheManifestModel/index.html",
-          "hash": "3Q9S/6plPtui3y9vsKkxrnB9WrhB2YQ0fo7T782s3w8="
+          "hash": "8onDWkjFDyBZI6n8cb/7JowRC6WjVwZl552UlK3Y0kg="
         }
       },
       "is_incremental": false,
@@ -2076,7 +2214,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 140,
+          "total_file_count": 151,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
