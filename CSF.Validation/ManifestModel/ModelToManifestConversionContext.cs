@@ -12,13 +12,13 @@ namespace CSF.Validation.ManifestModel
         /// <summary>
         /// Gets or sets the current model <see cref="Value"/> being converted.
         /// </summary>
-        public Value CurrentValue { get; set; }
+        public ValueBase CurrentValue { get; set; }
 
         /// <summary>
         /// Gets or sets an optional reference to the parent (already-converted) <see cref="ManifestValue"/>
         /// which should be used as the parent of the <see cref="CurrentValue"/>.
         /// </summary>
-        public ManifestValue ParentManifestValue { get; set; }
+        public ManifestValueBase ParentManifestValue { get; set; }
 
         /// <summary>
         /// Gets or sets an optional member name which would be used to traverse from the
@@ -36,5 +36,10 @@ namespace CSF.Validation.ManifestModel
         /// Gets or sets the type of the object which would be validated by the <see cref="CurrentValue"/>.
         /// </summary>
         public Type ValidatedType { get; set; }
+
+        /// <summary>
+        /// Gets a value that indicates whether or not the current context represents a collection item value.
+        /// </summary>
+        public bool IsCollectionItem { get; set; }
     }
 }

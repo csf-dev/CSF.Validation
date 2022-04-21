@@ -30,14 +30,6 @@ namespace CSF.Validation.RuleExecution
                 CollectionItemOrder = basis.CollectionOrder,
             };
 
-            if(!(basis.Parent is null))
-            {
-                if(basis.ManifestValue is Manifest.ManifestCollectionItem)
-                    basis.Parent.CollectionItemValue = value;
-                else
-                    basis.Parent.ChildValues.Add(value);
-            }
-
             value.Rules = basis.ManifestValue.Rules
                 .Select(manifestRule => new ExecutableRule
                         {

@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ManifestModel
 {
-    [TestFixture,Parallelizable,Ignore("Temporarily broken, to be restored")]
+    [TestFixture,Parallelizable]
     public class ModelValueToManifestValueConverterTests
     {
         [Test,AutoMoqData]
@@ -89,8 +89,7 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(validatedTypeProvider)
                 .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
                 .Returns(typeof(ComplexObject));
-            context.CurrentValue.Children.Add("Foo", collectionChild);
-            context.CurrentValue.EnumerateItems = true;
+            context.CurrentValue.CollectionItemValue = new CollectionItemValue { Children = new Dictionary<string,Value>{ { "Foo", collectionChild } }, };
             context.ValidatedType = typeof(List<ComplexObject>);
 
             var result = sut.ConvertAllValues(context);
@@ -114,8 +113,7 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(validatedTypeProvider)
                 .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
                 .Returns(typeof(ComplexObject));
-            context.CurrentValue.EnumerateItems = true;
-            context.CurrentValue.IdentityMemberName = "Foo";
+            context.CurrentValue.CollectionItemValue = new CollectionItemValue { IdentityMemberName = "Foo" };
             context.ValidatedType = typeof(List<ComplexObject>);
 
             var result = sut.ConvertAllValues(context);

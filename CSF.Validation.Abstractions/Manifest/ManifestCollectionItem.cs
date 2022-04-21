@@ -1,5 +1,3 @@
-using System;
-
 namespace CSF.Validation.Manifest
 {
     /// <summary>
@@ -43,5 +41,12 @@ namespace CSF.Validation.Manifest
             get => null;
             set { /* Intentional no-op */ }
         }
+
+        /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string which represents the current instance.</returns>
+        public override string ToString()
+            => $"[{nameof(ManifestCollectionItem)}: Type = {ValidatedType.Name}]";
     }
 }

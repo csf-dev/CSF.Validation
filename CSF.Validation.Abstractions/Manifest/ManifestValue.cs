@@ -57,5 +57,12 @@ namespace CSF.Validation.Manifest
         /// </remarks>
         /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
         public bool IgnoreAccessorExceptions { get; set; }
+
+        /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string which represents the current instance.</returns>
+        public override string ToString()
+            => $"[{nameof(ManifestValue)}: Type = {ValidatedType.Name}, Member = {MemberName}]";
     }
 }

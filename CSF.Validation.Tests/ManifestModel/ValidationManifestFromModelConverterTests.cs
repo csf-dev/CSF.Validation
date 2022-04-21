@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ManifestModel
 {
-    [TestFixture,Parallelizable,Ignore("Temporarily broken, to be restored")]
+    [TestFixture,Parallelizable]
     public class ValidationManifestFromModelConverterTests
     {
         [Test,AutoMoqData]

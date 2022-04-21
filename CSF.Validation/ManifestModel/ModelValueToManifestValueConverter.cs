@@ -35,66 +35,92 @@ namespace CSF.Validation.ManifestModel
             while (openList.Count != 0)
             {
                 var current = openList.Dequeue();
-                var manifestValue = ConvertToManifestValue(current);
-
-                foreach (var child in current.CurrentValue.Children)
-                {
-                    var childContext = GetChildContext(child.Key, child.Value, current, manifestValue);
-                    openList.Enqueue(childContext);
-                }
-
-                if (result.RootValue is null)
+                var value = ConvertToManifestValueBase(current);
+                if (result.RootValue is null && value is ManifestValue manifestValue)
                     result.RootValue = manifestValue;
+
+                FindAndAddChildrenToOpenList(openList, current, value);
 
                 result.ConvertedValues.Add(new ModelAndManifestValuePair
                 {
                     ModelValue = current.CurrentValue,
-                    ManifestValue = manifestValue,
+                    ManifestValue = value,
                 });
             }
 
             return result;
         }
 
-        ManifestValue ConvertToManifestValue(ModelToManifestConversionContext context)
+        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, ManifestValueBase parent)
         {
-            var validatedType = validatedTypeProvider.GetValidatedType(context.ValidatedType, context.CurrentValue.EnumerateItems);
+            if(!(currentContext.CurrentValue.CollectionItemValue is null))
+            {
+                var validatedType = validatedTypeProvider.GetValidatedType(parent.ValidatedType, true);
+                var collectionItem = new ModelToManifestConversionContext
+                {
+                    CurrentValue = currentContext.CurrentValue.CollectionItemValue,
+                    IsCollectionItem = true,
+                    MemberName = currentContext.MemberName,
+                    ParentManifestValue = parent,
+                    ValidatedType = validatedType,
+                };
+                openList.Enqueue(collectionItem);
+            }
 
+            foreach(var child in currentContext.CurrentValue.Children)
+            {
+                var accessor = accessorFactory.GetAccessorFunction(parent.ValidatedType, child.Key);
+                var collectionItem = new ModelToManifestConversionContext
+                {
+                    CurrentValue = child.Value,
+                    AccessorFromParent = accessor.AccessorFunction,
+                    MemberName = child.Key,
+                    ParentManifestValue = parent,
+                    ValidatedType = accessor.ExpectedType,
+                };
+                openList.Enqueue(collectionItem);
+            }
+        }
+
+        ManifestValueBase ConvertToManifestValueBase(ModelToManifestConversionContext context)
+        {
+            var value = context.IsCollectionItem
+                ? (ManifestValueBase) ConvertToManifestCollectionItem(context)
+                : (ManifestValueBase) ConvertToManifestValue(context);
+
+            if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
+                value.IdentityAccessor = accessorFactory.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
+
+            return value;
+        }
+
+        static ManifestCollectionItem ConvertToManifestCollectionItem(ModelToManifestConversionContext context)
+        {
+            var manifestValue = new ManifestCollectionItem
+            {
+                Parent = context.ParentManifestValue.Parent,
+                MemberName = context.MemberName,
+                ValidatedType = context.ValidatedType,
+            };
+            if (context.ParentManifestValue != null && context.IsCollectionItem)
+                context.ParentManifestValue.CollectionItemValue = manifestValue;
+            return manifestValue;
+        }
+
+        static ManifestValue ConvertToManifestValue(ModelToManifestConversionContext context)
+        {
             var manifestValue = new ManifestValue
             {
                 Parent = context.ParentManifestValue,
                 MemberName = context.MemberName,
                 AccessorFromParent = context.AccessorFromParent,
-                // EnumerateItems = context.CurrentValue.EnumerateItems,
-                ValidatedType = validatedType,
-                IgnoreAccessorExceptions = context.CurrentValue.IgnoreAccessorExceptions,
+                ValidatedType = context.ValidatedType,
             };
-
-            if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
-                manifestValue.IdentityAccessor = accessorFactory.GetAccessorFunction(validatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
-
-            if (context.ParentManifestValue != null)
+            if(context.CurrentValue is Value val)
+                manifestValue.IgnoreAccessorExceptions = val.IgnoreAccessorExceptions;
+            if (context.ParentManifestValue != null && !context.IsCollectionItem)
                 context.ParentManifestValue.Children.Add(manifestValue);
-
             return manifestValue;
-        }
-
-        ModelToManifestConversionContext GetChildContext(string memberName,
-                                                         Value value,
-                                                         ModelToManifestConversionContext parentContext,
-                                                         ManifestValue parentValue)
-        {
-            var parentValidatedType = validatedTypeProvider.GetValidatedType(parentContext.ValidatedType, parentContext.CurrentValue.EnumerateItems);
-            var accessor = accessorFactory.GetAccessorFunction(parentValidatedType, memberName);
-
-            return new ModelToManifestConversionContext
-            {
-                CurrentValue = value,
-                AccessorFromParent = accessor.AccessorFunction,
-                MemberName = memberName,
-                ParentManifestValue = parentValue,
-                ValidatedType = accessor.ExpectedType,
-            };
         }
 
         /// <summary>

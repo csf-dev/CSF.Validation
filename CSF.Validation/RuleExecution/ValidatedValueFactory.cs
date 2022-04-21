@@ -40,8 +40,9 @@ namespace CSF.Validation.RuleExecution
             if (options is null)
                 throw new ArgumentNullException(nameof(options));
 
-            var openList = new Queue<ValidatedValueBasis>();
-            AddToOpenList(openList, manifestValue, objectToBeValidated);
+            var openList = new Queue<ValidatedValueBasis>(new [] {
+                new ValidatedValueBasis(manifestValue, objectToBeValidated, null)
+            });
             ValidatedValue rootValidatedValue = null;
 
             while(openList.Any())
@@ -61,14 +62,22 @@ namespace CSF.Validation.RuleExecution
 
         IList<ValidatedValue> GetValidatedValues(ValidatedValueBasis basis)
         {
-            if(!(basis.ManifestValue is ManifestCollectionItem collectionManifest))
-                return new[] { valueFromBasisFactory.GetValidatedValue(basis) };
+            if(!(basis.ManifestValue is ManifestCollectionItem))
+            {
+                var value = valueFromBasisFactory.GetValidatedValue(basis);
+                if(!(basis.Parent is null))
+                    basis.Parent.ChildValues.Add(value);
+                return new[] { value };
+            }
 
-            return enumerableProvider
+            var values = enumerableProvider
                 .GetEnumerableItems(basis.ActualValue, basis.ManifestValue.ValidatedType)
                 .Select((x, idx) => new ValidatedValueBasis(basis.ManifestValue, x, basis.Parent, idx))
                 .Select(valueFromBasisFactory.GetValidatedValue)
                 .ToList();
+            if(!(basis.Parent is null))
+                basis.Parent.CollectionItems = values;
+            return values;
         }
 
         void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
@@ -76,28 +85,15 @@ namespace CSF.Validation.RuleExecution
                                           Queue<ValidatedValueBasis> openList,
                                           ValidationOptions options)
         {
+            if(!(currentBasis.ManifestValue.CollectionItemValue is null || currentValue.ActualValue is null))
+                openList.Enqueue(new ValidatedValueBasis(currentBasis.ManifestValue.CollectionItemValue, currentValue.ActualValue, currentValue.ParentValue));
+
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {
                 if(!valueProvider.TryGetValueToBeValidated(childManifestValue, currentBasis.ActualValue, options, out var childActualValue))
                     continue;
-                AddToOpenList(openList, childManifestValue, childActualValue, currentValue);
+                openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
             }
-        }
-
-        /// <summary>
-        /// Adds a new <see cref="ValidatedValueBasis"/> to the open list, based upon a specified <see cref="ManifestValue"/>,
-        /// <see cref="object"/> to be validated and optionally a parent <see cref="ValidatedValue"/>.
-        /// </summary>
-        /// <param name="openList">The open list</param>
-        /// <param name="manifestValue">A manifest value</param>
-        /// <param name="objectToBeValidated">The actual object to be validated</param>
-        /// <param name="parent">An optional parent value</param>
-        static void AddToOpenList(Queue<ValidatedValueBasis> openList, ManifestValue manifestValue, object objectToBeValidated, ValidatedValue parent = null)
-        {
-            openList.Enqueue(new ValidatedValueBasis(manifestValue, objectToBeValidated, parent));
-
-            if(!(manifestValue.CollectionItemValue is null))
-                openList.Enqueue(new ValidatedValueBasis(manifestValue.CollectionItemValue, objectToBeValidated, parent));
         }
 
         /// <summary>

@@ -42,9 +42,9 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Where this validated value represents a collection of values, and there is a separate
         /// validated value representing the items of that collection, this property should contain
-        /// a reference to the value representing the collection items.
+        /// a collection of the values which represent the items of that collection.
         /// </summary>
-        public ValidatedValue CollectionItemValue { get; set; }
+        public IList<ValidatedValue> CollectionItems { get; set; } = new List<ValidatedValue>();
 
         /// <summary>
         /// Gets or sets a numeric item order, indicating the order in which this value was retrieved from a collection.

@@ -48,7 +48,7 @@ namespace CSF.Validation.Rules
         /// </item>
         /// </list>
         /// <para>
-        /// Equivalents to the above exist for the Manifest Model: <see cref="CSF.Validation.ManifestModel.Value.Children"/>
+        /// Equivalents to the above exist for the Manifest Model: <see cref="CSF.Validation.ManifestModel.ValueBase.Children"/>
         /// and also for a Validation Manifest: <see cref="CSF.Validation.Manifest.ManifestValueBase.Children"/>.
         /// </para>
         /// <para>

@@ -9,6 +9,8 @@ namespace CSF.Validation.Stubs
 
         public ComplexObject Associated { get; set; }
 
+        public ICollection<List<ComplexObject>> DoubleCollection { get; set; } = new List<List<ComplexObject>> { new List<ComplexObject>() };
+
         public ICollection<ComplexObject> Children { get; } = new List<ComplexObject>();
 
         public string StringProperty { get; set; }

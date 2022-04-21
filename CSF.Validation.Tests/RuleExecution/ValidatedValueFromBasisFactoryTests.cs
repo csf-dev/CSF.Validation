@@ -42,17 +42,6 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public void GetValidatedValueShouldAddNewValueToChildrenOfParentIfItHasAParent(ValidatedValueFromBasisFactory sut,
-                                                                                       [ManifestModel] ManifestValueBase manifestValue,
-                                                                                       object actualValue,
-                                                                                       [ExecutableModel] ValidatedValue parent)
-        {
-            var basis = new ValidatedValueBasis(manifestValue, actualValue, parent);
-            var result = sut.GetValidatedValue(basis);
-            Assert.That(parent.ChildValues, Has.One.SameAs(result));
-        }
-
-        [Test,AutoMoqData]
         public void GetValidatedValueShouldGetAnExecutableRuleUsingTheLogicFactoryFromEachManifestRule([Frozen] IGetsValidationLogic validationLogicFactory,
                                                                                                        ValidatedValueFromBasisFactory sut,
                                                                                                        [ExecutableModel] ValidatedValueBasis basis,

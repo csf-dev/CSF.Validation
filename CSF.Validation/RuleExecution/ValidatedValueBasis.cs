@@ -30,6 +30,13 @@ namespace CSF.Validation.RuleExecution
         public long? CollectionOrder { get; }
 
         /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string that represents this validated value basis.</returns>
+        public override string ToString()
+            => $"[{nameof(ValidatedValueBasis)}: Type = {ManifestValue.ValidatedType.Name}, Value = {ActualValue}]";
+
+        /// <summary>
         /// Initialises a new instance of <see cref="ValidatedValueBasis"/>.
         /// </summary>
         /// <param name="manifestValue">The manifest value for this basis.</param>
