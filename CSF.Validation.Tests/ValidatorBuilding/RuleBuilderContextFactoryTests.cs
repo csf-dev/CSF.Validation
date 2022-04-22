@@ -110,7 +110,6 @@ namespace CSF.Validation.ValidatorBuilding
             Mock.Get(reflect)
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
-            collectionValue.MemberName = nameof(ValidatedObject.Strings);
             validationContext.ManifestValue.CollectionItemValue = collectionValue;
 
             var result = sut.GetContextForMember<ValidatedObject,IEnumerable<string>>(v => v.Strings, validationContext, true);

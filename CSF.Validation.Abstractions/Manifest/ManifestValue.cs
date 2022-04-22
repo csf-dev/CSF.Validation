@@ -34,7 +34,11 @@ namespace CSF.Validation.Manifest
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets or sets the name of that member.
         /// </summary>
-        public override string MemberName { get; set; }
+        public new string MemberName
+        {
+            get => base.MemberName;
+            set => base.MemberName = value;
+        }
 
         /// <summary>
         /// Indicates that the validator should ignore any exceptions encountered whilst getting the value from

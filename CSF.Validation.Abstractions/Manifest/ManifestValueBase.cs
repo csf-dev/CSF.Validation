@@ -48,9 +48,15 @@ namespace CSF.Validation.Manifest
 
         /// <summary>
         /// Where the current value represents a member access invocation (such as
-        /// a property getter), this property gets or sets the name of that member.
+        /// a property getter), this property gets the name of that member.
         /// </summary>
-        public abstract string MemberName { get; set; }
+        /// <remarks>
+        /// <para>
+        /// Note that in some derived types, such as <see cref="ManifestCollectionItem"/>, this property will always
+        /// return <see langword="null" /> and may not be set to any other value.
+        /// </para>
+        /// </remarks>
+        public string MemberName { get; protected set; }
 
         /// <summary>
         /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
