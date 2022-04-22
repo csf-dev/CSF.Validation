@@ -371,19 +371,6 @@ references:
   commentId: T:CSF.Validation.Manifest.ManifestCollectionItem
   fullName: CSF.Validation.Manifest.ManifestCollectionItem
   nameWithType: ManifestCollectionItem
-- uid: CSF.Validation.Manifest.ManifestCollectionItem.MemberName
-  name: MemberName
-  href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_MemberName
-  commentId: P:CSF.Validation.Manifest.ManifestCollectionItem.MemberName
-  fullName: CSF.Validation.Manifest.ManifestCollectionItem.MemberName
-  nameWithType: ManifestCollectionItem.MemberName
-- uid: CSF.Validation.Manifest.ManifestCollectionItem.MemberName*
-  name: MemberName
-  href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_MemberName_
-  commentId: Overload:CSF.Validation.Manifest.ManifestCollectionItem.MemberName
-  isSpec: "True"
-  fullName: CSF.Validation.Manifest.ManifestCollectionItem.MemberName
-  nameWithType: ManifestCollectionItem.MemberName
 - uid: CSF.Validation.Manifest.ManifestCollectionItem.ToString
   name: ToString()
   href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_ToString
