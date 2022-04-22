@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using AutoFixture;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +19,8 @@ namespace CSF.Validation
             var serviceCollection = new ServiceCollection();
             serviceCollection
                 .UseValidationFramework()
-                .UseStandardValidationRules();
+                .UseStandardValidationRules()
+                .UseValidationRulesInAssembly(Assembly.GetExecutingAssembly());
             return serviceCollection.BuildServiceProvider();
         }
     }

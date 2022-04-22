@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using CSF.Reflection;
 using CSF.Validation.Manifest;
@@ -62,6 +63,10 @@ namespace CSF.Validation.ValidatorBuilding
 
         static ValidatorBuilderContext GetContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
         {
+            ManifestValue existingManifest;
+            if(!(memberName is null) && (existingManifest = parentContext.ManifestValue.Children.FirstOrDefault(x => x.MemberName == memberName)) != null)
+                return new ValidatorBuilderContext(existingManifest);
+
             var manifestValue = new ManifestValue
             {
                 Parent = parentContext.ManifestValue,
@@ -76,11 +81,7 @@ namespace CSF.Validation.ValidatorBuilding
         ValidatorBuilderContext GetCollectionItemContext(ValidatorBuilderContext parentContext, Type validatedType)
         {
             if(parentContext.ManifestValue.CollectionItemValue != null)
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotAlreadyHaveACollectionItemManifestValue"),
-                                            validatedType.FullName);
-                throw new InvalidOperationException(message);
-            }
+                return new ValidatorBuilderContext(parentContext.ManifestValue.CollectionItemValue);
 
             var manifestValue = new ManifestCollectionItem
             {

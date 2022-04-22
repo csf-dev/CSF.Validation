@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using AutoFixture.NUnit3;
 using CSF.Reflection;
@@ -82,5 +83,40 @@ namespace CSF.Validation.ValidatorBuilding
 
             Assert.That(() => ((ManifestValue) result.ManifestValue).AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
+
+        [Test,AutoMoqData]
+        public void GetContextForMemberThatAlreadyExistsShouldReturnSameManifestValue([Frozen] IStaticallyReflects reflect,
+                                                                                      [ManifestModel] ValidatorBuilderContext validationContext,
+                                                                                      ValidatorBuilderContextFactory sut,
+                                                                                      [ManifestModel] ManifestValue aPropertyValue)
+        {
+            Mock.Get(reflect)
+                .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
+                .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
+            aPropertyValue.MemberName = nameof(ValidatedObject.AProperty);
+            validationContext.ManifestValue.Children.Add(aPropertyValue);
+
+            var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
+
+            Assert.That(result.ManifestValue, Is.SameAs(aPropertyValue));
+        }
+
+        [Test,AutoMoqData]
+        public void GetContextForMemberThatAlreadyExistsAsCollectionItemShouldReturnSameManifestValue([Frozen] IStaticallyReflects reflect,
+                                                                                                      [ManifestModel] ValidatorBuilderContext validationContext,
+                                                                                                      ValidatorBuilderContextFactory sut,
+                                                                                                      [ManifestModel] ManifestCollectionItem collectionValue)
+        {
+            Mock.Get(reflect)
+                .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
+                .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
+            collectionValue.MemberName = nameof(ValidatedObject.Strings);
+            validationContext.ManifestValue.CollectionItemValue = collectionValue;
+
+            var result = sut.GetContextForMember<ValidatedObject,IEnumerable<string>>(v => v.Strings, validationContext, true);
+
+            Assert.That(result.ManifestValue, Is.SameAs(collectionValue));
+        }
+
     }
 }
