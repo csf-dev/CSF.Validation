@@ -99,7 +99,6 @@ namespace CSF.Validation.ManifestModel
             var manifestValue = new ManifestCollectionItem
             {
                 Parent = context.ParentManifestValue.Parent,
-                MemberName = context.MemberName,
                 ValidatedType = context.ValidatedType,
             };
             if (context.ParentManifestValue != null && context.IsCollectionItem)

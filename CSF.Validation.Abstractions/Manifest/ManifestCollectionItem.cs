@@ -27,22 +27,6 @@ namespace CSF.Validation.Manifest
     public class ManifestCollectionItem : ManifestValueBase
     {
         /// <summary>
-        /// Where the current value represents a member access invocation (such as
-        /// a property getter), this property gets or sets the name of that member.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Note that in <see cref="ManifestCollectionItem"/>, the member name is always <see langword="null" /> and
-        /// may not be set to any other value.
-        /// </para>
-        /// </remarks>
-        public override string MemberName
-        {
-            get => null;
-            set { /* Intentional no-op */ }
-        }
-
-        /// <summary>
         /// Gets a string representation of the current instance.
         /// </summary>
         /// <returns>A string which represents the current instance.</returns>

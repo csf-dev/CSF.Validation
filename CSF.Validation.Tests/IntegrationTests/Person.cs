@@ -11,11 +11,6 @@ namespace CSF.Validation.IntegrationTests
 
         public DateTime Birthday { get; set; }
 
-        public ICollection<Pet> Pets
-        {
-            get => pets;
-            set => pets = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
+        public ICollection<Pet> Pets { get; set; }
     }
 }

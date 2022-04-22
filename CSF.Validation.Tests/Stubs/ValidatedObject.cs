@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CSF.Validation.Stubs
 {
@@ -7,5 +8,9 @@ namespace CSF.Validation.Stubs
         public Guid Identity { get; set; } = Guid.NewGuid();
 
         public string AProperty { get; set; }
+
+        public ICollection<string> Strings { get; set; } = new List<string>();
+
+
     }
 }
