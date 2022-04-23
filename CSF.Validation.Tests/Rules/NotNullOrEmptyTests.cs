@@ -1,5 +1,4 @@
-using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace CSF.Validation.Rules
@@ -7,25 +6,30 @@ namespace CSF.Validation.Rules
     [TestFixture,Parallelizable]
     public class NotNullOrEmptyTests
     {
+        // This is quite light on tests, because the NotNull and NotEmpty rules are already well-tested individually
+
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassForANonEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context, int value)
+        public void GetResultAsyncShouldReturnPassForANonEmptyCollection(NotNullOrEmpty sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync("abc", context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
+            Assert.That(() => sut.GetResultAsync((ICollection<int>)new List<int> { 1, 2 }, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailForANullString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassForANonEmptyEnumerable(NotNullOrEmpty sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync((string) null, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() => sut.GetResultAsync((IEnumerable<int>)new List<int> { 1, 2 }, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailForAnEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassForANonEmptyArray(NotNullOrEmpty sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync(string.Empty, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() => sut.GetResultAsync(new [] { 1, 2 }, context), Is.PassingValidationResult);
+        }
+
+        [Test,AutoMoqData]
+        public void GetResultAsyncShouldReturnPassForANonEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
+        {
+            Assert.That(() => sut.GetResultAsync("Foo bar", context), Is.PassingValidationResult);
         }
     }
 }

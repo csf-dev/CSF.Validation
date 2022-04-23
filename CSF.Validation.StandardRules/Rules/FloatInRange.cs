@@ -31,7 +31,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
-    public class FloatingInRange : IRule<float>, IRule<double>, IRule<float?>, IRule<double?>
+    public class FloatInRange : IRule<float>, IRule<double>, IRule<float?>, IRule<double?>
     {
         /// <summary>
         /// Gets or sets the (inclusive) minimum for the validated value.

@@ -42,7 +42,7 @@ namespace CSF.Validation.RuleExecution
                 }
 
                 valueToBeValidated = GetDefaultOfType(manifestValue.ValidatedType);
-                return true;
+                return false;
             }
         }
 

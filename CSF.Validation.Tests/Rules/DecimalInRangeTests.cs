@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CSF.Validation.Rules
@@ -8,37 +6,33 @@ namespace CSF.Validation.Rules
     public class DecimalInRangeTests
     {
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfValueIsNull(DecimalInRange sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfValueIsNull(DecimalInRange sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync(null, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
+            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfNumberIsInRange(DecimalInRange sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfNumberIsInRange(DecimalInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 5;
             sut.Max = 10;
-            var result = await sut.GetResultAsync(6, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
+            Assert.That(() => sut.GetResultAsync(6, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfNumberIsLowerThanMin(DecimalInRange sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfNumberIsLowerThanMin(DecimalInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 5;
             sut.Max = 10;
-            var result = await sut.GetResultAsync(2, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() => sut.GetResultAsync(2, context), Is.FailingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfNumberIsHigherThanMax(DecimalInRange sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfNumberIsHigherThanMax(DecimalInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 5;
             sut.Max = 10;
-            var result = await sut.GetResultAsync(20, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() => sut.GetResultAsync(20, context), Is.FailingValidationResult);
         }
     }
 }
