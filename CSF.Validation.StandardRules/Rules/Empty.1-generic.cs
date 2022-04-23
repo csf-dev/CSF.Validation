@@ -59,12 +59,6 @@ namespace CSF.Validation.Rules
             return validated.Count == 0 ? PassAsync() : FailAsync();
         }
 
-        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
-        {
-            if(validated is null) return PassAsync();
-            return validated.Count == 0 ? PassAsync() : FailAsync();
-        }
-
         /// <summary>
         /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
         /// </summary>
@@ -76,6 +70,12 @@ namespace CSF.Validation.Rules
         {
             if(validated is null) return PassAsync();
             return validated.Any() ? FailAsync() : PassAsync();
+        }
+
+        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
+        {
+            if(validated is null) return PassAsync();
+            return validated.Count == 0 ? PassAsync() : FailAsync();
         }
     }
 }

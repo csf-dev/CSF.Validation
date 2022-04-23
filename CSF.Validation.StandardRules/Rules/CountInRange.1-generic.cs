@@ -56,14 +56,6 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Count, context, token);
         }
 
-        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
-        {
-            if(validated is null) return PassAsync();
-            inRangeRule.Min = Min;
-            inRangeRule.Max = Max;
-            return inRangeRule.GetResultAsync(validated.Count, context, token);
-        }
-
         /// <summary>
         /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
         /// </summary>
@@ -79,6 +71,14 @@ namespace CSF.Validation.Rules
             inRangeRule.Min = Min;
             inRangeRule.Max = Max;
             return inRangeRule.GetResultAsync(validated.Count(), context, token);
+        }
+
+        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
+        {
+            if(validated is null) return PassAsync();
+            inRangeRule.Min = Min;
+            inRangeRule.Max = Max;
+            return inRangeRule.GetResultAsync(validated.Count, context, token);
         }
 
         /// <summary>
