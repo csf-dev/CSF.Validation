@@ -8,14 +8,14 @@ namespace CSF.Validation.Rules
     public class FloatingInRangeTests
     {
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfValueIsNull(FloatingInRange sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnPassIfValueIsNull(FloatInRange sut, [RuleContext] RuleContext context)
         {
             var result = await sut.GetResultAsync(null, context);
             Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfNumberIsInRange(FloatingInRange sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnPassIfNumberIsInRange(FloatInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 5;
             sut.Max = 10;
@@ -24,7 +24,7 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfNumberIsLowerThanMin(FloatingInRange sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnPassIfNumberIsLowerThanMin(FloatInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 5;
             sut.Max = 10;
@@ -33,7 +33,7 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfNumberIsHigherThanMax(FloatingInRange sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnPassIfNumberIsHigherThanMax(FloatInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 5;
             sut.Max = 10;

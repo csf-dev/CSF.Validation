@@ -8,7 +8,7 @@ namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A validation rule which passes if the value being validated is either <see langword="null" /> or is a collection or
-    /// a string that has at least one item/is not empty.
+    /// a string that has no items/is empty.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -20,7 +20,7 @@ namespace CSF.Validation.Rules
     /// <para>
     /// For an object which is simply <see cref="IEnumerable"/>, this validation rule will get and make use of the enumerator once,
     /// attempting to read a single item from the enumeration.  This rule will return a pass result if <see cref="IEnumerator.MoveNext"/>
-    /// returns <see langword="true" />.  
+    /// returns <see langword="false" />.  
     /// </para>
     /// <para>
     /// In some cases enumerating an enumerable in this way will not have undesirable consequences; for some implementations of
@@ -40,14 +40,10 @@ namespace CSF.Validation.Rules
     /// and thus provides superior performance when used with an ORM.
     /// </para>
     /// <para>
-    /// This rule will work just fine with <see cref="System.String"/>.  That is because the string class derives from an Array
-    /// of <see cref="System.Char"/>.
-    /// </para>
-    /// <para>
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
-    public class NotEmpty : IRule<ICollection>, IRule<IEnumerable>, IRule<Array>, IRule<string>
+    public class Empty : IRule<ICollection>, IRule<IEnumerable>, IRule<Array>, IRule<string>
     {
         /// <summary>
         /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
@@ -59,7 +55,7 @@ namespace CSF.Validation.Rules
         public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Count > 0 ? PassAsync() : FailAsync();
+            return validated.Count == 0 ? PassAsync() : FailAsync();
         }
 
         /// <summary>
@@ -72,7 +68,7 @@ namespace CSF.Validation.Rules
         public Task<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.GetEnumerator().MoveNext() ? PassAsync() : FailAsync();
+            return validated.GetEnumerator().MoveNext() ? FailAsync() : PassAsync();
         }
 
         /// <summary>
@@ -85,7 +81,7 @@ namespace CSF.Validation.Rules
         public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Length > 0 ? PassAsync() : FailAsync();
+            return validated.Length == 0 ? PassAsync() : FailAsync();
         }
 
         /// <summary>
@@ -98,7 +94,7 @@ namespace CSF.Validation.Rules
         public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Length > 0 ? PassAsync() : FailAsync();
+            return validated.Length == 0 ? PassAsync() : FailAsync();
         }
     }
 }

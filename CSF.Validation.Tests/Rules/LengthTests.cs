@@ -4,17 +4,17 @@ using NUnit.Framework;
 namespace CSF.Validation.Rules
 {
     [TestFixture,Parallelizable]
-    public class StringLengthTests
+    public class LengthTests
     {
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfStringIsNull(StringLength sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnPassIfStringIsNull(Length sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync(null, context);
+            var result = await sut.GetResultAsync((string) null, context);
             Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassIfStringIsWithinRange(StringLength sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnPassIfStringIsWithinRange(Length sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
@@ -23,7 +23,7 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailIfStringIsShorterThanMinimum(StringLength sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnFailIfStringIsShorterThanMinimum(Length sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
@@ -32,7 +32,7 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailIfStringIsLongerThanMaximum(StringLength sut, [RuleContext] RuleContext context)
+        public async Task GetResultAsyncShouldReturnFailIfStringIsLongerThanMaximum(Length sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
