@@ -51,7 +51,7 @@ namespace CSF.Validation.Rules
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
-            var notEmptyResult = notEmpty.GetResultAsync(validated, context, token).Result;
+            var notEmptyResult = ((IRule<IReadOnlyCollection<T>>) notEmpty).GetResultAsync(validated, context, token).Result;
             return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
         }
 

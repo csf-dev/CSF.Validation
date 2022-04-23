@@ -26,7 +26,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
-    public class Length : IRule<Array>, IRule<ICollection>, IRule<string>
+    public class LengthInRange : IRule<Array>, IRule<ICollection>, IRule<string>
     {
         readonly IntegerInRange inRangeRule;
 
@@ -86,11 +86,11 @@ namespace CSF.Validation.Rules
         }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="Length"/>.
+        /// Initialises a new instance of <see cref="LengthInRange"/>.
         /// </summary>
         /// <param name="inRangeRule">A number-in-range rule.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="inRangeRule"/> is <see langword="null" />.</exception>
-        public Length(IntegerInRange inRangeRule)
+        public LengthInRange(IntegerInRange inRangeRule)
         {
             this.inRangeRule = inRangeRule ?? throw new ArgumentNullException(nameof(inRangeRule));
         }

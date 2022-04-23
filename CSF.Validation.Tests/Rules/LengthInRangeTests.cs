@@ -4,16 +4,16 @@ using NUnit.Framework;
 namespace CSF.Validation.Rules
 {
     [TestFixture,Parallelizable]
-    public class LengthTests
+    public class LengthInRangeTests
     {
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfStringIsNull(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfStringIsNull(LengthInRange sut, [RuleContext] RuleContext context)
         {
             Assert.That(() => sut.GetResultAsync((string) null, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfStringIsWithinRange(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfStringIsWithinRange(LengthInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
@@ -21,7 +21,7 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnFailIfStringIsShorterThanMinimum(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnFailIfStringIsShorterThanMinimum(LengthInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnFailIfStringIsLongerThanMaximum(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnFailIfStringIsLongerThanMaximum(LengthInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
@@ -37,13 +37,13 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfArrayIsNull(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfArrayIsNull(LengthInRange sut, [RuleContext] RuleContext context)
         {
             Assert.That(() => sut.GetResultAsync((int[]) null, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfArrayLengthIsInRange(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfArrayLengthIsInRange(LengthInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;
@@ -51,13 +51,13 @@ namespace CSF.Validation.Rules
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfListIsNull(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfListIsNull(LengthInRange sut, [RuleContext] RuleContext context)
         {
             Assert.That(() => sut.GetResultAsync((List<int>) null, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfListCountIsInRange(Length sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfListCountIsInRange(LengthInRange sut, [RuleContext] RuleContext context)
         {
             sut.Min = 2;
             sut.Max = 4;

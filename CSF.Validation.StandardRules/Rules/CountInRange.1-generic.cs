@@ -27,7 +27,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
-    public class Count<T> : IRule<ICollection<T>>, IRule<IReadOnlyCollection<T>>, IRule<IQueryable<T>>
+    public class CountInRange<T> : IRule<ICollection<T>>, IRule<IReadOnlyCollection<T>>, IRule<IQueryable<T>>
     {
         readonly IntegerInRange inRangeRule;
 
@@ -56,14 +56,7 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Count, context, token);
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        public Task<RuleResult> GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token = default)
+        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
         {
             if(validated is null) return PassAsync();
             inRangeRule.Min = Min;
@@ -89,11 +82,11 @@ namespace CSF.Validation.Rules
         }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="Count{T}"/>.
+        /// Initialises a new instance of <see cref="CountInRange{T}"/>.
         /// </summary>
         /// <param name="inRangeRule">A number-in-range rule.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="inRangeRule"/> is <see langword="null" />.</exception>
-        public Count(IntegerInRange inRangeRule)
+        public CountInRange(IntegerInRange inRangeRule)
         {
             this.inRangeRule = inRangeRule ?? throw new ArgumentNullException(nameof(inRangeRule));
         }
