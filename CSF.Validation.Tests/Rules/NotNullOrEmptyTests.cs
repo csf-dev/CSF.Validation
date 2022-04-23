@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CSF.Validation.Rules
@@ -8,24 +6,21 @@ namespace CSF.Validation.Rules
     public class NotNullOrEmptyTests
     {
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassForANonEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context, int value)
+        public void GetResultAsyncShouldReturnPassForANonEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context, int value)
         {
-            var result = await sut.GetResultAsync("abc", context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
+            Assert.That(() =>sut.GetResultAsync("abc", context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailForANullString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnFailForANullString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync((string) null, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() =>sut.GetResultAsync((string) null, context), Is.FailingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailForAnEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnFailForAnEmptyString(NotNullOrEmpty sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync(string.Empty, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() =>sut.GetResultAsync(string.Empty, context), Is.FailingValidationResult);
         }
     }
 }

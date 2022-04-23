@@ -47,6 +47,12 @@ namespace CSF.Validation.Rules
         public Exception Exception { get; }
 
         /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string representation of the current object.</returns>
+        public override string ToString() => $"[{nameof(RuleResult)}:{Outcome}]";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RuleResult"/> class.
         /// </summary>
         /// <param name="outcome">The outcome of validation.</param>

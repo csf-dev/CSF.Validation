@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CSF.Validation.Rules
@@ -7,32 +6,28 @@ namespace CSF.Validation.Rules
     public class NotNullTests
     {
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassForANonNullInteger(NotNull sut, [RuleContext] RuleContext context, int value)
+        public void GetResultAsyncShouldReturnPassForANonNullInteger(NotNull sut, [RuleContext] RuleContext context, int value)
         {
-            var result = await sut.GetResultAsync(value, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
+            Assert.That(() =>sut.GetResultAsync(value, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailForANullInteger(NotNull sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnFailForANullInteger(NotNull sut, [RuleContext] RuleContext context)
         {
             int? value = null;
-            var result = await sut.GetResultAsync(value, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() =>sut.GetResultAsync(value, context), Is.FailingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnPassForAnObject(NotNull sut, [RuleContext] RuleContext context, object value)
+        public void GetResultAsyncShouldReturnPassForAnObject(NotNull sut, [RuleContext] RuleContext context, object value)
         {
-            var result = await sut.GetResultAsync(value, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Passed));
+            Assert.That(() =>sut.GetResultAsync(value, context), Is.PassingValidationResult);
         }
 
         [Test,AutoMoqData]
-        public async Task GetResultAsyncShouldReturnFailForNull(NotNull sut, [RuleContext] RuleContext context)
+        public void GetResultAsyncShouldReturnFailForNull(NotNull sut, [RuleContext] RuleContext context)
         {
-            var result = await sut.GetResultAsync(null, context);
-            Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Failed));
+            Assert.That(() =>sut.GetResultAsync(null, context), Is.FailingValidationResult);
         }
     }
 }
