@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
@@ -77,6 +78,8 @@ namespace CSF.Validation
 
         public class StubValidator : IValidator, IValidator<ValidatedObject>
         {
+            public Type ValidatedType => typeof(ValidatedObject);
+
             public Task<ValidationResult> ValidateAsync(object validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
                 => throw new System.NotImplementedException();
 

@@ -1,14 +1,13 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CSF.Validation;
 
-namespace CSF.ValidationMessages
+namespace CSF.Validation
 {
     /// <summary>
     /// A service object which adds huaman-readable feedback messages (as appropriate) to
     /// a <see cref="ValidationResult"/>.
     /// </summary>
-    public interface IGetsResultWithMessages
+    public interface IAddsFailureMessagesToResult
     {
         /// <summary>
         /// Gets a copy of the <paramref name="result"/> but with human-readable feedback feedback messages

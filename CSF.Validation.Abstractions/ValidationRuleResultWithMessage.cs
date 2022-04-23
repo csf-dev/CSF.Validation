@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CSF.Validation;
 using CSF.Validation.Rules;
 
-namespace CSF.ValidationMessages
+namespace CSF.Validation
 {
     /// <summary>
     /// A model which is a specialisation of <see cref="ValidationRuleResult"/> that may additionally have

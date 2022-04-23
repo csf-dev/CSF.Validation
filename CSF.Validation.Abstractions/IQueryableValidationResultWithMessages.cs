@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace CSF.ValidationMessages
+namespace CSF.Validation
 {
     /// <summary>
     /// An object which can query for specific validation rule results matching specified predicates.
@@ -11,6 +11,11 @@ namespace CSF.ValidationMessages
     /// </summary>
     public interface IQueryableValidationResultWithMessages
     {
+        /// <summary>
+        /// Gets the original validation result from which the current queryable result was created.
+        /// </summary>
+        ValidationResultWithMessages OriginalResult { get; }
+
         /// <summary>
         /// Queries for validation rule results which validate a specified member of an object
         /// and which optionally also match all other specified predicates.

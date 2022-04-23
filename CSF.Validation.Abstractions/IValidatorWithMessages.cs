@@ -7,7 +7,13 @@ namespace CSF.Validation
     /// <summary>
     /// An object which may be used to validate object instances and get a validation result.
     /// </summary>
-    public interface IValidator
+    /// <remarks>
+    /// <para>
+    /// This interface may be used similarly to <see cref="IValidator"/>.  The difference is that when validation rules fail,
+    /// each failed rule will be processed for a failure message.
+    /// </para>
+    /// </remarks>
+    public interface IValidatorWithMessages
     {
         /// <summary>
         /// Gets the type of object that this validator is intended to validate.
@@ -19,6 +25,7 @@ namespace CSF.Validation
         /// </para>
         /// </remarks>
         Type ValidatedType { get; }
+
 
         /// <summary>
         /// Validate the specified object instance asynchronously and get a validation result.
@@ -34,14 +41,20 @@ namespace CSF.Validation
         /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
-        Task<ValidationResult> ValidateAsync(object validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
+        Task<ValidationResultWithMessages> ValidateAsync(object validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
     /// An object which may be used to validate instances of a specified object type and get a validation result. 
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This interface may be used similarly to <see cref="IValidator{TValidated}"/>.  The difference is that when validation rules fail,
+    /// each failed rule will be processed for a failure message.
+    /// </para>
+    /// </remarks>
     /// <typeparam name="TValidated">The type of object which will be validated.</typeparam>
-    public interface IValidator<TValidated>
+    public interface IValidatorWithMessages<TValidated>
     {
         /// <summary>
         /// Validate the specified object instance asynchronously and get a validation result.
@@ -54,6 +67,6 @@ namespace CSF.Validation
         /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
-        Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
+        Task<ValidationResultWithMessages> ValidateAsync(TValidated validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
     }
 }
