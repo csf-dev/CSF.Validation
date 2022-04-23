@@ -2898,6 +2898,112 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.CommonResults.ResultAsync
   nameWithType: CommonResults.ResultAsync
+- uid: CSF.Validation.Rules.CountInRange`1
+  name: CountInRange<T>
+  href: api/CSF.Validation.Rules.CountInRange-1.html
+  commentId: T:CSF.Validation.Rules.CountInRange`1
+  name.vb: CountInRange(Of T)
+  fullName: CSF.Validation.Rules.CountInRange<T>
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T)
+  nameWithType: CountInRange<T>
+  nameWithType.vb: CountInRange(Of T)
+- uid: CSF.Validation.Rules.CountInRange`1.#ctor(CSF.Validation.Rules.IntegerInRange)
+  name: CountInRange(IntegerInRange)
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1__ctor_CSF_Validation_Rules_IntegerInRange_
+  commentId: M:CSF.Validation.Rules.CountInRange`1.#ctor(CSF.Validation.Rules.IntegerInRange)
+  fullName: CSF.Validation.Rules.CountInRange<T>.CountInRange(CSF.Validation.Rules.IntegerInRange)
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).CountInRange(CSF.Validation.Rules.IntegerInRange)
+  nameWithType: CountInRange<T>.CountInRange(IntegerInRange)
+  nameWithType.vb: CountInRange(Of T).CountInRange(IntegerInRange)
+- uid: CSF.Validation.Rules.CountInRange`1.#ctor*
+  name: CountInRange
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1__ctor_
+  commentId: Overload:CSF.Validation.Rules.CountInRange`1.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.CountInRange<T>.CountInRange
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).CountInRange
+  nameWithType: CountInRange<T>.CountInRange
+  nameWithType.vb: CountInRange(Of T).CountInRange
+- uid: CSF.Validation.Rules.CountInRange`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_CSF_Validation_Rules_IRule_System_Collections_Generic_IReadOnlyCollection_T___GetResultAsync_System_Collections_Generic_IReadOnlyCollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.CountInRange`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.CountInRange<T>.CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: CountInRange<T>.IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: CountInRange(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.CountInRange`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync*
+  name: IRule<IReadOnlyCollection<T>>.GetResultAsync
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_CSF_Validation_Rules_IRule_System_Collections_Generic_IReadOnlyCollection_T___GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.CountInRange`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync
+  isSpec: "True"
+  name.vb: CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  fullName: CSF.Validation.Rules.CountInRange<T>.CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  nameWithType: CountInRange<T>.IRule<IReadOnlyCollection<T>>.GetResultAsync
+  nameWithType.vb: CountInRange(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+- uid: CSF.Validation.Rules.CountInRange`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_GetResultAsync_System_Collections_Generic_ICollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.CountInRange`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.CountInRange<T>.GetResultAsync(System.Collections.Generic.ICollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).GetResultAsync(System.Collections.Generic.ICollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: CountInRange<T>.GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: CountInRange(Of T).GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.CountInRange`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_GetResultAsync_System_Linq_IQueryable__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.CountInRange`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.CountInRange<T>.GetResultAsync(System.Linq.IQueryable<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).GetResultAsync(System.Linq.IQueryable(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: CountInRange<T>.GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  nameWithType.vb: CountInRange(Of T).GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.CountInRange`1.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.CountInRange`1.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.CountInRange<T>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).GetResultAsync
+  nameWithType: CountInRange<T>.GetResultAsync
+  nameWithType.vb: CountInRange(Of T).GetResultAsync
+- uid: CSF.Validation.Rules.CountInRange`1.Max
+  name: Max
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_Max
+  commentId: P:CSF.Validation.Rules.CountInRange`1.Max
+  fullName: CSF.Validation.Rules.CountInRange<T>.Max
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).Max
+  nameWithType: CountInRange<T>.Max
+  nameWithType.vb: CountInRange(Of T).Max
+- uid: CSF.Validation.Rules.CountInRange`1.Max*
+  name: Max
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_Max_
+  commentId: Overload:CSF.Validation.Rules.CountInRange`1.Max
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.CountInRange<T>.Max
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).Max
+  nameWithType: CountInRange<T>.Max
+  nameWithType.vb: CountInRange(Of T).Max
+- uid: CSF.Validation.Rules.CountInRange`1.Min
+  name: Min
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_Min
+  commentId: P:CSF.Validation.Rules.CountInRange`1.Min
+  fullName: CSF.Validation.Rules.CountInRange<T>.Min
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).Min
+  nameWithType: CountInRange<T>.Min
+  nameWithType.vb: CountInRange(Of T).Min
+- uid: CSF.Validation.Rules.CountInRange`1.Min*
+  name: Min
+  href: api/CSF.Validation.Rules.CountInRange-1.html#CSF_Validation_Rules_CountInRange_1_Min_
+  commentId: Overload:CSF.Validation.Rules.CountInRange`1.Min
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.CountInRange<T>.Min
+  fullName.vb: CSF.Validation.Rules.CountInRange(Of T).Min
+  nameWithType: CountInRange<T>.Min
+  nameWithType.vb: CountInRange(Of T).Min
 - uid: CSF.Validation.Rules.DateTimeInRange
   name: DateTimeInRange
   href: api/CSF.Validation.Rules.DateTimeInRange.html
@@ -3006,6 +3112,98 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.DecimalInRange.Min
   nameWithType: DecimalInRange.Min
+- uid: CSF.Validation.Rules.Empty
+  name: Empty
+  href: api/CSF.Validation.Rules.Empty.html
+  commentId: T:CSF.Validation.Rules.Empty
+  fullName: CSF.Validation.Rules.Empty
+  nameWithType: Empty
+- uid: CSF.Validation.Rules.Empty.GetResultAsync(System.Array,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(Array, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty.html#CSF_Validation_Rules_Empty_GetResultAsync_System_Array_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty.GetResultAsync(System.Array,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.Empty.GetResultAsync(System.Array, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty.GetResultAsync(Array, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty.GetResultAsync(System.Collections.ICollection,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(ICollection, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty.html#CSF_Validation_Rules_Empty_GetResultAsync_System_Collections_ICollection_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty.GetResultAsync(System.Collections.ICollection,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.Empty.GetResultAsync(System.Collections.ICollection, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty.GetResultAsync(ICollection, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty.GetResultAsync(System.Collections.IEnumerable,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(IEnumerable, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty.html#CSF_Validation_Rules_Empty_GetResultAsync_System_Collections_IEnumerable_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty.GetResultAsync(System.Collections.IEnumerable,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.Empty.GetResultAsync(System.Collections.IEnumerable, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty.GetResultAsync(IEnumerable, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(String, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty.html#CSF_Validation_Rules_Empty_GetResultAsync_System_String_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.Empty.GetResultAsync(System.String, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty.GetResultAsync(String, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.Empty.html#CSF_Validation_Rules_Empty_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.Empty.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.Empty.GetResultAsync
+  nameWithType: Empty.GetResultAsync
+- uid: CSF.Validation.Rules.Empty`1
+  name: Empty<T>
+  href: api/CSF.Validation.Rules.Empty-1.html
+  commentId: T:CSF.Validation.Rules.Empty`1
+  name.vb: Empty(Of T)
+  fullName: CSF.Validation.Rules.Empty<T>
+  fullName.vb: CSF.Validation.Rules.Empty(Of T)
+  nameWithType: Empty<T>
+  nameWithType.vb: Empty(Of T)
+- uid: CSF.Validation.Rules.Empty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty-1.html#CSF_Validation_Rules_Empty_1_CSF_Validation_Rules_IRule_System_Collections_Generic_IReadOnlyCollection_T___GetResultAsync_System_Collections_Generic_IReadOnlyCollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.Empty<T>.CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.Empty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty<T>.IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: Empty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync*
+  name: IRule<IReadOnlyCollection<T>>.GetResultAsync
+  href: api/CSF.Validation.Rules.Empty-1.html#CSF_Validation_Rules_Empty_1_CSF_Validation_Rules_IRule_System_Collections_Generic_IReadOnlyCollection_T___GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.Empty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync
+  isSpec: "True"
+  name.vb: CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  fullName: CSF.Validation.Rules.Empty<T>.CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.Empty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  nameWithType: Empty<T>.IRule<IReadOnlyCollection<T>>.GetResultAsync
+  nameWithType.vb: Empty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+- uid: CSF.Validation.Rules.Empty`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty-1.html#CSF_Validation_Rules_Empty_1_GetResultAsync_System_Collections_Generic_ICollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.Empty<T>.GetResultAsync(System.Collections.Generic.ICollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.Empty(Of T).GetResultAsync(System.Collections.Generic.ICollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty<T>.GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: Empty(Of T).GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Empty-1.html#CSF_Validation_Rules_Empty_1_GetResultAsync_System_Linq_IQueryable__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Empty`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.Empty<T>.GetResultAsync(System.Linq.IQueryable<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.Empty(Of T).GetResultAsync(System.Linq.IQueryable(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Empty<T>.GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  nameWithType.vb: Empty(Of T).GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Empty`1.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.Empty-1.html#CSF_Validation_Rules_Empty_1_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.Empty`1.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.Empty<T>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.Empty(Of T).GetResultAsync
+  nameWithType: Empty<T>.GetResultAsync
+  nameWithType.vb: Empty(Of T).GetResultAsync
 - uid: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator
   name: ExceptionHandlingRuleLogicDecorator
   href: api/CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.html
@@ -3038,96 +3236,96 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetResultAsync
   nameWithType: ExceptionHandlingRuleLogicDecorator.GetResultAsync
-- uid: CSF.Validation.Rules.FloatingInRange
-  name: FloatingInRange
-  href: api/CSF.Validation.Rules.FloatingInRange.html
-  commentId: T:CSF.Validation.Rules.FloatingInRange
-  fullName: CSF.Validation.Rules.FloatingInRange
-  nameWithType: FloatingInRange
-- uid: CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync(System.Nullable{System.Single},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+- uid: CSF.Validation.Rules.FloatInRange
+  name: FloatInRange
+  href: api/CSF.Validation.Rules.FloatInRange.html
+  commentId: T:CSF.Validation.Rules.FloatInRange
+  fullName: CSF.Validation.Rules.FloatInRange
+  nameWithType: FloatInRange
+- uid: CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync(System.Nullable{System.Single},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name: IRule<Nullable<Single>>.GetResultAsync(Nullable<Single>, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_System_Nullable_System_Single__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync(System.Nullable{System.Single},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_System_Nullable_System_Single__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync(System.Nullable{System.Single},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name.vb: CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync(Nullable(Of Single), RuleContext, CancellationToken)
-  fullName: CSF.Validation.Rules.FloatingInRange.CSF.Validation.Rules.IRule<System.Nullable<System.Single>>.GetResultAsync(System.Nullable<System.Single>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.Rules.FloatingInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync(System.Nullable(Of System.Single), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: FloatingInRange.IRule<Nullable<Single>>.GetResultAsync(Nullable<Single>, RuleContext, CancellationToken)
-  nameWithType.vb: FloatingInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync(Nullable(Of Single), RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync*
+  fullName: CSF.Validation.Rules.FloatInRange.CSF.Validation.Rules.IRule<System.Nullable<System.Single>>.GetResultAsync(System.Nullable<System.Single>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.FloatInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync(System.Nullable(Of System.Single), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: FloatInRange.IRule<Nullable<Single>>.GetResultAsync(Nullable<Single>, RuleContext, CancellationToken)
+  nameWithType.vb: FloatInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync(Nullable(Of Single), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync*
   name: IRule<Nullable<Single>>.GetResultAsync
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_
-  commentId: Overload:CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync
   isSpec: "True"
   name.vb: CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync
-  fullName: CSF.Validation.Rules.FloatingInRange.CSF.Validation.Rules.IRule<System.Nullable<System.Single>>.GetResultAsync
-  fullName.vb: CSF.Validation.Rules.FloatingInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync
-  nameWithType: FloatingInRange.IRule<Nullable<Single>>.GetResultAsync
-  nameWithType.vb: FloatingInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync
-- uid: CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync(System.Single,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.FloatInRange.CSF.Validation.Rules.IRule<System.Nullable<System.Single>>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.FloatInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync
+  nameWithType: FloatInRange.IRule<Nullable<Single>>.GetResultAsync
+  nameWithType.vb: FloatInRange.CSF.Validation.Rules.IRule<System.Single?>.GetResultAsync
+- uid: CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync(System.Single,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name: IRule<Single>.GetResultAsync(Single, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_System_Single_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync(System.Single,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_System_Single_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync(System.Single,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name.vb: CSF.Validation.Rules.IRule<System.Single>.GetResultAsync(Single, RuleContext, CancellationToken)
-  fullName: CSF.Validation.Rules.FloatingInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync(System.Single, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: FloatingInRange.IRule<Single>.GetResultAsync(Single, RuleContext, CancellationToken)
-  nameWithType.vb: FloatingInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync(Single, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync*
+  fullName: CSF.Validation.Rules.FloatInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync(System.Single, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: FloatInRange.IRule<Single>.GetResultAsync(Single, RuleContext, CancellationToken)
+  nameWithType.vb: FloatInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync(Single, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync*
   name: IRule<Single>.GetResultAsync
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_
-  commentId: Overload:CSF.Validation.Rules.FloatingInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync
   isSpec: "True"
   name.vb: CSF.Validation.Rules.IRule<System.Single>.GetResultAsync
-  fullName: CSF.Validation.Rules.FloatingInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync
-  nameWithType: FloatingInRange.IRule<Single>.GetResultAsync
-  nameWithType.vb: FloatingInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync
-- uid: CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Double,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.FloatInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync
+  nameWithType: FloatInRange.IRule<Single>.GetResultAsync
+  nameWithType.vb: FloatInRange.CSF.Validation.Rules.IRule<System.Single>.GetResultAsync
+- uid: CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Double,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name: GetResultAsync(Double, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_GetResultAsync_System_Double_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Double,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  fullName: CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Double, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: FloatingInRange.GetResultAsync(Double, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Nullable{System.Double},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_GetResultAsync_System_Double_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Double,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Double, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: FloatInRange.GetResultAsync(Double, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Nullable{System.Double},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name: GetResultAsync(Nullable<Double>, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_GetResultAsync_System_Nullable_System_Double__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Nullable{System.Double},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_GetResultAsync_System_Nullable_System_Double__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Nullable{System.Double},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name.vb: GetResultAsync(Nullable(Of Double), RuleContext, CancellationToken)
-  fullName: CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Nullable<System.Double>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.Rules.FloatingInRange.GetResultAsync(System.Nullable(Of System.Double), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: FloatingInRange.GetResultAsync(Nullable<Double>, RuleContext, CancellationToken)
-  nameWithType.vb: FloatingInRange.GetResultAsync(Nullable(Of Double), RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.FloatingInRange.GetResultAsync*
+  fullName: CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Nullable<System.Double>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Nullable(Of System.Double), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: FloatInRange.GetResultAsync(Nullable<Double>, RuleContext, CancellationToken)
+  nameWithType.vb: FloatInRange.GetResultAsync(Nullable(Of Double), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.FloatInRange.GetResultAsync*
   name: GetResultAsync
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_GetResultAsync_
-  commentId: Overload:CSF.Validation.Rules.FloatingInRange.GetResultAsync
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.FloatInRange.GetResultAsync
   isSpec: "True"
-  fullName: CSF.Validation.Rules.FloatingInRange.GetResultAsync
-  nameWithType: FloatingInRange.GetResultAsync
-- uid: CSF.Validation.Rules.FloatingInRange.Max
+  fullName: CSF.Validation.Rules.FloatInRange.GetResultAsync
+  nameWithType: FloatInRange.GetResultAsync
+- uid: CSF.Validation.Rules.FloatInRange.Max
   name: Max
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_Max
-  commentId: P:CSF.Validation.Rules.FloatingInRange.Max
-  fullName: CSF.Validation.Rules.FloatingInRange.Max
-  nameWithType: FloatingInRange.Max
-- uid: CSF.Validation.Rules.FloatingInRange.Max*
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Max
+  commentId: P:CSF.Validation.Rules.FloatInRange.Max
+  fullName: CSF.Validation.Rules.FloatInRange.Max
+  nameWithType: FloatInRange.Max
+- uid: CSF.Validation.Rules.FloatInRange.Max*
   name: Max
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_Max_
-  commentId: Overload:CSF.Validation.Rules.FloatingInRange.Max
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Max_
+  commentId: Overload:CSF.Validation.Rules.FloatInRange.Max
   isSpec: "True"
-  fullName: CSF.Validation.Rules.FloatingInRange.Max
-  nameWithType: FloatingInRange.Max
-- uid: CSF.Validation.Rules.FloatingInRange.Min
+  fullName: CSF.Validation.Rules.FloatInRange.Max
+  nameWithType: FloatInRange.Max
+- uid: CSF.Validation.Rules.FloatInRange.Min
   name: Min
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_Min
-  commentId: P:CSF.Validation.Rules.FloatingInRange.Min
-  fullName: CSF.Validation.Rules.FloatingInRange.Min
-  nameWithType: FloatingInRange.Min
-- uid: CSF.Validation.Rules.FloatingInRange.Min*
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Min
+  commentId: P:CSF.Validation.Rules.FloatInRange.Min
+  fullName: CSF.Validation.Rules.FloatInRange.Min
+  nameWithType: FloatInRange.Min
+- uid: CSF.Validation.Rules.FloatInRange.Min*
   name: Min
-  href: api/CSF.Validation.Rules.FloatingInRange.html#CSF_Validation_Rules_FloatingInRange_Min_
-  commentId: Overload:CSF.Validation.Rules.FloatingInRange.Min
+  href: api/CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Min_
+  commentId: Overload:CSF.Validation.Rules.FloatInRange.Min
   isSpec: "True"
-  fullName: CSF.Validation.Rules.FloatingInRange.Min
-  nameWithType: FloatingInRange.Min
+  fullName: CSF.Validation.Rules.FloatInRange.Min
+  nameWithType: FloatInRange.Min
 - uid: CSF.Validation.Rules.IGetsValidationLogic
   name: IGetsValidationLogic
   href: api/CSF.Validation.Rules.IGetsValidationLogic.html
@@ -3399,6 +3597,76 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.IValidationLogic.GetResultAsync
   nameWithType: IValidationLogic.GetResultAsync
+- uid: CSF.Validation.Rules.LengthInRange
+  name: LengthInRange
+  href: api/CSF.Validation.Rules.LengthInRange.html
+  commentId: T:CSF.Validation.Rules.LengthInRange
+  fullName: CSF.Validation.Rules.LengthInRange
+  nameWithType: LengthInRange
+- uid: CSF.Validation.Rules.LengthInRange.#ctor(CSF.Validation.Rules.IntegerInRange)
+  name: LengthInRange(IntegerInRange)
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange__ctor_CSF_Validation_Rules_IntegerInRange_
+  commentId: M:CSF.Validation.Rules.LengthInRange.#ctor(CSF.Validation.Rules.IntegerInRange)
+  fullName: CSF.Validation.Rules.LengthInRange.LengthInRange(CSF.Validation.Rules.IntegerInRange)
+  nameWithType: LengthInRange.LengthInRange(IntegerInRange)
+- uid: CSF.Validation.Rules.LengthInRange.#ctor*
+  name: LengthInRange
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange__ctor_
+  commentId: Overload:CSF.Validation.Rules.LengthInRange.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.LengthInRange.LengthInRange
+  nameWithType: LengthInRange.LengthInRange
+- uid: CSF.Validation.Rules.LengthInRange.GetResultAsync(System.Array,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(Array, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_GetResultAsync_System_Array_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.LengthInRange.GetResultAsync(System.Array,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.LengthInRange.GetResultAsync(System.Array, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: LengthInRange.GetResultAsync(Array, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.LengthInRange.GetResultAsync(System.Collections.ICollection,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(ICollection, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_GetResultAsync_System_Collections_ICollection_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.LengthInRange.GetResultAsync(System.Collections.ICollection,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.LengthInRange.GetResultAsync(System.Collections.ICollection, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: LengthInRange.GetResultAsync(ICollection, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.LengthInRange.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(String, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_GetResultAsync_System_String_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.LengthInRange.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.LengthInRange.GetResultAsync(System.String, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: LengthInRange.GetResultAsync(String, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.LengthInRange.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.LengthInRange.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.LengthInRange.GetResultAsync
+  nameWithType: LengthInRange.GetResultAsync
+- uid: CSF.Validation.Rules.LengthInRange.Max
+  name: Max
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_Max
+  commentId: P:CSF.Validation.Rules.LengthInRange.Max
+  fullName: CSF.Validation.Rules.LengthInRange.Max
+  nameWithType: LengthInRange.Max
+- uid: CSF.Validation.Rules.LengthInRange.Max*
+  name: Max
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_Max_
+  commentId: Overload:CSF.Validation.Rules.LengthInRange.Max
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.LengthInRange.Max
+  nameWithType: LengthInRange.Max
+- uid: CSF.Validation.Rules.LengthInRange.Min
+  name: Min
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_Min
+  commentId: P:CSF.Validation.Rules.LengthInRange.Min
+  fullName: CSF.Validation.Rules.LengthInRange.Min
+  nameWithType: LengthInRange.Min
+- uid: CSF.Validation.Rules.LengthInRange.Min*
+  name: Min
+  href: api/CSF.Validation.Rules.LengthInRange.html#CSF_Validation_Rules_LengthInRange_Min_
+  commentId: Overload:CSF.Validation.Rules.LengthInRange.Min
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.LengthInRange.Min
+  nameWithType: LengthInRange.Min
 - uid: CSF.Validation.Rules.MatchesRegex
   name: MatchesRegex
   href: api/CSF.Validation.Rules.MatchesRegex.html
@@ -3456,15 +3724,6 @@ references:
   commentId: M:CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Array,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   fullName: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Array, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
   nameWithType: NotEmpty.GetResultAsync(Array, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.Generic.ICollection{System.Object},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name: GetResultAsync(ICollection<Object>, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.NotEmpty.html#CSF_Validation_Rules_NotEmpty_GetResultAsync_System_Collections_Generic_ICollection_System_Object__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.Generic.ICollection{System.Object},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name.vb: GetResultAsync(ICollection(Of Object), RuleContext, CancellationToken)
-  fullName: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.Generic.ICollection<System.Object>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.Generic.ICollection(Of System.Object), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: NotEmpty.GetResultAsync(ICollection<Object>, RuleContext, CancellationToken)
-  nameWithType.vb: NotEmpty.GetResultAsync(ICollection(Of Object), RuleContext, CancellationToken)
 - uid: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.ICollection,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name: GetResultAsync(ICollection, RuleContext, CancellationToken)
   href: api/CSF.Validation.Rules.NotEmpty.html#CSF_Validation_Rules_NotEmpty_GetResultAsync_System_Collections_ICollection_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
@@ -3477,6 +3736,12 @@ references:
   commentId: M:CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.IEnumerable,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   fullName: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.Collections.IEnumerable, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
   nameWithType: NotEmpty.GetResultAsync(IEnumerable, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(String, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotEmpty.html#CSF_Validation_Rules_NotEmpty_GetResultAsync_System_String_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotEmpty.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.NotEmpty.GetResultAsync(System.String, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotEmpty.GetResultAsync(String, RuleContext, CancellationToken)
 - uid: CSF.Validation.Rules.NotEmpty.GetResultAsync*
   name: GetResultAsync
   href: api/CSF.Validation.Rules.NotEmpty.html#CSF_Validation_Rules_NotEmpty_GetResultAsync_
@@ -3484,6 +3749,61 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.NotEmpty.GetResultAsync
   nameWithType: NotEmpty.GetResultAsync
+- uid: CSF.Validation.Rules.NotEmpty`1
+  name: NotEmpty<T>
+  href: api/CSF.Validation.Rules.NotEmpty-1.html
+  commentId: T:CSF.Validation.Rules.NotEmpty`1
+  name.vb: NotEmpty(Of T)
+  fullName: CSF.Validation.Rules.NotEmpty<T>
+  fullName.vb: CSF.Validation.Rules.NotEmpty(Of T)
+  nameWithType: NotEmpty<T>
+  nameWithType.vb: NotEmpty(Of T)
+- uid: CSF.Validation.Rules.NotEmpty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotEmpty-1.html#CSF_Validation_Rules_NotEmpty_1_CSF_Validation_Rules_IRule_System_Collections_Generic_IReadOnlyCollection_T___GetResultAsync_System_Collections_Generic_IReadOnlyCollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotEmpty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.NotEmpty<T>.CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.NotEmpty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotEmpty<T>.IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: NotEmpty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotEmpty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync*
+  name: IRule<IReadOnlyCollection<T>>.GetResultAsync
+  href: api/CSF.Validation.Rules.NotEmpty-1.html#CSF_Validation_Rules_NotEmpty_1_CSF_Validation_Rules_IRule_System_Collections_Generic_IReadOnlyCollection_T___GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.NotEmpty`1.CSF#Validation#Rules#IRule{System#Collections#Generic#IReadOnlyCollection{T}}#GetResultAsync
+  isSpec: "True"
+  name.vb: CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  fullName: CSF.Validation.Rules.NotEmpty<T>.CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.NotEmpty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+  nameWithType: NotEmpty<T>.IRule<IReadOnlyCollection<T>>.GetResultAsync
+  nameWithType.vb: NotEmpty(Of T).CSF.Validation.Rules.IRule<System.Collections.Generic.IReadOnlyCollection<T>>.GetResultAsync
+- uid: CSF.Validation.Rules.NotEmpty`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotEmpty-1.html#CSF_Validation_Rules_NotEmpty_1_GetResultAsync_System_Collections_Generic_ICollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotEmpty`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.NotEmpty<T>.GetResultAsync(System.Collections.Generic.ICollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.NotEmpty(Of T).GetResultAsync(System.Collections.Generic.ICollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotEmpty<T>.GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: NotEmpty(Of T).GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotEmpty`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotEmpty-1.html#CSF_Validation_Rules_NotEmpty_1_GetResultAsync_System_Linq_IQueryable__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotEmpty`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.NotEmpty<T>.GetResultAsync(System.Linq.IQueryable<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.NotEmpty(Of T).GetResultAsync(System.Linq.IQueryable(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotEmpty<T>.GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  nameWithType.vb: NotEmpty(Of T).GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotEmpty`1.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.NotEmpty-1.html#CSF_Validation_Rules_NotEmpty_1_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.NotEmpty`1.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.NotEmpty<T>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.NotEmpty(Of T).GetResultAsync
+  nameWithType: NotEmpty<T>.GetResultAsync
+  nameWithType.vb: NotEmpty(Of T).GetResultAsync
 - uid: CSF.Validation.Rules.NotNull
   name: NotNull
   href: api/CSF.Validation.Rules.NotNull.html
@@ -3528,15 +3848,6 @@ references:
   commentId: M:CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Array,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   fullName: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Array, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
   nameWithType: NotNullOrEmpty.GetResultAsync(Array, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.Generic.ICollection{System.Object},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name: GetResultAsync(ICollection<Object>, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.NotNullOrEmpty.html#CSF_Validation_Rules_NotNullOrEmpty_GetResultAsync_System_Collections_Generic_ICollection_System_Object__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.Generic.ICollection{System.Object},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name.vb: GetResultAsync(ICollection(Of Object), RuleContext, CancellationToken)
-  fullName: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.Generic.ICollection<System.Object>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.Generic.ICollection(Of System.Object), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: NotNullOrEmpty.GetResultAsync(ICollection<Object>, RuleContext, CancellationToken)
-  nameWithType.vb: NotNullOrEmpty.GetResultAsync(ICollection(Of Object), RuleContext, CancellationToken)
 - uid: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.ICollection,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   name: GetResultAsync(ICollection, RuleContext, CancellationToken)
   href: api/CSF.Validation.Rules.NotNullOrEmpty.html#CSF_Validation_Rules_NotNullOrEmpty_GetResultAsync_System_Collections_ICollection_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
@@ -3549,6 +3860,12 @@ references:
   commentId: M:CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.IEnumerable,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
   fullName: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.Collections.IEnumerable, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
   nameWithType: NotNullOrEmpty.GetResultAsync(IEnumerable, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(String, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotNullOrEmpty.html#CSF_Validation_Rules_NotNullOrEmpty_GetResultAsync_System_String_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync(System.String, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotNullOrEmpty.GetResultAsync(String, RuleContext, CancellationToken)
 - uid: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync*
   name: GetResultAsync
   href: api/CSF.Validation.Rules.NotNullOrEmpty.html#CSF_Validation_Rules_NotNullOrEmpty_GetResultAsync_
@@ -3556,6 +3873,88 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.NotNullOrEmpty.GetResultAsync
   nameWithType: NotNullOrEmpty.GetResultAsync
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1
+  name: NotNullOrEmpty<T>
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html
+  commentId: T:CSF.Validation.Rules.NotNullOrEmpty`1
+  name.vb: NotNullOrEmpty(Of T)
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T)
+  nameWithType: NotNullOrEmpty<T>
+  nameWithType.vb: NotNullOrEmpty(Of T)
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1.#ctor(CSF.Validation.Rules.NotNull,CSF.Validation.Rules.NotEmpty{`0})
+  name: NotNullOrEmpty(NotNull, NotEmpty<T>)
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html#CSF_Validation_Rules_NotNullOrEmpty_1__ctor_CSF_Validation_Rules_NotNull_CSF_Validation_Rules_NotEmpty__0__
+  commentId: M:CSF.Validation.Rules.NotNullOrEmpty`1.#ctor(CSF.Validation.Rules.NotNull,CSF.Validation.Rules.NotEmpty{`0})
+  name.vb: NotNullOrEmpty(NotNull, NotEmpty(Of T))
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>.NotNullOrEmpty(CSF.Validation.Rules.NotNull, CSF.Validation.Rules.NotEmpty<T>)
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T).NotNullOrEmpty(CSF.Validation.Rules.NotNull, CSF.Validation.Rules.NotEmpty(Of T))
+  nameWithType: NotNullOrEmpty<T>.NotNullOrEmpty(NotNull, NotEmpty<T>)
+  nameWithType.vb: NotNullOrEmpty(Of T).NotNullOrEmpty(NotNull, NotEmpty(Of T))
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1.#ctor*
+  name: NotNullOrEmpty
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html#CSF_Validation_Rules_NotNullOrEmpty_1__ctor_
+  commentId: Overload:CSF.Validation.Rules.NotNullOrEmpty`1.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>.NotNullOrEmpty
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T).NotNullOrEmpty
+  nameWithType: NotNullOrEmpty<T>.NotNullOrEmpty
+  nameWithType.vb: NotNullOrEmpty(Of T).NotNullOrEmpty
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html#CSF_Validation_Rules_NotNullOrEmpty_1_GetResultAsync_System_Collections_Generic_ICollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync(System.Collections.Generic.ICollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>.GetResultAsync(System.Collections.Generic.ICollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T).GetResultAsync(System.Collections.Generic.ICollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotNullOrEmpty<T>.GetResultAsync(ICollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: NotNullOrEmpty(Of T).GetResultAsync(ICollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html#CSF_Validation_Rules_NotNullOrEmpty_1_GetResultAsync_System_Collections_Generic_IReadOnlyCollection__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync(System.Collections.Generic.IReadOnlyCollection{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>.GetResultAsync(System.Collections.Generic.IReadOnlyCollection<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T).GetResultAsync(System.Collections.Generic.IReadOnlyCollection(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotNullOrEmpty<T>.GetResultAsync(IReadOnlyCollection<T>, RuleContext, CancellationToken)
+  nameWithType.vb: NotNullOrEmpty(Of T).GetResultAsync(IReadOnlyCollection(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html#CSF_Validation_Rules_NotNullOrEmpty_1_GetResultAsync_System_Linq_IQueryable__0__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync(System.Linq.IQueryable{`0},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name.vb: GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>.GetResultAsync(System.Linq.IQueryable<T>, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T).GetResultAsync(System.Linq.IQueryable(Of T), CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: NotNullOrEmpty<T>.GetResultAsync(IQueryable<T>, RuleContext, CancellationToken)
+  nameWithType.vb: NotNullOrEmpty(Of T).GetResultAsync(IQueryable(Of T), RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.NotNullOrEmpty-1.html#CSF_Validation_Rules_NotNullOrEmpty_1_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.NotNullOrEmpty`1.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.NotNullOrEmpty<T>.GetResultAsync
+  fullName.vb: CSF.Validation.Rules.NotNullOrEmpty(Of T).GetResultAsync
+  nameWithType: NotNullOrEmpty<T>.GetResultAsync
+  nameWithType.vb: NotNullOrEmpty(Of T).GetResultAsync
+- uid: CSF.Validation.Rules.Null
+  name: "Null"
+  href: api/CSF.Validation.Rules.Null.html
+  commentId: T:CSF.Validation.Rules.Null
+  fullName: CSF.Validation.Rules.Null
+  nameWithType: "Null"
+- uid: CSF.Validation.Rules.Null.GetResultAsync(System.Object,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  name: GetResultAsync(Object, RuleContext, CancellationToken)
+  href: api/CSF.Validation.Rules.Null.html#CSF_Validation_Rules_Null_GetResultAsync_System_Object_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Rules.Null.GetResultAsync(System.Object,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.Rules.Null.GetResultAsync(System.Object, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
+  nameWithType: Null.GetResultAsync(Object, RuleContext, CancellationToken)
+- uid: CSF.Validation.Rules.Null.GetResultAsync*
+  name: GetResultAsync
+  href: api/CSF.Validation.Rules.Null.html#CSF_Validation_Rules_Null_GetResultAsync_
+  commentId: Overload:CSF.Validation.Rules.Null.GetResultAsync
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.Null.GetResultAsync
+  nameWithType: Null.GetResultAsync
 - uid: CSF.Validation.Rules.RuleAdapter`1
   name: RuleAdapter<TValidated>
   href: api/CSF.Validation.Rules.RuleAdapter-1.html
@@ -3896,51 +4295,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.RuleResult.Outcome
   nameWithType: RuleResult.Outcome
-- uid: CSF.Validation.Rules.StringLength
-  name: StringLength
-  href: api/CSF.Validation.Rules.StringLength.html
-  commentId: T:CSF.Validation.Rules.StringLength
-  fullName: CSF.Validation.Rules.StringLength
-  nameWithType: StringLength
-- uid: CSF.Validation.Rules.StringLength.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  name: GetResultAsync(String, RuleContext, CancellationToken)
-  href: api/CSF.Validation.Rules.StringLength.html#CSF_Validation_Rules_StringLength_GetResultAsync_System_String_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Rules.StringLength.GetResultAsync(System.String,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)
-  fullName: CSF.Validation.Rules.StringLength.GetResultAsync(System.String, CSF.Validation.Rules.RuleContext, System.Threading.CancellationToken)
-  nameWithType: StringLength.GetResultAsync(String, RuleContext, CancellationToken)
-- uid: CSF.Validation.Rules.StringLength.GetResultAsync*
-  name: GetResultAsync
-  href: api/CSF.Validation.Rules.StringLength.html#CSF_Validation_Rules_StringLength_GetResultAsync_
-  commentId: Overload:CSF.Validation.Rules.StringLength.GetResultAsync
+- uid: CSF.Validation.Rules.RuleResult.ToString
+  name: ToString()
+  href: api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_ToString
+  commentId: M:CSF.Validation.Rules.RuleResult.ToString
+  fullName: CSF.Validation.Rules.RuleResult.ToString()
+  nameWithType: RuleResult.ToString()
+- uid: CSF.Validation.Rules.RuleResult.ToString*
+  name: ToString
+  href: api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_ToString_
+  commentId: Overload:CSF.Validation.Rules.RuleResult.ToString
   isSpec: "True"
-  fullName: CSF.Validation.Rules.StringLength.GetResultAsync
-  nameWithType: StringLength.GetResultAsync
-- uid: CSF.Validation.Rules.StringLength.Max
-  name: Max
-  href: api/CSF.Validation.Rules.StringLength.html#CSF_Validation_Rules_StringLength_Max
-  commentId: P:CSF.Validation.Rules.StringLength.Max
-  fullName: CSF.Validation.Rules.StringLength.Max
-  nameWithType: StringLength.Max
-- uid: CSF.Validation.Rules.StringLength.Max*
-  name: Max
-  href: api/CSF.Validation.Rules.StringLength.html#CSF_Validation_Rules_StringLength_Max_
-  commentId: Overload:CSF.Validation.Rules.StringLength.Max
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.StringLength.Max
-  nameWithType: StringLength.Max
-- uid: CSF.Validation.Rules.StringLength.Min
-  name: Min
-  href: api/CSF.Validation.Rules.StringLength.html#CSF_Validation_Rules_StringLength_Min
-  commentId: P:CSF.Validation.Rules.StringLength.Min
-  fullName: CSF.Validation.Rules.StringLength.Min
-  nameWithType: StringLength.Min
-- uid: CSF.Validation.Rules.StringLength.Min*
-  name: Min
-  href: api/CSF.Validation.Rules.StringLength.html#CSF_Validation_Rules_StringLength_Min_
-  commentId: Overload:CSF.Validation.Rules.StringLength.Min
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.StringLength.Min
-  nameWithType: StringLength.Min
+  fullName: CSF.Validation.Rules.RuleResult.ToString
+  nameWithType: RuleResult.ToString
 - uid: CSF.Validation.Rules.ValidationLogicFactory
   name: ValidationLogicFactory
   href: api/CSF.Validation.Rules.ValidationLogicFactory.html
@@ -5887,6 +6254,9 @@ references:
 - uid: ManifestModelIndexPage
   name: Using the Manifest Model
   href: articles/WritingValidators/UsingTheManifestModel/index.html
+- uid: RulesShouldOnlyFailForOneReason
+  name: A rule should only fail for one conceptual reason
+  href: articles/BestPractice/RulesShouldOnlyFailForOneReason.html
 - uid: WritingValidationRules
   name: Writing Validation Rules
   href: articles/WritingValidators/WritingValidationRules/index.html
