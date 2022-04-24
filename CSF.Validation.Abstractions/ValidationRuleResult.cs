@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CSF.Validation.RuleExecution;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation
@@ -47,85 +48,36 @@ namespace CSF.Validation
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>
-        /// <param name="identifier">A unique identifier for the rule to which this result corresponds.</param>
-        /// <param name="outcome">The outcome of validation.</param>
-        /// <param name="data">An optional collection of arbitrary key/value data which is provided by the validation rule logic.</param>
-        /// <param name="exception">
-        /// An optional exception which caused the validation process to error.  This parameter must be <see langword="null"/>
-        /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
-        /// </param>
-        /// <exception cref="ArgumentNullException">If the <paramref name="identifier"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ArgumentException">
-        /// <list type="bullet">
-        /// <item>
-        /// <description>
-        /// If the <paramref name="outcome"/> is not a defined enumeration constant.
-        /// </description>
-        /// </item>
-        /// <item>
-        /// <description>
-        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
-        /// is not <see langword="null"/>.
-        /// </description>
-        /// </item>
-        /// </list>
-        /// </exception>
-        public ValidationRuleResult(RuleIdentifier identifier,
-                                    RuleOutcome outcome,
-                                    IDictionary<string,object> data = null,
-                                    Exception exception = null) : base(outcome, data, exception)
+        /// <remarks>
+        /// <para>
+        /// This constructor copies-information-from and then enriches a <see cref="RuleResult"/> with further information.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="ArgumentNullException">If any parameter is <see langword="null"/>.</exception>
+        public ValidationRuleResult(RuleResult result,
+                                    RuleContext ruleContext,
+                                    ExecutableRule rule) : base(result)
         {
-            Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
+            if (rule is null)
+                throw new ArgumentNullException(nameof(rule));
+
+            RuleContext = ruleContext ?? throw new ArgumentNullException(nameof(ruleContext));
+            Identifier = rule.RuleIdentifier;
+            RuleInterface = rule.RuleLogic.RuleInterface;
+            ValidatedValue = rule.ValidatedValue;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>
-        /// <param name="identifier">A unique identifier for the rule to which this result corresponds.</param>
-        /// <param name="outcome">The outcome of validation.</param>
-        /// <param name="data">An optional collection of arbitrary key/value data which is provided by the validation rule logic.</param>
-        /// <param name="exception">
-        /// An optional exception which caused the validation process to error.  This parameter must be <see langword="null"/>
-        /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
-        /// </param>
-        /// <exception cref="ArgumentNullException">If the <paramref name="identifier"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ArgumentException">
-        /// <list type="bullet">
-        /// <item>
-        /// <description>
-        /// If the <paramref name="outcome"/> is not a defined enumeration constant.
-        /// </description>
-        /// </item>
-        /// <item>
-        /// <description>
-        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
-        /// is not <see langword="null"/>.
-        /// </description>
-        /// </item>
-        /// </list>
-        /// </exception>
-        ValidationRuleResult(RuleIdentifier identifier,
-                             RuleOutcome outcome,
-                             IReadOnlyDictionary<string, object> data,
-                             Exception exception = null) : base(outcome, data, exception)
+        /// <param name="result">A validation rule result instance to copy.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="result"/> is <see langword="null"/>.</exception>
+        protected ValidationRuleResult(ValidationRuleResult result) : base(result)
         {
-            Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
-        }
-
-        /// <summary>
-        /// Serves as a 'copy constructor' of sorts to initialise an instance of <see cref="ValidationRuleResult"/>
-        /// from an existing <see cref="RuleResult"/> as well as the additional information required by this type.
-        /// </summary>
-        /// <param name="result">An existing instance of <see cref="RuleResult"/>.</param>
-        /// <param name="identifier">A unique identifier for the rule to which this result corresponds.</param>
-        /// <returns>An instance of <see cref="ValidationRuleResult"/> created from the provided information.</returns>
-        /// <exception cref="ArgumentNullException">If either <paramref name="result"/> or <paramref name="identifier"/> is <see langword="null"/>.</exception>
-        public static ValidationRuleResult FromRuleResult(RuleResult result, RuleIdentifier identifier)
-        {
-            if (result is null)
-                throw new ArgumentNullException(nameof(result));
-
-            return new ValidationRuleResult(identifier, result.Outcome, result.Data, result.Exception);
+            RuleContext = result.RuleContext;
+            Identifier = result.Identifier;
+            RuleInterface = result.RuleInterface;
+            ValidatedValue = result.ValidatedValue;
         }
     }
 }

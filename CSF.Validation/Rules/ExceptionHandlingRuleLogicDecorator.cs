@@ -15,6 +15,17 @@ namespace CSF.Validation.Rules
         readonly IValidationLogic wrapped;
 
         /// <summary>
+        /// Gets the type of rule interface that is used by this rule logic.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This will be a closed-generic form of either <see cref="IRule{TValidated}"/> or
+        /// <see cref="IRule{TValue, TParent}"/>.
+        /// </para>
+        /// </remarks>
+        public Type RuleInterface => wrapped.RuleInterface;
+
+        /// <summary>
         /// Executes the logic of the validation rule and returns the result.
         /// </summary>
         /// <param name="value">The value which is being validated by the current rule.</param>

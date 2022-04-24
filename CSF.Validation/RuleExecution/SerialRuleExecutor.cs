@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Rules;
 
 namespace CSF.Validation.RuleExecution
 {
@@ -31,6 +32,7 @@ namespace CSF.Validation.RuleExecution
         readonly IGetsRuleDependencyTracker dependencyTrackerFactory;
         readonly IGetsSingleRuleExecutor ruleExecutorFactory;
         readonly ValidationOptions options;
+        readonly IGetsRuleContext contextFactory;
 
         /// <summary>
         /// Execute all of the specified validation rules and return their results.
@@ -53,10 +55,29 @@ namespace CSF.Validation.RuleExecution
                 results.AddRange(ruleResults);
             }
 
-            var rulesWithDependencyFailures = dependencyTracker.GetRulesWhoseDependenciesHaveFailed();
-            results.AddRange(rulesWithDependencyFailures.Select(x => ValidationRuleResult.FromRuleResult(x.Result, x.RuleIdentifier)));
+            results.AddRange(GetResultsForRulesWithFailedDependencies(dependencyTracker));
 
             return results;
+        }
+
+        /// <summary>
+        /// Gets a collection of <see cref="ValidationRuleResult"/> representing rules which have failed dependencies.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Rules which have failed dependencies are not executed, because their dependencies failed.
+        /// That means that they won't automatically have results created by the validation process.
+        /// This method creates results for all of those rules which have been skipped due to failed dependencies.
+        /// All of those results will have the outcome <see cref="RuleOutcome.DependencyFailed"/>.
+        /// </para>
+        /// </remarks>
+        /// <param name="dependencyTracker">A rule-dependency tracker.</param>
+        /// <returns>A collection of <see cref="ValidationRuleResult"/>.</returns>
+        IEnumerable<ValidationRuleResult> GetResultsForRulesWithFailedDependencies(ITracksRuleDependencies dependencyTracker)
+        {
+            return dependencyTracker
+                .GetRulesWhoseDependenciesHaveFailed()
+                .Select(x => new ValidationRuleResult(x.Result, contextFactory.GetRuleContext(x), x));
         }
 
         static async Task<IEnumerable<ValidationRuleResult>> ExecuteAvailableRulesAsync(IEnumerable<ExecutableRule> availableRules,
@@ -83,14 +104,17 @@ namespace CSF.Validation.RuleExecution
         /// <param name="dependencyTrackerFactory">The factory for an object that tracks rule dependencies.</param>
         /// <param name="ruleExecutorFactory">The factory for an object which executes rules.</param>
         /// <param name="options">The validation options.</param>
+        /// <param name="contextFactory">A factory for rule contexts.</param>
         /// <exception cref="ArgumentNullException">If any parameter value is <see langword="null" />.</exception>
         public SerialRuleExecutor(IGetsRuleDependencyTracker dependencyTrackerFactory,
                                   IGetsSingleRuleExecutor ruleExecutorFactory,
-                                  ValidationOptions options)
+                                  ValidationOptions options,
+                                  IGetsRuleContext contextFactory)
         {
             this.dependencyTrackerFactory = dependencyTrackerFactory ?? throw new ArgumentNullException(nameof(dependencyTrackerFactory));
             this.ruleExecutorFactory = ruleExecutorFactory ?? throw new ArgumentNullException(nameof(ruleExecutorFactory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
         }
     }
 }

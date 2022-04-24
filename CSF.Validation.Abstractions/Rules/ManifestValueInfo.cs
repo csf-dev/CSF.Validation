@@ -16,18 +16,16 @@ namespace CSF.Validation.Rules
     /// </remarks>
     public class ManifestValueInfo
     {
-        readonly ManifestValueBase manifestValue;
-
         /// <summary>
         /// Gets the type of the object which the current manifest value describes.
         /// </summary>
-        public Type ValidatedType => manifestValue.ValidatedType;
+        public Type ValidatedType { get; }
 
         /// <summary>
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets the name of that member.
         /// </summary>
-        public string MemberName => manifestValue.MemberName;
+        public string MemberName { get; }
 
         /// <summary>
         /// Gets an optional value object which indicates how items within a collection are to be validated.
@@ -80,7 +78,11 @@ namespace CSF.Validation.Rules
         /// <exception cref="System.ArgumentNullException">If <paramref name="manifestValue"/> is <see langword="null" />.</exception>
         public ManifestValueInfo(ManifestValueBase manifestValue)
         {
-            this.manifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
+            if (manifestValue is null)
+                throw new ArgumentNullException(nameof(manifestValue));
+
+            ValidatedType = manifestValue.ValidatedType;
+            MemberName = manifestValue.MemberName;
             CollectionItemValue = manifestValue.CollectionItemValue is null
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);

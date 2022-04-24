@@ -8,11 +8,11 @@ using NUnit.Framework;
 namespace CSF.Validation.Rules
 {
     [TestFixture,Parallelizable]
-    public class ValueRuleAdapterTests
+    public class RuleWithParentValueAdapterTests
     {
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnResultFromWrappedRule([Frozen] IRule<string,ComplexObject> wrapped,
-                                                                    ValueRuleAdapter<string,ComplexObject> sut,
+                                                                    RuleWithParentValueAdapter<string,ComplexObject> sut,
                                                                     string value,
                                                                     [NoAutoProperties] ComplexObject parentValue,
                                                                     [RuleContext] RuleContext context,

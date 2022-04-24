@@ -11,6 +11,8 @@ namespace CSF.Validation.RuleExecution
     /// </summary>
     public class SingleRuleExecutor : IExeucutesSingleRule
     {
+        readonly IGetsRuleContext contextFactory;
+
         /// <summary>
         /// Execute the validation rule and return its result.
         /// </summary>
@@ -26,28 +28,24 @@ namespace CSF.Validation.RuleExecution
         {
             cancellationToken.ThrowIfCancellationRequested();
 
+            var context = contextFactory.GetRuleContext(rule);
             var result = await rule.RuleLogic.GetResultAsync(rule.ValidatedValue.ActualValue,
                                                              rule.ValidatedValue.ParentValue?.ActualValue,
-                                                             GetRuleContext(rule),
+                                                             context,
                                                              cancellationToken)
                 .ConfigureAwait(false);
-            
-            return ValidationRuleResult.FromRuleResult(result, rule.RuleIdentifier);
+
+            return new ValidationRuleResult(result, context, rule);
         }
 
-        static RuleContext GetRuleContext(ExecutableRule rule)
-            => new RuleContext(rule.ManifestRule, rule.RuleIdentifier, rule.ValidatedValue.ActualValue, GetAncestorContexts(rule).ToList(), rule.ValidatedValue.CollectionItemOrder);
-
-        static IEnumerable<ValueContext> GetAncestorContexts(ExecutableRule rule)
+        /// <summary>
+        /// Initialises a new instance of <see cref="SingleRuleExecutor"/>.
+        /// </summary>
+        /// <param name="contextFactory">A factory for rule contexts.</param>
+        /// <exception cref="System.ArgumentNullException">If <paramref name="contextFactory"/> is <see langword="null" />.</exception>
+        public SingleRuleExecutor(IGetsRuleContext contextFactory)
         {
-            var value = rule.ValidatedValue;
-
-            while(!(value.ParentValue is null))
-            {
-                var current = value.ParentValue;
-                yield return new ValueContext(current.ValueIdentity, current.ActualValue, current.ManifestValue, current.CollectionItemOrder);
-                value = current;
-            }
+            this.contextFactory = contextFactory ?? throw new System.ArgumentNullException(nameof(contextFactory));
         }
     }
 }
