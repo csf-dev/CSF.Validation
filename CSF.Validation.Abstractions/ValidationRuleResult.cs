@@ -23,10 +23,25 @@ namespace CSF.Validation
         /// </summary>
         public RuleIdentifier Identifier { get; }
 
+        /// <summary>
+        /// Gets a reference to the <see cref="Type"/> of rule interface which was used for this rule.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This will be a closed-generic form of either <see cref="IRule{TValidated}"/> or
+        /// <see cref="IRule{TValue, TParent}"/>.
+        /// </para>
+        /// </remarks>
         public Type RuleInterface { get; }
 
+        /// <summary>
+        /// Gets the actual value which was validated by this rule.
+        /// </summary>
         public object ValidatedValue { get; }
 
+        /// <summary>
+        /// Gets contextual information about this rule.
+        /// </summary>
         public RuleContext RuleContext { get; set; }
         
         /// <summary>
