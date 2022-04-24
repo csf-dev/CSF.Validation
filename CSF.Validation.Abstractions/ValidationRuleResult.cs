@@ -23,6 +23,12 @@ namespace CSF.Validation
         /// </summary>
         public RuleIdentifier Identifier { get; }
 
+        public Type RuleInterface { get; }
+
+        public object ValidatedValue { get; }
+
+        public RuleContext RuleContext { get; set; }
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>

@@ -1,13 +1,19 @@
 using System;
 using System.Collections.Generic;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A read-only model for contextual information related to the execution of a validation rule.
     /// </summary>
-    public class RuleContext
+    public class RuleContext : ValueContext
     {
+        /// <summary>
+        /// Gets a <see cref="ManifestRuleInfo"/> with information about the configuration of the current rule.
+        /// </summary>
+        public ManifestRuleInfo RuleInfo { get; }
+
         /// <summary>
         /// Gets the identifier of the executed rule.
         /// </summary>
@@ -17,19 +23,7 @@ namespace CSF.Validation.Rules
         /// rule.
         /// </para>
         /// </remarks>
-        public RuleIdentifier Identifier { get; }
-
-        /// <summary>
-        /// Gets the identity of the object/value associated with the current context.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The object (or value) identity is used to distinguish this value from other objects/values of
-        /// the same type.
-        /// This is particularly useful when validating collections of similar objects.
-        /// </para>
-        /// </remarks>
-        public object ObjectIdentity => Identifier.ObjectIdentity;
+        public RuleIdentifier RuleIdentifier { get; }
 
         /// <summary>
         /// Gets a collection of the ancestor validation contexts.
@@ -65,22 +59,30 @@ namespace CSF.Validation.Rules
         /// indicating that there are no ancestor contexts.
         /// </para>
         /// <para>
-        /// When using the <see cref="IRule{TValue, TParent}"/> interface, the first <see cref="AncestorRuleContext.Object"/> is
+        /// When using the <see cref="IRule{TValue, TParent}"/> interface, the first <see cref="ValueContext.ActualValue"/> is
         /// made available as the second parameter to <see cref="IRule{TValue, TParent}.GetResultAsync(TValue, TParent, RuleContext, System.Threading.CancellationToken)"/>.
         /// </para>
         /// </remarks>
-        public IReadOnlyList<AncestorRuleContext> AncestorContexts { get; }
+        public IReadOnlyList<ValueContext> AncestorContexts { get; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="RuleContext"/>.
         /// </summary>
-        /// <param name="identifier">The rule identifier.</param>
-        /// <param name="ancestorContexts">An optional collection of ancestor contexts.</param>
-        public RuleContext(RuleIdentifier identifier,
-                           IReadOnlyList<AncestorRuleContext> ancestorContexts = null)
+        public RuleContext(ManifestRule manifestRule,
+                           RuleIdentifier ruleIdentifier,
+                           object actualValue,
+                           IEnumerable<ValueContext> ancestorContexts,
+                           long? collectionItemOrder = null)
+            : base(ruleIdentifier?.ObjectIdentity, actualValue, manifestRule?.ManifestValue, collectionItemOrder)
         {
-            Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
-            AncestorContexts = ancestorContexts ?? new AncestorRuleContext[0];
+            if (manifestRule is null)
+                throw new ArgumentNullException(nameof(manifestRule));
+            if (ancestorContexts is null)
+                throw new ArgumentNullException(nameof(ancestorContexts));
+
+            RuleInfo = new ManifestRuleInfo(manifestRule);
+            RuleIdentifier = ruleIdentifier ?? throw new ArgumentNullException(nameof(ruleIdentifier));
+            AncestorContexts = new List<ValueContext>(ancestorContexts);
         }
     }
 }

@@ -36,16 +36,16 @@ namespace CSF.Validation.RuleExecution
         }
 
         static RuleContext GetRuleContext(ExecutableRule rule)
-            => new RuleContext(rule.RuleIdentifier, GetAncestorContexts(rule).ToList());
+            => new RuleContext(rule.ManifestRule, rule.RuleIdentifier, rule.ValidatedValue.ActualValue, GetAncestorContexts(rule).ToList(), rule.ValidatedValue.CollectionItemOrder);
 
-        static IEnumerable<AncestorRuleContext> GetAncestorContexts(ExecutableRule rule)
+        static IEnumerable<ValueContext> GetAncestorContexts(ExecutableRule rule)
         {
             var value = rule.ValidatedValue;
 
             while(!(value.ParentValue is null))
             {
                 var current = value.ParentValue;
-                yield return new AncestorRuleContext(current.ValueIdentity, current.ActualValue, current.ManifestValue, current.CollectionItemOrder);
+                yield return new ValueContext(current.ValueIdentity, current.ActualValue, current.ManifestValue, current.CollectionItemOrder);
                 value = current;
             }
         }

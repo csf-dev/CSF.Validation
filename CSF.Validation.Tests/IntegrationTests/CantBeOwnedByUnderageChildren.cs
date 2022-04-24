@@ -13,7 +13,7 @@ namespace CSF.Validation.IntegrationTests
         {
             if(validated?.MinimumAgeToOwn.HasValue != true) return PassAsync();
 
-            var owner = (Person) context.AncestorContexts.FirstOrDefault(x => x.Object is Person)?.Object;
+            var owner = (Person) context.AncestorContexts.FirstOrDefault(x => x.ActualValue is Person)?.ActualValue;
             if(owner is null) throw new ArgumentException("The context must indicate an owner.", nameof(context));
 
             var ownerAge = GetAgeInYears(owner.Birthday);

@@ -85,10 +85,10 @@ namespace CSF.Validation.RuleExecution
 
             Assert.Multiple(() =>
             {
-                Assert.That(capturedContext?.Identifier,
+                Assert.That(capturedContext?.RuleIdentifier,
                             Is.SameAs(rule.RuleIdentifier),
-                            nameof(RuleContext.Identifier));
-                Assert.That(capturedContext?.AncestorContexts.Select(x => x.Object).ToList(),
+                            nameof(RuleContext.RuleIdentifier));
+                Assert.That(capturedContext?.AncestorContexts.Select(x => x.ActualValue).ToList(),
                             Is.EqualTo(new [] { parentValue.ActualValue, grandparentValue.ActualValue, greatGrandparentValue.ActualValue }),
                             nameof(RuleContext.AncestorContexts));
             });
