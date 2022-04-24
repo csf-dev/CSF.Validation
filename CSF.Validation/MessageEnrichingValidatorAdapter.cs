@@ -38,8 +38,8 @@ namespace CSF.Validation
         /// </exception>
         public async Task<ValidationResultWithMessages> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
-            var result = await validator.ValidateAsync(validatedObject, options, cancellationToken);
-            return await failureMessageEnricher.GetResultWithMessagesAsync(result, cancellationToken);
+            var result = await validator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);
+            return await failureMessageEnricher.GetResultWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
         }
 
         Task<ValidationResultWithMessages> IValidatorWithMessages.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
