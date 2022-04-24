@@ -85,9 +85,8 @@ namespace CSF.Validation.Rules
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);
             Children = new List<ManifestValueInfo>(manifestValue.Children.Select(x => new ManifestValueInfo(x)));
-            IgnoreAccessorExceptions = manifestValue is ManifestValue val
-                ? val.IgnoreAccessorExceptions
-                : false;
+            if(manifestValue is ManifestValue val)
+                IgnoreAccessorExceptions = val.IgnoreAccessorExceptions;
         }
     }
 }
