@@ -79,18 +79,11 @@
 <p>Using the manifest model <em>you may only specify the <code>string</code> name of a member</em> by which to access the child value.
 This could be public property, field or parameterless method.
 You may not use arbitrary logic to access child values.</p>
-<h2 id="you-may-not-validate-both-a-collection-value-and-its-items">You may not validate both a collection value and its items</h2>
-<p>When using <a href="../WritingValidatorBuilders/index.html">a validator builder</a> or <a href="../TheValidationManifest/index.html">the validation manifest</a> and dealing with a value that is a collection type (an  <code>IEnumerable&lt;T&gt;</code>), it is possible to add both rules which validate the collection value as a whole and also which validate items within that collection.</p>
-<ul>
-<li>Using a builder, you would use both of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0____System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___"><code>ForMemberItems</code></a>/<a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues__1_System_Func__0_System_Collections_Generic_IEnumerable___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___"><code>ForValues</code></a> as well as <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___"><code>ForMember</code></a>/<a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___"><code>ForValue</code></a></li>
-<li>Using the manifest you would add two <a class="xref" href="../../../api/CSF.Validation.Manifest.ManifestValue.html"><code>ManifestValue</code></a> instances to the <a href="xref:CSF.Validation.Manifest.ManifestValue.Children"><code>Children</code></a> of the parent value, one where <a href="xref:CSF.Validation.Manifest.ManifestValue.EnumerateItems"><code>EnumerateItems</code></a> is <code>true</code> and one where it were <code>false</code></li>
-</ul>
-<p>This technique is unavailable and has no equivalent when using the manifest model.
-You must choose either to value the enumerated items of the collection or to validate the entire collection on aggregate.</p>
 <h2 id="no-type-safety">No type safety</h2>
-<p>It will be apparent when using <a href="../WritingValidatorBuilders/index.html">a validator builder</a> that the API presents type safety, which allows IDE auto-completion (aka &quot;Intellisense&quot;) of validated properties.
-It also provides compile-time checking of types, accessors and rule selections.
-The Manifest Model does not provide this type safety.
+<p>It will be apparent when using <a href="../WritingValidatorBuilders/index.html">a validator builder</a> that it is a type-safe API.
+This allows IDE auto-completion (aka &quot;Intellisense&quot;) of validated properties.
+It also provides compile-time checking of types, accessors and rule selections.</p>
+<p>The Manifest Model does not provide this type safety.
 This means that it is easier to accidentally create a faulty validation manifest, which will raise exceptions when used at runtime.</p>
 </article>
           </div>
