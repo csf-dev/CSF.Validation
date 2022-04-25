@@ -16,6 +16,7 @@ The validation manifest is created from the following model classes. These are a
 
 * [`VariationManifest`]
 * [`ManifestValue`]
+* [`ManifestCollectionItem`]
 * [`ManifestRule`]
 * [`ManifestRuleIdentifier`]
   * This type is a subclass of [`RuleIdentifierBase`]
@@ -24,17 +25,34 @@ The validation manifest is created from the following model classes. These are a
 [CSF.Validation.Abstractions]:https://www.nuget.org/packages/CSF.Validation.Abstractions/
 [`VariationManifest`]:xref:CSF.Validation.Manifest.ValidationManifest
 [`ManifestValue`]:xref:CSF.Validation.Manifest.ManifestValue
+[`ManifestCollectionItem`]:xref:CSF.Validation.Manifest.ManifestCollectionItem
 [`ManifestRule`]:xref:CSF.Validation.Manifest.ManifestRule
 [`ManifestRuleIdentifier`]:xref:CSF.Validation.Manifest.ManifestRuleIdentifier
 [`RuleIdentifierBase`]:xref:CSF.Validation.Rules.RuleIdentifierBase
 
 ## Values & rules
 
-A validation manifest describes values (including model objects) to be validated and the rules which should be applied to those values. A `ManifestValue` represents an object to be validated; this includes your own model objects but also their property values, such as strings and numbers.
-Any non-primitive values typically have [a collection of child values] to be validated.
+### Values describe the objects to be validated
+
+A validation manifest describes values (including model objects) to be validated and the rules which should be applied to those values. A `ManifestValue` represents an object to be validated.
+This value may be an object of your own design or a .NET primitive such as a string.
+
+Manifest values create a hierarchical structure which corresponds to the design of the object graph you wish to validate.
+Each manifest value has [a collection of child values]; each value in this collection corresponds to a value which is derived/accessed-from its parent value.
+Usually 'accessed from' is simply a property-getter or other member access.
+It could be derived via any arbitrary logic which could be described by a `Func<object, object>` though.
+This makes it possible to validate complex object graphs, including many layers of traversal between objects.
 
 _A validation manifest (its manifest values) is contained within a `ValidationManifest` instance._
 Unlike [The Manifest Model], the validation manifest class serves as a wrapper/root object for a manifest object graph.
+
+### Validating collection items
+
+If the object represented by a particular manifest value implements `IEnumerable<T>` then the items within that collection may be validated individually.
+In this case, set the `CollectionItemValue` property of the manifest value.
+The manifest value corresponds to the collection as a whole, the collection item value corresponds to reach individual item.
+
+### Validation rules
 
 Rules define the validation rules to be applied to values.
 The `ManifestRule` class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.
