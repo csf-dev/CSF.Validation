@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using CSF.Validation.Manifest;
 using CSF.Validation.ManifestModel;
+using CSF.Validation.Messages;
 using CSF.Validation.ValidatorBuilding;
 using Microsoft.Extensions.DependencyInjection;
 

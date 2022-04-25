@@ -43,7 +43,7 @@ namespace CSF.Validation
         /// <summary>
         /// Gets contextual information about this rule.
         /// </summary>
-        public RuleContext RuleContext { get; set; }
+        public RuleContext RuleContext { get; }
         
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.

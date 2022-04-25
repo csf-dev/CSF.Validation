@@ -40,7 +40,7 @@ Unlike the [`ValidationManifest`] class, there is no particular type which serve
 Rules define the validation rules to be applied to values.
 The `Rule` class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.
 
-[a collection of child values]:xref:CSF.Validation.ManifestModel.Value.Children
+[a collection of child values]:xref:CSF.Validation.ManifestModel.ValueBase.Children
 [`ValidationManifest`]:xref:CSF.Validation.Manifest.ValidationManifest
 
 ### Specifying rule-dependencies

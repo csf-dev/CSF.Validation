@@ -10,6 +10,7 @@ namespace CSF.Validation.Rules
         public void Customize(IFixture fixture)
         {
             new RuleContextCustomization().Customize(fixture);
+            new ExecutableModelCustomisation().Customize(fixture);
             fixture.Customize<RuleResult>(c => c.FromFactory((RuleOutcome outcome, Dictionary<string, object> data) => new RuleResult(outcome, data)));
             fixture.Customize<ValidationRuleResult>(c => c.FromFactory(GetValidationRuleResultFunc));
         }

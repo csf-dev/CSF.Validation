@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSF.Validation
+namespace CSF.Validation.Messages
 {
     /// <summary>
     /// A service object which adds huaman-readable feedback messages (as appropriate) to
