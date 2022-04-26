@@ -22,7 +22,7 @@ namespace CSF.Validation.Messages
     /// </remarks>
     /// <typeparam name="TValidated">The type of the validated value.</typeparam>
     /// <typeparam name="TParent">The type of the parent validated value.</typeparam>
-    public interface IHasFailureMessageUsageCriteria<TValidated,TParent>
+    public interface IHasFailureMessageUsageCriteria<in TValidated,in TParent>
     {
         /// <summary>
         /// Gets a value which indicates whether or not the current class may be used to provide a failure message

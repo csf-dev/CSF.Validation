@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CSF.Validation.Rules;
@@ -159,31 +160,39 @@ namespace CSF.Validation.Messages
             if (result is null)
                 throw new ArgumentNullException(nameof(result));
 
-            if(!(MemberName is null) && !StringEquals(MemberName, result.Identifier.MemberName))
-                return false;
-
-            if(!(RuleName is null) && !StringEquals(RuleName, result.Identifier.RuleName))
-                return false;
-
-            if(!(ValidatedType is null)
-               && (result.Identifier.ValidatedType.GetTypeInfo().IsAssignableFrom(ValidatedType.GetTypeInfo())))
-                return false;
-
-            if(!(ParentValidatedType is null))
-            {
-                var parentContext = result.RuleContext.AncestorContexts.FirstOrDefault();
-                if(parentContext is null || ParentValidatedType != parentContext.ValueInfo.ValidatedType)
-                    return false;
-            }
-
-            if(!(RuleInterface is null) && RuleInterface != result.RuleInterface)
-                return false;
-            
-            if(Outcome.HasValue && Outcome.Value != result.Outcome)
-                return false;
-
-            return true;
+            return ValidationFunctions.All(func => func(result));
         }
+
+        IEnumerable<Func<ValidationRuleResult, bool>> ValidationFunctions => new Func<ValidationRuleResult, bool>[] {
+            DoesMemberNameMatch,
+            DoesRuleNameMatch,
+            DoesValidatedTypeMatch,
+            DoesParentValidatedTypeMatch,
+            DoesRuleInterfaceMatch,
+            DoesOutcomeMatch,
+        };
+
+        bool DoesMemberNameMatch(ValidationRuleResult result)
+            => MemberName is null || StringEquals(MemberName, result.Identifier.MemberName);
+
+        bool DoesRuleNameMatch(ValidationRuleResult result)
+            => RuleName is null || StringEquals(MemberName, result.Identifier.RuleName);
+
+        bool DoesValidatedTypeMatch(ValidationRuleResult result)
+            => ValidatedType is null || ValidatedType.GetTypeInfo().IsAssignableFrom(result.Identifier.ValidatedType.GetTypeInfo());
+
+        bool DoesParentValidatedTypeMatch(ValidationRuleResult result)
+        {
+            if(ParentValidatedType is null) return true;
+            var parentContext = result.RuleContext.AncestorContexts.FirstOrDefault();
+            return !(parentContext is null) && ParentValidatedType.GetTypeInfo().IsAssignableFrom(parentContext.ValueInfo.ValidatedType.GetTypeInfo());
+        }
+
+        bool DoesRuleInterfaceMatch(ValidationRuleResult result)
+            => RuleInterface is null || RuleInterface == result.RuleInterface;
+
+        bool DoesOutcomeMatch(ValidationRuleResult result)
+            => !Outcome.HasValue || Outcome.Value == result.Outcome;
 
         static bool StringEquals(string first, string second)
         {
