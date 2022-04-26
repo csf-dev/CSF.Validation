@@ -55,16 +55,12 @@ namespace CSF.Validation
         /// </remarks>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null"/>.</exception>
         public ValidationRuleResult(RuleResult result,
-                                    RuleContext ruleContext,
-                                    ExecutableRule rule) : base(result)
+                                    RuleContext ruleContext) : base(result)
         {
-            if (rule is null)
-                throw new ArgumentNullException(nameof(rule));
-
             RuleContext = ruleContext ?? throw new ArgumentNullException(nameof(ruleContext));
-            Identifier = rule.RuleIdentifier;
-            RuleInterface = rule.RuleLogic.RuleInterface;
-            ValidatedValue = rule.ValidatedValue;
+            Identifier = ruleContext.RuleIdentifier;
+            RuleInterface = ruleContext.RuleInterface;
+            ValidatedValue = ruleContext.ActualValue;
         }
 
         /// <summary>

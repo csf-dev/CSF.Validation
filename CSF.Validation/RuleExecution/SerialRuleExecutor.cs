@@ -77,7 +77,7 @@ namespace CSF.Validation.RuleExecution
         {
             return dependencyTracker
                 .GetRulesWhoseDependenciesHaveFailed()
-                .Select(x => new ValidationRuleResult(x.Result, contextFactory.GetRuleContext(x), x));
+                .Select(x => new ValidationRuleResult(x.Result, contextFactory.GetRuleContext(x)));
         }
 
         static async Task<IEnumerable<ValidationRuleResult>> ExecuteAvailableRulesAsync(IEnumerable<ExecutableRule> availableRules,

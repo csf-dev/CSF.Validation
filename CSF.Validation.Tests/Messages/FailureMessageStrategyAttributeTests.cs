@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using CSF.Validation.Manifest;
 using CSF.Validation.RuleExecution;
 using CSF.Validation.Rules;
 using Moq;
@@ -43,13 +45,12 @@ namespace CSF.Validation.Messages
 
         [Test,AutoMoqData]
         public void IsMatchShouldReturnFalseIfTheRuleInterfaceIsSpecifiedButDoesNotMatch([RuleResult] RuleResult result,
-                                                                                         [RuleContext] RuleContext ruleContext,
-                                                                                         [ExecutableModel] ExecutableRule rule,
-                                                                                         IValidationLogic logic)
+                                                                                         [ManifestModel] ManifestRule rule,
+                                                                                         RuleIdentifier id,
+                                                                                         object actualValue)
         {
-            rule.RuleLogic = logic;
-            Mock.Get(logic).SetupGet(x => x.RuleInterface).Returns(typeof(string));
-            var ruleResult = new ValidationRuleResult(result, ruleContext, rule);
+            var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), typeof(string));
+            var ruleResult = new ValidationRuleResult(result, context);
             var sut = new FailureMessageStrategyAttribute
             {
                 RuleInterface = typeof(int),

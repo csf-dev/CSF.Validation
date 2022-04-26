@@ -26,6 +26,20 @@ namespace CSF.Validation.Rules
         public RuleIdentifier RuleIdentifier { get; }
 
         /// <summary>
+        /// Gets a reference to the rule interface which was used in order to select &amp; execute this rule.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This will be a closed-generic form of either:
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description><see cref="IRule{TValidated}"/></description></item>
+        /// <item><description><see cref="IRule{TValue, TParent}"/></description></item>
+        /// </list>
+        /// </remarks>
+        public Type RuleInterface { get; }
+
+        /// <summary>
         /// Gets a collection of the ancestor validation contexts.
         /// </summary>
         /// <remarks>
@@ -68,10 +82,18 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// Initialises a new instance of <see cref="RuleContext"/>.
         /// </summary>
+        /// <param name="manifestRule">The manifest rule from which this context was created.</param>
+        /// <param name="ruleIdentifier">The rule identifier.</param>
+        /// <param name="actualValue">The actual validated value.</param>
+        /// <param name="ancestorContexts">A collection of ancestor contexts.</param>
+        /// <param name="ruleInterface">The rule interface used for this rule execution.</param>
+        /// <param name="collectionItemOrder">An optional collection item order.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public RuleContext(ManifestRule manifestRule,
                            RuleIdentifier ruleIdentifier,
                            object actualValue,
                            IEnumerable<ValueContext> ancestorContexts,
+                           Type ruleInterface,
                            long? collectionItemOrder = null)
             : base(ruleIdentifier?.ObjectIdentity, actualValue, manifestRule?.ManifestValue, collectionItemOrder)
         {
@@ -82,6 +104,7 @@ namespace CSF.Validation.Rules
 
             RuleInfo = new ManifestRuleInfo(manifestRule);
             RuleIdentifier = ruleIdentifier ?? throw new ArgumentNullException(nameof(ruleIdentifier));
+            RuleInterface = ruleInterface ?? throw new ArgumentNullException(nameof(ruleInterface));
             AncestorContexts = new List<ValueContext>(ancestorContexts);
         }
     }

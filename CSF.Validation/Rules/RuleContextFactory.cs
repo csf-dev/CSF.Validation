@@ -19,6 +19,7 @@ namespace CSF.Validation.Rules
                                rule.RuleIdentifier,
                                rule.ValidatedValue.ActualValue,
                                GetAncestorContexts(rule).ToList(),
+                               rule.RuleLogic.RuleInterface,
                                rule.ValidatedValue.CollectionItemOrder);
 
         static IEnumerable<ValueContext> GetAncestorContexts(ExecutableRule rule)
