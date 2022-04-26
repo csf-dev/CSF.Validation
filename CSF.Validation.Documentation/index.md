@@ -21,12 +21,12 @@ For the source code, to contribute changes or issue reports and to see the curre
 
 The CSF.Validation NuGet packages are multi-targeted for all of:
 
-* .NET Standard 1.0
+* .NET Standard 1.1
 * .NET Standard 2.0
 * .NET Framework 4.6.1
 
-This means that it may be consumed by any application which is based on any of:
+This means that it supports all of the following target frameworks (amongst others):
 
-* .NET Framework 4.5 or higher
-* .NET Core 1.0 or higher
-* .NET 5.0 or higher
+* .NET Framework v4.5 or higher
+* .NET Core v1.0 or higher
+* .NET v5.0 or higher

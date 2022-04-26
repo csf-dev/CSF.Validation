@@ -3,7 +3,7 @@ namespace CSF.Validation.Bootstrap
     /// <summary>
     /// An exception raised by <see cref="IResolvesServices"/> if it is unable to resolve a service instance.
     /// </summary>
-#if !NETSTANDARD1_0
+#if !NETSTANDARD1_1
     [System.Serializable]
 #endif
     public class ResolutionException : System.Exception
@@ -26,7 +26,7 @@ namespace CSF.Validation.Bootstrap
         /// <param name="inner">The inner exception.</param>
         public ResolutionException(string message, System.Exception inner) : base(message, inner) {}
 
-#if !NETSTANDARD1_0
+#if !NETSTANDARD1_1
         /// <summary>
         /// Initialises an instance of <see cref="ResolutionException"/>.
         /// </summary>

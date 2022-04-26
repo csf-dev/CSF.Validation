@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;netstandard1.1</TargetFrameworks>
     <RootNamespace>CSF.Validation</RootNamespace>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.xml</DocumentationFile>
     <ReleaseVersion>3.0.0</ReleaseVersion>
@@ -26,6 +26,7 @@
     <PackageReference Include="CSF.Specifications" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.0.0" />
     <PackageReference Include="System.ValueTuple" Version="4.3.0" Condition="'$(TargetFramework)' != 'netstandard2.0'" />
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" Condition="'$(TargetFramework)' == 'netstandard1.1'" />
   </ItemGroup>
 
   <ItemGroup>

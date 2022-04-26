@@ -187,7 +187,7 @@ namespace CSF.Validation.Messages
 
         static bool StringEquals(string first, string second)
         {
-#if NETSTANDARD1_0
+#if NETSTANDARD1_1
             return String.Equals(first, second);
 #else
             return String.Equals(first, second, StringComparison.InvariantCulture);

@@ -225,4 +225,12 @@
     <value>The current builder context must not already have a manifest collection-item value associated.  Cannot create a new context for {0}.</value>
     <comment/>
   </data>
+  <data name="NoTypesMayBeNull" xml:space="preserve">
+    <value>The collection of types may not contain any null values.</value>
+    <comment/>
+  </data>
+  <data name="DuplicateTypesNotAllowed" xml:space="preserve">
+    <value>The type {0} has already been registered in this {1}.  Duplicates are not allowed.</value>
+    <comment/>
+  </data>
 </root>
