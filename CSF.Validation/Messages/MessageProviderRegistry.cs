@@ -34,6 +34,8 @@ namespace CSF.Validation.Messages
     /// </remarks>
     public class MessageProviderRegistry : IRegistryOfMessageTypes
     {
+        static IRegistryOfMessageTypes singleton = new MessageProviderRegistry(new MessageProviderTypeMatchingInfoProvider());
+
         readonly IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider;
         readonly ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>
             typesAndMatchProviders = new ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>();
@@ -103,5 +105,10 @@ namespace CSF.Validation.Messages
         {
             this.matchingInfoProvider = matchingInfoProvider ?? throw new ArgumentNullException(nameof(matchingInfoProvider));
         }
+
+        /// <summary>
+        /// Gets a singleton instance of this type.
+        /// </summary>
+        public static IRegistryOfMessageTypes Default => singleton;
     }
 }

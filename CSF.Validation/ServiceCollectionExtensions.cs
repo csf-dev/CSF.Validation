@@ -3,6 +3,7 @@ using System;
 using CSF.Validation.Bootstrap;
 using System.Reflection;
 using System.Collections.Generic;
+using CSF.Validation.Messages;
 
 namespace CSF.Validation
 {
@@ -128,6 +129,108 @@ namespace CSF.Validation
                 throw new ArgumentNullException(nameof(ruleType));
 
             serviceCollection.AddTransient(ruleType);
+            return serviceCollection;
+        }
+
+        /// <summary>
+        /// Scans the specified <paramref name="assembly"/> for validation message providers and adds every one of them to
+        /// the service collection, so that they may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method, <see cref="UseMessageProvidersInAssemblies(IServiceCollection, Assembly[])"/> or
+        /// <see cref="UseMessageProvidersInAssemblies(IServiceCollection, IEnumerable{Assembly})"/> as a convenient
+        /// way to add many validation message providers to your dependency injection container.
+        /// </para>
+        /// <para>
+        /// This method also registers the message provider types which are found with the default <see cref="IRegistryOfMessageTypes"/>:
+        /// <see cref="MessageProviderRegistry.Default"/>.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validation message providers should be added.</param>
+        /// <param name="assembly">An assembly to scan for validation message provider classes.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseMessageProvidersInAssembly(this IServiceCollection serviceCollection, Assembly assembly)
+            => serviceCollection.UseMessageProvidersInAssemblies(assembly);
+
+        /// <summary>
+        /// Scans the specified <paramref name="assemblies"/> for validation message providers and adds every one of them to
+        /// the service collection, so that they may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method, <see cref="UseMessageProvidersInAssembly(IServiceCollection, Assembly)"/> or
+        /// <see cref="UseMessageProvidersInAssemblies(IServiceCollection, IEnumerable{Assembly})"/> as a convenient
+        /// way to add many validation message providers to your dependency injection container.
+        /// </para>
+        /// <para>
+        /// This method also registers the message provider types which are found with the default <see cref="IRegistryOfMessageTypes"/>:
+        /// <see cref="MessageProviderRegistry.Default"/>.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validation message providers should be added.</param>
+        /// <param name="assemblies">A collection of assemblies to scan for validation message provider classes.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseMessageProvidersInAssemblies(this IServiceCollection serviceCollection, params Assembly[] assemblies)
+            => serviceCollection.UseMessageProvidersInAssemblies((IEnumerable<Assembly>)assemblies);
+
+        /// <summary>
+        /// Scans the specified <paramref name="assemblies"/> for validation message providers and adds every one of them to
+        /// the service collection, so that they may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method, <see cref="UseMessageProvidersInAssembly(IServiceCollection, Assembly)"/> or
+        /// <see cref="UseMessageProvidersInAssemblies(IServiceCollection, Assembly[])"/> as a convenient
+        /// way to add many validation message providers to your dependency injection container.
+        /// </para>
+        /// <para>
+        /// This method also registers the message provider types which are found with the default <see cref="IRegistryOfMessageTypes"/>:
+        /// <see cref="MessageProviderRegistry.Default"/>.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validation message providers should be added.</param>
+        /// <param name="assemblies">A collection of assemblies to scan for validation message provider classes.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseMessageProvidersInAssemblies(this IServiceCollection serviceCollection, IEnumerable<Assembly> assemblies)
+        {
+            if (assemblies is null)
+                throw new ArgumentNullException(nameof(assemblies));
+
+            foreach (var providerType in MessageAssemblyScanner.GetMessageProviderTypesFromAssemblies(assemblies))
+                serviceCollection.UseMessageProvider(providerType);
+
+            return serviceCollection;
+        }
+
+        /// <summary>
+        /// Adds a single validation message provider type to the the service collection, so that it may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method only when you wish to add individual message providers to dependency injection.  It is usually more convenient
+        /// to use one of the following methods to add message providers in bulk, using assembly-scanning techniques.
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description><see cref="UseMessageProvidersInAssembly(IServiceCollection, Assembly)"/></description></item>
+        /// <item><description><see cref="UseMessageProvidersInAssemblies(IServiceCollection, Assembly[])"/></description></item>
+        /// <item><description><see cref="UseMessageProvidersInAssemblies(IServiceCollection, IEnumerable{Assembly})"/></description></item>
+        /// </list>
+        /// <para>
+        /// This method also registers the message provider type with the default <see cref="IRegistryOfMessageTypes"/>:
+        /// <see cref="MessageProviderRegistry.Default"/>.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validation rule should be added.</param>
+        /// <param name="providerType">The type of validation message provider to add to DI.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseMessageProvider(this IServiceCollection serviceCollection, Type providerType)
+        {
+            if (providerType is null)
+                throw new ArgumentNullException(nameof(providerType));
+
+            MessageProviderRegistry.Default.RegisterMessageProviderTypes(providerType);
+            serviceCollection.AddTransient(providerType);
             return serviceCollection;
         }
 
