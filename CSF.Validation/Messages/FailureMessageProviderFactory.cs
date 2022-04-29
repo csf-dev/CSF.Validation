@@ -112,6 +112,7 @@ namespace CSF.Validation.Messages
 
             return typeof(IGetsFailureMessage<>)
                 .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0])
+                .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
         }
 
@@ -131,6 +132,7 @@ namespace CSF.Validation.Messages
 
             return typeof(IGetsFailureMessage<,>)
                 .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0], ruleInterfaceInfo.GenericTypeParameters[1])
+                .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
         }
 
