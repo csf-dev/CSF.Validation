@@ -233,4 +233,8 @@
     <value>The type {0} has already been registered in this {1}.  Duplicates are not allowed.</value>
     <comment/>
   </data>
+  <data name="MustBeGenericRuleInterface" xml:space="preserve">
+    <value>The rule interface must be a closed-generic form of either {0}&lt;TValue&gt; or {0}&lt;TValue, TParent&gt;.  Instead it is {1}.</value>
+    <comment/>
+  </data>
 </root>
