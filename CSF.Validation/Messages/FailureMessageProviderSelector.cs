@@ -24,7 +24,8 @@ namespace CSF.Validation.Messages
                     let provider = providerFactory.GetNonGenericFailureMessageProvider(candidate.ProviderType, ruleResult.RuleInterface)
                     let criteria = criteriaFactory.GetNonGenericMessageCriteria(provider, ruleResult.RuleInterface)
                     where criteria.CanGetFailureMessage(ruleResult)
-                    orderby candidate.Priority descending)
+                    orderby candidate.Priority descending
+                    select provider)
                 .FirstOrDefault();
         }
 

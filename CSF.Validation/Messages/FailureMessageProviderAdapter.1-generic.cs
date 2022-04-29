@@ -7,9 +7,14 @@ namespace CSF.Validation.Messages
     /// Adapter which allows a <see cref="IGetsFailureMessage{TValidated}"/> to be used as a <see cref="IGetsFailureMessage"/>.
     /// </summary>
     /// <typeparam name="TValidated">The validated type.</typeparam>
-    public class FailureMessageProviderAdapter<TValidated> : IGetsFailureMessage
+    public class FailureMessageProviderAdapter<TValidated> : IGetsFailureMessage, IWrapsFailureMessageProvider
     {
         readonly IGetsFailureMessage<TValidated> wrapped;
+
+        /// <summary>
+        /// Gets the wrapped message provider instance.
+        /// </summary>
+        public object WrappedProvider => wrapped;
 
         /// <summary>
         /// Gets the validation failure message for the specified result.
