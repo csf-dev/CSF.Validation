@@ -2,7 +2,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace CSF.Validation.Messages
 {
@@ -35,8 +34,9 @@ namespace CSF.Validation.Messages
     /// </remarks>
     public class MessageProviderRegistry : IRegistryOfMessageTypes
     {
-        readonly ConcurrentDictionary<Type, List<FailureMessageStrategyAttribute>>
-            typesAndAttributes = new ConcurrentDictionary<Type, List<FailureMessageStrategyAttribute>>();
+        readonly IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider;
+        readonly ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>
+            typesAndMatchProviders = new ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>();
 
         /// <summary>
         /// Add a number of types (of message provider classes) to this registry.
@@ -47,17 +47,12 @@ namespace CSF.Validation.Messages
             if (types is null)
                 throw new ArgumentNullException(nameof(types));
 
-            foreach(var type in types)
+            foreach (var type in types)
             {
-                if(type is null)
-                    throw new ArgumentException(Resources.ExceptionMessages.GetExceptionMessage("NoTypesMayBeNull"), nameof(types));
-                
-                var attributes = type.GetTypeInfo()
-                    .GetCustomAttributes<FailureMessageStrategyAttribute>()
-                    .ToList();
-                
-                var added = typesAndAttributes.TryAdd(type, attributes);
-                if(!added)
+                var matchProviders = matchingInfoProvider.GetMatchingInfo(type).ToList();
+
+                var added = typesAndMatchProviders.TryAdd(type, matchProviders);
+                if (!added)
                 {
                     var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("DuplicateTypesNotAllowed"), type.FullName, nameof(MessageProviderRegistry));
                     throw new InvalidOperationException(message);
@@ -88,15 +83,25 @@ namespace CSF.Validation.Messages
             if (result is null)
                 throw new ArgumentNullException(nameof(result));
 
-            return (from typeAndAttribs in typesAndAttributes
-                    let attribs = typeAndAttribs.Value
+            return (from typeAndAttribs in typesAndMatchProviders
+                    let matchProviders = typeAndAttribs.Value
                     let type = typeAndAttribs.Key
-                    from attrib in attribs.DefaultIfEmpty()
-                    where attrib is null || attrib.IsMatch(result)
-                    let priority = attrib.GetPriority()
+                    from matchProvider in matchProviders
+                    where matchProvider.IsMatch(result)
+                    let priority = matchProvider.GetPriority()
                     group priority by type into typeAndPriorityGroup
                     select new MessageProviderTypeAndPriority(typeAndPriorityGroup.Key, typeAndPriorityGroup.Max()))
                 .ToList();
+        }
+
+        /// <summary>
+        /// Initialises a new instance of <see cref="MessageProviderRegistry"/>.
+        /// </summary>
+        /// <param name="matchingInfoProvider">A service that gets message provider matching info.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="matchingInfoProvider"/> is <see langword="null" />.</exception>
+        public MessageProviderRegistry(IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider)
+        {
+            this.matchingInfoProvider = matchingInfoProvider ?? throw new ArgumentNullException(nameof(matchingInfoProvider));
         }
     }
 }

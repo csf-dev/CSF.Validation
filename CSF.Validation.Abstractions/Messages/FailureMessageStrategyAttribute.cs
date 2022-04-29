@@ -36,7 +36,7 @@ namespace CSF.Validation.Messages
     /// </para>
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    public class FailureMessageStrategyAttribute : Attribute
+    public class FailureMessageStrategyAttribute : Attribute, IGetsMessageProviderTypeMatchingInfoForRule
     {
         /// <summary>
         /// Gets or sets a <see cref="System.Type"/> which the <see cref="RuleIdentifierBase.RuleType"/> of the

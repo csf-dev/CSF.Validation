@@ -42,6 +42,7 @@ namespace CSF.Validation
                 .AddRulesServices()
                 .AddValidatorBuildingServices()
                 .AddValidatorFactory()
+                .AddMessagesServices()
                 ;
         }
 
