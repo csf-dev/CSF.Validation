@@ -44,6 +44,60 @@ namespace CSF.Validation.Messages
         }
 
         [Test,AutoMoqData]
+        public void IsMatchShouldReturnTrueIfActualValidatedTypeIsASubclassOfAttributeType([RuleResult] RuleResult result,
+                                                                                           [ManifestModel] ManifestRule rule,
+                                                                                           Type ruleType,
+                                                                                           object objectId,
+                                                                                           object actualValue)
+        {
+            var id = new RuleIdentifier(ruleType, typeof(Employee), objectId);
+            var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), typeof(string));
+            var ruleResult = new ValidationRuleResult(result, context);
+            var sut = new FailureMessageStrategyAttribute
+            {
+                ValidatedType = typeof(Person),
+            };
+
+            Assert.That(() => sut.IsMatch(ruleResult), Is.True);
+        }
+
+        [Test,AutoMoqData]
+        public void IsMatchShouldReturnFalseIfActualValidatedTypeIsNotASubclassOfAttributeType([RuleResult] RuleResult result,
+                                                                                               [ManifestModel] ManifestRule rule,
+                                                                                               Type ruleType,
+                                                                                               object objectId,
+                                                                                               object actualValue)
+        {
+            var id = new RuleIdentifier(ruleType, typeof(Employee), objectId);
+            var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), typeof(string));
+            var ruleResult = new ValidationRuleResult(result, context);
+            var sut = new FailureMessageStrategyAttribute
+            {
+                ValidatedType = typeof(string),
+            };
+
+            Assert.That(() => sut.IsMatch(ruleResult), Is.False);
+        }
+
+        [Test,AutoMoqData]
+        public void IsMatchShouldReturnTrueIfActualParentValidatedTypeIsASubclassOfAttributeParentType([RuleResult] RuleResult result,
+                                                                                                       [ManifestModel] ManifestRule rule,
+                                                                                                       Type type,
+                                                                                                       object objectId,
+                                                                                                       object actualValue)
+        {
+            var id = new RuleIdentifier(type, type, objectId);
+            var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(objectId, actualValue, new ManifestValue { ValidatedType = typeof(Employee) }) }, typeof(string));
+            var ruleResult = new ValidationRuleResult(result, context);
+            var sut = new FailureMessageStrategyAttribute
+            {
+                ParentValidatedType = typeof(Person),
+            };
+            
+            Assert.That(() => sut.IsMatch(ruleResult), Is.True);
+        }
+
+        [Test,AutoMoqData]
         public void IsMatchShouldReturnFalseIfTheRuleInterfaceIsSpecifiedButDoesNotMatch([RuleResult] RuleResult result,
                                                                                          [ManifestModel] ManifestRule rule,
                                                                                          RuleIdentifier id,
@@ -57,5 +111,9 @@ namespace CSF.Validation.Messages
             };
             Assert.That(() => sut.IsMatch(ruleResult), Is.False);
         }
+
+        class Person {}
+
+        class Employee : Person {}
     }
 }
