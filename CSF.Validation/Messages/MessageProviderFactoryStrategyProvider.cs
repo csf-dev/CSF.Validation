@@ -64,8 +64,8 @@ namespace CSF.Validation.Messages
                 throw new ArgumentNullException(nameof(ruleInterface));
 
             var providerTypeInfo = providerType.GetTypeInfo();
-            var ruleInterfaceInfo = providerType.GetTypeInfo();
-            if(!ruleInterfaceInfo.IsGenericType)
+            var ruleInterfaceInfo = ruleInterface.GetTypeInfo();
+            if(!IsValidRuleInterface(ruleInterfaceInfo))
                 throw GetIncorrectRuleInterfaceException(ruleInterface);
 
             if(ImplementsDoubleGenericMessageInterface(providerTypeInfo, ruleInterfaceInfo))
@@ -97,11 +97,11 @@ namespace CSF.Validation.Messages
         static bool ImplementsSingleGenericMessageInterface(TypeInfo providerTypeInfo, TypeInfo ruleInterfaceInfo)
         {
             var genericRuleInterface = ruleInterfaceInfo.GetGenericTypeDefinition();
-            if(genericRuleInterface != typeof(IRule<>) || genericRuleInterface != typeof(IRule<,>))
+            if(!IsSingleGenericRuleInterface(genericRuleInterface) && !IsDoubleGenericRuleInterface(genericRuleInterface))
                 return false;
 
             return typeof(IGetsFailureMessage<>)
-                .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0])
+                .MakeGenericType(ruleInterfaceInfo.GenericTypeArguments[0])
                 .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
         }
@@ -117,14 +117,29 @@ namespace CSF.Validation.Messages
         static bool ImplementsDoubleGenericMessageInterface(TypeInfo providerTypeInfo, TypeInfo ruleInterfaceInfo)
         {
             var genericRuleInterface = ruleInterfaceInfo.GetGenericTypeDefinition();
-            if(genericRuleInterface != typeof(IRule<,>))
+            if(!IsDoubleGenericRuleInterface(genericRuleInterface))
                 return false;
 
             return typeof(IGetsFailureMessage<,>)
-                .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0], ruleInterfaceInfo.GenericTypeParameters[1])
+                .MakeGenericType(ruleInterfaceInfo.GenericTypeArguments[0], ruleInterfaceInfo.GenericTypeArguments[1])
                 .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
         }
+
+        static bool IsValidRuleInterface(TypeInfo ruleInterfaceInfo)
+        {
+            if(!ruleInterfaceInfo.IsGenericType)
+                return false;
+
+            var openGenericInterface = ruleInterfaceInfo.GetGenericTypeDefinition();
+            return IsDoubleGenericRuleInterface(openGenericInterface) || IsSingleGenericRuleInterface(openGenericInterface);
+        }
+
+        static bool IsSingleGenericRuleInterface(Type openGenericRuleInterface)
+            => openGenericRuleInterface == typeof(IRule<>);
+
+        static bool IsDoubleGenericRuleInterface(Type openGenericRuleInterface)
+            => openGenericRuleInterface == typeof(IRule<,>);
 
         static Exception GetIncorrectRuleInterfaceException(Type ruleInterface)
         {

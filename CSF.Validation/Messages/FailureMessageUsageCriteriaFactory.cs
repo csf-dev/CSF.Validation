@@ -39,13 +39,13 @@ namespace CSF.Validation.Messages
             
             if(ImplementsDoubleGenericCriteriaInterface(messageProviderInfo.ProviderTypeInfo, ruleInterfaceInfo))
             {
-                var method = getDoubleGenericCriteriaMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0],
-                                                                              ruleInterfaceInfo.GenericTypeParameters[1]);
+                var method = getDoubleGenericCriteriaMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeArguments[0],
+                                                                              ruleInterfaceInfo.GenericTypeArguments[1]);
                 return (IHasFailureMessageUsageCriteria)method.Invoke(this, new[] { messageProviderInfo.GetOriginalProvider() });
             }
             if(ImplementsSingleGenericCriteriaInterface(messageProviderInfo.ProviderTypeInfo, ruleInterfaceInfo))
             {
-                var method = getSingleGenericCriteriaMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0]);
+                var method = getSingleGenericCriteriaMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeArguments[0]);
                 return (IHasFailureMessageUsageCriteria)method.Invoke(this, new[] { messageProviderInfo.GetOriginalProvider() });
             }
             if(nonGenericCriteriaTypeInfo.IsAssignableFrom(messageProviderInfo.ProviderTypeInfo))
@@ -99,12 +99,13 @@ namespace CSF.Validation.Messages
         /// <returns><see langword="true" /> if the types are compatible; <see langword="false" /> otherwise.</returns>
         static bool ImplementsSingleGenericCriteriaInterface(TypeInfo providerTypeInfo, TypeInfo ruleInterfaceInfo)
         {
+            if(!ruleInterfaceInfo.IsGenericType) return false;
             var genericRuleInterface = ruleInterfaceInfo.GetGenericTypeDefinition();
-            if(genericRuleInterface != typeof(IRule<>) || genericRuleInterface != typeof(IRule<,>))
+            if(genericRuleInterface != typeof(IRule<>) && genericRuleInterface != typeof(IRule<,>))
                 return false;
 
             return typeof(IHasFailureMessageUsageCriteria<>)
-                .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0])
+                .MakeGenericType(ruleInterfaceInfo.GenericTypeArguments[0])
                 .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
         }
@@ -119,12 +120,13 @@ namespace CSF.Validation.Messages
         /// <returns><see langword="true" /> if the types are compatible; <see langword="false" /> otherwise.</returns>
         static bool ImplementsDoubleGenericCriteriaInterface(TypeInfo providerTypeInfo, TypeInfo ruleInterfaceInfo)
         {
+            if(!ruleInterfaceInfo.IsGenericType) return false;
             var genericRuleInterface = ruleInterfaceInfo.GetGenericTypeDefinition();
             if(genericRuleInterface != typeof(IRule<,>))
                 return false;
 
             return typeof(IHasFailureMessageUsageCriteria<,>)
-                .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0], ruleInterfaceInfo.GenericTypeParameters[1])
+                .MakeGenericType(ruleInterfaceInfo.GenericTypeArguments[0], ruleInterfaceInfo.GenericTypeArguments[1])
                 .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
         }

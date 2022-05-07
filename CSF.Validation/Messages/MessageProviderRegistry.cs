@@ -34,7 +34,7 @@ namespace CSF.Validation.Messages
     /// </remarks>
     public class MessageProviderRegistry : IRegistryOfMessageTypes
     {
-        static IRegistryOfMessageTypes singleton = new MessageProviderRegistry(new MessageProviderTypeMatchingInfoProvider());
+        static readonly IRegistryOfMessageTypes singleton = new MessageProviderRegistry(new MessageProviderTypeMatchingInfoProvider());
 
         readonly IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider;
         readonly ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>

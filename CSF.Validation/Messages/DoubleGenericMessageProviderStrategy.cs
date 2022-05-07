@@ -18,9 +18,9 @@ namespace CSF.Validation.Messages
         /// <inheritdoc/>
         public IGetsFailureMessage GetNonGenericFailureMessageProvider(Type providerType, Type ruleInterface)
         {
-            var ruleInterfaceInfo = providerType.GetTypeInfo();
-            var method = getDoubleGenericFailureMessageMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0],
-                                                                                ruleInterfaceInfo.GenericTypeParameters[1]);
+            var ruleInterfaceInfo = ruleInterface.GetTypeInfo();
+            var method = getDoubleGenericFailureMessageMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeArguments[0],
+                                                                                ruleInterfaceInfo.GenericTypeArguments[1]);
             return (IGetsFailureMessage)method.Invoke(this, new[] { providerType });
         }
 
