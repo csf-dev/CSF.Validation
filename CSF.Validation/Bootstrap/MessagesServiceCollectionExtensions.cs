@@ -10,7 +10,16 @@ namespace CSF.Validation.Bootstrap
             return serviceCollection
                 .AddSingleton<IRegistryOfMessageTypes>(s => MessageProviderRegistry.Default)
                 .AddSingleton<IGetsRuleMatchingInfoForMessageProviderType, MessageProviderTypeMatchingInfoProvider>()
-            ;
+                .AddTransient<IGetsMessageProviderInfoFactory,DecoratorBasedMessageProviderInfoFactory>()
+                .AddTransient<IGetsFailureMessageProvider,FailureMessageProviderSelector>()
+                .AddTransient<IGetsNonGenericMessageCriteria,FailureMessageUsageCriteriaFactory>()
+                .AddTransient<IAddsFailureMessagesToResult,FailureMessageValidationResultPopulator>()
+                .AddTransient<IGetsMessageProviderFactoryStrategy,MessageProviderFactoryStrategyProvider>()
+                .AddTransient<MessageProviderInfoFactory>()
+                .AddTransient<DoubleGenericMessageProviderStrategy>()
+                .AddTransient<NonGenericMessageProviderStrategy>()
+                .AddTransient<SingleGenericMessageProviderStrategy>()
+                ;
         }
     }
 }
