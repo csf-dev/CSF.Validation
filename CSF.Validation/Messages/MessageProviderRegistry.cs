@@ -62,25 +62,8 @@ namespace CSF.Validation.Messages
             }
         }
 
-        /// <summary>
-        /// Gets a collection of message provider types from the registry which are candidates to
-        /// provide a message for the specified validation rule result.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This method does not take into account the <see cref="IHasFailureMessageUsageCriteria.CanGetFailureMessage(ValidationRuleResult)"/>
-        /// method, or any of the equivalent methods upon the generic versions of the <see cref="IHasFailureMessageUsageCriteria"/> interface.
-        /// This method only filters/selects candidate types based upon the <see cref="FailureMessageStrategyAttribute"/> and the
-        /// predicate values stored there.
-        /// </para>
-        /// <para>
-        /// Further logic should be executed afterward to determine whether or not the instantiated instances of the message provider types
-        /// are suitable to provide a message for the result.
-        /// </para>
-        /// </remarks>
-        /// <param name="result">A validation rule result.</param>
-        /// <returns>A collection of candidate message provider types and their priority.</returns>
-        public IEnumerable<MessageProviderTypeAndPriority> GetCandidateMessageProviderTypes(ValidationRuleResult result)
+        /// <inheritdoc/>
+        public IEnumerable<MessageProviderTypeInfo> GetCandidateMessageProviderTypes(ValidationRuleResult result)
         {
             if (result is null)
                 throw new ArgumentNullException(nameof(result));
@@ -92,7 +75,7 @@ namespace CSF.Validation.Messages
                     where matchProvider.IsMatch(result)
                     let priority = matchProvider.GetPriority()
                     group priority by type into typeAndPriorityGroup
-                    select new MessageProviderTypeAndPriority(typeAndPriorityGroup.Key, typeAndPriorityGroup.Max()))
+                    select new MessageProviderTypeInfo(typeAndPriorityGroup.Key, typeAndPriorityGroup.Max()))
                 .ToList();
         }
 

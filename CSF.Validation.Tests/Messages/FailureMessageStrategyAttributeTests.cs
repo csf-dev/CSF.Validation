@@ -48,11 +48,12 @@ namespace CSF.Validation.Messages
                                                                                            [ManifestModel] ManifestRule rule,
                                                                                            Type ruleType,
                                                                                            object objectId,
-                                                                                           object actualValue)
+                                                                                           object actualValue,
+                                                                                           IValidationLogic validationLogic)
         {
             var id = new RuleIdentifier(ruleType, typeof(Employee), objectId);
             var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), typeof(string));
-            var ruleResult = new ValidationRuleResult(result, context);
+            var ruleResult = new ValidationRuleResult(result, context, validationLogic);
             var sut = new FailureMessageStrategyAttribute
             {
                 ValidatedType = typeof(Person),
@@ -66,11 +67,12 @@ namespace CSF.Validation.Messages
                                                                                                [ManifestModel] ManifestRule rule,
                                                                                                Type ruleType,
                                                                                                object objectId,
-                                                                                               object actualValue)
+                                                                                               object actualValue,
+                                                                                               IValidationLogic validationLogic)
         {
             var id = new RuleIdentifier(ruleType, typeof(Employee), objectId);
             var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), typeof(string));
-            var ruleResult = new ValidationRuleResult(result, context);
+            var ruleResult = new ValidationRuleResult(result, context, validationLogic);
             var sut = new FailureMessageStrategyAttribute
             {
                 ValidatedType = typeof(string),
@@ -84,11 +86,12 @@ namespace CSF.Validation.Messages
                                                                                                        [ManifestModel] ManifestRule rule,
                                                                                                        Type type,
                                                                                                        object objectId,
-                                                                                                       object actualValue)
+                                                                                                       object actualValue,
+                                                                                                       IValidationLogic validationLogic)
         {
             var id = new RuleIdentifier(type, type, objectId);
             var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(objectId, actualValue, new ManifestValue { ValidatedType = typeof(Employee) }) }, typeof(string));
-            var ruleResult = new ValidationRuleResult(result, context);
+            var ruleResult = new ValidationRuleResult(result, context, validationLogic);
             var sut = new FailureMessageStrategyAttribute
             {
                 ParentValidatedType = typeof(Person),
@@ -101,10 +104,11 @@ namespace CSF.Validation.Messages
         public void IsMatchShouldReturnFalseIfTheRuleInterfaceIsSpecifiedButDoesNotMatch([RuleResult] RuleResult result,
                                                                                          [ManifestModel] ManifestRule rule,
                                                                                          RuleIdentifier id,
-                                                                                         object actualValue)
+                                                                                         object actualValue,
+                                                                                         IValidationLogic validationLogic)
         {
             var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), typeof(string));
-            var ruleResult = new ValidationRuleResult(result, context);
+            var ruleResult = new ValidationRuleResult(result, context, validationLogic);
             var sut = new FailureMessageStrategyAttribute
             {
                 RuleInterface = typeof(int),

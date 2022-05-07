@@ -6,7 +6,7 @@ namespace CSF.Validation.Messages
     public interface IGetsFailureMessageProvider
     {
         /// <summary>
-        /// Gets the appropriate message provider for getting a feedback message for the
+        /// Gets the most appropriate message provider implementation for getting a feedback message for the
         /// specified <see cref="ValidationRuleResult"/>.
         /// </summary>
         /// <param name="ruleResult">The validation rule result for which to get a message provider.</param>

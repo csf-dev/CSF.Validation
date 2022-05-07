@@ -25,33 +25,31 @@ namespace CSF.Validation.Messages
         /// instance should be returned.
         /// </para>
         /// </remarks>
-        /// <param name="messageProvider">A message provider.</param>
+        /// <param name="messageProviderInfo">Message provider info.</param>
         /// <param name="ruleInterface">The interface used for the original validation rule.</param>
         /// <returns>An instance of <see cref="IHasFailureMessageUsageCriteria"/>.</returns>
-        public IHasFailureMessageUsageCriteria GetNonGenericMessageCriteria(IGetsFailureMessage messageProvider, Type ruleInterface)
+        public IHasFailureMessageUsageCriteria GetNonGenericMessageCriteria(MessageProviderInfo messageProviderInfo, Type ruleInterface)
         {
-            if (messageProvider is null)
-                throw new ArgumentNullException(nameof(messageProvider));
+            if (messageProviderInfo is null)
+                throw new ArgumentNullException(nameof(messageProviderInfo));
             if (ruleInterface is null)
                 throw new ArgumentNullException(nameof(ruleInterface));
 
-            var originalMessageProvider = GetOriginalMessageProvider(messageProvider);
-            var messageProviderTypeInfo = originalMessageProvider.GetType().GetTypeInfo();
             var ruleInterfaceInfo = ruleInterface.GetTypeInfo();
             
-            if(ImplementsDoubleGenericCriteriaInterface(messageProviderTypeInfo, ruleInterfaceInfo))
+            if(ImplementsDoubleGenericCriteriaInterface(messageProviderInfo.ProviderTypeInfo, ruleInterfaceInfo))
             {
                 var method = getDoubleGenericCriteriaMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0],
                                                                               ruleInterfaceInfo.GenericTypeParameters[1]);
-                return (IHasFailureMessageUsageCriteria)method.Invoke(this, new[] { messageProvider });
+                return (IHasFailureMessageUsageCriteria)method.Invoke(this, new[] { messageProviderInfo.GetOriginalProvider() });
             }
-            if(ImplementsSingleGenericCriteriaInterface(messageProviderTypeInfo, ruleInterfaceInfo))
+            if(ImplementsSingleGenericCriteriaInterface(messageProviderInfo.ProviderTypeInfo, ruleInterfaceInfo))
             {
                 var method = getSingleGenericCriteriaMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0]);
-                return (IHasFailureMessageUsageCriteria)method.Invoke(this, new[] { messageProvider });
+                return (IHasFailureMessageUsageCriteria)method.Invoke(this, new[] { messageProviderInfo.GetOriginalProvider() });
             }
-            if(originalMessageProvider is IHasFailureMessageUsageCriteria criteriaProvider)
-                return criteriaProvider;
+            if(nonGenericCriteriaTypeInfo.IsAssignableFrom(messageProviderInfo.ProviderTypeInfo))
+                return (IHasFailureMessageUsageCriteria) messageProviderInfo.GetOriginalProvider();
 
             return new AllowAllUsageCriteriaProvider();
         }
@@ -129,22 +127,6 @@ namespace CSF.Validation.Messages
                 .MakeGenericType(ruleInterfaceInfo.GenericTypeParameters[0], ruleInterfaceInfo.GenericTypeParameters[1])
                 .GetTypeInfo()
                 .IsAssignableFrom(providerTypeInfo);
-        }
-
-        /// <summary>
-        /// A method which unwraps a provider which might have been wrapped in an adapter.
-        /// </summary>
-        /// <param name="provider">A provider, which might be wrapped in an adapter.</param>
-        /// <returns>The original/innermost provider.</returns>
-        static object GetOriginalMessageProvider(object provider)
-        {
-            while(provider is IWrapsFailureMessageProvider hasWrappedProvider
-               && !(hasWrappedProvider.WrappedProvider is null))
-            {
-                provider = hasWrappedProvider.WrappedProvider;
-            }
-
-            return provider;
         }
     }
 }

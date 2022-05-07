@@ -57,10 +57,10 @@ namespace CSF.Validation.Messages
             sut.RegisterMessageProviderTypes(providerType1, providerType2, providerType3);
 
             var expected = new[] {
-                new MessageProviderTypeAndPriority(providerType1, 1),
-                new MessageProviderTypeAndPriority(providerType3, 5),
+                (providerType1,1),
+                (providerType3,5),
             };
-            Assert.That(() => sut.GetCandidateMessageProviderTypes(ruleResult), Is.EquivalentTo(expected));
+            Assert.That(() => sut.GetCandidateMessageProviderTypes(ruleResult).Select(x => (x.ProviderType, x.Priority)), Is.EquivalentTo(expected));
         }
     }
 }

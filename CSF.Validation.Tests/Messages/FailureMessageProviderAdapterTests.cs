@@ -20,10 +20,11 @@ namespace CSF.Validation.Messages
                                                                                    Type ruleInterface,
                                                                                    RuleIdentifier id,
                                                                                    string actualValue,
-                                                                                   string expectedResult)
+                                                                                   string expectedResult,
+                                                                                   IValidationLogic validationLogic)
         {
             var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
-            var validationRuleResult = new ValidationRuleResult(ruleResult, context);
+            var validationRuleResult = new ValidationRuleResult(ruleResult, context, validationLogic);
             Mock.Get(wrapped).Setup(x => x.GetFailureMessageAsync(actualValue, validationRuleResult, default)).Returns(Task.FromResult(expectedResult));
             Assert.That(async () => await sut.GetFailureMessageAsync(validationRuleResult), Is.EqualTo(expectedResult));
         }
@@ -38,10 +39,11 @@ namespace CSF.Validation.Messages
                                                                                     RuleIdentifier id,
                                                                                     string actualValue,
                                                                                     int parentValue,
-                                                                                    string expectedResult)
+                                                                                    string expectedResult,
+                                                                                   IValidationLogic validationLogic)
         {
             var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(null, parentValue, value) }, ruleInterface);
-            var validationRuleResult = new ValidationRuleResult(ruleResult, context);
+            var validationRuleResult = new ValidationRuleResult(ruleResult, context, validationLogic);
             Mock.Get(wrapped).Setup(x => x.GetFailureMessageAsync(actualValue, parentValue, validationRuleResult, default)).Returns(Task.FromResult(expectedResult));
             Assert.That(async () => await sut.GetFailureMessageAsync(validationRuleResult), Is.EqualTo(expectedResult));
         }

@@ -44,7 +44,12 @@ namespace CSF.Validation
         /// Gets contextual information about this rule.
         /// </summary>
         public RuleContext RuleContext { get; }
-        
+
+        /// <summary>
+        /// Gets a reference to the validation rule logic.
+        /// </summary>
+        public IValidationLogic ValidationLogic { get; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>
@@ -55,9 +60,11 @@ namespace CSF.Validation
         /// </remarks>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null"/>.</exception>
         public ValidationRuleResult(RuleResult result,
-                                    RuleContext ruleContext) : base(result)
+                                    RuleContext ruleContext,
+                                    IValidationLogic validationLogic) : base(result)
         {
             RuleContext = ruleContext ?? throw new ArgumentNullException(nameof(ruleContext));
+            ValidationLogic = validationLogic ?? throw new ArgumentNullException(nameof(validationLogic));
             Identifier = ruleContext.RuleIdentifier;
             RuleInterface = ruleContext.RuleInterface;
             ValidatedValue = ruleContext.ActualValue;
@@ -74,6 +81,7 @@ namespace CSF.Validation
             Identifier = result.Identifier;
             RuleInterface = result.RuleInterface;
             ValidatedValue = result.ValidatedValue;
+            ValidationLogic = result.ValidationLogic;
         }
     }
 }

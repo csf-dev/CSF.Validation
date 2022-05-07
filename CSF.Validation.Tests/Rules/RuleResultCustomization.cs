@@ -15,9 +15,9 @@ namespace CSF.Validation.Rules
             fixture.Customize<ValidationRuleResult>(c => c.FromFactory(GetValidationRuleResultFunc));
         }
 
-        Func<RuleResult, RuleContext, ValidationRuleResult> GetValidationRuleResultFunc => GetValidationRuleResult;
+        Func<RuleResult, RuleContext, IValidationLogic, ValidationRuleResult> GetValidationRuleResultFunc => GetValidationRuleResult;
 
-        static ValidationRuleResult GetValidationRuleResult(RuleResult result, RuleContext context)
-            => new ValidationRuleResult(result, context);
+        static ValidationRuleResult GetValidationRuleResult(RuleResult result, RuleContext context, IValidationLogic logic)
+            => new ValidationRuleResult(result, context, logic);
     }
 }

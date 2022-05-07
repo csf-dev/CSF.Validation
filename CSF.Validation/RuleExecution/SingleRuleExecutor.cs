@@ -35,7 +35,7 @@ namespace CSF.Validation.RuleExecution
                                                              cancellationToken)
                 .ConfigureAwait(false);
 
-            return new ValidationRuleResult(result, context);
+            return new ValidationRuleResult(result, context, rule.RuleLogic);
         }
 
         /// <summary>

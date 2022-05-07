@@ -4,7 +4,7 @@ namespace CSF.Validation.Messages
 {
     /// <summary>
     /// An object which can get an instance of <see cref="IHasFailureMessageUsageCriteria"/>
-    /// from an instance of <see cref="IGetsFailureMessage"/>.
+    /// from an instance of <see cref="MessageProviderInfo"/>.
     /// </summary>
     public interface IGetsNonGenericMessageCriteria
     {
@@ -18,9 +18,9 @@ namespace CSF.Validation.Messages
         /// instance should be returned.
         /// </para>
         /// </remarks>
-        /// <param name="messageProvider">A message provider.</param>
+        /// <param name="messageProviderInfo">Message provider info.</param>
         /// <param name="ruleInterface">The interface used for the original validation rule.</param>
         /// <returns>An instance of <see cref="IHasFailureMessageUsageCriteria"/>.</returns>
-        IHasFailureMessageUsageCriteria GetNonGenericMessageCriteria(IGetsFailureMessage messageProvider, Type ruleInterface);
+        IHasFailureMessageUsageCriteria GetNonGenericMessageCriteria(MessageProviderInfo messageProviderInfo, Type ruleInterface);
     }
 }

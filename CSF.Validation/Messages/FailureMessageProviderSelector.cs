@@ -7,58 +7,58 @@ namespace CSF.Validation.Messages
     /// </summary>
     public class FailureMessageProviderSelector : IGetsFailureMessageProvider
     {
-        readonly IRegistryOfMessageTypes registry;
-        readonly IGetsNonGenericMessageProvider providerFactory;
-        readonly IGetsNonGenericMessageCriteria criteriaFactory;
+        readonly IGetsMessageProviderInfoFactory providerInfoFactoryFactory;
 
         /// <summary>
-        /// Gets the appropriate message provider for getting a feedback message for the
+        /// Gets the most appropriate message provider implementation for getting a feedback message for the
         /// specified <see cref="ValidationRuleResult"/>.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This method uses the <see cref="MessageProviderTypeAndPriority.Priority"/> as a tie-break if more than one provider from
-        /// the <see cref="IRegistryOfMessageTypes"/> is suitable for the specified rule result.
-        /// However, an additional priority of 10 is awarded to message providers which also implement either
-        /// <see cref="IHasFailureMessageUsageCriteria"/> or one of its two generic variants for the appropriate generic type parameters:
-        /// <see cref="IHasFailureMessageUsageCriteria{TValidated}"/> or <see cref="IHasFailureMessageUsageCriteria{TValidated, TParent}"/>.
+        /// This method uses an instance of <see cref="IGetsMessageProviderInfo"/> to get a collection of candidate
+        /// <see cref="MessageProviderInfo"/> instances which could provide a message for the specified rule result.
+        /// Once the message provider infos are retrieved, the provider with the highest numeric
+        /// <see cref="MessageProviderTypeInfo.Priority"/> is selected and its <see cref="MessageProviderInfo.MessageProvider"/>
+        /// implementation is returned as the result of this method.
         /// </para>
         /// <para>
-        /// Thus, if the message provider implements a has-usage-criteria interface, for appropriate generic type(s) where applicable, then
-        /// it will always be considered higher-priority than one that is not.
+        /// If this method returns a <see langword="null" /> reference then this indicates that there is no message provider
+        /// suitable for providing the message for the specified rule result.
+        /// If the <see cref="IGetsMessageProviderInfo"/> returned more than one <see cref="MessageProviderInfo"/>
+        /// which are tied for the highest priority then any of these may be returned by this method, and results might not
+        /// be stable.  Developers are encouraged to avoid message providers with tied priorities.
+        /// </para>
+        /// <para>
+        /// The instance of <see cref="IGetsMessageProviderInfo"/> used is retrieved using a <see cref="IGetsMessageProviderInfoFactory"/>.
         /// </para>
         /// </remarks>
+        /// <seealso cref="IGetsMessageProviderInfoFactory"/>
+        /// <seealso cref="IGetsMessageProviderInfo"/>
+        /// <seealso cref="MessageProviderInfo"/>
+        /// <seealso cref="MessageProviderTypeInfo"/>
+        /// <seealso cref="MessageProviderInfoFactory"/>
+        /// <seealso cref="NullExcludingMessageProviderInfoDecorator"/>
+        /// <seealso cref="CriteriaApplyingMessageProviderInfoDecorator"/>
         /// <param name="ruleResult">The validation rule result for which to get a message provider.</param>
         /// <returns>Either an implementation of <see cref="IGetsFailureMessage"/>, or a <see langword="null" />
         /// reference, if no message provider is suitable for the result.</returns>
         public IGetsFailureMessage GetProvider(ValidationRuleResult ruleResult)
         {
-            return (from candidate in registry.GetCandidateMessageProviderTypes(ruleResult)
-                    let provider = providerFactory.GetNonGenericFailureMessageProvider(candidate.ProviderType, ruleResult.RuleInterface)
-                    let criteria = criteriaFactory.GetNonGenericMessageCriteria(provider, ruleResult.RuleInterface)
-                    let basePriority = candidate.Priority
-                    let criteriaPriority = (criteria is AllowAllUsageCriteriaProvider) ? 0 : 10
-                    let finalPriority = basePriority + criteriaPriority
-                    orderby finalPriority descending
-                    select new { Provider = provider, Criteria = criteria })
-                .FirstOrDefault(x => x.Criteria.CanGetFailureMessage(ruleResult))
-                ?.Provider;
+            var providerInfoFactory = providerInfoFactoryFactory.GetProviderInfoFactory();
+            return (from providerInfo in providerInfoFactory.GetMessageProviderInfo(ruleResult)
+                    orderby providerInfo.Priority descending
+                    select providerInfo.MessageProvider)
+                .FirstOrDefault();
         }
 
         /// <summary>
         /// Initialises a new instance of <see cref="FailureMessageProviderSelector"/>.
         /// </summary>
-        /// <param name="registry">The provider-type registry.</param>
-        /// <param name="providerFactory">A factory for instances of <see cref="IGetsFailureMessage"/>.</param>
-        /// <param name="criteriaFactory">A factory for instances of <see cref="IHasFailureMessageUsageCriteria"/>.</param>
-        /// <exception cref="System.ArgumentNullException">If any constructor parameter is <see langword="null" />.</exception>
-        public FailureMessageProviderSelector(IRegistryOfMessageTypes registry,
-                                                        IGetsNonGenericMessageProvider providerFactory,
-                                                        IGetsNonGenericMessageCriteria criteriaFactory)
+        /// <param name="providerInfoFactoryFactory">A factory service that gets the message provider info factory.</param>
+        /// <exception cref="System.ArgumentNullException">If <paramref name="providerInfoFactoryFactory"/> is <see langword="null" />.</exception>
+        public FailureMessageProviderSelector(IGetsMessageProviderInfoFactory providerInfoFactoryFactory)
         {
-            this.registry = registry ?? throw new System.ArgumentNullException(nameof(registry));
-            this.providerFactory = providerFactory ?? throw new System.ArgumentNullException(nameof(providerFactory));
-            this.criteriaFactory = criteriaFactory ?? throw new System.ArgumentNullException(nameof(criteriaFactory));
+            this.providerInfoFactoryFactory = providerInfoFactoryFactory ?? throw new System.ArgumentNullException(nameof(providerInfoFactoryFactory));
         }
     }
 }

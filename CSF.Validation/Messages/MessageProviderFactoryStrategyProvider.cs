@@ -1,91 +1,81 @@
 using System;
 using System.Reflection;
-using CSF.Reflection;
 using CSF.Validation.Rules;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation.Messages
 {
     /// <summary>
-    /// A service which acts as a factory for instances of <see cref="IGetsFailureMessage"/> based upon a message provider type and a rule interface.
+    /// A strategy-selector/factory class which gets the appropriate strategy implementation for getting a
+    /// failure message provider implementation for a specified message provider type and rule interface.
     /// </summary>
-    public class FailureMessageProviderFactory : IGetsNonGenericMessageProvider
+    public class MessageProviderFactoryStrategyProvider : IGetsMessageProviderFactoryStrategy
     {
-        static MethodInfo
-            getSingleGenericFailureMessageMethod = Reflect.Method<FailureMessageProviderFactory>(x => x.GetSingleGenericFailureMessage<object>(default)).GetGenericMethodDefinition(),
-            getDoubleGenericFailureMessageMethod = Reflect.Method<FailureMessageProviderFactory>(x => x.GetDoubleGenericFailureMessage<object, object>(default)).GetGenericMethodDefinition();
+        static readonly TypeInfo nonGenericProviderTypeInfo = typeof(IGetsFailureMessage).GetTypeInfo();
 
         readonly IServiceProvider serviceProvider;
 
         /// <summary>
-        /// Gets the failure message provider for the specified type and original rule interface.
+        /// Gets a message provider factory which is appropriate for the specified provider type and rule interface.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// If the <paramref name="providerType"/> implements more than one message-provider interface, then efforts will be made
-        /// by this method to select the correct interface, based upon the <paramref name="ruleInterface"/>.
-        /// The message provider interface will be selected based upon which is a closest match to the generic type parameters of the
-        /// rule interface.
-        /// A more specific message provider interface (taking more generic type parameters) will be selected over a less
-        /// specific interface, assuming it is a match.
+        /// This method will examine the message provider interfaces which are implemented by the
+        /// <paramref name="providerType"/>.  Specifically it will consider all implementations of any of:
+        /// </para>
+        /// <list type="number">
+        /// <item><description><see cref="IGetsFailureMessage{TValidated, TParent}"/></description></item>
+        /// <item><description><see cref="IGetsFailureMessage{TValidated}"/></description></item>
+        /// <item><description><see cref="IGetsFailureMessage"/></description></item>
+        /// </list>
+        /// <para>
+        /// It will then return a message-provider-factory strategy implementation which best-matches the interfaces
+        /// implemented by the <paramref name="providerType"/>, based upon the actual validation rule interface
+        /// which is in-use: <paramref name="ruleInterface"/>.
+        /// </para>
+        /// <para>
+        /// This 'matching' process will look for matches in the order the message provider interfaces are listed
+        /// above.  For example, if a message provider implements the interface with two generic types, and for types that
+        /// are compatible with the generic types present upon the rule interface, then the double-generic strategy
+        /// will be given preference over a single-generic strategy.  This is true even if the message provider type also
+        /// implements a single-generic message provider interface that is compatible with the rule interface.
+        /// </para>
+        /// <para>
+        /// Obviously, if the message provider type implements the non-generic <see cref="IGetsFailureMessage"/> then
+        /// this will match every possible rule interface, as it is non-generic.  This behaviour may be leveraged as
+        /// a fall-back option for unexpected scenarios (such as validating <see cref="RuleOutcome.Errored"/> results).
+        /// </para>
+        /// <para>
+        /// If this method cannot find any suitable strategy for getting a message provider - the <paramref name="providerType"/>
+        /// does not implement any interface which is compatible with the <paramref name="ruleInterface"/> - then it
+        /// will return <see langword="null" />.  This means that no factory strategy is applicable and that the provider
+        /// type is not compatible with the rule interface.
         /// </para>
         /// </remarks>
-        /// <param name="providerType">The message provider type.</param>
-        /// <param name="ruleInterface">The interface used for the original rule.</param>
-        /// <returns>An implementation of <see cref="IGetsFailureMessage"/>.</returns>
-        public IGetsFailureMessage GetNonGenericFailureMessageProvider(Type providerType, Type ruleInterface)
+        /// <param name="providerType"></param>
+        /// <param name="ruleInterface"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public IGetsNonGenericMessageProvider GetMessageProviderFactory(Type providerType, Type ruleInterface)
         {
             if (providerType is null)
                 throw new ArgumentNullException(nameof(providerType));
             if (ruleInterface is null)
                 throw new ArgumentNullException(nameof(ruleInterface));
 
-            var ruleInterfaceInfo = ruleInterface.GetTypeInfo();
             var providerTypeInfo = providerType.GetTypeInfo();
+            var ruleInterfaceInfo = providerType.GetTypeInfo();
             if(!ruleInterfaceInfo.IsGenericType)
                 throw GetIncorrectRuleInterfaceException(ruleInterface);
 
             if(ImplementsDoubleGenericMessageInterface(providerTypeInfo, ruleInterfaceInfo))
-            {
-                var method = getDoubleGenericFailureMessageMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0],
-                                                                                    ruleInterfaceInfo.GenericTypeParameters[1]);
-                return (IGetsFailureMessage)method.Invoke(this, new[] { providerType });
-            }
+                return serviceProvider.GetRequiredService<DoubleGenericMessageProviderStrategy>();
             if(ImplementsSingleGenericMessageInterface(providerTypeInfo, ruleInterfaceInfo))
-            {
-                var method = getSingleGenericFailureMessageMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeParameters[0]);
-                return (IGetsFailureMessage)method.Invoke(this, new[] { providerType });
-            }
-            if(typeof(IGetsFailureMessage).GetTypeInfo().IsAssignableFrom(providerTypeInfo))
-                return (IGetsFailureMessage) serviceProvider.GetService(providerType);
+                return serviceProvider.GetRequiredService<SingleGenericMessageProviderStrategy>();
+            if(nonGenericProviderTypeInfo.IsAssignableFrom(providerTypeInfo))
+                return serviceProvider.GetRequiredService<NonGenericMessageProviderStrategy>();
 
             return null;
-        }
-
-        /// <summary>
-        /// Gets a the message provider as a <see cref="IGetsFailureMessage{TValidated}"/> and wraps it in an adapter
-        /// to be usable as a non-generic object.
-        /// </summary>
-        /// <typeparam name="TValue">The validated type.</typeparam>
-        /// <param name="type">The concrete message provider type.</param>
-        /// <returns>The message provider, wrapped in an adapter.</returns>
-        IGetsFailureMessage GetSingleGenericFailureMessage<TValue>(Type type)
-        {
-            var genericProvider = (IGetsFailureMessage<TValue>) serviceProvider.GetService(type);
-            return new FailureMessageProviderAdapter<TValue>(genericProvider);
-        }
-
-        /// <summary>
-        /// Gets a the message provider as a <see cref="IGetsFailureMessage{TValidated, TParent}"/> and wraps it in an adapter
-        /// to be usable as a non-generic object.
-        /// </summary>
-        /// <typeparam name="TValue">The validated type.</typeparam>
-        /// <typeparam name="TParent">The parent validated type.</typeparam>
-        /// <param name="type">The concrete message provider type.</param>
-        /// <returns>The message provider, wrapped in an adapter.</returns>
-        IGetsFailureMessage GetDoubleGenericFailureMessage<TValue,TParent>(Type type)
-        {
-            var genericProvider = (IGetsFailureMessage<TValue,TParent>) serviceProvider.GetService(type);
-            return new FailureMessageProviderAdapter<TValue,TParent>(genericProvider);
         }
 
         /// <summary>
@@ -145,11 +135,11 @@ namespace CSF.Validation.Messages
         }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="FailureMessageProviderFactory"/>.
+        /// Initialises a new instance of <see cref="MessageProviderFactoryStrategyProvider"/>.
         /// </summary>
         /// <param name="serviceProvider">A service provider.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="serviceProvider"/> is <see langword="null" />.</exception>
-        public FailureMessageProviderFactory(IServiceProvider serviceProvider)
+        /// <exception cref="ArgumentNullException">If the <paramref name="serviceProvider"/> is <see langword="null" />.</exception>
+        public MessageProviderFactoryStrategyProvider(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }

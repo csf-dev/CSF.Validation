@@ -19,10 +19,11 @@ namespace CSF.Validation.Messages
                                                                                    Type ruleInterface,
                                                                                    RuleIdentifier id,
                                                                                    string actualValue,
-                                                                                   bool expectedResult)
+                                                                                   bool expectedResult,
+                                                                                   IValidationLogic validationLogic)
         {
             var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
-            var validationRuleResult = new ValidationRuleResult(ruleResult, context);
+            var validationRuleResult = new ValidationRuleResult(ruleResult, context, validationLogic);
             Mock.Get(wrapped).Setup(x => x.CanGetFailureMessage(actualValue, validationRuleResult)).Returns(expectedResult);
             var actualResult = sut.CanGetFailureMessage(validationRuleResult);
             Assert.Multiple(() =>
@@ -42,10 +43,11 @@ namespace CSF.Validation.Messages
                                                                                     RuleIdentifier id,
                                                                                     string actualValue,
                                                                                     int parentValue,
-                                                                                    bool expectedResult)
+                                                                                    bool expectedResult,
+                                                                                    IValidationLogic validationLogic)
         {
             var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(null, parentValue, value) }, ruleInterface);
-            var validationRuleResult = new ValidationRuleResult(ruleResult, context);
+            var validationRuleResult = new ValidationRuleResult(ruleResult, context, validationLogic);
             Mock.Get(wrapped).Setup(x => x.CanGetFailureMessage(actualValue, parentValue, validationRuleResult)).Returns(expectedResult);
             var actualResult = sut.CanGetFailureMessage(validationRuleResult);
             Assert.Multiple(() =>

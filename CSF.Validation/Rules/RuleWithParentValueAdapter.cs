@@ -27,6 +27,11 @@ namespace CSF.Validation.Rules
         public Type RuleInterface => typeof(IRule<TValue, TValidated>);
 
         /// <summary>
+        /// Gets a reference to the original/raw rule object instance.
+        /// </summary>
+        public object RuleObject => wrapped;
+
+        /// <summary>
         /// Executes the logic of the validation rule and returns the result.
         /// </summary>
         /// <param name="value">The value which is being validated by the current rule.</param>

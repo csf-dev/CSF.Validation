@@ -9,14 +9,12 @@ namespace CSF.Validation.Messages
     /// </summary>
     /// <typeparam name="TValidated">The validated type.</typeparam>
     /// <typeparam name="TParent">The parent validated type.</typeparam>
-    public class FailureMessageProviderAdapter<TValidated,TParent> : IGetsFailureMessage, IWrapsFailureMessageProvider
+    public class FailureMessageProviderAdapter<TValidated,TParent> : IGetsFailureMessage, IHasWrappedFailureMessageProvider
     {
         readonly IGetsFailureMessage<TValidated,TParent> wrapped;
-
-        /// <summary>
-        /// Gets the wrapped message provider instance.
-        /// </summary>
-        public object WrappedProvider => wrapped;
+        
+        /// <inheritdoc/>
+        public object GetWrappedProvider() => wrapped;
 
         /// <summary>
         /// Gets the validation failure message for the specified result.

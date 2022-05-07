@@ -45,17 +45,18 @@ namespace CSF.Validation.Messages
         /// <remarks>
         /// <para>
         /// This method does not take into account the <see cref="IHasFailureMessageUsageCriteria.CanGetFailureMessage(ValidationRuleResult)"/>
-        /// method, or any of the equivalent methods upon the generic versions of the <see cref="IHasFailureMessageUsageCriteria"/> interface.
+        /// method, or any of the equivalent methods upon <see cref="IHasFailureMessageUsageCriteria{TValidated}"/> or
+        /// <see cref="IHasFailureMessageUsageCriteria{TValidated, TParent}"/>.
         /// This method only filters/selects candidate types based upon the <see cref="FailureMessageStrategyAttribute"/> and the
         /// predicate values stored there.
         /// </para>
         /// <para>
-        /// Further logic should be executed afterward to determine whether or not the instantiated instances of the message provider types
-        /// are suitable to provide a message for the result.
+        /// Further logic should be executed afterward to determine whether or not the type information provided is suitable to select
+        /// as the message provider for the specified validation rule result.
         /// </para>
         /// </remarks>
         /// <param name="result">A validation rule result.</param>
         /// <returns>A collection of candidate message provider types and their priority.</returns>
-        IEnumerable<MessageProviderTypeAndPriority> GetCandidateMessageProviderTypes(ValidationRuleResult result);
+        IEnumerable<MessageProviderTypeInfo> GetCandidateMessageProviderTypes(ValidationRuleResult result);
     }
 }
