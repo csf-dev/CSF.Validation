@@ -28,10 +28,10 @@ namespace CSF.Validation.Messages
                 .ToList();
         }
 
-        MessageProviderInfo GetMessageProviderInfo(IGetsNonGenericMessageProvider factory, MessageProviderTypeInfo typeInfo, ValidationRuleResult ruleResult)
+        static MessageProviderInfo GetMessageProviderInfo(IGetsNonGenericMessageProvider factory, MessageProviderTypeInfo typeInfo, ValidationRuleResult ruleResult)
             => new LazyMessageProviderInfo(typeInfo, new Lazy<IGetsFailureMessage>(GetProviderFactory(factory, typeInfo, ruleResult)));
 
-        Func<IGetsFailureMessage> GetProviderFactory(IGetsNonGenericMessageProvider factory, MessageProviderTypeInfo typeInfo, ValidationRuleResult ruleResult)
+        static Func<IGetsFailureMessage> GetProviderFactory(IGetsNonGenericMessageProvider factory, MessageProviderTypeInfo typeInfo, ValidationRuleResult ruleResult)
         {
             return () => factory.GetNonGenericFailureMessageProvider(typeInfo.ProviderType,
                                                                      ruleResult.RuleInterface);

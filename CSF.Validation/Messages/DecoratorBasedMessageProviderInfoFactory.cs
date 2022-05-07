@@ -21,7 +21,7 @@ namespace CSF.Validation.Messages
 
         IGetsMessageProviderInfo GetBaseFactory() => serviceProvider.GetRequiredService<MessageProviderInfoFactory>();
 
-        IGetsMessageProviderInfo WrapWithNullExcludingDecorator(IGetsMessageProviderInfo wrapped)
+        static IGetsMessageProviderInfo WrapWithNullExcludingDecorator(IGetsMessageProviderInfo wrapped)
             => new NullExcludingMessageProviderInfoDecorator(wrapped);
 
         IGetsMessageProviderInfo WrapWithCriteriaApplyingDecorator(IGetsMessageProviderInfo wrapped)
