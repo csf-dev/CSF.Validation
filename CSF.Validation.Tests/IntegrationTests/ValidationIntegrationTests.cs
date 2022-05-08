@@ -117,8 +117,24 @@ namespace CSF.Validation.IntegrationTests
                     .Select(x => x.Identifier.RuleType)
                     .ToList();
                 Assert.That(failures, Is.EqualTo(new[] { typeof(NotNull) }), "One normal failure and it's the right type");
-
             });
+        }
+
+        [Test,AutoMoqData]
+        public async Task ValidateAsyncWithMessageSupportShouldReturnMessagesForAFailingRule([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidatorWithMessageSupport<Person>(typeof(PersonValidatorBuilder));
+            var person = new Person
+            {
+                Name = "John Smith",
+                Birthday = new DateTime(1750, 1, 1),
+                Pets = Array.Empty<Pet>(),
+            };
+
+            var result = await validator.ValidateAsync(person);
+
+            Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
+                        Is.EqualTo("The date 1750-01-01 is invalid. It must equal-to or later than 1900-01-01."));
         }
     }
 }

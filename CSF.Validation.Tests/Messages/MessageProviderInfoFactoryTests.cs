@@ -11,7 +11,7 @@ namespace CSF.Validation.Messages
     public class MessageProviderInfoFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetMessageProviderInfoShouldReturnProvidersCreatedFromRegistryTypeInfoExcludingThoseForWhichThereIsNoFactory([Frozen] IRegistryOfMessageTypes typeRegistry,
+        public void GetMessageProviderInfoShouldReturnProvidersCreatedFromRegistryTypeInfoExcludingThoseForWhichThereIsNoFactory([Frozen] IGetsCandidateMessageTypes typeRegistry,
                                                                                                                                  [Frozen] IGetsMessageProviderFactoryStrategy factoryStrategySelector,
                                                                                                                                  MessageProviderInfoFactory sut,
                                                                                                                                  int irrelevantPriority,
@@ -33,7 +33,7 @@ namespace CSF.Validation.Messages
         }
 
         [Test,AutoMoqData]
-        public void GetMessageProviderInfoShouldCreateProviderUsingLazyResolutionFromTheFactory([Frozen] IRegistryOfMessageTypes typeRegistry,
+        public void GetMessageProviderInfoShouldCreateProviderUsingLazyResolutionFromTheFactory([Frozen] IGetsCandidateMessageTypes typeRegistry,
                                                                                                 [Frozen] IGetsMessageProviderFactoryStrategy factoryStrategySelector,
                                                                                                 MessageProviderInfoFactory sut,
                                                                                                 int irrelevantPriority,

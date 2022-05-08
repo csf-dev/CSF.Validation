@@ -10,12 +10,12 @@ namespace CSF.Validation.Messages
     /// <remarks>
     /// <para>
     /// This implementation only filters the candidate <see cref="MessageProviderInfo"/> which are returned by the
-    /// manner in which the <see cref="IRegistryOfMessageTypes"/> would filter them.
+    /// manner in which the <see cref="IGetsCandidateMessageTypes"/> would filter them.
     /// </para>
     /// </remarks>
     public class MessageProviderInfoFactory : IGetsMessageProviderInfo
     {
-        readonly IRegistryOfMessageTypes typeRegistry;
+        readonly IGetsCandidateMessageTypes typeRegistry;
         readonly IGetsMessageProviderFactoryStrategy factoryStrategySelector;
 
         /// <inheritdoc/>
@@ -43,7 +43,7 @@ namespace CSF.Validation.Messages
         /// <param name="typeRegistry">A provider type registry.</param>
         /// <param name="factoryStrategySelector">A service that gets strategies for message provider factories.</param>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
-        public MessageProviderInfoFactory(IRegistryOfMessageTypes typeRegistry,
+        public MessageProviderInfoFactory(IGetsCandidateMessageTypes typeRegistry,
                                           IGetsMessageProviderFactoryStrategy factoryStrategySelector)
         {
             this.typeRegistry = typeRegistry ?? throw new ArgumentNullException(nameof(typeRegistry));

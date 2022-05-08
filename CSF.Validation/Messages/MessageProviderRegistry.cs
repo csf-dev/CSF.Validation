@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Options;
 
 namespace CSF.Validation.Messages
 {
@@ -32,35 +33,11 @@ namespace CSF.Validation.Messages
     /// The implementation of this service should be registered in dependency injection as a singleton.
     /// </para>
     /// </remarks>
-    public class MessageProviderRegistry : IRegistryOfMessageTypes
+    public class MessageProviderRegistry : IGetsCandidateMessageTypes
     {
-        static readonly IRegistryOfMessageTypes singleton = new MessageProviderRegistry(new MessageProviderTypeMatchingInfoProvider());
-
         readonly IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider;
         readonly ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>
             typesAndMatchProviders = new ConcurrentDictionary<Type, List<IGetsMessageProviderTypeMatchingInfoForRule>>();
-
-        /// <summary>
-        /// Add a number of types (of message provider classes) to this registry.
-        /// </summary>
-        /// <param name="types">The types to register.</param>
-        public void RegisterMessageProviderTypes(IEnumerable<Type> types)
-        {
-            if (types is null)
-                throw new ArgumentNullException(nameof(types));
-
-            foreach (var type in types)
-            {
-                var matchProviders = matchingInfoProvider.GetMatchingInfo(type).ToList();
-
-                var added = typesAndMatchProviders.TryAdd(type, matchProviders);
-                if (!added)
-                {
-                    var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("DuplicateTypesNotAllowed"), type.FullName, nameof(MessageProviderRegistry));
-                    throw new InvalidOperationException(message);
-                }
-            }
-        }
 
         /// <inheritdoc/>
         public IEnumerable<MessageProviderTypeInfo> GetCandidateMessageProviderTypes(ValidationRuleResult result)
@@ -78,20 +55,35 @@ namespace CSF.Validation.Messages
                     select new MessageProviderTypeInfo(typeAndPriorityGroup.Key, typeAndPriorityGroup.Max()))
                 .ToList();
         }
+        void RegisterMessageProviderTypes(IEnumerable<Type> types)
+        {
+            foreach (var type in types)
+            {
+                var matchProviders = matchingInfoProvider.GetMatchingInfo(type).ToList();
+
+                var added = typesAndMatchProviders.TryAdd(type, matchProviders);
+                if (!added)
+                {
+                    var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("DuplicateTypesNotAllowed"), type.FullName, nameof(MessageProviderRegistry));
+                    throw new InvalidOperationException(message);
+                }
+            }
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="MessageProviderRegistry"/>.
         /// </summary>
         /// <param name="matchingInfoProvider">A service that gets message provider matching info.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="matchingInfoProvider"/> is <see langword="null" />.</exception>
-        public MessageProviderRegistry(IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider)
+        /// <param name="typeOptions">An options object which indicates the available message provider types.</param>
+        /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
+        public MessageProviderRegistry(IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider,
+                                       IOptions<MessageProviderTypeOptions> typeOptions)
         {
-            this.matchingInfoProvider = matchingInfoProvider ?? throw new ArgumentNullException(nameof(matchingInfoProvider));
-        }
+            if (typeOptions is null)
+                throw new ArgumentNullException(nameof(typeOptions));
 
-        /// <summary>
-        /// Gets a singleton instance of this type.
-        /// </summary>
-        public static IRegistryOfMessageTypes Default => singleton;
+            this.matchingInfoProvider = matchingInfoProvider ?? throw new ArgumentNullException(nameof(matchingInfoProvider));
+            RegisterMessageProviderTypes(typeOptions.Value.MessageProviderTypes);
+        }
     }
 }

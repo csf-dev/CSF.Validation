@@ -20,7 +20,12 @@ namespace CSF.Validation
             serviceCollection
                 .UseValidationFramework()
                 .UseStandardValidationRules()
-                .UseValidationRulesInAssembly(Assembly.GetExecutingAssembly());
+                .UseValidationRulesInAssembly(Assembly.GetExecutingAssembly())
+                .UseMessageProviders(c => {
+                    c.AddMessageProvider(typeof(IntegrationTests.DateTimeInRangeMessageProvider));
+                    c.AddMessageProvider(typeof(IntegrationTests.CantBeOwnedByUnderageChildrenMessageProvider));
+                })
+                ;
             return serviceCollection.BuildServiceProvider();
         }
     }

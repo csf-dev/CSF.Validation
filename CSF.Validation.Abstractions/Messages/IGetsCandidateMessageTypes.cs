@@ -4,7 +4,8 @@ using System.Collections.Generic;
 namespace CSF.Validation.Messages
 {
     /// <summary>
-    /// An object which may serve as a registry of the available <see cref="Type"/> of message-provider services.
+    /// An object which is used to get type information about message provider types which could potentially
+    /// provide the message for a specified validation rule result.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -30,14 +31,8 @@ namespace CSF.Validation.Messages
     /// The implementation of this service should be registered in dependency injection as a singleton.
     /// </para>
     /// </remarks>
-    public interface IRegistryOfMessageTypes
+    public interface IGetsCandidateMessageTypes
     {
-        /// <summary>
-        /// Add a number of types (of message provider classes) to this registry.
-        /// </summary>
-        /// <param name="types">The types to register.</param>
-        void RegisterMessageProviderTypes(IEnumerable<Type> types);
-
         /// <summary>
         /// Gets a collection of message provider types from the registry which are candidates to
         /// provide a message for the specified validation rule result.

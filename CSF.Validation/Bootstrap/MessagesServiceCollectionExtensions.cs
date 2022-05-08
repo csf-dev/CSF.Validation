@@ -8,7 +8,7 @@ namespace CSF.Validation.Bootstrap
         internal static IServiceCollection AddMessagesServices(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddSingleton<IRegistryOfMessageTypes>(s => MessageProviderRegistry.Default)
+                .AddSingleton<IGetsCandidateMessageTypes,MessageProviderRegistry>()
                 .AddSingleton<IGetsRuleMatchingInfoForMessageProviderType, MessageProviderTypeMatchingInfoProvider>()
                 .AddTransient<IGetsMessageProviderInfoFactory,DecoratorBasedMessageProviderInfoFactory>()
                 .AddTransient<IGetsFailureMessageProvider,FailureMessageProviderSelector>()

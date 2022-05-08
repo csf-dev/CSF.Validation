@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Rules;
+using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 
@@ -11,24 +12,22 @@ namespace CSF.Validation.Messages
     public class MessageProviderRegistryTests
     {
         [Test,AutoMoqData]
-        public void RegisterMessageProviderTypesShouldThrowIfTypesAreNull(MessageProviderRegistry sut)
+        public void ConstructorShouldThrowIfTypesAreNull(IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider)
         {
-            Assert.That(() => sut.RegisterMessageProviderTypes(null), Throws.ArgumentNullException);
+            Assert.That(() => new MessageProviderRegistry(matchingInfoProvider, null), Throws.ArgumentNullException);
         }
 
         [Test,AutoMoqData]
-        public void RegisterMessageProviderTypesShouldThrowIfDuplicateTypesAreAdded([Frozen] IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider,
-                                                                                    MessageProviderRegistry sut,
+        public void RegisterMessageProviderTypesShouldThrowIfDuplicateTypesAreAdded(IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider,
                                                                                     Type type)
         {
             Mock.Get(matchingInfoProvider).Setup(x => x.GetMatchingInfo(type)).Returns(Enumerable.Empty<IGetsMessageProviderTypeMatchingInfoForRule>());
-            sut.RegisterMessageProviderTypes(type);
-            Assert.That(() => sut.RegisterMessageProviderTypes(type), Throws.InvalidOperationException);
+            var options = Mock.Of<IOptions<MessageProviderTypeOptions>>(x => x.Value == new MessageProviderTypeOptions { MessageProviderTypes = new[] { type, type } });
+            Assert.That(() => new MessageProviderRegistry(matchingInfoProvider, options), Throws.InvalidOperationException);
         }
 
         [Test,AutoMoqData]
         public void GetCandidateMessageProviderTypesShouldReturnCorrectInfoForARule([Frozen] IGetsRuleMatchingInfoForMessageProviderType matchingInfoProvider,
-                                                                                    MessageProviderRegistry sut,
                                                                                     IGetsMessageProviderTypeMatchingInfoForRule info1,
                                                                                     IGetsMessageProviderTypeMatchingInfoForRule info2,
                                                                                     IGetsMessageProviderTypeMatchingInfoForRule info3,
@@ -53,8 +52,9 @@ namespace CSF.Validation.Messages
             Mock.Get(info4).Setup(x => x.GetPriority()).Returns(4);
             Mock.Get(info5).Setup(x => x.IsMatch(ruleResult)).Returns(true);
             Mock.Get(info5).Setup(x => x.GetPriority()).Returns(5);
+            var options = Mock.Of<IOptions<MessageProviderTypeOptions>>(x => x.Value == new MessageProviderTypeOptions { MessageProviderTypes = new[] { providerType1, providerType2, providerType3 } });
 
-            sut.RegisterMessageProviderTypes(providerType1, providerType2, providerType3);
+            var sut = new MessageProviderRegistry(matchingInfoProvider, options);
 
             var expected = new[] {
                 (providerType1,1),
