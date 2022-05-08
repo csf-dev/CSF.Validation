@@ -51,6 +51,13 @@ namespace CSF.Validation.Messages
             Assert.That(() => sut.GetMessageProviderFactory(typeof(MultipleInterfaceProvider), typeof(IRule<string,int>)), Is.InstanceOf<DoubleGenericMessageProviderStrategy>());
         }
 
+        [Test,AutoMoqData]
+        public void GetMessageProviderFactoryShouldThrowIfRuleInterfaceIsInvalid([AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                 MessageProviderFactoryStrategyProvider sut)
+        {
+            Assert.That(() => sut.GetMessageProviderFactory(typeof(OneGenericProvider), typeof(bool)), Throws.ArgumentException);
+        }
+
         public class TwoGenericProvider : IGetsFailureMessage<string, int>
         {
             public Task<string> GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token = default)

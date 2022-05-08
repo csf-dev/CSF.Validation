@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using CSF.Validation.Messages;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation.Bootstrap
 {
@@ -13,7 +12,6 @@ namespace CSF.Validation.Bootstrap
     /// </summary>
     public class MessageProviderRegistrationBuilder : IRegistersMessageProviders
     {
-        private readonly IServiceCollection serviceCollection;
         readonly List<Type> messageProviderTypes = new List<Type>();
 
         /// <summary>
@@ -48,18 +46,7 @@ namespace CSF.Validation.Bootstrap
                 throw new ArgumentNullException(nameof(providerType));
 
             messageProviderTypes.Add(providerType);
-            serviceCollection.AddTransient(providerType);
             return this;
-        }
-
-        /// <summary>
-        /// Initialises a new instance of <see cref="MessageProviderRegistrationBuilder"/>.
-        /// </summary>
-        /// <param name="serviceCollection">A service collection.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public MessageProviderRegistrationBuilder(IServiceCollection serviceCollection)
-        {
-            this.serviceCollection = serviceCollection ?? throw new ArgumentNullException(nameof(serviceCollection));
         }
     }
 }

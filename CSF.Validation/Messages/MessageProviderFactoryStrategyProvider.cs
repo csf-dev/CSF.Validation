@@ -146,7 +146,7 @@ namespace CSF.Validation.Messages
             var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustBeGenericRuleInterface"),
                                         nameof(IRule<object>),
                                         ruleInterface.FullName);
-            throw new ArgumentException(message, nameof(ruleInterface));
+            return new ArgumentException(message, nameof(ruleInterface));
         }
 
         /// <summary>

@@ -141,14 +141,18 @@ namespace CSF.Validation
         /// <returns>The service collection, so that calls may be chained.</returns>
         public static IServiceCollection UseMessageProviders(this IServiceCollection serviceCollection, Action<IRegistersMessageProviders> configAction)
         {
-            var configurationHelper = new MessageProviderRegistrationBuilder(serviceCollection);
+            var configurationHelper = new MessageProviderRegistrationBuilder();
             configAction(configurationHelper);
+
             serviceCollection
                 .AddOptions<MessageProviderTypeOptions>()
                 .Configure(opts => {
                     foreach(var type in configurationHelper.MessageProviderTypes)
                         opts.MessageProviderTypes.Add(type);
                 });
+            foreach(var type in configurationHelper.MessageProviderTypes)
+                serviceCollection.AddTransient(type);
+            
             return serviceCollection;
         }
 
