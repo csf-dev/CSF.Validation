@@ -3,17 +3,26 @@ uid: ConfiguringTheFramework
 ---
 # Configuring the Validation Framework
 
-The Validation Framework is made available for consumption via **dependency injection** and this is the recommended way to use it.
+The recommended way to configure and consume the Validation Framework is to add it to your application's **dependency injection**.
 
-To add the validation framework to DI, add a reference to [the **CSF.Validation** NuGet package] into the project where you configure dependency injection. Use [the `UseValidationFramework()` extension method] with an `IServiceCollection` to add the framework to DI.
+## Configuring using DI
 
-Optionally, if you plan to use [the standard rules package], add a reference to that also and use [the `UseStandardValidationRules()` extension method].
+To add the framework to dependency injection, add a reference to [the **CSF.Validation** NuGet package] into the project where you configure DI, usually your application startup project.
+Add a usage of [the `UseValidationFramework()` extension method] to the logic where you configure the `IServiceCollection`.
+This sets up the framework _but it might not be very useful yet_.
 
-Finally, the most convenient way to add your own custom rule classes to dependency injection is to use one of:
+Before executing rules from rule logic classes, the validation framework will try to create these rules from dependency injection.
+Thus, any rule classes you wish to use should also be registered with DI.
+The most convenient way to add custom rule classes to DI is to use one of the following convenience extension methods for `IServiceCollection`.
 
 * [`UseValidationRulesInAssembly(Assembly)`]
 * [`UseValidationRulesInAssemblies(params Assembly[])`][1]
 * [`UseValidationRulesInAssemblies(IEnumerable<Assembly>)`]
+
+Note that if a rule class has a public parameterless constructor you will still be able to use it without registering it with dependency injection. This is not the recommended approach though; the framework will fall-back upon `Activator.CreateInstance(Type)` in order to do this.
+
+Optionally, if you plan to use [the standard rules package], add a reference to that package also and use [the `UseStandardValidationRules()` extension method].
+
 
 [the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
 [the standard rules package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/

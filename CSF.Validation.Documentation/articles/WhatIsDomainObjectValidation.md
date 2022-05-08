@@ -2,13 +2,13 @@
 
 For the sake of this framework, **domain objects** are defined as models (typically .NET classes) which contain state.
 Domain object models relate to business-logic concepts and are free from technical/architectural concerns.
-The term "domain" borrows somewhat from _[Domain Driven Design]_ but your application/team does not need to be following DDD; if you are then it matters not if these are [entities or value objects].
+The term "domain" borrows somewhat from _[Domain Driven Design]_ but your application/team does not need to be following DDD; if you are then it matters not if these are [entities, value objects or others].
 
-The important feature of domain objects is that they are not limited to a single instance of a single class.
-A domain object to be validated may be a complete graph of related object instances, interconnected by relationships.
+Validated domain objects need not be limited to a single instance of a single class.
+CSF.Validation can validate complete graphs of related objects which are connected by associations such as properties.
 
 [Domain Driven Design]:https://en.wikipedia.org/wiki/Domain-driven_design
-[entities or value objects]:https://en.wikipedia.org/wiki/Domain-driven_design#Kinds_of_models
+[entities, value objects or others]:https://en.wikipedia.org/wiki/Domain-driven_design#Kinds_of_models
 
 ## A sample domain object to validate
 

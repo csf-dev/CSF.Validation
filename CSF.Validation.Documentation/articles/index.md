@@ -1,6 +1,7 @@
 # Introduction
 
-To begin using the **CSF.Validation** framework you must follow these three conceptual steps:
+Using the **CSF.Validation** framework involves following these three conceptual steps.
+Each is a link to further detail.
 
 1. [Configure the framework]
 2. [Define how objects should be validated]
@@ -10,9 +11,22 @@ To begin using the **CSF.Validation** framework you must follow these three conc
 [Define how objects should be validated]:WritingValidators/index.md
 [Perform validation]:ConsumingValidators.md
 
-## Where this framework is useful
+## Recommended usage scenarios
 
-CSF.Validation is designed for non-trivial **[domain object validation]**.  It is particularly useful where that validation occurs close-to or as part-of the core application logic.
+CSF.Validation is intended for scenarios where:
+
+* The validation is non-trivial
+* The validation is conceptually a part of your business logic
+
+CSF.Validation is best for validating [domain objects], rather than user-interface-layer DTOs.
+[Validation rule classes] are fully compatible with dependency injection.
+The architecture is also not dependent-upon our specific to any particular user-interface technology.
+Indeed, it may be used when there is no user interface at all.
+
+
+
+
+
 
 Imagine an application where a user must submit a complex form with many dependencies between field values.
 CSF.Validation excels when it is used to validate rich object models, perhaps including collections of descendent models.
