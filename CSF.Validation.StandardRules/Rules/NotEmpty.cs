@@ -40,10 +40,6 @@ namespace CSF.Validation.Rules
     /// and thus provides superior performance when used with an ORM.
     /// </para>
     /// <para>
-    /// This rule will work just fine with <see cref="System.String"/>.  That is because the string class derives from an Array
-    /// of <see cref="System.Char"/>.
-    /// </para>
-    /// <para>
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
