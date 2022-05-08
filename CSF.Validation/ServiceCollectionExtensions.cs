@@ -3,6 +3,7 @@ using System;
 using CSF.Validation.Bootstrap;
 using System.Reflection;
 using System.Collections.Generic;
+using CSF.Validation.Messages;
 
 namespace CSF.Validation
 {
@@ -42,6 +43,7 @@ namespace CSF.Validation
                 .AddRulesServices()
                 .AddValidatorBuildingServices()
                 .AddValidatorFactory()
+                .AddMessagesServices()
                 ;
         }
 
@@ -127,6 +129,30 @@ namespace CSF.Validation
                 throw new ArgumentNullException(nameof(ruleType));
 
             serviceCollection.AddTransient(ruleType);
+            return serviceCollection;
+        }
+
+        /// <summary>
+        /// Configures the validation framework with types to use as failure message providers, when using any of the
+        /// overloads of <see cref="IGetsValidator.GetValidatorWithMessageSupport{TValidated}(IBuildsValidator{TValidated})"/>.
+        /// </summary>
+        /// <param name="serviceCollection">A service collection</param>
+        /// <param name="configAction">An action which indicates which message provider types to use.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseMessageProviders(this IServiceCollection serviceCollection, Action<IRegistersMessageProviders> configAction)
+        {
+            var configurationHelper = new MessageProviderRegistrationBuilder();
+            configAction(configurationHelper);
+
+            serviceCollection
+                .AddOptions<MessageProviderTypeOptions>()
+                .Configure(opts => {
+                    foreach(var type in configurationHelper.MessageProviderTypes)
+                        opts.MessageProviderTypes.Add(type);
+                });
+            foreach(var type in configurationHelper.MessageProviderTypes)
+                serviceCollection.AddTransient(type);
+            
             return serviceCollection;
         }
 

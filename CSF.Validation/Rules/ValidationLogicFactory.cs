@@ -96,7 +96,7 @@ namespace CSF.Validation.Rules
 
         static IValidationLogic GetValueRuleAdapter(Type valueType, Type validatedType, object rule)
         {
-            var adapterType = typeof(ValueRuleAdapter<,>).MakeGenericType(valueType, validatedType);
+            var adapterType = typeof(RuleWithParentValueAdapter<,>).MakeGenericType(valueType, validatedType);
             return (IValidationLogic)Activator.CreateInstance(adapterType, new[] { rule });
         }
 

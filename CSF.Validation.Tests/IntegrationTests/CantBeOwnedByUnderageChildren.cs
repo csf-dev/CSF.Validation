@@ -9,15 +9,17 @@ namespace CSF.Validation.IntegrationTests
 {
     public class CantBeOwnedByUnderageChildren : IRule<Pet>
     {
+        public static readonly string ActualAgeKey = "Actual age";
+
         public Task<RuleResult> GetResultAsync(Pet validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.MinimumAgeToOwn.HasValue != true) return PassAsync();
 
-            var owner = (Person) context.AncestorContexts.FirstOrDefault(x => x.Object is Person)?.Object;
+            var owner = (Person) context.AncestorContexts.FirstOrDefault(x => x.ActualValue is Person)?.ActualValue;
             if(owner is null) throw new ArgumentException("The context must indicate an owner.", nameof(context));
 
             var ownerAge = GetAgeInYears(owner.Birthday);
-            return ownerAge < validated.MinimumAgeToOwn.Value ? FailAsync() : PassAsync();
+            return ownerAge < validated.MinimumAgeToOwn.Value ? FailAsync(new() { { ActualAgeKey, ownerAge } }) : PassAsync();
         }
 
         /// <summary>

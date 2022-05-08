@@ -18,6 +18,17 @@ namespace CSF.Validation
         readonly IGetsAllExecutableRulesWithDependencies ruleFactory;
 
         /// <summary>
+        /// Gets the type of object that this validator is intended to validate.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The first parameter to <see cref="IValidator.ValidateAsync(object, ValidationOptions, CancellationToken)"/> must be of either
+        /// the type indicated by this property, or a type that is derived from the type indicated by this property.
+        /// </para>
+        /// </remarks>
+        public Type ValidatedType => typeof(TValidated);
+
+        /// <summary>
         /// Validate the specified object instance asynchronously and get a validation result.
         /// </summary>
         /// <param name="validatedObject">The object to be validated.</param>

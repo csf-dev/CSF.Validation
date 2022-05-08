@@ -18,7 +18,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnWorkingLogicForNormalRule([Frozen] IResolvesRule ruleResolver,
                                                                                   ValidationLogicFactory sut,
                                                                                   string str,
-                                                                                  [RuleId] RuleIdentifier id)
+                                                                                  [RuleContext] RuleContext context)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
@@ -27,7 +27,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id));
+            await result.GetResultAsync(str, null, context);
 
             Assert.That(ruleBody.Executed, Is.True);
         }
@@ -36,7 +36,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnWorkingLogicForValueRule([Frozen] IResolvesRule ruleResolver,
                                                                                  ValidationLogicFactory sut,
                                                                                  string str,
-                                                                                 [RuleId] RuleIdentifier id)
+                                                                                 [RuleContext] RuleContext context)
         {
             var value = new ManifestValue { ValidatedType = typeof(string), Parent = new ManifestValue { ValidatedType = typeof(ComplexObject) } };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
@@ -45,7 +45,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringValueRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id));
+            await result.GetResultAsync(str, null, context);
 
             Assert.That(ruleBody.ExecutedAsValueRule, Is.True);
         }
@@ -54,7 +54,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnRuleThatUsesCorrectInterfaceWhenOriginalLogicWasAmbiguousBetweenRuleAndValueRule([Frozen] IResolvesRule ruleResolver,
                                                                                                                                          ValidationLogicFactory sut,
                                                                                                                                          string str,
-                                                                                                                                         [RuleId] RuleIdentifier id)
+                                                                                                                                         [RuleContext] RuleContext context)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
@@ -63,7 +63,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringValueRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id));
+            await result.GetResultAsync(str, null, context);
 
             Assert.That(ruleBody.ExecutedAsRule, Is.True);
         }
@@ -72,7 +72,6 @@ namespace CSF.Validation.Rules
         public void GetValidationLogicShouldConfigureRuleWithConfigurationAction([Frozen] IResolvesRule ruleResolver,
                                                                                  ValidationLogicFactory sut,
                                                                                  string str,
-                                                                                 [RuleId] RuleIdentifier id,
                                                                                  string configValue)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
@@ -90,8 +89,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfTheRuleConfigurationActionThrowsAnException([Frozen] IResolvesRule ruleResolver,
                                                                                                                          ValidationLogicFactory sut,
-                                                                                                                         string str,
-                                                                                                                         [RuleId] RuleIdentifier id)
+                                                                                                                         string str)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
@@ -106,8 +104,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfRuleIsWrongInterfaceForRule([Frozen] IResolvesRule ruleResolver,
                                                                                                          ValidationLogicFactory sut,
-                                                                                                         string str,
-                                                                                                         [RuleId] RuleIdentifier id)
+                                                                                                         string str)
         {
             var value = new ManifestValue { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(object)));
@@ -121,8 +118,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfRuleIsWrongInterfaceForValueRule([Frozen] IResolvesRule ruleResolver,
                                                                                                               ValidationLogicFactory sut,
-                                                                                                              string str,
-                                                                                                              [RuleId] RuleIdentifier id)
+                                                                                                              string str)
         {
             var value = new ManifestValue
             {
@@ -144,7 +140,7 @@ namespace CSF.Validation.Rules
         public async Task GetValidationLogicShouldReturnWorkingLogicForRuleWhichOperatesOnCollectionOfStrings([Frozen] IResolvesRule ruleResolver,
                                                                                                               ValidationLogicFactory sut,
                                                                                                               string str,
-                                                                                                              [RuleId] RuleIdentifier id)
+                                                                                                              [RuleContext] RuleContext context)
         {
             var value = new ManifestValue
             {
@@ -160,7 +156,7 @@ namespace CSF.Validation.Rules
             Mock.Get(ruleResolver).Setup(x => x.ResolveRule(typeof(StringRule))).Returns(ruleBody);
 
             var result = sut.GetValidationLogic(rule);
-            await result.GetResultAsync(str, null, new RuleContext(id));
+            await result.GetResultAsync(str, null, context);
 
             Assert.That(ruleBody.Executed, Is.True);
         }
@@ -168,8 +164,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetValidationLogicShouldThrowValidatorBuildingExceptionIfRuleWhichOperatesOnCollectionButValueIsNotEnumerable([Frozen] IResolvesRule ruleResolver,
                                                                                                                             ValidationLogicFactory sut,
-                                                                                                                            string str,
-                                                                                                                            [RuleId] RuleIdentifier id)
+                                                                                                                            string str)
         {
             var value = new ManifestValue
             {

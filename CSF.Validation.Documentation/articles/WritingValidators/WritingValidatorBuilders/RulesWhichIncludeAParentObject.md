@@ -15,8 +15,8 @@ If the rule needs access to a more distant parent object then the rule should ma
 
 This property provides access to a depth-ordered collection (parent first, then grandparent, then great-grandparent etc) of the role contexts for ancestors of the current value.
 
-Within these ancestor contexts, [the `Object` property] provides access to the ancestor object itself. There is no type-safe way to access this, so rule logic will need to cast/safe-cast it to the appropriate type.
+Within these ancestor contexts, [the `ActualValue` property] provides access to the ancestor object itself. There is no type-safe way to access this, so rule logic will need to cast/safe-cast it to the appropriate type.
 
 [the `AncestorContexts` property]: xref:CSF.Validation.Rules.RuleContext.AncestorContexts
 [`RuleContext`]: xref:CSF.Validation.Rules.RuleContext
-[the `Object` property]: xref:CSF.Validation.Rules.AncestorRuleContext.Object
+[the `Object` property]: xref:CSF.Validation.Rules.ValueContext.ActualValue

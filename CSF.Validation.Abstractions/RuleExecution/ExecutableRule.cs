@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 

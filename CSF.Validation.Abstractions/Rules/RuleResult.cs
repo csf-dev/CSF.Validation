@@ -68,31 +68,7 @@ namespace CSF.Validation.Rules
         public RuleResult(RuleOutcome outcome,
                           IDictionary<string, object> data = null,
                           Exception exception = null)
-            : this(outcome,
-                   (IReadOnlyDictionary<string, object>)new ReadOnlyDictionary<string, object>(data ?? new Dictionary<string, object>()),
-                   exception) {}
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RuleResult"/> class.
-        /// </summary>
-        /// <param name="outcome">The outcome of validation.</param>
-        /// <param name="data">A collection of arbitrary key/value data which is provided by the validation rule logic.</param>
-        /// <param name="exception">
-        /// An optional exception which caused the validation process to error.  This parameter must be <see langword="null"/>
-        /// if the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/>.
-        /// </param>
-        /// <exception cref="ArgumentException">
-        /// If the <paramref name="outcome"/> is not <see cref="RuleOutcome.Errored"/> but the <paramref name="exception"/>
-        /// is not <see langword="null"/>.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">If <paramref name="data"/> is <see langword="null" />.</exception>
-        protected RuleResult(RuleOutcome outcome,
-                             IReadOnlyDictionary<string, object> data,
-                             Exception exception = null)
         {
-            if (data is null)
-                throw new ArgumentNullException(nameof(data));
-            
             if(outcome != RuleOutcome.Errored && !(exception is null))
             {
                 var message = String.Format(GetExceptionMessage("MayNotHaveExceptionIfNotErroredOutcome"),
@@ -102,8 +78,23 @@ namespace CSF.Validation.Rules
             }
 
             Outcome = outcome;
-            Data = data;
+            Data = new ReadOnlyDictionary<string, object>(data ?? new Dictionary<string, object>());
             Exception = exception;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RuleResult"/> class.
+        /// </summary>
+        /// <param name="result">A rule result instance to copy.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="result"/> is <see langword="null"/>.</exception>
+        protected RuleResult(RuleResult result)
+        {
+            if (result is null)
+                throw new ArgumentNullException(nameof(result));
+
+            Outcome = result.Outcome;
+            Data = result.Data;
+            Exception = result.Exception;
         }
     }
 }

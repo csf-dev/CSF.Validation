@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using AutoFixture.NUnit3;
+using CSF.Validation.Rules;
 using Moq;
 using NUnit.Framework;
 
@@ -14,7 +15,8 @@ namespace CSF.Validation.RuleExecution
                                                                                    RuleExecutorFactory sut,
                                                                                    ValidationOptions options,
                                                                                    IGetsRuleDependencyTracker dependencyTrackerFactory,
-                                                                                   IGetsSingleRuleExecutor ruleExecutorFactory)
+                                                                                   IGetsSingleRuleExecutor ruleExecutorFactory,
+                                                                                   IGetsRuleContext contextFactory)
         {
             Mock.Get(resolver)
                 .Setup(x => x.GetService(typeof(IGetsRuleDependencyTracker)))
@@ -22,6 +24,9 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(resolver)
                 .Setup(x => x.GetService(typeof(IGetsSingleRuleExecutor)))
                 .Returns(ruleExecutorFactory);
+            Mock.Get(resolver)
+                .Setup(x => x.GetService(typeof(IGetsRuleContext)))
+                .Returns(contextFactory);
 
             Assert.That(async () => await sut.GetRuleExecutorAsync(options), Is.InstanceOf<SerialRuleExecutor>());
         }
