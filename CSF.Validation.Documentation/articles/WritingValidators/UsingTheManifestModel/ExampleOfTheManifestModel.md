@@ -43,7 +43,7 @@ we will use the `BasketItem.ItemId` property to identify the items.
 ## Sample Manifest Model JSON
 
 This JSON uses two validation rules from the [CSF.Validation.StandardRules] package: **NotNull** and **IntegerInRange**.
-This JSON, converted to a manifest model, would represent the validation described above.
+This JSON, converted to a manifest model using some simple JSON deserialisation, would represent the validation described above.
 
 [CSF.Validation.StandardRules]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
 
@@ -51,42 +51,43 @@ This JSON, converted to a manifest model, would represent the validation describ
 {
   "Children": {
     "Items": {
-      "IdentityMemberName": "ItemId",
-      "EnumerateItems": true,
-      "Children": {
-        "Quantity": {
-          "Rules": [
-            {
-              "RuleTypeName": "CSF.Validation.Rules.IntegerInRange, CSF.Validation.StandardRules",
-              "RulePropertyValues": {
-                "Min": 1
-              }
-            }
-          ]
-        },
-        "Product": {
-          "Rules": [
-            {
-              "RuleTypeName": "CSF.Validation.Rules.NotNull, CSF.Validation.StandardRules",
-            }
-          ],
-          "Children": {
-            "Id": {
-              "Rules": [
-                {
-                  "RuleTypeName": "CSF.Validation.Rules.IntegerInRange, CSF.Validation.StandardRules",
-                  "RulePropertyValues": {
-                    "Min": 1
-                  },
-                  "Dependencies": [
-                    {
-                      "AncestorLevels": 2,
-                      "MemberName": "Quantity",
-                      "RuleTypeName": "CSF.Validation.Rules.IntegerInRange, CSF.Validation.StandardRules"
-                    }
-                  ]
+      "CollectionItemValue": {
+        "IdentityMemberName": "ItemId",
+        "Children": {
+          "Quantity": {
+            "Rules": [
+              {
+                "RuleTypeName": "CSF.Validation.Rules.IntegerInRange, CSF.Validation.StandardRules",
+                "RulePropertyValues": {
+                  "Min": 1
                 }
-              ]
+              }
+            ]
+          },
+          "Product": {
+            "Rules": [
+              {
+                "RuleTypeName": "CSF.Validation.Rules.NotNull, CSF.Validation.StandardRules",
+              }
+            ],
+            "Children": {
+              "Id": {
+                "Rules": [
+                  {
+                    "RuleTypeName": "CSF.Validation.Rules.IntegerInRange, CSF.Validation.StandardRules",
+                    "RulePropertyValues": {
+                      "Min": 1
+                    },
+                    "Dependencies": [
+                      {
+                        "AncestorLevels": 2,
+                        "MemberName": "Quantity",
+                        "RuleTypeName": "CSF.Validation.Rules.IntegerInRange, CSF.Validation.StandardRules"
+                      }
+                    ]
+                  }
+                ]
+              }
             }
           }
         }
