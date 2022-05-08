@@ -92,7 +92,7 @@ The <a class="xref" href="../../../api/CSF.Validation.ManifestModel.ValueBase.ht
 Most commonly this is via property getter but could include public fields or parameterless public methods which return a value.
 It is possible to describe the validation of deep, connected object graphs involving multiple levels of traversal.</p>
 <p><em>All manifest models use a single <code>Value</code> instance as the root of the model.</em>
-Unlike the [<code>ValidationManifest</code>] class, there is no particular type which serves as the root of the object model.</p>
+Unlike the <a class="xref" href="../../../api/CSF.Validation.Manifest.ValidationManifest.html"><code>ValidationManifest</code></a> class, there is no particular type which serves as the root of the object model.</p>
 <h3 id="validating-collection-items">Validating collection items</h3>
 <p>If a value implements <code>IEnumerable&lt;T&gt;</code>, it is also possible to individually validate each item of that collection.
 In this case, configure the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.CollectionItemValue.html"><code>CollectionItemValue</code></a> property of that <code>Value</code> object.
@@ -100,15 +100,13 @@ The <code>Value</code> represents the collection as a whole, the <code>Collectio
 <h3 id="validation-rules">Validation rules</h3>
 <p>Rules define the validation rules to be applied to values.
 The <code>Rule</code> class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.</p>
-<p><a class="xref" href="../../../api/CSF.Validation.ManifestModel.CollectionItemValue.html"><code>CollectionItemValue</code></a>:xref:CSF.Validation.ManifestModel.ValueBase. CollectionItemValue
-[<code>ValidationManifest</code>]:xref:CSF.Validation.Manifest.ValidationManifest</p>
 <h3 id="specifying-rule-dependencies">Specifying rule-dependencies</h3>
 <p>Dependencies between validation rules may be specified using the manifest model.
 To do so, use the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.Rule.html#CSF_Validation_ManifestModel_Rule_Dependencies"><code>Rule.Dependencies</code></a> property using relative identifiers.</p>
 <h2 id="example">Example</h2>
 <p>For an example of how this might look when serialized to JSON, please read through the <a href="ExampleOfTheManifestModel.html">example of using the Manifest Model</a>.</p>
 <h2 id="converting-a-manifest-model-into-a-validation-manifest">Converting a Manifest Model into a Validation Manifest</h2>
-<p>If you wish to directly convert a Manifest Model - an instance of the <code>Value</code> class, including its descendent values &amp; rules - into an instance of [<code>ValidationManifest</code>] then you may do so by injecting an using an instance of <a class="xref" href="../../../api/CSF.Validation.ManifestModel.IGetsValidationManifestFromModel.html"><code>IGetsValidationManifestFromModel</code></a>.</p>
+<p>If you wish to directly convert a Manifest Model - an instance of the <code>Value</code> class, including its descendent values &amp; rules - into an instance of <a class="xref" href="../../../api/CSF.Validation.Manifest.ValidationManifest.html"><code>ValidationManifest</code></a> then you may do so by injecting an using an instance of <a class="xref" href="../../../api/CSF.Validation.ManifestModel.IGetsValidationManifestFromModel.html"><code>IGetsValidationManifestFromModel</code></a>.</p>
 <p>If all you want is a validator, though, then <a class="xref" href="../../../api/CSF.Validation.IGetsValidator.html"><code>IGetsValidator</code></a> includes <a class="xref" href="../../../api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidator_CSF_Validation_ManifestModel_Value_System_Type_">an overload which works from a Manifest Model <code>Value</code> and a <code>System.Type</code></a>.</p>
 <h2 id="manifest-model-limitations">Manifest Model limitations</h2>
 <p>The Manifest Model sacrifices some functionality in order to provide an easily-serializable model.

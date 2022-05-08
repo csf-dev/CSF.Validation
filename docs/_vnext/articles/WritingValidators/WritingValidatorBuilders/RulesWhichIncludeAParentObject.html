@@ -76,7 +76,7 @@ For some rules though, they require some context in the form of the object which
 <p>The mechanism described above provides the rule with access to the value's immediate parent.
 If the rule needs access to a more distant parent object then the rule should make use of <a class="xref" href="../../../api/CSF.Validation.Rules.RuleContext.html#CSF_Validation_Rules_RuleContext_AncestorContexts">the <code>AncestorContexts</code> property</a> of the <a class="xref" href="../../../api/CSF.Validation.Rules.RuleContext.html"><code>RuleContext</code></a> parameter that is provided to the rule's <code>GetResultAsync</code> method.</p>
 <p>This property provides access to a depth-ordered collection (parent first, then grandparent, then great-grandparent etc) of the role contexts for ancestors of the current value.</p>
-<p>Within these ancestor contexts, <a class="xref" href="../../../api/CSF.Validation.Rules.AncestorRuleContext.html#CSF_Validation_Rules_AncestorRuleContext_Object">the <code>Object</code> property</a> provides access to the ancestor object itself. There is no type-safe way to access this, so rule logic will need to cast/safe-cast it to the appropriate type.</p>
+<p>Within these ancestor contexts, [the <code>ActualValue</code> property] provides access to the ancestor object itself. There is no type-safe way to access this, so rule logic will need to cast/safe-cast it to the appropriate type.</p>
 </article>
           </div>
           
