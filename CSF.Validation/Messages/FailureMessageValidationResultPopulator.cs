@@ -15,7 +15,7 @@ namespace CSF.Validation.Messages
         /// <inheritdoc/>
         public async Task<ValidationResultWithMessages> GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default)
         {
-            var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, cancellationToken);
+            var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
             return new ValidationResultWithMessages(resultsWithMessages);
         }
 
@@ -24,7 +24,10 @@ namespace CSF.Validation.Messages
             var results = new List<ValidationRuleResultWithMessage>();
 
             foreach (var ruleResult in result.RuleResults)
-                results.Add(await GetRuleResultWithMessageAsync(ruleResult, cancellationToken));
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                results.Add(await GetRuleResultWithMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false));
+            }
 
             return results;
         }
@@ -32,7 +35,7 @@ namespace CSF.Validation.Messages
         async Task<ValidationRuleResultWithMessage> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
         {
             var messageProvider = messageProviderFactory.GetProvider(ruleResult);
-            var message = (messageProvider is null)? null : await messageProvider.GetFailureMessageAsync(ruleResult, cancellationToken);
+            var message = (messageProvider is null)? null : await messageProvider.GetFailureMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false);
             return new ValidationRuleResultWithMessage(ruleResult, message);
         }
 
