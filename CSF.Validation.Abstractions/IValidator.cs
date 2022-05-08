@@ -10,6 +10,17 @@ namespace CSF.Validation
     public interface IValidator
     {
         /// <summary>
+        /// Gets the type of object that this validator is intended to validate.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The first parameter to <see cref="ValidateAsync(object, ValidationOptions, CancellationToken)"/> must be of either
+        /// the type indicated by this property, or a type that is derived from the type indicated by this property.
+        /// </para>
+        /// </remarks>
+        Type ValidatedType { get; }
+
+        /// <summary>
         /// Validate the specified object instance asynchronously and get a validation result.
         /// </summary>
         /// <param name="validatedObject">The object to be validated.</param>

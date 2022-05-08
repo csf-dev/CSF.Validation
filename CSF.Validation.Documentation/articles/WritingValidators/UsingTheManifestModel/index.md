@@ -57,7 +57,7 @@ Rules define the validation rules to be applied to values.
 The `Rule` class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.
 
 [`Children`]:xref:CSF.Validation.ManifestModel.ValueBase.Children
-[`CollectionItemValue`]:xref:CSF.Validation.ManifestModel.ValueBase. CollectionItemValue
+[`CollectionItemValue`]:xref:CSF.Validation.ManifestModel.ValueBase.CollectionItemValue
 [`ValidationManifest`]:xref:CSF.Validation.Manifest.ValidationManifest
 
 ### Specifying rule-dependencies

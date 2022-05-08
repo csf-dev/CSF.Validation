@@ -35,8 +35,13 @@ namespace CSF.Validation.Manifest
         public ManifestValueBase ManifestValue { get; }
 
         /// <summary>
-        /// Gets or sets the rule's unique identifier, including its type.
+        /// Gets or sets the rule's unique identifier.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This value includes the rule's concrete type.
+        /// </para>
+        /// </remarks>
         public ManifestRuleIdentifier Identifier { get; }
 
         /// <summary>

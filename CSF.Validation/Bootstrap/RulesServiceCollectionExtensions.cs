@@ -11,6 +11,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsValidationLogic, ValidationLogicFactory>()
                 .AddTransient<IResolvesRule, ServiceProviderOrActivatorResolver>()
                 .AddTransient<IResolvesServices, ServiceProviderOrActivatorResolver>()
+                .AddTransient<IGetsRuleContext, RuleContextFactory>()
                 ;
         }
     }

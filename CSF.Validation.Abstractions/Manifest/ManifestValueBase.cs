@@ -73,7 +73,7 @@ namespace CSF.Validation.Manifest
         /// </para>
         /// <para>
         /// If the current manifest value does not represent a collection of items to be validated individually then this
-        /// property must by <see langword="null" />.
+        /// property must be <see langword="null" />.
         /// </para>
         /// </remarks>
         public ManifestCollectionItem CollectionItemValue { get; set; }

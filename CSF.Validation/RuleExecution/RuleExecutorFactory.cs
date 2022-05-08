@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Rules;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation.RuleExecution
@@ -24,7 +25,8 @@ namespace CSF.Validation.RuleExecution
 
             result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsRuleDependencyTracker>(),
                                             resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
-                                            options);
+                                            options,
+                                            resolver.GetRequiredService<IGetsRuleContext>());
             
             return Task.FromResult(result);
         }

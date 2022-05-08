@@ -13,8 +13,11 @@ namespace CSF.Validation
     [TestFixture,Parallelizable]
     public class ValidatorFactoryTests
     {
+        #region GetValidator
+
         [Test,AutoMoqData]
-        public void GetValidatorFromBuilderTypeShouldReturnValidatorUsingManifestFromBuilderUsingResolver([Frozen] IResolvesServices resolver,
+        public void GetValidatorFromBuilderTypeShouldReturnValidatorUsingManifestFromBuilderUsingResolver([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                                          [Frozen] IResolvesServices resolver,
                                                                                                           [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
                                                                                                           [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
                                                                                                           [Frozen] IGetsValidatedTypeForBuilderType builderTypeProvider,
@@ -34,7 +37,8 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetValidatorFromBuilderShouldReturnValidatorUsingManifestFromBuilder([Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
+        public void GetValidatorFromBuilderShouldReturnValidatorUsingManifestFromBuilder([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                         [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
                                                                                          [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
                                                                                          ValidatorFactory sut,
                                                                                          [ManifestModel] ValidationManifest manifest,
@@ -56,7 +60,8 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetValidatorFromManifestShouldReturnValidatorUsingManifest([Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+        public void GetValidatorFromManifestShouldReturnValidatorUsingManifest([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                               [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
                                                                                ValidatorFactory sut,
                                                                                [ManifestModel] ValidationManifest manifest)
         {
@@ -69,7 +74,8 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetValidatorFromManifestModelShouldReturnValidatorUsingManifestCreatedFromModel([Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+        public void GetValidatorFromManifestModelShouldReturnValidatorUsingManifestCreatedFromModel([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                                    [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
                                                                                                     [Frozen] IGetsValidationManifestFromModel manifestFromModelProvider,
                                                                                                     ValidatorFactory sut,
                                                                                                     [ManifestModel] ValidationManifest manifest,
@@ -84,5 +90,93 @@ namespace CSF.Validation
 
             Assert.That(() => sut.GetValidator(manifestModel, validatedType), Is.SameAs(expectedValidator));
         }
+
+        #endregion
+
+        #region GetValidatorWithMessageSupport
+
+        [Test,AutoMoqData]
+        public void GetValidatorWithMessageSupportFromBuilderShouldReturnMessageEnrichingValidatorAdapter([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                                          [Frozen] IResolvesServices resolver,
+                                                                                                          [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
+                                                                                                          [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+                                                                                                          [Frozen] IGetsValidatedTypeForBuilderType builderTypeProvider,
+                                                                                                          ValidatorFactory sut,
+                                                                                                          [ManifestModel] ValidationManifest manifest,
+                                                                                                          ValidatedObjectValidator builder)
+        {
+            var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
+            var expectedValidatorNonGenericMock = expectedValidatorMock.As<IValidator>();
+            var expectedValidator = expectedValidatorNonGenericMock.Object;
+
+            expectedValidatorNonGenericMock.SetupGet(x => x.ValidatedType).Returns(typeof(ValidatedObject));
+            Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(ValidatedObjectValidator))).Returns(builder);
+            Mock.Get(manifestFromBuilderProvider).Setup(x => x.GetManifest(builder)).Returns(manifest);
+            Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
+            Mock.Get(builderTypeProvider).Setup(x => x.GetValidatedType(typeof(ValidatedObjectValidator))).Returns(typeof(ValidatedObject));
+
+            Assert.That(() => sut.GetValidatorWithMessageSupport(typeof(ValidatedObjectValidator)),
+                        Is.InstanceOf<MessageEnrichingValidatorAdapter<ValidatedObject>>());
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatorWithMessageSupportFromBuilderShouldReturnMessageEnrichingValidatorAdapter([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                         [Frozen] IGetsManifestFromBuilder manifestFromBuilderProvider,
+                                                                                         [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+                                                                                         ValidatorFactory sut,
+                                                                                         [ManifestModel] ValidationManifest manifest,
+                                                                                         ValidatedObjectValidator builder)
+        {
+            var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
+            var expectedValidatorNonGenericMock = expectedValidatorMock.As<IValidator>();
+            var expectedValidator = expectedValidatorNonGenericMock.Object;
+
+            expectedValidatorNonGenericMock.SetupGet(x => x.ValidatedType).Returns(typeof(ValidatedObject));
+            Mock.Get(manifestFromBuilderProvider).Setup(x => x.GetManifest(builder)).Returns(manifest);
+            Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
+
+            Assert.That(() => sut.GetValidatorWithMessageSupport(builder),
+                        Is.InstanceOf<MessageEnrichingValidatorAdapter<ValidatedObject>>());
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatorWithMessageSupportFromManifestShouldReturnMessageEnrichingValidatorAdapter([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                               [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+                                                                               ValidatorFactory sut,
+                                                                               [ManifestModel] ValidationManifest manifest)
+        {
+            var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
+            var expectedValidatorNonGenericMock = expectedValidatorMock.As<IValidator>();
+            var expectedValidator = expectedValidatorNonGenericMock.Object;
+
+            expectedValidatorNonGenericMock.SetupGet(x => x.ValidatedType).Returns(typeof(ValidatedObject));
+            Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
+
+            Assert.That(() => sut.GetValidatorWithMessageSupport(manifest),
+                        Is.InstanceOf<MessageEnrichingValidatorAdapter<ValidatedObject>>());
+        }
+
+        [Test,AutoMoqData]
+        public void GetValidatorWithMessageSupportFromManifestModelShouldReturnMessageEnrichingValidatorAdapter([Frozen,AutofixtureServices] IServiceProvider serviceProvider,
+                                                                                                    [Frozen] IGetsValidatorFromManifest validatorFromManifestProvider,
+                                                                                                    [Frozen] IGetsValidationManifestFromModel manifestFromModelProvider,
+                                                                                                    ValidatorFactory sut,
+                                                                                                    [ManifestModel] ValidationManifest manifest,
+                                                                                                    Value manifestModel,
+                                                                                                    Type validatedType)
+        {
+            var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
+            var expectedValidatorNonGenericMock = expectedValidatorMock.As<IValidator>();
+            var expectedValidator = expectedValidatorNonGenericMock.Object;
+
+            expectedValidatorNonGenericMock.SetupGet(x => x.ValidatedType).Returns(typeof(ValidatedObject));
+            Mock.Get(manifestFromModelProvider).Setup(x => x.GetValidationManifest(manifestModel, validatedType)).Returns(manifest);
+            Mock.Get(validatorFromManifestProvider).Setup(x => x.GetValidator(manifest)).Returns(expectedValidator);
+
+            Assert.That(() => sut.GetValidatorWithMessageSupport(manifestModel, validatedType),
+                        Is.InstanceOf<MessageEnrichingValidatorAdapter<ValidatedObject>>());
+        }
+
+        #endregion
     }
 }

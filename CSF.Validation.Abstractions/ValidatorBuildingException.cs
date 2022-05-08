@@ -3,7 +3,7 @@ namespace CSF.Validation
     /// <summary>
     /// An exception which may be raised when building a validator.
     /// </summary>
-#if !NETSTANDARD1_0
+#if !NETSTANDARD1_1
     [System.Serializable]
 #endif
     public class ValidatorBuildingException : System.Exception
@@ -26,7 +26,7 @@ namespace CSF.Validation
         /// <param name="inner">The inner exception.</param>
         public ValidatorBuildingException(string message, System.Exception inner) : base(message, inner) { }
 
-#if !NETSTANDARD1_0
+#if !NETSTANDARD1_1
         /// <summary>
         /// Initialises a new <see cref="ValidatorBuildingException"/>.
         /// </summary>
