@@ -27,8 +27,8 @@ namespace CSF.Validation.IntegrationTests
                 },
             };
 
-            var result = await validator.ValidateAsync(person);
-
+            var result = await validator.ValidateAsync(person).ConfigureAwait(false);
+            
             Assert.That(result.Passed, Is.True);
         }
 
@@ -50,7 +50,7 @@ namespace CSF.Validation.IntegrationTests
                 },
             };
 
-            var result = await validator.ValidateAsync(person);
+            var result = await validator.ValidateAsync(person).ConfigureAwait(false);
 
             Assert.Multiple(() =>
             {
@@ -82,7 +82,7 @@ namespace CSF.Validation.IntegrationTests
                 }
             };
 
-            var result = await validator.ValidateAsync(customer);
+            var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
 
             Assert.That(result.Passed, Is.True);
         }
@@ -102,7 +102,7 @@ namespace CSF.Validation.IntegrationTests
                 }
             };
 
-            var result = await validator.ValidateAsync(customer);
+            var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
 
             Assert.Multiple(() =>
             {
@@ -131,7 +131,7 @@ namespace CSF.Validation.IntegrationTests
                 Pets = Array.Empty<Pet>(),
             };
 
-            var result = await validator.ValidateAsync(person);
+            var result = await validator.ValidateAsync(person).ConfigureAwait(false);
 
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
                         Is.EqualTo("The date 1750-01-01 is invalid. It must equal-to or later than 1900-01-01."));
