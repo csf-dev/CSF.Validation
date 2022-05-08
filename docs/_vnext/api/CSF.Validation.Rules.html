@@ -77,9 +77,6 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="CSF.Validation.Rules.AncestorRuleContext.html">AncestorRuleContext</a></h4>
-      <section><p>A model providing contextual information about an 'ancestor context' for an executing validation rule.</p>
-</section>
       <h4><a class="xref" href="CSF.Validation.Rules.CommonResults.html">CommonResults</a></h4>
       <section><p>Helper class to create instances of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> instances from commonly-used scenarios.</p>
 </section>
@@ -120,6 +117,12 @@ an inclusive <a class="xref" href="CSF.Validation.Rules.FloatInRange.html#CSF_Va
       <section><p>A rule that passes if a validated array, collection or string is either <span class="xref">null</span> or has a length/count of items
 between inclusive minimum/maximums, configured in this rule.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ManifestRuleInfo.html">ManifestRuleInfo</a></h4>
+      <section><p>An immutable model which provides information about the configuration of a validation rule.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ManifestValueInfo.html">ManifestValueInfo</a></h4>
+      <section><p>An immutable model which provides information about the configuration of a value to be validated.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.MatchesRegex.html">MatchesRegex</a></h4>
       <section><p>A rule which passes if the validated string is either <span class="xref">null</span> or is a match for the specified
 regular expression.</p>
@@ -154,6 +157,9 @@ non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IV
       <h4><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></h4>
       <section><p>A read-only model for contextual information related to the execution of a validation rule.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleContextFactory.html">RuleContextFactory</a></h4>
+      <section><p>A factory service that creates instances of <a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a> from executable rules.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.RuleIdentifier.html">RuleIdentifier</a></h4>
       <section><p>A model for information which uniquely identifies a validation rule within the validation process.</p>
 </section>
@@ -163,17 +169,23 @@ non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IV
       <h4><a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a></h4>
       <section><p>A model for information about the result of running a single validation rule.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.Rules.ValidationLogicFactory.html">ValidationLogicFactory</a></h4>
-      <section><p>A factory service which creates instances of <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a>
-from <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a> definitions.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Rules.ValueRuleAdapter-2.html">ValueRuleAdapter&lt;TValue, TValidated&gt;</a></h4>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleWithParentValueAdapter-2.html">RuleWithParentValueAdapter&lt;TValue, TValidated&gt;</a></h4>
       <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>, which
 allows their logic to be executed as if they were instances of the
 non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> interface.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ValidationLogicFactory.html">ValidationLogicFactory</a></h4>
+      <section><p>A factory service which creates instances of <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a>
+from <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a> definitions.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ValueContext.html">ValueContext</a></h4>
+      <section><p>A model which provides contextual information about a value which is validated.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
+      <h4><a class="xref" href="CSF.Validation.Rules.IGetsRuleContext.html">IGetsRuleContext</a></h4>
+      <section><p>An objet that gets a rule context for an executable rule.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.IGetsValidationLogic.html">IGetsValidationLogic</a></h4>
       <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> for a specified
 <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>.</p>

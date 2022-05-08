@@ -77,6 +77,10 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="CSF.Validation.MessageEnrichingValidatorAdapter-1.html">MessageEnrichingValidatorAdapter&lt;TValidated&gt;</a></h4>
+      <section><p>An adapter service which wraps a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a> and extends it to be usable as either
+a <a class="xref" href="CSF.Validation.IValidatorWithMessages-1.html">IValidatorWithMessages&lt;TValidated&gt;</a> or <a class="xref" href="CSF.Validation.IValidatorWithMessages.html">IValidatorWithMessages</a>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.RuleBuilderExtensions.html">RuleBuilderExtensions</a></h4>
       <section><p>Extension methods for instances of <a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule&lt;TRule&gt;</a>.</p>
 </section>
@@ -95,10 +99,18 @@
       <h4><a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a></h4>
       <section><p>A model for the results of a validation process.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.ValidationResultWithMessages.html">ValidationResultWithMessages</a></h4>
+      <section><p>A model for the results of a validation process which may also
+include human-readable feedback messages for any failed rules.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a></h4>
       <section><p>Represents information about the result of running a single validation rule.
 Typically this is a class which implements either <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
 or <a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.ValidationRuleResultWithMessage.html">ValidationRuleResultWithMessage</a></h4>
+      <section><p>A model which is a specialisation of <a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a> that may additionally have
+an associated human-readable feedback message.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Validator-1.html">Validator&lt;TValidated&gt;</a></h4>
       <section><p>The validator service, which validates instances of <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code>
@@ -125,10 +137,21 @@ the rules which the validator will use.</p>
       <h4><a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a></h4>
       <section><p>An object which can query for specific validation rule results matching specified predicates.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.IQueryableValidationResultWithMessages.html">IQueryableValidationResultWithMessages</a></h4>
+      <section><p>An object which can query for specific validation rule results matching specified predicates.
+This is very similar to <a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a> but returns validation
+rules results that have message support.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.IValidator.html">IValidator</a></h4>
       <section><p>An object which may be used to validate object instances and get a validation result.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a></h4>
+      <section><p>An object which may be used to validate instances of a specified object type and get a validation result.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.IValidatorWithMessages.html">IValidatorWithMessages</a></h4>
+      <section><p>An object which may be used to validate object instances and get a validation result.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.IValidatorWithMessages-1.html">IValidatorWithMessages&lt;TValidated&gt;</a></h4>
       <section><p>An object which may be used to validate instances of a specified object type and get a validation result.</p>
 </section>
     <h3 id="enums">Enums
