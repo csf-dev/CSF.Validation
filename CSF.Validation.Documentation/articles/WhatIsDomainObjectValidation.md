@@ -1,7 +1,7 @@
 # Domain Object Validation
 
-For the sake of this framework, **domain objects** are defined as models (typically .NET classes) which contain state.
-Domain object models relate to business-logic concepts and are free from technical/architectural concerns.
+For the sake of this framework, **domain objects** are defined as models (typically .NET classes) which contain state such as properties and/or fields.
+Domain object models relate to business-logic concepts and are free from technical/architectural concerns, particularly those related to user interface.
 The term "domain" borrows somewhat from _[Domain Driven Design]_ but your application/team does not need to be following DDD; if you are then it matters not if these are [entities, value objects or others].
 
 Validated domain objects need not be limited to a single instance of a single class.

@@ -1,14 +1,13 @@
 # Writing validators
 
-Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object (or object graph) and returns the result.
-In order to create a validator rules are assigned to objects and values, such as properties.
+Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object or object graph.
+
+In CSF.Validation each rule is a stand-alone .NET class which contains just the logic to evaluate that rule (pass or fail).
 
 ## Writing rules
 
-Rules are individual, self-contained pieces of logic which fundamentally test for a pass or a fail.
-Each validation rule is written as a self-contained .NET class.
-
-Some pre-written rules are available in [the standard rules package] but it's expected that developers will want to write their own.
+Some pre-written rules for common validation scenarios are available in [the standard rules package].
+It's expected that developers will want to write their own rules specific to their business logic.
 You are advised to read [the documentation for writing rule classes] & the [best practices and guidance] applicable to rules.
 
 [the standard rules package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
@@ -22,8 +21,8 @@ You are advised to read [the documentation for writing rule classes] & the [best
 To create a usable validator, the application must specify which rule(s) should be used to validate each object or value.
 They could optionally specify how those rules should be configured.
 
-This information about which rules are to be used, and how, is called _the validation manifest_.
-The CSF.Validation framework provides _three mechanisms_ by which to define it, although **typical applications will need use only one** of them.
+The declaration stating which rules are to be used to validate each value is called _the validation manifest_.
+The CSF.Validation framework provides _three mechanisms_ by which to define it, although typical applications will need use **only one** of them.
 
 1. [A **validator builder**] is most suitable if your validators are to be defined using .NET code
 2. If the composition/configuration of a validator is to be _defined using data_ then consider using the [**manifest model**]

@@ -5,7 +5,7 @@ Its goal is to provide an extensible architecture for writing, executing and con
 
 [for validating domain objects]:articles/WhatIsDomainObjectValidation.md
 
-## Documentation
+## Tutorials & documentation
 
 The [documentation introduction page] lists the three main steps to creating a working validator, with links to further detail.
 
