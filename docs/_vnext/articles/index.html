@@ -69,22 +69,40 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="introduction">Introduction</h1>
 
-<p>To begin using the <strong>CSF.Validation</strong> framework you must follow these three conceptual steps:</p>
+<p>Using the <strong>CSF.Validation</strong> framework involves following these three conceptual steps.
+Each is a link to further detail.</p>
 <ol>
 <li><a href="ConfigureTheFramework.html">Configure the framework</a></li>
 <li><a href="WritingValidators/index.html">Define how objects should be validated</a></li>
 <li><a href="ConsumingValidators.html">Perform validation</a></li>
 </ol>
-<h2 id="where-this-framework-is-useful">Where this framework is useful</h2>
-<p>CSF.Validation is designed for non-trivial <strong><a href="WhatIsDomainObjectValidation.html">domain object validation</a></strong>.  It is particularly useful where that validation occurs close-to or as part-of the core application logic.</p>
-<p>Imagine an application where a user must submit a complex form with many dependencies between field values.
-CSF.Validation excels when it is used to validate rich object models, perhaps including collections of descendent models.
-It is also useful where the validation rules to be run involve complex logic or injected dependencies.</p>
-<p>This framework provides an organised architecture upon which to write each independent validation rule <a href="https://en.wikipedia.org/wiki/SOLID">following SOLID principles</a>.
-It provides both declarative and data-based mechanisms for specifying which of those rules should be executed &amp; a simple API for performing validation and getting the result.</p>
-<h2 id="where-this-framework-might-not-be-useful">Where this framework might not be useful</h2>
-<p>CSF.Validation is less useful for trivial validation, such as where a few fields which must not be null or empty and there is nothing more complex to do.
-It is also not well-suited for validation that lies architecturally close to a specific user interface technology.</p>
+<h2 id="recommended-usage-scenarios">Recommended usage scenarios</h2>
+<p>CSF.Validation is intended for scenarios where:</p>
+<ul>
+<li>The validation is non-trivial</li>
+<li>The validation is conceptually a part of your business logic</li>
+</ul>
+<p>CSF.Validation is best-used for validating <a href="WhatIsDomainObjectValidation.html">domain objects</a>, rather than DTOs which are specific to a particular user interface technology.
+By logically arranging validation in the central domain/business logic, disconnected from user interface concerns, it becomes reusable across any user interface or API exposed by the application.</p>
+<h3 id="where-this-framework-might-not-be-useful">Where this framework might not be useful</h3>
+<p>CSF.Validation is less useful for trivial validation, such as validating objects with only a few properties which must not be null or empty.
+If there is no complex validation to be performed then this framework is likely to be overkill.</p>
+<p>CSF.Validation is also less well-suited for validation which must be architecturally connected with a specific user interface technology.</p>
+<h2 id="features-and-benefits">Features and benefits</h2>
+<h3 id="compatible-with-dependency-injection">Compatible with dependency injection</h3>
+<p><a href="WritingValidators/WritingValidationRules/index.html">Validation rule classes</a> and (if you wish to use them) [validation message providers] are fully compatible with .NET dependency injection.
+Rule and failure message logic may use constructor-injected dependencies like the rest of your business logic.</p>
+<h3 id="flexible">Flexible</h3>
+<p>The CSF.Validation architecture is flexible; you may define validators declaratively in code, as data such as JSON or XML.
+You may also combine these techniques with advanced logic such as reflection in order to build convention-based validators.</p>
+<h3 id="low-dependency-footprint">Low dependency footprint</h3>
+<p>The architecture is not dependent-upon or specific to any particular user-interface technology.
+Indeed, it may be used when there is no user interface at all.
+Validation results could be serialised and returned through a JSON web API (for instance).</p>
+<h3 id="follows-solid-principles">Follows SOLID principles</h3>
+<p>CSF.Validation helps you to <a href="https://en.wikipedia.org/wiki/SOLID">follow the SOLID principles</a> in your app.
+Each individual validation rule is written in a single-responsibility class.</p>
+<p>The definition of a validator (which rules should be applied to which values, and how they are to be configured) is <em>declarative</em>.</p>
 </article>
           </div>
           
