@@ -19,16 +19,20 @@ namespace CSF.Validation
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds the validation framework to the service collection, such that it may be injected by its interfaces.
+        /// Adds the validation framework to the service collection, such that it may be injected into classes
+        /// which should consume validation.
         /// </summary>
         /// <remarks>
         /// <para>
         /// Use this method to configure the validation framework with your own application's dependency injection.
-        /// This method makes all of the interfaces in the CSF.Validation.Abstractions assembly injectable via DI.
-        /// Thus, validators may be defined and consumed by projects which have only a reference to the abstractions
-        /// package, without requiring those projects to take a dependency upon the main CSF.Validation package.
-        /// In this way, many applications will only require a reference to CSF.Validations from the project where
-        /// DI is configured.
+        /// This method makes all of the interfaces in the <c>CSF.Validation.Abstractions</c> assembly (found in the
+        /// corresponding NuGet package of the same name) injectable via DI.
+        /// </para>
+        /// <para>
+        /// Thus, validators may be defined and consumed from .NET projects which have only a reference to the abstractions
+        /// package.  These projects do not require a dependency upon the full CSF.Validation NuGet package.
+        /// For larger applications with good project separation, this will mean that the only project(s) which need a reference
+        /// to the full CSF.Validation NuGet package are startup projects where dependency injection is configured.
         /// </para>
         /// </remarks>
         /// <param name="serviceCollection">The service collection to which the validation framework should be added.</param>

@@ -17,8 +17,8 @@ namespace CSF.Validation
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This adds all of the standard validation rules contained in this package to dependency injection.
-        /// This allows those rules to be consumed by any validator which is built using the same DI container.
+        /// This method adds all of the validation rule types defined in the assembly/NuGet package
+        /// <c>CSF.Validation.StandardRules</c> to dependency injection, so that they may be used by validators.
         /// </para>
         /// </remarks>
         /// <param name="serviceCollection">The service collection to which the standard rules should be added.</param>

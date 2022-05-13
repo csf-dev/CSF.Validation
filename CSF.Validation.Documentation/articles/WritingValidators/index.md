@@ -1,7 +1,6 @@
 # Writing validators
 
 Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object or object graph.
-
 In CSF.Validation each rule is a stand-alone .NET class which contains just the logic to evaluate that rule (pass or fail).
 
 ## Writing rules

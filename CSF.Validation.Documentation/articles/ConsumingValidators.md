@@ -17,5 +17,5 @@ Once you have [the `IValidator<T>` instance] (or perhaps [a non-generic `IValida
 [`IGetsValidator`]:xref:CSF.Validation.IGetsValidator
 [the CSF
 Validation.Abstractions package]: https://www.nuget.org/packages/CSF.Validation.Abstractions
-[the `IValidator<T>` instance]:xref
-[a non-generic `IValidator`]:xref
+[the `IValidator<T>` instance]:xref:CSF.Validation.IValidator`1
+[a non-generic `IValidator`]:xref:CSF.Validation.IValidator

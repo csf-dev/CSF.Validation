@@ -3,12 +3,12 @@
 In simple circumstances, a validation rule passes or it fails and there is nothing more to it.
 In advanced scenarios it is helpful to include supplemental information about that pass or failure, which may be consumed by any logic that receives the validation result.
 
-In these cases, [the `CommonResults` class] offers overloads of all of its methods which accepts result data.
+For these cases, [the `CommonResults` class] offers overloads of all of its methods which accept result data.
 Result data is an `IDictionary<string,object>` of arbitrary key/value pairs.
-This dictionary of result data is [available from the validation result] for whatever purpose it is required later.
+The result data dictionary is [included in the validation result]; consuming logic may use it for any appropriate purpose.
 
 [the `CommonResults` class]:xref:CSF.Validation.Rules.CommonResults
-[available from the validation result]:xref:CSF.Validation.Rules.RuleResult.Data
+[included in the validation result]:xref:CSF.Validation.Rules.RuleResult.Data
 
 ## An example: buying alcohol
 
@@ -17,7 +17,7 @@ Let's also imagine that amongst our products, we sell alcoholic beverages.
 Alcohol is an age-restricted item almost everywhere but the minimum age to purchase alcohol varies from territory to territory.
 
 We wish to write a validation rule that ensures a customer who is underage cannot purchase alcohol.
-We also want to provide a useful validation feedback message stating the required age, relevant to the customer's territory.
+We also want to provide a useful validation feedback message stating the minimum age, relevant to the customer's territory.
 Here's an example rule which could accomplish this.
 
 ```csharp
