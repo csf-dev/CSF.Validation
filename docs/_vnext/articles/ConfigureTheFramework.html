@@ -80,14 +80,16 @@ You will also require a reference to <a href="https://www.nuget.org/packages/CSF
 </code></pre>
 <p>The <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_"><code>UseValidationFramework()</code></a> method adds the mandatory services to enable the framework.
 <a class="xref" href="../api/CSF.Validation.StandardRulesServiceCollectionExtensions.html#CSF_Validation_StandardRulesServiceCollectionExtensions_UseStandardValidationRules_Microsoft_Extensions_DependencyInjection_IServiceCollection_"><code>UseStandardValidationRules()</code></a> is optional and is found in <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard validation rules NuGet package</a>.</p>
-<p>The most convenient way to add/register your own validation rules is via a method such as <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidationRulesInAssemblies(IEnumerable&lt;Assembly&gt;)</code></a>. This method scans the specified assemblies for rule classes and registers all of them with the service collection.
+<p>It is almost certain that developers will want to <a href="WritingValidators/WritingValidationRules/index.html">write their own validation rule logic classes</a>, which will also need to be added to DI.
+The most convenient way to accomplish this is via a method such as <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidationRulesInAssemblies(IEnumerable&lt;Assembly&gt;)</code></a>. This method scans the specified assemblies for rule classes and registers all of them with the service collection.
 See <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html"><code>ServiceCollectionExtensions</code></a> for other methods/overloads which add rules.</p>
 <h2 id="use-the-abstractions-package-in-your-app-logic">Use the abstractions package in your app logic</h2>
 <p>Assuming you are writing a multi-project application, you will unlikely want to take a dependency upon the main CSF.Validation NuGet package throughout the app.
-For projects which make use of the framework, except where dependency injection is configured (above), you need only reference <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">the CSF.Validation.Abstractions package</a>.
-You may optionally also reference <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a> if you are using them.</p>
-<p>The abstractions package contains all of the interfaces required to write rule &amp; message provider classes and to define and consume validators.
-It does not contain the core logic of the framework and has no external dependencies of its own.</p>
+Apart from your startup project(s) where DI is configured, other projects need only reference <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">the <strong>CSF.Validation.Abstractions</strong> package</a>.
+You may optionally also reference <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a> if you are using it.</p>
+<p>The abstractions package contains just interfaces and models which make-up the validator's API.
+With property-configured dependency injection, this is sufficient to create and consume validators without depending upon the main package.
+The abstractions package does not contain the core logic of the framework and has no external dependencies of its own.</p>
 </article>
           </div>
           

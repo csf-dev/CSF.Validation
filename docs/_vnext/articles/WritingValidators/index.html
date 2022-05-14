@@ -69,25 +69,30 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="writing-validators">Writing validators</h1>
 
-<p>Fundamentally, a validator is a service which executes a collection of independent validation rules upon an object or object graph.</p>
-<p>In CSF.Validation each rule is a stand-alone .NET class which contains just the logic to evaluate that rule (pass or fail).</p>
-<h2 id="writing-rules">Writing rules</h2>
-<p>Some pre-written rules for common validation scenarios are available in <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a>.
-It's expected that developers will want to write their own rules specific to their business logic.
-You are advised to read <a href="WritingValidationRules/index.html">the documentation for writing rule classes</a> &amp; the <a href="../BestPractice/index.html#writing-validation-rule-classes">best practices and guidance</a> applicable to rules.</p>
+<p>Fundamentally, a validator is an object which is built from a collection of validation rules, where each rule is a .NET class.
+When it is used to validate an object or object graph, it runs each of those rules getting a result-per-rule.
+If every one of those rules returns a pass result then the overall validation is a pass.  If any rule did not pass then validation is a failure.</p>
+<p>To create a validator, you must first define which rules are to be run upon which values.
+You may (and are encouraged) to write your own rule classes as well, to suit your application's logic.</p>
 <h2 id="creating-a-validator-from-some-rules">Creating a validator from some rules</h2>
-<p>To create a usable validator, the application must specify which rule(s) should be used to validate each object or value.
-They could optionally specify how those rules should be configured.</p>
-<p>The declaration stating which rules are to be used to validate each value is called <em>the validation manifest</em>.
-The CSF.Validation framework provides <em>three mechanisms</em> by which to define it, although typical applications will need use <strong>only one</strong> of them.</p>
+<p>As noted above, to create a validator you must define which rules should apply to which values and how those rules should be configured (in the case of rules which have parameters).
+This information is called <em>the validation manifest</em> and the framework provides three mechanisms by which to declare it, although typical applications will need use <strong>only one</strong> of them.</p>
 <ol>
-<li><a href="WritingValidatorBuilders/index.html">A <strong>validator builder</strong></a> is most suitable if your validators are to be defined using .NET code</li>
-<li>If the composition/configuration of a validator is to be <em>defined using data</em> then consider using the <a href="UsingTheManifestModel/index.html"><strong>manifest model</strong></a></li>
-<li>Developers wishing to use advanced techniques may <a href="TheValidationManifest/index.html">create or manipulate a validation manifest directly</a></li>
+<li><a href="WritingValidatorBuilders/index.html">A <strong>validator builder</strong></a> is the best choice for most applications; the validator is specified using type-safe .NET code.
+Developers gain the benefits of features such as compile-time syntax checking and IDE autocomplete (aka Intellisense).</li>
+<li>If the composition of a validator is to be <em>defined using data</em> then consider using the <a href="UsingTheManifestModel/index.html"><strong>manifest model</strong></a>.
+The manifest model objects are suited for serialization to/from formats such as JSON, XML or relational database data.</li>
+<li>Developers wishing to use advanced techniques may <a href="TheValidationManifest/index.html">create or manipulate a validation manifest directly</a>.
+This could be useful for developers who wish to extend the validation framework - building their own <em>&quot;validation by convention&quot;</em> functionality for instance.</li>
 </ol>
-<p>Developers are advised to use the simplest mechanism which meets their requirements.
-In most scenarios the validator builder API will be sufficient; <em>this is the recommended approach</em>.
-The manifest model is a little more limited than working with the manifest directly but the API is created from <a href="https://en.wikipedia.org/wiki/Plain_old_CLR_object">POCOs</a> which are easily serialized to/from other formats, such as JSON or databases.</p>
+<p>Developers are <em>advised to use the simplest mechanism</em> which meets their requirements.</p>
+<h2 id="writing-rule-classes">Writing rule classes</h2>
+<p>The rule classes are where each piece of stand-alone validation logic is held.
+There are some pre-written rules for common validation scenarios available in <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a>.
+The <a href="https://github.com/csf-dev/CSF.Validation/tree/master/CSF.Validation.StandardRules/Rules">source code for the standard rules</a> also offers some worked examples of what a rule class could look like.</p>
+<p>Almost every application which uses this framework will need some rule logic of its own though.
+Developers are encouraged to write their own rule classes containing whatever logic they need.
+You are advised to read <a href="WritingValidationRules/index.html">the documentation for writing rule classes</a> as well as <a href="../BestPractice/index.html#writing-validation-rule-classes">best practices &amp; guidance</a> applicable to rules.</p>
 </article>
           </div>
           

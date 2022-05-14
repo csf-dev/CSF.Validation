@@ -70,10 +70,13 @@
 <h1 id="writing-validation-rules">Writing Validation Rules</h1>
 
 <p>A validator is made from validation rules; each rule represents an independent piece of logic that performs a pass/fail test.
-In CSF.Validation, a rule is <strong>a .NET class</strong> which implements <a href="TheRuleInterfaces.html">one of the two rule interfaces</a>.
-The logic within the <code>GetResultAsync</code> method(s) of rule classes should usually <a href="ReturningResultsFromRules.html">return a pass or fail result or throw an exception</a>,</p>
-<p>For advanced usage, rules may include <a href="ResultData.html">a dictionary of supplemental information</a> along with their outcome.
-Imagine a scenario where some data retrieved from a dependency service (injected into a rule class) provides useful context that should be included in a UI feedback message.</p>
+In CSF.Validation, a rule is <strong>a .NET class</strong> which implements at least <a href="TheRuleInterfaces.html">one of <strong>the two rule interfaces</strong></a>.
+A single rule class may implement both interfaces and/or may implement the same interface for several generic types if appropriate.</p>
+<h2 id="rules-overview">Rules overview</h2>
+<p>Both rule interfaces define the method <code>GetResultAsync</code> (with parameters appropriate to the corresponding generic rule interface).
+This method performs a single validation test and should usually <a href="ReturningResultsFromRules.html">return either a pass/fail result or should throw an exception</a>.</p>
+<p>In more advanced scenarios, rules may supplement their result with <a href="ResultData.html">a dictionary of arbitrary data</a>.
+This is useful when the validation result would benefit from some further contextual information.</p>
 <p>You are also encouraged to read <a href="../../BestPractice/index.html">this advice regarding best practices</a> for writing validation rules.</p>
 </article>
           </div>
