@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>PLACEHOLDER </title>
+    <title>CSF.Validation API documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="PLACEHOLDER ">
+    <meta name="title" content="CSF.Validation API documentation ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,9 +67,25 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="placeholder">PLACEHOLDER</h1>
+<h1 id="csfvalidation-api-documentation">CSF.Validation API documentation</h1>
 
-<p>TODO: Add .NET projects to the <em>src</em> folder and run <code>docfx</code> to generate <strong>REAL</strong> <em>API Documentation</em>!</p>
+<h2 id="getting-started">Getting started</h2>
+<p>If you wish to make use of the framework to create some validators and use them within your own application, including writing your own rule classes, then the regular documentation pages are a good place to start.
+All of the documentation pages linked below contain links back to the relevant API types.</p>
+<ol>
+<li>All apps must first <a href="../articles/ConfigureTheFramework.html">configure the framework</a> with some short one-time setup.  This makes the validation functionality available to your app's dependency injection.</li>
+<li>Developers may then <a href="../articles/WritingValidators/index.html">define validators</a> within their business logic, likely <a href="../articles/WritingValidators/WritingValidationRules/index.html">writing validation rule classes</a> as well.</li>
+<li>Finally the application may <a href="../articles/ConsumingValidators.html">consume validators</a> and get validation results for validated objects.</li>
+</ol>
+<h2 id="frequently-used-types">Frequently-used types</h2>
+<p>This is a brief list of types which are expected to be frequently-used by developers making normal use of the framework.</p>
+<ul>
+<li><a class="xref" href="CSF.Validation.IGetsValidator.html"><code>IGetsValidator</code></a> is the entry-point for creating &amp; consuming validators</li>
+<li><a class="xref" href="CSF.Validation.IValidator-1.html"><code>IValidator&lt;TValidated&gt;</code></a> is the generic interface for performing validation on a specific object type</li>
+<li><a class="xref" href="CSF.Validation.IValidator.html"><code>IValidator</code></a> is a non-generic equivalent of <code>IValidator&lt;TValidated&gt;</code> if the validated type is not known at design-time</li>
+<li><a class="xref" href="CSF.Validation.IBuildsValidator-1.html"><code>IBuildsValidator&lt;TValidated&gt;</code></a> is the interface to implement when creating <a href="../articles/WritingValidators/WritingValidatorBuilders/index.html">a validator builder</a></li>
+<li><a class="xref" href="CSF.Validation.Rules.IRule-1.html"><code>IRule&lt;TValidated&gt;</code></a> &amp; <a class="xref" href="CSF.Validation.Rules.IRule-2.html"><code>IRule&lt;TValidated,TParent&gt;</code></a> are <a href="../articles/WritingValidators/WritingValidationRules/TheRuleInterfaces.html">the two rule interfaces</a> which your own validation rule classes should implement</li>
+</ul>
 </article>
           </div>
           

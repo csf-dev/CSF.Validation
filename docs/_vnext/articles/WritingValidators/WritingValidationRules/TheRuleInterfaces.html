@@ -75,8 +75,9 @@
 <li><a class="xref" href="../../../api/CSF.Validation.Rules.IRule-2.html"><code>IRule&lt;in TValue, in TParent&gt;</code></a></li>
 </ul>
 <h2 id="rules-can-implement-these-multiple-times">Rules can implement these multiple times</h2>
-<p>If it makes sense to do do, there is no technical reason why a rule class cannot implement both interfaces.
-Likewise, if appropriate a rule class may implement either or both interfaces more than once for different generic types.</p>
+<p>If it makes sense to do so, it is perfectly reasonable for a rule class to implement both interfaces.
+Likewise, a rule class may implement either or both interfaces more than once for different generic types if it's appropriate.
+Developers might need to use <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation">explicit interface implementation</a> to avoid ambiguity of overloads.</p>
 <h3 id="example-the-integerinrange-rule">Example: The <code>IntegerInRange</code> rule</h3>
 <p>The rule <a class="xref" href="../../../api/CSF.Validation.Rules.IntegerInRange.html"><code>IntegerInRange</code></a> in the standard rules package implements <code>IRule&lt;TValidated&gt;</code> for all of the following types:</p>
 <ul>
