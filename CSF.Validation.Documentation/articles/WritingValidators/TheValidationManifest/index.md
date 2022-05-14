@@ -19,7 +19,6 @@ The validation manifest is created from the following model classes. These are a
 * [`ManifestCollectionItem`]
 * [`ManifestRule`]
 * [`ManifestRuleIdentifier`]
-  * This type is a subclass of [`RuleIdentifierBase`]
 
 [`CSF.Validation.Manifest`]:xref:CSF.Validation.Manifest
 [CSF.Validation.Abstractions]:https://www.nuget.org/packages/CSF.Validation.Abstractions/

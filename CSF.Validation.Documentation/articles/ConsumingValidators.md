@@ -1,21 +1,17 @@
 # Consuming validators
 
-To perform validation, you first require an instance of the validator factory: [`IGetsValidator`]. Assuming you are using dependency injection, this is available for injection into any project which references [the CSF
-Validation.Abstractions package].
+Once you have one or more validators defined, using [any of the three available techniques], you may create and use a validator instance to validate objects using those rules.
+To accomplish this you should inject an instance of the validator factory: [`IGetsValidator`] into your logic which needs validation.
+You will require a reference to the [the CSF.Validation.Abstractions package].
 
-The validator factory has various methods (including strongly-typed extension methods) to get a validator.
-These methods include overloads to get a validator from each of the mechanisms of specifying the validator's design:
+The validator factory has a number of methods & extension methods which cater for all of the possible scenarios, regardless of which technique was used to define the validator.
+The methods of the validator factory will allow you to get either [a `IValidator<T>`] or perhaps [a non-generic `IValidator`].
+Which you use depends upon whether or not the type of the validated object is known at design-time.
 
-* A validator builder type
-* A manifest model
-* A full validation manifest
+Both validator interfaces provide the method `ValidateAsync`, which is used to validate the object and get the results.
 
-Once you have [the `IValidator<T>` instance] (or perhaps [a non-generic `IValidator`] if the type is not known at design-time), use the `ValidateAsync` method to get the results.
-
-
-
+[any of the three available techniques]:WritingValidators/index.md#creating-a-validator-from-some-rules
 [`IGetsValidator`]:xref:CSF.Validation.IGetsValidator
-[the CSF
-Validation.Abstractions package]: https://www.nuget.org/packages/CSF.Validation.Abstractions
-[the `IValidator<T>` instance]:xref:CSF.Validation.IValidator`1
+[the CSF.Validation.Abstractions package]:https://www.nuget.org/packages/CSF.Validation.Abstractions
+[a `IValidator<T>`]:xref:CSF.Validation.IValidator`1
 [a non-generic `IValidator`]:xref:CSF.Validation.IValidator
