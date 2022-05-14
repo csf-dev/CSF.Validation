@@ -19,7 +19,6 @@ The validation manifest is created from the following model classes. These are a
 * [`ManifestCollectionItem`]
 * [`ManifestRule`]
 * [`ManifestRuleIdentifier`]
-  * This type is a subclass of [`RuleIdentifierBase`]
 
 [`CSF.Validation.Manifest`]:xref:CSF.Validation.Manifest
 [CSF.Validation.Abstractions]:https://www.nuget.org/packages/CSF.Validation.Abstractions/
@@ -35,7 +34,8 @@ The validation manifest is created from the following model classes. These are a
 ### Values describe the objects to be validated
 
 A validation manifest describes values (including model objects) to be validated and the rules which should be applied to those values. A `ManifestValue` represents an object to be validated.
-This value may be an object of your own design or a .NET primitive such as a string.
+This value may be of any type at all.
+This includes classes/structs of your own design, types from other libraries or primitives such as `string`.
 
 Manifest values create a hierarchical structure which corresponds to the design of the object graph you wish to validate.
 Each manifest value has [a collection of child values]; each value in this collection corresponds to a value which is derived/accessed-from its parent value.

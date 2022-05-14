@@ -1,7 +1,7 @@
 # .NET Validation Framework
 
 This framework offers a mechanism to write _business logic validation_ services within your own application.
-**CSF.Validation** is designed for validation which lies at the heart of business processes and _is not linked to the concept of a user interface_.
+**CSF.Validation** is intended for non-trivial validation which lies at the heart of business processes.
 
 It is designed so that developers may write their own validation logic/rules in self-contained classes that are individually testable.
 A validator may be defined in code via a declarative/fluent builder API, or it may be created from data.

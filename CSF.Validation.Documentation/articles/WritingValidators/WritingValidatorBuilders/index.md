@@ -1,14 +1,11 @@
 # Writing Validator Builders
 
-Validator builders are the simplest & clearest way to define a validator.
-Use a validator builder to create a validator from .NET code.
-Alternatively, if you would like to create a validator from data, consider using the [Manifest Model] instead.
+Validator builders are the simplest & clearest way to define a validator when you wish to describe the validator using .NET code.
 
 A validator builder is a class which implements the interface [`IBuildsValidator<TValidated>`].
 Developers then use the `ConfigureValidator` method and the [`IConfiguresValidator<TValidated>`] helper to specify how the validator will function.
-By specifying the type of object to be validated as a generic type, validator builders are very IDE/autocomplete-friendly.
+Validator builders are type-safe and benefit from IDE autocomplete (aka Intellisense) functionality.
 
-[Manifest Model]: ../UsingTheManifestModel/index.md
 [`IBuildsValidator<TValidated>`]:xref:CSF.Validation.IBuildsValidator`1
 [`IConfiguresValidator<TValidated>`]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1
 
@@ -51,17 +48,15 @@ This would add a rule that implements `IRule<Pet>`, to apply validation logic as
 In this case it is the [`NotNull`] rule.
 
 In the second example, [the `ForMember` method] is used to specify a member (in this case, a property) of the `Pet` class.
-Let us assume that `Pet.Name` is a property of type `string`.
-Where this technique is used the added rule would be validating that member.
-So, the rule class that is added - in this case [`NotNullOrEmpty`] - would need to implement `IRule<string>`.
+Let's assume that `Pet.Name` is a property of type `string`.
+Rules added within the member lambda target that member's value.  In this case the [`NotNullOrEmpty`] rule will validate this string value.
 
 In the third example, [the `ForValue` method] is used.
-`ForValue` allows validation of a completely arbitrary value, not just the return value from a member, like a property.
-It comes with some limitations though, in that the result cannot be associated with a member name, which makes it hard to group such a result with logically related rule results.
-Like `ForMember`, this syntax means that the rule which is added - [`IntegerInRange`] - would be expected to implement `IRule<int>` (as that is the return type of the `GetAge` method).
+`ForValue` allows validation of a completely arbitrary value, not limited to only values returned-by/stored-in a member like a property.
+Developers are encouraged to prefer `ForMember` over `ForValue` where possible, as the `ForValue` method comes with some limitations which do not apply to `ForMember`.
 
-Finally, the third example demonstrates a rule that has configuration.
-If you look at the `IntegerInRange` rule, you will see that the rule class has state; two **settable properties** describing the minimum and maximum of the permitted range.
+Finally, the third example also demonstrates a rule that has configuration.
+If you look at the `IntegerInRange` rule, you will see that the rule class has two _settable properties_ describing the minimum and maximum of the permitted range.
 The configuration syntax permits setting that state from the builder.
 
 [the `AddRule` method]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})

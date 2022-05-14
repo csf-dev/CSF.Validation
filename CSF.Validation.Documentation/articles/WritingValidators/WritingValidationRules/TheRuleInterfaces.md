@@ -10,8 +10,11 @@ A validation rule class must implement at least one of the following two interfa
 
 ## Rules can implement these multiple times
 
-If it makes sense to do do, there is no technical reason why a rule class cannot implement both interfaces.
-Likewise, if appropriate a rule class may implement either or both interfaces more than once for different generic types.
+If it makes sense to do so, it is perfectly reasonable for a rule class to implement both interfaces.
+Likewise, a rule class may implement either or both interfaces more than once for different generic types if it's appropriate.
+Developers might need to use [explicit interface implementation] to avoid ambiguity of overloads.
+
+[explicit interface implementation]:https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation
 
 ### Example: The `IntegerInRange` rule
 

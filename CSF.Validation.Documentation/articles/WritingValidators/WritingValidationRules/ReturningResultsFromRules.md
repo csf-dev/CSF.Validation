@@ -1,11 +1,11 @@
 # Returning results from rules
 
-Executing the `GetResultAsync` method(s) of a rule class should always lead to one of the following outcomes:
+Executing the `GetResultAsync` method(s) of a rule class should most commonly lead to one of two outcomes:
 
-* Return a pass result
-* Return a failure result
-* Throw an exception
-  * In rare circumstances, return an error result
+* The method returns a pass result
+* The method returns a failure result
+
+In _truly exceptional_ scenarios it is acceptable to either throw an exception from the rule class or to return an error result.
 
 ## Returning a pass or failure result
 
@@ -31,14 +31,16 @@ As well as the pass & fail scenarios here, there are also methods dealing with _
 
 [it is strongly recommended]:../../BestPractice/UseCommonRuleResults.md
 [the static class **`CommonResults`**]:xref:CSF.Validation.Rules.CommonResults
+[`CommonResults`]:xref:CSF.Validation.Rules.CommonResults
 
 ### Synchronous or asynchronous operation
 
 The example above is of a rule that runs synchronously; there is nothing to `await` and the `GetResultAsync` method does not need to be made `async`.
-All overloads of the `PassAsync`, `FailAsync` & `ErrorAsync` methods upon the `CommonResults` class will return completed tasks with a result already available.
+All overloads of the `PassAsync`, `FailAsync` & `ErrorAsync` methods upon the [`CommonResults`] class will return completed tasks with a result already available.
 
-Rules may also operate asynchronously, such as those which require use of an awaitable method from a dependency like reading from a database.
-For these results you may use overloads of the `Pass`, `Fail` & `Error` methods of `CommonResults`.
+Rules may also operate asynchronously.
+This is useful where the rule logic requires use of an awaitable method from a dependency, such as reading from a database.
+For these results you may use overloads of the `Pass`, `Fail` & `Error` methods from [`CommonResults`].
 These methods are more suitable when you wish to use the `async` keyword with the `GetResultAsync` method.
 
 ### Returning additional data
@@ -51,23 +53,23 @@ This allows advanced usages scenarios in which supplemental information may be r
 ## Throwing exceptions from rule classes
 
 Non-trivial rules can raise unexpected exceptions, it is a simple fact of software development.
-For example a rule which must read a value from a database in order to determine validity could encounter an exception if the database is unavailable.
+For example a rule which must read a value from a database is likely to throw an exception if the database is unavailable.
 
 CSF.Validation attempts to minimuse the amount of boilerplate `try/catch` that developers must write in their rule classes.
-All exceptions raised by executing validation rules are caught and translated to error results, with an outcome of [`RuleOutcome.Errored`].
-
-Additionally, where an error result is created from an exception thrown from the `GetResultAsync` method, the [`ValidationRuleResult`] will have [a reference to the thrown exception].
+Any and all exceptions which originate in a `GetResultAsync` method are caught automatically by the framework.
+These exceptions are translated to validation results which have an outcome of [`RuleOutcome.Errored`].
+The [`ValidationRuleResult`] resulting from this caught exception will include [a reference to the exception which was thrown by the rule].
 
 [`RuleOutcome.Errored`]:xref:CSF.Validation.Rules.RuleOutcome
-[a reference to the thrown exception]:xref:CSF.Validation.Rules.RuleResult.Exception
+[a reference to the exception which was thrown by the rule]:xref:CSF.Validation.Rules.RuleResult.Exception
 [`ValidationRuleResult`]:xref:CSF.Validation.ValidationRuleResult
 
 ### How the validator treats errors
 
-The validator treats error results similarly to failures.
-An error result does not count as a pass and if any of a rule's dependencies returns an error, the dependent rule will not be executed.
+The validator treats error results similarly to failures; an error result does not count as a pass.
+For rules which have dependencies, if any of a rule's dependencies' results is an error then the dependent rule will not be executed.
 
-The default behaviour is to throw an exception at the end of validation if any rule returned an error outcome.
+When one or more validation results has the outcome [`RuleOutcome.Errored`], the framework's default behaviour is to throw an exception at the end of validation.
 That exception will contain the complete validation result including all of the error results.
 This behaviour may be overridden by specifying [the `RuleThrowingBehaviour` property] on [an instance of `ValidationOptions`] passed to the validator.
 
