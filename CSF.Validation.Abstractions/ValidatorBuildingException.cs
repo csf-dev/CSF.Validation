@@ -3,9 +3,7 @@ namespace CSF.Validation
     /// <summary>
     /// An exception which may be raised when building a validator.
     /// </summary>
-#if !NETSTANDARD1_1
     [System.Serializable]
-#endif
     public class ValidatorBuildingException : System.Exception
     {
         /// <summary>
@@ -26,13 +24,11 @@ namespace CSF.Validation
         /// <param name="inner">The inner exception.</param>
         public ValidatorBuildingException(string message, System.Exception inner) : base(message, inner) { }
 
-#if !NETSTANDARD1_1
         /// <summary>
         /// Initialises a new <see cref="ValidatorBuildingException"/>.
         /// </summary>
         /// <param name="info">Serialisation info.</param>
         /// <param name="context">Streaming context.</param>
         protected ValidatorBuildingException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
-#endif
     }
 }

@@ -173,10 +173,10 @@ namespace CSF.Validation.Messages
         };
 
         bool DoesMemberNameMatch(ValidationRuleResult result)
-            => MemberName is null || StringEquals(MemberName, result.Identifier.MemberName);
+            => MemberName is null || String.Equals(MemberName, result.Identifier.MemberName, StringComparison.InvariantCulture);
 
         bool DoesRuleNameMatch(ValidationRuleResult result)
-            => RuleName is null || StringEquals(MemberName, result.Identifier.RuleName);
+            => RuleName is null || String.Equals(MemberName, result.Identifier.RuleName, StringComparison.InvariantCulture);
 
         bool DoesValidatedTypeMatch(ValidationRuleResult result)
             => ValidatedType is null || ValidatedType.GetTypeInfo().IsAssignableFrom(result.Identifier.ValidatedType.GetTypeInfo());
@@ -193,14 +193,5 @@ namespace CSF.Validation.Messages
 
         bool DoesOutcomeMatch(ValidationRuleResult result)
             => !Outcome.HasValue || Outcome.Value == result.Outcome;
-
-        static bool StringEquals(string first, string second)
-        {
-#if NETSTANDARD1_1
-            return String.Equals(first, second);
-#else
-            return String.Equals(first, second, StringComparison.InvariantCulture);
-#endif
-        }
     }
 }
