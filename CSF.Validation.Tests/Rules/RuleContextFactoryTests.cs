@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
                             Is.SameAs(rule.RuleIdentifier),
                             nameof(RuleContext.RuleIdentifier));
                 Assert.That(result?.AncestorContexts.Select(x => x.ActualValue).ToList(),
-                            Is.EqualTo(new [] { parentValue.ValueResponse, grandparentValue.ValueResponse, greatGrandparentValue.ValueResponse }),
+                            Is.EqualTo(new [] { parentValue.GetActualValue(), grandparentValue.GetActualValue(), greatGrandparentValue.GetActualValue() }),
                             nameof(RuleContext.AncestorContexts));
             });
         }

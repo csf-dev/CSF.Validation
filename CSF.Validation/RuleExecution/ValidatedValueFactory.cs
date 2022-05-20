@@ -49,7 +49,7 @@ namespace CSF.Validation.RuleExecution
             {
                 var currentBasis = openList.Dequeue();
 
-                if(currentBasis.ActualValue is IgnoredGetValueToBeValidatedResponse)
+                if(currentBasis.ValidatedValueResponse is IgnoredGetValueToBeValidatedResponse)
                     continue;
 
                 var currentValues = GetValidatedValues(currentBasis);
@@ -74,7 +74,7 @@ namespace CSF.Validation.RuleExecution
             }
 
             var values = enumerableProvider
-                .GetEnumerableItems(basis.ActualValue, basis.ManifestValue.ValidatedType)
+                .GetEnumerableItems(basis.GetActualValue(), basis.ManifestValue.ValidatedType)
                 .Select((x, idx) => new ValidatedValueBasis(basis.ManifestValue, new SuccessfulGetValueToBeValidatedResponse(x), basis.Parent, idx))
                 .Select(valueFromBasisFactory.GetValidatedValue)
                 .ToList();

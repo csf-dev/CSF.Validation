@@ -1,5 +1,7 @@
 using System;
+using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
+using Moq;
 using NUnit.Framework;
 
 namespace CSF.Validation.RuleExecution
@@ -8,74 +10,74 @@ namespace CSF.Validation.RuleExecution
     public class ValueToBeValidatedProviderTests
     {
         [Test,AutoMoqData]
-        public void TryGetValueToBeValidatedShouldReturnTrueIfTheValueIsReadable(ValueToBeValidatedProvider sut,
+        public void GetValueToBeValidatedShouldReturnSuccessResponseIfTheValueIsReadable(ValueToBeValidatedProvider sut,
                                                                                  [ManifestModel] ManifestValue manifestValue,
                                                                                  object parentValue,
                                                                                  ValidationOptions validationOptions,
                                                                                  object value)
         {
             manifestValue.AccessorFromParent = obj => value;
-            Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _), Is.True);
+            Assert.That(() => sut.GetValueToBeValidated(manifestValue, parentValue, validationOptions), Is.InstanceOf<SuccessfulGetValueToBeValidatedResponse>());
         }
 
         [Test,AutoMoqData]
-        public void TryGetValueToBeValidatedShouldExposeTheCorrectValueWhenItIsReadable(ValueToBeValidatedProvider sut,
+        public void GetValueToBeValidatedShouldExposeTheCorrectValueWhenItIsReadable(ValueToBeValidatedProvider sut,
                                                                                         [ManifestModel] ManifestValue manifestValue,
                                                                                         object parentValue,
                                                                                         ValidationOptions validationOptions,
                                                                                         object expected)
         {
             manifestValue.AccessorFromParent = obj => expected;
-            sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out var actual);
-            Assert.That(actual, Is.SameAs(expected));
+            Assert.That(() => sut.GetValueToBeValidated(manifestValue, parentValue, validationOptions),
+                        Has.Property(nameof(SuccessfulGetValueToBeValidatedResponse.Value)).EqualTo(expected));
         }
 
         [Test,AutoMoqData]
-        public void TryGetValueToBeValidatedShouldReturnFalseIfTheParentValueIsNull(ValueToBeValidatedProvider sut,
-                                                                                    [ManifestModel] ManifestValue manifestValue,
-                                                                                    ValidationOptions validationOptions)
+        public void GetValueToBeValidatedShouldReturnIgnoredResultIfTheParentValueIsNull(ValueToBeValidatedProvider sut,
+                                                                                         [ManifestModel] ManifestValue manifestValue,
+                                                                                         ValidationOptions validationOptions)
         {
-            Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, null, validationOptions, out _), Is.False);
+            Assert.That(() => sut.GetValueToBeValidated(manifestValue, null, validationOptions), Is.InstanceOf<IgnoredGetValueToBeValidatedResponse>());
         }
 
         [Test,AutoMoqData]
-        public void TryGetValueToBeValidatedShouldThrowIfTheAccessorThrowsAndIgnoreExceptionsIsDisabled(ValueToBeValidatedProvider sut,
-                                                                                 [ManifestModel] ManifestValue manifestValue,
-                                                                                 object parentValue,
-                                                                                 ValidationOptions validationOptions,
-                                                                                 Exception exception)
+        public void GetValueToBeValidatedShouldThrowIfTheAccessorThrowsAndExceptionBehaviourIsThrow([Frozen] IGetsAccessorExceptionBehaviour behaviourProvider,
+                                                                                                    ValueToBeValidatedProvider sut,
+                                                                                                    [ManifestModel] ManifestValue manifestValue,
+                                                                                                    object parentValue,
+                                                                                                    ValidationOptions validationOptions,
+                                                                                                    Exception exception)
         {
-            manifestValue.AccessorExceptionBehaviour = false;
-            validationOptions.AccessorExceptionBehaviour = false;
+            Mock.Get(behaviourProvider).Setup(x => x.GetBehaviour(manifestValue, validationOptions)).Returns(ValueAccessExceptionBehaviour.Throw);
             manifestValue.AccessorFromParent = obj => throw exception;
-            Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _),
+            Assert.That(() => sut.GetValueToBeValidated(manifestValue, parentValue, validationOptions),
                         Throws.InstanceOf<ValidationException>().And.InnerException.SameAs(exception));
         }
 
         [Test,AutoMoqData]
-        public void TryGetValueToBeValidatedShouldReturnFalseIfTheAccessorThrowsAndIgnoreExceptionsIsEnabledForTheManifest(ValueToBeValidatedProvider sut,
-                                                                                                                           [ManifestModel] ManifestValue manifestValue,
-                                                                                                                           object parentValue,
-                                                                                                                           ValidationOptions validationOptions,
-                                                                                                                           Exception exception)
+        public void GetValueToBeValidatedShouldReturnIgnoredResultIfAccessorThrowsAndExceptionBehaviourIsIgnore([Frozen] IGetsAccessorExceptionBehaviour behaviourProvider,
+                                                                                                                ValueToBeValidatedProvider sut,
+                                                                                                                [ManifestModel] ManifestValue manifestValue,
+                                                                                                                object parentValue,
+                                                                                                                ValidationOptions validationOptions,
+                                                                                                                Exception exception)
         {
-            manifestValue.AccessorExceptionBehaviour = true;
-            validationOptions.AccessorExceptionBehaviour = false;
+            Mock.Get(behaviourProvider).Setup(x => x.GetBehaviour(manifestValue, validationOptions)).Returns(ValueAccessExceptionBehaviour.Ignore);
             manifestValue.AccessorFromParent = obj => throw exception;
-            Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _), Is.False);
+            Assert.That(() => sut.GetValueToBeValidated(manifestValue, parentValue, validationOptions), Is.InstanceOf<IgnoredGetValueToBeValidatedResponse>());
         }
 
         [Test,AutoMoqData]
-        public void TryGetValueToBeValidatedShouldReturnFalseIfTheAccessorThrowsAndIgnoreExceptionsIsEnabledViaTheOptions(ValueToBeValidatedProvider sut,
-                                                                                                                          [ManifestModel] ManifestValue manifestValue,
-                                                                                                                          object parentValue,
-                                                                                                                          ValidationOptions validationOptions,
-                                                                                                                          Exception exception)
+        public void GetValueToBeValidatedShouldReturnErrorResultIfAccessorThrowsAndExceptionBehaviourIsError([Frozen] IGetsAccessorExceptionBehaviour behaviourProvider,
+                                                                                                             ValueToBeValidatedProvider sut,
+                                                                                                             [ManifestModel] ManifestValue manifestValue,
+                                                                                                             object parentValue,
+                                                                                                             ValidationOptions validationOptions,
+                                                                                                             Exception exception)
         {
-            manifestValue.AccessorExceptionBehaviour = false;
-            validationOptions.AccessorExceptionBehaviour = true;
+            Mock.Get(behaviourProvider).Setup(x => x.GetBehaviour(manifestValue, validationOptions)).Returns(ValueAccessExceptionBehaviour.TreatAsError);
             manifestValue.AccessorFromParent = obj => throw exception;
-            Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _), Is.False);
+            Assert.That(() => sut.GetValueToBeValidated(manifestValue, parentValue, validationOptions), Is.InstanceOf<ErrorGetValueToBeValidatedResponse>());
         }
     }
 }
