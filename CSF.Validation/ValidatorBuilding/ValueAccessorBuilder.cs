@@ -17,27 +17,13 @@ namespace CSF.Validation.ValidatorBuilding
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
         readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
-        bool ignoreAccessorExceptions;
+        ValueAccessExceptionBehaviour? accessExceptionBehaviour;
 
-        /// <summary>
-        /// Adds a "value validation rule" to validate the value &amp; the validated object instance.
-        /// The rule type must be a class that implements <see cref="IRule{TValue, TValidated}"/> for the same
-        /// (or compatible contravariant) generic types <typeparamref name="TValue"/> &amp; <typeparamref name="TValidated"/>.
-        /// </summary>
-        /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
-        /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
-        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        /// <inheritdoc/>
         public IConfiguresValueAccessor<TValidated, TValue> AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = null) where TRule : IRule<TValue, TValidated>
             => AddRulePrivate<TRule>(ruleDefinition);
 
-        /// <summary>
-        /// Adds a validation rule to validate the value indicated by the value accessor.
-        /// The rule type must be a class that implements <see cref="IRule{TValue}"/> for the same
-        /// (or compatible contravariant) generic type <typeparamref name="TValue"/>.
-        /// </summary>
-        /// <typeparam name="TRule">The concrete type of the validation rule.</typeparam>
-        /// <param name="ruleDefinition">An optional action which defines &amp; configures the validation rule.</param>
-        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        /// <inheritdoc/>
         public IConfiguresValueAccessor<TValidated, TValue> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IRule<TValue>
             => AddRulePrivate<TRule>(ruleDefinition);
 
@@ -48,22 +34,7 @@ namespace CSF.Validation.ValidatorBuilding
             return this;
         }
 
-        /// <summary>
-        /// Adds/imports rules from an object that implements <see cref="IBuildsValidator{TValidated}"/> for the generic
-        /// type <typeparamref name="TValue"/>.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This allows composition of validators, reuse of validation rules across differing validation scenarios and
-        /// additionally the building of validators which operate across complex object graphs.
-        /// All of the rules specified in the selected builder-type will be imported and added to the current validator,
-        /// validating the type <typeparamref name="TValue"/>.
-        /// </para>
-        /// </remarks>
-        /// <typeparam name="TBuilder">
-        /// The type of a class implementing <see cref="IBuildsValidator{TValue}"/>, specifying how a validator should be built.
-        /// </typeparam>
-        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        /// <inheritdoc/>
         public IConfiguresValueAccessor<TValidated, TValue> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValue>
         {
             var importedRules = validatorManifestFactory.GetValidatorManifest(typeof(TBuilder), context);
@@ -71,36 +42,14 @@ namespace CSF.Validation.ValidatorBuilding
             return this;
         }
 
-        /// <summary>
-        /// Configures the validator to ignore any exceptions encountered whilst getting the value from this accessor.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This option is irrelevant if <see cref="ValidationOptions.IgnoreValueAccessExceptions"/> is set to <see langword="true"/>,
-        /// because that option ignores all value-access exceptions globally.
-        /// </para>
-        /// <para>
-        /// If the global validation options are not configured to globally-ignore value access exceptions then this option may be
-        /// used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
-        /// hiding of logic errors within the accessor.
-        /// </para>
-        /// <para>
-        /// See the information about the global setting for more information about what it means to ignore exceptions for
-        /// value accessors.
-        /// </para>
-        /// </remarks>
-        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
-        public IConfiguresValueAccessor<TValidated, TValue> IgnoreExceptions()
+        /// <inheritdoc/>
+        public IConfiguresValueAccessor<TValidated, TValue> AccessorExceptionBehaviour(ValueAccessExceptionBehaviour? behaviour)
         {
-            ignoreAccessorExceptions = true;
+            accessExceptionBehaviour = behaviour;
             return this;
         }
 
-        /// <summary>
-        /// Gets a manifest value from the current instance.
-        /// </summary>
-        /// <returns>A manifest value.</returns>
+        /// <inheritdoc/>
         public ManifestValueBase GetManifestValue()
         {
             var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
@@ -112,8 +61,8 @@ namespace CSF.Validation.ValidatorBuilding
                 context.ManifestValue.Children.Add(val);
             }
 
-            if(ignoreAccessorExceptions && context.ManifestValue is ManifestValue value)
-                value.IgnoreAccessorExceptions = true;
+            if(accessExceptionBehaviour.HasValue && context.ManifestValue is ManifestValue value)
+                value.AccessorExceptionBehaviour = accessExceptionBehaviour.Value;
 
             return context.ManifestValue;
         }

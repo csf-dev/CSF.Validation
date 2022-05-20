@@ -18,7 +18,7 @@ namespace CSF.Validation.RuleExecution
             Assert.Multiple(() =>
             {
                 Assert.That(result, Has.Property(nameof(ValidatedValue.ManifestValue)).SameAs(basis.ManifestValue));
-                Assert.That(result, Has.Property(nameof(ValidatedValue.ActualValue)).SameAs(basis.ActualValue));
+                Assert.That(result, Has.Property(nameof(ValidatedValue.ValueResponse)).SameAs(basis.ActualValue));
                 Assert.That(result, Has.Property(nameof(ValidatedValue.ParentValue)).SameAs(basis.Parent));
                 Assert.That(result, Has.Property(nameof(ValidatedValue.CollectionItemOrder)).EqualTo(basis.CollectionOrder));
             });

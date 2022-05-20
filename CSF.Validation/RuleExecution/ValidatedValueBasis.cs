@@ -17,7 +17,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets the actual value.
         /// </summary>
-        public object ActualValue { get; }
+        public GetValueToBeValidatedResponse ActualValue { get; }
 
         /// <summary>
         /// Gets an optional parent validated value.
@@ -43,7 +43,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="actualValue">The actual value for this basis.</param>
         /// <param name="parent">An optional parent validated value for this basis.</param>
         /// <param name="collectionOrder">An optional collection order for this basis.</param>
-        public ValidatedValueBasis(ManifestValueBase manifestValue, object actualValue, ValidatedValue parent, long? collectionOrder = default)
+        public ValidatedValueBasis(ManifestValueBase manifestValue, GetValueToBeValidatedResponse actualValue, ValidatedValue parent, long? collectionOrder = default)
         {
             ManifestValue = manifestValue;
             ActualValue = actualValue;

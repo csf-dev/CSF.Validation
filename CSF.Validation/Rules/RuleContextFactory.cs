@@ -17,7 +17,7 @@ namespace CSF.Validation.Rules
         public RuleContext GetRuleContext(ExecutableRule rule)
             => new RuleContext(rule.ManifestRule,
                                rule.RuleIdentifier,
-                               rule.ValidatedValue.ActualValue,
+                               rule.ValidatedValue.GetActualValue(),
                                GetAncestorContexts(rule).ToList(),
                                rule.RuleLogic.RuleInterface,
                                rule.ValidatedValue.CollectionItemOrder);
@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
             while(!(value.ParentValue is null))
             {
                 var current = value.ParentValue;
-                yield return new ValueContext(current.ValueIdentity, current.ActualValue, current.ManifestValue, current.CollectionItemOrder);
+                yield return new ValueContext(current.ValueIdentity, current.GetActualValue(), current.ManifestValue, current.CollectionItemOrder);
                 value = current;
             }
         }

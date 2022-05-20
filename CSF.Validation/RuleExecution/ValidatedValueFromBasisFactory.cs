@@ -24,7 +24,7 @@ namespace CSF.Validation.RuleExecution
             var value = new ValidatedValue
             {
                 ManifestValue = basis.ManifestValue,
-                ActualValue = basis.ActualValue,
+                ValueResponse = basis.ActualValue,
                 ValueIdentity = valueIdentity,
                 ParentValue = basis.Parent,
                 CollectionItemOrder = basis.CollectionOrder,

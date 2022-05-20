@@ -44,7 +44,7 @@ namespace CSF.Validation.RuleExecution
             await sut.ExecuteRuleAsync(rule);
 
             Mock.Get(rule.RuleLogic)
-                .Verify(x => x.GetResultAsync(validatedValue.ActualValue, parentValue.ActualValue, It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()), Times.Once);
+                .Verify(x => x.GetResultAsync(validatedValue.ValueResponse, parentValue.ValueResponse, It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Test,AutoMoqData]

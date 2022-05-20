@@ -1,4 +1,5 @@
 using System;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.ValidatorBuilding
@@ -50,25 +51,19 @@ namespace CSF.Validation.ValidatorBuilding
         IConfiguresValueAccessor<TValidated, TValue> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValue>;
 
         /// <summary>
-        /// Configures the validator to ignore any exceptions encountered whilst getting the value from this accessor.
+        /// Configures the validator with a behaviour to use should the value-accessor for the current value raise an exception..
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This option is irrelevant if <see cref="ValidationOptions.IgnoreValueAccessExceptions"/> is set to <see langword="true"/>,
-        /// because that option ignores all value-access exceptions globally.
-        /// </para>
-        /// <para>
-        /// If the global validation options are not configured to globally-ignore value access exceptions then this option may be
-        /// used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
-        /// hiding of logic errors within the accessor.
-        /// </para>
-        /// <para>
-        /// See the information about the global setting for more information about what it means to ignore exceptions for
-        /// value accessors.
+        /// This option will override the behaviour specified at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// for the current value, if the specified behaviour is any non-<see langword="null" /> value.
+        /// If this method is unused then it will be treated as if the specified <see cref="ValueAccessExceptionBehaviour"/>
+        /// specified at this point were <see langword="null" /> and the <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// will be used instead.
         /// </para>
         /// </remarks>
+        /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
-        /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
-        IConfiguresValueAccessor<TValidated, TValue> IgnoreExceptions();
+        IConfiguresValueAccessor<TValidated, TValue> AccessorExceptionBehaviour(ValueAccessExceptionBehaviour? behaviour);
     }
 }

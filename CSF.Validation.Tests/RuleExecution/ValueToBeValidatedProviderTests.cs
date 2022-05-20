@@ -45,8 +45,8 @@ namespace CSF.Validation.RuleExecution
                                                                                  ValidationOptions validationOptions,
                                                                                  Exception exception)
         {
-            manifestValue.IgnoreAccessorExceptions = false;
-            validationOptions.IgnoreValueAccessExceptions = false;
+            manifestValue.AccessorExceptionBehaviour = false;
+            validationOptions.AccessorExceptionBehaviour = false;
             manifestValue.AccessorFromParent = obj => throw exception;
             Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _),
                         Throws.InstanceOf<ValidationException>().And.InnerException.SameAs(exception));
@@ -59,8 +59,8 @@ namespace CSF.Validation.RuleExecution
                                                                                                                            ValidationOptions validationOptions,
                                                                                                                            Exception exception)
         {
-            manifestValue.IgnoreAccessorExceptions = true;
-            validationOptions.IgnoreValueAccessExceptions = false;
+            manifestValue.AccessorExceptionBehaviour = true;
+            validationOptions.AccessorExceptionBehaviour = false;
             manifestValue.AccessorFromParent = obj => throw exception;
             Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _), Is.False);
         }
@@ -72,8 +72,8 @@ namespace CSF.Validation.RuleExecution
                                                                                                                           ValidationOptions validationOptions,
                                                                                                                           Exception exception)
         {
-            manifestValue.IgnoreAccessorExceptions = false;
-            validationOptions.IgnoreValueAccessExceptions = true;
+            manifestValue.AccessorExceptionBehaviour = false;
+            validationOptions.AccessorExceptionBehaviour = true;
             manifestValue.AccessorFromParent = obj => throw exception;
             Assert.That(() => sut.TryGetValueToBeValidated(manifestValue, parentValue, validationOptions, out _), Is.False);
         }

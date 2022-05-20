@@ -56,8 +56,19 @@ namespace CSF.Validation.RuleExecution
             }
 
             results.AddRange(GetResultsForRulesWithFailedDependencies(dependencyTracker));
+            results.AddRange(GetErrorResultsForFailedValues(rules));
 
             return results;
+        }
+
+        IEnumerable<ValidationRuleResult> GetErrorResultsForFailedValues(IEnumerable<ExecutableRuleAndDependencies> rules)
+        {
+            return rules
+                .Select(x => x.ExecutableRule.ValidatedValue.ValueResponse)
+                .OfType<ErrorGetValueToBeValidatedResponse>()
+                .Distinct()
+                .Select(x => new ValidationRuleResult(new RuleResult(RuleOutcome.Errored, exception: x.Exception), null, null))
+                .ToList();
         }
 
         /// <summary>
@@ -89,6 +100,8 @@ namespace CSF.Validation.RuleExecution
 
             foreach(var rule in availableRules)
             {
+                if(!rule.ValidatedValue.ValueResponse.IsSuccess) continue;
+
                 var result = await ruleExecutor.ExecuteRuleAsync(rule, cancellationToken).ConfigureAwait(false);
                 rule.Result = result;
                 dependencyTracker.HandleValidationRuleResult(rule);

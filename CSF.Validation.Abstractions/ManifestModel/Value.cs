@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ManifestModel
 {
@@ -23,25 +23,20 @@ namespace CSF.Validation.ManifestModel
     public class Value : ValueBase
     {
         /// <summary>
-        /// Indicates that the validator should ignore any exceptions encountered whilst getting the value from
-        /// the member accessor for this value.
+        /// Gets or sets an optional value which indicates the desired behaviour should the member accessor
+        /// raise an exception.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This option is irrelevant if <see cref="ValidationOptions.IgnoreValueAccessExceptions"/> is set to <see langword="true"/>,
-        /// because that option ignores all value-access exceptions globally.
+        /// This option will override the behaviour specified at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// for the current value, if this property is set to any non-<see langword="null" /> value.
         /// </para>
         /// <para>
-        /// If the global validation options are not configured to globally-ignore value access exceptions then this option may be
-        /// used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
-        /// hiding of logic errors within the accessor.
-        /// </para>
-        /// <para>
-        /// See the information about the global setting for more information about what it means to ignore exceptions for
-        /// value accessors.
+        /// If this property is set to <see langword="null" /> then the behaviour at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// will be used.
         /// </para>
         /// </remarks>
-        /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
-        public bool IgnoreAccessorExceptions { get; set; }
+        /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
     }
 }

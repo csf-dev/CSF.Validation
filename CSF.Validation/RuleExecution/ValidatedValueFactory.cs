@@ -41,13 +41,16 @@ namespace CSF.Validation.RuleExecution
                 throw new ArgumentNullException(nameof(options));
 
             var openList = new Queue<ValidatedValueBasis>(new [] {
-                new ValidatedValueBasis(manifestValue, objectToBeValidated, null)
+                new ValidatedValueBasis(manifestValue, new SuccessfulGetValueToBeValidatedResponse(objectToBeValidated), null)
             });
             ValidatedValue rootValidatedValue = null;
 
             while(openList.Any())
             {
                 var currentBasis = openList.Dequeue();
+
+                if(currentBasis.ActualValue is IgnoredGetValueToBeValidatedResponse)
+                    continue;
 
                 var currentValues = GetValidatedValues(currentBasis);
                 if(rootValidatedValue is null && currentValues.Any())
@@ -72,11 +75,12 @@ namespace CSF.Validation.RuleExecution
 
             var values = enumerableProvider
                 .GetEnumerableItems(basis.ActualValue, basis.ManifestValue.ValidatedType)
-                .Select((x, idx) => new ValidatedValueBasis(basis.ManifestValue, x, basis.Parent, idx))
+                .Select((x, idx) => new ValidatedValueBasis(basis.ManifestValue, new SuccessfulGetValueToBeValidatedResponse(x), basis.Parent, idx))
                 .Select(valueFromBasisFactory.GetValidatedValue)
                 .ToList();
             if(!(basis.Parent is null))
                 basis.Parent.CollectionItems = values;
+            
             return values;
         }
 
@@ -85,14 +89,20 @@ namespace CSF.Validation.RuleExecution
                                           Queue<ValidatedValueBasis> openList,
                                           ValidationOptions options)
         {
-            if(!(currentBasis.ManifestValue.CollectionItemValue is null || currentValue.ActualValue is null))
-                openList.Enqueue(new ValidatedValueBasis(currentBasis.ManifestValue.CollectionItemValue, currentValue.ActualValue, currentValue.ParentValue));
+            if(!currentValue.ValueResponse.IsSuccess)
+                return;
+
+            var actualValue = currentValue.GetActualValue();
+
+            if(!(currentBasis.ManifestValue.CollectionItemValue is null || actualValue is null))
+                openList.Enqueue(new ValidatedValueBasis(currentBasis.ManifestValue.CollectionItemValue,
+                                                         currentValue.ValueResponse,
+                                                         currentValue.ParentValue));
 
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {
-                if(!valueProvider.TryGetValueToBeValidated(childManifestValue, currentValue.ActualValue, options, out var childActualValue))
-                    continue;
-                openList.Enqueue(new ValidatedValueBasis(childManifestValue, childActualValue, currentValue));
+                var valueResponse = valueProvider.GetValueToBeValidated(childManifestValue, actualValue, options);
+                openList.Enqueue(new ValidatedValueBasis(childManifestValue, valueResponse, currentValue));
             }
         }
 

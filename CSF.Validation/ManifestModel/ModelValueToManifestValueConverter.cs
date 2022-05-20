@@ -116,7 +116,7 @@ namespace CSF.Validation.ManifestModel
                 ValidatedType = context.ValidatedType,
             };
             if(context.CurrentValue is Value val)
-                manifestValue.IgnoreAccessorExceptions = val.IgnoreAccessorExceptions;
+                manifestValue.AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
             if (context.ParentManifestValue != null && !context.IsCollectionItem)
                 context.ParentManifestValue.Children.Add(manifestValue);
             return manifestValue;

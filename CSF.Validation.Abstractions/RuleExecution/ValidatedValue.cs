@@ -15,9 +15,10 @@ namespace CSF.Validation.RuleExecution
         public ManifestValueBase ManifestValue { get; set;  }
 
         /// <summary>
-        /// Gets or sets the actual value to be validated.
+        /// Gets or sets a response object which may expose an "actual value" of the validated value.
         /// </summary>
-        public object ActualValue { get; set; }
+        /// <seealso cref="GetActualValue"/>
+        public GetValueToBeValidatedResponse ValueResponse { get; set; }
 
         /// <summary>
         /// Gets or sets the identity of the value to be validated.
@@ -64,5 +65,17 @@ namespace CSF.Validation.RuleExecution
         /// </para>
         /// </remarks>
         public long? CollectionItemOrder { get; set; }
+
+        /// <summary>
+        /// Gets the 'actual value' from the <see cref="ValueResponse"/>.  If that is not an instance of
+        /// <see cref="SuccessfulGetValueToBeValidatedResponse"/> then this method will return <see langword="null" />.
+        /// </summary>
+        /// <returns>Either an actual value or a <see langword="null" /> reference.</returns>
+        public object GetActualValue()
+        {
+            if(!(ValueResponse is SuccessfulGetValueToBeValidatedResponse successResponse))
+                return null;
+            return successResponse.Value;
+        }
     }
 }

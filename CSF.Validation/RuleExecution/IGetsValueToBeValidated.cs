@@ -8,17 +8,30 @@ namespace CSF.Validation.RuleExecution
     public interface IGetsValueToBeValidated
     {
         /// <summary>
-        /// Attempts to get the value to be validatded and returns a value indicating whether or not this was successful.
+        /// Attempts to get the value to be validatded from the specified manifest value and parent value instance.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This method returns a result object indicating the outcome of the attempt.  Three different concrete classes
+        /// may be returned by this method.
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description><see cref="SuccessfulGetValueToBeValidatedResponse"/> if the attempt is a success.</description></item>
+        /// <item><description><see cref="ErrorGetValueToBeValidatedResponse"/> if the attempt failed and this should result in an error being added to the validation result.</description></item>
+        /// <item><description><see cref="IgnoredGetValueToBeValidatedResponse"/> if the attempt failed but this should be silently ignored.</description></item>
+        /// </list>
+        /// <para>
+        /// This method might also raise a <see cref="ValidationException"/> if the attempt fails and the error-handling
+        /// behaviour (decided between the manifest value and validation options) is <see cref="ValueAccessExceptionBehaviour.Throw"/>.
+        /// </para>
+        /// </remarks>
         /// <param name="manifestValue">The manifest value describing the value.</param>
         /// <param name="parentValue">The previous/parent value, from which the validated value should be derived.</param>
         /// <param name="validationOptions">Validation options.</param>
-        /// <param name="valueToBeValidated">If this method returns <see langword="true" /> then this parameter
-        /// exposes the validated value.  This parameter must be ignored if the method returns <see langword="false" />.</param>
-        /// <returns><see langword="true" /> if getting the validated value is a success; <see langword="false" /> otherwise.</returns>
-        bool TryGetValueToBeValidated(ManifestValue manifestValue,
-                                      object parentValue,
-                                      ValidationOptions validationOptions,
-                                      out object valueToBeValidated);
+        /// <returns>A result object which indicates success/failure and provides further contextual information.</returns>
+        /// <exception cref="ValidationException">If the attempt fails and the error-handling behaviour is <see cref="ValueAccessExceptionBehaviour.Throw"/>.</exception>
+        GetValueToBeValidatedResponse GetValueToBeValidated(ManifestValue manifestValue,
+                                                            object parentValue,
+                                                            ValidationOptions validationOptions);
     }
 }

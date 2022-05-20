@@ -9,43 +9,43 @@ namespace CSF.Validation.RuleExecution
     /// </summary>
     public class ValueToBeValidatedProvider : IGetsValueToBeValidated
     {
-        /// <summary>
-        /// Attempts to get the value to be validatded and returns a value indicating whether or not this was successful.
-        /// </summary>
-        /// <param name="manifestValue">The manifest value describing the value.</param>
-        /// <param name="parentValue">The previous/parent value, from which the validated value should be derived.</param>
-        /// <param name="validationOptions">Validation options.</param>
-        /// <param name="valueToBeValidated">If this method returns <see langword="true" /> then this parameter
-        /// exposes the validated value.  This parameter must be ignored if the method returns <see langword="false" />.</param>
-        /// <returns><see langword="true" /> if getting the validated value is a success; <see langword="false" /> otherwise.</returns>
-        public bool TryGetValueToBeValidated(ManifestValue manifestValue,
-                                             object parentValue,
-                                             ValidationOptions validationOptions,
-                                             out object valueToBeValidated)
+        readonly IGetsAccessorExceptionBehaviour behaviourProvider;
+
+        /// <inheritdoc/>
+        public GetValueToBeValidatedResponse GetValueToBeValidated(ManifestValue manifestValue, object parentValue, ValidationOptions validationOptions)
         {
-            valueToBeValidated = null;
-            if(parentValue is null) return false;
+            if(parentValue is null) return IgnoredGetValueToBeValidatedResponse.Default;
 
             try
             {
-                valueToBeValidated = manifestValue.AccessorFromParent(parentValue);
-                return true;
+                var valueToBeValidated = manifestValue.AccessorFromParent(parentValue);
+                return new SuccessfulGetValueToBeValidatedResponse(valueToBeValidated);
             }
             catch(Exception e)
             {
-                if(!manifestValue.IgnoreAccessorExceptions && !validationOptions.IgnoreValueAccessExceptions)
+                var behaviour = behaviourProvider.GetBehaviour(manifestValue, validationOptions);
+                if(behaviour == ValueAccessExceptionBehaviour.Throw)
                 {
                     var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("ErrorAccessingValue"),
                                                 manifestValue,
                                                 parentValue);
                     throw new ValidationException(message, e);
                 }
+                else if(behaviour == ValueAccessExceptionBehaviour.TreatAsError)
+                    return new ErrorGetValueToBeValidatedResponse(e);
 
-                valueToBeValidated = GetDefaultOfType(manifestValue.ValidatedType);
-                return false;
+                return IgnoredGetValueToBeValidatedResponse.Default;
             }
         }
 
-        static object GetDefaultOfType(Type t) => t.GetTypeInfo().IsValueType ? Activator.CreateInstance(t) : null;
+        /// <summary>
+        /// Initialises a new instance of <see cref="ValueToBeValidatedProvider"/>.
+        /// </summary>
+        /// <param name="behaviourProvider">The exception behaviour provider.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="behaviourProvider"/> is <see langword="null" />.</exception>
+        public ValueToBeValidatedProvider(IGetsAccessorExceptionBehaviour behaviourProvider)
+        {
+            this.behaviourProvider = behaviourProvider ?? throw new ArgumentNullException(nameof(behaviourProvider));
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(value);
-            value.ActualValue = validatedValue;
+            value.ValueResponse = validatedValue;
             Mock.Get(enumerableProvider)
                 .Setup(x => x.GetEnumerableItems(validatedValue, manifestValue.CollectionItemValue.ValidatedType))
                 .Returns(new[] { item });
@@ -86,7 +86,7 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(value);
-            value.ActualValue = validatedValue;
+            value.ValueResponse = validatedValue;
             Mock.Get(enumerableProvider)
                 .Setup(x => x.GetEnumerableItems(validatedValue, manifestValue.CollectionItemValue.ValidatedType))
                 .Returns(new[] { item1, item2, item3 });
@@ -123,14 +123,14 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(val);
-            val.ActualValue = validatedValue;
+            val.ValueResponse = validatedValue;
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest)))
                 .Returns(childVal);
-            childVal.ActualValue = childValue;
+            childVal.ValueResponse = childValue;
             object child = childValue;
             Mock.Get(valueProvider)
-                .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
+                .Setup(x => x.GetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
                 .Returns(true);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
@@ -167,7 +167,7 @@ namespace CSF.Validation.RuleExecution
                 .Returns(childVal);
             object child = childValue;
             Mock.Get(valueProvider)
-                .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
+                .Setup(x => x.GetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
                 .Returns(false);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
@@ -207,25 +207,25 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(val);
-            val.ActualValue = validatedValue;
+            val.ValueResponse = validatedValue;
             val.ManifestValue = manifestValue;
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == childManifest)))
                 .Returns(childVal);
-            childVal.ActualValue = childValue;
+            childVal.ValueResponse = childValue;
             childVal.ManifestValue = childManifest;;
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == grandchildManifest)))
                 .Returns(grandchildVal);
-            grandchildVal.ActualValue = grandchildValue;
+            grandchildVal.ValueResponse = grandchildValue;
             grandchildVal.ManifestValue = grandchildManifest;
             object child = childValue;
             Mock.Get(valueProvider)
-                .Setup(x => x.TryGetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
+                .Setup(x => x.GetValueToBeValidated(childManifest, validatedValue, validationOptions, out child))
                 .Returns(true);
             object grandchild = grandchildValue;
             Mock.Get(valueProvider)
-                .Setup(x => x.TryGetValueToBeValidated(grandchildManifest, childValue, validationOptions, out grandchild))
+                .Setup(x => x.GetValueToBeValidated(grandchildManifest, childValue, validationOptions, out grandchild))
                 .Returns(true);
 
             var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
@@ -276,26 +276,26 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(val);
-            val.ActualValue = validatedValue;
+            val.ValueResponse = validatedValue;
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child)))
                 .Returns(firstCollection);
-            firstCollection.ActualValue = validatedValue.DoubleCollection;
+            firstCollection.ValueResponse = validatedValue.DoubleCollection;
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child.CollectionItemValue)))
                 .Returns(secondCollection);
-            secondCollection.ActualValue = validatedValue.DoubleCollection.First();
+            secondCollection.ValueResponse = validatedValue.DoubleCollection.First();
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == child.CollectionItemValue.CollectionItemValue)))
                 .Returns(item);
-            item.ActualValue = validatedValue.DoubleCollection.First().First();
+            item.ValueResponse = validatedValue.DoubleCollection.First().First();
             object validatedVal = validatedValue;
             Mock.Get(valueProvider)
-                .Setup(x => x.TryGetValueToBeValidated(manifestValue, validatedValue, validationOptions, out validatedVal))
+                .Setup(x => x.GetValueToBeValidated(manifestValue, validatedValue, validationOptions, out validatedVal))
                 .Returns(true);
-            object doubleCollection = firstCollection.ActualValue;
+            object doubleCollection = firstCollection.ValueResponse;
             Mock.Get(valueProvider)
-                .Setup(x => x.TryGetValueToBeValidated(child, validatedValue, validationOptions, out doubleCollection))
+                .Setup(x => x.GetValueToBeValidated(child, validatedValue, validationOptions, out doubleCollection))
                 .Returns(true);
             Mock.Get(enumerableProvider)
                 .Setup(x => x.GetEnumerableItems(validatedValue.DoubleCollection, child.CollectionItemValue.ValidatedType))
