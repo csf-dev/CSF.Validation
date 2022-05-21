@@ -61,7 +61,7 @@ namespace CSF.Validation.RuleExecution
             return results;
         }
 
-        IEnumerable<ValidationRuleResult> GetErrorResultsForFailedValues(IEnumerable<ExecutableRuleAndDependencies> rules)
+        static IEnumerable<ValidationRuleResult> GetErrorResultsForFailedValues(IEnumerable<ExecutableRuleAndDependencies> rules)
         {
             return rules
                 .Select(x => x.ExecutableRule.ValidatedValue.ValueResponse)

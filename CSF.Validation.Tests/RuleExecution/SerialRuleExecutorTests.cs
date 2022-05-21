@@ -121,5 +121,23 @@ namespace CSF.Validation.RuleExecution
             Assert.That(async () => await sut.ExecuteAllRulesAsync(allRules, default),
                         Is.EquivalentTo(new[] { result1, result2, result3 }));
         }
+
+        [Test,AutoMoqData]
+        public async Task ExecuteAllRulesAsyncShouldIncludeErrorResultsForEachErroredValue()
+        {
+            Assert.Fail("TODO: Wrote this test");
+        }
+
+        [Test,AutoMoqData]
+        public async Task ExecuteAllRulesAsyncShouldNotIncludeErrorResultsForIgnoredValues()
+        {
+            Assert.Fail("TODO: Wrote this test");
+        }
+
+        [Test,AutoMoqData]
+        public async Task ExecuteAllRulesAsyncShouldNotExecuteRulesAssociatedWithUnsuccessfulValues()
+        {
+            Assert.Fail("TODO: Wrote this test");
+        }
     }
 }
