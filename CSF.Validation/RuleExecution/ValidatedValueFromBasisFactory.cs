@@ -19,12 +19,12 @@ namespace CSF.Validation.RuleExecution
         {
             var valueIdentity = basis.ManifestValue.IdentityAccessor is null
                 ? null
-                : basis.ManifestValue.IdentityAccessor(basis.ActualValue);
+                : basis.ManifestValue.IdentityAccessor(basis.GetActualValue());
             
             var value = new ValidatedValue
             {
                 ManifestValue = basis.ManifestValue,
-                ActualValue = basis.ActualValue,
+                ValueResponse = basis.ValidatedValueResponse,
                 ValueIdentity = valueIdentity,
                 ParentValue = basis.Parent,
                 CollectionItemOrder = basis.CollectionOrder,

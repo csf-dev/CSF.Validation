@@ -19,6 +19,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsValidatedValueFromBasis, ValidatedValueFromBasisFactory>()
                 .AddTransient<IGetsEnumerableItemsToBeValidated, EnumerableItemProvider>()
                 .AddTransient<IGetsValueToBeValidated, ValueToBeValidatedProvider>()
+                .AddTransient<IGetsAccessorExceptionBehaviour, ValueAccessExceptionBehaviourProvider>()
                 ;
 
         }

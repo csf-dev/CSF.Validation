@@ -1,3 +1,4 @@
+using CSF.Validation.Manifest;
 using CSF.Validation.ValidatorBuilding;
 
 namespace CSF.Validation
@@ -14,33 +15,21 @@ namespace CSF.Validation
         public RuleThrowingBehaviour RuleThrowingBehaviour { get; set; }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether or not exceptions should be globally ignored
-        /// when accessing values from validated objects.
+        /// Gets or sets a value which indicates the default behaviour should a value-accessor raise an exception
+        /// during validation.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// For example, if a validator is to validate a value from an object and that value is retrieved from
-        /// a property or method access.  If that property/method raises an exception for retrieving the value
-        /// then by default that exception will be rethrown by the validator and will cause validation to fail.
+        /// This value indicates the default behaviour when an accessor raises an exception but this configuration
+        /// value may be overridden by <see cref="ManifestValue.AccessorExceptionBehaviour"/> upon an individual
+        /// manifest value if it is set to non-<see langword="null" /> value there.
         /// </para>
         /// <para>
-        /// If this option is set to <see langword="true"/> then all such exceptions will be caught and ignored.
-        /// In this case, the validated value will be treated as the default of its data-type, such as
-        /// <see langword="null"/> or zero.
-        /// </para>
-        /// <para>
-        /// It is not recommended to enable this setting as it may hide logic errors in the value accessors used
-        /// by the validator.  It could then lead to misleading validation results, as the rules are being run upon
-        /// an incorrect value.
-        /// </para>
-        /// <para>
-        /// If this option is set to <see langword="true"/> then the <see cref="IConfiguresValueAccessor{TValidated,TValue}.IgnoreExceptions"/>
-        /// option will be irrelevant wherever it is used upon individual value accessors; exceptions will be ignored
-        /// globally.  If this option is set to <see langword="false"/> then the <see cref="IConfiguresValueAccessor{TValidated,TValue}.IgnoreExceptions"/>
-        /// option may be used on individual value accessors to ignore exceptions on a value-by-value basis.
+        /// The default behaviour for this property if unset is <see cref="ValueAccessExceptionBehaviour.TreatAsError"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.IgnoreExceptions"/>
-        public bool IgnoreValueAccessExceptions { get; set; }
+        /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.AccessorExceptionBehaviour"/>
+        /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
+        public ValueAccessExceptionBehaviour AccessorExceptionBehaviour { get; set; }
     }
 }

@@ -78,20 +78,21 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void IgnoreExceptionsShouldMarkTheManifestValueAsIgnoringAccessorExceptions([Frozen, ManifestModel] ValidatorBuilderContext context,
-                                                                                           ValueAccessorBuilder<ValidatedObject, string> sut)
+        public void AccessorExceptionBehaviourShouldMarkTheManifestValueWithThatBehaviour([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                                           ValueAccessorBuilder<ValidatedObject, string> sut,
+                                                                                           ValueAccessExceptionBehaviour behaviour)
         {
-            ((ManifestValue) context.ManifestValue).IgnoreAccessorExceptions = false;
-            sut.IgnoreExceptions();
-            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.IgnoreAccessorExceptions)).True);
+            ((ManifestValue) context.ManifestValue).AccessorExceptionBehaviour = behaviour;
+            sut.AccessorExceptionBehaviour(behaviour);
+            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.AccessorExceptionBehaviour)).EqualTo(behaviour));
         }
 
         [Test,AutoMoqData]
-        public void GetManifestValueShouldNotMarkTheManifestValueAsIgnoringAccessorExceptionsIfIgnoreExceptionsWasNotCalled([Frozen, ManifestModel] ValidatorBuilderContext context,
-                                                                                                                            ValueAccessorBuilder<ValidatedObject, string> sut)
+        public void GetManifestValueShouldNotMarkTheManifestValueWithAnExceptionBehaviourIfAccessorExceptionBehaviourWasNotCalled([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                                                                                  ValueAccessorBuilder<ValidatedObject, string> sut)
         {
-            ((ManifestValue) context.ManifestValue).IgnoreAccessorExceptions = false;
-            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.IgnoreAccessorExceptions)).False);
+            ((ManifestValue) context.ManifestValue).AccessorExceptionBehaviour = null;
+            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.AccessorExceptionBehaviour)).Null);
         }
     }
 }

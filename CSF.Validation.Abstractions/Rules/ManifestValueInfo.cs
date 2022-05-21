@@ -49,26 +49,20 @@ namespace CSF.Validation.Rules
         public IReadOnlyCollection<ManifestValueInfo> Children { get; }
 
         /// <summary>
-        /// Gets a value which indicates that the validator should ignore any exceptions encountered whilst accessing
-        /// this value from its parent.
+        /// Gets or sets an optional value which indicates the desired behaviour should the value-accessor raise an exception.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This option is irrelevant if <see cref="ValidationOptions.IgnoreValueAccessExceptions"/> is set to <see langword="true"/>
-        /// when validation occurs, because that option ignores all value-access exceptions globally.
+        /// This option will override the behaviour specified at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// for the current manifest value, if this property is set to any non-<see langword="null" /> value.
         /// </para>
         /// <para>
-        /// If the global validation options are not configured to globally-ignore value access exceptions then this option may be
-        /// used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
-        /// hiding of logic errors within the accessor.
-        /// </para>
-        /// <para>
-        /// See the information about the global setting for more information about what it means to ignore exceptions for
-        /// value accessors.
+        /// If this property is set to <see langword="null" /> then the behaviour at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// will be used.
         /// </para>
         /// </remarks>
-        /// <seealso cref="ValidationOptions.IgnoreValueAccessExceptions"/>
-        public bool IgnoreAccessorExceptions { get; }
+        /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; }
 
         /// <summary>
         /// Initialises an instance of <see cref="ManifestValueInfo"/>.
@@ -88,7 +82,7 @@ namespace CSF.Validation.Rules
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);
             Children = new List<ManifestValueInfo>(manifestValue.Children.Select(x => new ManifestValueInfo(x)));
             if(manifestValue is ManifestValue val)
-                IgnoreAccessorExceptions = val.IgnoreAccessorExceptions;
+                AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets the actual value.
         /// </summary>
-        public object ActualValue { get; }
+        public GetValueToBeValidatedResponse ValidatedValueResponse { get; }
 
         /// <summary>
         /// Gets an optional parent validated value.
@@ -34,7 +34,15 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <returns>A string that represents this validated value basis.</returns>
         public override string ToString()
-            => $"[{nameof(ValidatedValueBasis)}: Type = {ManifestValue.ValidatedType.Name}, Value = {ActualValue}]";
+            => $"[{nameof(ValidatedValueBasis)}: Type = {ManifestValue.ValidatedType.Name}, Value = {ValidatedValueResponse}]";
+
+        /// <summary>
+        /// Gets the actual value from the <see cref="ValidatedValueResponse"/>, or <see langword="null" /> if the response is not a success.
+        /// </summary>
+        /// <returns>Either the <see cref="SuccessfulGetValueToBeValidatedResponse.Value"/> or a
+        /// <see langword="null" /> reference if the response is not a success.</returns>
+        public object GetActualValue()
+            => (ValidatedValueResponse is SuccessfulGetValueToBeValidatedResponse successResponse) ? successResponse.Value : null;
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatedValueBasis"/>.
@@ -43,10 +51,10 @@ namespace CSF.Validation.RuleExecution
         /// <param name="actualValue">The actual value for this basis.</param>
         /// <param name="parent">An optional parent validated value for this basis.</param>
         /// <param name="collectionOrder">An optional collection order for this basis.</param>
-        public ValidatedValueBasis(ManifestValueBase manifestValue, object actualValue, ValidatedValue parent, long? collectionOrder = default)
+        public ValidatedValueBasis(ManifestValueBase manifestValue, GetValueToBeValidatedResponse actualValue, ValidatedValue parent, long? collectionOrder = default)
         {
             ManifestValue = manifestValue;
-            ActualValue = actualValue;
+            ValidatedValueResponse = actualValue;
             Parent = parent;
             CollectionOrder = collectionOrder;
         }

@@ -29,8 +29,8 @@ namespace CSF.Validation.RuleExecution
             cancellationToken.ThrowIfCancellationRequested();
 
             var context = contextFactory.GetRuleContext(rule);
-            var result = await rule.RuleLogic.GetResultAsync(rule.ValidatedValue.ActualValue,
-                                                             rule.ValidatedValue.ParentValue?.ActualValue,
+            var result = await rule.RuleLogic.GetResultAsync(rule.ValidatedValue.GetActualValue(),
+                                                             rule.ValidatedValue.ParentValue?.GetActualValue(),
                                                              context,
                                                              cancellationToken)
                 .ConfigureAwait(false);
