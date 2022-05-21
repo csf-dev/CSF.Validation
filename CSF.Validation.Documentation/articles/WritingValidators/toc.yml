@@ -21,7 +21,7 @@
     - name: Validating with a parent value
       href: WritingValidatorBuilders/RulesWhichIncludeAParentObject.md
     - name: Accessor exceptions
-      href: WritingValidatorBuilders/IgnoreAccessorExceptions.md
+      href: WritingValidatorBuilders/HandlingAccessorExceptions.md
     - name: Rule dependencies
       href: WritingValidatorBuilders/SpecifyingRuleDependencies.md
 - name: The manifest model

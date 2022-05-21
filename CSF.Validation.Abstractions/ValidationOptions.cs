@@ -24,8 +24,12 @@ namespace CSF.Validation
         /// value may be overridden by <see cref="ManifestValue.AccessorExceptionBehaviour"/> upon an individual
         /// manifest value if it is set to non-<see langword="null" /> value there.
         /// </para>
+        /// <para>
+        /// The default behaviour for this property if unset is <see cref="ValueAccessExceptionBehaviour.TreatAsError"/>.
+        /// </para>
         /// </remarks>
         /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.AccessorExceptionBehaviour"/>
+        /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
         public ValueAccessExceptionBehaviour AccessorExceptionBehaviour { get; set; }
     }
 }

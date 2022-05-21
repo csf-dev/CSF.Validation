@@ -82,5 +82,5 @@ The links below will describe the remaining techniques.
 [Validating items in a collection]:ValidatingCollectionItems.md
 [Identifying rules and objects]:RuleAndObjectIdentifiers.md
 [Adding rules which receive a parent object]:RulesWhichIncludeAParentObject.md
-[Dealing with exceptions accessing a member or value]:IgnoreAccessorExceptions.md
+[Dealing with exceptions accessing a member or value]:HandlingAccessorExceptions.md
 [Specifying dependencies between rules]:SpecifyingRuleDependencies.md
