@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -123,21 +124,122 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public async Task ExecuteAllRulesAsyncShouldIncludeErrorResultsForEachErroredValue()
+        public async Task ExecuteAllRulesAsyncShouldIncludeErrorResultsForEachErroredValue([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
+                                                                                           ITracksRuleDependencies dependencyTracker,
+                                                                                           SerialRuleExecutor sut,
+                                                                                           ErrorGetValueToBeValidatedResponse response1,
+                                                                                           ErrorGetValueToBeValidatedResponse response2,
+                                                                                           [ExecutableModel] ExecutableRule rule1,
+                                                                                           [ExecutableModel] ExecutableRule rule2,
+                                                                                           [ExecutableModel] ExecutableRule rule3)
         {
-            Assert.Fail("TODO: Wrote this test");
+            Mock.Get(dependencyTrackerFactory)
+                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ValidationOptions>()))
+                .Returns(dependencyTracker);
+            Mock.Get(dependencyTracker)
+                .Setup(x => x.GetRulesWhichMayBeExecuted())
+                .Returns(Enumerable.Empty<ExecutableRule>());
+            Mock.Get(dependencyTracker)
+                .Setup(x => x.GetRulesWhoseDependenciesHaveFailed())
+                .Returns(Enumerable.Empty<ExecutableRule>());
+            var ruleAndDependencies1 = new ExecutableRuleAndDependencies(rule1);
+            var ruleAndDependencies2 = new ExecutableRuleAndDependencies(rule2);
+            var ruleAndDependencies3 = new ExecutableRuleAndDependencies(rule3);
+            rule1.ValidatedValue.ValueResponse = response1;
+            rule2.ValidatedValue.ValueResponse = response1;
+            rule3.ValidatedValue.ValueResponse = response2;
+
+            var result = await sut.ExecuteAllRulesAsync(new[] { ruleAndDependencies1, ruleAndDependencies2, ruleAndDependencies3 });
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result,
+                            Has.One.Matches<ValidationRuleResult>(v => v.Outcome == RuleOutcome.Errored && v.Exception == response1.Exception),
+                            "First response present");
+                Assert.That(result,
+                            Has.One.Matches<ValidationRuleResult>(v => v.Outcome == RuleOutcome.Errored && v.Exception == response2.Exception),
+                            "second response present");
+            });
         }
 
         [Test,AutoMoqData]
-        public async Task ExecuteAllRulesAsyncShouldNotIncludeErrorResultsForIgnoredValues()
+        public async Task ExecuteAllRulesAsyncShouldNotIncludeErrorResultsForIgnoredValues([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
+                                                                                           ITracksRuleDependencies dependencyTracker,
+                                                                                           SerialRuleExecutor sut,
+                                                                                           ErrorGetValueToBeValidatedResponse response1,
+                                                                                           IgnoredGetValueToBeValidatedResponse response2,
+                                                                                           [ExecutableModel] ExecutableRule rule1,
+                                                                                           [ExecutableModel] ExecutableRule rule2,
+                                                                                           [ExecutableModel] ExecutableRule rule3)
         {
-            Assert.Fail("TODO: Wrote this test");
+            Mock.Get(dependencyTrackerFactory)
+                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ValidationOptions>()))
+                .Returns(dependencyTracker);
+            Mock.Get(dependencyTracker)
+                .Setup(x => x.GetRulesWhichMayBeExecuted())
+                .Returns(Enumerable.Empty<ExecutableRule>());
+            Mock.Get(dependencyTracker)
+                .Setup(x => x.GetRulesWhoseDependenciesHaveFailed())
+                .Returns(Enumerable.Empty<ExecutableRule>());
+            var ruleAndDependencies1 = new ExecutableRuleAndDependencies(rule1);
+            var ruleAndDependencies2 = new ExecutableRuleAndDependencies(rule2);
+            var ruleAndDependencies3 = new ExecutableRuleAndDependencies(rule3);
+            rule1.ValidatedValue.ValueResponse = response1;
+            rule2.ValidatedValue.ValueResponse = response1;
+            rule3.ValidatedValue.ValueResponse = response2;
+
+            var result = await sut.ExecuteAllRulesAsync(new[] { ruleAndDependencies1, ruleAndDependencies2, ruleAndDependencies3 });
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result,
+                            Has.One.Matches<ValidationRuleResult>(v => v.Outcome == RuleOutcome.Errored && v.Exception == response1.Exception),
+                            "First response present");
+                Assert.That(result, Has.Count.EqualTo(1), "Correct count");
+            });
         }
 
-        [Test,AutoMoqData]
-        public async Task ExecuteAllRulesAsyncShouldNotExecuteRulesAssociatedWithUnsuccessfulValues()
+        [Test, AutoMoqData]
+        public async Task ExecuteAllRulesAsyncShouldNotExecuteRulesAssociatedWithUnsuccessfulValues([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
+                                                                                                    [Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
+                                                                                                    ITracksRuleDependencies dependencyTracker,
+                                                                                                    IExeucutesSingleRule singleRuleExecutor,
+                                                                                                    SerialRuleExecutor sut,
+                                                                                                    IgnoredGetValueToBeValidatedResponse response1,
+                                                                                                    IgnoredGetValueToBeValidatedResponse response2,
+                                                                                                    [ExecutableModel] ExecutableRule rule1,
+                                                                                                    [ExecutableModel] ExecutableRule rule2,
+                                                                                                    [ExecutableModel] ExecutableRule rule3)
         {
-            Assert.Fail("TODO: Wrote this test");
+            Mock.Get(dependencyTrackerFactory)
+                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ValidationOptions>()))
+                .Returns(dependencyTracker);
+            Mock.Get(ruleExecutorFactory)
+                .Setup(x => x.GetRuleExecutor(It.IsAny<ValidationOptions>()))
+                .Returns(singleRuleExecutor);
+            var sequence = new MockSequence();
+            Mock.Get(dependencyTracker)
+                .InSequence(sequence)
+                .Setup(x => x.GetRulesWhichMayBeExecuted())
+                .Returns(new [] {rule1});
+            Mock.Get(dependencyTracker)
+                .InSequence(sequence)
+                .Setup(x => x.GetRulesWhichMayBeExecuted())
+                .Returns(Enumerable.Empty<ExecutableRule>());
+            Mock.Get(dependencyTracker)
+                .Setup(x => x.GetRulesWhoseDependenciesHaveFailed())
+                .Returns(Enumerable.Empty<ExecutableRule>());
+            var ruleAndDependencies1 = new ExecutableRuleAndDependencies(rule1);
+            var ruleAndDependencies2 = new ExecutableRuleAndDependencies(rule2);
+            var ruleAndDependencies3 = new ExecutableRuleAndDependencies(rule3);
+            rule1.ValidatedValue.ValueResponse = response1;
+            rule2.ValidatedValue.ValueResponse = response1;
+            rule3.ValidatedValue.ValueResponse = response2;
+
+            var result = await sut.ExecuteAllRulesAsync(new[] { ruleAndDependencies1, ruleAndDependencies2, ruleAndDependencies3 });
+
+            Mock.Get(singleRuleExecutor)
+                .Verify(x => x.ExecuteRuleAsync(It.IsAny<ExecutableRule>(), It.IsAny<CancellationToken>()), Times.Never);
         }
     }
 }
