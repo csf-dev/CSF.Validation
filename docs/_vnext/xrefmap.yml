@@ -888,6 +888,19 @@ references:
   commentId: T:CSF.Validation.Manifest.ManifestValue
   fullName: CSF.Validation.Manifest.ManifestValue
   nameWithType: ManifestValue
+- uid: CSF.Validation.Manifest.ManifestValue.AccessorExceptionBehaviour
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorExceptionBehaviour
+  commentId: P:CSF.Validation.Manifest.ManifestValue.AccessorExceptionBehaviour
+  fullName: CSF.Validation.Manifest.ManifestValue.AccessorExceptionBehaviour
+  nameWithType: ManifestValue.AccessorExceptionBehaviour
+- uid: CSF.Validation.Manifest.ManifestValue.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.Manifest.ManifestValue.AccessorExceptionBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestValue.AccessorExceptionBehaviour
+  nameWithType: ManifestValue.AccessorExceptionBehaviour
 - uid: CSF.Validation.Manifest.ManifestValue.AccessorFromParent
   name: AccessorFromParent
   href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorFromParent
@@ -901,19 +914,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValue.AccessorFromParent
   nameWithType: ManifestValue.AccessorFromParent
-- uid: CSF.Validation.Manifest.ManifestValue.IgnoreAccessorExceptions
-  name: IgnoreAccessorExceptions
-  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_IgnoreAccessorExceptions
-  commentId: P:CSF.Validation.Manifest.ManifestValue.IgnoreAccessorExceptions
-  fullName: CSF.Validation.Manifest.ManifestValue.IgnoreAccessorExceptions
-  nameWithType: ManifestValue.IgnoreAccessorExceptions
-- uid: CSF.Validation.Manifest.ManifestValue.IgnoreAccessorExceptions*
-  name: IgnoreAccessorExceptions
-  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_IgnoreAccessorExceptions_
-  commentId: Overload:CSF.Validation.Manifest.ManifestValue.IgnoreAccessorExceptions
-  isSpec: "True"
-  fullName: CSF.Validation.Manifest.ManifestValue.IgnoreAccessorExceptions
-  nameWithType: ManifestValue.IgnoreAccessorExceptions
 - uid: CSF.Validation.Manifest.ManifestValue.MemberName
   name: MemberName
   href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_MemberName
@@ -1120,6 +1120,30 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ValidatorFromManifestFactory.GetValidator
   nameWithType: ValidatorFromManifestFactory.GetValidator
+- uid: CSF.Validation.Manifest.ValueAccessExceptionBehaviour
+  name: ValueAccessExceptionBehaviour
+  href: api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html
+  commentId: T:CSF.Validation.Manifest.ValueAccessExceptionBehaviour
+  fullName: CSF.Validation.Manifest.ValueAccessExceptionBehaviour
+  nameWithType: ValueAccessExceptionBehaviour
+- uid: CSF.Validation.Manifest.ValueAccessExceptionBehaviour.Ignore
+  name: Ignore
+  href: api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html#CSF_Validation_Manifest_ValueAccessExceptionBehaviour_Ignore
+  commentId: F:CSF.Validation.Manifest.ValueAccessExceptionBehaviour.Ignore
+  fullName: CSF.Validation.Manifest.ValueAccessExceptionBehaviour.Ignore
+  nameWithType: ValueAccessExceptionBehaviour.Ignore
+- uid: CSF.Validation.Manifest.ValueAccessExceptionBehaviour.Throw
+  name: Throw
+  href: api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html#CSF_Validation_Manifest_ValueAccessExceptionBehaviour_Throw
+  commentId: F:CSF.Validation.Manifest.ValueAccessExceptionBehaviour.Throw
+  fullName: CSF.Validation.Manifest.ValueAccessExceptionBehaviour.Throw
+  nameWithType: ValueAccessExceptionBehaviour.Throw
+- uid: CSF.Validation.Manifest.ValueAccessExceptionBehaviour.TreatAsError
+  name: TreatAsError
+  href: api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html#CSF_Validation_Manifest_ValueAccessExceptionBehaviour_TreatAsError
+  commentId: F:CSF.Validation.Manifest.ValueAccessExceptionBehaviour.TreatAsError
+  fullName: CSF.Validation.Manifest.ValueAccessExceptionBehaviour.TreatAsError
+  nameWithType: ValueAccessExceptionBehaviour.TreatAsError
 - uid: CSF.Validation.ManifestModel
   name: CSF.Validation.ManifestModel
   href: api/CSF.Validation.ManifestModel.html
@@ -1758,19 +1782,19 @@ references:
   commentId: T:CSF.Validation.ManifestModel.Value
   fullName: CSF.Validation.ManifestModel.Value
   nameWithType: Value
-- uid: CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions
-  name: IgnoreAccessorExceptions
-  href: api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions
-  commentId: P:CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions
-  fullName: CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions
-  nameWithType: Value.IgnoreAccessorExceptions
-- uid: CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions*
-  name: IgnoreAccessorExceptions
-  href: api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_IgnoreAccessorExceptions_
-  commentId: Overload:CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions
+- uid: CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_AccessorExceptionBehaviour
+  commentId: P:CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour
+  fullName: CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour
+  nameWithType: Value.AccessorExceptionBehaviour
+- uid: CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour
   isSpec: "True"
-  fullName: CSF.Validation.ManifestModel.Value.IgnoreAccessorExceptions
-  nameWithType: Value.IgnoreAccessorExceptions
+  fullName: CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour
+  nameWithType: Value.AccessorExceptionBehaviour
 - uid: CSF.Validation.ManifestModel.ValueBase
   name: ValueBase
   href: api/CSF.Validation.ManifestModel.ValueBase.html
@@ -3326,6 +3350,51 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.EnumerableItemProvider.GetEnumerableItems
   nameWithType: EnumerableItemProvider.GetEnumerableItems
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse
+  name: ErrorGetValueToBeValidatedResponse
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html
+  commentId: T:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse
+  nameWithType: ErrorGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.#ctor(System.Exception)
+  name: ErrorGetValueToBeValidatedResponse(Exception)
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse__ctor_System_Exception_
+  commentId: M:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.#ctor(System.Exception)
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.ErrorGetValueToBeValidatedResponse(System.Exception)
+  nameWithType: ErrorGetValueToBeValidatedResponse.ErrorGetValueToBeValidatedResponse(Exception)
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.#ctor*
+  name: ErrorGetValueToBeValidatedResponse
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.ErrorGetValueToBeValidatedResponse
+  nameWithType: ErrorGetValueToBeValidatedResponse.ErrorGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception
+  name: Exception
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_Exception
+  commentId: P:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception
+  nameWithType: ErrorGetValueToBeValidatedResponse.Exception
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception*
+  name: Exception
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_Exception_
+  commentId: Overload:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception
+  nameWithType: ErrorGetValueToBeValidatedResponse.Exception
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.IsSuccess
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_IsSuccess
+  commentId: P:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.IsSuccess
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.IsSuccess
+  nameWithType: ErrorGetValueToBeValidatedResponse.IsSuccess
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.IsSuccess*
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_IsSuccess_
+  commentId: Overload:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.IsSuccess
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.IsSuccess
+  nameWithType: ErrorGetValueToBeValidatedResponse.IsSuccess
 - uid: CSF.Validation.RuleExecution.ExecutableRule
   name: ExecutableRule
   href: api/CSF.Validation.RuleExecution.ExecutableRule.html
@@ -3535,6 +3604,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ExecutableRulesFromValidatedValueProvider.GetExecutableRules
   nameWithType: ExecutableRulesFromValidatedValueProvider.GetExecutableRules
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse
+  name: GetValueToBeValidatedResponse
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html
+  commentId: T:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse
+  nameWithType: GetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_IsSuccess
+  commentId: P:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess
+  nameWithType: GetValueToBeValidatedResponse.IsSuccess
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess*
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_IsSuccess_
+  commentId: Overload:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess
+  nameWithType: GetValueToBeValidatedResponse.IsSuccess
 - uid: CSF.Validation.RuleExecution.IDetectsCircularDependencies
   name: IDetectsCircularDependencies
   href: api/CSF.Validation.RuleExecution.IDetectsCircularDependencies.html
@@ -3598,6 +3686,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.IExeucutesSingleRule.ExecuteRuleAsync
   nameWithType: IExeucutesSingleRule.ExecuteRuleAsync
+- uid: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour
+  name: IGetsAccessorExceptionBehaviour
+  href: api/CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.html
+  commentId: T:CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour
+  fullName: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour
+  nameWithType: IGetsAccessorExceptionBehaviour
+- uid: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ValidationOptions)
+  name: GetBehaviour(ManifestValue, ValidationOptions)
+  href: api/CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.html#CSF_Validation_RuleExecution_IGetsAccessorExceptionBehaviour_GetBehaviour_CSF_Validation_Manifest_ManifestValue_CSF_Validation_ValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ValidationOptions)
+  fullName: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.ManifestValue, CSF.Validation.ValidationOptions)
+  nameWithType: IGetsAccessorExceptionBehaviour.GetBehaviour(ManifestValue, ValidationOptions)
+- uid: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour*
+  name: GetBehaviour
+  href: api/CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.html#CSF_Validation_RuleExecution_IGetsAccessorExceptionBehaviour_GetBehaviour_
+  commentId: Overload:CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour
+  nameWithType: IGetsAccessorExceptionBehaviour.GetBehaviour
 - uid: CSF.Validation.RuleExecution.IGetsAllExecutableRules
   name: IGetsAllExecutableRules
   href: api/CSF.Validation.RuleExecution.IGetsAllExecutableRules.html
@@ -3759,22 +3866,51 @@ references:
   commentId: T:CSF.Validation.RuleExecution.IGetsValueToBeValidated
   fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated
   nameWithType: IGetsValueToBeValidated
-- uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions,System.Object@)
-  name: TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, out Object)
-  href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_TryGetValueToBeValidated_CSF_Validation_Manifest_ManifestValue_System_Object_CSF_Validation_ValidationOptions_System_Object__
-  commentId: M:CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions,System.Object@)
-  name.vb: TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, ByRef Object)
-  fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ValidationOptions, out System.Object)
-  fullName.vb: CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ValidationOptions, ByRef System.Object)
-  nameWithType: IGetsValueToBeValidated.TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, out Object)
-  nameWithType.vb: IGetsValueToBeValidated.TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, ByRef Object)
-- uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated*
-  name: TryGetValueToBeValidated
-  href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_TryGetValueToBeValidated_
-  commentId: Overload:CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated
+- uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions)
+  name: GetValueToBeValidated(ManifestValue, Object, ValidationOptions)
+  href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_GetValueToBeValidated_CSF_Validation_Manifest_ManifestValue_System_Object_CSF_Validation_ValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions)
+  fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ValidationOptions)
+  nameWithType: IGetsValueToBeValidated.GetValueToBeValidated(ManifestValue, Object, ValidationOptions)
+- uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated*
+  name: GetValueToBeValidated
+  href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_GetValueToBeValidated_
+  commentId: Overload:CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated.TryGetValueToBeValidated
-  nameWithType: IGetsValueToBeValidated.TryGetValueToBeValidated
+  fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated
+  nameWithType: IGetsValueToBeValidated.GetValueToBeValidated
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse
+  name: IgnoredGetValueToBeValidatedResponse
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html
+  commentId: T:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse
+  nameWithType: IgnoredGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default
+  name: Default
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Default
+  commentId: P:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default
+  nameWithType: IgnoredGetValueToBeValidatedResponse.Default
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default*
+  name: Default
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Default_
+  commentId: Overload:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default
+  nameWithType: IgnoredGetValueToBeValidatedResponse.Default
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_IsSuccess
+  commentId: P:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
+  nameWithType: IgnoredGetValueToBeValidatedResponse.IsSuccess
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess*
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_IsSuccess_
+  commentId: Overload:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
+  nameWithType: IgnoredGetValueToBeValidatedResponse.IsSuccess
 - uid: CSF.Validation.RuleExecution.ITracksRuleDependencies
   name: ITracksRuleDependencies
   href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html
@@ -4034,25 +4170,57 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.SingleRuleExecutorFactory.GetRuleExecutor
   nameWithType: SingleRuleExecutorFactory.GetRuleExecutor
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse
+  name: SuccessfulGetValueToBeValidatedResponse
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html
+  commentId: T:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse
+  nameWithType: SuccessfulGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.#ctor(System.Object)
+  name: SuccessfulGetValueToBeValidatedResponse(Object)
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse__ctor_System_Object_
+  commentId: M:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.#ctor(System.Object)
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.SuccessfulGetValueToBeValidatedResponse(System.Object)
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.SuccessfulGetValueToBeValidatedResponse(Object)
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.#ctor*
+  name: SuccessfulGetValueToBeValidatedResponse
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.SuccessfulGetValueToBeValidatedResponse
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.SuccessfulGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_IsSuccess
+  commentId: P:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.IsSuccess
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess*
+  name: IsSuccess
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_IsSuccess_
+  commentId: Overload:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.IsSuccess
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Value
+  name: Value
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_Value
+  commentId: P:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Value
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Value
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.Value
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Value*
+  name: Value
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_Value_
+  commentId: Overload:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Value
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Value
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.Value
 - uid: CSF.Validation.RuleExecution.ValidatedValue
   name: ValidatedValue
   href: api/CSF.Validation.RuleExecution.ValidatedValue.html
   commentId: T:CSF.Validation.RuleExecution.ValidatedValue
   fullName: CSF.Validation.RuleExecution.ValidatedValue
   nameWithType: ValidatedValue
-- uid: CSF.Validation.RuleExecution.ValidatedValue.ActualValue
-  name: ActualValue
-  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ActualValue
-  commentId: P:CSF.Validation.RuleExecution.ValidatedValue.ActualValue
-  fullName: CSF.Validation.RuleExecution.ValidatedValue.ActualValue
-  nameWithType: ValidatedValue.ActualValue
-- uid: CSF.Validation.RuleExecution.ValidatedValue.ActualValue*
-  name: ActualValue
-  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ActualValue_
-  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValue.ActualValue
-  isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.ValidatedValue.ActualValue
-  nameWithType: ValidatedValue.ActualValue
 - uid: CSF.Validation.RuleExecution.ValidatedValue.ChildValues
   name: ChildValues
   href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ChildValues
@@ -4092,6 +4260,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValue.CollectionItems
   nameWithType: ValidatedValue.CollectionItems
+- uid: CSF.Validation.RuleExecution.ValidatedValue.GetActualValue
+  name: GetActualValue()
+  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_GetActualValue
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValue.GetActualValue
+  fullName: CSF.Validation.RuleExecution.ValidatedValue.GetActualValue()
+  nameWithType: ValidatedValue.GetActualValue()
+- uid: CSF.Validation.RuleExecution.ValidatedValue.GetActualValue*
+  name: GetActualValue
+  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_GetActualValue_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValue.GetActualValue
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValue.GetActualValue
+  nameWithType: ValidatedValue.GetActualValue
 - uid: CSF.Validation.RuleExecution.ValidatedValue.ManifestValue
   name: ManifestValue
   href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ManifestValue
@@ -4144,21 +4325,34 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValue.ValueIdentity
   nameWithType: ValidatedValue.ValueIdentity
+- uid: CSF.Validation.RuleExecution.ValidatedValue.ValueResponse
+  name: ValueResponse
+  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ValueResponse
+  commentId: P:CSF.Validation.RuleExecution.ValidatedValue.ValueResponse
+  fullName: CSF.Validation.RuleExecution.ValidatedValue.ValueResponse
+  nameWithType: ValidatedValue.ValueResponse
+- uid: CSF.Validation.RuleExecution.ValidatedValue.ValueResponse*
+  name: ValueResponse
+  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ValueResponse_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValue.ValueResponse
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValue.ValueResponse
+  nameWithType: ValidatedValue.ValueResponse
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis
   name: ValidatedValueBasis
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html
   commentId: T:CSF.Validation.RuleExecution.ValidatedValueBasis
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis
   nameWithType: ValidatedValueBasis
-- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
-  name: ValidatedValueBasis(ManifestValueBase, Object, ValidatedValue, Nullable<Int64>)
-  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Object_CSF_Validation_RuleExecution_ValidatedValue_System_Nullable_System_Int64__
-  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
-  name.vb: ValidatedValueBasis(ManifestValueBase, Object, ValidatedValue, Nullable(Of Int64))
-  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.ManifestValueBase, System.Object, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable<System.Int64>)
-  fullName.vb: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.ManifestValueBase, System.Object, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable(Of System.Int64))
-  nameWithType: ValidatedValueBasis.ValidatedValueBasis(ManifestValueBase, Object, ValidatedValue, Nullable<Int64>)
-  nameWithType.vb: ValidatedValueBasis.ValidatedValueBasis(ManifestValueBase, Object, ValidatedValue, Nullable(Of Int64))
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
+  name: ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable<Int64>)
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis__ctor_CSF_Validation_Manifest_ManifestValueBase_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_CSF_Validation_RuleExecution_ValidatedValue_System_Nullable_System_Int64__
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
+  name.vb: ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable(Of Int64))
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable<System.Int64>)
+  fullName.vb: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable(Of System.Int64))
+  nameWithType: ValidatedValueBasis.ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable<Int64>)
+  nameWithType.vb: ValidatedValueBasis.ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable(Of Int64))
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor*
   name: ValidatedValueBasis
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis__ctor_
@@ -4166,19 +4360,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis
   nameWithType: ValidatedValueBasis.ValidatedValueBasis
-- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ActualValue
-  name: ActualValue
-  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ActualValue
-  commentId: P:CSF.Validation.RuleExecution.ValidatedValueBasis.ActualValue
-  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ActualValue
-  nameWithType: ValidatedValueBasis.ActualValue
-- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ActualValue*
-  name: ActualValue
-  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ActualValue_
-  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValueBasis.ActualValue
-  isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ActualValue
-  nameWithType: ValidatedValueBasis.ActualValue
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis.CollectionOrder
   name: CollectionOrder
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_CollectionOrder
@@ -4192,6 +4373,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.CollectionOrder
   nameWithType: ValidatedValueBasis.CollectionOrder
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue
+  name: GetActualValue()
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_GetActualValue
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue()
+  nameWithType: ValidatedValueBasis.GetActualValue()
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue*
+  name: GetActualValue
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_GetActualValue_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue
+  nameWithType: ValidatedValueBasis.GetActualValue
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ManifestValue
   name: ManifestValue
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ManifestValue
@@ -4231,6 +4425,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ToString
   nameWithType: ValidatedValueBasis.ToString
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueResponse
+  name: ValidatedValueResponse
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ValidatedValueResponse
+  commentId: P:CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueResponse
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueResponse
+  nameWithType: ValidatedValueBasis.ValidatedValueResponse
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueResponse*
+  name: ValidatedValueResponse
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ValidatedValueResponse_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueResponse
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueResponse
+  nameWithType: ValidatedValueBasis.ValidatedValueResponse
 - uid: CSF.Validation.RuleExecution.ValidatedValueFactory
   name: ValidatedValueFactory
   href: api/CSF.Validation.RuleExecution.ValidatedValueFactory.html
@@ -4295,28 +4502,57 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValueFromBasisFactory.GetValidatedValue
   nameWithType: ValidatedValueFromBasisFactory.GetValidatedValue
+- uid: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider
+  name: ValueAccessExceptionBehaviourProvider
+  href: api/CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.html
+  commentId: T:CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider
+  fullName: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider
+  nameWithType: ValueAccessExceptionBehaviourProvider
+- uid: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ValidationOptions)
+  name: GetBehaviour(ManifestValue, ValidationOptions)
+  href: api/CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.html#CSF_Validation_RuleExecution_ValueAccessExceptionBehaviourProvider_GetBehaviour_CSF_Validation_Manifest_ManifestValue_CSF_Validation_ValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ValidationOptions)
+  fullName: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.ManifestValue, CSF.Validation.ValidationOptions)
+  nameWithType: ValueAccessExceptionBehaviourProvider.GetBehaviour(ManifestValue, ValidationOptions)
+- uid: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour*
+  name: GetBehaviour
+  href: api/CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.html#CSF_Validation_RuleExecution_ValueAccessExceptionBehaviourProvider_GetBehaviour_
+  commentId: Overload:CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour
+  nameWithType: ValueAccessExceptionBehaviourProvider.GetBehaviour
 - uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider
   name: ValueToBeValidatedProvider
   href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html
   commentId: T:CSF.Validation.RuleExecution.ValueToBeValidatedProvider
   fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider
   nameWithType: ValueToBeValidatedProvider
-- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions,System.Object@)
-  name: TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, out Object)
-  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_TryGetValueToBeValidated_CSF_Validation_Manifest_ManifestValue_System_Object_CSF_Validation_ValidationOptions_System_Object__
-  commentId: M:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions,System.Object@)
-  name.vb: TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, ByRef Object)
-  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ValidationOptions, out System.Object)
-  fullName.vb: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ValidationOptions, ByRef System.Object)
-  nameWithType: ValueToBeValidatedProvider.TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, out Object)
-  nameWithType.vb: ValueToBeValidatedProvider.TryGetValueToBeValidated(ManifestValue, Object, ValidationOptions, ByRef Object)
-- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated*
-  name: TryGetValueToBeValidated
-  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_TryGetValueToBeValidated_
-  commentId: Overload:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated
+- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.#ctor(CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour)
+  name: ValueToBeValidatedProvider(IGetsAccessorExceptionBehaviour)
+  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider__ctor_CSF_Validation_RuleExecution_IGetsAccessorExceptionBehaviour_
+  commentId: M:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.#ctor(CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour)
+  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.ValueToBeValidatedProvider(CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour)
+  nameWithType: ValueToBeValidatedProvider.ValueToBeValidatedProvider(IGetsAccessorExceptionBehaviour)
+- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.#ctor*
+  name: ValueToBeValidatedProvider
+  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.#ctor
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.TryGetValueToBeValidated
-  nameWithType: ValueToBeValidatedProvider.TryGetValueToBeValidated
+  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.ValueToBeValidatedProvider
+  nameWithType: ValueToBeValidatedProvider.ValueToBeValidatedProvider
+- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions)
+  name: GetValueToBeValidated(ManifestValue, Object, ValidationOptions)
+  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_GetValueToBeValidated_CSF_Validation_Manifest_ManifestValue_System_Object_CSF_Validation_ValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ValidationOptions)
+  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ValidationOptions)
+  nameWithType: ValueToBeValidatedProvider.GetValueToBeValidated(ManifestValue, Object, ValidationOptions)
+- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated*
+  name: GetValueToBeValidated
+  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_GetValueToBeValidated_
+  commentId: Overload:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated
+  nameWithType: ValueToBeValidatedProvider.GetValueToBeValidated
 - uid: CSF.Validation.Rules
   name: CSF.Validation.Rules
   href: api/CSF.Validation.Rules.html
@@ -5446,6 +5682,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.ManifestValueInfo.ManifestValueInfo
   nameWithType: ManifestValueInfo.ManifestValueInfo
+- uid: CSF.Validation.Rules.ManifestValueInfo.AccessorExceptionBehaviour
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_AccessorExceptionBehaviour
+  commentId: P:CSF.Validation.Rules.ManifestValueInfo.AccessorExceptionBehaviour
+  fullName: CSF.Validation.Rules.ManifestValueInfo.AccessorExceptionBehaviour
+  nameWithType: ManifestValueInfo.AccessorExceptionBehaviour
+- uid: CSF.Validation.Rules.ManifestValueInfo.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.Rules.ManifestValueInfo.AccessorExceptionBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.ManifestValueInfo.AccessorExceptionBehaviour
+  nameWithType: ManifestValueInfo.AccessorExceptionBehaviour
 - uid: CSF.Validation.Rules.ManifestValueInfo.Children
   name: Children
   href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_Children
@@ -5472,19 +5721,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.ManifestValueInfo.CollectionItemValue
   nameWithType: ManifestValueInfo.CollectionItemValue
-- uid: CSF.Validation.Rules.ManifestValueInfo.IgnoreAccessorExceptions
-  name: IgnoreAccessorExceptions
-  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_IgnoreAccessorExceptions
-  commentId: P:CSF.Validation.Rules.ManifestValueInfo.IgnoreAccessorExceptions
-  fullName: CSF.Validation.Rules.ManifestValueInfo.IgnoreAccessorExceptions
-  nameWithType: ManifestValueInfo.IgnoreAccessorExceptions
-- uid: CSF.Validation.Rules.ManifestValueInfo.IgnoreAccessorExceptions*
-  name: IgnoreAccessorExceptions
-  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_IgnoreAccessorExceptions_
-  commentId: Overload:CSF.Validation.Rules.ManifestValueInfo.IgnoreAccessorExceptions
-  isSpec: "True"
-  fullName: CSF.Validation.Rules.ManifestValueInfo.IgnoreAccessorExceptions
-  nameWithType: ManifestValueInfo.IgnoreAccessorExceptions
 - uid: CSF.Validation.Rules.ManifestValueInfo.MemberName
   name: MemberName
   href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_MemberName
@@ -6590,19 +6826,19 @@ references:
   commentId: T:CSF.Validation.ValidationOptions
   fullName: CSF.Validation.ValidationOptions
   nameWithType: ValidationOptions
-- uid: CSF.Validation.ValidationOptions.IgnoreValueAccessExceptions
-  name: IgnoreValueAccessExceptions
-  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_IgnoreValueAccessExceptions
-  commentId: P:CSF.Validation.ValidationOptions.IgnoreValueAccessExceptions
-  fullName: CSF.Validation.ValidationOptions.IgnoreValueAccessExceptions
-  nameWithType: ValidationOptions.IgnoreValueAccessExceptions
-- uid: CSF.Validation.ValidationOptions.IgnoreValueAccessExceptions*
-  name: IgnoreValueAccessExceptions
-  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_IgnoreValueAccessExceptions_
-  commentId: Overload:CSF.Validation.ValidationOptions.IgnoreValueAccessExceptions
+- uid: CSF.Validation.ValidationOptions.AccessorExceptionBehaviour
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour
+  commentId: P:CSF.Validation.ValidationOptions.AccessorExceptionBehaviour
+  fullName: CSF.Validation.ValidationOptions.AccessorExceptionBehaviour
+  nameWithType: ValidationOptions.AccessorExceptionBehaviour
+- uid: CSF.Validation.ValidationOptions.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.ValidationOptions.AccessorExceptionBehaviour
   isSpec: "True"
-  fullName: CSF.Validation.ValidationOptions.IgnoreValueAccessExceptions
-  nameWithType: ValidationOptions.IgnoreValueAccessExceptions
+  fullName: CSF.Validation.ValidationOptions.AccessorExceptionBehaviour
+  nameWithType: ValidationOptions.AccessorExceptionBehaviour
 - uid: CSF.Validation.ValidationOptions.RuleThrowingBehaviour
   name: RuleThrowingBehaviour
   href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour
@@ -7228,6 +7464,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue)
   nameWithType: IConfiguresValueAccessor<TValidated, TValue>
   nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue)
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AccessorExceptionBehaviour(System.Nullable{CSF.Validation.Manifest.ValueAccessExceptionBehaviour})
+  name: AccessorExceptionBehaviour(Nullable<ValueAccessExceptionBehaviour>)
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__
+  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AccessorExceptionBehaviour(System.Nullable{CSF.Validation.Manifest.ValueAccessExceptionBehaviour})
+  name.vb: AccessorExceptionBehaviour(Nullable(Of ValueAccessExceptionBehaviour))
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.AccessorExceptionBehaviour(System.Nullable<CSF.Validation.Manifest.ValueAccessExceptionBehaviour>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AccessorExceptionBehaviour(System.Nullable(Of CSF.Validation.Manifest.ValueAccessExceptionBehaviour))
+  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AccessorExceptionBehaviour(Nullable<ValueAccessExceptionBehaviour>)
+  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AccessorExceptionBehaviour(Nullable(Of ValueAccessExceptionBehaviour))
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AccessorExceptionBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.AccessorExceptionBehaviour
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AccessorExceptionBehaviour
+  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AccessorExceptionBehaviour
+  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AccessorExceptionBehaviour
 - uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddRule*
   name: AddRule
   href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddRule_
@@ -7282,23 +7536,6 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent(Of TRule)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
   nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>>)
   nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
-- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.IgnoreExceptions
-  name: IgnoreExceptions()
-  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_IgnoreExceptions
-  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.IgnoreExceptions
-  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.IgnoreExceptions()
-  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).IgnoreExceptions()
-  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.IgnoreExceptions()
-  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).IgnoreExceptions()
-- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.IgnoreExceptions*
-  name: IgnoreExceptions
-  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_IgnoreExceptions_
-  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.IgnoreExceptions
-  isSpec: "True"
-  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.IgnoreExceptions
-  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).IgnoreExceptions
-  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.IgnoreExceptions
-  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).IgnoreExceptions
 - uid: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier
   name: IGetsManifestRuleIdentifier
   href: api/CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier.html
@@ -8165,6 +8402,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).ValueAccessorBuilder
   nameWithType: ValueAccessorBuilder<TValidated, TValue>.ValueAccessorBuilder
   nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).ValueAccessorBuilder
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AccessorExceptionBehaviour(System.Nullable{CSF.Validation.Manifest.ValueAccessExceptionBehaviour})
+  name: AccessorExceptionBehaviour(Nullable<ValueAccessExceptionBehaviour>)
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__
+  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AccessorExceptionBehaviour(System.Nullable{CSF.Validation.Manifest.ValueAccessExceptionBehaviour})
+  name.vb: AccessorExceptionBehaviour(Nullable(Of ValueAccessExceptionBehaviour))
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.AccessorExceptionBehaviour(System.Nullable<CSF.Validation.Manifest.ValueAccessExceptionBehaviour>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AccessorExceptionBehaviour(System.Nullable(Of CSF.Validation.Manifest.ValueAccessExceptionBehaviour))
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.AccessorExceptionBehaviour(Nullable<ValueAccessExceptionBehaviour>)
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AccessorExceptionBehaviour(Nullable(Of ValueAccessExceptionBehaviour))
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AccessorExceptionBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.AccessorExceptionBehaviour
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).AccessorExceptionBehaviour
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.AccessorExceptionBehaviour
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).AccessorExceptionBehaviour
 - uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRule*
   name: AddRule
   href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRule_
@@ -8236,23 +8491,6 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).GetManifestValue
   nameWithType: ValueAccessorBuilder<TValidated, TValue>.GetManifestValue
   nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).GetManifestValue
-- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.IgnoreExceptions
-  name: IgnoreExceptions()
-  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions
-  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.IgnoreExceptions
-  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.IgnoreExceptions()
-  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).IgnoreExceptions()
-  nameWithType: ValueAccessorBuilder<TValidated, TValue>.IgnoreExceptions()
-  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).IgnoreExceptions()
-- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.IgnoreExceptions*
-  name: IgnoreExceptions
-  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions_
-  commentId: Overload:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.IgnoreExceptions
-  isSpec: "True"
-  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.IgnoreExceptions
-  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).IgnoreExceptions
-  nameWithType: ValueAccessorBuilder<TValidated, TValue>.IgnoreExceptions
-  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).IgnoreExceptions
 - uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory
   name: ValueAccessorBuilderFactory
   href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.html
@@ -8489,6 +8727,9 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
   nameWithType: ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(IGetsValidator, Type)
   nameWithType.vb: ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, Type)
+- uid: HandlingAccessorExceptions
+  name: Handling accessor exceptions
+  href: articles/WritingValidators/WritingValidatorBuilders/HandlingAccessorExceptions.html
 - uid: ManifestModelIndexPage
   name: Using the Manifest Model
   href: articles/WritingValidators/UsingTheManifestModel/index.html

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Ignoring accessor exceptions </title>
+    <title>Handling accessor exceptions </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Ignoring accessor exceptions ">
+    <meta name="title" content="Handling accessor exceptions ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -66,19 +66,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="ignoring-accessor-exceptions">Ignoring accessor exceptions</h1>
+            <article class="content wrap" id="_content" data-uid="HandlingAccessorExceptions">
+<h1 id="handling-accessor-exceptions">Handling accessor exceptions</h1>
 
-<p>When validating derived values or member values, there are occasionally instances when the accessor (executing a method, or a property getter, or arbitrary accessor logic) could raise an exception.
-By default this will raise an exception across the validator and halt validation, because value accessors should not throw.
-This functionality provides a way to ignore such exceptions.</p>
-<p><em>Use this functionality with caution; it is usually a sign of poor object design if accessors such as getters raise exceptions. It is much better to create accessors which do not raise exceptions.</em></p>
-<h2 id="how-to-ignore-exceptions">How to ignore exceptions</h2>
-<p>If you are dealing with a value accessor that could throw and you wish to prevent such exceptions from blocking validation, then use <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_IgnoreExceptions">the <code>IgnoreExceptions</code> method</a> when configuring the accessor. When this method is used, any exception thrown when getting the value will be caught &amp; ignored.</p>
-<h2 id="an-ignored-exception-means-the-value-is-valid">An ignored exception means the value is valid</h2>
-<p>Note that when ignoring accessor exceptions, validation for the value will not be executed.
-This means that the default behaviour for a value which raises and exception is to treat it as <strong>valid</strong>.</p>
-<p>If you wish to validate that a getter or other value-accessor does not raise an exception then you should write a validation rule for the object the provides the value. This rule should attempt to get the value, inside a <code>try</code>/<code>catch</code> block, and should return a failure result is an exception is caught.</p>
+<p>When validating derived values or member values, there are occasionally instances when the accessor (executing a method, or a property getter, or arbitrary accessor logic) could raise an exception.</p>
+<p>The CSF.Validation framework has three available behaviours to deal with this, represented in <a class="xref" href="../../../api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">the <code>ValueAccessExceptionBehaviour</code> enum</a>.
+Theese three behaviours are explained in the documentaion for that enumeration.</p>
+<h2 id="how-to-use-these-behaviours">How to use these behaviours</h2>
+<p>The behaviour may be specified either or both per-manifest value &amp; upon the <a class="xref" href="../../../api/CSF.Validation.ValidationOptions.html"><code>ValidationOptions</code></a> used when validation is performed.
+To specify the behaviour using a validator builder, use the <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__"><code>AccessorExceptionBehaviour</code></a> method upon the builder, specifying the behaviour you wish to use.</p>
+<p>When behaviour is not specified (it is <code>null</code>) upon a manifest value, then the behaviour specified in the validation options will be used.
+When the behaviour is specified in both places, the behaviour upon the manifest value will be used instead.</p>
 </article>
           </div>
           
@@ -87,7 +85,7 @@ This means that the default behaviour for a value which raises and exception is 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/WritingValidators/WritingValidatorBuilders/IgnoreAccessorExceptions.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/WritingValidators/WritingValidatorBuilders/HandlingAccessorExceptions.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

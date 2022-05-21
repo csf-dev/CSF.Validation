@@ -145,7 +145,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2__ctor_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.%23ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CCSF.Validation.ValidatorBuilding.IGetsRuleBuilder%2CCSF.Validation.ValidatorBuilding.IGetsValidatorManifest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L127">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L76">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2__ctor_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2__ctor_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,CSF.Validation.ValidatorBuilding.IGetsRuleBuilder,CSF.Validation.ValidatorBuilding.IGetsValidatorManifest)">ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest)</h4>
@@ -190,10 +190,72 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.AccessorExceptionBehaviour(System.Nullable%7BCSF.Validation.Manifest.ValueAccessExceptionBehaviour%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L46">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AccessorExceptionBehaviour*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AccessorExceptionBehaviour(System.Nullable{CSF.Validation.Manifest.ValueAccessExceptionBehaviour})">AccessorExceptionBehaviour(Nullable&lt;ValueAccessExceptionBehaviour&gt;)</h4>
+  <div class="markdown level1 summary"><p>Configures the validator with a behaviour to use should the value-accessor for the current value raise an exception..</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IConfiguresValueAccessor&lt;TValidated, TValue&gt; AccessorExceptionBehaviour(ValueAccessExceptionBehaviour? behaviour)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>&gt;</td>
+        <td><span class="parametername">behaviour</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html">IConfiguresValueAccessor</a>&lt;TValidated, TValue&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This option will override the behaviour specified at <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>
+for the current value, if the specified behaviour is any non-<span class="xref">null</span> value.
+If this method is unused then it will be treated as if the specified <a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>
+specified at this point were <span class="xref">null</span> and the <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>
+will be used instead.
+</p>
+</div>
+  <h5 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.AddRule%60%601(System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresRule%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L41">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L27">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRule_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRule*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})">AddRule&lt;TRule&gt;(Action&lt;IConfiguresRule&lt;TRule&gt;&gt;)</h4>
@@ -262,7 +324,7 @@ The rule type must be a class that implements <a class="xref" href="CSF.Validati
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRules__1.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.AddRules%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L67">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L38">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRules_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRules*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRules__1" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRules``1">AddRules&lt;TBuilder&gt;()</h4>
@@ -320,7 +382,7 @@ validating the type <code data-dev-comment-type="typeparamref" class="typeparamr
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRuleWithParent__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.AddRuleWithParent%60%601(System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresRule%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L30">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L23">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRuleWithParent_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRuleWithParent*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_AddRuleWithParent__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.AddRuleWithParent``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})">AddRuleWithParent&lt;TRule&gt;(Action&lt;IConfiguresRule&lt;TRule&gt;&gt;)</h4>
@@ -389,7 +451,7 @@ The rule type must be a class that implements <a class="xref" href="CSF.Validati
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_GetManifestValue.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.GetManifestValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L104">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L53">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_GetManifestValue_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.GetManifestValue*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_GetManifestValue" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.GetManifestValue">GetManifestValue()</h4>
@@ -416,57 +478,6 @@ The rule type must be a class that implements <a class="xref" href="CSF.Validati
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilder%602.IgnoreExceptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilder.cs/#L94">View Source</a>
-  </span>
-  <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.IgnoreExceptions*"></a>
-  <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.IgnoreExceptions">IgnoreExceptions()</h4>
-  <div class="markdown level1 summary"><p>Configures the validator to ignore any exceptions encountered whilst getting the value from this accessor.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IConfiguresValueAccessor&lt;TValidated, TValue&gt; IgnoreExceptions()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html">IConfiguresValueAccessor</a>&lt;TValidated, TValue&gt;</td>
-        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>
-This option is irrelevant if <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_IgnoreValueAccessExceptions">IgnoreValueAccessExceptions</a> is set to <span class="xref">true</span>,
-because that option ignores all value-access exceptions globally.
-</p>
-<p>
-If the global validation options are not configured to globally-ignore value access exceptions then this option may be
-used to ignore exceptions on an accessor-by-accessor basis.  This is not recommended because it can lead to the
-hiding of logic errors within the accessor.
-</p>
-<p>
-See the information about the global setting for more information about what it means to ignore exceptions for
-value accessors.
-</p>
-</div>
-  <h5 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_IgnoreExceptions_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_IgnoreValueAccessExceptions">IgnoreValueAccessExceptions</a></div>
-  </div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="CSF.Validation.ValidatorBuilding.IBuildsValueAccessor-2.html">IBuildsValueAccessor&lt;TValidated, TValue&gt;</a>
