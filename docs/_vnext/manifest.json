@@ -5,6 +5,18 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.BaseValidatorFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.BaseValidatorFactory.html",
+          "hash": "iZGoQ8FA/tt0X0eV2jSsWLK2GaoGIehWMXLxc0z31/k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Bootstrap.IRegistersMessageProviders.yml",
       "output": {
         ".html": {
@@ -101,6 +113,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.ExceptionThrowingValidatorWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.ExceptionThrowingValidatorWrapper.html",
+          "hash": "zLwDYWeNDCW0g0syO7Z1tqDVZ0fG9GMlC8Hjqbp1bOU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.IBuildsValidator-1.yml",
       "output": {
         ".html": {
@@ -113,11 +137,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.IGetsBaseValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.IGetsBaseValidator.html",
+          "hash": "v4zbpL7gxiIu7KqYfw0hN+zUK3zrO/Xrlao2uTZj8Y0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.IGetsValidator.yml",
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.IGetsValidator.html",
           "hash": "3gyC7uLkmtmTvIrhV/ZTnaQmcqv7tPvAUthj8ByPrCg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.IHasValidationRuleResults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.IHasValidationRuleResults.html",
+          "hash": "joWDL8pZX5hVnCive62GZrXBxkUGszmHN1j0+d1OA/c="
         }
       },
       "is_incremental": false,
@@ -190,6 +238,30 @@
         ".html": {
           "relative_path": "api/CSF.Validation.IValidatorWithMessages.html",
           "hash": "A53e2za/mTc6gO1p1+ufK6DeHVBvhVGmFcSv06Y7tds="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html",
+          "hash": "xANNJdNqFUg1G7fmw2kF/tRL/W0Ge4Sx56oy9q9xCNg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.IWrapsValidatorWithMessageSupport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.IWrapsValidatorWithMessageSupport.html",
+          "hash": "9oNxi3c5D70XhhzdZAJqN3Q9qGid/kMWTev296aMVs0="
         }
       },
       "is_incremental": false,
@@ -646,6 +718,18 @@
         ".html": {
           "relative_path": "api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html",
           "hash": "KPHRek5Ruen5cvE4VZWDAlLo1qdGQzvormMXuLfNqU0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.MessageSupportValidatorWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.MessageSupportValidatorWrapper.html",
+          "hash": "dBw4fSod+R2/lys6PVpX2B9+m12oAXbsu5z/DjbCdjY="
         }
       },
       "is_incremental": false,
@@ -1629,7 +1713,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.RuleThrowingBehaviour.html",
-          "hash": "f2eaKbgxM54CrhmzEE20kgzCScVlyMWTDuTpX64HoyA="
+          "hash": "FxT+V8E//mYzyilnl6KaXuFEn7AH5mOZ6tY42SN9oKw="
         }
       },
       "is_incremental": false,
@@ -2093,11 +2177,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html",
+          "hash": "fy6LI9N0qvYJZDY6fTUvNFKwIPYeoK79qRKdQQr+/fk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html",
+          "hash": "r/VzPvqyDUr1NWBo5YiPxvEHvjHbZwX8vMIRH5iMAHU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.ValidationException.yml",
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationException.html",
-          "hash": "o3XcQ3xWCNAFScibtjwK5Z6tzaIcnQ5DgL/lUzEMzQg="
+          "hash": "LMXwhchWHsGdxcixZjUHkgNBtqVx3SupbaDBzCK0HiI="
         }
       },
       "is_incremental": false,
@@ -2121,7 +2229,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationResult.html",
-          "hash": "jzRXliMxhdWybh3HUNjiJJVR6fKfOYAL0dMBLBVbRxI="
+          "hash": "PskPp4FvTqNCRSlvKEiTwZcKVLbsQd+Su8u8pwHXWcs="
         }
       },
       "is_incremental": false,
@@ -2133,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationResultWithMessages.html",
-          "hash": "rh35ovOq2mKfR40u+5aGn/eYnS8PIXJwgQVVGLIxfGg="
+          "hash": "njMY/kHp0WECcJSPI9dUc2C/460ei5MJXAkOksjJ+mQ="
         }
       },
       "is_incremental": false,
@@ -2589,7 +2697,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidatorFactory.html",
-          "hash": "i3vIgkq7ubhcvQFmVcOB/CA9l0SMM+Ata1eG6yQCeao="
+          "hash": "HxgvUlf3jBlOQPBzSSVFuvqD+malgvzo/S6CTVBbDNs="
         }
       },
       "is_incremental": false,
@@ -2613,7 +2721,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.html",
-          "hash": "v6xdPR0+6o81ZvZ4qiW6FQp3pdO/9EwvlCRpZT5q5KM="
+          "hash": "260YkUGzeW/GsPzXDwqfhmO8QP2qkuyKY4GnJC7JNpk="
         }
       },
       "is_incremental": false,
@@ -2637,7 +2745,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "QuR/wdADzO7h+6wmXLRAiLcfXac9tjNnog7Bqn80tRQ="
+          "hash": "BETw8gA/587HX1w1nRGoxp35b2TE+Y6kr9Nlq/k1YqI="
         }
       },
       "is_incremental": false,
@@ -2721,7 +2829,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/ConsumingValidators.html",
-          "hash": "NLozcyZpev7dv4FjtlGvydTsoKEp50vl1sG5y8Sz6TI="
+          "hash": "vU2SuZ/0cpuvklcxghY1vQilGD4ry+FH/F93XwdnXsM="
         }
       },
       "is_incremental": false,
@@ -3012,7 +3120,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 218,
+          "total_file_count": 227,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

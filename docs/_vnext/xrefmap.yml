@@ -13,6 +13,47 @@ references:
   commentId: N:CSF.Validation
   fullName: CSF.Validation
   nameWithType: CSF.Validation
+- uid: CSF.Validation.BaseValidatorFactory
+  name: BaseValidatorFactory
+  href: api/CSF.Validation.BaseValidatorFactory.html
+  commentId: T:CSF.Validation.BaseValidatorFactory
+  fullName: CSF.Validation.BaseValidatorFactory
+  nameWithType: BaseValidatorFactory
+- uid: CSF.Validation.BaseValidatorFactory.#ctor(CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.Manifest.IGetsValidatorFromManifest)
+  name: BaseValidatorFactory(IGetsManifestFromBuilder, IGetsValidatorFromManifest)
+  href: api/CSF.Validation.BaseValidatorFactory.html#CSF_Validation_BaseValidatorFactory__ctor_CSF_Validation_Manifest_IGetsManifestFromBuilder_CSF_Validation_Manifest_IGetsValidatorFromManifest_
+  commentId: M:CSF.Validation.BaseValidatorFactory.#ctor(CSF.Validation.Manifest.IGetsManifestFromBuilder,CSF.Validation.Manifest.IGetsValidatorFromManifest)
+  fullName: CSF.Validation.BaseValidatorFactory.BaseValidatorFactory(CSF.Validation.Manifest.IGetsManifestFromBuilder, CSF.Validation.Manifest.IGetsValidatorFromManifest)
+  nameWithType: BaseValidatorFactory.BaseValidatorFactory(IGetsManifestFromBuilder, IGetsValidatorFromManifest)
+- uid: CSF.Validation.BaseValidatorFactory.#ctor*
+  name: BaseValidatorFactory
+  href: api/CSF.Validation.BaseValidatorFactory.html#CSF_Validation_BaseValidatorFactory__ctor_
+  commentId: Overload:CSF.Validation.BaseValidatorFactory.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.BaseValidatorFactory.BaseValidatorFactory
+  nameWithType: BaseValidatorFactory.BaseValidatorFactory
+- uid: CSF.Validation.BaseValidatorFactory.GetValidator(CSF.Validation.Manifest.ValidationManifest)
+  name: GetValidator(ValidationManifest)
+  href: api/CSF.Validation.BaseValidatorFactory.html#CSF_Validation_BaseValidatorFactory_GetValidator_CSF_Validation_Manifest_ValidationManifest_
+  commentId: M:CSF.Validation.BaseValidatorFactory.GetValidator(CSF.Validation.Manifest.ValidationManifest)
+  fullName: CSF.Validation.BaseValidatorFactory.GetValidator(CSF.Validation.Manifest.ValidationManifest)
+  nameWithType: BaseValidatorFactory.GetValidator(ValidationManifest)
+- uid: CSF.Validation.BaseValidatorFactory.GetValidator*
+  name: GetValidator
+  href: api/CSF.Validation.BaseValidatorFactory.html#CSF_Validation_BaseValidatorFactory_GetValidator_
+  commentId: Overload:CSF.Validation.BaseValidatorFactory.GetValidator
+  isSpec: "True"
+  fullName: CSF.Validation.BaseValidatorFactory.GetValidator
+  nameWithType: BaseValidatorFactory.GetValidator
+- uid: CSF.Validation.BaseValidatorFactory.GetValidator``1(CSF.Validation.IBuildsValidator{``0})
+  name: GetValidator<TValidated>(IBuildsValidator<TValidated>)
+  href: api/CSF.Validation.BaseValidatorFactory.html#CSF_Validation_BaseValidatorFactory_GetValidator__1_CSF_Validation_IBuildsValidator___0__
+  commentId: M:CSF.Validation.BaseValidatorFactory.GetValidator``1(CSF.Validation.IBuildsValidator{``0})
+  name.vb: GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
+  fullName: CSF.Validation.BaseValidatorFactory.GetValidator<TValidated>(CSF.Validation.IBuildsValidator<TValidated>)
+  fullName.vb: CSF.Validation.BaseValidatorFactory.GetValidator(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
+  nameWithType: BaseValidatorFactory.GetValidator<TValidated>(IBuildsValidator<TValidated>)
+  nameWithType.vb: BaseValidatorFactory.GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
 - uid: CSF.Validation.Bootstrap
   name: CSF.Validation.Bootstrap
   href: api/CSF.Validation.Bootstrap.html
@@ -301,6 +342,49 @@ references:
   fullName.vb: CSF.Validation.Bootstrap.ServiceProviderOrActivatorResolver.ResolveService(Of T)(System.Type)
   nameWithType: ServiceProviderOrActivatorResolver.ResolveService<T>(Type)
   nameWithType.vb: ServiceProviderOrActivatorResolver.ResolveService(Of T)(Type)
+- uid: CSF.Validation.ExceptionThrowingValidatorWrapper
+  name: ExceptionThrowingValidatorWrapper
+  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html
+  commentId: T:CSF.Validation.ExceptionThrowingValidatorWrapper
+  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper
+  nameWithType: ExceptionThrowingValidatorWrapper
+- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidator)
+  name: WrapValidator(IValidator)
+  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator_CSF_Validation_IValidator_
+  commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidator)
+  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidator)
+  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator(IValidator)
+- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidatorWithMessages)
+  name: WrapValidator(IValidatorWithMessages)
+  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator_CSF_Validation_IValidatorWithMessages_
+  commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidatorWithMessages)
+  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidatorWithMessages)
+  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator(IValidatorWithMessages)
+- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator*
+  name: WrapValidator
+  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator_
+  commentId: Overload:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator
+  isSpec: "True"
+  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator
+  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator
+- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator``1(CSF.Validation.IValidator{``0})
+  name: WrapValidator<TValidated>(IValidator<TValidated>)
+  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator__1_CSF_Validation_IValidator___0__
+  commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator``1(CSF.Validation.IValidator{``0})
+  name.vb: WrapValidator(Of TValidated)(IValidator(Of TValidated))
+  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(CSF.Validation.IValidator<TValidated>)
+  fullName.vb: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(CSF.Validation.IValidator(Of TValidated))
+  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(IValidator<TValidated>)
+  nameWithType.vb: ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(IValidator(Of TValidated))
+- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
+  name: WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
+  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator__1_CSF_Validation_IValidatorWithMessages___0__
+  commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
+  name.vb: WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
+  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(CSF.Validation.IValidatorWithMessages<TValidated>)
+  fullName.vb: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(CSF.Validation.IValidatorWithMessages(Of TValidated))
+  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
+  nameWithType.vb: ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
 - uid: CSF.Validation.IBuildsValidator`1
   name: IBuildsValidator<TValidated>
   href: api/CSF.Validation.IBuildsValidator-1.html
@@ -328,6 +412,34 @@ references:
   fullName.vb: CSF.Validation.IBuildsValidator(Of TValidated).ConfigureValidator
   nameWithType: IBuildsValidator<TValidated>.ConfigureValidator
   nameWithType.vb: IBuildsValidator(Of TValidated).ConfigureValidator
+- uid: CSF.Validation.IGetsBaseValidator
+  name: IGetsBaseValidator
+  href: api/CSF.Validation.IGetsBaseValidator.html
+  commentId: T:CSF.Validation.IGetsBaseValidator
+  fullName: CSF.Validation.IGetsBaseValidator
+  nameWithType: IGetsBaseValidator
+- uid: CSF.Validation.IGetsBaseValidator.GetValidator(CSF.Validation.Manifest.ValidationManifest)
+  name: GetValidator(ValidationManifest)
+  href: api/CSF.Validation.IGetsBaseValidator.html#CSF_Validation_IGetsBaseValidator_GetValidator_CSF_Validation_Manifest_ValidationManifest_
+  commentId: M:CSF.Validation.IGetsBaseValidator.GetValidator(CSF.Validation.Manifest.ValidationManifest)
+  fullName: CSF.Validation.IGetsBaseValidator.GetValidator(CSF.Validation.Manifest.ValidationManifest)
+  nameWithType: IGetsBaseValidator.GetValidator(ValidationManifest)
+- uid: CSF.Validation.IGetsBaseValidator.GetValidator*
+  name: GetValidator
+  href: api/CSF.Validation.IGetsBaseValidator.html#CSF_Validation_IGetsBaseValidator_GetValidator_
+  commentId: Overload:CSF.Validation.IGetsBaseValidator.GetValidator
+  isSpec: "True"
+  fullName: CSF.Validation.IGetsBaseValidator.GetValidator
+  nameWithType: IGetsBaseValidator.GetValidator
+- uid: CSF.Validation.IGetsBaseValidator.GetValidator``1(CSF.Validation.IBuildsValidator{``0})
+  name: GetValidator<TValidated>(IBuildsValidator<TValidated>)
+  href: api/CSF.Validation.IGetsBaseValidator.html#CSF_Validation_IGetsBaseValidator_GetValidator__1_CSF_Validation_IBuildsValidator___0__
+  commentId: M:CSF.Validation.IGetsBaseValidator.GetValidator``1(CSF.Validation.IBuildsValidator{``0})
+  name.vb: GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
+  fullName: CSF.Validation.IGetsBaseValidator.GetValidator<TValidated>(CSF.Validation.IBuildsValidator<TValidated>)
+  fullName.vb: CSF.Validation.IGetsBaseValidator.GetValidator(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
+  nameWithType: IGetsBaseValidator.GetValidator<TValidated>(IBuildsValidator<TValidated>)
+  nameWithType.vb: IGetsBaseValidator.GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
 - uid: CSF.Validation.IGetsValidator
   name: IGetsValidator
   href: api/CSF.Validation.IGetsValidator.html
@@ -402,6 +514,38 @@ references:
   fullName.vb: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
   nameWithType: IGetsValidator.GetValidatorWithMessageSupport<TValidated>(IBuildsValidator<TValidated>)
   nameWithType.vb: IGetsValidator.GetValidatorWithMessageSupport(Of TValidated)(IBuildsValidator(Of TValidated))
+- uid: CSF.Validation.IHasValidationRuleResults
+  name: IHasValidationRuleResults
+  href: api/CSF.Validation.IHasValidationRuleResults.html
+  commentId: T:CSF.Validation.IHasValidationRuleResults
+  fullName: CSF.Validation.IHasValidationRuleResults
+  nameWithType: IHasValidationRuleResults
+- uid: CSF.Validation.IHasValidationRuleResults.Passed
+  name: Passed
+  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_Passed
+  commentId: P:CSF.Validation.IHasValidationRuleResults.Passed
+  fullName: CSF.Validation.IHasValidationRuleResults.Passed
+  nameWithType: IHasValidationRuleResults.Passed
+- uid: CSF.Validation.IHasValidationRuleResults.Passed*
+  name: Passed
+  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_Passed_
+  commentId: Overload:CSF.Validation.IHasValidationRuleResults.Passed
+  isSpec: "True"
+  fullName: CSF.Validation.IHasValidationRuleResults.Passed
+  nameWithType: IHasValidationRuleResults.Passed
+- uid: CSF.Validation.IHasValidationRuleResults.RuleResults
+  name: RuleResults
+  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_RuleResults
+  commentId: P:CSF.Validation.IHasValidationRuleResults.RuleResults
+  fullName: CSF.Validation.IHasValidationRuleResults.RuleResults
+  nameWithType: IHasValidationRuleResults.RuleResults
+- uid: CSF.Validation.IHasValidationRuleResults.RuleResults*
+  name: RuleResults
+  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_RuleResults_
+  commentId: Overload:CSF.Validation.IHasValidationRuleResults.RuleResults
+  isSpec: "True"
+  fullName: CSF.Validation.IHasValidationRuleResults.RuleResults
+  nameWithType: IHasValidationRuleResults.RuleResults
 - uid: CSF.Validation.IQueryableValidationResult
   name: IQueryableValidationResult
   href: api/CSF.Validation.IQueryableValidationResult.html
@@ -614,6 +758,77 @@ references:
   fullName.vb: CSF.Validation.IValidatorWithMessages(Of TValidated).ValidateAsync
   nameWithType: IValidatorWithMessages<TValidated>.ValidateAsync
   nameWithType.vb: IValidatorWithMessages(Of TValidated).ValidateAsync
+- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour
+  name: IWrapsValidatorWithExceptionBehaviour
+  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html
+  commentId: T:CSF.Validation.IWrapsValidatorWithExceptionBehaviour
+  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour
+  nameWithType: IWrapsValidatorWithExceptionBehaviour
+- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidator)
+  name: WrapValidator(IValidator)
+  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator_CSF_Validation_IValidator_
+  commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidator)
+  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidator)
+  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator(IValidator)
+- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidatorWithMessages)
+  name: WrapValidator(IValidatorWithMessages)
+  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator_CSF_Validation_IValidatorWithMessages_
+  commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidatorWithMessages)
+  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidatorWithMessages)
+  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator(IValidatorWithMessages)
+- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator*
+  name: WrapValidator
+  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator_
+  commentId: Overload:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator
+  isSpec: "True"
+  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator
+  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator
+- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator``1(CSF.Validation.IValidator{``0})
+  name: WrapValidator<TValidated>(IValidator<TValidated>)
+  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator__1_CSF_Validation_IValidator___0__
+  commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator``1(CSF.Validation.IValidator{``0})
+  name.vb: WrapValidator(Of TValidated)(IValidator(Of TValidated))
+  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(CSF.Validation.IValidator<TValidated>)
+  fullName.vb: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(CSF.Validation.IValidator(Of TValidated))
+  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(IValidator<TValidated>)
+  nameWithType.vb: IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(IValidator(Of TValidated))
+- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
+  name: WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
+  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator__1_CSF_Validation_IValidatorWithMessages___0__
+  commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
+  name.vb: WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
+  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(CSF.Validation.IValidatorWithMessages<TValidated>)
+  fullName.vb: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(CSF.Validation.IValidatorWithMessages(Of TValidated))
+  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
+  nameWithType.vb: IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
+- uid: CSF.Validation.IWrapsValidatorWithMessageSupport
+  name: IWrapsValidatorWithMessageSupport
+  href: api/CSF.Validation.IWrapsValidatorWithMessageSupport.html
+  commentId: T:CSF.Validation.IWrapsValidatorWithMessageSupport
+  fullName: CSF.Validation.IWrapsValidatorWithMessageSupport
+  nameWithType: IWrapsValidatorWithMessageSupport
+- uid: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport(CSF.Validation.IValidator)
+  name: GetValidatorWithMessageSupport(IValidator)
+  href: api/CSF.Validation.IWrapsValidatorWithMessageSupport.html#CSF_Validation_IWrapsValidatorWithMessageSupport_GetValidatorWithMessageSupport_CSF_Validation_IValidator_
+  commentId: M:CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport(CSF.Validation.IValidator)
+  fullName: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport(CSF.Validation.IValidator)
+  nameWithType: IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport(IValidator)
+- uid: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport*
+  name: GetValidatorWithMessageSupport
+  href: api/CSF.Validation.IWrapsValidatorWithMessageSupport.html#CSF_Validation_IWrapsValidatorWithMessageSupport_GetValidatorWithMessageSupport_
+  commentId: Overload:CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport
+  isSpec: "True"
+  fullName: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport
+  nameWithType: IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport
+- uid: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport``1(CSF.Validation.IValidator{``0})
+  name: GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated>)
+  href: api/CSF.Validation.IWrapsValidatorWithMessageSupport.html#CSF_Validation_IWrapsValidatorWithMessageSupport_GetValidatorWithMessageSupport__1_CSF_Validation_IValidator___0__
+  commentId: M:CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport``1(CSF.Validation.IValidator{``0})
+  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IValidator(Of TValidated))
+  fullName: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IValidator<TValidated>)
+  fullName.vb: CSF.Validation.IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IValidator(Of TValidated))
+  nameWithType: IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated>)
+  nameWithType.vb: IWrapsValidatorWithMessageSupport.GetValidatorWithMessageSupport(Of TValidated)(IValidator(Of TValidated))
 - uid: CSF.Validation.Manifest
   name: CSF.Validation.Manifest
   href: api/CSF.Validation.Manifest.html
@@ -3217,6 +3432,47 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider
   nameWithType: SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider
+- uid: CSF.Validation.MessageSupportValidatorWrapper
+  name: MessageSupportValidatorWrapper
+  href: api/CSF.Validation.MessageSupportValidatorWrapper.html
+  commentId: T:CSF.Validation.MessageSupportValidatorWrapper
+  fullName: CSF.Validation.MessageSupportValidatorWrapper
+  nameWithType: MessageSupportValidatorWrapper
+- uid: CSF.Validation.MessageSupportValidatorWrapper.#ctor(CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  name: MessageSupportValidatorWrapper(IAddsFailureMessagesToResult)
+  href: api/CSF.Validation.MessageSupportValidatorWrapper.html#CSF_Validation_MessageSupportValidatorWrapper__ctor_CSF_Validation_Messages_IAddsFailureMessagesToResult_
+  commentId: M:CSF.Validation.MessageSupportValidatorWrapper.#ctor(CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  fullName: CSF.Validation.MessageSupportValidatorWrapper.MessageSupportValidatorWrapper(CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  nameWithType: MessageSupportValidatorWrapper.MessageSupportValidatorWrapper(IAddsFailureMessagesToResult)
+- uid: CSF.Validation.MessageSupportValidatorWrapper.#ctor*
+  name: MessageSupportValidatorWrapper
+  href: api/CSF.Validation.MessageSupportValidatorWrapper.html#CSF_Validation_MessageSupportValidatorWrapper__ctor_
+  commentId: Overload:CSF.Validation.MessageSupportValidatorWrapper.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.MessageSupportValidatorWrapper.MessageSupportValidatorWrapper
+  nameWithType: MessageSupportValidatorWrapper.MessageSupportValidatorWrapper
+- uid: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport(CSF.Validation.IValidator)
+  name: GetValidatorWithMessageSupport(IValidator)
+  href: api/CSF.Validation.MessageSupportValidatorWrapper.html#CSF_Validation_MessageSupportValidatorWrapper_GetValidatorWithMessageSupport_CSF_Validation_IValidator_
+  commentId: M:CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport(CSF.Validation.IValidator)
+  fullName: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport(CSF.Validation.IValidator)
+  nameWithType: MessageSupportValidatorWrapper.GetValidatorWithMessageSupport(IValidator)
+- uid: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport*
+  name: GetValidatorWithMessageSupport
+  href: api/CSF.Validation.MessageSupportValidatorWrapper.html#CSF_Validation_MessageSupportValidatorWrapper_GetValidatorWithMessageSupport_
+  commentId: Overload:CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport
+  isSpec: "True"
+  fullName: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport
+  nameWithType: MessageSupportValidatorWrapper.GetValidatorWithMessageSupport
+- uid: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport``1(CSF.Validation.IValidator{``0})
+  name: GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated>)
+  href: api/CSF.Validation.MessageSupportValidatorWrapper.html#CSF_Validation_MessageSupportValidatorWrapper_GetValidatorWithMessageSupport__1_CSF_Validation_IValidator___0__
+  commentId: M:CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport``1(CSF.Validation.IValidator{``0})
+  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IValidator(Of TValidated))
+  fullName: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IValidator<TValidated>)
+  fullName.vb: CSF.Validation.MessageSupportValidatorWrapper.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IValidator(Of TValidated))
+  nameWithType: MessageSupportValidatorWrapper.GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated>)
+  nameWithType.vb: MessageSupportValidatorWrapper.GetValidatorWithMessageSupport(Of TValidated)(IValidator(Of TValidated))
 - uid: CSF.Validation.RuleBuilderExtensions
   name: RuleBuilderExtensions
   href: api/CSF.Validation.RuleBuilderExtensions.html
@@ -6764,6 +7020,144 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.StandardRulesServiceCollectionExtensions.UseStandardValidationRules
   nameWithType: StandardRulesServiceCollectionExtensions.UseStandardValidationRules
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1
+  name: ThrowingBehaviourValidatorDecorator<TValidated>
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html
+  commentId: T:CSF.Validation.ThrowingBehaviourValidatorDecorator`1
+  name.vb: ThrowingBehaviourValidatorDecorator(Of TValidated)
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated)
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated)
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.#ctor(CSF.Validation.IValidator{`0})
+  name: ThrowingBehaviourValidatorDecorator(IValidator<TValidated>)
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1__ctor_CSF_Validation_IValidator__0__
+  commentId: M:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.#ctor(CSF.Validation.IValidator{`0})
+  name.vb: ThrowingBehaviourValidatorDecorator(IValidator(Of TValidated))
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ThrowingBehaviourValidatorDecorator(CSF.Validation.IValidator<TValidated>)
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ThrowingBehaviourValidatorDecorator(CSF.Validation.IValidator(Of TValidated))
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ThrowingBehaviourValidatorDecorator(IValidator<TValidated>)
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ThrowingBehaviourValidatorDecorator(IValidator(Of TValidated))
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.#ctor*
+  name: ThrowingBehaviourValidatorDecorator
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1__ctor_
+  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ThrowingBehaviourValidatorDecorator
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ThrowingBehaviourValidatorDecorator
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ThrowingBehaviourValidatorDecorator
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ThrowingBehaviourValidatorDecorator
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name: ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name: ValidateAsync(Object, ValidationOptions, CancellationToken)
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ValidateAsync(Object, ValidationOptions, CancellationToken)
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ValidateAsync(Object, ValidationOptions, CancellationToken)
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidateAsync*
+  name: ValidateAsync
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1_ValidateAsync_
+  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidateAsync
+  isSpec: "True"
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ValidateAsync
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ValidateAsync
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ValidateAsync
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ValidateAsync
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidatedType
+  name: ValidatedType
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1_ValidatedType
+  commentId: P:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidatedType
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ValidatedType
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ValidatedType
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ValidatedType
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ValidatedType
+- uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidatedType*
+  name: ValidatedType
+  href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorDecorator_1_ValidatedType_
+  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorDecorator`1.ValidatedType
+  isSpec: "True"
+  fullName: CSF.Validation.ThrowingBehaviourValidatorDecorator<TValidated>.ValidatedType
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ValidatedType
+  nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ValidatedType
+  nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ValidatedType
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1
+  name: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html
+  commentId: T:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1
+  name.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated)
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated)
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated)
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor(CSF.Validation.IValidatorWithMessages{`0})
+  name: ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages<TValidated>)
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1__ctor_CSF_Validation_IValidatorWithMessages__0__
+  commentId: M:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor(CSF.Validation.IValidatorWithMessages{`0})
+  name.vb: ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages(Of TValidated))
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator(CSF.Validation.IValidatorWithMessages<TValidated>)
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator(CSF.Validation.IValidatorWithMessages(Of TValidated))
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages<TValidated>)
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages(Of TValidated))
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor*
+  name: ThrowingBehaviourValidatorWithMessagesDecorator
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1__ctor_
+  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name: ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name: ValidateAsync(Object, ValidationOptions, CancellationToken)
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(Object, ValidationOptions, CancellationToken)
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(Object, ValidationOptions, CancellationToken)
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync*
+  name: ValidateAsync
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidateAsync_
+  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync
+  isSpec: "True"
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType
+  name: ValidatedType
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidatedType
+  commentId: P:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
+- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType*
+  name: ValidatedType
+  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidatedType_
+  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType
+  isSpec: "True"
+  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
+  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
+  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
+  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
 - uid: CSF.Validation.ValidationException
   name: ValidationException
   href: api/CSF.Validation.ValidationException.html
@@ -6788,12 +7182,12 @@ references:
   commentId: M:CSF.Validation.ValidationException.#ctor(System.String)
   fullName: CSF.Validation.ValidationException.ValidationException(System.String)
   nameWithType: ValidationException.ValidationException(String)
-- uid: CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.ValidationResult)
-  name: ValidationException(String, ValidationResult)
-  href: api/CSF.Validation.ValidationException.html#CSF_Validation_ValidationException__ctor_System_String_CSF_Validation_ValidationResult_
-  commentId: M:CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.ValidationResult)
-  fullName: CSF.Validation.ValidationException.ValidationException(System.String, CSF.Validation.ValidationResult)
-  nameWithType: ValidationException.ValidationException(String, ValidationResult)
+- uid: CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.IHasValidationRuleResults)
+  name: ValidationException(String, IHasValidationRuleResults)
+  href: api/CSF.Validation.ValidationException.html#CSF_Validation_ValidationException__ctor_System_String_CSF_Validation_IHasValidationRuleResults_
+  commentId: M:CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.IHasValidationRuleResults)
+  fullName: CSF.Validation.ValidationException.ValidationException(System.String, CSF.Validation.IHasValidationRuleResults)
+  nameWithType: ValidationException.ValidationException(String, IHasValidationRuleResults)
 - uid: CSF.Validation.ValidationException.#ctor(System.String,System.Exception)
   name: ValidationException(String, Exception)
   href: api/CSF.Validation.ValidationException.html#CSF_Validation_ValidationException__ctor_System_String_System_Exception_
@@ -6922,6 +7316,23 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationResultWithMessages.ValidationResultWithMessages
   nameWithType: ValidationResultWithMessages.ValidationResultWithMessages
+- uid: CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults
+  name: IHasValidationRuleResults.RuleResults
+  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_CSF_Validation_IHasValidationRuleResults_RuleResults
+  commentId: P:CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults
+  name.vb: CSF.Validation.IHasValidationRuleResults.RuleResults
+  fullName: CSF.Validation.ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
+  nameWithType: ValidationResultWithMessages.IHasValidationRuleResults.RuleResults
+  nameWithType.vb: ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
+- uid: CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults*
+  name: IHasValidationRuleResults.RuleResults
+  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_CSF_Validation_IHasValidationRuleResults_RuleResults_
+  commentId: Overload:CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults
+  isSpec: "True"
+  name.vb: CSF.Validation.IHasValidationRuleResults.RuleResults
+  fullName: CSF.Validation.ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
+  nameWithType: ValidationResultWithMessages.IHasValidationRuleResults.RuleResults
+  nameWithType.vb: ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
 - uid: CSF.Validation.ValidationResultWithMessages.Passed
   name: Passed
   href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_Passed

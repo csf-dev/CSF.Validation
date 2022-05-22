@@ -76,6 +76,22 @@ You will require a reference to the <a href="https://www.nuget.org/packages/CSF.
 The methods of the validator factory will allow you to get either <a class="xref" href="../api/CSF.Validation.IValidator-1.html">a <code>IValidator&lt;T&gt;</code></a> or perhaps <a class="xref" href="../api/CSF.Validation.IValidator.html">a non-generic <code>IValidator</code></a>.
 Which you use depends upon whether or not the type of the validated object is known at design-time.</p>
 <p>Both validator interfaces provide the method <code>ValidateAsync</code>, which is used to validate the object and get the results.</p>
+<h2 id="specify-options-to-customise-validation">Specify options to customise validation</h2>
+<p>The second parameter to the <code>ValidateAsync</code> method (of any validator) is an optional instance of <a class="xref" href="../api/CSF.Validation.ValidationOptions.html"><code>ValidationOptions</code></a>.
+The validation options class allows you to customise the behaviour of validation.</p>
+<h3 id="should-the-validator-throw-if-validation-fails">Should the validator throw if validation fails?</h3>
+<p>When a validator object completes validation, it may throw an exception.  This is governed by the <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour"><code>RuleThrowingBehaviour</code></a> property of the validation options passed to the <code>ValidateAsync</code> method.
+By default, if no options are specified or if this property is left unset upon the options, the validator will throw if any of the validation results indicates <a class="xref" href="../api/CSF.Validation.Rules.RuleOutcome.html">an outcome of <code>Errored</code></a>.
+Other behaviours are available, documented with the enum <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour"><code>RuleThrowingBehaviour</code></a>.</p>
+<h3 id="how-should-exceptions-be-treated-when-accessing-values">How should exceptions be treated when accessing values</h3>
+<p>Exceptions which occur within validation rules are automatically caught and converted into <code>Errored</code> outcomes within the validation results.
+The same is not automatically true for the accessors which gets values from the object model to be validated.
+This behaviour is controlled from two places:</p>
+<ul>
+<li>Upon the validation options, <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour">the property <code>AccessorExceptionBehaviour</code></a> decides the default behaviour</li>
+<li>Upon each validation manifest value, an optional <a class="xref" href="WritingValidators/WritingValidatorBuilders/HandlingAccessorExceptions.html"><code>AccessorExceptionBehaviour</code></a> value may override the default behaviour for individual values</li>
+</ul>
+<p>If no behaviour is set anywhere (for example no options object is passed to the validator) then the default behaviour is <a class="xref" href="../api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html"><code>TreatAsError</code></a>.</p>
 </article>
           </div>
           

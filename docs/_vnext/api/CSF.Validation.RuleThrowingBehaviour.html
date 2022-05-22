@@ -83,6 +83,34 @@ due to either failure or unexpected exceptions from validation rules.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public enum RuleThrowingBehaviour</code></pre>
   </div>
+  <h5 id="CSF_Validation_RuleThrowingBehaviour_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+The default behaviour if this value is not specified upon the <a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a> is
+<a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_OnError">OnError</a>.
+This is recommended for normal use.
+</p>
+<p>
+The <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_OnFailure">OnFailure</a> behaviour is not recommended except for scenarios where the validated
+object is expected to be valid and where an invalid object represents an exceptional case.
+If you expect that the validated object could be invalid then use either <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_OnError">OnError</a>
+or <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_Never">Never</a> to avoid throwing an exception for a &apos;normal&apos; failure.
+</p>
+<p>
+The <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_OnFailure">OnFailure</a> behaviour includes the behaviour specified by <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_OnError">OnError</a>.
+</p>
+<p>
+When the <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_Never">Never</a> behaviour is specified, no exception will be raised at the completion
+of validation.
+Rule results with outcomes of <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a> will still cause the validation
+result to indicate failure but without throwing an exception.
+</p>
+<p>
+The <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_Never">Never</a> behaviour is not recommended unless it is expected that validation rules may
+raise uncaught exceptions.  Under normal operation this would usually suggest bad design.
+The disadvantage of this approach is that it may hide logic errors and/or other problems because
+an unexpected exception will be treated very similarly to normal validation failures.
+</p>
+</div>
   <h3 id="fields">Fields
   </h3>
   <table class="table table-bordered table-striped table-condensed">
@@ -101,8 +129,9 @@ uncaught exceptions.</p>
       </tr>
       <tr>
         <td id="CSF_Validation_RuleThrowingBehaviour_OnError">OnError</td>
-        <td><p>The validator will throw an exception if any part of the validation process
-raises an exception, such as when one or more validation rules raise uncaught exceptions.</p>
+        <td><p>The validator will throw an exception at the completion of validation if any result
+has an outcome of <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a>, such as when a rule
+raises an exception.</p>
 </td>
       </tr>
       <tr>
@@ -113,6 +142,11 @@ for the failure was not exceptional.</p>
       </tr>
     </tbody>
   </thead></thead></table>
+  <h5 id="CSF_Validation_RuleThrowingBehaviour_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a></div>
+  </div>
 </article>
           </div>
           
@@ -124,7 +158,7 @@ for the failure was not exceptional.</p>
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleThrowingBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleThrowingBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleThrowingBehaviour.cs/#L7" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleThrowingBehaviour.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
