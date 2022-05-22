@@ -7,7 +7,11 @@ namespace CSF.Validation.Bootstrap
         internal static IServiceCollection AddValidatorFactory(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddTransient<IGetsValidator, ValidatorFactory>();
+                .AddTransient<IGetsValidator, ValidatorFactory>()
+                .AddTransient<IGetsBaseValidator, BaseValidatorFactory>()
+                .AddTransient<IWrapsValidatorWithExceptionBehaviour, ExceptionThrowingValidatorWrapper>()
+                .AddTransient<IWrapsValidatorWithMessageSupport, MessageSupportValidatorWrapper>()
+                ;
         }
     }
 }

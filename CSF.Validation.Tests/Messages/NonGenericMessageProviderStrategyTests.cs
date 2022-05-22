@@ -3,7 +3,7 @@ using AutoFixture.NUnit3;
 using CSF.Validation.Messages;
 using NUnit.Framework;
 
-namespace CSF.Validation.Tests.Messages
+namespace CSF.Validation.Messages
 {
     [TestFixture,Parallelizable]
     public class NonGenericMessageProviderStrategyTests

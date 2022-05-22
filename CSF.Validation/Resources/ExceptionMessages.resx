@@ -237,4 +237,14 @@
     <value>The rule interface must be a closed-generic form of either {0}&lt;TValue&gt; or {0}&lt;TValue, TParent&gt;.  Instead it is {1}.</value>
     <comment/>
   </data>
+  <data name="ErrorInValidation" xml:space="preserve">
+    <value>One or more errors were encountered during validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.
+Please look through the {4} for results which have an outcome of {5} for more information.</value>
+    <comment/>
+  </data>
+  <data name="FailureInValidation" xml:space="preserve">
+    <value>One or more validation rules failed validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.
+Please look through the {4} for results which have an outcome of {5} or {6} for more information.</value>
+    <comment/>
+  </data>
 </root>

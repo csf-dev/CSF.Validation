@@ -8,24 +8,12 @@ namespace CSF.Validation
     /// <summary>
     /// A model for the results of a validation process.
     /// </summary>
-    public class ValidationResult
+    public class ValidationResult : IHasValidationRuleResults
     {
-        /// <summary>
-        /// Gets a simple value which indicates whether or not this result represents passing validation
-        /// without any errors.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// If this property returns <see langword="true" /> then every one of the <see cref="RuleResults"/> has
-        /// an <see cref="RuleResult.Outcome"/> of <see cref="RuleOutcome.Passed"/>.
-        /// If it returns false then at least one of the rule results returns a different (non-passing) rule outcome.
-        /// </para>
-        /// </remarks>
+        /// <inheritdoc/>
         public bool Passed { get; }
 
-        /// <summary>
-        /// Gets a collection of the results of individual validation rules.
-        /// </summary>
+        /// <inheritdoc/>
         public IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
 
         /// <summary>

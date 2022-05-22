@@ -2,6 +2,7 @@ using System;
 using AutoFixture;
 using AutoFixture.Kernel;
 using Moq;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation
 {
@@ -17,7 +18,12 @@ namespace CSF.Validation
             public object Create(object request, ISpecimenContext context)
             {
                 var serviceProvider = new Mock<IServiceProvider>();
-                serviceProvider.Setup(x => x.GetService(It.IsAny<Type>())).Returns((Type t) => context.Resolve(t));
+                serviceProvider
+                    .Setup(x => x.GetService(It.IsAny<Type>()))
+                    .Returns((Type t) => context.Resolve(t));
+                serviceProvider.As<ISupportRequiredService>()
+                    .Setup(x => x.GetRequiredService(It.IsAny<Type>()))
+                    .Returns((Type t) => context.Resolve(t));
                 return serviceProvider.Object;
             }
         }
