@@ -78,16 +78,19 @@ namespace CSF.Validation
                                                                                                                               [Frozen] IWrapsValidatorWithExceptionBehaviour exceptionBehaviourWrapper,
                                                                                                                               [Frozen] IGetsValidationManifestFromModel manifestFromModelProvider,
                                                                                                                               ValidatorFactory sut,
+                                                                                                                              [ManifestModel] Value manifestModel,
+                                                                                                                              Type validatedType,
                                                                                                                               [ManifestModel] ValidationManifest manifest,
                                                                                                                               IValidator baseValidator)
         {
             var expectedValidatorMock = new Mock<IValidator<ValidatedObject>>();
             var expectedValidator = expectedValidatorMock.As<IValidator>().Object;
 
+            Mock.Get(manifestFromModelProvider).Setup(x => x.GetValidationManifest(manifestModel, validatedType)).Returns(manifest);
             Mock.Get(baseValidatorFactory).Setup(x => x.GetValidator(manifest)).Returns(baseValidator);
             Mock.Get(exceptionBehaviourWrapper).Setup(x => x.WrapValidator(baseValidator)).Returns(expectedValidator);
 
-            Assert.That(() => sut.GetValidator(manifest), Is.SameAs(expectedValidator));
+            Assert.That(() => sut.GetValidator(manifestModel, validatedType), Is.SameAs(expectedValidator));
         }
 
         #endregion
@@ -172,6 +175,8 @@ namespace CSF.Validation
                                                                                                                               [Frozen] IGetsValidationManifestFromModel manifestFromModelProvider,
                                                                                                                               [Frozen] IWrapsValidatorWithMessageSupport messageSupportWrapper,
                                                                                                                               ValidatorFactory sut,
+                                                                                                                              [ManifestModel] Value manifestModel,
+                                                                                                                              Type validatedType,
                                                                                                                               [ManifestModel] ValidationManifest manifest,
                                                                                                                               IValidator baseValidator)
         {
@@ -180,11 +185,12 @@ namespace CSF.Validation
             var messageValidatorMock = new Mock<IValidatorWithMessages<ValidatedObject>>();
             var messageValidator = messageValidatorMock.As<IValidatorWithMessages>().Object;
 
+            Mock.Get(manifestFromModelProvider).Setup(x => x.GetValidationManifest(manifestModel, validatedType)).Returns(manifest);
             Mock.Get(baseValidatorFactory).Setup(x => x.GetValidator(manifest)).Returns(baseValidator);
             Mock.Get(messageSupportWrapper).Setup(x => x.GetValidatorWithMessageSupport(baseValidator)).Returns(messageValidator);
             Mock.Get(exceptionBehaviourWrapper).Setup(x => x.WrapValidator(messageValidator)).Returns(expectedValidator);
 
-            Assert.That(() => sut.GetValidatorWithMessageSupport(manifest), Is.SameAs(expectedValidator));
+            Assert.That(() => sut.GetValidatorWithMessageSupport(manifestModel, validatedType), Is.SameAs(expectedValidator));
         }
 
         #endregion
