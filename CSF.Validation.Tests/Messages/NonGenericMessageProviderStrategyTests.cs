@@ -14,7 +14,7 @@ namespace CSF.Validation.Messages
                                                                                                    NonGenericMessageProviderStrategy sut,
                                                                                                    Type ruleInterface)
         {
-            Assert.That(() => sut.GetNonGenericFailureMessageProvider(typeof(IGetsFailureMessage), ruleInterface), Is.SameAs(provider));
+            Assert.That(() => sut.GetNonGenericFailureMessageProvider(new MessageProviderTypeInfo(typeof(IGetsFailureMessage), default), ruleInterface), Is.SameAs(provider));
         }
     }
 }

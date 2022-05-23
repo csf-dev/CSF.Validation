@@ -19,7 +19,7 @@ namespace CSF.Validation.Messages
     /// </remarks>
     /// <typeparam name="TValidated">The type of the validated value.</typeparam>
     /// <typeparam name="TParent">The type of the parent validated value.</typeparam>
-    public interface IGetsFailureMessage<TValidated,TParent>
+    public interface IGetsFailureMessage<in TValidated,in TParent>
     {
         /// <summary>
         /// Gets the validation failure message for the specified result.

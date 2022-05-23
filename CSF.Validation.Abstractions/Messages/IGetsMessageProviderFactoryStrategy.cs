@@ -12,9 +12,9 @@ namespace CSF.Validation.Messages
         /// If no suitable strategy is available then this method will return a <see langword="null" />
         /// reference.
         /// </summary>
-        /// <param name="providerType">The candidate message provider type.</param>
+        /// <param name="messageProviderTypeInfo">The candidate message provider type.</param>
         /// <param name="ruleInterface">The interface used for the validation rule.</param>
         /// <returns>Either a <see cref="IGetsNonGenericMessageProvider"/> or a <see langword="null" /> reference.</returns>
-        IGetsNonGenericMessageProvider GetMessageProviderFactory(Type providerType, Type ruleInterface);
+        IGetsNonGenericMessageProvider GetMessageProviderFactory(MessageProviderTypeInfo messageProviderTypeInfo, Type ruleInterface);
     }
 }

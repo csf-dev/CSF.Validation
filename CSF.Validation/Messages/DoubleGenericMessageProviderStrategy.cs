@@ -16,12 +16,12 @@ namespace CSF.Validation.Messages
         readonly IServiceProvider serviceProvider;
 
         /// <inheritdoc/>
-        public IGetsFailureMessage GetNonGenericFailureMessageProvider(Type providerType, Type ruleInterface)
+        public IGetsFailureMessage GetNonGenericFailureMessageProvider(MessageProviderTypeInfo providerType, Type ruleInterface)
         {
             var ruleInterfaceInfo = ruleInterface.GetTypeInfo();
             var method = getDoubleGenericFailureMessageMethod.MakeGenericMethod(ruleInterfaceInfo.GenericTypeArguments[0],
                                                                                 ruleInterfaceInfo.GenericTypeArguments[1]);
-            return (IGetsFailureMessage)method.Invoke(this, new[] { providerType });
+            return (IGetsFailureMessage)method.Invoke(this, new[] { providerType.ProviderType });
         }
 
         /// <summary>

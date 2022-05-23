@@ -22,7 +22,7 @@ namespace CSF.Validation.Messages
         public IEnumerable<MessageProviderInfo> GetMessageProviderInfo(ValidationRuleResult ruleResult)
         {
             return (from typeInfo in typeRegistry.GetCandidateMessageProviderTypes(ruleResult)
-                    let factoryStrategy = factoryStrategySelector.GetMessageProviderFactory(typeInfo.ProviderType, ruleResult.RuleInterface)
+                    let factoryStrategy = factoryStrategySelector.GetMessageProviderFactory(typeInfo, ruleResult.RuleInterface)
                     where !(factoryStrategy is null)
                     select GetMessageProviderInfo(factoryStrategy, typeInfo, ruleResult))
                 .ToList();
@@ -33,7 +33,7 @@ namespace CSF.Validation.Messages
 
         static Func<IGetsFailureMessage> GetProviderFactory(IGetsNonGenericMessageProvider factory, MessageProviderTypeInfo typeInfo, ValidationRuleResult ruleResult)
         {
-            return () => factory.GetNonGenericFailureMessageProvider(typeInfo.ProviderType,
+            return () => factory.GetNonGenericFailureMessageProvider(typeInfo,
                                                                      ruleResult.RuleInterface);
         }
 

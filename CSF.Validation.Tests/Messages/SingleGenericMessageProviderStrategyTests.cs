@@ -15,7 +15,7 @@ namespace CSF.Validation.Messages
                                                                                                             SingleGenericMessageProviderStrategy sut,
                                                                                                             [RuleResult(ValidatedValue = "Foo")] ValidationRuleResult ruleResult)
         {
-            var result = sut.GetNonGenericFailureMessageProvider(typeof(IGetsFailureMessage<string>), typeof(IRule<string>));
+            var result = sut.GetNonGenericFailureMessageProvider(new MessageProviderTypeInfo(typeof(IGetsFailureMessage<string>), default), typeof(IRule<string>));
             result.GetFailureMessageAsync(ruleResult);
             Mock.Get(wrapped).Verify(x => x.GetFailureMessageAsync("Foo", ruleResult, default), Times.Once);
         }

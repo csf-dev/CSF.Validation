@@ -10,8 +10,8 @@ namespace CSF.Validation.Messages
         readonly IServiceProvider serviceProvider;
 
         /// <inheritdoc/>
-        public IGetsFailureMessage GetNonGenericFailureMessageProvider(Type providerType, Type ruleInterface)
-            => (IGetsFailureMessage)serviceProvider.GetService(providerType);
+        public IGetsFailureMessage GetNonGenericFailureMessageProvider(MessageProviderTypeInfo providerType, Type ruleInterface)
+            => (IGetsFailureMessage)serviceProvider.GetService(providerType.ProviderType);
 
         /// <summary>
         /// Initialises a new instance of <see cref="NonGenericMessageProviderStrategy"/>.

@@ -13,49 +13,49 @@ namespace CSF.Validation.Messages
         public void GetMessageProviderFactoryShouldReturnADoubleGenericStrategyForAProviderTypeWhichMatchesADoubleGenericRule([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                                                               MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(TwoGenericProvider), typeof(IRule<string, int>)), Is.InstanceOf<DoubleGenericMessageProviderStrategy>());
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(TwoGenericProvider), default), typeof(IRule<string, int>)), Is.InstanceOf<DoubleGenericMessageProviderStrategy>());
         }
 
         [Test,AutoMoqData]
         public void GetMessageProviderFactoryShouldReturnASingleGenericStrategyForAProviderTypeWhichMatchesASingleGenericRule([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                                                               MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(OneGenericProvider), typeof(IRule<string>)), Is.InstanceOf<SingleGenericMessageProviderStrategy>());
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(OneGenericProvider), default), typeof(IRule<string>)), Is.InstanceOf<SingleGenericMessageProviderStrategy>());
         }
 
         [Test,AutoMoqData]
         public void GetMessageProviderFactoryShouldReturnASingleGenericStrategyForAProviderTypeWhichMatchesTheFirstTypeOfADoubleGenericRule([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                                                                             MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(OneGenericProvider), typeof(IRule<string, int>)), Is.InstanceOf<SingleGenericMessageProviderStrategy>());
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(OneGenericProvider), default), typeof(IRule<string, int>)), Is.InstanceOf<SingleGenericMessageProviderStrategy>());
         }
 
         [Test,AutoMoqData]
         public void GetMessageProviderFactoryShouldReturnANonGenericProviderIfSpecified([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                         MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(NonGenericProvider), typeof(IRule<string, int>)), Is.InstanceOf<NonGenericMessageProviderStrategy>());
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(NonGenericProvider), default), typeof(IRule<string, int>)), Is.InstanceOf<NonGenericMessageProviderStrategy>());
         }
 
         [Test,AutoMoqData]
         public void GetMessageProviderFactoryShouldReturnNullForAProviderTypeWhichDoesNotMatchTheRuleInterface([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                                                MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(OneGenericProvider), typeof(IRule<bool>)), Is.Null);
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(OneGenericProvider), default), typeof(IRule<bool>)), Is.Null);
         }
 
         [Test,AutoMoqData]
         public void GetMessageProviderFactoryShouldReturnADoubleGenericStrategyIfTheProviderTypeIsAmbiguousButMatchesADoubleGenericRule([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                                                                         MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(MultipleInterfaceProvider), typeof(IRule<string,int>)), Is.InstanceOf<DoubleGenericMessageProviderStrategy>());
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(MultipleInterfaceProvider), default), typeof(IRule<string,int>)), Is.InstanceOf<DoubleGenericMessageProviderStrategy>());
         }
 
         [Test,AutoMoqData]
         public void GetMessageProviderFactoryShouldThrowIfRuleInterfaceIsInvalid([AutofixtureServices] IServiceProvider serviceProvider,
                                                                                  MessageProviderFactoryStrategyProvider sut)
         {
-            Assert.That(() => sut.GetMessageProviderFactory(typeof(OneGenericProvider), typeof(bool)), Throws.ArgumentException);
+            Assert.That(() => sut.GetMessageProviderFactory(new MessageProviderTypeInfo(typeof(OneGenericProvider), default), typeof(bool)), Throws.ArgumentException);
         }
 
         public class TwoGenericProvider : IGetsFailureMessage<string, int>
