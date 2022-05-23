@@ -7,5 +7,5 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <typeparam name="TValidated">The validated type.</typeparam>
     /// <typeparam name="TParent">The parent validated type.</typeparam>
-    public interface IRuleWithMessage<TValidated,TParent> : IRule<TValidated,TParent>, IGetsFailureMessage<TValidated,TParent> {}
+    public interface IRuleWithMessage<in TValidated,in TParent> : IRule<TValidated,TParent>, IGetsFailureMessage<TValidated,TParent> {}
 }
