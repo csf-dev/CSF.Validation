@@ -21,7 +21,8 @@ namespace CSF.Validation.Messages
         /// <remarks>
         /// <para>
         /// This method will examine the message provider interfaces which are implemented by the
-        /// <paramref name="providerType"/>.  Specifically it will consider all implementations of any of:
+        /// <see cref="MessageProviderTypeInfo.ProviderTypeInfo"/> of the <paramref name="messageProviderTypeInfo"/>.
+        /// Specifically it will consider all implementations of any of:
         /// </para>
         /// <list type="number">
         /// <item><description><see cref="IGetsFailureMessage{TValidated, TParent}"/></description></item>
@@ -30,7 +31,7 @@ namespace CSF.Validation.Messages
         /// </list>
         /// <para>
         /// It will then return a message-provider-factory strategy implementation which best-matches the interfaces
-        /// implemented by the <paramref name="providerType"/>, based upon the actual validation rule interface
+        /// indicated by the <paramref name="messageProviderTypeInfo"/>, based upon the actual validation rule interface
         /// which is in-use: <paramref name="ruleInterface"/>.
         /// </para>
         /// <para>
@@ -46,24 +47,27 @@ namespace CSF.Validation.Messages
         /// a fall-back option for unexpected scenarios (such as validating <see cref="RuleOutcome.Errored"/> results).
         /// </para>
         /// <para>
-        /// If this method cannot find any suitable strategy for getting a message provider - the <paramref name="providerType"/>
-        /// does not implement any interface which is compatible with the <paramref name="ruleInterface"/> - then it
-        /// will return <see langword="null" />.  This means that no factory strategy is applicable and that the provider
-        /// type is not compatible with the rule interface.
+        /// If this method cannot find any suitable strategy for getting a message provider - the provider type indicated
+        /// by <paramref name="messageProviderTypeInfo"/> does not implement any interface which is compatible with the
+        /// <paramref name="ruleInterface"/> - then it will return <see langword="null" />.  This means that no factory
+        /// strategy is applicable and that the provider type is not compatible with the rule interface.
         /// </para>
         /// </remarks>
-        /// <param name="providerType"></param>
-        /// <param name="ruleInterface"></param>
+        /// <param name="messageProviderTypeInfo">The candidate message provider type.</param>
+        /// <param name="ruleInterface">The interface used for the validation rule.</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public IGetsNonGenericMessageProvider GetMessageProviderFactory(Type providerType, Type ruleInterface)
+        /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
+        public IGetsNonGenericMessageProvider GetMessageProviderFactory(MessageProviderTypeInfo messageProviderTypeInfo, Type ruleInterface)
         {
-            if (providerType is null)
-                throw new ArgumentNullException(nameof(providerType));
+            if (messageProviderTypeInfo is null)
+                throw new ArgumentNullException(nameof(messageProviderTypeInfo));
             if (ruleInterface is null)
                 throw new ArgumentNullException(nameof(ruleInterface));
 
-            var providerTypeInfo = providerType.GetTypeInfo();
+            if(messageProviderTypeInfo is InstanceMessageProviderInfo)
+                return serviceProvider.GetRequiredService<UseExistingInstanceMessageProviderStrategy>();
+
+            var providerTypeInfo = messageProviderTypeInfo.ProviderTypeInfo;
             var ruleInterfaceInfo = ruleInterface.GetTypeInfo();
             if(!IsValidRuleInterface(ruleInterfaceInfo))
                 throw GetIncorrectRuleInterfaceException(ruleInterface);

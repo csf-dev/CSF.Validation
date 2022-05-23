@@ -4,6 +4,7 @@ using System.Reflection;
 using AutoFixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.RuleExecution;
+using Moq;
 
 namespace CSF.Validation.Rules
 {
@@ -15,6 +16,8 @@ namespace CSF.Validation.Rules
         public object ValidatedValue { get; set; } = new object();
 
         public object ParentValue { get; set; } = new object();
+
+        public Type RuleInterface { get; set; } = typeof(object);
 
         public void Customize(IFixture fixture)
         {
@@ -29,7 +32,7 @@ namespace CSF.Validation.Rules
         ValidationRuleResult GetValidationRuleResult(RuleResult result, ManifestRule manifestRule, RuleIdentifier ruleIdentifier, IValidationLogic logic)
         {
             var valueContext = new ValueContext(Guid.NewGuid(), ParentValue, manifestRule.ManifestValue);
-            var context = new RuleContext(manifestRule, ruleIdentifier, ValidatedValue, new [] { valueContext }, typeof(object));
+            var context = new RuleContext(manifestRule, ruleIdentifier, ValidatedValue, new [] { valueContext }, RuleInterface);
             return new ValidationRuleResult(result, context, logic);
         }
 

@@ -13,6 +13,6 @@ namespace CSF.Validation.Messages
         /// <param name="providerType">The message provider type.</param>
         /// <param name="ruleInterface">The interface used for the original rule.</param>
         /// <returns>An implementation of <see cref="IGetsFailureMessage"/>.</returns>
-        IGetsFailureMessage GetNonGenericFailureMessageProvider(Type providerType, Type ruleInterface);
+        IGetsFailureMessage GetNonGenericFailureMessageProvider(MessageProviderTypeInfo providerType, Type ruleInterface);
     }
 }

@@ -58,7 +58,7 @@ namespace CSF.Validation.Messages
         /// </summary>
         /// <param name="copyFrom">An instance to copy from.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="copyFrom"/> is <see langword="null" />.</exception>
-        public MessageProviderTypeInfo(MessageProviderTypeInfo copyFrom)
+        protected MessageProviderTypeInfo(MessageProviderTypeInfo copyFrom)
         {
             if (copyFrom is null)
                 throw new ArgumentNullException(nameof(copyFrom));
