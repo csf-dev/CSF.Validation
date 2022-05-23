@@ -2256,12 +2256,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.DoubleGenericMessageProviderStrategy
   nameWithType: DoubleGenericMessageProviderStrategy.DoubleGenericMessageProviderStrategy
-- uid: CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  name: GetNonGenericFailureMessageProvider(Type, Type)
-  href: api/CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.html#CSF_Validation_Messages_DoubleGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_System_Type_System_Type_
-  commentId: M:CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  fullName: CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type, System.Type)
-  nameWithType: DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(Type, Type)
+- uid: CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.html#CSF_Validation_Messages_DoubleGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
 - uid: CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider*
   name: GetNonGenericFailureMessageProvider
   href: api/CSF.Validation.Messages.DoubleGenericMessageProviderStrategy.html#CSF_Validation_Messages_DoubleGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_
@@ -2819,12 +2819,12 @@ references:
   commentId: T:CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy
   fullName: CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy
   nameWithType: IGetsMessageProviderFactoryStrategy
-- uid: CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(System.Type,System.Type)
-  name: GetMessageProviderFactory(Type, Type)
-  href: api/CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.html#CSF_Validation_Messages_IGetsMessageProviderFactoryStrategy_GetMessageProviderFactory_System_Type_System_Type_
-  commentId: M:CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(System.Type,System.Type)
-  fullName: CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(System.Type, System.Type)
-  nameWithType: IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(Type, Type)
+- uid: CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetMessageProviderFactory(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.html#CSF_Validation_Messages_IGetsMessageProviderFactoryStrategy_GetMessageProviderFactory_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory(MessageProviderTypeInfo, Type)
 - uid: CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.GetMessageProviderFactory*
   name: GetMessageProviderFactory
   href: api/CSF.Validation.Messages.IGetsMessageProviderFactoryStrategy.html#CSF_Validation_Messages_IGetsMessageProviderFactoryStrategy_GetMessageProviderFactory_
@@ -2927,12 +2927,12 @@ references:
   commentId: T:CSF.Validation.Messages.IGetsNonGenericMessageProvider
   fullName: CSF.Validation.Messages.IGetsNonGenericMessageProvider
   nameWithType: IGetsNonGenericMessageProvider
-- uid: CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  name: GetNonGenericFailureMessageProvider(Type, Type)
-  href: api/CSF.Validation.Messages.IGetsNonGenericMessageProvider.html#CSF_Validation_Messages_IGetsNonGenericMessageProvider_GetNonGenericFailureMessageProvider_System_Type_System_Type_
-  commentId: M:CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  fullName: CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(System.Type, System.Type)
-  nameWithType: IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(Type, Type)
+- uid: CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.IGetsNonGenericMessageProvider.html#CSF_Validation_Messages_IGetsNonGenericMessageProvider_GetNonGenericFailureMessageProvider_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
 - uid: CSF.Validation.Messages.IGetsNonGenericMessageProvider.GetNonGenericFailureMessageProvider*
   name: GetNonGenericFailureMessageProvider
   href: api/CSF.Validation.Messages.IGetsNonGenericMessageProvider.html#CSF_Validation_Messages_IGetsNonGenericMessageProvider_GetNonGenericFailureMessageProvider_
@@ -3049,6 +3049,38 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.IHasWrappedFailureMessageProvider.GetWrappedProvider
   nameWithType: IHasWrappedFailureMessageProvider.GetWrappedProvider
+- uid: CSF.Validation.Messages.InstanceMessageProviderInfo
+  name: InstanceMessageProviderInfo
+  href: api/CSF.Validation.Messages.InstanceMessageProviderInfo.html
+  commentId: T:CSF.Validation.Messages.InstanceMessageProviderInfo
+  fullName: CSF.Validation.Messages.InstanceMessageProviderInfo
+  nameWithType: InstanceMessageProviderInfo
+- uid: CSF.Validation.Messages.InstanceMessageProviderInfo.#ctor(CSF.Validation.Messages.MessageProviderTypeInfo,CSF.Validation.Messages.IGetsFailureMessage)
+  name: InstanceMessageProviderInfo(MessageProviderTypeInfo, IGetsFailureMessage)
+  href: api/CSF.Validation.Messages.InstanceMessageProviderInfo.html#CSF_Validation_Messages_InstanceMessageProviderInfo__ctor_CSF_Validation_Messages_MessageProviderTypeInfo_CSF_Validation_Messages_IGetsFailureMessage_
+  commentId: M:CSF.Validation.Messages.InstanceMessageProviderInfo.#ctor(CSF.Validation.Messages.MessageProviderTypeInfo,CSF.Validation.Messages.IGetsFailureMessage)
+  fullName: CSF.Validation.Messages.InstanceMessageProviderInfo.InstanceMessageProviderInfo(CSF.Validation.Messages.MessageProviderTypeInfo, CSF.Validation.Messages.IGetsFailureMessage)
+  nameWithType: InstanceMessageProviderInfo.InstanceMessageProviderInfo(MessageProviderTypeInfo, IGetsFailureMessage)
+- uid: CSF.Validation.Messages.InstanceMessageProviderInfo.#ctor*
+  name: InstanceMessageProviderInfo
+  href: api/CSF.Validation.Messages.InstanceMessageProviderInfo.html#CSF_Validation_Messages_InstanceMessageProviderInfo__ctor_
+  commentId: Overload:CSF.Validation.Messages.InstanceMessageProviderInfo.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Messages.InstanceMessageProviderInfo.InstanceMessageProviderInfo
+  nameWithType: InstanceMessageProviderInfo.InstanceMessageProviderInfo
+- uid: CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider
+  name: MessageProvider
+  href: api/CSF.Validation.Messages.InstanceMessageProviderInfo.html#CSF_Validation_Messages_InstanceMessageProviderInfo_MessageProvider
+  commentId: P:CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider
+  fullName: CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider
+  nameWithType: InstanceMessageProviderInfo.MessageProvider
+- uid: CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider*
+  name: MessageProvider
+  href: api/CSF.Validation.Messages.InstanceMessageProviderInfo.html#CSF_Validation_Messages_InstanceMessageProviderInfo_MessageProvider_
+  commentId: Overload:CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider
+  isSpec: "True"
+  fullName: CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider
+  nameWithType: InstanceMessageProviderInfo.MessageProvider
 - uid: CSF.Validation.Messages.LazyMessageProviderInfo
   name: LazyMessageProviderInfo
   href: api/CSF.Validation.Messages.LazyMessageProviderInfo.html
@@ -3109,12 +3141,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.MessageProviderFactoryStrategyProvider
   nameWithType: MessageProviderFactoryStrategyProvider.MessageProviderFactoryStrategyProvider
-- uid: CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(System.Type,System.Type)
-  name: GetMessageProviderFactory(Type, Type)
-  href: api/CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.html#CSF_Validation_Messages_MessageProviderFactoryStrategyProvider_GetMessageProviderFactory_System_Type_System_Type_
-  commentId: M:CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(System.Type,System.Type)
-  fullName: CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(System.Type, System.Type)
-  nameWithType: MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(Type, Type)
+- uid: CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetMessageProviderFactory(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.html#CSF_Validation_Messages_MessageProviderFactoryStrategyProvider_GetMessageProviderFactory_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: MessageProviderFactoryStrategyProvider.GetMessageProviderFactory(MessageProviderTypeInfo, Type)
 - uid: CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.GetMessageProviderFactory*
   name: GetMessageProviderFactory
   href: api/CSF.Validation.Messages.MessageProviderFactoryStrategyProvider.html#CSF_Validation_Messages_MessageProviderFactoryStrategyProvider_GetMessageProviderFactory_
@@ -3355,12 +3387,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.NonGenericMessageProviderStrategy.NonGenericMessageProviderStrategy
   nameWithType: NonGenericMessageProviderStrategy.NonGenericMessageProviderStrategy
-- uid: CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  name: GetNonGenericFailureMessageProvider(Type, Type)
-  href: api/CSF.Validation.Messages.NonGenericMessageProviderStrategy.html#CSF_Validation_Messages_NonGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_System_Type_System_Type_
-  commentId: M:CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  fullName: CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type, System.Type)
-  nameWithType: NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(Type, Type)
+- uid: CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.NonGenericMessageProviderStrategy.html#CSF_Validation_Messages_NonGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
 - uid: CSF.Validation.Messages.NonGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider*
   name: GetNonGenericFailureMessageProvider
   href: api/CSF.Validation.Messages.NonGenericMessageProviderStrategy.html#CSF_Validation_Messages_NonGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_
@@ -3400,6 +3432,38 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.NullExcludingMessageProviderInfoDecorator.GetMessageProviderInfo
   nameWithType: NullExcludingMessageProviderInfoDecorator.GetMessageProviderInfo
+- uid: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator
+  name: RuleWithMessageCandidateTypeDecorator
+  href: api/CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.html
+  commentId: T:CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator
+  fullName: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator
+  nameWithType: RuleWithMessageCandidateTypeDecorator
+- uid: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.#ctor(CSF.Validation.Messages.IGetsCandidateMessageTypes)
+  name: RuleWithMessageCandidateTypeDecorator(IGetsCandidateMessageTypes)
+  href: api/CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.html#CSF_Validation_Messages_RuleWithMessageCandidateTypeDecorator__ctor_CSF_Validation_Messages_IGetsCandidateMessageTypes_
+  commentId: M:CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.#ctor(CSF.Validation.Messages.IGetsCandidateMessageTypes)
+  fullName: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.RuleWithMessageCandidateTypeDecorator(CSF.Validation.Messages.IGetsCandidateMessageTypes)
+  nameWithType: RuleWithMessageCandidateTypeDecorator.RuleWithMessageCandidateTypeDecorator(IGetsCandidateMessageTypes)
+- uid: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.#ctor*
+  name: RuleWithMessageCandidateTypeDecorator
+  href: api/CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.html#CSF_Validation_Messages_RuleWithMessageCandidateTypeDecorator__ctor_
+  commentId: Overload:CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.RuleWithMessageCandidateTypeDecorator
+  nameWithType: RuleWithMessageCandidateTypeDecorator.RuleWithMessageCandidateTypeDecorator
+- uid: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes(CSF.Validation.ValidationRuleResult)
+  name: GetCandidateMessageProviderTypes(ValidationRuleResult)
+  href: api/CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.html#CSF_Validation_Messages_RuleWithMessageCandidateTypeDecorator_GetCandidateMessageProviderTypes_CSF_Validation_ValidationRuleResult_
+  commentId: M:CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes(CSF.Validation.ValidationRuleResult)
+  fullName: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes(CSF.Validation.ValidationRuleResult)
+  nameWithType: RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes(ValidationRuleResult)
+- uid: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes*
+  name: GetCandidateMessageProviderTypes
+  href: api/CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.html#CSF_Validation_Messages_RuleWithMessageCandidateTypeDecorator_GetCandidateMessageProviderTypes_
+  commentId: Overload:CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes
+  isSpec: "True"
+  fullName: CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes
+  nameWithType: RuleWithMessageCandidateTypeDecorator.GetCandidateMessageProviderTypes
 - uid: CSF.Validation.Messages.SingleGenericMessageProviderStrategy
   name: SingleGenericMessageProviderStrategy
   href: api/CSF.Validation.Messages.SingleGenericMessageProviderStrategy.html
@@ -3419,12 +3483,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.SingleGenericMessageProviderStrategy
   nameWithType: SingleGenericMessageProviderStrategy.SingleGenericMessageProviderStrategy
-- uid: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  name: GetNonGenericFailureMessageProvider(Type, Type)
-  href: api/CSF.Validation.Messages.SingleGenericMessageProviderStrategy.html#CSF_Validation_Messages_SingleGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_System_Type_System_Type_
-  commentId: M:CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type,System.Type)
-  fullName: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(System.Type, System.Type)
-  nameWithType: SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(Type, Type)
+- uid: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.SingleGenericMessageProviderStrategy.html#CSF_Validation_Messages_SingleGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
 - uid: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider*
   name: GetNonGenericFailureMessageProvider
   href: api/CSF.Validation.Messages.SingleGenericMessageProviderStrategy.html#CSF_Validation_Messages_SingleGenericMessageProviderStrategy_GetNonGenericFailureMessageProvider_
@@ -3432,6 +3496,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider
   nameWithType: SingleGenericMessageProviderStrategy.GetNonGenericFailureMessageProvider
+- uid: CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy
+  name: UseExistingInstanceMessageProviderStrategy
+  href: api/CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.html
+  commentId: T:CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy
+  fullName: CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy
+  nameWithType: UseExistingInstanceMessageProviderStrategy
+- uid: CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  name: GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
+  href: api/CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.html#CSF_Validation_Messages_UseExistingInstanceMessageProviderStrategy_GetNonGenericFailureMessageProvider_CSF_Validation_Messages_MessageProviderTypeInfo_System_Type_
+  commentId: M:CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo,System.Type)
+  fullName: CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider(CSF.Validation.Messages.MessageProviderTypeInfo, System.Type)
+  nameWithType: UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider(MessageProviderTypeInfo, Type)
+- uid: CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider*
+  name: GetNonGenericFailureMessageProvider
+  href: api/CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.html#CSF_Validation_Messages_UseExistingInstanceMessageProviderStrategy_GetNonGenericFailureMessageProvider_
+  commentId: Overload:CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider
+  isSpec: "True"
+  fullName: CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider
+  nameWithType: UseExistingInstanceMessageProviderStrategy.GetNonGenericFailureMessageProvider
 - uid: CSF.Validation.MessageSupportValidatorWrapper
   name: MessageSupportValidatorWrapper
   href: api/CSF.Validation.MessageSupportValidatorWrapper.html
@@ -5746,6 +5829,24 @@ references:
   fullName.vb: CSF.Validation.Rules.IRule(Of TValue, TParent).GetResultAsync
   nameWithType: IRule<TValue, TParent>.GetResultAsync
   nameWithType.vb: IRule(Of TValue, TParent).GetResultAsync
+- uid: CSF.Validation.Rules.IRuleWithMessage`1
+  name: IRuleWithMessage<TValidated>
+  href: api/CSF.Validation.Rules.IRuleWithMessage-1.html
+  commentId: T:CSF.Validation.Rules.IRuleWithMessage`1
+  name.vb: IRuleWithMessage(Of TValidated)
+  fullName: CSF.Validation.Rules.IRuleWithMessage<TValidated>
+  fullName.vb: CSF.Validation.Rules.IRuleWithMessage(Of TValidated)
+  nameWithType: IRuleWithMessage<TValidated>
+  nameWithType.vb: IRuleWithMessage(Of TValidated)
+- uid: CSF.Validation.Rules.IRuleWithMessage`2
+  name: IRuleWithMessage<TValidated, TParent>
+  href: api/CSF.Validation.Rules.IRuleWithMessage-2.html
+  commentId: T:CSF.Validation.Rules.IRuleWithMessage`2
+  name.vb: IRuleWithMessage(Of TValidated, TParent)
+  fullName: CSF.Validation.Rules.IRuleWithMessage<TValidated, TParent>
+  fullName.vb: CSF.Validation.Rules.IRuleWithMessage(Of TValidated, TParent)
+  nameWithType: IRuleWithMessage<TValidated, TParent>
+  nameWithType.vb: IRuleWithMessage(Of TValidated, TParent)
 - uid: CSF.Validation.Rules.IValidationLogic
   name: IValidationLogic
   href: api/CSF.Validation.Rules.IValidationLogic.html

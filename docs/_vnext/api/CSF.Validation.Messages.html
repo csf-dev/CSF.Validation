@@ -119,6 +119,9 @@ as a <a class="xref" href="CSF.Validation.Messages.IHasFailureMessageUsageCriter
       <section><p>A service which converts a <a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a> into a <a class="xref" href="CSF.Validation.ValidationResultWithMessages.html">ValidationResultWithMessages</a> by
 getting messages for each rule result within the original result and adding a message, where appropriate.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Messages.InstanceMessageProviderInfo.html">InstanceMessageProviderInfo</a></h4>
+      <section><p>A specialisation of <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a> which includes an existing instance of a message provider.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Messages.LazyMessageProviderInfo.html">LazyMessageProviderInfo</a></h4>
       <section><p>A specialisation of <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a> which resolves the <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_MessageProvider">MessageProvider</a>
 lazily, only instantiating it upon usage.</p>
@@ -155,9 +158,17 @@ used as failure message providers.</p>
       <section><p>A decorator for <a class="xref" href="CSF.Validation.Messages.IGetsMessageProviderInfo.html">IGetsMessageProviderInfo</a> which excludes message providers which have a
 <span class="xref">null</span> implementation.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Messages.RuleWithMessageCandidateTypeDecorator.html">RuleWithMessageCandidateTypeDecorator</a></h4>
+      <section><p>A decorator for <a class="xref" href="CSF.Validation.Messages.IGetsCandidateMessageTypes.html">IGetsCandidateMessageTypes</a> which adds an additional message provider for rules which implement
+a rule-with-message interface.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Messages.SingleGenericMessageProviderStrategy.html">SingleGenericMessageProviderStrategy</a></h4>
       <section><p>A strategy for getting <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage.html">IGetsFailureMessage</a> from a type that implements the
 generic <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage-1.html">IGetsFailureMessage&lt;TValidated&gt;</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.html">UseExistingInstanceMessageProviderStrategy</a></h4>
+      <section><p>A strategy for <a class="xref" href="CSF.Validation.Messages.IGetsNonGenericMessageProvider.html">IGetsNonGenericMessageProvider</a> which uses an existing instance
+from a <a class="xref" href="CSF.Validation.Messages.InstanceMessageProviderInfo.html">InstanceMessageProviderInfo</a>.</p>
 </section>
     <h3 id="interfaces">Interfaces
   </h3>

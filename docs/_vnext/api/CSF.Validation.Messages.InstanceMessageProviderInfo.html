@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MessageProviderInfo
+    <title>Class InstanceMessageProviderInfo
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MessageProviderInfo
+    <meta name="title" content="Class InstanceMessageProviderInfo
    ">
     <meta name="generator" content="docfx 2.58.9.0">
     
@@ -68,25 +68,26 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="CSF.Validation.Messages.MessageProviderInfo">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Messages.InstanceMessageProviderInfo">
   
   
-  <h1 id="CSF_Validation_Messages_MessageProviderInfo" data-uid="CSF.Validation.Messages.MessageProviderInfo" class="text-break">Class MessageProviderInfo
+  <h1 id="CSF_Validation_Messages_InstanceMessageProviderInfo" data-uid="CSF.Validation.Messages.InstanceMessageProviderInfo" class="text-break">Class InstanceMessageProviderInfo
   </h1>
-  <div class="markdown level0 summary"><p>Represents information about a message provider type.  An object which implements <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage.html">IGetsFailureMessage</a>,
-possibly via an adapter.</p>
+  <div class="markdown level0 summary"><p>A specialisation of <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a> which includes an existing instance of a message provider.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="CSF.Validation.Messages.MessageProviderTypeInfo.html">MessageProviderTypeInfo</a></div>
-    <div class="level2"><span class="xref">MessageProviderInfo</span></div>
-      <div class="level3"><a class="xref" href="CSF.Validation.Messages.InstanceMessageProviderInfo.html">InstanceMessageProviderInfo</a></div>
-      <div class="level3"><a class="xref" href="CSF.Validation.Messages.LazyMessageProviderInfo.html">LazyMessageProviderInfo</a></div>
+    <div class="level2"><a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a></div>
+    <div class="level3"><span class="xref">InstanceMessageProviderInfo</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_GetOriginalProvider">MessageProviderInfo.GetOriginalProvider()</a>
+    </div>
     <div>
       <a class="xref" href="CSF.Validation.Messages.MessageProviderTypeInfo.html#CSF_Validation_Messages_MessageProviderTypeInfo_ProviderType">MessageProviderTypeInfo.ProviderType</a>
     </div>
@@ -120,33 +121,27 @@ possibly via an adapter.</p>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.Messages.html">CSF.Validation.Messages</a></h6>
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
-  <h5 id="CSF_Validation_Messages_MessageProviderInfo_syntax">Syntax</h5>
+  <h5 id="CSF_Validation_Messages_InstanceMessageProviderInfo_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class MessageProviderInfo : MessageProviderTypeInfo</code></pre>
+    <pre><code class="lang-csharp hljs">public class InstanceMessageProviderInfo : MessageProviderInfo</code></pre>
   </div>
-  <h5 id="CSF_Validation_Messages_MessageProviderInfo_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-Because the implementation at <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_MessageProvider">MessageProvider</a> might be wrapped in an adapter, the original/unwrapped
-provider is available from <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_GetOriginalProvider">GetOriginalProvider()</a>.
-</p>
-</div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_MessageProviderInfo__ctor_CSF_Validation_Messages_MessageProviderTypeInfo_.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.MessageProviderInfo.%23ctor(CSF.Validation.Messages.MessageProviderTypeInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_InstanceMessageProviderInfo__ctor_CSF_Validation_Messages_MessageProviderTypeInfo_CSF_Validation_Messages_IGetsFailureMessage_.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.InstanceMessageProviderInfo.%23ctor(CSF.Validation.Messages.MessageProviderTypeInfo%2CCSF.Validation.Messages.IGetsFailureMessage)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/MessageProviderInfo.cs/#L40">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/InstanceMessageProviderInfo.cs/#L17">View Source</a>
   </span>
-  <a id="CSF_Validation_Messages_MessageProviderInfo__ctor_" data-uid="CSF.Validation.Messages.MessageProviderInfo.#ctor*"></a>
-  <h4 id="CSF_Validation_Messages_MessageProviderInfo__ctor_CSF_Validation_Messages_MessageProviderTypeInfo_" data-uid="CSF.Validation.Messages.MessageProviderInfo.#ctor(CSF.Validation.Messages.MessageProviderTypeInfo)">MessageProviderInfo(MessageProviderTypeInfo)</h4>
-  <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a>.</p>
+  <a id="CSF_Validation_Messages_InstanceMessageProviderInfo__ctor_" data-uid="CSF.Validation.Messages.InstanceMessageProviderInfo.#ctor*"></a>
+  <h4 id="CSF_Validation_Messages_InstanceMessageProviderInfo__ctor_CSF_Validation_Messages_MessageProviderTypeInfo_CSF_Validation_Messages_IGetsFailureMessage_" data-uid="CSF.Validation.Messages.InstanceMessageProviderInfo.#ctor(CSF.Validation.Messages.MessageProviderTypeInfo,CSF.Validation.Messages.IGetsFailureMessage)">InstanceMessageProviderInfo(MessageProviderTypeInfo, IGetsFailureMessage)</h4>
+  <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.Validation.Messages.InstanceMessageProviderInfo.html">InstanceMessageProviderInfo</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected MessageProviderInfo(MessageProviderTypeInfo copyFrom)</code></pre>
+    <pre><code class="lang-csharp hljs">public InstanceMessageProviderInfo(MessageProviderTypeInfo copyFrom, IGetsFailureMessage messageProvider)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -161,7 +156,13 @@ provider is available from <a class="xref" href="CSF.Validation.Messages.Message
       <tr>
         <td><a class="xref" href="CSF.Validation.Messages.MessageProviderTypeInfo.html">MessageProviderTypeInfo</a></td>
         <td><span class="parametername">copyFrom</span></td>
-        <td><p>An instance to copy from.</p>
+        <td><p>Type info from which to copy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage.html">IGetsFailureMessage</a></td>
+        <td><span class="parametername">messageProvider</span></td>
+        <td><p>The message provider instance.</p>
 </td>
       </tr>
     </tbody>
@@ -177,7 +178,7 @@ provider is available from <a class="xref" href="CSF.Validation.Messages.Message
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p>If <code data-dev-comment-type="paramref" class="paramref">copyFrom</code> is <span class="xref">null</span>.</p>
+        <td><p>If any parameter is <span class="xref">null</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -186,19 +187,19 @@ provider is available from <a class="xref" href="CSF.Validation.Messages.Message
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_MessageProviderInfo_MessageProvider.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.MessageProviderInfo.MessageProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_InstanceMessageProviderInfo_MessageProvider.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/MessageProviderInfo.cs/#L33">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/InstanceMessageProviderInfo.cs/#L9">View Source</a>
   </span>
-  <a id="CSF_Validation_Messages_MessageProviderInfo_MessageProvider_" data-uid="CSF.Validation.Messages.MessageProviderInfo.MessageProvider*"></a>
-  <h4 id="CSF_Validation_Messages_MessageProviderInfo_MessageProvider" data-uid="CSF.Validation.Messages.MessageProviderInfo.MessageProvider">MessageProvider</h4>
+  <a id="CSF_Validation_Messages_InstanceMessageProviderInfo_MessageProvider_" data-uid="CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider*"></a>
+  <h4 id="CSF_Validation_Messages_InstanceMessageProviderInfo_MessageProvider" data-uid="CSF.Validation.Messages.InstanceMessageProviderInfo.MessageProvider">MessageProvider</h4>
   <div class="markdown level1 summary"><p>Gets a reference to the message provider instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract IGetsFailureMessage MessageProvider { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public override IGetsFailureMessage MessageProvider { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,41 +216,8 @@ provider is available from <a class="xref" href="CSF.Validation.Messages.Message
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_MessageProviderInfo_GetOriginalProvider.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.MessageProviderInfo.GetOriginalProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/MessageProviderInfo.cs/#L22">View Source</a>
-  </span>
-  <a id="CSF_Validation_Messages_MessageProviderInfo_GetOriginalProvider_" data-uid="CSF.Validation.Messages.MessageProviderInfo.GetOriginalProvider*"></a>
-  <h4 id="CSF_Validation_Messages_MessageProviderInfo_GetOriginalProvider" data-uid="CSF.Validation.Messages.MessageProviderInfo.GetOriginalProvider">GetOriginalProvider()</h4>
-  <div class="markdown level1 summary"><p>Gets a reference to the original message provider object, removing any potential layers of 'wrapper'
-objects which might be present upon <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_MessageProvider">MessageProvider</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public object GetOriginalProvider()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><p>The original/unwrapped message provider object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_MessageProvider">MessageProviderInfo.MessageProvider</a></div>
 </article>
           </div>
           
@@ -258,10 +226,10 @@ objects which might be present upon <a class="xref" href="CSF.Validation.Message
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_MessageProviderInfo.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.MessageProviderInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Messages_InstanceMessageProviderInfo.md&amp;value=---%0Auid%3A%20CSF.Validation.Messages.InstanceMessageProviderInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/MessageProviderInfo.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Messages/InstanceMessageProviderInfo.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
