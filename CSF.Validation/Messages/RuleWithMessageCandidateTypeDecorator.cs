@@ -46,7 +46,9 @@ namespace CSF.Validation.Messages
                                                                     Type openGenericRuleWithMessageInterface,
                                                                     Type openGenericAdapterType)
         {
-            if(result.RuleInterface.GetGenericTypeDefinition() != openGenericRuleInterface) return null;
+            if(!result.RuleInterface.IsGenericType
+            || result.RuleInterface.GetGenericTypeDefinition() != openGenericRuleInterface)
+                return null;
 
             var ruleWithMessageType = openGenericRuleWithMessageInterface.MakeGenericType(result.RuleInterface.GenericTypeArguments);
             if(!ruleWithMessageType.IsInstanceOfType(result.ValidationLogic.RuleObject)) return null;

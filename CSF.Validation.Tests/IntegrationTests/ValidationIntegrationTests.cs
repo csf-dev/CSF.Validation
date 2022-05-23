@@ -136,5 +136,32 @@ namespace CSF.Validation.IntegrationTests
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
                         Is.EqualTo("The date 1750-01-01 is invalid. It must equal-to or later than 1900-01-01."));
         }
+
+        [Test,AutoMoqData]
+        public async Task ValidateAsyncWithMessageSupportShouldReturnAMessageFromARuleThatHasAMessage([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidatorWithMessageSupport<Customer>(typeof(CustomerValidatorBuilder));
+            var customer = new Customer
+            {
+                Person = new Person
+                {
+                    Name = "John Smith",
+                    Birthday = new DateTime(2000, 1, 1),
+                    Pets = new[] {
+                        new Pet {Name = "Pet1"},
+                        new Pet {Name = "Pet2"},
+                        new Pet {Name = "Pet3"},
+                        new Pet {Name = "Pet4"},
+                        new Pet {Name = "Pet5"},
+                        new Pet {Name = "Pet6"},
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
+
+            Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
+                        Is.EqualTo("Nobody may have more than 5 pets."));
+        }
     }
 }
