@@ -157,7 +157,7 @@ namespace CSF.Validation
         /// <param name="assembly">An assembly to scan for validator builder classes.</param>
         /// <returns>The service collection, so that calls may be chained.</returns>
         public static IServiceCollection UseValidatorBuildersInAssembly(this IServiceCollection serviceCollection, Assembly assembly)
-            => serviceCollection.UseValidatorBuildersInAssembly(assembly);
+            => serviceCollection.UseValidatorBuildersInAssemblies(assembly);
 
         /// <summary>
         /// Scans the specified <paramref name="assemblies"/> for validator builders and adds every one of them to

@@ -14,7 +14,8 @@ You will also require a reference to [the **CSF.Validation** NuGet package].
 services
     .UseValidationFramework()
     .UseStandardValidationRules()
-    .UseValidationRulesInAssemblies(assemblies);
+    .UseValidationRulesInAssemblies(assemblies)
+    .UseValidatorBuildersInAssemblies(assemblies);
 ```
 
 The [`UseValidationFramework()`] method adds the mandatory services to enable the framework.
@@ -24,6 +25,10 @@ It is almost certain that developers will want to [write their own validation ru
 The most convenient way to accomplish this is via a method such as [`UseValidationRulesInAssemblies(IEnumerable<Assembly>)`]. This method scans the specified assemblies for rule classes and registers all of them with the service collection.
 See [`ServiceCollectionExtensions`] for other methods/overloads which add rules.
 
+It is also recommended to use the [`UseValidatorBuildersInAssemblies(IEnumerable<Assembly>)`] method to register your [validator builder implementations] with dependency injection.
+Validator builders often have no injected dependencies, so you may not require this (the validation framework will instantiate them without dependency injection).
+Registering builders with dependency injection is recommended though, even if only for consistency.
+
 [the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
 [the standard validation rules NuGet package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
 [`UseValidationFramework()`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection)
@@ -31,6 +36,8 @@ See [`ServiceCollectionExtensions`] for other methods/overloads which add rules.
 [write their own validation rule logic classes]:WritingValidators/WritingValidationRules/index.md
 [`UseValidationRulesInAssemblies(IEnumerable<Assembly>)`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
 [`ServiceCollectionExtensions`]:xref:CSF.Validation.ServiceCollectionExtensions
+[`UseValidatorBuildersInAssemblies(IEnumerable<Assembly>)`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+[validator builder implementations]:WritingValidators/WritingValidatorBuilders/index.md
 
 ## Use the abstractions package in your app logic
 
