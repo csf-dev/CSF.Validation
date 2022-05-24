@@ -51,6 +51,8 @@ namespace CSF.Validation
                 ;
         }
 
+        #region Validation rules
+
         /// <summary>
         /// Scans the specified <paramref name="assembly"/> for validation rules and adds every one of them to
         /// the service collection, so that they may be dependency-injected.
@@ -136,6 +138,99 @@ namespace CSF.Validation
             return serviceCollection;
         }
 
+        #endregion
+        
+        #region Validator builders
+
+        /// <summary>
+        /// Scans the specified <paramref name="assembly"/> for validator builders and adds every one of them to
+        /// the service collection, so that they may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method, <see cref="UseValidatorBuildersInAssemblies(IServiceCollection, Assembly[])"/> or
+        /// <see cref="UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable{Assembly})"/> as a convenient
+        /// way to add many validator builders to your dependency injection container.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validator builders should be added.</param>
+        /// <param name="assembly">An assembly to scan for validator builder classes.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseValidatorBuildersInAssembly(this IServiceCollection serviceCollection, Assembly assembly)
+            => serviceCollection.UseValidatorBuildersInAssembly(assembly);
+
+        /// <summary>
+        /// Scans the specified <paramref name="assemblies"/> for validator builders and adds every one of them to
+        /// the service collection, so that they may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method, <see cref="UseValidatorBuildersInAssembly(IServiceCollection, Assembly)"/> or
+        /// <see cref="UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable{Assembly})"/> as a convenient
+        /// way to add many validator builders to your dependency injection container.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validator builders should be added.</param>
+        /// <param name="assemblies">A collection of assemblies to scan for validator builder classes.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseValidatorBuildersInAssemblies(this IServiceCollection serviceCollection, params Assembly[] assemblies)
+            => serviceCollection.UseValidatorBuildersInAssemblies((IEnumerable<Assembly>)assemblies);
+
+        /// <summary>
+        /// Scans the specified <paramref name="assemblies"/> for validator builders and adds every one of them to
+        /// the service collection, so that they may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method, <see cref="UseValidatorBuildersInAssembly(IServiceCollection, Assembly)"/> or
+        /// <see cref="UseValidatorBuildersInAssemblies(IServiceCollection, Assembly[])"/> as a convenient
+        /// way to add many validator builders to your dependency injection container.
+        /// </para>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validator builders should be added.</param>
+        /// <param name="assemblies">A collection of assemblies to scan for validator builder classes.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseValidatorBuildersInAssemblies(this IServiceCollection serviceCollection, IEnumerable<Assembly> assemblies)
+        {
+            if (assemblies is null)
+                throw new ArgumentNullException(nameof(assemblies));
+
+            foreach (var ruleType in BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(assemblies))
+                serviceCollection.UseValidatorBuilder(ruleType);
+
+            return serviceCollection;
+        }
+
+        /// <summary>
+        /// Adds a single validator builder type to the the service collection, so that it may be dependency-injected.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this method only when you wish to add individual builders to dependency injection.  It is usually more convenient
+        /// to use one of the following methods to add builders in bulk, using assembly-scanning techniques.
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description><see cref="UseValidatorBuildersInAssembly(IServiceCollection, Assembly)"/></description></item>
+        /// <item><description><see cref="UseValidatorBuildersInAssemblies(IServiceCollection, Assembly[])"/></description></item>
+        /// <item><description><see cref="UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable{Assembly})"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="serviceCollection">The service collection to which the validator builder should be added.</param>
+        /// <param name="ruleType">The type of validation builder to add to DI.</param>
+        /// <returns>The service collection, so that calls may be chained.</returns>
+        public static IServiceCollection UseValidatorBuilder(this IServiceCollection serviceCollection, Type ruleType)
+        {
+            if (ruleType is null)
+                throw new ArgumentNullException(nameof(ruleType));
+
+            serviceCollection.AddTransient(ruleType);
+            return serviceCollection;
+        }
+
+        #endregion
+
+        #region Message providers
+
         /// <summary>
         /// Configures the validation framework with types to use as failure message providers, when using any of the
         /// overloads of <see cref="IGetsValidator.GetValidatorWithMessageSupport{TValidated}(IBuildsValidator{TValidated})"/>.
@@ -159,6 +254,8 @@ namespace CSF.Validation
             
             return serviceCollection;
         }
+
+        #endregion
 
         /// <summary>
         /// Helper method that registers <see cref="Func{T}"/> in the container by registering a lambda
