@@ -21,6 +21,7 @@ namespace CSF.Validation
                 .UseValidationFramework()
                 .UseStandardValidationRules()
                 .UseValidationRulesInAssembly(Assembly.GetExecutingAssembly())
+                .UseValidatorBuildersInAssembly(Assembly.GetExecutingAssembly())
                 .UseMessageProviders(c => {
                     c.AddMessageProvider(typeof(IntegrationTests.DateTimeInRangeMessageProvider));
                     c.AddMessageProvider(typeof(IntegrationTests.CantBeOwnedByUnderageChildrenMessageProvider));
