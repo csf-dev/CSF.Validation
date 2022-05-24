@@ -60,6 +60,28 @@ references:
   commentId: N:CSF.Validation.Bootstrap
   fullName: CSF.Validation.Bootstrap
   nameWithType: CSF.Validation.Bootstrap
+- uid: CSF.Validation.Bootstrap.BuilderAssemblyScanner
+  name: BuilderAssemblyScanner
+  href: api/CSF.Validation.Bootstrap.BuilderAssemblyScanner.html
+  commentId: T:CSF.Validation.Bootstrap.BuilderAssemblyScanner
+  fullName: CSF.Validation.Bootstrap.BuilderAssemblyScanner
+  nameWithType: BuilderAssemblyScanner
+- uid: CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name: GetValidatorBuilderTypesFromAssemblies(IEnumerable<Assembly>)
+  href: api/CSF.Validation.Bootstrap.BuilderAssemblyScanner.html#CSF_Validation_Bootstrap_BuilderAssemblyScanner_GetValidatorBuilderTypesFromAssemblies_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__
+  commentId: M:CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name.vb: GetValidatorBuilderTypesFromAssemblies(IEnumerable(Of Assembly))
+  fullName: CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(System.Collections.Generic.IEnumerable<System.Reflection.Assembly>)
+  fullName.vb: CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(System.Collections.Generic.IEnumerable(Of System.Reflection.Assembly))
+  nameWithType: BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(IEnumerable<Assembly>)
+  nameWithType.vb: BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies(IEnumerable(Of Assembly))
+- uid: CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies*
+  name: GetValidatorBuilderTypesFromAssemblies
+  href: api/CSF.Validation.Bootstrap.BuilderAssemblyScanner.html#CSF_Validation_Bootstrap_BuilderAssemblyScanner_GetValidatorBuilderTypesFromAssemblies_
+  commentId: Overload:CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies
+  isSpec: "True"
+  fullName: CSF.Validation.Bootstrap.BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies
+  nameWithType: BuilderAssemblyScanner.GetValidatorBuilderTypesFromAssemblies
 - uid: CSF.Validation.Bootstrap.IRegistersMessageProviders
   name: IRegistersMessageProviders
   href: api/CSF.Validation.Bootstrap.IRegistersMessageProviders.html
@@ -7102,6 +7124,57 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly
   nameWithType: ServiceCollectionExtensions.UseValidationRulesInAssembly
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)
+  name: UseValidatorBuilder(IServiceCollection, Type)
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuilder_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Type)
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuilder(IServiceCollection, Type)
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder*
+  name: UseValidatorBuilder
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuilder_
+  commentId: Overload:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder
+  isSpec: "True"
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuilder
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name: UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable<Assembly>)
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
+  name.vb: UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable(Of Assembly))
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Collections.Generic.IEnumerable<System.Reflection.Assembly>)
+  fullName.vb: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Collections.Generic.IEnumerable(Of System.Reflection.Assembly))
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable<Assembly>)
+  nameWithType.vb: ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable(Of Assembly))
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name: UseValidatorBuildersInAssemblies(IServiceCollection, Assembly[])
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name.vb: UseValidatorBuildersInAssemblies(IServiceCollection, Assembly())
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly[])
+  fullName.vb: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly())
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(IServiceCollection, Assembly[])
+  nameWithType.vb: ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(IServiceCollection, Assembly())
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies*
+  name: UseValidatorBuildersInAssemblies
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_
+  commentId: Overload:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies
+  isSpec: "True"
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuildersInAssemblies
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)
+  name: UseValidatorBuildersInAssembly(IServiceCollection, Assembly)
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_
+  commentId: M:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly)
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuildersInAssembly(IServiceCollection, Assembly)
+- uid: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly*
+  name: UseValidatorBuildersInAssembly
+  href: api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssembly_
+  commentId: Overload:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly
+  isSpec: "True"
+  fullName: CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly
+  nameWithType: ServiceCollectionExtensions.UseValidatorBuildersInAssembly
 - uid: CSF.Validation.StandardRulesServiceCollectionExtensions
   name: StandardRulesServiceCollectionExtensions
   href: api/CSF.Validation.StandardRulesServiceCollectionExtensions.html

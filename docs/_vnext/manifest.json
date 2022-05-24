@@ -17,6 +17,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Bootstrap.BuilderAssemblyScanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Bootstrap.BuilderAssemblyScanner.html",
+          "hash": "WuWUnXo4hg1Hcdqb6mi+HeI1xYX5wIqo5210vbi4Rz4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Bootstrap.IRegistersMessageProviders.yml",
       "output": {
         ".html": {
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Bootstrap.html",
-          "hash": "u2N8NAJcytOwpmWulgJBdV1jOJiMkxK/s3hLug3TCjI="
+          "hash": "1GmFYfI8F1HFjYyt5+9VNzwAuwTYDYq2UmCJVbZUEKY="
         }
       },
       "is_incremental": false,
@@ -2217,7 +2229,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ServiceCollectionExtensions.html",
-          "hash": "ebZcA2Fj+T7eEh5wxGs8DevPHitvcli8XJqtqngZ1aM="
+          "hash": "Rniz89liyKypjQj7cv2GO9VWxhUBs961lH6yfkwRCNM="
         }
       },
       "is_incremental": false,
@@ -2805,7 +2817,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "t9ixRxZ8Csn0WrnOqu4jMoT8Oe15ZzXwY07afeXi2Qc="
+          "hash": "bIsTj+3iPwvxOv3kgVw+IfJDNPn2mV8oPzL1/EJl4Yc="
         }
       },
       "is_incremental": false,
@@ -2877,7 +2889,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/ConfigureTheFramework.html",
-          "hash": "I+43LJ2R415HIcxsyKu9JhdAQyB9S67KbZ7ZqIjPJOQ="
+          "hash": "xaqN/sB3N06uagncli4mdRHt6huBykIVxFpXr66kaYc="
         }
       },
       "is_incremental": false,
@@ -3180,7 +3192,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 232,
+          "total_file_count": 233,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
