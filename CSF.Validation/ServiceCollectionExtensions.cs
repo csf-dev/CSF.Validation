@@ -130,14 +130,8 @@ namespace CSF.Validation
         /// <param name="ruleType">The type of validation rule to add to DI.</param>
         /// <returns>The service collection, so that calls may be chained.</returns>
         public static IServiceCollection UseValidationRule(this IServiceCollection serviceCollection, Type ruleType)
-        {
-            if (ruleType is null)
-                throw new ArgumentNullException(nameof(ruleType));
-
-            serviceCollection.AddTransient(ruleType);
-            return serviceCollection;
-        }
-
+            => serviceCollection.AddTransient(ruleType);
+        
         #endregion
         
         #region Validator builders
@@ -216,16 +210,10 @@ namespace CSF.Validation
         /// </list>
         /// </remarks>
         /// <param name="serviceCollection">The service collection to which the validator builder should be added.</param>
-        /// <param name="ruleType">The type of validation builder to add to DI.</param>
+        /// <param name="builderType">The type of validation builder to add to DI.</param>
         /// <returns>The service collection, so that calls may be chained.</returns>
-        public static IServiceCollection UseValidatorBuilder(this IServiceCollection serviceCollection, Type ruleType)
-        {
-            if (ruleType is null)
-                throw new ArgumentNullException(nameof(ruleType));
-
-            serviceCollection.AddTransient(ruleType);
-            return serviceCollection;
-        }
+        public static IServiceCollection UseValidatorBuilder(this IServiceCollection serviceCollection, Type builderType)
+            => serviceCollection.AddTransient(builderType);
 
         #endregion
 
