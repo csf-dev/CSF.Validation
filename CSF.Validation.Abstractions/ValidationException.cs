@@ -9,7 +9,7 @@ namespace CSF.Validation
         /// <summary>
         /// Gets the validation result, where one is associated with the current exception.
         /// </summary>
-        public IHasValidationRuleResults ValidationResult { get; }
+        public ValidationResult ValidationResult { get; }
 
         /// <summary>
         /// Initialises a new <see cref="ValidationException"/>.
@@ -27,7 +27,7 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="message">The error message.</param>
         /// <param name="validationResult">A validation result associated with the current exception.</param>
-        public ValidationException(string message, IHasValidationRuleResults validationResult) : base(message)
+        public ValidationException(string message, ValidationResult validationResult) : base(message)
         {
             ValidationResult = validationResult;
         }

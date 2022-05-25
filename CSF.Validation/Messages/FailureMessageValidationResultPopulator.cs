@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace CSF.Validation.Messages
 {
     /// <summary>
-    /// A service which converts a <see cref="ValidationResult"/> into a <see cref="ValidationResultWithMessages"/> by
+    /// A service which converts a <see cref="ValidationResult"/> into a <see cref="ValidationResult"/> by
     /// getting messages for each rule result within the original result and adding a message, where appropriate.
     /// </summary>
     public class FailureMessageValidationResultPopulator : IAddsFailureMessagesToResult
@@ -13,15 +13,15 @@ namespace CSF.Validation.Messages
         readonly IGetsFailureMessageProvider messageProviderFactory;
 
         /// <inheritdoc/>
-        public async Task<ValidationResultWithMessages> GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default)
+        public async Task<ValidationResult> GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default)
         {
             var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
-            return new ValidationResultWithMessages(resultsWithMessages);
+            return new ValidationResult(resultsWithMessages);
         }
 
-        async Task<IEnumerable<ValidationRuleResultWithMessage>> GetRuleResultsWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken)
+        async Task<IEnumerable<ValidationRuleResult>> GetRuleResultsWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken)
         {
-            var results = new List<ValidationRuleResultWithMessage>();
+            var results = new List<ValidationRuleResult>();
 
             foreach (var ruleResult in result.RuleResults)
             {
@@ -32,11 +32,11 @@ namespace CSF.Validation.Messages
             return results;
         }
 
-        async Task<ValidationRuleResultWithMessage> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
+        async Task<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
         {
             var messageProvider = messageProviderFactory.GetProvider(ruleResult);
             var message = (messageProvider is null)? null : await messageProvider.GetFailureMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false);
-            return new ValidationRuleResultWithMessage(ruleResult, message);
+            return new ValidationRuleResult(ruleResult, ruleResult.RuleContext, ruleResult.ValidationLogic, message);
         }
 
         /// <summary>

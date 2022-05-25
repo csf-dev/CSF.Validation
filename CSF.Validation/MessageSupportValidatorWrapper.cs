@@ -14,21 +14,21 @@ namespace CSF.Validation
         readonly IAddsFailureMessagesToResult failureMessageEnricher;
 
         /// <inheritdoc/>
-        public IValidatorWithMessages GetValidatorWithMessageSupport(IValidator validator)
+        public IValidator GetValidatorWithMessageSupport(IValidator validator)
         {
             if (validator is null)
                 throw new ArgumentNullException(nameof(validator));
 
             var method = getValidatorPrivateMethod.MakeGenericMethod(validator.ValidatedType);
-            return (IValidatorWithMessages)method.Invoke(this, new[] { validator });
+            return (IValidator)method.Invoke(this, new[] { validator });
         }
 
         /// <inheritdoc/>
-        public IValidatorWithMessages<TValidated> GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated> validator)
+        public IValidator<TValidated> GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated> validator)
             => GetValidatorWithMessageSupportPrivate(validator);
 
-        IValidatorWithMessages<TValidated> GetValidatorWithMessageSupportPrivate<TValidated>(IValidator<TValidated> validator)
-            => new MessageEnrichingValidatorAdapter<TValidated>(validator, failureMessageEnricher);
+        IValidator<TValidated> GetValidatorWithMessageSupportPrivate<TValidated>(IValidator<TValidated> validator)
+            => new MessageEnrichingValidatorDecorator<TValidated>(validator, failureMessageEnricher);
 
         /// <summary>
         /// Initialises a new instance of <see cref="MessageSupportValidatorWrapper"/>.

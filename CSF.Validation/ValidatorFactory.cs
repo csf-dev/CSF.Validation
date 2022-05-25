@@ -13,8 +13,7 @@ namespace CSF.Validation
     public class ValidatorFactory : IGetsValidator
     {
         static readonly MethodInfo
-            getValidatorPrivateMethod = typeof(ValidatorFactory).GetTypeInfo().GetDeclaredMethod(nameof(GetValidatorPrivate)),
-            getValidatorWithMessageSupportPrivateMethod = typeof(ValidatorFactory).GetTypeInfo().GetDeclaredMethod(nameof(GetValidatorWithMessageSupportPrivate));
+            getValidatorPrivateMethod = typeof(ValidatorFactory).GetTypeInfo().GetDeclaredMethod(nameof(GetValidatorPrivate));
 
         readonly IServiceProvider serviceProvider;
 
@@ -44,7 +43,8 @@ namespace CSF.Validation
         public IValidator GetValidator(ValidationManifest manifest)
         {
             var validator = BaseValidatorFactory.GetValidator(manifest);
-            return ExceptionBehaviourWrapper.WrapValidator(validator);
+            var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);
+            return ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
         }
 
         /// <inheritdoc/>
@@ -55,48 +55,10 @@ namespace CSF.Validation
         }
 
         #endregion
-
-        #region With message support
-
-        /// <inheritdoc/>
-        public IValidatorWithMessages GetValidatorWithMessageSupport(Type builderType)
-        {
-            var validatedType = BuilderTypeProvider.GetValidatedType(builderType);
-            var validatorBuilder = GetValidatorBuilder(builderType);
-            var method = getValidatorWithMessageSupportPrivateMethod.MakeGenericMethod(validatedType);
-            return (IValidatorWithMessages) method.Invoke(this, new[] { validatorBuilder });
-        }
-
-        /// <inheritdoc/>
-        public IValidatorWithMessages<TValidated> GetValidatorWithMessageSupport<TValidated>(IBuildsValidator<TValidated> builder)
-            => GetValidatorWithMessageSupportPrivate(builder);
-
-        /// <inheritdoc/>
-        public IValidatorWithMessages GetValidatorWithMessageSupport(Manifest.ValidationManifest manifest)
-        {
-            var validator = BaseValidatorFactory.GetValidator(manifest);
-            var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);
-            return ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
-        }
-
-        /// <inheritdoc/>
-        public IValidatorWithMessages GetValidatorWithMessageSupport(ManifestModel.Value manifestModel, Type validatedType)
-        {
-            var manifest = ManifestFromModelProvider.GetValidationManifest(manifestModel, validatedType);
-            return GetValidatorWithMessageSupport(manifest);
-        }
-
-        #endregion
         
         object GetValidatorBuilder(Type builderType) => Resolver.ResolveService<object>(builderType);
         
         IValidator<TValidated> GetValidatorPrivate<TValidated>(IBuildsValidator<TValidated> builder)
-        {
-            var validator = BaseValidatorFactory.GetValidator(builder);
-            return ExceptionBehaviourWrapper.WrapValidator(validator);
-        }
-
-        IValidatorWithMessages<TValidated> GetValidatorWithMessageSupportPrivate<TValidated>(IBuildsValidator<TValidated> builder)
         {
             var validator = BaseValidatorFactory.GetValidator(builder);
             var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);

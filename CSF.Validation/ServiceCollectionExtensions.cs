@@ -220,8 +220,8 @@ namespace CSF.Validation
         #region Message providers
 
         /// <summary>
-        /// Configures the validation framework with types to use as failure message providers, when using any of the
-        /// overloads of <see cref="IGetsValidator.GetValidatorWithMessageSupport{TValidated}(IBuildsValidator{TValidated})"/>.
+        /// Configures the validation framework with types to use as failure message providers, when
+        /// <see cref="ValidationOptions.EnableMessageGeneration"/> is <see langword="true" />.
         /// </summary>
         /// <param name="serviceCollection">A service collection</param>
         /// <param name="configAction">An action which indicates which message provider types to use.</param>
