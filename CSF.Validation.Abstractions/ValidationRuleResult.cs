@@ -75,6 +75,7 @@ namespace CSF.Validation
             Identifier = ruleContext?.RuleIdentifier;
             RuleInterface = ruleContext?.RuleInterface;
             ValidatedValue = ruleContext?.ActualValue;
+            Message = message;
         }
     }
 }
