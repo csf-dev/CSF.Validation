@@ -81,10 +81,6 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ValidationResult</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="CSF.Validation.IHasValidationRuleResults.html">IHasValidationRuleResults</a></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -113,7 +109,7 @@
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
   <h5 id="CSF_Validation_ValidationResult_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ValidationResult : IHasValidationRuleResults</code></pre>
+    <pre><code class="lang-csharp hljs">public class ValidationResult</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -178,9 +174,7 @@
   </span>
   <a id="CSF_Validation_ValidationResult_Passed_" data-uid="CSF.Validation.ValidationResult.Passed*"></a>
   <h4 id="CSF_Validation_ValidationResult_Passed" data-uid="CSF.Validation.ValidationResult.Passed">Passed</h4>
-  <div class="markdown level1 summary"><p>Gets a simple value which indicates whether or not this result represents passing validation
-without any errors.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -201,13 +195,6 @@ without any errors.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="CSF_Validation_ValidationResult_Passed_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>
-If this property returns <span class="xref">true</span> then every one of the <a class="xref" href="CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_RuleResults">RuleResults</a> has
-an <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Outcome">Outcome</a> of <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Passed">Passed</a>.
-If it returns false then at least one of the rule results returns a different (non-passing) rule outcome.
-</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationResult_RuleResults.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationResult.RuleResults%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -217,8 +204,7 @@ If it returns false then at least one of the rule results returns a different (n
   </span>
   <a id="CSF_Validation_ValidationResult_RuleResults_" data-uid="CSF.Validation.ValidationResult.RuleResults*"></a>
   <h4 id="CSF_Validation_ValidationResult_RuleResults" data-uid="CSF.Validation.ValidationResult.RuleResults">RuleResults</h4>
-  <div class="markdown level1 summary"><p>Gets a collection of the results of individual validation rules.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -239,10 +225,6 @@ If it returns false then at least one of the rule results returns a different (n
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="CSF.Validation.IHasValidationRuleResults.html">IHasValidationRuleResults</a>
-  </div>
 </article>
           </div>
           

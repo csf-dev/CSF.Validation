@@ -376,12 +376,6 @@ references:
   commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidator)
   fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidator)
   nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator(IValidator)
-- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidatorWithMessages)
-  name: WrapValidator(IValidatorWithMessages)
-  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator_CSF_Validation_IValidatorWithMessages_
-  commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidatorWithMessages)
-  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(CSF.Validation.IValidatorWithMessages)
-  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator(IValidatorWithMessages)
 - uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator*
   name: WrapValidator
   href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator_
@@ -398,15 +392,6 @@ references:
   fullName.vb: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(CSF.Validation.IValidator(Of TValidated))
   nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(IValidator<TValidated>)
   nameWithType.vb: ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(IValidator(Of TValidated))
-- uid: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
-  name: WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
-  href: api/CSF.Validation.ExceptionThrowingValidatorWrapper.html#CSF_Validation_ExceptionThrowingValidatorWrapper_WrapValidator__1_CSF_Validation_IValidatorWithMessages___0__
-  commentId: M:CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
-  name.vb: WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
-  fullName: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(CSF.Validation.IValidatorWithMessages<TValidated>)
-  fullName.vb: CSF.Validation.ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(CSF.Validation.IValidatorWithMessages(Of TValidated))
-  nameWithType: ExceptionThrowingValidatorWrapper.WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
-  nameWithType.vb: ExceptionThrowingValidatorWrapper.WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
 - uid: CSF.Validation.IBuildsValidator`1
   name: IBuildsValidator<TValidated>
   href: api/CSF.Validation.IBuildsValidator-1.html
@@ -502,72 +487,6 @@ references:
   fullName.vb: CSF.Validation.IGetsValidator.GetValidator(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
   nameWithType: IGetsValidator.GetValidator<TValidated>(IBuildsValidator<TValidated>)
   nameWithType.vb: IGetsValidator.GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
-- uid: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(CSF.Validation.Manifest.ValidationManifest)
-  name: GetValidatorWithMessageSupport(ValidationManifest)
-  href: api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidatorWithMessageSupport_CSF_Validation_Manifest_ValidationManifest_
-  commentId: M:CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(CSF.Validation.Manifest.ValidationManifest)
-  fullName: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(CSF.Validation.Manifest.ValidationManifest)
-  nameWithType: IGetsValidator.GetValidatorWithMessageSupport(ValidationManifest)
-- uid: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(CSF.Validation.ManifestModel.Value,System.Type)
-  name: GetValidatorWithMessageSupport(Value, Type)
-  href: api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidatorWithMessageSupport_CSF_Validation_ManifestModel_Value_System_Type_
-  commentId: M:CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(CSF.Validation.ManifestModel.Value,System.Type)
-  fullName: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(CSF.Validation.ManifestModel.Value, System.Type)
-  nameWithType: IGetsValidator.GetValidatorWithMessageSupport(Value, Type)
-- uid: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(System.Type)
-  name: GetValidatorWithMessageSupport(Type)
-  href: api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidatorWithMessageSupport_System_Type_
-  commentId: M:CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(System.Type)
-  fullName: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(System.Type)
-  nameWithType: IGetsValidator.GetValidatorWithMessageSupport(Type)
-- uid: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport*
-  name: GetValidatorWithMessageSupport
-  href: api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidatorWithMessageSupport_
-  commentId: Overload:CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport
-  isSpec: "True"
-  fullName: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport
-  nameWithType: IGetsValidator.GetValidatorWithMessageSupport
-- uid: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport``1(CSF.Validation.IBuildsValidator{``0})
-  name: GetValidatorWithMessageSupport<TValidated>(IBuildsValidator<TValidated>)
-  href: api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidatorWithMessageSupport__1_CSF_Validation_IBuildsValidator___0__
-  commentId: M:CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport``1(CSF.Validation.IBuildsValidator{``0})
-  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IBuildsValidator(Of TValidated))
-  fullName: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IBuildsValidator<TValidated>)
-  fullName.vb: CSF.Validation.IGetsValidator.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
-  nameWithType: IGetsValidator.GetValidatorWithMessageSupport<TValidated>(IBuildsValidator<TValidated>)
-  nameWithType.vb: IGetsValidator.GetValidatorWithMessageSupport(Of TValidated)(IBuildsValidator(Of TValidated))
-- uid: CSF.Validation.IHasValidationRuleResults
-  name: IHasValidationRuleResults
-  href: api/CSF.Validation.IHasValidationRuleResults.html
-  commentId: T:CSF.Validation.IHasValidationRuleResults
-  fullName: CSF.Validation.IHasValidationRuleResults
-  nameWithType: IHasValidationRuleResults
-- uid: CSF.Validation.IHasValidationRuleResults.Passed
-  name: Passed
-  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_Passed
-  commentId: P:CSF.Validation.IHasValidationRuleResults.Passed
-  fullName: CSF.Validation.IHasValidationRuleResults.Passed
-  nameWithType: IHasValidationRuleResults.Passed
-- uid: CSF.Validation.IHasValidationRuleResults.Passed*
-  name: Passed
-  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_Passed_
-  commentId: Overload:CSF.Validation.IHasValidationRuleResults.Passed
-  isSpec: "True"
-  fullName: CSF.Validation.IHasValidationRuleResults.Passed
-  nameWithType: IHasValidationRuleResults.Passed
-- uid: CSF.Validation.IHasValidationRuleResults.RuleResults
-  name: RuleResults
-  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_RuleResults
-  commentId: P:CSF.Validation.IHasValidationRuleResults.RuleResults
-  fullName: CSF.Validation.IHasValidationRuleResults.RuleResults
-  nameWithType: IHasValidationRuleResults.RuleResults
-- uid: CSF.Validation.IHasValidationRuleResults.RuleResults*
-  name: RuleResults
-  href: api/CSF.Validation.IHasValidationRuleResults.html#CSF_Validation_IHasValidationRuleResults_RuleResults_
-  commentId: Overload:CSF.Validation.IHasValidationRuleResults.RuleResults
-  isSpec: "True"
-  fullName: CSF.Validation.IHasValidationRuleResults.RuleResults
-  nameWithType: IHasValidationRuleResults.RuleResults
 - uid: CSF.Validation.IQueryableValidationResult
   name: IQueryableValidationResult
   href: api/CSF.Validation.IQueryableValidationResult.html
@@ -616,54 +535,6 @@ references:
   fullName.vb: CSF.Validation.IQueryableValidationResult.QueryByMember(Of TValidated)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, System.Object)), System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
   nameWithType: IQueryableValidationResult.QueryByMember<TValidated>(Expression<Func<TValidated, Object>>, Object, String, String, RuleOutcome)
   nameWithType.vb: IQueryableValidationResult.QueryByMember(Of TValidated)(Expression(Of Func(Of TValidated, Object)), Object, String, String, RuleOutcome)
-- uid: CSF.Validation.IQueryableValidationResultWithMessages
-  name: IQueryableValidationResultWithMessages
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html
-  commentId: T:CSF.Validation.IQueryableValidationResultWithMessages
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages
-  nameWithType: IQueryableValidationResultWithMessages
-- uid: CSF.Validation.IQueryableValidationResultWithMessages.OriginalResult
-  name: OriginalResult
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html#CSF_Validation_IQueryableValidationResultWithMessages_OriginalResult
-  commentId: P:CSF.Validation.IQueryableValidationResultWithMessages.OriginalResult
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages.OriginalResult
-  nameWithType: IQueryableValidationResultWithMessages.OriginalResult
-- uid: CSF.Validation.IQueryableValidationResultWithMessages.OriginalResult*
-  name: OriginalResult
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html#CSF_Validation_IQueryableValidationResultWithMessages_OriginalResult_
-  commentId: Overload:CSF.Validation.IQueryableValidationResultWithMessages.OriginalResult
-  isSpec: "True"
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages.OriginalResult
-  nameWithType: IQueryableValidationResultWithMessages.OriginalResult
-- uid: CSF.Validation.IQueryableValidationResultWithMessages.Query(System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  name: Query(Object, String, String, RuleOutcome)
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html#CSF_Validation_IQueryableValidationResultWithMessages_Query_System_Object_System_String_System_String_CSF_Validation_Rules_RuleOutcome_
-  commentId: M:CSF.Validation.IQueryableValidationResultWithMessages.Query(System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages.Query(System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
-  nameWithType: IQueryableValidationResultWithMessages.Query(Object, String, String, RuleOutcome)
-- uid: CSF.Validation.IQueryableValidationResultWithMessages.Query*
-  name: Query
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html#CSF_Validation_IQueryableValidationResultWithMessages_Query_
-  commentId: Overload:CSF.Validation.IQueryableValidationResultWithMessages.Query
-  isSpec: "True"
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages.Query
-  nameWithType: IQueryableValidationResultWithMessages.Query
-- uid: CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember*
-  name: QueryByMember
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html#CSF_Validation_IQueryableValidationResultWithMessages_QueryByMember_
-  commentId: Overload:CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember
-  isSpec: "True"
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember
-  nameWithType: IQueryableValidationResultWithMessages.QueryByMember
-- uid: CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  name: QueryByMember<TValidated>(Expression<Func<TValidated, Object>>, Object, String, String, RuleOutcome)
-  href: api/CSF.Validation.IQueryableValidationResultWithMessages.html#CSF_Validation_IQueryableValidationResultWithMessages_QueryByMember__1_System_Linq_Expressions_Expression_System_Func___0_System_Object___System_Object_System_String_System_String_CSF_Validation_Rules_RuleOutcome_
-  commentId: M:CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  name.vb: QueryByMember(Of TValidated)(Expression(Of Func(Of TValidated, Object)), Object, String, String, RuleOutcome)
-  fullName: CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember<TValidated>(System.Linq.Expressions.Expression<System.Func<TValidated, System.Object>>, System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
-  fullName.vb: CSF.Validation.IQueryableValidationResultWithMessages.QueryByMember(Of TValidated)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, System.Object)), System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
-  nameWithType: IQueryableValidationResultWithMessages.QueryByMember<TValidated>(Expression<Func<TValidated, Object>>, Object, String, String, RuleOutcome)
-  nameWithType.vb: IQueryableValidationResultWithMessages.QueryByMember(Of TValidated)(Expression(Of Func(Of TValidated, Object)), Object, String, String, RuleOutcome)
 - uid: CSF.Validation.IValidator
   name: IValidator
   href: api/CSF.Validation.IValidator.html
@@ -722,64 +593,6 @@ references:
   fullName.vb: CSF.Validation.IValidator(Of TValidated).ValidateAsync
   nameWithType: IValidator<TValidated>.ValidateAsync
   nameWithType.vb: IValidator(Of TValidated).ValidateAsync
-- uid: CSF.Validation.IValidatorWithMessages
-  name: IValidatorWithMessages
-  href: api/CSF.Validation.IValidatorWithMessages.html
-  commentId: T:CSF.Validation.IValidatorWithMessages
-  fullName: CSF.Validation.IValidatorWithMessages
-  nameWithType: IValidatorWithMessages
-- uid: CSF.Validation.IValidatorWithMessages.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  name: ValidateAsync(Object, ValidationOptions, CancellationToken)
-  href: api/CSF.Validation.IValidatorWithMessages.html#CSF_Validation_IValidatorWithMessages_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.IValidatorWithMessages.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  fullName: CSF.Validation.IValidatorWithMessages.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  nameWithType: IValidatorWithMessages.ValidateAsync(Object, ValidationOptions, CancellationToken)
-- uid: CSF.Validation.IValidatorWithMessages.ValidateAsync*
-  name: ValidateAsync
-  href: api/CSF.Validation.IValidatorWithMessages.html#CSF_Validation_IValidatorWithMessages_ValidateAsync_
-  commentId: Overload:CSF.Validation.IValidatorWithMessages.ValidateAsync
-  isSpec: "True"
-  fullName: CSF.Validation.IValidatorWithMessages.ValidateAsync
-  nameWithType: IValidatorWithMessages.ValidateAsync
-- uid: CSF.Validation.IValidatorWithMessages.ValidatedType
-  name: ValidatedType
-  href: api/CSF.Validation.IValidatorWithMessages.html#CSF_Validation_IValidatorWithMessages_ValidatedType
-  commentId: P:CSF.Validation.IValidatorWithMessages.ValidatedType
-  fullName: CSF.Validation.IValidatorWithMessages.ValidatedType
-  nameWithType: IValidatorWithMessages.ValidatedType
-- uid: CSF.Validation.IValidatorWithMessages.ValidatedType*
-  name: ValidatedType
-  href: api/CSF.Validation.IValidatorWithMessages.html#CSF_Validation_IValidatorWithMessages_ValidatedType_
-  commentId: Overload:CSF.Validation.IValidatorWithMessages.ValidatedType
-  isSpec: "True"
-  fullName: CSF.Validation.IValidatorWithMessages.ValidatedType
-  nameWithType: IValidatorWithMessages.ValidatedType
-- uid: CSF.Validation.IValidatorWithMessages`1
-  name: IValidatorWithMessages<TValidated>
-  href: api/CSF.Validation.IValidatorWithMessages-1.html
-  commentId: T:CSF.Validation.IValidatorWithMessages`1
-  name.vb: IValidatorWithMessages(Of TValidated)
-  fullName: CSF.Validation.IValidatorWithMessages<TValidated>
-  fullName.vb: CSF.Validation.IValidatorWithMessages(Of TValidated)
-  nameWithType: IValidatorWithMessages<TValidated>
-  nameWithType.vb: IValidatorWithMessages(Of TValidated)
-- uid: CSF.Validation.IValidatorWithMessages`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  name: ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-  href: api/CSF.Validation.IValidatorWithMessages-1.html#CSF_Validation_IValidatorWithMessages_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.IValidatorWithMessages`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  fullName: CSF.Validation.IValidatorWithMessages<TValidated>.ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.IValidatorWithMessages(Of TValidated).ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  nameWithType: IValidatorWithMessages<TValidated>.ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-  nameWithType.vb: IValidatorWithMessages(Of TValidated).ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-- uid: CSF.Validation.IValidatorWithMessages`1.ValidateAsync*
-  name: ValidateAsync
-  href: api/CSF.Validation.IValidatorWithMessages-1.html#CSF_Validation_IValidatorWithMessages_1_ValidateAsync_
-  commentId: Overload:CSF.Validation.IValidatorWithMessages`1.ValidateAsync
-  isSpec: "True"
-  fullName: CSF.Validation.IValidatorWithMessages<TValidated>.ValidateAsync
-  fullName.vb: CSF.Validation.IValidatorWithMessages(Of TValidated).ValidateAsync
-  nameWithType: IValidatorWithMessages<TValidated>.ValidateAsync
-  nameWithType.vb: IValidatorWithMessages(Of TValidated).ValidateAsync
 - uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour
   name: IWrapsValidatorWithExceptionBehaviour
   href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html
@@ -792,12 +605,6 @@ references:
   commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidator)
   fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidator)
   nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator(IValidator)
-- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidatorWithMessages)
-  name: WrapValidator(IValidatorWithMessages)
-  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator_CSF_Validation_IValidatorWithMessages_
-  commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidatorWithMessages)
-  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(CSF.Validation.IValidatorWithMessages)
-  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator(IValidatorWithMessages)
 - uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator*
   name: WrapValidator
   href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator_
@@ -814,15 +621,6 @@ references:
   fullName.vb: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(CSF.Validation.IValidator(Of TValidated))
   nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(IValidator<TValidated>)
   nameWithType.vb: IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(IValidator(Of TValidated))
-- uid: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
-  name: WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
-  href: api/CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html#CSF_Validation_IWrapsValidatorWithExceptionBehaviour_WrapValidator__1_CSF_Validation_IValidatorWithMessages___0__
-  commentId: M:CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator``1(CSF.Validation.IValidatorWithMessages{``0})
-  name.vb: WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
-  fullName: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(CSF.Validation.IValidatorWithMessages<TValidated>)
-  fullName.vb: CSF.Validation.IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(CSF.Validation.IValidatorWithMessages(Of TValidated))
-  nameWithType: IWrapsValidatorWithExceptionBehaviour.WrapValidator<TValidated>(IValidatorWithMessages<TValidated>)
-  nameWithType.vb: IWrapsValidatorWithExceptionBehaviour.WrapValidator(Of TValidated)(IValidatorWithMessages(Of TValidated))
 - uid: CSF.Validation.IWrapsValidatorWithMessageSupport
   name: IWrapsValidatorWithMessageSupport
   href: api/CSF.Validation.IWrapsValidatorWithMessageSupport.html
@@ -2090,86 +1888,86 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ValueBase.Rules
   nameWithType: ValueBase.Rules
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1
-  name: MessageEnrichingValidatorAdapter<TValidated>
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html
-  commentId: T:CSF.Validation.MessageEnrichingValidatorAdapter`1
-  name.vb: MessageEnrichingValidatorAdapter(Of TValidated)
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated)
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated)
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.#ctor(CSF.Validation.IValidator{`0},CSF.Validation.Messages.IAddsFailureMessagesToResult)
-  name: MessageEnrichingValidatorAdapter(IValidator<TValidated>, IAddsFailureMessagesToResult)
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1__ctor_CSF_Validation_IValidator__0__CSF_Validation_Messages_IAddsFailureMessagesToResult_
-  commentId: M:CSF.Validation.MessageEnrichingValidatorAdapter`1.#ctor(CSF.Validation.IValidator{`0},CSF.Validation.Messages.IAddsFailureMessagesToResult)
-  name.vb: MessageEnrichingValidatorAdapter(IValidator(Of TValidated), IAddsFailureMessagesToResult)
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.MessageEnrichingValidatorAdapter(CSF.Validation.IValidator<TValidated>, CSF.Validation.Messages.IAddsFailureMessagesToResult)
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).MessageEnrichingValidatorAdapter(CSF.Validation.IValidator(Of TValidated), CSF.Validation.Messages.IAddsFailureMessagesToResult)
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.MessageEnrichingValidatorAdapter(IValidator<TValidated>, IAddsFailureMessagesToResult)
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).MessageEnrichingValidatorAdapter(IValidator(Of TValidated), IAddsFailureMessagesToResult)
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.#ctor*
-  name: MessageEnrichingValidatorAdapter
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1__ctor_
-  commentId: Overload:CSF.Validation.MessageEnrichingValidatorAdapter`1.#ctor
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1
+  name: MessageEnrichingValidatorDecorator<TValidated>
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html
+  commentId: T:CSF.Validation.MessageEnrichingValidatorDecorator`1
+  name.vb: MessageEnrichingValidatorDecorator(Of TValidated)
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated)
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated)
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor(CSF.Validation.IValidator{`0},CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  name: MessageEnrichingValidatorDecorator(IValidator<TValidated>, IAddsFailureMessagesToResult)
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_CSF_Validation_IValidator__0__CSF_Validation_Messages_IAddsFailureMessagesToResult_
+  commentId: M:CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor(CSF.Validation.IValidator{`0},CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  name.vb: MessageEnrichingValidatorDecorator(IValidator(Of TValidated), IAddsFailureMessagesToResult)
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.MessageEnrichingValidatorDecorator(CSF.Validation.IValidator<TValidated>, CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).MessageEnrichingValidatorDecorator(CSF.Validation.IValidator(Of TValidated), CSF.Validation.Messages.IAddsFailureMessagesToResult)
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.MessageEnrichingValidatorDecorator(IValidator<TValidated>, IAddsFailureMessagesToResult)
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).MessageEnrichingValidatorDecorator(IValidator(Of TValidated), IAddsFailureMessagesToResult)
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor*
+  name: MessageEnrichingValidatorDecorator
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_
+  commentId: Overload:CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor
   isSpec: "True"
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.MessageEnrichingValidatorAdapter
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).MessageEnrichingValidatorAdapter
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.MessageEnrichingValidatorAdapter
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).MessageEnrichingValidatorAdapter
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.CSF#Validation#IValidatorWithMessages#ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  name: IValidatorWithMessages.ValidateAsync(Object, ValidationOptions, CancellationToken)
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1_CSF_Validation_IValidatorWithMessages_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.MessageEnrichingValidatorAdapter`1.CSF#Validation#IValidatorWithMessages#ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  name.vb: CSF.Validation.IValidatorWithMessages.ValidateAsync(Object, ValidationOptions, CancellationToken)
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.CSF.Validation.IValidatorWithMessages.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).CSF.Validation.IValidatorWithMessages.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.IValidatorWithMessages.ValidateAsync(Object, ValidationOptions, CancellationToken)
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).CSF.Validation.IValidatorWithMessages.ValidateAsync(Object, ValidationOptions, CancellationToken)
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.CSF#Validation#IValidatorWithMessages#ValidateAsync*
-  name: IValidatorWithMessages.ValidateAsync
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1_CSF_Validation_IValidatorWithMessages_ValidateAsync_
-  commentId: Overload:CSF.Validation.MessageEnrichingValidatorAdapter`1.CSF#Validation#IValidatorWithMessages#ValidateAsync
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.MessageEnrichingValidatorDecorator
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).MessageEnrichingValidatorDecorator
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.MessageEnrichingValidatorDecorator
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).MessageEnrichingValidatorDecorator
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.CSF#Validation#IValidator#ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name: IValidator.ValidateAsync(Object, ValidationOptions, CancellationToken)
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1_CSF_Validation_IValidator_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.MessageEnrichingValidatorDecorator`1.CSF#Validation#IValidator#ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name.vb: CSF.Validation.IValidator.ValidateAsync(Object, ValidationOptions, CancellationToken)
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.CSF.Validation.IValidator.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).CSF.Validation.IValidator.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.IValidator.ValidateAsync(Object, ValidationOptions, CancellationToken)
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).CSF.Validation.IValidator.ValidateAsync(Object, ValidationOptions, CancellationToken)
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.CSF#Validation#IValidator#ValidateAsync*
+  name: IValidator.ValidateAsync
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1_CSF_Validation_IValidator_ValidateAsync_
+  commentId: Overload:CSF.Validation.MessageEnrichingValidatorDecorator`1.CSF#Validation#IValidator#ValidateAsync
   isSpec: "True"
-  name.vb: CSF.Validation.IValidatorWithMessages.ValidateAsync
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.CSF.Validation.IValidatorWithMessages.ValidateAsync
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).CSF.Validation.IValidatorWithMessages.ValidateAsync
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.IValidatorWithMessages.ValidateAsync
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).CSF.Validation.IValidatorWithMessages.ValidateAsync
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  name.vb: CSF.Validation.IValidator.ValidateAsync
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.CSF.Validation.IValidator.ValidateAsync
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).CSF.Validation.IValidator.ValidateAsync
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.IValidator.ValidateAsync
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).CSF.Validation.IValidator.ValidateAsync
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
   name: ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidateAsync*
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).ValidateAsync(TValidated, ValidationOptions, CancellationToken)
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidateAsync*
   name: ValidateAsync
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1_ValidateAsync_
-  commentId: Overload:CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidateAsync
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidateAsync_
+  commentId: Overload:CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidateAsync
   isSpec: "True"
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.ValidateAsync
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).ValidateAsync
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.ValidateAsync
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).ValidateAsync
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidatedType
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.ValidateAsync
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).ValidateAsync
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.ValidateAsync
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).ValidateAsync
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidatedType
   name: ValidatedType
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1_ValidatedType
-  commentId: P:CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidatedType
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.ValidatedType
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).ValidatedType
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.ValidatedType
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).ValidatedType
-- uid: CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidatedType*
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidatedType
+  commentId: P:CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidatedType
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.ValidatedType
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).ValidatedType
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.ValidatedType
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).ValidatedType
+- uid: CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidatedType*
   name: ValidatedType
-  href: api/CSF.Validation.MessageEnrichingValidatorAdapter-1.html#CSF_Validation_MessageEnrichingValidatorAdapter_1_ValidatedType_
-  commentId: Overload:CSF.Validation.MessageEnrichingValidatorAdapter`1.ValidatedType
+  href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html#CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidatedType_
+  commentId: Overload:CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidatedType
   isSpec: "True"
-  fullName: CSF.Validation.MessageEnrichingValidatorAdapter<TValidated>.ValidatedType
-  fullName.vb: CSF.Validation.MessageEnrichingValidatorAdapter(Of TValidated).ValidatedType
-  nameWithType: MessageEnrichingValidatorAdapter<TValidated>.ValidatedType
-  nameWithType.vb: MessageEnrichingValidatorAdapter(Of TValidated).ValidatedType
+  fullName: CSF.Validation.MessageEnrichingValidatorDecorator<TValidated>.ValidatedType
+  fullName.vb: CSF.Validation.MessageEnrichingValidatorDecorator(Of TValidated).ValidatedType
+  nameWithType: MessageEnrichingValidatorDecorator<TValidated>.ValidatedType
+  nameWithType.vb: MessageEnrichingValidatorDecorator(Of TValidated).ValidatedType
 - uid: CSF.Validation.Messages
   name: CSF.Validation.Messages
   href: api/CSF.Validation.Messages.html
@@ -7263,75 +7061,6 @@ references:
   fullName.vb: CSF.Validation.ThrowingBehaviourValidatorDecorator(Of TValidated).ValidatedType
   nameWithType: ThrowingBehaviourValidatorDecorator<TValidated>.ValidatedType
   nameWithType.vb: ThrowingBehaviourValidatorDecorator(Of TValidated).ValidatedType
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1
-  name: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html
-  commentId: T:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1
-  name.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated)
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated)
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated)
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor(CSF.Validation.IValidatorWithMessages{`0})
-  name: ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages<TValidated>)
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1__ctor_CSF_Validation_IValidatorWithMessages__0__
-  commentId: M:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor(CSF.Validation.IValidatorWithMessages{`0})
-  name.vb: ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages(Of TValidated))
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator(CSF.Validation.IValidatorWithMessages<TValidated>)
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator(CSF.Validation.IValidatorWithMessages(Of TValidated))
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages<TValidated>)
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator(IValidatorWithMessages(Of TValidated))
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor*
-  name: ThrowingBehaviourValidatorWithMessagesDecorator
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1__ctor_
-  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.#ctor
-  isSpec: "True"
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ThrowingBehaviourValidatorWithMessagesDecorator
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ThrowingBehaviourValidatorWithMessagesDecorator
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  name: ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(TValidated, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(TValidated, ValidationOptions, CancellationToken)
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  name: ValidateAsync(Object, ValidationOptions, CancellationToken)
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(System.Object, CSF.Validation.ValidationOptions, System.Threading.CancellationToken)
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync(Object, ValidationOptions, CancellationToken)
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync(Object, ValidationOptions, CancellationToken)
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync*
-  name: ValidateAsync
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidateAsync_
-  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidateAsync
-  isSpec: "True"
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidateAsync
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidateAsync
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType
-  name: ValidatedType
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidatedType
-  commentId: P:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
-- uid: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType*
-  name: ValidatedType
-  href: api/CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator-1.html#CSF_Validation_ThrowingBehaviourValidatorWithMessagesDecorator_1_ValidatedType_
-  commentId: Overload:CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator`1.ValidatedType
-  isSpec: "True"
-  fullName: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
-  fullName.vb: CSF.Validation.ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
-  nameWithType: ThrowingBehaviourValidatorWithMessagesDecorator<TValidated>.ValidatedType
-  nameWithType.vb: ThrowingBehaviourValidatorWithMessagesDecorator(Of TValidated).ValidatedType
 - uid: CSF.Validation.ValidationException
   name: ValidationException
   href: api/CSF.Validation.ValidationException.html
@@ -7356,12 +7085,12 @@ references:
   commentId: M:CSF.Validation.ValidationException.#ctor(System.String)
   fullName: CSF.Validation.ValidationException.ValidationException(System.String)
   nameWithType: ValidationException.ValidationException(String)
-- uid: CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.IHasValidationRuleResults)
-  name: ValidationException(String, IHasValidationRuleResults)
-  href: api/CSF.Validation.ValidationException.html#CSF_Validation_ValidationException__ctor_System_String_CSF_Validation_IHasValidationRuleResults_
-  commentId: M:CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.IHasValidationRuleResults)
-  fullName: CSF.Validation.ValidationException.ValidationException(System.String, CSF.Validation.IHasValidationRuleResults)
-  nameWithType: ValidationException.ValidationException(String, IHasValidationRuleResults)
+- uid: CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.ValidationResult)
+  name: ValidationException(String, ValidationResult)
+  href: api/CSF.Validation.ValidationException.html#CSF_Validation_ValidationException__ctor_System_String_CSF_Validation_ValidationResult_
+  commentId: M:CSF.Validation.ValidationException.#ctor(System.String,CSF.Validation.ValidationResult)
+  fullName: CSF.Validation.ValidationException.ValidationException(System.String, CSF.Validation.ValidationResult)
+  nameWithType: ValidationException.ValidationException(String, ValidationResult)
 - uid: CSF.Validation.ValidationException.#ctor(System.String,System.Exception)
   name: ValidationException(String, Exception)
   href: api/CSF.Validation.ValidationException.html#CSF_Validation_ValidationException__ctor_System_String_System_Exception_
@@ -7407,6 +7136,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationOptions.AccessorExceptionBehaviour
   nameWithType: ValidationOptions.AccessorExceptionBehaviour
+- uid: CSF.Validation.ValidationOptions.EnableMessageGeneration
+  name: EnableMessageGeneration
+  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableMessageGeneration
+  commentId: P:CSF.Validation.ValidationOptions.EnableMessageGeneration
+  fullName: CSF.Validation.ValidationOptions.EnableMessageGeneration
+  nameWithType: ValidationOptions.EnableMessageGeneration
+- uid: CSF.Validation.ValidationOptions.EnableMessageGeneration*
+  name: EnableMessageGeneration
+  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableMessageGeneration_
+  commentId: Overload:CSF.Validation.ValidationOptions.EnableMessageGeneration
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationOptions.EnableMessageGeneration
+  nameWithType: ValidationOptions.EnableMessageGeneration
 - uid: CSF.Validation.ValidationOptions.RuleThrowingBehaviour
   name: RuleThrowingBehaviour
   href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour
@@ -7468,89 +7210,18 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationResult.RuleResults
   nameWithType: ValidationResult.RuleResults
-- uid: CSF.Validation.ValidationResultWithMessages
-  name: ValidationResultWithMessages
-  href: api/CSF.Validation.ValidationResultWithMessages.html
-  commentId: T:CSF.Validation.ValidationResultWithMessages
-  fullName: CSF.Validation.ValidationResultWithMessages
-  nameWithType: ValidationResultWithMessages
-- uid: CSF.Validation.ValidationResultWithMessages.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResultWithMessage})
-  name: ValidationResultWithMessages(IEnumerable<ValidationRuleResultWithMessage>)
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResultWithMessage__
-  commentId: M:CSF.Validation.ValidationResultWithMessages.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResultWithMessage})
-  name.vb: ValidationResultWithMessages(IEnumerable(Of ValidationRuleResultWithMessage))
-  fullName: CSF.Validation.ValidationResultWithMessages.ValidationResultWithMessages(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResultWithMessage>)
-  fullName.vb: CSF.Validation.ValidationResultWithMessages.ValidationResultWithMessages(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResultWithMessage))
-  nameWithType: ValidationResultWithMessages.ValidationResultWithMessages(IEnumerable<ValidationRuleResultWithMessage>)
-  nameWithType.vb: ValidationResultWithMessages.ValidationResultWithMessages(IEnumerable(Of ValidationRuleResultWithMessage))
-- uid: CSF.Validation.ValidationResultWithMessages.#ctor*
-  name: ValidationResultWithMessages
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages__ctor_
-  commentId: Overload:CSF.Validation.ValidationResultWithMessages.#ctor
-  isSpec: "True"
-  fullName: CSF.Validation.ValidationResultWithMessages.ValidationResultWithMessages
-  nameWithType: ValidationResultWithMessages.ValidationResultWithMessages
-- uid: CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults
-  name: IHasValidationRuleResults.RuleResults
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_CSF_Validation_IHasValidationRuleResults_RuleResults
-  commentId: P:CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults
-  name.vb: CSF.Validation.IHasValidationRuleResults.RuleResults
-  fullName: CSF.Validation.ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
-  nameWithType: ValidationResultWithMessages.IHasValidationRuleResults.RuleResults
-  nameWithType.vb: ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
-- uid: CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults*
-  name: IHasValidationRuleResults.RuleResults
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_CSF_Validation_IHasValidationRuleResults_RuleResults_
-  commentId: Overload:CSF.Validation.ValidationResultWithMessages.CSF#Validation#IHasValidationRuleResults#RuleResults
-  isSpec: "True"
-  name.vb: CSF.Validation.IHasValidationRuleResults.RuleResults
-  fullName: CSF.Validation.ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
-  nameWithType: ValidationResultWithMessages.IHasValidationRuleResults.RuleResults
-  nameWithType.vb: ValidationResultWithMessages.CSF.Validation.IHasValidationRuleResults.RuleResults
-- uid: CSF.Validation.ValidationResultWithMessages.Passed
-  name: Passed
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_Passed
-  commentId: P:CSF.Validation.ValidationResultWithMessages.Passed
-  fullName: CSF.Validation.ValidationResultWithMessages.Passed
-  nameWithType: ValidationResultWithMessages.Passed
-- uid: CSF.Validation.ValidationResultWithMessages.Passed*
-  name: Passed
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_Passed_
-  commentId: Overload:CSF.Validation.ValidationResultWithMessages.Passed
-  isSpec: "True"
-  fullName: CSF.Validation.ValidationResultWithMessages.Passed
-  nameWithType: ValidationResultWithMessages.Passed
-- uid: CSF.Validation.ValidationResultWithMessages.RuleResults
-  name: RuleResults
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_RuleResults
-  commentId: P:CSF.Validation.ValidationResultWithMessages.RuleResults
-  fullName: CSF.Validation.ValidationResultWithMessages.RuleResults
-  nameWithType: ValidationResultWithMessages.RuleResults
-- uid: CSF.Validation.ValidationResultWithMessages.RuleResults*
-  name: RuleResults
-  href: api/CSF.Validation.ValidationResultWithMessages.html#CSF_Validation_ValidationResultWithMessages_RuleResults_
-  commentId: Overload:CSF.Validation.ValidationResultWithMessages.RuleResults
-  isSpec: "True"
-  fullName: CSF.Validation.ValidationResultWithMessages.RuleResults
-  nameWithType: ValidationResultWithMessages.RuleResults
 - uid: CSF.Validation.ValidationRuleResult
   name: ValidationRuleResult
   href: api/CSF.Validation.ValidationRuleResult.html
   commentId: T:CSF.Validation.ValidationRuleResult
   fullName: CSF.Validation.ValidationRuleResult
   nameWithType: ValidationRuleResult
-- uid: CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.Rules.RuleResult,CSF.Validation.Rules.RuleContext,CSF.Validation.Rules.IValidationLogic)
-  name: ValidationRuleResult(RuleResult, RuleContext, IValidationLogic)
-  href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult__ctor_CSF_Validation_Rules_RuleResult_CSF_Validation_Rules_RuleContext_CSF_Validation_Rules_IValidationLogic_
-  commentId: M:CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.Rules.RuleResult,CSF.Validation.Rules.RuleContext,CSF.Validation.Rules.IValidationLogic)
-  fullName: CSF.Validation.ValidationRuleResult.ValidationRuleResult(CSF.Validation.Rules.RuleResult, CSF.Validation.Rules.RuleContext, CSF.Validation.Rules.IValidationLogic)
-  nameWithType: ValidationRuleResult.ValidationRuleResult(RuleResult, RuleContext, IValidationLogic)
-- uid: CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.ValidationRuleResult)
-  name: ValidationRuleResult(ValidationRuleResult)
-  href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult__ctor_CSF_Validation_ValidationRuleResult_
-  commentId: M:CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.ValidationRuleResult)
-  fullName: CSF.Validation.ValidationRuleResult.ValidationRuleResult(CSF.Validation.ValidationRuleResult)
-  nameWithType: ValidationRuleResult.ValidationRuleResult(ValidationRuleResult)
+- uid: CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.Rules.RuleResult,CSF.Validation.Rules.RuleContext,CSF.Validation.Rules.IValidationLogic,System.String)
+  name: ValidationRuleResult(RuleResult, RuleContext, IValidationLogic, String)
+  href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult__ctor_CSF_Validation_Rules_RuleResult_CSF_Validation_Rules_RuleContext_CSF_Validation_Rules_IValidationLogic_System_String_
+  commentId: M:CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.Rules.RuleResult,CSF.Validation.Rules.RuleContext,CSF.Validation.Rules.IValidationLogic,System.String)
+  fullName: CSF.Validation.ValidationRuleResult.ValidationRuleResult(CSF.Validation.Rules.RuleResult, CSF.Validation.Rules.RuleContext, CSF.Validation.Rules.IValidationLogic, System.String)
+  nameWithType: ValidationRuleResult.ValidationRuleResult(RuleResult, RuleContext, IValidationLogic, String)
 - uid: CSF.Validation.ValidationRuleResult.#ctor*
   name: ValidationRuleResult
   href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult__ctor_
@@ -7571,6 +7242,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationRuleResult.Identifier
   nameWithType: ValidationRuleResult.Identifier
+- uid: CSF.Validation.ValidationRuleResult.Message
+  name: Message
+  href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_Message
+  commentId: P:CSF.Validation.ValidationRuleResult.Message
+  fullName: CSF.Validation.ValidationRuleResult.Message
+  nameWithType: ValidationRuleResult.Message
+- uid: CSF.Validation.ValidationRuleResult.Message*
+  name: Message
+  href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_Message_
+  commentId: Overload:CSF.Validation.ValidationRuleResult.Message
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationRuleResult.Message
+  nameWithType: ValidationRuleResult.Message
 - uid: CSF.Validation.ValidationRuleResult.RuleContext
   name: RuleContext
   href: api/CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_RuleContext
@@ -7623,38 +7307,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationRuleResult.ValidationLogic
   nameWithType: ValidationRuleResult.ValidationLogic
-- uid: CSF.Validation.ValidationRuleResultWithMessage
-  name: ValidationRuleResultWithMessage
-  href: api/CSF.Validation.ValidationRuleResultWithMessage.html
-  commentId: T:CSF.Validation.ValidationRuleResultWithMessage
-  fullName: CSF.Validation.ValidationRuleResultWithMessage
-  nameWithType: ValidationRuleResultWithMessage
-- uid: CSF.Validation.ValidationRuleResultWithMessage.#ctor(CSF.Validation.ValidationRuleResult,System.String)
-  name: ValidationRuleResultWithMessage(ValidationRuleResult, String)
-  href: api/CSF.Validation.ValidationRuleResultWithMessage.html#CSF_Validation_ValidationRuleResultWithMessage__ctor_CSF_Validation_ValidationRuleResult_System_String_
-  commentId: M:CSF.Validation.ValidationRuleResultWithMessage.#ctor(CSF.Validation.ValidationRuleResult,System.String)
-  fullName: CSF.Validation.ValidationRuleResultWithMessage.ValidationRuleResultWithMessage(CSF.Validation.ValidationRuleResult, System.String)
-  nameWithType: ValidationRuleResultWithMessage.ValidationRuleResultWithMessage(ValidationRuleResult, String)
-- uid: CSF.Validation.ValidationRuleResultWithMessage.#ctor*
-  name: ValidationRuleResultWithMessage
-  href: api/CSF.Validation.ValidationRuleResultWithMessage.html#CSF_Validation_ValidationRuleResultWithMessage__ctor_
-  commentId: Overload:CSF.Validation.ValidationRuleResultWithMessage.#ctor
-  isSpec: "True"
-  fullName: CSF.Validation.ValidationRuleResultWithMessage.ValidationRuleResultWithMessage
-  nameWithType: ValidationRuleResultWithMessage.ValidationRuleResultWithMessage
-- uid: CSF.Validation.ValidationRuleResultWithMessage.Message
-  name: Message
-  href: api/CSF.Validation.ValidationRuleResultWithMessage.html#CSF_Validation_ValidationRuleResultWithMessage_Message
-  commentId: P:CSF.Validation.ValidationRuleResultWithMessage.Message
-  fullName: CSF.Validation.ValidationRuleResultWithMessage.Message
-  nameWithType: ValidationRuleResultWithMessage.Message
-- uid: CSF.Validation.ValidationRuleResultWithMessage.Message*
-  name: Message
-  href: api/CSF.Validation.ValidationRuleResultWithMessage.html#CSF_Validation_ValidationRuleResultWithMessage_Message_
-  commentId: Overload:CSF.Validation.ValidationRuleResultWithMessage.Message
-  isSpec: "True"
-  fullName: CSF.Validation.ValidationRuleResultWithMessage.Message
-  nameWithType: ValidationRuleResultWithMessage.Message
 - uid: CSF.Validation.Validator`1
   name: Validator<TValidated>
   href: api/CSF.Validation.Validator-1.html
@@ -9204,40 +8856,6 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactory.GetValidator(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
   nameWithType: ValidatorFactory.GetValidator<TValidated>(IBuildsValidator<TValidated>)
   nameWithType.vb: ValidatorFactory.GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
-- uid: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(CSF.Validation.Manifest.ValidationManifest)
-  name: GetValidatorWithMessageSupport(ValidationManifest)
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory_GetValidatorWithMessageSupport_CSF_Validation_Manifest_ValidationManifest_
-  commentId: M:CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(CSF.Validation.Manifest.ValidationManifest)
-  fullName: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(CSF.Validation.Manifest.ValidationManifest)
-  nameWithType: ValidatorFactory.GetValidatorWithMessageSupport(ValidationManifest)
-- uid: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(CSF.Validation.ManifestModel.Value,System.Type)
-  name: GetValidatorWithMessageSupport(Value, Type)
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory_GetValidatorWithMessageSupport_CSF_Validation_ManifestModel_Value_System_Type_
-  commentId: M:CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(CSF.Validation.ManifestModel.Value,System.Type)
-  fullName: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(CSF.Validation.ManifestModel.Value, System.Type)
-  nameWithType: ValidatorFactory.GetValidatorWithMessageSupport(Value, Type)
-- uid: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(System.Type)
-  name: GetValidatorWithMessageSupport(Type)
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory_GetValidatorWithMessageSupport_System_Type_
-  commentId: M:CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(System.Type)
-  fullName: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(System.Type)
-  nameWithType: ValidatorFactory.GetValidatorWithMessageSupport(Type)
-- uid: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport*
-  name: GetValidatorWithMessageSupport
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory_GetValidatorWithMessageSupport_
-  commentId: Overload:CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport
-  isSpec: "True"
-  fullName: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport
-  nameWithType: ValidatorFactory.GetValidatorWithMessageSupport
-- uid: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport``1(CSF.Validation.IBuildsValidator{``0})
-  name: GetValidatorWithMessageSupport<TValidated>(IBuildsValidator<TValidated>)
-  href: api/CSF.Validation.ValidatorFactory.html#CSF_Validation_ValidatorFactory_GetValidatorWithMessageSupport__1_CSF_Validation_IBuildsValidator___0__
-  commentId: M:CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport``1(CSF.Validation.IBuildsValidator{``0})
-  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IBuildsValidator(Of TValidated))
-  fullName: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IBuildsValidator<TValidated>)
-  fullName.vb: CSF.Validation.ValidatorFactory.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
-  nameWithType: ValidatorFactory.GetValidatorWithMessageSupport<TValidated>(IBuildsValidator<TValidated>)
-  nameWithType.vb: ValidatorFactory.GetValidatorWithMessageSupport(Of TValidated)(IBuildsValidator(Of TValidated))
 - uid: CSF.Validation.ValidatorFactoryExtensions
   name: ValidatorFactoryExtensions
   href: api/CSF.Validation.ValidatorFactoryExtensions.html
@@ -9278,40 +8896,6 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidator(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
   nameWithType: ValidatorFactoryExtensions.GetValidator<TValidated>(IGetsValidator, Type)
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
-- uid: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport*
-  name: GetValidatorWithMessageSupport
-  href: api/CSF.Validation.ValidatorFactoryExtensions.html#CSF_Validation_ValidatorFactoryExtensions_GetValidatorWithMessageSupport_
-  commentId: Overload:CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport
-  isSpec: "True"
-  fullName: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport
-  nameWithType: ValidatorFactoryExtensions.GetValidatorWithMessageSupport
-- uid: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport``1(CSF.Validation.IGetsValidator,CSF.Validation.Manifest.ValidationManifest)
-  name: GetValidatorWithMessageSupport<TValidated>(IGetsValidator, ValidationManifest)
-  href: api/CSF.Validation.ValidatorFactoryExtensions.html#CSF_Validation_ValidatorFactoryExtensions_GetValidatorWithMessageSupport__1_CSF_Validation_IGetsValidator_CSF_Validation_Manifest_ValidationManifest_
-  commentId: M:CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport``1(CSF.Validation.IGetsValidator,CSF.Validation.Manifest.ValidationManifest)
-  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, ValidationManifest)
-  fullName: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IGetsValidator, CSF.Validation.Manifest.ValidationManifest)
-  fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IGetsValidator, CSF.Validation.Manifest.ValidationManifest)
-  nameWithType: ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(IGetsValidator, ValidationManifest)
-  nameWithType.vb: ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, ValidationManifest)
-- uid: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport``1(CSF.Validation.IGetsValidator,CSF.Validation.ManifestModel.Value)
-  name: GetValidatorWithMessageSupport<TValidated>(IGetsValidator, Value)
-  href: api/CSF.Validation.ValidatorFactoryExtensions.html#CSF_Validation_ValidatorFactoryExtensions_GetValidatorWithMessageSupport__1_CSF_Validation_IGetsValidator_CSF_Validation_ManifestModel_Value_
-  commentId: M:CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport``1(CSF.Validation.IGetsValidator,CSF.Validation.ManifestModel.Value)
-  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, Value)
-  fullName: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IGetsValidator, CSF.Validation.ManifestModel.Value)
-  fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IGetsValidator, CSF.Validation.ManifestModel.Value)
-  nameWithType: ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(IGetsValidator, Value)
-  nameWithType.vb: ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, Value)
-- uid: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport``1(CSF.Validation.IGetsValidator,System.Type)
-  name: GetValidatorWithMessageSupport<TValidated>(IGetsValidator, Type)
-  href: api/CSF.Validation.ValidatorFactoryExtensions.html#CSF_Validation_ValidatorFactoryExtensions_GetValidatorWithMessageSupport__1_CSF_Validation_IGetsValidator_System_Type_
-  commentId: M:CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport``1(CSF.Validation.IGetsValidator,System.Type)
-  name.vb: GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, Type)
-  fullName: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(CSF.Validation.IGetsValidator, System.Type)
-  fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
-  nameWithType: ValidatorFactoryExtensions.GetValidatorWithMessageSupport<TValidated>(IGetsValidator, Type)
-  nameWithType.vb: ValidatorFactoryExtensions.GetValidatorWithMessageSupport(Of TValidated)(IGetsValidator, Type)
 - uid: HandlingAccessorExceptions
   name: Handling accessor exceptions
   href: articles/WritingValidators/WritingValidatorBuilders/HandlingAccessorExceptions.html

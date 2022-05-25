@@ -162,6 +162,52 @@ The default behaviour for this property if unset is <a class="xref" href="CSF.Va
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationOptions_EnableMessageGeneration.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationOptions.EnableMessageGeneration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidationOptions.cs/#L53">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationOptions_EnableMessageGeneration_" data-uid="CSF.Validation.ValidationOptions.EnableMessageGeneration*"></a>
+  <h4 id="CSF_Validation_ValidationOptions_EnableMessageGeneration" data-uid="CSF.Validation.ValidationOptions.EnableMessageGeneration">EnableMessageGeneration</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value which determines whether or not the validator should generate validation feedback
+messages, such as for rules which fail validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableMessageGeneration { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidationOptions_EnableMessageGeneration_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+An optional piece of functionality within this validation framework is the generation of human-readable feedback
+messages relating to validation, typically for failures or errors.  By default this functionality is disabled and
+the logic to generate messages is skipped, providing a performance boost when it is not going to be used.
+</p>
+<p>
+Setting this option value to <span class="xref">true</span> enables this functionality and means that every validation
+rule result has the opportunity to have a <a class="xref" href="CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_Message">Message</a> generated with feedback
+advising the user what to do about the validation failure.
+If thie functionality is not enabled then that message property will be left at its unset/default value
+of <span class="xref">null</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationOptions_RuleThrowingBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationOptions.RuleThrowingBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">

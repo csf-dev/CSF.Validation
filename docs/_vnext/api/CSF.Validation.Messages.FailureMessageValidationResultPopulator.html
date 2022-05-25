@@ -73,7 +73,7 @@
   
   <h1 id="CSF_Validation_Messages_FailureMessageValidationResultPopulator" data-uid="CSF.Validation.Messages.FailureMessageValidationResultPopulator" class="text-break">Class FailureMessageValidationResultPopulator
   </h1>
-  <div class="markdown level0 summary"><p>A service which converts a <a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a> into a <a class="xref" href="CSF.Validation.ValidationResultWithMessages.html">ValidationResultWithMessages</a> by
+  <div class="markdown level0 summary"><p>A service which converts a <a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a> into a <a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a> by
 getting messages for each rule result within the original result and adding a message, where appropriate.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -184,7 +184,7 @@ added to the individual rule-results where applicable.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;ValidationResultWithMessages&gt; GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;ValidationResult&gt; GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,7 +220,7 @@ added to the individual rule-results where applicable.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.ValidationResultWithMessages.html">ValidationResultWithMessages</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a>&gt;</td>
         <td><p>A task which exposes a copy of the validation result, but with additional feedback messages.</p>
 </td>
       </tr>
