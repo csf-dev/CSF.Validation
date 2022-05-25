@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using AutoFixture.NUnit3;
 using CSF.Validation.Messages;
@@ -11,7 +12,39 @@ namespace CSF.Validation
     public class MessageEnrichingValidatorDecoratorTests
     {
         [Test,AutoMoqData]
-        public void ValidateAsyncShouldUseTheWrappedValidatorThenReturnTheResultEnrichedWithMessages([Frozen] IValidator<object> validator,
+        public void ValidateAsyncShouldUseTheWrappedValidatorThenReturnTheResultEnrichedWithMessagesIfOptionsEnableIt([Frozen] IValidator<object> validator,
+                                                                                                     [Frozen] IAddsFailureMessagesToResult failureMessageEnricher,
+                                                                                                     MessageEnrichingValidatorDecorator<object> sut,
+                                                                                                     [RuleResult] ValidationResult originalResult,
+                                                                                                     [RuleResult] ValidationResult resultWithMessages,
+                                                                                                     object validatedObject,
+                                                                                                     ValidationOptions options)
+        {
+            options.EnableMessageGeneration = true;
+            Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, options, default)).Returns(Task.FromResult(originalResult));
+            Mock.Get(failureMessageEnricher).Setup(x => x.GetResultWithMessagesAsync(originalResult, default)).Returns(Task.FromResult(resultWithMessages));
+
+            Assert.That(async () => await sut.ValidateAsync(validatedObject, options), Is.SameAs(resultWithMessages));
+        }
+
+        [Test,AutoMoqData]
+        public void ValidateAsyncShouldReturnTheWrappedValidatorResultIfOptionsDisableMessageGeneration([Frozen] IValidator<object> validator,
+                                                                                                     [Frozen] IAddsFailureMessagesToResult failureMessageEnricher,
+                                                                                                     MessageEnrichingValidatorDecorator<object> sut,
+                                                                                                     [RuleResult] ValidationResult originalResult,
+                                                                                                     [RuleResult] ValidationResult resultWithMessages,
+                                                                                                     object validatedObject,
+                                                                                                     ValidationOptions options)
+        {
+            options.EnableMessageGeneration = false;
+            Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, options, default)).Returns(Task.FromResult(originalResult));
+
+            Assert.That(async () => await sut.ValidateAsync(validatedObject, options), Is.SameAs(originalResult));
+            Mock.Get(failureMessageEnricher).Verify(x => x.GetResultWithMessagesAsync(It.IsAny<ValidationResult>(), It.IsAny<CancellationToken>()), Times.Never);
+        }
+
+        [Test,AutoMoqData]
+        public void ValidateAsyncShouldReturnTheWrappedValidatorResultIfOptionsAreOmitted([Frozen] IValidator<object> validator,
                                                                                                      [Frozen] IAddsFailureMessagesToResult failureMessageEnricher,
                                                                                                      MessageEnrichingValidatorDecorator<object> sut,
                                                                                                      [RuleResult] ValidationResult originalResult,
@@ -19,9 +52,9 @@ namespace CSF.Validation
                                                                                                      object validatedObject)
         {
             Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, default, default)).Returns(Task.FromResult(originalResult));
-            Mock.Get(failureMessageEnricher).Setup(x => x.GetResultWithMessagesAsync(originalResult, default)).Returns(Task.FromResult(resultWithMessages));
 
-            Assert.That(async () => await sut.ValidateAsync(validatedObject), Is.SameAs(resultWithMessages));
+            Assert.That(async () => await sut.ValidateAsync(validatedObject), Is.SameAs(originalResult));
+            Mock.Get(failureMessageEnricher).Verify(x => x.GetResultWithMessagesAsync(It.IsAny<ValidationResult>(), It.IsAny<CancellationToken>()), Times.Never);
         }
     }
 }

@@ -40,6 +40,8 @@ namespace CSF.Validation
         public async Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
             var result = await validator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);
+            if(options?.EnableMessageGeneration != true) return result;
+            
             return await failureMessageEnricher.GetResultWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
         }
 
