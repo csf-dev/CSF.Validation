@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using CSF.Validation.RuleExecution;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation
@@ -51,6 +49,11 @@ namespace CSF.Validation
         public IValidationLogic ValidationLogic { get; }
 
         /// <summary>
+        /// Gets a human-readable feedback message to be associated with this rule result.
+        /// </summary>
+        public string Message { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>
         /// <remarks>
@@ -58,29 +61,20 @@ namespace CSF.Validation
         /// This constructor copies-information-from and then enriches a <see cref="RuleResult"/> with further information.
         /// </para>
         /// </remarks>
+        /// <param name="result">The rule result.</param>
+        /// <param name="ruleContext">The rule context.</param>
+        /// <param name="validationLogic">The validation logic for the rule.</param>
+        /// <param name="message">The human-readable validation feedback message.</param>
         public ValidationRuleResult(RuleResult result,
                                     RuleContext ruleContext,
-                                    IValidationLogic validationLogic) : base(result)
+                                    IValidationLogic validationLogic,
+                                    string message = default) : base(result)
         {
             RuleContext = ruleContext;
             ValidationLogic = validationLogic;
             Identifier = ruleContext?.RuleIdentifier;
             RuleInterface = ruleContext?.RuleInterface;
             ValidatedValue = ruleContext?.ActualValue;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
-        /// </summary>
-        /// <param name="result">A validation rule result instance to copy.</param>
-        /// <exception cref="ArgumentNullException">If the <paramref name="result"/> is <see langword="null"/>.</exception>
-        protected ValidationRuleResult(ValidationRuleResult result) : base(result)
-        {
-            RuleContext = result.RuleContext;
-            Identifier = result.Identifier;
-            RuleInterface = result.RuleInterface;
-            ValidatedValue = result.ValidatedValue;
-            ValidationLogic = result.ValidationLogic;
         }
     }
 }

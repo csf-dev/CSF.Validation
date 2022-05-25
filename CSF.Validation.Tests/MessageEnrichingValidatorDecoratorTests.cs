@@ -8,14 +8,14 @@ using NUnit.Framework;
 namespace CSF.Validation
 {
     [TestFixture,Parallelizable]
-    public class MessageEnrichingValidatorAdapterTests
+    public class MessageEnrichingValidatorDecoratorTests
     {
         [Test,AutoMoqData]
         public void ValidateAsyncShouldUseTheWrappedValidatorThenReturnTheResultEnrichedWithMessages([Frozen] IValidator<object> validator,
                                                                                                      [Frozen] IAddsFailureMessagesToResult failureMessageEnricher,
-                                                                                                     MessageEnrichingValidatorAdapter<object> sut,
+                                                                                                     MessageEnrichingValidatorDecorator<object> sut,
                                                                                                      [RuleResult] ValidationResult originalResult,
-                                                                                                     [RuleResult] ValidationResultWithMessages resultWithMessages,
+                                                                                                     [RuleResult] ValidationResult resultWithMessages,
                                                                                                      object validatedObject)
         {
             Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, default, default)).Returns(Task.FromResult(originalResult));

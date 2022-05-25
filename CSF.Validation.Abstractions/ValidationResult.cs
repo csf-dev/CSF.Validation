@@ -8,7 +8,7 @@ namespace CSF.Validation
     /// <summary>
     /// A model for the results of a validation process.
     /// </summary>
-    public class ValidationResult : IHasValidationRuleResults
+    public class ValidationResult
     {
         /// <inheritdoc/>
         public bool Passed { get; }

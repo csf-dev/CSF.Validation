@@ -11,7 +11,7 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="validator">The validator instance to wrap.</param>
         /// <returns>The validator, with added message support.</returns>
-        IValidatorWithMessages GetValidatorWithMessageSupport(IValidator validator);
+        IValidator GetValidatorWithMessageSupport(IValidator validator);
 
         /// <summary>
         /// Wraps a generic validator with message-enriching behaviour.
@@ -19,6 +19,6 @@ namespace CSF.Validation
         /// <typeparam name="TValidated">The validated type.</typeparam>
         /// <param name="validator">The validator instance to wrap.</param>
         /// <returns>The validator, with added message support.</returns>
-        IValidatorWithMessages<TValidated> GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated> validator);
+        IValidator<TValidated> GetValidatorWithMessageSupport<TValidated>(IValidator<TValidated> validator);
     }
 }

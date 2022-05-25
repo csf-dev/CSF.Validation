@@ -123,7 +123,7 @@ namespace CSF.Validation.IntegrationTests
         [Test,AutoMoqData]
         public async Task ValidateAsyncWithMessageSupportShouldReturnMessagesForAFailingRule([IntegrationTesting] IGetsValidator validatorFactory)
         {
-            var validator = validatorFactory.GetValidatorWithMessageSupport<Person>(typeof(PersonValidatorBuilder));
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
             var person = new Person
             {
                 Name = "John Smith",
@@ -131,7 +131,7 @@ namespace CSF.Validation.IntegrationTests
                 Pets = Array.Empty<Pet>(),
             };
 
-            var result = await validator.ValidateAsync(person).ConfigureAwait(false);
+            var result = await validator.ValidateAsync(person, new ValidationOptions { EnableMessageGeneration = true }).ConfigureAwait(false);
 
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
                         Is.EqualTo("The date 1750-01-01 is invalid. It must equal-to or later than 1900-01-01."));
@@ -140,7 +140,7 @@ namespace CSF.Validation.IntegrationTests
         [Test,AutoMoqData]
         public async Task ValidateAsyncWithMessageSupportShouldReturnAMessageFromARuleThatHasAMessage([IntegrationTesting] IGetsValidator validatorFactory)
         {
-            var validator = validatorFactory.GetValidatorWithMessageSupport<Customer>(typeof(CustomerValidatorBuilder));
+            var validator = validatorFactory.GetValidator<Customer>(typeof(CustomerValidatorBuilder));
             var customer = new Customer
             {
                 Person = new Person
@@ -158,7 +158,7 @@ namespace CSF.Validation.IntegrationTests
                 }
             };
 
-            var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
+            var result = await validator.ValidateAsync(customer, new ValidationOptions { EnableMessageGeneration = true }).ConfigureAwait(false);
 
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
                         Is.EqualTo("Nobody may have more than 5 pets."));
