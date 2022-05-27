@@ -74,6 +74,7 @@ Each is a link to further detail.</p>
 <ol>
 <li><a href="ConfigureTheFramework.html">Configure the framework</a></li>
 <li><a href="WritingValidators/index.html">Define how objects should be validated</a></li>
+<li><em>Optionally, <a href="GeneratingFeedbackMessages.html">write validation message providers</a></em></li>
 <li><a href="ConsumingValidators.html">Perform validation</a></li>
 </ol>
 <h2 id="recommended-usage-scenarios">Recommended usage scenarios</h2>
@@ -93,16 +94,18 @@ If there is no complex validation to be performed then this framework is likely 
 <p><a href="WritingValidators/WritingValidationRules/index.html">Validation rule classes</a> and (if you wish to use them) [validation message providers] are fully compatible with .NET dependency injection.
 Rule and failure message logic may use constructor-injected dependencies like the rest of your business logic.</p>
 <h3 id="flexible">Flexible</h3>
-<p>The CSF.Validation architecture is flexible; you may define validators declaratively in code, as data such as JSON or XML.
+<p>The CSF.Validation architecture is flexible; you may define validators declaratively in code or as data such as JSON or XML.
 You may also combine these techniques with advanced logic such as reflection in order to build convention-based validators.</p>
 <h3 id="low-dependency-footprint">Low dependency footprint</h3>
 <p>The architecture is not dependent-upon or specific to any particular user-interface technology.
-Indeed, it may be used when there is no user interface at all.
-Validation results could be serialised and returned through a JSON web API (for instance).</p>
+Indeed, it may be used when there is no user interface at all.</p>
 <h3 id="follows-solid-principles">Follows SOLID principles</h3>
 <p>CSF.Validation helps you to <a href="https://en.wikipedia.org/wiki/SOLID">follow the SOLID principles</a> in your app.
 Each individual validation rule is written in a single-responsibility class.</p>
 <p>The definition of a validator (which rules should be applied to which values, and how they are to be configured) is <em>declarative</em>.</p>
+<h3 id="generates-feedback-messages">Generates feedback messages</h3>
+<p>An optional function of the validation logic is the generation of human-readable feedback messages for validation.
+Typically this is used for validation rules which fail, to inform the user why the data is invalid and to help them correct the problem.</p>
 </article>
           </div>
           

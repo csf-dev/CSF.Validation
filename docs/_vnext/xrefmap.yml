@@ -8905,6 +8905,9 @@ references:
 - uid: RulesShouldOnlyFailForOneReason
   name: A rule should only fail for one conceptual reason
   href: articles/BestPractice/RulesShouldOnlyFailForOneReason.html
+- uid: WritingMessageProviders
+  name: Writing feedback message providers
+  href: articles/WritingMessageProviders.html
 - uid: WritingValidationRules
   name: Writing Validation Rules
   href: articles/WritingValidators/WritingValidationRules/index.html
