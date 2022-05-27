@@ -5,10 +5,12 @@ Each is a link to further detail.
 
 1. [Configure the framework]
 2. [Define how objects should be validated]
-3. [Perform validation]
+3. _Optionally, [write validation message providers]_
+4. [Perform validation]
 
 [Configure the framework]:ConfigureTheFramework.md
 [Define how objects should be validated]:WritingValidators/index.md
+[write validation message providers]:GeneratingFeedbackMessages.md
 [Perform validation]:ConsumingValidators.md
 
 ## Recommended usage scenarios
@@ -37,21 +39,25 @@ Rule and failure message logic may use constructor-injected dependencies like th
 
 ### Flexible
 
-The CSF.Validation architecture is flexible; you may define validators declaratively in code, as data such as JSON or XML.
+The CSF.Validation architecture is flexible; you may define validators declaratively in code or as data such as JSON or XML.
 You may also combine these techniques with advanced logic such as reflection in order to build convention-based validators.
 
 ### Low dependency footprint
 
 The architecture is not dependent-upon or specific to any particular user-interface technology.
 Indeed, it may be used when there is no user interface at all.
-Validation results could be serialised and returned through a JSON web API (for instance).
 
 ### Follows SOLID principles
 
 CSF.Validation helps you to [follow the SOLID principles] in your app.
 Each individual validation rule is written in a single-responsibility class.
 
-The definition of a validator (which rules should be applied to which values, and how they are to be configured) is *declarative*.
+The definition of a validator (which rules should be applied to which values, and how they are to be configured) is _declarative_.
+
+### Generates feedback messages
+
+An optional function of the validation logic is the generation of human-readable feedback messages for validation.
+Typically this is used for validation rules which fail, to inform the user why the data is invalid and to help them correct the problem.
 
 [domain objects]:WhatIsDomainObjectValidation.md
 [Validation rule classes]: WritingValidators/WritingValidationRules/index.md

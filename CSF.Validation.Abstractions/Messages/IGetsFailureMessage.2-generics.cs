@@ -16,7 +16,19 @@ namespace CSF.Validation.Messages
     /// <see cref="GetFailureMessageAsync(TValidated, TParent, ValidationRuleResult, CancellationToken)"/> receives
     /// two strongly typed parameters which contains the object under validation and also the parent value.
     /// </para>
+    /// <para>
+    /// You are encouraged to read more about how validation message providers are used and selected
+    /// at <xref href="WritingMessageProviders?text=the+documentation+relating+to+message+providers"/>.
+    /// </para>
     /// </remarks>
+    /// <seealso cref="IGetsFailureMessage{TValidated}"/>
+    /// <seealso cref="IGetsFailureMessage"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated}"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated, TParent}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated, TParent}"/>
+    /// <seealso cref="FailureMessageStrategyAttribute"/>
     /// <typeparam name="TValidated">The type of the validated value.</typeparam>
     /// <typeparam name="TParent">The type of the parent validated value.</typeparam>
     public interface IGetsFailureMessage<in TValidated,in TParent>

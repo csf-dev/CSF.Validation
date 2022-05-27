@@ -12,22 +12,36 @@ You will also require a reference to [the **CSF.Validation** NuGet package].
 
 ```csharp
 services
+    // You will almost-certainly need to use these
     .UseValidationFramework()
-    .UseStandardValidationRules()
     .UseValidationRulesInAssemblies(assemblies)
-    .UseValidatorBuildersInAssemblies(assemblies);
+
+    // The following are optional
+    .UseStandardValidationRules()
+    .UseValidatorBuildersInAssemblies(assemblies)
+    .UseMessageProviders(x => x.AddMessageProvidersInAssemblies(assemblies))
+    ;
 ```
 
 The [`UseValidationFramework()`] method adds the mandatory services to enable the framework.
-[`UseStandardValidationRules()`] is optional and is found in [the standard validation rules NuGet package].
 
 It is almost certain that developers will want to [write their own validation rule logic classes], which will also need to be added to DI.
 The most convenient way to accomplish this is via a method such as [`UseValidationRulesInAssemblies(IEnumerable<Assembly>)`]. This method scans the specified assemblies for rule classes and registers all of them with the service collection.
 See [`ServiceCollectionExtensions`] for other methods/overloads which add rules.
 
-It is also recommended to use the [`UseValidatorBuildersInAssemblies(IEnumerable<Assembly>)`] method to register your [validator builder implementations] with dependency injection.
-Validator builders often have no injected dependencies, so you may not require this (the validation framework will instantiate them without dependency injection).
+### Optional: Add the Standard Rules
+
+If you wish to use [the standard validation rules NuGet package] then you should additionally use the [`UseStandardValidationRules()`] method to register & enable them.
+
+### Optional: Register Validator Builders
+
+It is recommended to use the [`UseValidatorBuildersInAssemblies(IEnumerable<Assembly>)`] method to register your [validator builder implementations] with dependency injection.
+Validator builders often have no injected dependencies; as long as they do not the validation framework is actually able to instantiate them without using dependency injection.
 Registering builders with dependency injection is recommended though, even if only for consistency.
+
+### Optional: Register Message Providers
+
+If you would like the framework [to generate human-readable validation feedback messages] then you should use [`UseMessageProviders`] to register your message-provider classes with dependency injection.
 
 [the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
 [the standard validation rules NuGet package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
@@ -38,6 +52,8 @@ Registering builders with dependency injection is recommended though, even if on
 [`ServiceCollectionExtensions`]:xref:CSF.Validation.ServiceCollectionExtensions
 [`UseValidatorBuildersInAssemblies(IEnumerable<Assembly>)`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
 [validator builder implementations]:WritingValidators/WritingValidatorBuilders/index.md
+[to generate human-readable validation feedback messages]:GeneratingFeedbackMessages.md
+[`UseMessageProviders`]:xref:CSF.Validation.ServiceCollectionExtensions.UseMessageProviders(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.Bootstrap.IRegistersMessageProviders})
 
 ## Use the abstractions package in your app logic
 

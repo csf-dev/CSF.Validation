@@ -19,7 +19,19 @@ namespace CSF.Validation.Messages
     /// this interface may be implemented and the <see cref="CanGetFailureMessage(ValidationRuleResult)"/> method used
     /// to provide that logic.
     /// </para>
+    /// <para>
+    /// You are encouraged to read more about how validation message providers are used and selected
+    /// at <xref href="WritingMessageProviders?text=the+documentation+relating+to+message+providers"/>.
+    /// </para>
     /// </remarks>
+    /// <seealso cref="IGetsFailureMessage{TValidated, TParent}"/>
+    /// <seealso cref="IGetsFailureMessage{TValidated}"/>
+    /// <seealso cref="IGetsFailureMessage"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated}"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated, TParent}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated, TParent}"/>
+    /// <seealso cref="FailureMessageStrategyAttribute"/>
     public interface IHasFailureMessageUsageCriteria
     {
         /// <summary>
