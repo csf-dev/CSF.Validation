@@ -14,6 +14,12 @@
       topicHref: WritingValidators/UsingTheManifestModel/index.md
     - name: The validation manifest
       topicHref: WritingValidators/TheValidationManifest/index.md
+- name: Generating feedback messages
+  href: GeneratingFeedbackMessages.md
+  homepage: GeneratingFeedbackMessages.md
+  items:
+    - name: Writing message providers
+      href: WritingMessageProviders.md
 - name: Performing validation
   href: ConsumingValidators.md
 - name: Best practice

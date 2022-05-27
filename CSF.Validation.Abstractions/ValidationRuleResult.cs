@@ -51,6 +51,14 @@ namespace CSF.Validation
         /// <summary>
         /// Gets a human-readable feedback message to be associated with this rule result.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This property will always contain a <see langword="null" /> reference unless <see cref="ValidationOptions"/>
+        /// are specified and the <see cref="ValidationOptions.EnableMessageGeneration"/> is set to <see langword="true" />.
+        /// If the options are not specified or message generation is not enabled, then generation of feedback messages
+        /// is disabled/skipped.
+        /// </para>
+        /// </remarks>
         public string Message { get; }
 
         /// <summary>

@@ -19,7 +19,19 @@ namespace CSF.Validation.Messages
     /// this interface may be implemented and the <see cref="CanGetFailureMessage(TValidated, TParent, ValidationRuleResult)"/> method used
     /// to provide that logic.
     /// </para>
+    /// <para>
+    /// You are encouraged to read more about how validation message providers are used and selected
+    /// at <xref href="WritingMessageProviders?text=the+documentation+relating+to+message+providers"/>.
+    /// </para>
     /// </remarks>
+    /// <seealso cref="IGetsFailureMessage{TValidated, TParent}"/>
+    /// <seealso cref="IGetsFailureMessage{TValidated}"/>
+    /// <seealso cref="IGetsFailureMessage"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated, TParent}"/>
+    /// <seealso cref="FailureMessageStrategyAttribute"/>
     /// <typeparam name="TValidated">The type of the validated value.</typeparam>
     /// <typeparam name="TParent">The type of the parent validated value.</typeparam>
     public interface IHasFailureMessageUsageCriteria<in TValidated,in TParent>

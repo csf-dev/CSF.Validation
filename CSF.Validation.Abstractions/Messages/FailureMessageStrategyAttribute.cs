@@ -34,7 +34,19 @@ namespace CSF.Validation.Messages
     /// <para>
     /// Every one of the properties of this attribute represents a predicate value.
     /// </para>
+    /// <para>
+    /// You are encouraged to read more about how validation message providers are used and selected
+    /// at <xref href="WritingMessageProviders?text=the+documentation+relating+to+message+providers"/>.
+    /// </para>
     /// </remarks>
+    /// <seealso cref="IGetsFailureMessage{TValidated, TParent}"/>
+    /// <seealso cref="IGetsFailureMessage{TValidated}"/>
+    /// <seealso cref="IGetsFailureMessage"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated}"/>
+    /// <seealso cref="IHasFailureMessageUsageCriteria{TValidated, TParent}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated}"/>
+    /// <seealso cref="Rules.IRuleWithMessage{TValidated, TParent}"/>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class FailureMessageStrategyAttribute : Attribute, IGetsMessageProviderTypeMatchingInfoForRule
     {
