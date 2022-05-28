@@ -88,7 +88,7 @@ namespace CSF.Validation
                                                         RuleThrowingBehaviour behaviour,
                                                         params RuleResult[] ruleResults)
         {
-            var result = new ValidationResult(ruleResults.Select(x => new ValidationRuleResult(x, null, null)));
+            var result = new ValidationResult(ruleResults.Select(x => new ValidationRuleResult(x, null, null)), new Manifest.ValidationManifest());
             Mock.Get(wrapped).Setup(x => x.ValidateAsync(validated, options, default)).Returns(Task.FromResult(result));
             options.RuleThrowingBehaviour = behaviour;
             return await sut.ValidateAsync(validated, options).ConfigureAwait(false);
@@ -155,7 +155,7 @@ namespace CSF.Validation
                                                            RuleThrowingBehaviour behaviour,
                                                            params RuleResult[] ruleResults)
         {
-            var result = new ValidationResult(ruleResults.Select(x => new ValidationRuleResult(x, null, null)));
+            var result = new ValidationResult(ruleResults.Select(x => new ValidationRuleResult(x, null, null)), new Manifest.ValidationManifest());
             var wrapped = new Mock<IValidator<string>>();
             wrapped.As<IValidator>().Setup(x => x.ValidateAsync(validated, options, default)).Returns(Task.FromResult(result));
             var sut = new ThrowingBehaviourValidatorDecorator<string>(wrapped.Object);

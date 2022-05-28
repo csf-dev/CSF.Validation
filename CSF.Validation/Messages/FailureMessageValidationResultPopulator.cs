@@ -16,7 +16,7 @@ namespace CSF.Validation.Messages
         public async Task<ValidationResult> GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default)
         {
             var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
-            return new ValidationResult(resultsWithMessages);
+            return new ValidationResult(resultsWithMessages, result.Manifest);
         }
 
         async Task<IEnumerable<ValidationRuleResult>> GetRuleResultsWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken)

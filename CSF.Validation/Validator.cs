@@ -47,7 +47,7 @@ namespace CSF.Validation
             var executor = await executorFactory.GetRuleExecutorAsync(options, cancellationToken).ConfigureAwait(false);
             var ruleResults = await executor.ExecuteAllRulesAsync(rules, cancellationToken).ConfigureAwait(false);
 
-            return new ValidationResult(ruleResults);
+            return new ValidationResult(ruleResults, manifest);
         }
 
         Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
