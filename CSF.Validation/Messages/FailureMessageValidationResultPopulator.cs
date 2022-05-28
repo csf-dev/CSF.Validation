@@ -13,13 +13,13 @@ namespace CSF.Validation.Messages
         readonly IGetsFailureMessageProvider messageProviderFactory;
 
         /// <inheritdoc/>
-        public async Task<ValidationResult> GetResultWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken = default)
+        public async Task<IQueryableValidationResult<TValidated>> GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated> result, CancellationToken cancellationToken = default)
         {
             var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
-            return new ValidationResult(resultsWithMessages, result.Manifest);
+            return new ValidationResult<TValidated>(resultsWithMessages, ((ValidationResult<TValidated>) result).Manifest);
         }
 
-        async Task<IEnumerable<ValidationRuleResult>> GetRuleResultsWithMessagesAsync(ValidationResult result, CancellationToken cancellationToken)
+        async Task<IEnumerable<ValidationRuleResult>> GetRuleResultsWithMessagesAsync(IQueryableValidationResult result, CancellationToken cancellationToken)
         {
             var results = new List<ValidationRuleResult>();
 

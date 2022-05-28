@@ -22,7 +22,7 @@ namespace CSF.Validation.Messages
                                                                                                      string message1,
                                                                                                      string message3)
         {
-            var validationResult = new ValidationResult(new[] { ruleResult1, ruleResult2, ruleResult3 }, new Manifest.ValidationManifest());
+            var validationResult = new ValidationResult<object>(new[] { ruleResult1, ruleResult2, ruleResult3 }, new Manifest.ValidationManifest { ValidatedType = typeof(object) });
             Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult1)).Returns(messageProvider1);
             Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult2)).Returns(() => null);
             Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult3)).Returns(messageProvider3);
@@ -43,7 +43,7 @@ namespace CSF.Validation.Messages
                                                                                                                 IGetsFailureMessage messageProvider,
                                                                                                                 string message)
         {
-            var validationResult = new ValidationResult(new[] { ruleResult }, new Manifest.ValidationManifest());
+            var validationResult = new ValidationResult<object>(new[] { ruleResult }, new Manifest.ValidationManifest { ValidatedType = typeof(object) });
             Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult)).Returns(messageProvider);
             Mock.Get(messageProvider)
                 .Setup(x => x.GetFailureMessageAsync(ruleResult, It.IsAny<CancellationToken>()))

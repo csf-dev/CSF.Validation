@@ -21,6 +21,9 @@ namespace CSF.Validation
         /// <inheritdoc/>
         public ValidationManifest Manifest { get; }
 
+        /// <inheritdoc/>
+        public IQueryableValidationResult<T> AsResultFor<T>() => (IQueryableValidationResult<T>) this;
+
         ManifestValueBase IQueryableValidationResult.ManifestValue => Manifest.RootValue;
 
         IEnumerator<ValidationRuleResult> IEnumerable<ValidationRuleResult>.GetEnumerator() => RuleResults.GetEnumerator();

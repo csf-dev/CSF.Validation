@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation
@@ -10,6 +11,20 @@ namespace CSF.Validation
     /// <typeparam name="TValidated"></typeparam>
     public class ValidationResult<TValidated> : ValidationResult, IQueryableValidationResult<TValidated>
     {
+        /// <inheritdoc/>
+        public IQueryableValidationResult<TItem> ForMember<TItem>(Expression<Func<TValidated, TItem>> memberExpression)
+            => ResultQueries.ForMember(this, memberExpression);
+
+        /// <inheritdoc/>
+        public IQueryableValidationResult<TItem> ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>> memberExpression, TItem item)
+            => ResultQueries.ForMatchingMemberItem(this, memberExpression, item);
+
+        /// <inheritdoc/>
+        public IQueryableValidationResult<TValidated> ForOnlyThisValue() => ResultQueries.ForOnlyTheSameValue(this);
+
+        /// <inheritdoc/>
+        public IQueryableValidationResult<TValidated> WithoutSuccesses() => ResultQueries.WithoutSuccesses(this);
+
         /// <summary>
         /// Initialises a new generic instance of <see cref="ValidationResult{TValidated}"/>.
         /// </summary>

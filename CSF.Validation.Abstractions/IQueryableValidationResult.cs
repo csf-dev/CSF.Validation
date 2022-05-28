@@ -24,5 +24,13 @@ namespace CSF.Validation
         /// the current validation result.
         /// </summary>
         IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
+
+        /// <summary>
+        /// Gets a representation of the current queryable result as a strongly-typed queryable result.
+        /// </summary>
+        /// <typeparam name="T">The validated-type for the queryable result.</typeparam>
+        /// <returns>The same conceptual queryable result, cast to a specified type.</returns>
+        /// <exception cref="System.InvalidCastException">If the <typeparamref name="T"/> is incompatible with the validated type for the current results.</exception>
+        IQueryableValidationResult<T> AsResultFor<T>();
     }
 }

@@ -89,7 +89,7 @@ namespace CSF.Validation
             public Task<ValidationResult> ValidateAsync(object validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
                 => throw new System.NotImplementedException();
 
-            public Task<ValidationResult> ValidateAsync(ValidatedObject validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
+            public Task<IQueryableValidationResult<ValidatedObject>> ValidateAsync(ValidatedObject validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
                 => throw new System.NotImplementedException();
         }
 
