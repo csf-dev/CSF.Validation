@@ -54,6 +54,6 @@ namespace CSF.Validation
         /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
-        Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
+        Task<IQueryableValidationResult<TValidated>> ValidateAsync(TValidated validatedObject, ValidationOptions options = default, CancellationToken cancellationToken = default);
     }
 }

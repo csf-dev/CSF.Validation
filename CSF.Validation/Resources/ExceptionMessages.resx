@@ -238,13 +238,15 @@
     <comment/>
   </data>
   <data name="ErrorInValidation" xml:space="preserve">
-    <value>One or more errors were encountered during validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.
-Please look through the {4} for results which have an outcome of {5} for more information.</value>
+    <value>One or more errors were encountered during validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.Please look through the {4} for results which have an outcome of {5} for more information.</value>
     <comment/>
   </data>
   <data name="FailureInValidation" xml:space="preserve">
-    <value>One or more validation rules failed validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.
-Please look through the {4} for results which have an outcome of {5} or {6} for more information.</value>
+    <value>One or more validation rules failed validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.Please look through the {4} for results which have an outcome of {5} or {6} for more information.</value>
+    <comment/>
+  </data>
+  <data name="ValidationResultMustBeOfCorrectType" xml:space="preserve">
+    <value>This validation result is being constructed generically for {0} but the validation manifest is for type {1}.  The two types must be compatible.</value>
     <comment/>
   </data>
 </root>

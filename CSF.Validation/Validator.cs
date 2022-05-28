@@ -39,7 +39,7 @@ namespace CSF.Validation
         /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
-        public async Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<IQueryableValidationResult<TValidated>> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
             options = options ?? new ValidationOptions();
             
@@ -47,11 +47,14 @@ namespace CSF.Validation
             var executor = await executorFactory.GetRuleExecutorAsync(options, cancellationToken).ConfigureAwait(false);
             var ruleResults = await executor.ExecuteAllRulesAsync(rules, cancellationToken).ConfigureAwait(false);
 
-            return new ValidationResult(ruleResults, manifest);
+            return new ValidationResult<TValidated>(ruleResults, manifest);
         }
 
-        Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
-            => ValidateAsync((TValidated)validatedObject, options, cancellationToken);
+        async Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
+        {
+            var result = await ValidateAsync((TValidated)validatedObject, options, cancellationToken);
+            return (ValidationResult) result;
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="Validator{TValidated}"/>.
