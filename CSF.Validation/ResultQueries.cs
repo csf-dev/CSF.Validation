@@ -55,7 +55,7 @@ namespace CSF.Validation
             }
 
             var filteredRuleResults = results.RuleResults.Where(new RuleResultIsForDescendentOfValue(collectionValue.CollectionItemValue, item));
-            return new SubsetOfValidationResults<TItem>(filteredRuleResults, collectionValue);
+            return new SubsetOfValidationResults<TItem>(filteredRuleResults, collectionValue.CollectionItemValue);
         }
 
         internal static IQueryableValidationResult<TValidated> ForOnlyTheSameValue<TValidated>(IQueryableValidationResult<TValidated> results)

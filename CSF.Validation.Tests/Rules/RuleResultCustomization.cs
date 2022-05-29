@@ -19,12 +19,14 @@ namespace CSF.Validation.Rules
 
         public Type RuleInterface { get; set; } = typeof(object);
 
+        public RuleOutcome Outcome { get; set; } = RuleOutcome.Failed;
+
         public void Customize(IFixture fixture)
         {
             new RuleContextCustomization().Customize(fixture);
             new ExecutableModelCustomisation().Customize(fixture);
             fixture.CustomizeForParameter<ValidationRuleResult>(parameterType, parameterName, c => c.FromFactory(GetValidationRuleResultFunc));
-            fixture.Customize<RuleResult>(c => c.FromFactory((RuleOutcome outcome, Dictionary<string, object> data) => new RuleResult(outcome, data)));
+            fixture.Customize<RuleResult>(c => c.FromFactory((Dictionary<string, object> data) => new RuleResult(Outcome, data)));
         }
 
         Func<RuleResult, ManifestRule, RuleIdentifier, IValidationLogic, ValidationRuleResult> GetValidationRuleResultFunc => GetValidationRuleResult;

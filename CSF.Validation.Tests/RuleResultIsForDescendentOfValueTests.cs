@@ -80,5 +80,21 @@ namespace CSF.Validation
 
             Assert.That(() => sut.Matches(validationRuleResult), Is.False);
         }
+
+        [Test,AutoMoqData]
+        public void GetExpressionShouldReturnAnExpressionWhichReturnsTrueForAResultWhichMatchesTheCurrentContextWithAValue([ManifestModel] ManifestRule rule,
+                                                                                                                           [RuleId] RuleIdentifier ruleIdentifier,
+                                                                                                                           object actualValue,
+                                                                                                                           Type ruleInterface,
+                                                                                                                           [RuleResult] RuleResult ruleResult,
+                                                                                                                           IValidationLogic logic)
+        {
+            rule.ManifestValue.IdentityAccessor = null;
+            var context = new RuleContext(rule, ruleIdentifier, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
+            var validationRuleResult = new ValidationRuleResult(ruleResult, context, logic);
+            var sut = new RuleResultIsForDescendentOfValue(rule.ManifestValue, actualValue);
+
+            Assert.That(() => sut.Matches(validationRuleResult), Is.True);
+        }
     }
 }

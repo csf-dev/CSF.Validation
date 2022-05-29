@@ -97,7 +97,7 @@ namespace CSF.Validation.RuleExecution
             if(!(currentBasis.ManifestValue.CollectionItemValue is null || actualValue is null))
                 openList.Enqueue(new ValidatedValueBasis(currentBasis.ManifestValue.CollectionItemValue,
                                                          currentValue.ValueResponse,
-                                                         currentValue.ParentValue));
+                                                         currentValue));
 
             foreach(var childManifestValue in currentBasis.ManifestValue.Children)
             {

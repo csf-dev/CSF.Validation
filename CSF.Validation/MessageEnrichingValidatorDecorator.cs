@@ -47,7 +47,7 @@ namespace CSF.Validation
 
         async Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
         {
-            var result = await ValidateAsync((TValidated) validatedObject, options, cancellationToken);
+            var result = await ValidateAsync((TValidated) validatedObject, options, cancellationToken).ConfigureAwait(false);
             return (ValidationResult) result;
         }
 

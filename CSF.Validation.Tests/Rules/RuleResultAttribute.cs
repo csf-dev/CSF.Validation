@@ -9,7 +9,8 @@ namespace CSF.Validation.Rules
     {
         object validatedValue, parentValue;
         Type ruleInterface;
-        bool isValidatedValueSet, isParentValueSet, isRuleInterfaceSet;
+        RuleOutcome outcome;
+        bool isValidatedValueSet, isParentValueSet, isRuleInterfaceSet, isOutcomeSet;
 
         public object ValidatedValue
         {
@@ -17,6 +18,15 @@ namespace CSF.Validation.Rules
             set {
                 isValidatedValueSet = true;
                 validatedValue = value;
+            }
+        }
+
+        public RuleOutcome Outcome
+        {
+            get => outcome;
+            set {
+                isOutcomeSet = true;
+                outcome = value;
             }
         }
 
@@ -48,6 +58,8 @@ namespace CSF.Validation.Rules
                 customisation.ParentValue = ParentValue;
             if(isRuleInterfaceSet)
                 customisation.RuleInterface = RuleInterface;
+            if(isOutcomeSet)
+                customisation.Outcome = Outcome;
 
             return customisation;
         }

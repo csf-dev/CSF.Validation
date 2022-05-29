@@ -4,6 +4,7 @@ using CSF.Validation.Messages;
 
 namespace CSF.Validation.IntegrationTests
 {
+    [FailureMessageStrategy(RuleType = typeof(CantBeOwnedByUnderageChildren))]
     public class CantBeOwnedByUnderageChildrenMessageProvider : IGetsFailureMessage<Pet>
     {
         public Task<string> GetFailureMessageAsync(Pet value, ValidationRuleResult result, CancellationToken token = default)

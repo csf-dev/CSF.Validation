@@ -64,5 +64,31 @@ namespace CSF.Validation.Messages
                 Assert.That(firstResult.ValidationLogic,    Is.EqualTo(ruleResult.ValidationLogic),     $"{nameof(ValidationRuleResult.ValidationLogic)} should have been copied");
             });
         }
+
+        [Test,AutoMoqData]
+        public void GetResultWithMessagesAsyncShouldNotAddMessagesToPassOrFailedDependencyResults([Frozen] IGetsFailureMessageProvider messageProviderFactory,
+                                                                                                     FailureMessageValidationResultPopulator sut,
+                                                                                                     [RuleResult(Outcome = RuleOutcome.Passed)] ValidationRuleResult ruleResult1,
+                                                                                                     [RuleResult] ValidationRuleResult ruleResult2,
+                                                                                                     [RuleResult(Outcome = RuleOutcome.DependencyFailed)] ValidationRuleResult ruleResult3,
+                                                                                                     IGetsFailureMessage messageProvider1,
+                                                                                                     IGetsFailureMessage messageProvider3,
+                                                                                                     string message1,
+                                                                                                     string message3)
+        {
+            var validationResult = new ValidationResult<object>(new[] { ruleResult1, ruleResult2, ruleResult3 }, new Manifest.ValidationManifest { ValidatedType = typeof(object) });
+            Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult1)).Returns(messageProvider1);
+            Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult2)).Returns(() => null);
+            Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult3)).Returns(messageProvider3);
+            Mock.Get(messageProvider1)
+                .Setup(x => x.GetFailureMessageAsync(ruleResult1, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(message1));
+            Mock.Get(messageProvider3)
+                .Setup(x => x.GetFailureMessageAsync(ruleResult3, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(message3));
+            Assert.That(async () => (await sut.GetResultWithMessagesAsync(validationResult, default)).RuleResults.Select(x => x.Message),
+                        Is.EquivalentTo(new string[] { null, null, null }));
+        }
+
     }
 }

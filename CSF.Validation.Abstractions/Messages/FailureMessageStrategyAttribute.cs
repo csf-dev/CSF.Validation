@@ -176,6 +176,7 @@ namespace CSF.Validation.Messages
         }
 
         IEnumerable<Func<ValidationRuleResult, bool>> ValidationFunctions => new Func<ValidationRuleResult, bool>[] {
+            DoesRuleTypeMatch,
             DoesMemberNameMatch,
             DoesRuleNameMatch,
             DoesValidatedTypeMatch,
@@ -183,6 +184,9 @@ namespace CSF.Validation.Messages
             DoesRuleInterfaceMatch,
             DoesOutcomeMatch,
         };
+
+        bool DoesRuleTypeMatch(ValidationRuleResult result)
+            => RuleType is null || RuleType == result.Identifier.RuleType;
 
         bool DoesMemberNameMatch(ValidationRuleResult result)
             => MemberName is null || String.Equals(MemberName, result.Identifier.MemberName, StringComparison.InvariantCulture);
