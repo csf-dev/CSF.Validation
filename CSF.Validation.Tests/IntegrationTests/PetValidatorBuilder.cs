@@ -7,6 +7,7 @@ namespace CSF.Validation.IntegrationTests
     {
         public void ConfigureValidator(IConfiguresValidator<Pet> config)
         {
+            config.UseObjectIdentity(x => x.Identity);
             config.AddRule<NotNull>();
             config.AddRule<CantBeOwnedByUnderageChildren>();
 

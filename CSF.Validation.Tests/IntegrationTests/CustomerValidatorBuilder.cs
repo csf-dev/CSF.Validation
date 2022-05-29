@@ -15,6 +15,8 @@ namespace CSF.Validation.IntegrationTests
                     r.AddDependency(d => d.RuleType<NotNull>().ForMember(nameof(Person.Pets)));
                 });
             });
+
+            config.AddRule<NotNull>();
         }
     }
 }

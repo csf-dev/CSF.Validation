@@ -22,6 +22,12 @@
       href: WritingMessageProviders.md
 - name: Performing validation
   href: ConsumingValidators.md
+  homepage: ConsumingValidators.md
+  items:
+    - name: Validation options
+      href: ValidationOptions.md
+    - name: Querying results
+      href: QueryingTheResults.md
 - name: Best practice
   topicHref: BestPractice/index.md
   items:

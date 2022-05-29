@@ -16,16 +16,18 @@ namespace CSF.Validation.Rules
     /// </remarks>
     public class ManifestValueInfo
     {
+        readonly ManifestValueBase manifestValue;
+
         /// <summary>
         /// Gets the type of the object which the current manifest value describes.
         /// </summary>
-        public Type ValidatedType { get; }
+        public Type ValidatedType => manifestValue.ValidatedType;
 
         /// <summary>
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets the name of that member.
         /// </summary>
-        public string MemberName { get; }
+        public string MemberName => manifestValue.MemberName;
 
         /// <summary>
         /// Gets an optional value object which indicates how items within a collection are to be validated.
@@ -65,6 +67,18 @@ namespace CSF.Validation.Rules
         public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; }
 
         /// <summary>
+        /// Gets a reference to the original manifest value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Be very careful not to mutate/alter any state of this object when using this method.
+        /// The returned object is mutable, but must not be changed. 
+        /// </para>
+        /// </remarks>
+        /// <returns>The original manifest value from which this instance was created.</returns>
+        public ManifestValueBase GetOriginalManifestValue() => manifestValue;
+
+        /// <summary>
         /// Initialises an instance of <see cref="ManifestValueInfo"/>.
         /// This is essentially a copy-constructor for a <see cref="ManifestValueBase"/>.
         /// </summary>
@@ -72,11 +86,8 @@ namespace CSF.Validation.Rules
         /// <exception cref="System.ArgumentNullException">If <paramref name="manifestValue"/> is <see langword="null" />.</exception>
         public ManifestValueInfo(ManifestValueBase manifestValue)
         {
-            if (manifestValue is null)
-                throw new ArgumentNullException(nameof(manifestValue));
+            this.manifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
 
-            ValidatedType = manifestValue.ValidatedType;
-            MemberName = manifestValue.MemberName;
             CollectionItemValue = manifestValue.CollectionItemValue is null
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);

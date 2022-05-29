@@ -44,5 +44,40 @@ namespace CSF.Validation.RuleExecution
 
             Assert.That(() => sut.GetExecutableRules(manifestValue, valueToBeValidated, validationOptions), Is.EquivalentTo(expected));
         }
+
+        [Test,AutoMoqData]
+        public void GetExecutableRulesShouldReturnAFlattenedListOfRulesIncludingCollectionItemRules([Frozen] IGetsValidatedValue validatedValueProvider,
+                                                                                                              [ExecutableModel] ValidatedValue rootValue,
+                                                                                                              [ExecutableModel] ValidatedValue childVal1,
+                                                                                                              [ExecutableModel] ValidatedValue childVal2,
+                                                                                                              [ExecutableModel] ValidatedValue collectionValue1,
+                                                                                                              [ExecutableModel] ValidatedValue collectionValue2,
+                                                                                                              [ExecutableModel] ExecutableRule rule1,
+                                                                                                              [ExecutableModel] ExecutableRule rule2,
+                                                                                                              [ExecutableModel] ExecutableRule rule3,
+                                                                                                              [ExecutableModel] ExecutableRule rule4,
+                                                                                                              [ExecutableModel] ExecutableRule rule5,
+                                                                                                              [ExecutableModel] ExecutableRule rule6,
+                                                                                                              ExecutableRulesFromValidatedValueProvider sut,
+                                                                                                              [ManifestModel] ManifestValue manifestValue,
+                                                                                                              object valueToBeValidated,
+                                                                                                              ValidationOptions validationOptions)
+        {
+            rootValue.ChildValues.Add(childVal1);
+            rootValue.ChildValues.Add(childVal2);
+            childVal2.CollectionItems.Add(collectionValue1);
+            childVal2.CollectionItems.Add(collectionValue2);
+            rootValue.Rules.Add(rule1);
+            childVal1.Rules.Add(rule2);
+            childVal1.Rules.Add(rule3);
+            childVal2.Rules.Add(rule4);
+            collectionValue1.Rules.Add(rule5);
+            collectionValue2.Rules.Add(rule6);
+            Mock.Get(validatedValueProvider).Setup(x => x.GetValidatedValue(manifestValue, valueToBeValidated, validationOptions)).Returns(rootValue);
+
+            var expected = new[] { rule1, rule2, rule3, rule4, rule5, rule6 };
+
+            Assert.That(() => sut.GetExecutableRules(manifestValue, valueToBeValidated, validationOptions), Is.EquivalentTo(expected));
+        }
     }
 }

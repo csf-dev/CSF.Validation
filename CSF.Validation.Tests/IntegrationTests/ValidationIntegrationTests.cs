@@ -31,6 +31,28 @@ namespace CSF.Validation.IntegrationTests
             
             Assert.That(result.Passed, Is.True);
         }
+        [Test,AutoMoqData]
+        public async Task ValidateAsyncShouldReturnFailureResultForInvalidCollectionObject([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
+
+            var person = new Person
+            {
+                Name = "Bobby",
+                Birthday = new DateTime(2000, 1, 1),
+                Pets = new[] {
+                    new Pet {
+                        Name = null,
+                        NumberOfLegs = 4,
+                        Type = "Cat"
+                    },
+                },
+            };
+
+            var result = await validator.ValidateAsync(person).ConfigureAwait(false);
+            
+            Assert.That(result.Passed, Is.False);
+        }
 
         [Test,AutoMoqData]
         public async Task ValidateAsyncShouldReturnFailureResultForSingleFailedRule([IntegrationTesting] IGetsValidator validatorFactory)
@@ -162,6 +184,61 @@ namespace CSF.Validation.IntegrationTests
 
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
                         Is.EqualTo("Nobody may have more than 5 pets."));
+        }
+
+        [Test,AutoMoqData]
+        public async Task ForMemberAndWithoutSuccessesShouldBeUsableToTraverseToASingleResult([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidator<Customer>(typeof(CustomerValidatorBuilder));
+            var customer = new Customer
+            {
+                Person = new Person
+                {
+                    Name = "John Smith",
+                    Birthday = new DateTime(2000, 1, 1),
+                    Pets = new[] {
+                        new Pet {Name = "Pet1"},
+                        new Pet {Name = "Pet2"},
+                        new Pet {Name = "Pet3"},
+                        new Pet {Name = "Pet4"},
+                        new Pet {Name = "Pet5"},
+                        new Pet {Name = "Pet6"},
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(customer, new ValidationOptions { EnableMessageGeneration = true }).ConfigureAwait(false);
+
+            Assert.That(result.ForMember(x => x.Person).WithoutSuccesses().Single().Message,
+                        Is.EqualTo("Nobody may have more than 5 pets."));
+        }
+
+        [Test,AutoMoqData]
+        public async Task ForMatchingMemberItemCanFindRulesForTheCorrectItem([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidator<Customer>(typeof(CustomerValidatorBuilder));
+            var customer = new Customer
+            {
+                Person = new Person
+                {
+                    Name = "John Smith",
+                    Birthday = new DateTime(2000, 1, 1),
+                    Pets = new[] {
+                        new Pet {Name = "Pet1"},
+                        new Pet {Name = "Pet2"},
+                        new Pet {Name = "Pet3"},
+                        new Pet {Name = "Pet4"},
+                        new Pet {Name = "Pet5"},
+                        new Pet {Name = "Pet6"},
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(customer, new ValidationOptions { EnableMessageGeneration = true }).ConfigureAwait(false);
+
+            var expectedPet = customer.Person.Pets.Skip(1).First();
+            Assert.That(result.ForMember(x => x.Person).ForMatchingMemberItem(x => x.Pets, expectedPet).ForOnlyThisValue().First().ValidatedValue,
+                        Is.SameAs(expectedPet));
         }
     }
 }

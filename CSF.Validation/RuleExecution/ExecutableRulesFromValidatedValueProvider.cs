@@ -50,6 +50,9 @@ namespace CSF.Validation.RuleExecution
                 
                 foreach(var child in currentValue.ChildValues)
                     openList.Enqueue(child);
+
+                foreach(var collectionItem in currentValue.CollectionItems)
+                    openList.Enqueue(collectionItem);
             }
         }
 

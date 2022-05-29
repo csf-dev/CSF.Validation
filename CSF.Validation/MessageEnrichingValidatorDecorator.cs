@@ -37,7 +37,7 @@ namespace CSF.Validation
         /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
         /// of the <paramref name="options"/> indicate that an exception should be thrown.
         /// </exception>
-        public async Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<IQueryableValidationResult<TValidated>> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
             var result = await validator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);
             if(options?.EnableMessageGeneration != true) return result;
@@ -45,8 +45,11 @@ namespace CSF.Validation
             return await failureMessageEnricher.GetResultWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
         }
 
-        Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
-            => ValidateAsync((TValidated)validatedObject, options, cancellationToken);
+        async Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
+        {
+            var result = await ValidateAsync((TValidated) validatedObject, options, cancellationToken).ConfigureAwait(false);
+            return (ValidationResult) result;
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="MessageEnrichingValidatorDecorator{TValidated}"/>.

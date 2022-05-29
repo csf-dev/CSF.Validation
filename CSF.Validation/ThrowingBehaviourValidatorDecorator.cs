@@ -20,7 +20,7 @@ namespace CSF.Validation
         public Type ValidatedType => (wrapped as IValidator)?.ValidatedType ?? typeof(TValidated);
 
         /// <inheritdoc/>
-        public async Task<ValidationResult> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<IQueryableValidationResult<TValidated>> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
             var result = await wrapped.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);
 
@@ -34,14 +34,14 @@ namespace CSF.Validation
         {
             var result = (wrapped is IValidator nonGenericValidator)
                 ? await nonGenericValidator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false)
-                : await ValidateAsync((TValidated)validatedObject, options, cancellationToken).ConfigureAwait(false);
+                : (ValidationResult) await ValidateAsync((TValidated)validatedObject, options, cancellationToken).ConfigureAwait(false);
 
             ThrowForUnsuccessfulValidationIfApplicable(result, options);
 
             return result;
         }
 
-        static void ThrowForUnsuccessfulValidationIfApplicable(ValidationResult result, ValidationOptions options)
+        static void ThrowForUnsuccessfulValidationIfApplicable(IQueryableValidationResult result, ValidationOptions options)
         {
             options = options ?? new ValidationOptions();
             if(ShouldThrowForError(options) && result.RuleResults.Any(x => x.Outcome == Rules.RuleOutcome.Errored))
@@ -53,7 +53,7 @@ namespace CSF.Validation
                                             options.RuleThrowingBehaviour,
                                             nameof(ValidationResult),
                                             nameof(RuleOutcome.Errored));
-                throw new ValidationException(message, result);
+                throw new ValidationException(message, (ValidationResult) result);
             }
 
             if(ShouldThrowForFailure(options) && result.RuleResults.Any(x => x.Outcome == Rules.RuleOutcome.Failed))
@@ -66,7 +66,7 @@ namespace CSF.Validation
                                             nameof(ValidationResult),
                                             nameof(RuleOutcome.Errored),
                                             nameof(RuleOutcome.Failed));
-                throw new ValidationException(message, result);
+                throw new ValidationException(message, (ValidationResult) result);
             }
         }
 

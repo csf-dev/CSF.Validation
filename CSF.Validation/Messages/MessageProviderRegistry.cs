@@ -55,6 +55,7 @@ namespace CSF.Validation.Messages
                     select new MessageProviderTypeInfo(typeAndPriorityGroup.Key, typeAndPriorityGroup.Max()))
                 .ToList();
         }
+        
         void RegisterMessageProviderTypes(IEnumerable<Type> types)
         {
             foreach (var type in types)

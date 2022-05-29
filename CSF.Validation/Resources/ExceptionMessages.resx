@@ -238,13 +238,23 @@
     <comment/>
   </data>
   <data name="ErrorInValidation" xml:space="preserve">
-    <value>One or more errors were encountered during validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.
-Please look through the {4} for results which have an outcome of {5} for more information.</value>
+    <value>One or more errors were encountered during validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.Please look through the {4} for results which have an outcome of {5} for more information.</value>
     <comment/>
   </data>
   <data name="FailureInValidation" xml:space="preserve">
-    <value>One or more validation rules failed validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.
-Please look through the {4} for results which have an outcome of {5} or {6} for more information.</value>
+    <value>One or more validation rules failed validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.Please look through the {4} for results which have an outcome of {5} or {6} for more information.</value>
+    <comment/>
+  </data>
+  <data name="ValidationResultMustBeOfCorrectType" xml:space="preserve">
+    <value>This validation result is being constructed generically for {0} but the validation manifest is for type {1}.  The two types must be compatible.</value>
+    <comment/>
+  </data>
+  <data name="NoMatchingMemberInManifest" xml:space="preserve">
+    <value>The validation manifest for the instance of {0} does not contain any values for a member named '{1}'; the value must exist in order to use it to filter the results.</value>
+    <comment/>
+  </data>
+  <data name="ValueMustBeACollection" xml:space="preserve">
+    <value>The validation manifest for the instance of {0} contain a value for a member named '{1}' but in order to use {2}, that value must represent a collection of items.</value>
     <comment/>
   </data>
 </root>

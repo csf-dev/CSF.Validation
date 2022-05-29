@@ -1,76 +1,36 @@
-using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation
 {
     /// <summary>
-    /// An object which can query for specific validation rule results matching specified predicates.
+    /// An object which contains validation rule results, which may be queried for specific results.
     /// </summary>
-    public interface IQueryableValidationResult
+    public interface IQueryableValidationResult : IEnumerable<ValidationRuleResult>
     {
         /// <summary>
-        /// Gets the original validation result from which the current queryable result was created.
+        /// Gets a value that indicates whether or not the current instance represents passing validation.
         /// </summary>
-        ValidationResult OriginalResult { get; }
+        bool Passed { get; }
 
         /// <summary>
-        /// Queries for validation rule results which validate a specified member of an object
-        /// and which optionally also match all other specified predicates.
+        /// Gets a reference to the manifest value which forms the logical
+        /// root of the results in the current instance.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This is used by specifying the validated-object-type which has the member (by which you wish to query) as the generic
-        /// type parameter for this method, and then using an expression to select the member.
-        /// </para>
-        /// <para>
-        /// Any predicate parameters which are not specified or have a <see langword="null"/> value, apart from the
-        /// <paramref name="memberAccessor"/> which is mandatory in this method, are ignored.  Any which are specified
-        /// with a non-null value are used to filter the validation rule results.
-        /// </para>
-        /// </remarks>
-        /// <example>
-        /// <para>
-        /// If you wished to query for rules for the <c>Age</c> property of a validated <c>Pet</c> instance, then you
-        /// would use this method like so.
-        /// </para>
-        /// <code>
-        /// var results = queryableResult.QueryByMember&lt;Pet&gt;(x => x.Age);
-        /// </code>
-        /// </example>
-        /// <typeparam name="TValidated">The validated-object-type from which the member is available.</typeparam>
-        /// <param name="memberAccessor">An expression indicating the member for which rules are to be queried.</param>
-        /// <param name="objectIdentity">An optional object identity predicate.</param>
-        /// <param name="ruleTypeName">An optional validation-rule-type name predicate.</param>
-        /// <param name="ruleName">An optional rule-name predicate.</param>
-        /// <param name="outcome">Optionally specifies a required outcome predicate.</param>
-        /// <returns>A collection of the validation rule results for the specified member, which also match all of the provided predicate values.</returns>
-        /// <exception cref="ArgumentNullException">If the <paramref name="memberAccessor"/> is <see langword="null"/>.</exception>
-        IEnumerable<ValidationRuleResult> QueryByMember<TValidated>(Expression<Func<TValidated, object>> memberAccessor,
-                                                                    object objectIdentity = null,
-                                                                    string ruleTypeName = null,
-                                                                    string ruleName = null,
-                                                                    Rules.RuleOutcome outcome = default);
+        ManifestValueBase ManifestValue { get; }
 
         /// <summary>
-        /// Queries for validation rule results which match all of the specified predicate values.
+        /// Gets a collection of the results of individual validation rules, making up
+        /// the current validation result.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Any predicate parameters which are not specified or have a <see langword="null"/> value, are ignored.
-        /// Any which are specified with a non-null value are used to filter the validation rule results.
-        /// This means that <c>Query()</c> on its own with no parameters specified will return all of the validation
-        /// rule results with no filtering.
-        /// </para>
-        /// </remarks>
-        /// <param name="objectIdentity">An optional object identity predicate.</param>
-        /// <param name="ruleTypeName">An optional validation-rule-type name predicate.</param>
-        /// <param name="ruleName">An optional rule-name predicate.</param>
-        /// <param name="outcome">Optionally specifies a required outcome predicate.</param>
-        /// <returns>A collection of the validation rule results which match all of the provided predicate values.</returns>
-        IEnumerable<ValidationRuleResult> Query(object objectIdentity = null,
-                                                string ruleTypeName = null,
-                                                string ruleName = null,
-                                                Rules.RuleOutcome outcome = default);
+        IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
+
+        /// <summary>
+        /// Gets a representation of the current queryable result as a strongly-typed queryable result.
+        /// </summary>
+        /// <typeparam name="T">The validated-type for the queryable result.</typeparam>
+        /// <returns>The same conceptual queryable result, cast to a specified type.</returns>
+        /// <exception cref="System.InvalidCastException">If the <typeparamref name="T"/> is incompatible with the validated type for the current results.</exception>
+        IQueryableValidationResult<T> AsResultFor<T>();
     }
 }

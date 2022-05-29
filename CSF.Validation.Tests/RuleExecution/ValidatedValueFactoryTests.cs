@@ -64,6 +64,58 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
+        public void GetValidatedValueShouldCreateCollectionValueFromFactoryIfManifestHasACollectionItemWithinAChildItem([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
+                                                                                                        [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
+                                                                                                        ValidatedValueFactory sut,
+                                                                                                        IEnumerable<object> validatedValue,
+                                                                                                        ValidationOptions validationOptions,
+                                                                                                        [ExecutableModel] ValidatedValue value,
+                                                                                                        [ExecutableModel] ValidatedValue childValue,
+                                                                                                        [ExecutableModel] ValidatedValue collectionValue,
+                                                                                                        object item)
+        {
+            var manifestValue = new ManifestValue
+            {
+                ValidatedType = typeof(object),
+                Children = new[] {
+                    new ManifestValue
+                    {
+                        ValidatedType = typeof(IEnumerable<object>),
+                        CollectionItemValue = new ManifestCollectionItem
+                        {
+                            ValidatedType = typeof(object)
+                        },
+                    }
+                }
+            };
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue.Children.First())))
+                .Returns(childValue);
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
+                .Returns(value);
+            value.ManifestValue = manifestValue;
+            childValue.ManifestValue = manifestValue.Children.First();
+            collectionValue.ManifestValue = manifestValue.Children.First().CollectionItemValue;
+            childValue.ValueResponse = new SuccessfulGetValueToBeValidatedResponse(validatedValue);
+            Mock.Get(enumerableProvider)
+                .Setup(x => x.GetEnumerableItems(validatedValue, manifestValue.Children.First().CollectionItemValue.ValidatedType))
+                .Returns(new[] { item });
+            Mock.Get(valueFromBasisFactory)
+                .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue.Children.First().CollectionItemValue && b.GetActualValue() == item)))
+                .Returns(collectionValue);
+
+            var result = sut.GetValidatedValue(manifestValue, validatedValue, validationOptions);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.CollectionItems, Is.Empty, "Root value has no collection items");
+                Assert.That(result.ChildValues, Has.Count.EqualTo(1), "Root value has one child value");
+                Assert.That(result.ChildValues.FirstOrDefault()?.CollectionItems, Has.Count.EqualTo(1), "Root value has one collection item");
+            });
+        }
+
+        [Test,AutoMoqData]
         public void GetValidatedValueShouldCreateAValueValueFromFactoryForEachCollectionItem([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
                                                                                              [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
                                                                                              ValidatedValueFactory sut,
