@@ -493,48 +493,140 @@ references:
   commentId: T:CSF.Validation.IQueryableValidationResult
   fullName: CSF.Validation.IQueryableValidationResult
   nameWithType: IQueryableValidationResult
-- uid: CSF.Validation.IQueryableValidationResult.OriginalResult
-  name: OriginalResult
-  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_OriginalResult
-  commentId: P:CSF.Validation.IQueryableValidationResult.OriginalResult
-  fullName: CSF.Validation.IQueryableValidationResult.OriginalResult
-  nameWithType: IQueryableValidationResult.OriginalResult
-- uid: CSF.Validation.IQueryableValidationResult.OriginalResult*
-  name: OriginalResult
-  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_OriginalResult_
-  commentId: Overload:CSF.Validation.IQueryableValidationResult.OriginalResult
+- uid: CSF.Validation.IQueryableValidationResult.AsResultFor*
+  name: AsResultFor
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_AsResultFor_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult.AsResultFor
   isSpec: "True"
-  fullName: CSF.Validation.IQueryableValidationResult.OriginalResult
-  nameWithType: IQueryableValidationResult.OriginalResult
-- uid: CSF.Validation.IQueryableValidationResult.Query(System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  name: Query(Object, String, String, RuleOutcome)
-  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_Query_System_Object_System_String_System_String_CSF_Validation_Rules_RuleOutcome_
-  commentId: M:CSF.Validation.IQueryableValidationResult.Query(System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  fullName: CSF.Validation.IQueryableValidationResult.Query(System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
-  nameWithType: IQueryableValidationResult.Query(Object, String, String, RuleOutcome)
-- uid: CSF.Validation.IQueryableValidationResult.Query*
-  name: Query
-  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_Query_
-  commentId: Overload:CSF.Validation.IQueryableValidationResult.Query
+  fullName: CSF.Validation.IQueryableValidationResult.AsResultFor
+  nameWithType: IQueryableValidationResult.AsResultFor
+- uid: CSF.Validation.IQueryableValidationResult.AsResultFor``1
+  name: AsResultFor<T>()
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_AsResultFor__1
+  commentId: M:CSF.Validation.IQueryableValidationResult.AsResultFor``1
+  name.vb: AsResultFor(Of T)()
+  fullName: CSF.Validation.IQueryableValidationResult.AsResultFor<T>()
+  fullName.vb: CSF.Validation.IQueryableValidationResult.AsResultFor(Of T)()
+  nameWithType: IQueryableValidationResult.AsResultFor<T>()
+  nameWithType.vb: IQueryableValidationResult.AsResultFor(Of T)()
+- uid: CSF.Validation.IQueryableValidationResult.ManifestValue
+  name: ManifestValue
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_ManifestValue
+  commentId: P:CSF.Validation.IQueryableValidationResult.ManifestValue
+  fullName: CSF.Validation.IQueryableValidationResult.ManifestValue
+  nameWithType: IQueryableValidationResult.ManifestValue
+- uid: CSF.Validation.IQueryableValidationResult.ManifestValue*
+  name: ManifestValue
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_ManifestValue_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult.ManifestValue
   isSpec: "True"
-  fullName: CSF.Validation.IQueryableValidationResult.Query
-  nameWithType: IQueryableValidationResult.Query
-- uid: CSF.Validation.IQueryableValidationResult.QueryByMember*
-  name: QueryByMember
-  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_QueryByMember_
-  commentId: Overload:CSF.Validation.IQueryableValidationResult.QueryByMember
+  fullName: CSF.Validation.IQueryableValidationResult.ManifestValue
+  nameWithType: IQueryableValidationResult.ManifestValue
+- uid: CSF.Validation.IQueryableValidationResult.Passed
+  name: Passed
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_Passed
+  commentId: P:CSF.Validation.IQueryableValidationResult.Passed
+  fullName: CSF.Validation.IQueryableValidationResult.Passed
+  nameWithType: IQueryableValidationResult.Passed
+- uid: CSF.Validation.IQueryableValidationResult.Passed*
+  name: Passed
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_Passed_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult.Passed
   isSpec: "True"
-  fullName: CSF.Validation.IQueryableValidationResult.QueryByMember
-  nameWithType: IQueryableValidationResult.QueryByMember
-- uid: CSF.Validation.IQueryableValidationResult.QueryByMember``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  name: QueryByMember<TValidated>(Expression<Func<TValidated, Object>>, Object, String, String, RuleOutcome)
-  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_QueryByMember__1_System_Linq_Expressions_Expression_System_Func___0_System_Object___System_Object_System_String_System_String_CSF_Validation_Rules_RuleOutcome_
-  commentId: M:CSF.Validation.IQueryableValidationResult.QueryByMember``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Object,System.String,System.String,CSF.Validation.Rules.RuleOutcome)
-  name.vb: QueryByMember(Of TValidated)(Expression(Of Func(Of TValidated, Object)), Object, String, String, RuleOutcome)
-  fullName: CSF.Validation.IQueryableValidationResult.QueryByMember<TValidated>(System.Linq.Expressions.Expression<System.Func<TValidated, System.Object>>, System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
-  fullName.vb: CSF.Validation.IQueryableValidationResult.QueryByMember(Of TValidated)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, System.Object)), System.Object, System.String, System.String, CSF.Validation.Rules.RuleOutcome)
-  nameWithType: IQueryableValidationResult.QueryByMember<TValidated>(Expression<Func<TValidated, Object>>, Object, String, String, RuleOutcome)
-  nameWithType.vb: IQueryableValidationResult.QueryByMember(Of TValidated)(Expression(Of Func(Of TValidated, Object)), Object, String, String, RuleOutcome)
+  fullName: CSF.Validation.IQueryableValidationResult.Passed
+  nameWithType: IQueryableValidationResult.Passed
+- uid: CSF.Validation.IQueryableValidationResult.RuleResults
+  name: RuleResults
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_RuleResults
+  commentId: P:CSF.Validation.IQueryableValidationResult.RuleResults
+  fullName: CSF.Validation.IQueryableValidationResult.RuleResults
+  nameWithType: IQueryableValidationResult.RuleResults
+- uid: CSF.Validation.IQueryableValidationResult.RuleResults*
+  name: RuleResults
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_RuleResults_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult.RuleResults
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult.RuleResults
+  nameWithType: IQueryableValidationResult.RuleResults
+- uid: CSF.Validation.IQueryableValidationResult`1
+  name: IQueryableValidationResult<TValidated>
+  href: api/CSF.Validation.IQueryableValidationResult-1.html
+  commentId: T:CSF.Validation.IQueryableValidationResult`1
+  name.vb: IQueryableValidationResult(Of TValidated)
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated)
+  nameWithType: IQueryableValidationResult<TValidated>
+  nameWithType.vb: IQueryableValidationResult(Of TValidated)
+- uid: CSF.Validation.IQueryableValidationResult`1.ForMatchingMemberItem*
+  name: ForMatchingMemberItem
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForMatchingMemberItem_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult`1.ForMatchingMemberItem
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.ForMatchingMemberItem
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForMatchingMemberItem
+  nameWithType: IQueryableValidationResult<TValidated>.ForMatchingMemberItem
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).ForMatchingMemberItem
+- uid: CSF.Validation.IQueryableValidationResult`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)
+  name: ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>>, TItem)
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForMatchingMemberItem__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0______0_
+  commentId: M:CSF.Validation.IQueryableValidationResult`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)
+  name.vb: ForMatchingMemberItem(Of TItem)(Expression(Of Func(Of TValidated, IEnumerable(Of TItem))), TItem)
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.ForMatchingMemberItem<TItem>(System.Linq.Expressions.Expression<System.Func<TValidated, System.Collections.Generic.IEnumerable<TItem>>>, TItem)
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForMatchingMemberItem(Of TItem)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, System.Collections.Generic.IEnumerable(Of TItem))), TItem)
+  nameWithType: IQueryableValidationResult<TValidated>.ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>>, TItem)
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).ForMatchingMemberItem(Of TItem)(Expression(Of Func(Of TValidated, IEnumerable(Of TItem))), TItem)
+- uid: CSF.Validation.IQueryableValidationResult`1.ForMember*
+  name: ForMember
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForMember_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult`1.ForMember
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.ForMember
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForMember
+  nameWithType: IQueryableValidationResult<TValidated>.ForMember
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).ForMember
+- uid: CSF.Validation.IQueryableValidationResult`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  name: ForMember<TItem>(Expression<Func<TValidated, TItem>>)
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  commentId: M:CSF.Validation.IQueryableValidationResult`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  name.vb: ForMember(Of TItem)(Expression(Of Func(Of TValidated, TItem)))
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.ForMember<TItem>(System.Linq.Expressions.Expression<System.Func<TValidated, TItem>>)
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForMember(Of TItem)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, TItem)))
+  nameWithType: IQueryableValidationResult<TValidated>.ForMember<TItem>(Expression<Func<TValidated, TItem>>)
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).ForMember(Of TItem)(Expression(Of Func(Of TValidated, TItem)))
+- uid: CSF.Validation.IQueryableValidationResult`1.ForOnlyThisValue
+  name: ForOnlyThisValue()
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForOnlyThisValue
+  commentId: M:CSF.Validation.IQueryableValidationResult`1.ForOnlyThisValue
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.ForOnlyThisValue()
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForOnlyThisValue()
+  nameWithType: IQueryableValidationResult<TValidated>.ForOnlyThisValue()
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).ForOnlyThisValue()
+- uid: CSF.Validation.IQueryableValidationResult`1.ForOnlyThisValue*
+  name: ForOnlyThisValue
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForOnlyThisValue_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult`1.ForOnlyThisValue
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.ForOnlyThisValue
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForOnlyThisValue
+  nameWithType: IQueryableValidationResult<TValidated>.ForOnlyThisValue
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).ForOnlyThisValue
+- uid: CSF.Validation.IQueryableValidationResult`1.WithoutSuccesses
+  name: WithoutSuccesses()
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_WithoutSuccesses
+  commentId: M:CSF.Validation.IQueryableValidationResult`1.WithoutSuccesses
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.WithoutSuccesses()
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).WithoutSuccesses()
+  nameWithType: IQueryableValidationResult<TValidated>.WithoutSuccesses()
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).WithoutSuccesses()
+- uid: CSF.Validation.IQueryableValidationResult`1.WithoutSuccesses*
+  name: WithoutSuccesses
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_WithoutSuccesses_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult`1.WithoutSuccesses
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.WithoutSuccesses
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).WithoutSuccesses
+  nameWithType: IQueryableValidationResult<TValidated>.WithoutSuccesses
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).WithoutSuccesses
 - uid: CSF.Validation.IValidator
   name: IValidator
   href: api/CSF.Validation.IValidator.html
@@ -2492,12 +2584,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.FailureMessageValidationResultPopulator.FailureMessageValidationResultPopulator
   nameWithType: FailureMessageValidationResultPopulator.FailureMessageValidationResultPopulator
-- uid: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync(CSF.Validation.ValidationResult,System.Threading.CancellationToken)
-  name: GetResultWithMessagesAsync(ValidationResult, CancellationToken)
-  href: api/CSF.Validation.Messages.FailureMessageValidationResultPopulator.html#CSF_Validation_Messages_FailureMessageValidationResultPopulator_GetResultWithMessagesAsync_CSF_Validation_ValidationResult_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync(CSF.Validation.ValidationResult,System.Threading.CancellationToken)
-  fullName: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync(CSF.Validation.ValidationResult, System.Threading.CancellationToken)
-  nameWithType: FailureMessageValidationResultPopulator.GetResultWithMessagesAsync(ValidationResult, CancellationToken)
 - uid: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync*
   name: GetResultWithMessagesAsync
   href: api/CSF.Validation.Messages.FailureMessageValidationResultPopulator.html#CSF_Validation_Messages_FailureMessageValidationResultPopulator_GetResultWithMessagesAsync_
@@ -2505,18 +2591,21 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync
   nameWithType: FailureMessageValidationResultPopulator.GetResultWithMessagesAsync
+- uid: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync``1(CSF.Validation.IQueryableValidationResult{``0},System.Threading.CancellationToken)
+  name: GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated>, CancellationToken)
+  href: api/CSF.Validation.Messages.FailureMessageValidationResultPopulator.html#CSF_Validation_Messages_FailureMessageValidationResultPopulator_GetResultWithMessagesAsync__1_CSF_Validation_IQueryableValidationResult___0__System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync``1(CSF.Validation.IQueryableValidationResult{``0},System.Threading.CancellationToken)
+  name.vb: GetResultWithMessagesAsync(Of TValidated)(IQueryableValidationResult(Of TValidated), CancellationToken)
+  fullName: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync<TValidated>(CSF.Validation.IQueryableValidationResult<TValidated>, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Messages.FailureMessageValidationResultPopulator.GetResultWithMessagesAsync(Of TValidated)(CSF.Validation.IQueryableValidationResult(Of TValidated), System.Threading.CancellationToken)
+  nameWithType: FailureMessageValidationResultPopulator.GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated>, CancellationToken)
+  nameWithType.vb: FailureMessageValidationResultPopulator.GetResultWithMessagesAsync(Of TValidated)(IQueryableValidationResult(Of TValidated), CancellationToken)
 - uid: CSF.Validation.Messages.IAddsFailureMessagesToResult
   name: IAddsFailureMessagesToResult
   href: api/CSF.Validation.Messages.IAddsFailureMessagesToResult.html
   commentId: T:CSF.Validation.Messages.IAddsFailureMessagesToResult
   fullName: CSF.Validation.Messages.IAddsFailureMessagesToResult
   nameWithType: IAddsFailureMessagesToResult
-- uid: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync(CSF.Validation.ValidationResult,System.Threading.CancellationToken)
-  name: GetResultWithMessagesAsync(ValidationResult, CancellationToken)
-  href: api/CSF.Validation.Messages.IAddsFailureMessagesToResult.html#CSF_Validation_Messages_IAddsFailureMessagesToResult_GetResultWithMessagesAsync_CSF_Validation_ValidationResult_System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync(CSF.Validation.ValidationResult,System.Threading.CancellationToken)
-  fullName: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync(CSF.Validation.ValidationResult, System.Threading.CancellationToken)
-  nameWithType: IAddsFailureMessagesToResult.GetResultWithMessagesAsync(ValidationResult, CancellationToken)
 - uid: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync*
   name: GetResultWithMessagesAsync
   href: api/CSF.Validation.Messages.IAddsFailureMessagesToResult.html#CSF_Validation_Messages_IAddsFailureMessagesToResult_GetResultWithMessagesAsync_
@@ -2524,6 +2613,15 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync
   nameWithType: IAddsFailureMessagesToResult.GetResultWithMessagesAsync
+- uid: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync``1(CSF.Validation.IQueryableValidationResult{``0},System.Threading.CancellationToken)
+  name: GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated>, CancellationToken)
+  href: api/CSF.Validation.Messages.IAddsFailureMessagesToResult.html#CSF_Validation_Messages_IAddsFailureMessagesToResult_GetResultWithMessagesAsync__1_CSF_Validation_IQueryableValidationResult___0__System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync``1(CSF.Validation.IQueryableValidationResult{``0},System.Threading.CancellationToken)
+  name.vb: GetResultWithMessagesAsync(Of TValidated)(IQueryableValidationResult(Of TValidated), CancellationToken)
+  fullName: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync<TValidated>(CSF.Validation.IQueryableValidationResult<TValidated>, System.Threading.CancellationToken)
+  fullName.vb: CSF.Validation.Messages.IAddsFailureMessagesToResult.GetResultWithMessagesAsync(Of TValidated)(CSF.Validation.IQueryableValidationResult(Of TValidated), System.Threading.CancellationToken)
+  nameWithType: IAddsFailureMessagesToResult.GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated>, CancellationToken)
+  nameWithType.vb: IAddsFailureMessagesToResult.GetResultWithMessagesAsync(Of TValidated)(IQueryableValidationResult(Of TValidated), CancellationToken)
 - uid: CSF.Validation.Messages.IGetsCandidateMessageTypes
   name: IGetsCandidateMessageTypes
   href: api/CSF.Validation.Messages.IGetsCandidateMessageTypes.html
@@ -4712,6 +4810,44 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated
   nameWithType: ValueToBeValidatedProvider.GetValueToBeValidated
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue
+  name: RuleResultIsForDescendentOfValue
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html
+  commentId: T:CSF.Validation.RuleResultIsForDescendentOfValue
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue
+  nameWithType: RuleResultIsForDescendentOfValue
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Boolean)
+  name: RuleResultIsForDescendentOfValue(ManifestValueBase, Boolean)
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Boolean_
+  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Boolean)
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(CSF.Validation.Manifest.ManifestValueBase, System.Boolean)
+  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(ManifestValueBase, Boolean)
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object,System.Boolean)
+  name: RuleResultIsForDescendentOfValue(ManifestValueBase, Object, Boolean)
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Object_System_Boolean_
+  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object,System.Boolean)
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(CSF.Validation.Manifest.ManifestValueBase, System.Object, System.Boolean)
+  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(ManifestValueBase, Object, Boolean)
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor*
+  name: RuleResultIsForDescendentOfValue
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_
+  commentId: Overload:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue
+  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.GetExpression
+  name: GetExpression()
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue_GetExpression
+  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.GetExpression
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.GetExpression()
+  nameWithType: RuleResultIsForDescendentOfValue.GetExpression()
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.GetExpression*
+  name: GetExpression
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue_GetExpression_
+  commentId: Overload:CSF.Validation.RuleResultIsForDescendentOfValue.GetExpression
+  isSpec: "True"
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.GetExpression
+  nameWithType: RuleResultIsForDescendentOfValue.GetExpression
 - uid: CSF.Validation.Rules
   name: CSF.Validation.Rules
   href: api/CSF.Validation.Rules.html
@@ -5898,6 +6034,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.ManifestValueInfo.CollectionItemValue
   nameWithType: ManifestValueInfo.CollectionItemValue
+- uid: CSF.Validation.Rules.ManifestValueInfo.GetOriginalManifestValue
+  name: GetOriginalManifestValue()
+  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_GetOriginalManifestValue
+  commentId: M:CSF.Validation.Rules.ManifestValueInfo.GetOriginalManifestValue
+  fullName: CSF.Validation.Rules.ManifestValueInfo.GetOriginalManifestValue()
+  nameWithType: ManifestValueInfo.GetOriginalManifestValue()
+- uid: CSF.Validation.Rules.ManifestValueInfo.GetOriginalManifestValue*
+  name: GetOriginalManifestValue
+  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_GetOriginalManifestValue_
+  commentId: Overload:CSF.Validation.Rules.ManifestValueInfo.GetOriginalManifestValue
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.ManifestValueInfo.GetOriginalManifestValue
+  nameWithType: ManifestValueInfo.GetOriginalManifestValue
 - uid: CSF.Validation.Rules.ManifestValueInfo.MemberName
   name: MemberName
   href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo_MemberName
@@ -6992,6 +7141,211 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.StandardRulesServiceCollectionExtensions.UseStandardValidationRules
   nameWithType: StandardRulesServiceCollectionExtensions.UseStandardValidationRules
+- uid: CSF.Validation.SubsetOfValidationResults`1
+  name: SubsetOfValidationResults<TValidated>
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html
+  commentId: T:CSF.Validation.SubsetOfValidationResults`1
+  name.vb: SubsetOfValidationResults(Of TValidated)
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated)
+  nameWithType: SubsetOfValidationResults<TValidated>
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated)
+- uid: CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ManifestValueBase)
+  name: SubsetOfValidationResults(IEnumerable<ValidationRuleResult>, ManifestValueBase)
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ManifestValueBase_
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ManifestValueBase)
+  name.vb: SubsetOfValidationResults(IEnumerable(Of ValidationRuleResult), ManifestValueBase)
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.SubsetOfValidationResults(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>, CSF.Validation.Manifest.ManifestValueBase)
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResult), CSF.Validation.Manifest.ManifestValueBase)
+  nameWithType: SubsetOfValidationResults<TValidated>.SubsetOfValidationResults(IEnumerable<ValidationRuleResult>, ManifestValueBase)
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults(IEnumerable(Of ValidationRuleResult), ManifestValueBase)
+- uid: CSF.Validation.SubsetOfValidationResults`1.#ctor*
+  name: SubsetOfValidationResults
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1__ctor_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.SubsetOfValidationResults
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults
+  nameWithType: SubsetOfValidationResults<TValidated>.SubsetOfValidationResults
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults
+- uid: CSF.Validation.SubsetOfValidationResults`1.CSF#Validation#IQueryableValidationResult#AsResultFor*
+  name: IQueryableValidationResult.AsResultFor
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_CSF_Validation_IQueryableValidationResult_AsResultFor_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.CSF#Validation#IQueryableValidationResult#AsResultFor
+  isSpec: "True"
+  name.vb: CSF.Validation.IQueryableValidationResult.AsResultFor
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.CSF.Validation.IQueryableValidationResult.AsResultFor
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).CSF.Validation.IQueryableValidationResult.AsResultFor
+  nameWithType: SubsetOfValidationResults<TValidated>.IQueryableValidationResult.AsResultFor
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).CSF.Validation.IQueryableValidationResult.AsResultFor
+- uid: CSF.Validation.SubsetOfValidationResults`1.CSF#Validation#IQueryableValidationResult#AsResultFor``1
+  name: IQueryableValidationResult.AsResultFor<T>()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_CSF_Validation_IQueryableValidationResult_AsResultFor__1
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.CSF#Validation#IQueryableValidationResult#AsResultFor``1
+  name.vb: CSF.Validation.IQueryableValidationResult.AsResultFor(Of T)()
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.CSF.Validation.IQueryableValidationResult.AsResultFor<T>()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).CSF.Validation.IQueryableValidationResult.AsResultFor(Of T)()
+  nameWithType: SubsetOfValidationResults<TValidated>.IQueryableValidationResult.AsResultFor<T>()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).CSF.Validation.IQueryableValidationResult.AsResultFor(Of T)()
+- uid: CSF.Validation.SubsetOfValidationResults`1.ForMatchingMemberItem*
+  name: ForMatchingMemberItem
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ForMatchingMemberItem_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.ForMatchingMemberItem
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ForMatchingMemberItem
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ForMatchingMemberItem
+  nameWithType: SubsetOfValidationResults<TValidated>.ForMatchingMemberItem
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ForMatchingMemberItem
+- uid: CSF.Validation.SubsetOfValidationResults`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)
+  name: ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>>, TItem)
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ForMatchingMemberItem__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0______0_
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)
+  name.vb: ForMatchingMemberItem(Of TItem)(Expression(Of Func(Of TValidated, IEnumerable(Of TItem))), TItem)
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ForMatchingMemberItem<TItem>(System.Linq.Expressions.Expression<System.Func<TValidated, System.Collections.Generic.IEnumerable<TItem>>>, TItem)
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ForMatchingMemberItem(Of TItem)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, System.Collections.Generic.IEnumerable(Of TItem))), TItem)
+  nameWithType: SubsetOfValidationResults<TValidated>.ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>>, TItem)
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ForMatchingMemberItem(Of TItem)(Expression(Of Func(Of TValidated, IEnumerable(Of TItem))), TItem)
+- uid: CSF.Validation.SubsetOfValidationResults`1.ForMember*
+  name: ForMember
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ForMember_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.ForMember
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ForMember
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ForMember
+  nameWithType: SubsetOfValidationResults<TValidated>.ForMember
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ForMember
+- uid: CSF.Validation.SubsetOfValidationResults`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  name: ForMember<TItem>(Expression<Func<TValidated, TItem>>)
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  name.vb: ForMember(Of TItem)(Expression(Of Func(Of TValidated, TItem)))
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ForMember<TItem>(System.Linq.Expressions.Expression<System.Func<TValidated, TItem>>)
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ForMember(Of TItem)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, TItem)))
+  nameWithType: SubsetOfValidationResults<TValidated>.ForMember<TItem>(Expression<Func<TValidated, TItem>>)
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ForMember(Of TItem)(Expression(Of Func(Of TValidated, TItem)))
+- uid: CSF.Validation.SubsetOfValidationResults`1.ForOnlyThisValue
+  name: ForOnlyThisValue()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ForOnlyThisValue
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.ForOnlyThisValue
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ForOnlyThisValue()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ForOnlyThisValue()
+  nameWithType: SubsetOfValidationResults<TValidated>.ForOnlyThisValue()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ForOnlyThisValue()
+- uid: CSF.Validation.SubsetOfValidationResults`1.ForOnlyThisValue*
+  name: ForOnlyThisValue
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ForOnlyThisValue_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.ForOnlyThisValue
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ForOnlyThisValue
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ForOnlyThisValue
+  nameWithType: SubsetOfValidationResults<TValidated>.ForOnlyThisValue
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ForOnlyThisValue
+- uid: CSF.Validation.SubsetOfValidationResults`1.ManifestValue
+  name: ManifestValue
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ManifestValue
+  commentId: P:CSF.Validation.SubsetOfValidationResults`1.ManifestValue
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ManifestValue
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ManifestValue
+  nameWithType: SubsetOfValidationResults<TValidated>.ManifestValue
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ManifestValue
+- uid: CSF.Validation.SubsetOfValidationResults`1.ManifestValue*
+  name: ManifestValue
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ManifestValue_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.ManifestValue
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ManifestValue
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ManifestValue
+  nameWithType: SubsetOfValidationResults<TValidated>.ManifestValue
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ManifestValue
+- uid: CSF.Validation.SubsetOfValidationResults`1.Passed
+  name: Passed
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_Passed
+  commentId: P:CSF.Validation.SubsetOfValidationResults`1.Passed
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.Passed
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).Passed
+  nameWithType: SubsetOfValidationResults<TValidated>.Passed
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).Passed
+- uid: CSF.Validation.SubsetOfValidationResults`1.Passed*
+  name: Passed
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_Passed_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.Passed
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.Passed
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).Passed
+  nameWithType: SubsetOfValidationResults<TValidated>.Passed
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).Passed
+- uid: CSF.Validation.SubsetOfValidationResults`1.RuleResults
+  name: RuleResults
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_RuleResults
+  commentId: P:CSF.Validation.SubsetOfValidationResults`1.RuleResults
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.RuleResults
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).RuleResults
+  nameWithType: SubsetOfValidationResults<TValidated>.RuleResults
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).RuleResults
+- uid: CSF.Validation.SubsetOfValidationResults`1.RuleResults*
+  name: RuleResults
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_RuleResults_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.RuleResults
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.RuleResults
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).RuleResults
+  nameWithType: SubsetOfValidationResults<TValidated>.RuleResults
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).RuleResults
+- uid: CSF.Validation.SubsetOfValidationResults`1.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator
+  name: IEnumerable<ValidationRuleResult>.GetEnumerator()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator
+  name.vb: System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+  nameWithType: SubsetOfValidationResults<TValidated>.IEnumerable<ValidationRuleResult>.GetEnumerator()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+- uid: CSF.Validation.SubsetOfValidationResults`1.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator*
+  name: IEnumerable<ValidationRuleResult>.GetEnumerator
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+  nameWithType: SubsetOfValidationResults<TValidated>.IEnumerable<ValidationRuleResult>.GetEnumerator
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+- uid: CSF.Validation.SubsetOfValidationResults`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: SubsetOfValidationResults<TValidated>.IEnumerable.GetEnumerator()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).System.Collections.IEnumerable.GetEnumerator()
+- uid: CSF.Validation.SubsetOfValidationResults`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: SubsetOfValidationResults<TValidated>.IEnumerable.GetEnumerator
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).System.Collections.IEnumerable.GetEnumerator
+- uid: CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses
+  name: WithoutSuccesses()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_WithoutSuccesses
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.WithoutSuccesses()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).WithoutSuccesses()
+  nameWithType: SubsetOfValidationResults<TValidated>.WithoutSuccesses()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).WithoutSuccesses()
+- uid: CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses*
+  name: WithoutSuccesses
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_WithoutSuccesses_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.WithoutSuccesses
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).WithoutSuccesses
+  nameWithType: SubsetOfValidationResults<TValidated>.WithoutSuccesses
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).WithoutSuccesses
 - uid: CSF.Validation.ThrowingBehaviourValidatorDecorator`1
   name: ThrowingBehaviourValidatorDecorator<TValidated>
   href: api/CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html
@@ -7168,15 +7522,15 @@ references:
   commentId: T:CSF.Validation.ValidationResult
   fullName: CSF.Validation.ValidationResult
   nameWithType: ValidationResult
-- uid: CSF.Validation.ValidationResult.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult})
-  name: ValidationResult(IEnumerable<ValidationRuleResult>)
-  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__
-  commentId: M:CSF.Validation.ValidationResult.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult})
-  name.vb: ValidationResult(IEnumerable(Of ValidationRuleResult))
-  fullName: CSF.Validation.ValidationResult.ValidationResult(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>)
-  fullName.vb: CSF.Validation.ValidationResult.ValidationResult(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResult))
-  nameWithType: ValidationResult.ValidationResult(IEnumerable<ValidationRuleResult>)
-  nameWithType.vb: ValidationResult.ValidationResult(IEnumerable(Of ValidationRuleResult))
+- uid: CSF.Validation.ValidationResult.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ValidationManifest)
+  name: ValidationResult(IEnumerable<ValidationRuleResult>, ValidationManifest)
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ValidationManifest_
+  commentId: M:CSF.Validation.ValidationResult.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ValidationManifest)
+  name.vb: ValidationResult(IEnumerable(Of ValidationRuleResult), ValidationManifest)
+  fullName: CSF.Validation.ValidationResult.ValidationResult(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>, CSF.Validation.Manifest.ValidationManifest)
+  fullName.vb: CSF.Validation.ValidationResult.ValidationResult(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResult), CSF.Validation.Manifest.ValidationManifest)
+  nameWithType: ValidationResult.ValidationResult(IEnumerable<ValidationRuleResult>, ValidationManifest)
+  nameWithType.vb: ValidationResult.ValidationResult(IEnumerable(Of ValidationRuleResult), ValidationManifest)
 - uid: CSF.Validation.ValidationResult.#ctor*
   name: ValidationResult
   href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult__ctor_
@@ -7184,6 +7538,52 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationResult.ValidationResult
   nameWithType: ValidationResult.ValidationResult
+- uid: CSF.Validation.ValidationResult.AsResultFor*
+  name: AsResultFor
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_AsResultFor_
+  commentId: Overload:CSF.Validation.ValidationResult.AsResultFor
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult.AsResultFor
+  nameWithType: ValidationResult.AsResultFor
+- uid: CSF.Validation.ValidationResult.AsResultFor``1
+  name: AsResultFor<T>()
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_AsResultFor__1
+  commentId: M:CSF.Validation.ValidationResult.AsResultFor``1
+  name.vb: AsResultFor(Of T)()
+  fullName: CSF.Validation.ValidationResult.AsResultFor<T>()
+  fullName.vb: CSF.Validation.ValidationResult.AsResultFor(Of T)()
+  nameWithType: ValidationResult.AsResultFor<T>()
+  nameWithType.vb: ValidationResult.AsResultFor(Of T)()
+- uid: CSF.Validation.ValidationResult.CSF#Validation#IQueryableValidationResult#ManifestValue
+  name: IQueryableValidationResult.ManifestValue
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_CSF_Validation_IQueryableValidationResult_ManifestValue
+  commentId: P:CSF.Validation.ValidationResult.CSF#Validation#IQueryableValidationResult#ManifestValue
+  name.vb: CSF.Validation.IQueryableValidationResult.ManifestValue
+  fullName: CSF.Validation.ValidationResult.CSF.Validation.IQueryableValidationResult.ManifestValue
+  nameWithType: ValidationResult.IQueryableValidationResult.ManifestValue
+  nameWithType.vb: ValidationResult.CSF.Validation.IQueryableValidationResult.ManifestValue
+- uid: CSF.Validation.ValidationResult.CSF#Validation#IQueryableValidationResult#ManifestValue*
+  name: IQueryableValidationResult.ManifestValue
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_CSF_Validation_IQueryableValidationResult_ManifestValue_
+  commentId: Overload:CSF.Validation.ValidationResult.CSF#Validation#IQueryableValidationResult#ManifestValue
+  isSpec: "True"
+  name.vb: CSF.Validation.IQueryableValidationResult.ManifestValue
+  fullName: CSF.Validation.ValidationResult.CSF.Validation.IQueryableValidationResult.ManifestValue
+  nameWithType: ValidationResult.IQueryableValidationResult.ManifestValue
+  nameWithType.vb: ValidationResult.CSF.Validation.IQueryableValidationResult.ManifestValue
+- uid: CSF.Validation.ValidationResult.Manifest
+  name: Manifest
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_Manifest
+  commentId: P:CSF.Validation.ValidationResult.Manifest
+  fullName: CSF.Validation.ValidationResult.Manifest
+  nameWithType: ValidationResult.Manifest
+- uid: CSF.Validation.ValidationResult.Manifest*
+  name: Manifest
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_Manifest_
+  commentId: Overload:CSF.Validation.ValidationResult.Manifest
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult.Manifest
+  nameWithType: ValidationResult.Manifest
 - uid: CSF.Validation.ValidationResult.Passed
   name: Passed
   href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_Passed
@@ -7210,6 +7610,137 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationResult.RuleResults
   nameWithType: ValidationResult.RuleResults
+- uid: CSF.Validation.ValidationResult.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator
+  name: IEnumerable<ValidationRuleResult>.GetEnumerator()
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator
+  commentId: M:CSF.Validation.ValidationResult.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator
+  name.vb: System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+  fullName: CSF.Validation.ValidationResult.System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+  nameWithType: ValidationResult.IEnumerable<ValidationRuleResult>.GetEnumerator()
+  nameWithType.vb: ValidationResult.System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator()
+- uid: CSF.Validation.ValidationResult.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator*
+  name: IEnumerable<ValidationRuleResult>.GetEnumerator
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator_
+  commentId: Overload:CSF.Validation.ValidationResult.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+  fullName: CSF.Validation.ValidationResult.System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+  nameWithType: ValidationResult.IEnumerable<ValidationRuleResult>.GetEnumerator
+  nameWithType.vb: ValidationResult.System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>.GetEnumerator
+- uid: CSF.Validation.ValidationResult.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:CSF.Validation.ValidationResult.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: CSF.Validation.ValidationResult.System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: ValidationResult.IEnumerable.GetEnumerator()
+  nameWithType.vb: ValidationResult.System.Collections.IEnumerable.GetEnumerator()
+- uid: CSF.Validation.ValidationResult.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:CSF.Validation.ValidationResult.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: CSF.Validation.ValidationResult.System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ValidationResult.IEnumerable.GetEnumerator
+  nameWithType.vb: ValidationResult.System.Collections.IEnumerable.GetEnumerator
+- uid: CSF.Validation.ValidationResult`1
+  name: ValidationResult<TValidated>
+  href: api/CSF.Validation.ValidationResult-1.html
+  commentId: T:CSF.Validation.ValidationResult`1
+  name.vb: ValidationResult(Of TValidated)
+  fullName: CSF.Validation.ValidationResult<TValidated>
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated)
+  nameWithType: ValidationResult<TValidated>
+  nameWithType.vb: ValidationResult(Of TValidated)
+- uid: CSF.Validation.ValidationResult`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ValidationManifest)
+  name: ValidationResult(IEnumerable<ValidationRuleResult>, ValidationManifest)
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ValidationManifest_
+  commentId: M:CSF.Validation.ValidationResult`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ValidationManifest)
+  name.vb: ValidationResult(IEnumerable(Of ValidationRuleResult), ValidationManifest)
+  fullName: CSF.Validation.ValidationResult<TValidated>.ValidationResult(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>, CSF.Validation.Manifest.ValidationManifest)
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ValidationResult(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResult), CSF.Validation.Manifest.ValidationManifest)
+  nameWithType: ValidationResult<TValidated>.ValidationResult(IEnumerable<ValidationRuleResult>, ValidationManifest)
+  nameWithType.vb: ValidationResult(Of TValidated).ValidationResult(IEnumerable(Of ValidationRuleResult), ValidationManifest)
+- uid: CSF.Validation.ValidationResult`1.#ctor*
+  name: ValidationResult
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1__ctor_
+  commentId: Overload:CSF.Validation.ValidationResult`1.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.ValidationResult
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ValidationResult
+  nameWithType: ValidationResult<TValidated>.ValidationResult
+  nameWithType.vb: ValidationResult(Of TValidated).ValidationResult
+- uid: CSF.Validation.ValidationResult`1.ForMatchingMemberItem*
+  name: ForMatchingMemberItem
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ForMatchingMemberItem_
+  commentId: Overload:CSF.Validation.ValidationResult`1.ForMatchingMemberItem
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.ForMatchingMemberItem
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForMatchingMemberItem
+  nameWithType: ValidationResult<TValidated>.ForMatchingMemberItem
+  nameWithType.vb: ValidationResult(Of TValidated).ForMatchingMemberItem
+- uid: CSF.Validation.ValidationResult`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)
+  name: ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>>, TItem)
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ForMatchingMemberItem__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0______0_
+  commentId: M:CSF.Validation.ValidationResult`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)
+  name.vb: ForMatchingMemberItem(Of TItem)(Expression(Of Func(Of TValidated, IEnumerable(Of TItem))), TItem)
+  fullName: CSF.Validation.ValidationResult<TValidated>.ForMatchingMemberItem<TItem>(System.Linq.Expressions.Expression<System.Func<TValidated, System.Collections.Generic.IEnumerable<TItem>>>, TItem)
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForMatchingMemberItem(Of TItem)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, System.Collections.Generic.IEnumerable(Of TItem))), TItem)
+  nameWithType: ValidationResult<TValidated>.ForMatchingMemberItem<TItem>(Expression<Func<TValidated, IEnumerable<TItem>>>, TItem)
+  nameWithType.vb: ValidationResult(Of TValidated).ForMatchingMemberItem(Of TItem)(Expression(Of Func(Of TValidated, IEnumerable(Of TItem))), TItem)
+- uid: CSF.Validation.ValidationResult`1.ForMember*
+  name: ForMember
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ForMember_
+  commentId: Overload:CSF.Validation.ValidationResult`1.ForMember
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.ForMember
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForMember
+  nameWithType: ValidationResult<TValidated>.ForMember
+  nameWithType.vb: ValidationResult(Of TValidated).ForMember
+- uid: CSF.Validation.ValidationResult`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  name: ForMember<TItem>(Expression<Func<TValidated, TItem>>)
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  commentId: M:CSF.Validation.ValidationResult`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  name.vb: ForMember(Of TItem)(Expression(Of Func(Of TValidated, TItem)))
+  fullName: CSF.Validation.ValidationResult<TValidated>.ForMember<TItem>(System.Linq.Expressions.Expression<System.Func<TValidated, TItem>>)
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForMember(Of TItem)(System.Linq.Expressions.Expression(Of System.Func(Of TValidated, TItem)))
+  nameWithType: ValidationResult<TValidated>.ForMember<TItem>(Expression<Func<TValidated, TItem>>)
+  nameWithType.vb: ValidationResult(Of TValidated).ForMember(Of TItem)(Expression(Of Func(Of TValidated, TItem)))
+- uid: CSF.Validation.ValidationResult`1.ForOnlyThisValue
+  name: ForOnlyThisValue()
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ForOnlyThisValue
+  commentId: M:CSF.Validation.ValidationResult`1.ForOnlyThisValue
+  fullName: CSF.Validation.ValidationResult<TValidated>.ForOnlyThisValue()
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForOnlyThisValue()
+  nameWithType: ValidationResult<TValidated>.ForOnlyThisValue()
+  nameWithType.vb: ValidationResult(Of TValidated).ForOnlyThisValue()
+- uid: CSF.Validation.ValidationResult`1.ForOnlyThisValue*
+  name: ForOnlyThisValue
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ForOnlyThisValue_
+  commentId: Overload:CSF.Validation.ValidationResult`1.ForOnlyThisValue
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.ForOnlyThisValue
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForOnlyThisValue
+  nameWithType: ValidationResult<TValidated>.ForOnlyThisValue
+  nameWithType.vb: ValidationResult(Of TValidated).ForOnlyThisValue
+- uid: CSF.Validation.ValidationResult`1.WithoutSuccesses
+  name: WithoutSuccesses()
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_WithoutSuccesses
+  commentId: M:CSF.Validation.ValidationResult`1.WithoutSuccesses
+  fullName: CSF.Validation.ValidationResult<TValidated>.WithoutSuccesses()
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).WithoutSuccesses()
+  nameWithType: ValidationResult<TValidated>.WithoutSuccesses()
+  nameWithType.vb: ValidationResult(Of TValidated).WithoutSuccesses()
+- uid: CSF.Validation.ValidationResult`1.WithoutSuccesses*
+  name: WithoutSuccesses
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_WithoutSuccesses_
+  commentId: Overload:CSF.Validation.ValidationResult`1.WithoutSuccesses
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.WithoutSuccesses
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).WithoutSuccesses
+  nameWithType: ValidationResult<TValidated>.WithoutSuccesses
+  nameWithType.vb: ValidationResult(Of TValidated).WithoutSuccesses
 - uid: CSF.Validation.ValidationRuleResult
   name: ValidationRuleResult
   href: api/CSF.Validation.ValidationRuleResult.html
@@ -8896,6 +9427,44 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidator(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
   nameWithType: ValidatorFactoryExtensions.GetValidator<TValidated>(IGetsValidator, Type)
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
+- uid: CSF.Validation.ValueContextIsMatchForItem
+  name: ValueContextIsMatchForItem
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html
+  commentId: T:CSF.Validation.ValueContextIsMatchForItem
+  fullName: CSF.Validation.ValueContextIsMatchForItem
+  nameWithType: ValueContextIsMatchForItem
+- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase)
+  name: ValueContextIsMatchForItem(ManifestValueBase)
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_CSF_Validation_Manifest_ManifestValueBase_
+  commentId: M:CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase)
+  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem(CSF.Validation.Manifest.ManifestValueBase)
+  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem(ManifestValueBase)
+- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object)
+  name: ValueContextIsMatchForItem(ManifestValueBase, Object)
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Object_
+  commentId: M:CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object)
+  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem(CSF.Validation.Manifest.ManifestValueBase, System.Object)
+  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem(ManifestValueBase, Object)
+- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor*
+  name: ValueContextIsMatchForItem
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_
+  commentId: Overload:CSF.Validation.ValueContextIsMatchForItem.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem
+  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem
+- uid: CSF.Validation.ValueContextIsMatchForItem.GetExpression
+  name: GetExpression()
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem_GetExpression
+  commentId: M:CSF.Validation.ValueContextIsMatchForItem.GetExpression
+  fullName: CSF.Validation.ValueContextIsMatchForItem.GetExpression()
+  nameWithType: ValueContextIsMatchForItem.GetExpression()
+- uid: CSF.Validation.ValueContextIsMatchForItem.GetExpression*
+  name: GetExpression
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem_GetExpression_
+  commentId: Overload:CSF.Validation.ValueContextIsMatchForItem.GetExpression
+  isSpec: "True"
+  fullName: CSF.Validation.ValueContextIsMatchForItem.GetExpression
+  nameWithType: ValueContextIsMatchForItem.GetExpression
 - uid: HandlingAccessorExceptions
   name: Handling accessor exceptions
   href: articles/WritingValidators/WritingValidatorBuilders/HandlingAccessorExceptions.html

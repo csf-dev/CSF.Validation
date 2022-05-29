@@ -240,7 +240,7 @@ the type indicated by this property, or a type that is derived from the type ind
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;ValidationResult&gt; ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IQueryableValidationResult&lt;TValidated&gt;&gt; ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -282,7 +282,7 @@ the type indicated by this property, or a type that is derived from the type ind
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult</a>&lt;TValidated&gt;&gt;</td>
         <td><p>A task containing the result of the validation process.</p>
 </td>
       </tr>

@@ -93,11 +93,18 @@ a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidat
       <h4><a class="xref" href="CSF.Validation.RuleBuilderExtensions.html">RuleBuilderExtensions</a></h4>
       <section><p>Extension methods for instances of <a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule&lt;TRule&gt;</a>.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.RuleResultIsForDescendentOfValue.html">RuleResultIsForDescendentOfValue</a></h4>
+      <section><p>A specification for validation rule results which must be for a specified value, or a descendent of that value.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.ServiceCollectionExtensions.html">ServiceCollectionExtensions</a></h4>
       <section><p>Extension methods to add validation to a dependency injection container.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.StandardRulesServiceCollectionExtensions.html">StandardRulesServiceCollectionExtensions</a></h4>
       <section><p>Extension methods to add validation to a dependency injection container.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.SubsetOfValidationResults-1.html">SubsetOfValidationResults&lt;TValidated&gt;</a></h4>
+      <section><p>An implementation of <a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult&lt;TValidated&gt;</a> which represents a
+subset of a larger validation result.  This is usually due to some form of filtering of the original result.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html">ThrowingBehaviourValidatorDecorator&lt;TValidated&gt;</a></h4>
       <section><p>A decorator for <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a> which throws an exception if the combination of
@@ -112,6 +119,9 @@ should be thrown.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a></h4>
       <section><p>A model for the results of a validation process.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.ValidationResult-1.html">ValidationResult&lt;TValidated&gt;</a></h4>
+      <section><p>A strongly-typed validation result.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a></h4>
       <section><p>Represents information about the result of running a single validation rule.
@@ -131,6 +141,10 @@ and returns a result.</p>
       <h4><a class="xref" href="CSF.Validation.ValidatorFactoryExtensions.html">ValidatorFactoryExtensions</a></h4>
       <section><p>Extensionm methods for <a class="xref" href="CSF.Validation.IGetsValidator.html">IGetsValidator</a>.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.ValueContextIsMatchForItem.html">ValueContextIsMatchForItem</a></h4>
+      <section><p>A specification for validation value contexts that match a specified manifest value and
+optionally a validated item.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
       <h4><a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a></h4>
@@ -145,7 +159,10 @@ the basic/fundamental part of the validator.</p>
       <section><p>An object which may be used as the factory from which to create validator instances.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a></h4>
-      <section><p>An object which can query for specific validation rule results matching specified predicates.</p>
+      <section><p>An object which contains validation rule results, which may be queried for specific results.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult&lt;TValidated&gt;</a></h4>
+      <section><p>A strongly-typed specialisation of <a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IValidator.html">IValidator</a></h4>
       <section><p>An object which may be used to validate object instances and get a validation result.</p>
