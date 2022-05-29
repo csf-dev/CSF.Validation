@@ -38,11 +38,11 @@ namespace CSF.Validation.Messages
 
         async Task<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
         {
-            var message = await GetMessage(ruleResult, cancellationToken).ConfigureAwait(false);
+            var message = await GetMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false);
             return new ValidationRuleResult(ruleResult, ruleResult.RuleContext, ruleResult.ValidationLogic, message);
         }
 
-        async Task<string> GetMessage(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
+        async Task<string> GetMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
         {
             if(outcomesWhichDontGetMessages.Contains(ruleResult.Outcome)) return null;
 

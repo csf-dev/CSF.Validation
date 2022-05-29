@@ -34,7 +34,7 @@ namespace CSF.Validation
         /// <exception cref="ArgumentNullException">If either parameter is <see langword="null" />.</exception>
         public ValidationResult(IEnumerable<ValidationRuleResult> ruleResults, ValidationManifest manifest) : base(ruleResults, manifest)
         {
-            if(!manifest.ValidatedType.IsAssignableFrom(typeof(TValidated)))
+            if(!typeof(TValidated).IsAssignableFrom(manifest.ValidatedType))
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("ValidationResultMustBeOfCorrectType"),
                                             typeof(TValidated).FullName,
