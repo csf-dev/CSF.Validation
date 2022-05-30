@@ -9,7 +9,7 @@
     <Authors>craigfowler</Authors>
     <Title>CSF.Validation</Title>
     <Description>A framework for business rule validation</Description>
-    <Version>$(ReleaseVersion)</Version>
+    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>

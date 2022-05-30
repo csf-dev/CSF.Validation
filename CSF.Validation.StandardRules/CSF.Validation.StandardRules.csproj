@@ -10,7 +10,7 @@
     <Authors>craigfowler</Authors>
     <Title>CSF.Validation.StandardRules</Title>
     <Description>A library of stock validation rules for general usage.</Description>
-    <Version>$(ReleaseVersion)</Version>
+    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
     <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
