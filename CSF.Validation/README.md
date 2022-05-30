@@ -1,10 +1,14 @@
-# CSF.Validation
+# Validation framework
 
-This project contains the core logic of the validation framework.
-It should be referenced only by projects which configure dependency injection, typically part of an application's startup logic.
-Other projects which consume validation should reference [CSF.Validation.Abstractions] instead.
+This is the core logic package of the CSF.Validation framework.
+It is an architecture for writing domain/business logic validation rules for potentially complex object models.
 
-This project corresponds to the NuGet package [CSF.Validation].
+This package should only need to be consumed by your application startup project, where dependency injection is configured.
+Projects which need to define or use validators need only reference [CSF.Validation.Abstractions], which has a lower dependency footprint.
+You are also encouraged to use [CSF.Validation.StandardRules], as it contains a number of pre-written validation rules for common scenarios.
+
+For more information, please see [the documentation website].
 
 [CSF.Validation.Abstractions]:https://www.nuget.org/packages/CSF.Validation.Abstractions/
-[CSF.Validation]:https://www.nuget.org/packages/CSF.Validation/
+[CSF.Validation.StandardRules]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
+[the documentation website]:https://csf-dev.github.io/CSF.Validation/

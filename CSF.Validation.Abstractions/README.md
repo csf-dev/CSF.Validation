@@ -1,8 +1,11 @@
-# CSF.Validation.Abstractions
+# Validation framework abstractions
 
-This project contains interfaces & models required to consume the validation framework from dependency injection.
-This project has no further dependencies and so introduces only minimal dependency overhead upon projects that reference it.
+This package represents the abstractions and API definition for [CSF.Validation].
+It is a small package without dependencies of its own, suitable for referencing from your own application projects which need to perform and consume validation.
 
-This project corresponds to the NuGet package [CSF.Validation.Abstractions].
+Your application startup (where dependency injection is configured) should be the only project which needs to reference the main CSF.Validation package.
 
-[CSF.Validation.Abstractions]:https://www.nuget.org/packages/CSF.Validation.Abstractions/
+For more information, please see [the documentation website].
+
+[CSF.Validation]:https://www.nuget.org/packages/CSF.Validation/
+[the documentation website]:https://csf-dev.github.io/CSF.Validation/
