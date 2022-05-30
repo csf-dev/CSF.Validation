@@ -10,7 +10,6 @@
     <Title>CSF.Validation.Abstractions</Title>
     <Description>A framework for business rule validation - abstractions package</Description>
     <Version>$(ReleaseVersion)</Version>
-    <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
