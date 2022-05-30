@@ -12,6 +12,7 @@
     <Version>$(ReleaseVersion)</Version>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
     <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
     <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
@@ -34,4 +35,7 @@
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
