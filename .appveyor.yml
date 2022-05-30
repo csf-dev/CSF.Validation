@@ -51,3 +51,4 @@ after_test:
         dotnet-sonarscanner end
         /d:"sonar.login=%SONARCLOUD_SECRET_KEY%"
     - ps: if ($isWindows) { Tools\appveyor-publish-docs.ps1 }
+    - cmd: Tools\appveyor-create-packages.cmd

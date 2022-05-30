@@ -6,11 +6,11 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.StandardRules.xml</DocumentationFile>
     <ReleaseVersion>3.0.0</ReleaseVersion>
     <PackageId>CSF.Validation.StandardRules</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>craigfowler</Authors>
     <Title>CSF.Validation.StandardRules</Title>
     <Description>A library of stock validation rules for general usage.</Description>
-    <Version>$(ReleaseVersion)</Version>
-    <PackageVersion>$(ReleaseVersion)</PackageVersion>
+    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
     <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
@@ -28,4 +28,7 @@
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
