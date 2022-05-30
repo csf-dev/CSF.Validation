@@ -45,15 +45,15 @@ namespace CSF.Validation.Manifest
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This option will override the behaviour specified at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// This option will override the behaviour specified at <see cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         /// for the current manifest value, if this property is set to any non-<see langword="null" /> value.
         /// </para>
         /// <para>
-        /// If this property is set to <see langword="null" /> then the behaviour at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// If this property is set to <see langword="null" /> then the behaviour at <see cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         /// will be used.
         /// </para>
         /// </remarks>
-        /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
 
         /// <summary>

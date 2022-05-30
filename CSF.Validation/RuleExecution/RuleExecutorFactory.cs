@@ -19,7 +19,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="options">The validation options.</param>
         /// <param name="token">An optional cancellation token.</param>
         /// <returns>A task which contains the rule-execution service implementation.</returns>
-        public Task<IExecutesAllRules> GetRuleExecutorAsync(ValidationOptions options, CancellationToken token = default)
+        public Task<IExecutesAllRules> GetRuleExecutorAsync(ResolvedValidationOptions options, CancellationToken token = default)
         {
             IExecutesAllRules result;
 

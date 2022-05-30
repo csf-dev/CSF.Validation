@@ -15,7 +15,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void ExecuteAllRulesAsyncShouldReturnResultsForAllRules([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
                                                                        [Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                       [Frozen] ValidationOptions options,
+                                                                       [Frozen] ResolvedValidationOptions options,
                                                                        SerialRuleExecutor sut,
                                                                        [ExecutableModel] ExecutableRuleAndDependencies rule1,
                                                                        [ExecutableModel] ExecutableRuleAndDependencies rule2,
@@ -49,7 +49,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public async Task ExecuteAllRulesAsyncShouldUpdateTheResultUponTheRule([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
                                                                                [Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                               [Frozen] ValidationOptions options,
+                                                                               [Frozen] ResolvedValidationOptions options,
                                                                                SerialRuleExecutor sut,
                                                                                [ExecutableModel] ExecutableRuleAndDependencies rule,
                                                                                ITracksRuleDependencies dependencyTracker,
@@ -76,7 +76,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData,Timeout(100)]
         public void ExecuteAllRulesAsyncShouldNotExecuteDependantRulesBeforeTheirDependenciesHaveResults([Frozen] IGetsRuleDependencyTracker dependencyTrackerFactory,
                                                                                                          [Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                                                         [Frozen] ValidationOptions options,
+                                                                                                         [Frozen] ResolvedValidationOptions options,
                                                                                                          SerialRuleExecutor sut,
                                                                                                          [ExecutableModel] ExecutableRuleAndDependencies rule1,
                                                                                                          [ExecutableModel] ExecutableRuleAndDependencies rule2,
@@ -134,7 +134,7 @@ namespace CSF.Validation.RuleExecution
                                                                                            [ExecutableModel] ExecutableRule rule3)
         {
             Mock.Get(dependencyTrackerFactory)
-                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ValidationOptions>()))
+                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ResolvedValidationOptions>()))
                 .Returns(dependencyTracker);
             Mock.Get(dependencyTracker)
                 .Setup(x => x.GetRulesWhichMayBeExecuted())
@@ -173,7 +173,7 @@ namespace CSF.Validation.RuleExecution
                                                                                            [ExecutableModel] ExecutableRule rule3)
         {
             Mock.Get(dependencyTrackerFactory)
-                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ValidationOptions>()))
+                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ResolvedValidationOptions>()))
                 .Returns(dependencyTracker);
             Mock.Get(dependencyTracker)
                 .Setup(x => x.GetRulesWhichMayBeExecuted())
@@ -212,10 +212,10 @@ namespace CSF.Validation.RuleExecution
                                                                                                     [ExecutableModel] ExecutableRule rule3)
         {
             Mock.Get(dependencyTrackerFactory)
-                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ValidationOptions>()))
+                .Setup(x => x.GetDependencyTracker(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>(), It.IsAny<ResolvedValidationOptions>()))
                 .Returns(dependencyTracker);
             Mock.Get(ruleExecutorFactory)
-                .Setup(x => x.GetRuleExecutor(It.IsAny<ValidationOptions>()))
+                .Setup(x => x.GetRuleExecutor(It.IsAny<ResolvedValidationOptions>()))
                 .Returns(singleRuleExecutor);
             var sequence = new MockSequence();
             Mock.Get(dependencyTracker)

@@ -15,28 +15,10 @@ namespace CSF.Validation
         readonly IValidator<TValidated> validator;
         readonly IAddsFailureMessagesToResult failureMessageEnricher;
 
-        /// <summary>
-        /// Gets the type of object that this validator is intended to validate.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The first parameter to <see cref="IValidator.ValidateAsync(object, ValidationOptions, CancellationToken)"/> must be of either
-        /// the type indicated by this property, or a type that is derived from the type indicated by this property.
-        /// </para>
-        /// </remarks>
+        /// <inheritdoc/>
         public Type ValidatedType => typeof(TValidated);
-
-        /// <summary>
-        /// Validate the specified object instance asynchronously and get a validation result.
-        /// </summary>
-        /// <param name="validatedObject">The object to be validated.</param>
-        /// <param name="options">An optional object containing configuration options related to the validation process.</param>
-        /// <param name="cancellationToken">An optional object which enables premature cancellation of the validation process.</param>
-        /// <returns>A task containing the result of the validation process.</returns>
-        /// <exception cref="ValidationException">
-        /// If the validation process fails or errors and the <see cref="ValidationOptions.RuleThrowingBehaviour"/>
-        /// of the <paramref name="options"/> indicate that an exception should be thrown.
-        /// </exception>
+        
+        /// <inheritdoc/>
         public async Task<IQueryableValidationResult<TValidated>> ValidateAsync(TValidated validatedObject, ValidationOptions options = null, CancellationToken cancellationToken = default)
         {
             var result = await validator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);

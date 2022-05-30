@@ -55,14 +55,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This option will override the behaviour specified at <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// This option will override the behaviour specified at <see cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         /// for the current value, if the specified behaviour is any non-<see langword="null" /> value.
         /// If this method is unused then it will be treated as if the specified <see cref="ValueAccessExceptionBehaviour"/>
-        /// specified at this point were <see langword="null" /> and the <see cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// specified at this point were <see langword="null" /> and the <see cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         /// will be used instead.
         /// </para>
         /// </remarks>
-        /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
+        /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
         IConfiguresValueAccessor<TValidated, TValue> AccessorExceptionBehaviour(ValueAccessExceptionBehaviour? behaviour);
     }

@@ -31,7 +31,7 @@ namespace CSF.Validation.RuleExecution
     {
         readonly IGetsRuleDependencyTracker dependencyTrackerFactory;
         readonly IGetsSingleRuleExecutor ruleExecutorFactory;
-        readonly ValidationOptions options;
+        readonly ResolvedValidationOptions options;
         readonly IGetsRuleContext contextFactory;
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace CSF.Validation.RuleExecution
         /// <exception cref="ArgumentNullException">If any parameter value is <see langword="null" />.</exception>
         public SerialRuleExecutor(IGetsRuleDependencyTracker dependencyTrackerFactory,
                                   IGetsSingleRuleExecutor ruleExecutorFactory,
-                                  ValidationOptions options,
+                                  ResolvedValidationOptions options,
                                   IGetsRuleContext contextFactory)
         {
             this.dependencyTrackerFactory = dependencyTrackerFactory ?? throw new ArgumentNullException(nameof(dependencyTrackerFactory));

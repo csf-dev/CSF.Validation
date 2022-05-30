@@ -8,17 +8,18 @@ namespace CSF.Validation
     /// </summary>
     /// <remarks>
     /// <para>
-    /// In this model, every property is nullable.  If any given property is set then its value is used.
-    /// Property which are set to <see langword="null" /> or which are unset will use a default value instead.
+    /// In this model, every property is non-nullable and has a concrete value. Do not use this class to
+    /// specify options at the developer/API level.  Instead use <see cref="ValidationOptions"/> for that purpose.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ResolvedValidationOptions"/>
-    public class ValidationOptions
+    /// <seealso cref="ValidationOptions"/>
+    public class ResolvedValidationOptions
     {
         /// <summary>
         /// Gets or sets the exception-throwing behaviour for validation rules.
+        /// The default &amp; recommended behaviour is <see cref="RuleThrowingBehaviour.OnError"/>.
         /// </summary>
-        public RuleThrowingBehaviour? RuleThrowingBehaviour { get; set; }
+        public RuleThrowingBehaviour RuleThrowingBehaviour { get; set; }
 
         /// <summary>
         /// Gets or sets a value which indicates the default behaviour should a value-accessor raise an exception
@@ -30,10 +31,13 @@ namespace CSF.Validation
         /// value may be overridden by <see cref="ManifestValue.AccessorExceptionBehaviour"/> upon an individual
         /// manifest value if it is set to non-<see langword="null" /> value there.
         /// </para>
+        /// <para>
+        /// The default behaviour for this property if unset is <see cref="ValueAccessExceptionBehaviour.TreatAsError"/>.
+        /// </para>
         /// </remarks>
         /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.AccessorExceptionBehaviour"/>
         /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
-        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
+        public ValueAccessExceptionBehaviour AccessorExceptionBehaviour { get; set; }
 
         /// <summary>
         /// Gets or sets a value which determines whether or not the validator should generate validation feedback
@@ -53,6 +57,6 @@ namespace CSF.Validation
         /// of <see langword="null" />.
         /// </para>
         /// </remarks>
-        public bool? EnableMessageGeneration { get; set; }
+        public bool EnableMessageGeneration { get; set; }
     }
 }

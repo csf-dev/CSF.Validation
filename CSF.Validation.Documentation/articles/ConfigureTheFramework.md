@@ -45,7 +45,7 @@ If you would like the framework [to generate human-readable validation feedback 
 
 [the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
 [the standard validation rules NuGet package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
-[`UseValidationFramework()`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+[`UseValidationFramework()`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.ValidationOptions})
 [`UseStandardValidationRules()`]:xref:CSF.Validation.StandardRulesServiceCollectionExtensions.UseStandardValidationRules(Microsoft.Extensions.DependencyInjection.IServiceCollection)
 [write their own validation rule logic classes]:WritingValidators/WritingValidationRules/index.md
 [`UseValidationRulesInAssemblies(IEnumerable<Assembly>)`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})

@@ -18,7 +18,7 @@ namespace CSF.Validation.RuleExecution
                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
                                                                                            [ManifestModel] ManifestValue manifestValue,
                                                                                            object objectToBeValidated,
-                                                                                           ValidationOptions validationOptions)
+                                                                                           ResolvedValidationOptions validationOptions)
         {
             Mock.Get(wrapped)
                 .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
@@ -35,7 +35,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
                                                                                                                            [ManifestModel] ManifestValue manifestValue,
                                                                                                                            object objectToBeValidated,
-                                                                                                                           ValidationOptions validationOptions)
+                                                                                                                           ResolvedValidationOptions validationOptions)
         {
             var circularDependencies = GetSomeCircularDependencies(manifestValue);
             var expectedMessage = @"Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first 10.

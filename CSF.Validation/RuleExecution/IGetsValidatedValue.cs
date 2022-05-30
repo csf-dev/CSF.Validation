@@ -16,6 +16,6 @@ namespace CSF.Validation.RuleExecution
         /// <param name="options">The validation options.</param>
         /// <returns>A validated value, including a hierarchy of descendent values and
         /// the rules which may be executed upon those values.</returns>
-        ValidatedValue GetValidatedValue(ManifestValue manifestValue, object objectToBeValidated, ValidationOptions options);
+        ValidatedValue GetValidatedValue(ManifestValue manifestValue, object objectToBeValidated, ResolvedValidationOptions options);
     }
 }

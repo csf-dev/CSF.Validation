@@ -16,15 +16,11 @@ namespace CSF.Validation.Manifest
         }
 
         [Test,AutoMoqData]
-        public void GetValidatorShouldReturnACorrectlyTypedGenericValidator([Frozen] IServiceProvider resolver,
+        public void GetValidatorShouldReturnACorrectlyTypedGenericValidator([Frozen,AutofixtureServices] IServiceProvider resolver,
                                                                             ValidatorFromManifestFactory sut,
-                                                                            IGetsRuleExecutor executorFactory,
-                                                                            IGetsAllExecutableRulesWithDependencies ruleProvider,
                                                                             [ManifestModel] ValidationManifest manifest)
         {
             manifest.ValidatedType = typeof(string);
-            Mock.Get(resolver).Setup(x => x.GetService(typeof(IGetsRuleExecutor))).Returns(executorFactory);
-            Mock.Get(resolver).Setup(x => x.GetService(typeof(IGetsAllExecutableRulesWithDependencies))).Returns(ruleProvider);
 
             Assert.That(() => sut.GetValidator(manifest), Is.InstanceOf<Validator<string>>());
         }

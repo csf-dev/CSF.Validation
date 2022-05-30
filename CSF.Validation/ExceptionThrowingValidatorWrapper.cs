@@ -10,7 +10,8 @@ namespace CSF.Validation
     {
         static readonly MethodInfo
             getValidatorPrivateMethod = typeof(ExceptionThrowingValidatorWrapper).GetTypeInfo().GetDeclaredMethod(nameof(WrapValidatorPrivate));
-        
+        readonly IGetsResolvedValidationOptions optionsResolver;
+
         /// <inheritdoc/>
         public IValidator WrapValidator(IValidator validator)
         {
@@ -26,6 +27,16 @@ namespace CSF.Validation
             => WrapValidatorPrivate(validator);
 
         IValidator<TValidated> WrapValidatorPrivate<TValidated>(IValidator<TValidated> validator)
-            => new ThrowingBehaviourValidatorDecorator<TValidated>(validator);
+            => new ThrowingBehaviourValidatorDecorator<TValidated>(validator, optionsResolver);
+
+        /// <summary>
+        /// Initialises a new instance of <see cref="ExceptionThrowingValidatorWrapper"/>.
+        /// </summary>
+        /// <param name="optionsResolver">An options resolver.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="optionsResolver"/> is <see langword="null" />.</exception>
+        public ExceptionThrowingValidatorWrapper(IGetsResolvedValidationOptions optionsResolver)
+        {
+            this.optionsResolver = optionsResolver ?? throw new ArgumentNullException(nameof(optionsResolver));
+        }
     }
 }

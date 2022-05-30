@@ -34,12 +34,20 @@ namespace CSF.Validation
         /// For larger applications with good project separation, this will mean that the only project(s) which need a reference
         /// to the full CSF.Validation NuGet package are startup projects where dependency injection is configured.
         /// </para>
+        /// <para>
+        /// If you provide an <paramref name="optionsAction"/> then you may use this to specify the default options for all validators
+        /// created using this dependency injection container.
+        /// Validation options may still be provided at the point of performing validation, using either
+        /// <see cref="IValidator.ValidateAsync(object, ValidationOptions, System.Threading.CancellationToken)"/> or
+        /// <see cref="IValidator{TValidated}.ValidateAsync(TValidated, ValidationOptions, System.Threading.CancellationToken)"/>.
+        /// </para>
         /// </remarks>
         /// <param name="serviceCollection">The service collection to which the validation framework should be added.</param>
+        /// <param name="optionsAction">An optional callback which allows setting up default validation options for the validator.</param>
         /// <returns>The service collection, so that calls may be chained.</returns>
-        public static IServiceCollection UseValidationFramework(this IServiceCollection serviceCollection)
+        public static IServiceCollection UseValidationFramework(this IServiceCollection serviceCollection, Action<ValidationOptions> optionsAction = null)
         {
-            return serviceCollection
+            serviceCollection
                 .AddExternalDependencyServices()
                 .AddManifestServices()
                 .AddManifestModelServices()
@@ -47,8 +55,13 @@ namespace CSF.Validation
                 .AddRulesServices()
                 .AddValidatorBuildingServices()
                 .AddValidatorFactory()
-                .AddMessagesServices()
-                ;
+                .AddMessagesServices();
+
+            var optionsRegistration = serviceCollection.AddOptions<ValidationOptions>();
+            if(!(optionsAction is null))
+                optionsRegistration.Configure(optionsAction);
+
+            return serviceCollection;
         }
 
         #region Validation rules
@@ -221,7 +234,7 @@ namespace CSF.Validation
 
         /// <summary>
         /// Configures the validation framework with types to use as failure message providers, when
-        /// <see cref="ValidationOptions.EnableMessageGeneration"/> is <see langword="true" />.
+        /// <see cref="ResolvedValidationOptions.EnableMessageGeneration"/> is <see langword="true" />.
         /// </summary>
         /// <param name="serviceCollection">A service collection</param>
         /// <param name="configAction">An action which indicates which message provider types to use.</param>

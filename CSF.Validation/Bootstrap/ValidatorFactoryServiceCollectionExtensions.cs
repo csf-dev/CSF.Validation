@@ -11,6 +11,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsBaseValidator, BaseValidatorFactory>()
                 .AddTransient<IWrapsValidatorWithExceptionBehaviour, ExceptionThrowingValidatorWrapper>()
                 .AddTransient<IWrapsValidatorWithMessageSupport, MessageSupportValidatorWrapper>()
+                .AddTransient<IGetsResolvedValidationOptions,ValidationOptionsResolver>()
                 ;
         }
     }

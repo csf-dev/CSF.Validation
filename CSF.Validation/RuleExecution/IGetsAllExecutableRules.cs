@@ -23,6 +23,6 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A flattened collection of executable rules from the manifest value and the value's descendents.</returns>
         IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestValue manifestValue,
                                                          object objectToBeValidated,
-                                                         ValidationOptions options);
+                                                         ResolvedValidationOptions options);
     }
 }

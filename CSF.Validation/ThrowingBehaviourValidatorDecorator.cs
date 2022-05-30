@@ -8,13 +8,14 @@ namespace CSF.Validation
 {
     /// <summary>
     /// A decorator for <see cref="IValidator{TValidated}"/> which throws an exception if the combination of
-    /// validation result and <see cref="ValidationOptions.RuleThrowingBehaviour"/> indicate that an exception
+    /// validation result and <see cref="ResolvedValidationOptions.RuleThrowingBehaviour"/> indicate that an exception
     /// should be thrown.
     /// </summary>
     /// <typeparam name="TValidated"></typeparam>
     public class ThrowingBehaviourValidatorDecorator<TValidated> : IValidator<TValidated>, IValidator
     {
         readonly IValidator<TValidated> wrapped;
+        readonly IGetsResolvedValidationOptions optionsResolver;
 
         /// <inheritdoc/>
         public Type ValidatedType => (wrapped as IValidator)?.ValidatedType ?? typeof(TValidated);
@@ -24,7 +25,7 @@ namespace CSF.Validation
         {
             var result = await wrapped.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);
 
-            ThrowForUnsuccessfulValidationIfApplicable(result, options);
+            ThrowForUnsuccessfulValidationIfApplicable(result, optionsResolver.GetResolvedValidationOptions(options));
 
             return result;
         }
@@ -36,19 +37,18 @@ namespace CSF.Validation
                 ? await nonGenericValidator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false)
                 : (ValidationResult) await ValidateAsync((TValidated)validatedObject, options, cancellationToken).ConfigureAwait(false);
 
-            ThrowForUnsuccessfulValidationIfApplicable(result, options);
+            ThrowForUnsuccessfulValidationIfApplicable(result, optionsResolver.GetResolvedValidationOptions(options));
 
             return result;
         }
 
-        static void ThrowForUnsuccessfulValidationIfApplicable(IQueryableValidationResult result, ValidationOptions options)
+        static void ThrowForUnsuccessfulValidationIfApplicable(IQueryableValidationResult result, ResolvedValidationOptions options)
         {
-            options = options ?? new ValidationOptions();
             if(ShouldThrowForError(options) && result.RuleResults.Any(x => x.Outcome == Rules.RuleOutcome.Errored))
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("ErrorInValidation"),
-                                            nameof(ValidationOptions),
-                                            nameof(ValidationOptions.RuleThrowingBehaviour),
+                                            nameof(ResolvedValidationOptions),
+                                            nameof(ResolvedValidationOptions.RuleThrowingBehaviour),
                                             nameof(RuleThrowingBehaviour),
                                             options.RuleThrowingBehaviour,
                                             nameof(ValidationResult),
@@ -59,8 +59,8 @@ namespace CSF.Validation
             if(ShouldThrowForFailure(options) && result.RuleResults.Any(x => x.Outcome == Rules.RuleOutcome.Failed))
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("FailureInValidation"),
-                                            nameof(ValidationOptions),
-                                            nameof(ValidationOptions.RuleThrowingBehaviour),
+                                            nameof(ResolvedValidationOptions),
+                                            nameof(ResolvedValidationOptions.RuleThrowingBehaviour),
                                             nameof(RuleThrowingBehaviour),
                                             options.RuleThrowingBehaviour,
                                             nameof(ValidationResult),
@@ -70,20 +70,22 @@ namespace CSF.Validation
             }
         }
 
-        static bool ShouldThrowForError(ValidationOptions options)
+        static bool ShouldThrowForError(ResolvedValidationOptions options)
             => new[] { RuleThrowingBehaviour.OnError, RuleThrowingBehaviour.OnFailure }.Contains(options.RuleThrowingBehaviour);
 
-        static bool ShouldThrowForFailure(ValidationOptions options)
+        static bool ShouldThrowForFailure(ResolvedValidationOptions options)
             => options.RuleThrowingBehaviour == RuleThrowingBehaviour.OnFailure;
 
         /// <summary>
         /// Initialises a new instance of <see cref="ThrowingBehaviourValidatorDecorator{TValidated}"/>.
         /// </summary>
         /// <param name="wrapped">The wrapped validator.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="wrapped"/> is <see langword="null" />.</exception>
-        public ThrowingBehaviourValidatorDecorator(IValidator<TValidated> wrapped)
+        /// <param name="optionsResolver">An options resolver.</param>
+        /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
+        public ThrowingBehaviourValidatorDecorator(IValidator<TValidated> wrapped, IGetsResolvedValidationOptions optionsResolver)
         {
             this.wrapped = wrapped ?? throw new ArgumentNullException(nameof(wrapped));
+            this.optionsResolver = optionsResolver ?? throw new ArgumentNullException(nameof(optionsResolver));
         }
     }
 }

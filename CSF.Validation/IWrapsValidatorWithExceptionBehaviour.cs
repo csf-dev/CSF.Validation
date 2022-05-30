@@ -3,7 +3,7 @@ namespace CSF.Validation
     /// <summary>
     /// An object which wraps a validator instance with appropriate exception-throwing behaviour.
     /// </summary>
-    /// <seealso cref="ValidationOptions.RuleThrowingBehaviour"/>
+    /// <seealso cref="ResolvedValidationOptions.RuleThrowingBehaviour"/>
     /// <seealso cref="RuleThrowingBehaviour"/>
     public interface IWrapsValidatorWithExceptionBehaviour
     {

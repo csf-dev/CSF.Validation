@@ -22,7 +22,7 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A collection of all of the executable rules and the dependencies for each rule.</returns>
         public IReadOnlyList<ExecutableRuleAndDependencies> GetRulesWithDependencies(ManifestValue manifestValue,
                                                                                      object objectToBeValidated,
-                                                                                     ValidationOptions validationOptions)
+                                                                                     ResolvedValidationOptions validationOptions)
         {
             var executableRules = executableRulesProvider.GetExecutableRules(manifestValue, objectToBeValidated, validationOptions);
             return GetRulesWithDependencies(executableRules).ToList();
