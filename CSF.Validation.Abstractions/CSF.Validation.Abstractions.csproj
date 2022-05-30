@@ -12,6 +12,7 @@
     <Version>$(ReleaseVersion)</Version>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
     <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
     <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
@@ -23,5 +24,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" Condition="'$(TargetFramework)' == 'net461'" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <None Update="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
