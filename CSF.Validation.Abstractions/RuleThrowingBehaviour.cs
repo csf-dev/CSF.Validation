@@ -6,7 +6,7 @@ namespace CSF.Validation
     /// </summary>
     /// <remarks>
     /// <para>
-    /// The default behaviour if this value is not specified upon the <see cref="ValidationOptions"/> is
+    /// The default behaviour if this value is not specified upon the <see cref="ResolvedValidationOptions"/> is
     /// <see cref="OnError"/>.
     /// This is recommended for normal use.
     /// </para>
@@ -32,7 +32,7 @@ namespace CSF.Validation
     /// an unexpected exception will be treated very similarly to normal validation failures.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ValidationOptions"/>
+    /// <seealso cref="ResolvedValidationOptions"/>
     /// <seealso cref="Manifest.ValueAccessExceptionBehaviour"/>
     public enum RuleThrowingBehaviour
     {

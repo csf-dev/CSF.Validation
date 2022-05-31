@@ -14,7 +14,7 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <param name="options">The validation options.</param>
         /// <returns>A single-rule execution service instance.</returns>
-        public IExeucutesSingleRule GetRuleExecutor(ValidationOptions options)
+        public IExeucutesSingleRule GetRuleExecutor(ResolvedValidationOptions options)
             => new SingleRuleExecutor(contextFactory);
 
         /// <summary>

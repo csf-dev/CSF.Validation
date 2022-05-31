@@ -71,7 +71,7 @@ namespace CSF.Validation.Manifest
     /// </para>
     /// </remarks>
     /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
-    /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
+    /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
     /// <seealso cref="CSF.Validation.RuleExecution.IGetsValueToBeValidated"/>
     /// <seealso cref="CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour"/>
     public enum ValueAccessExceptionBehaviour

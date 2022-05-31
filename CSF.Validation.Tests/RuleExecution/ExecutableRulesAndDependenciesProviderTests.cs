@@ -16,7 +16,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                object objectToBeValidated,
                                                                                                [ExecutableModel] ExecutableRule rule,
                                                                                                ExecutableRulesAndDependenciesProvider sut,
-                                                                                               ValidationOptions validationOptions)
+                                                                                               ResolvedValidationOptions validationOptions)
         {
             Mock.Get(executableRulesProvider)
                 .Setup(x => x.GetExecutableRules(manifestValue, objectToBeValidated, validationOptions))
@@ -36,7 +36,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                                    ManifestRule manifestDependency,
                                                                                                                                    [ExecutableModel] ValidatedValue validatedValue,
                                                                                                                                    ExecutableRulesAndDependenciesProvider sut,
-                                                                                                                                   ValidationOptions validationOptions)
+                                                                                                                                   ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             var dependency = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestDependency, RuleLogic = logic };
@@ -62,7 +62,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                               ManifestRule manifestDependency,
                                                                                                               [ExecutableModel] ValidatedValue validatedValue,
                                                                                                               ExecutableRulesAndDependenciesProvider sut,
-                                                                                                              ValidationOptions validationOptions)
+                                                                                                              ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             var dependency = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestDependency, RuleLogic = logic };
@@ -89,7 +89,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                                    [ExecutableModel] ValidatedValue validatedValue,
                                                                                                                                    [ExecutableModel] ValidatedValue parentValue,
                                                                                                                                    ExecutableRulesAndDependenciesProvider sut,
-                                                                                                                                   ValidationOptions validationOptions)
+                                                                                                                                   ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             validatedValue.ParentValue = parentValue;
@@ -118,7 +118,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                                         [ExecutableModel] ValidatedValue parentValue,
                                                                                                                                         [ExecutableModel] ValidatedValue grandparentValue,
                                                                                                                                         ExecutableRulesAndDependenciesProvider sut,
-                                                                                                                                        ValidationOptions validationOptions)
+                                                                                                                                        ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             validatedValue.ParentValue = parentValue;
@@ -149,7 +149,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                                                [ExecutableModel] ValidatedValue grandparentValue,
                                                                                                                                                [ExecutableModel] ValidatedValue parentSiblingValue,
                                                                                                                                                ExecutableRulesAndDependenciesProvider sut,
-                                                                                                                                               ValidationOptions validationOptions)
+                                                                                                                                               ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             validatedValue.ParentValue = parentValue;
@@ -179,7 +179,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                         [ExecutableModel] ValidatedValue validatedValue,
                                                                                                                         [ExecutableModel] ValidatedValue parentValue,
                                                                                                                         ExecutableRulesAndDependenciesProvider sut,
-                                                                                                                        ValidationOptions validationOptions)
+                                                                                                                        ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             validatedValue.ParentValue = parentValue;
@@ -203,7 +203,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                      [ExecutableModel] ValidatedValue validatedValue,
                                                                                                      [ExecutableModel] ValidatedValue parentValue,
                                                                                                      ExecutableRulesAndDependenciesProvider sut,
-                                                                                                     ValidationOptions validationOptions)
+                                                                                                     ResolvedValidationOptions validationOptions)
         {
             var rule = new ExecutableRule { ValidatedValue = validatedValue, ManifestRule = manifestRule, RuleLogic = logic };
             validatedValue.ParentValue = parentValue;

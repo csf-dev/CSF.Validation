@@ -8,34 +8,18 @@ namespace CSF.Validation
     /// </summary>
     /// <remarks>
     /// <para>
-    /// In this model, every property is nullable.  If any given property is set to a non-null value, then that value is used.
-    /// Property which are set to <see langword="null" /> are treated as unset/not-specified will use a default value instead.
-    /// </para>
-    /// <para>
-    /// Validation options may be specified in either or both of two places.  Thay may be configured at the point where the
-    /// validator is added to dependency injection, with the <c>UseValidationFramework()</c> method.
-    /// Options may also be specified when using either
-    /// <see cref="IValidator.ValidateAsync(object, ValidationOptions, System.Threading.CancellationToken)"/> or
-    /// <see cref="IValidator{TValidated}.ValidateAsync(TValidated, ValidationOptions, System.Threading.CancellationToken)"/>.
-    /// The order of precendence for any option value (properties of this type) is:
-    /// </para>
-    /// <list type="number">
-    /// <item><description>If specified in the <c>ValidateAsync()</c> method then that specified value is used.</description></item>
-    /// <item><description>If specified as a default value in <c>UseValidationFramework()</c> then that default value is used.</description></item>
-    /// <item><description>If neither of the above is specified then a hard-coded default value is used.  See
-    /// <see cref="ResolvedValidationOptions"/> for info on which values are used as the hard-coded defaults.</description></item>
-    /// </list>
-    /// <para>
-    /// For more information about validation options, please <xref href="ValidationOptions?text=read+the+corresponding+documentation+article" />.
+    /// In this model, every property is non-nullable and has a concrete value. Do not use this class to
+    /// specify options at the developer/API level.  Instead use <see cref="ValidationOptions"/> for that purpose.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ResolvedValidationOptions"/>
-    public class ValidationOptions
+    /// <seealso cref="ValidationOptions"/>
+    public class ResolvedValidationOptions
     {
         /// <summary>
         /// Gets or sets the exception-throwing behaviour for validation rules.
+        /// The default &amp; recommended behaviour is <see cref="RuleThrowingBehaviour.OnError"/>.
         /// </summary>
-        public RuleThrowingBehaviour? RuleThrowingBehaviour { get; set; }
+        public RuleThrowingBehaviour RuleThrowingBehaviour { get; set; }
 
         /// <summary>
         /// Gets or sets a value which indicates the default behaviour should a value-accessor raise an exception
@@ -47,10 +31,13 @@ namespace CSF.Validation
         /// value may be overridden by <see cref="ManifestValue.AccessorExceptionBehaviour"/> upon an individual
         /// manifest value if it is set to non-<see langword="null" /> value there.
         /// </para>
+        /// <para>
+        /// The default behaviour for this property if unset is <see cref="ValueAccessExceptionBehaviour.TreatAsError"/>.
+        /// </para>
         /// </remarks>
         /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.AccessorExceptionBehaviour"/>
         /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
-        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
+        public ValueAccessExceptionBehaviour AccessorExceptionBehaviour { get; set; }
 
         /// <summary>
         /// Gets or sets a value which determines whether or not the validator should generate validation feedback
@@ -70,6 +57,6 @@ namespace CSF.Validation
         /// of <see langword="null" />.
         /// </para>
         /// </remarks>
-        public bool? EnableMessageGeneration { get; set; }
+        public bool EnableMessageGeneration { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace CSF.Validation.RuleExecution
     public class SingleRuleExecutorFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetRuleExecutorShouldReturnAnInstanceOfSingleRuleExecutor(ValidationOptions options,
+        public void GetRuleExecutorShouldReturnAnInstanceOfSingleRuleExecutor(ResolvedValidationOptions options,
                                                                               SingleRuleExecutorFactory sut)
         {
             Assert.That(() => sut.GetRuleExecutor(options), Is.InstanceOf<SingleRuleExecutor>());

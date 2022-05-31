@@ -9,7 +9,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetBehaviourShouldReturnManifestBehaviourIfItIsNotNull(ValueAccessExceptionBehaviourProvider sut,
                                                                            [ManifestModel] ManifestValue manifestValue,
-                                                                           ValidationOptions validationOptions,
+                                                                           ResolvedValidationOptions validationOptions,
                                                                            ValueAccessExceptionBehaviour valueBehaviour,
                                                                            ValueAccessExceptionBehaviour optionsBehaviour)
         {
@@ -21,7 +21,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetBehaviourShouldReturnOptionsBehaviourIfManifestBehaviourIsNull(ValueAccessExceptionBehaviourProvider sut,
                                                                                       [ManifestModel] ManifestValue manifestValue,
-                                                                                      ValidationOptions validationOptions,
+                                                                                      ResolvedValidationOptions validationOptions,
                                                                                       ValueAccessExceptionBehaviour optionsBehaviour)
         {
             manifestValue.AccessorExceptionBehaviour = null;

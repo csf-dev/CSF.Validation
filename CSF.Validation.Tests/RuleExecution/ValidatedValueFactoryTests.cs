@@ -15,7 +15,7 @@ namespace CSF.Validation.RuleExecution
         public void GetValidatedValueShouldReturnSingleValueForManifestValueWithNoParentOrChildrenOrRules([Frozen] IGetsValidatedValueFromBasis valueFromBasisFactory,
                                                                                                           ValidatedValueFactory sut,
                                                                                                           object validatedValue,
-                                                                                                          ValidationOptions validationOptions,
+                                                                                                          ResolvedValidationOptions validationOptions,
                                                                                                           [ExecutableModel] ValidatedValue value)
         {
             var manifestValue = new ManifestValue { ValidatedType = typeof(object) };
@@ -33,7 +33,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                         [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
                                                                                                         ValidatedValueFactory sut,
                                                                                                         IEnumerable<object> validatedValue,
-                                                                                                        ValidationOptions validationOptions,
+                                                                                                        ResolvedValidationOptions validationOptions,
                                                                                                         [ExecutableModel] ValidatedValue value,
                                                                                                         [ExecutableModel] ValidatedValue collectionValue,
                                                                                                         object item)
@@ -68,7 +68,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                         [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
                                                                                                         ValidatedValueFactory sut,
                                                                                                         IEnumerable<object> validatedValue,
-                                                                                                        ValidationOptions validationOptions,
+                                                                                                        ResolvedValidationOptions validationOptions,
                                                                                                         [ExecutableModel] ValidatedValue value,
                                                                                                         [ExecutableModel] ValidatedValue childValue,
                                                                                                         [ExecutableModel] ValidatedValue collectionValue,
@@ -120,7 +120,7 @@ namespace CSF.Validation.RuleExecution
                                                                                              [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
                                                                                              ValidatedValueFactory sut,
                                                                                              IEnumerable<object> validatedValue,
-                                                                                             ValidationOptions validationOptions,
+                                                                                             ResolvedValidationOptions validationOptions,
                                                                                              [ExecutableModel] ValidatedValue value,
                                                                                              [ExecutableModel] ValidatedValue collectionValue,
                                                                                              object item1,
@@ -158,7 +158,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                     ValidatedValueFactory sut,
                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
                                                                                                     string childValue,
-                                                                                                    ValidationOptions validationOptions,
+                                                                                                    ResolvedValidationOptions validationOptions,
                                                                                                     [ExecutableModel] ValidatedValue val,
                                                                                                     [ExecutableModel] ValidatedValue childVal)
         {
@@ -197,7 +197,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                           ValidatedValueFactory sut,
                                                                                                           [NoAutoProperties] ComplexObject validatedValue,
                                                                                                           string childValue,
-                                                                                                          ValidationOptions validationOptions,
+                                                                                                          ResolvedValidationOptions validationOptions,
                                                                                                           [ExecutableModel] ValidatedValue val,
                                                                                                           [ExecutableModel] ValidatedValue childVal)
         {
@@ -235,7 +235,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
                                                                                                     [NoAutoProperties] ComplexObject childValue,
                                                                                                     string grandchildValue,
-                                                                                                    ValidationOptions validationOptions,
+                                                                                                    ResolvedValidationOptions validationOptions,
                                                                                                     [ExecutableModel] ValidatedValue val,
                                                                                                     [ExecutableModel] ValidatedValue childVal,
                                                                                                     [ExecutableModel] ValidatedValue grandchildVal)
@@ -294,7 +294,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                     [Frozen] IGetsEnumerableItemsToBeValidated enumerableProvider,
                                                                                                     ValidatedValueFactory sut,
                                                                                                     [NoAutoProperties] ComplexObject validatedValue,
-                                                                                                    ValidationOptions validationOptions,
+                                                                                                    ResolvedValidationOptions validationOptions,
                                                                                                     [ExecutableModel] ValidatedValue val,
                                                                                                     [ExecutableModel] ValidatedValue firstCollection,
                                                                                                     [ExecutableModel] ValidatedValue secondCollection,

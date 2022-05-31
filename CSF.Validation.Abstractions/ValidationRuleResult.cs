@@ -53,8 +53,8 @@ namespace CSF.Validation
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This property will always contain a <see langword="null" /> reference unless <see cref="ValidationOptions"/>
-        /// are specified and the <see cref="ValidationOptions.EnableMessageGeneration"/> is set to <see langword="true" />.
+        /// This property will always contain a <see langword="null" /> reference unless <see cref="ResolvedValidationOptions"/>
+        /// are specified and the <see cref="ResolvedValidationOptions.EnableMessageGeneration"/> is set to <see langword="true" />.
         /// If the options are not specified or message generation is not enabled, then generation of feedback messages
         /// is disabled/skipped.
         /// </para>

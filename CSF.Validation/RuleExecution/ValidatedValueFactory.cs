@@ -33,7 +33,7 @@ namespace CSF.Validation.RuleExecution
         /// the rules which may be executed upon those values.</returns>
         public ValidatedValue GetValidatedValue(ManifestValue manifestValue,
                                                 object objectToBeValidated,
-                                                ValidationOptions options)
+                                                ResolvedValidationOptions options)
         {
             if (manifestValue is null)
                 throw new ArgumentNullException(nameof(manifestValue));
@@ -87,7 +87,7 @@ namespace CSF.Validation.RuleExecution
         void FindAndAddChildrenToOpenList(ValidatedValueBasis currentBasis,
                                           ValidatedValue currentValue,
                                           Queue<ValidatedValueBasis> openList,
-                                          ValidationOptions options)
+                                          ResolvedValidationOptions options)
         {
             if(!currentValue.ValueResponse.IsSuccess)
                 return;

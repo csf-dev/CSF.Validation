@@ -8,7 +8,7 @@ namespace CSF.Validation.RuleExecution
     public class ValueAccessExceptionBehaviourProvider : IGetsAccessorExceptionBehaviour
     {
         /// <inheritdoc/>
-        public ValueAccessExceptionBehaviour GetBehaviour(ManifestValue manifestValue, ValidationOptions validationOptions)
+        public ValueAccessExceptionBehaviour GetBehaviour(ManifestValue manifestValue, ResolvedValidationOptions validationOptions)
         {
             return manifestValue.AccessorExceptionBehaviour.HasValue
                 ? manifestValue.AccessorExceptionBehaviour.Value

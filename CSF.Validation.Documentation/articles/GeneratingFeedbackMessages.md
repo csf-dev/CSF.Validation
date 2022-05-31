@@ -21,8 +21,13 @@ If you wish to use it then it must be explicitly enabled by setting the validati
 
 ## Writing feedback messages for rules
 
-In CSF.Validation, human-readable failure messages generated from classes and each message is associated with a single failed rule.
-The [validation rule result] for the failure is inspected by the framework and if a suitable "message provider" class may be found then it is used to get the message associated with that result.
+In CSF.Validation, human-readable failure messages are generated for each individual validation rule result.
+Most commonly, messages have a one-to-one relationship with validation rules; _if rule X indicates a failure, then message X is used, if rule Y fails then use message Y_ and so on.
+In full, the [validation rule result] for the rule failure is inspected and then framework looks for a suitable "message provider" class which may get the message for that failure result.
+
+There are two techniques available for writing message providers, and they may be mixed within the same project or even the same validator.
+You may keep the rule logic and message provider together, in the same class; this is the easiest and simplest technique.
+Alternatively, you may split the message provider from the rule logic and keep them in separate classes; this may be useful in advanced scenarios.
 
 ### Message providers combined with rules
 

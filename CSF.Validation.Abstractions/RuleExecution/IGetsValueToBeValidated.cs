@@ -32,6 +32,6 @@ namespace CSF.Validation.RuleExecution
         /// <exception cref="ValidationException">If the attempt fails and the error-handling behaviour is <see cref="ValueAccessExceptionBehaviour.Throw"/>.</exception>
         GetValueToBeValidatedResponse GetValueToBeValidated(ManifestValue manifestValue,
                                                             object parentValue,
-                                                            ValidationOptions validationOptions);
+                                                            ResolvedValidationOptions validationOptions);
     }
 }

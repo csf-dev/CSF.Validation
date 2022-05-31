@@ -26,13 +26,13 @@ namespace CSF.Validation
                                                                                                [RuleResult] ValidationRuleResult[] results)
         {
             Mock.Get(executorFactory)
-                .Setup(x => x.GetRuleExecutorAsync(options, cancellationToken))
+                .Setup(x => x.GetRuleExecutorAsync(It.IsAny<ResolvedValidationOptions>(), cancellationToken))
                 .Returns(Task.FromResult(executor));
             Mock.Get(executor)
                 .Setup(x => x.ExecuteAllRulesAsync(ruleAndDependencies, cancellationToken))
                 .Returns(Task.FromResult((IReadOnlyCollection<ValidationRuleResult>) results));
             Mock.Get(ruleFactory)
-                .Setup(x => x.GetRulesWithDependencies(manifest.RootValue, validatedObject, options))
+                .Setup(x => x.GetRulesWithDependencies(manifest.RootValue, validatedObject, It.IsAny<ResolvedValidationOptions>()))
                 .Returns(ruleAndDependencies);
 
             var result = await sut.ValidateAsync(validatedObject, options, cancellationToken);
@@ -53,13 +53,13 @@ namespace CSF.Validation
                                                                                                [RuleResult] ValidationRuleResult[] results)
         {
             Mock.Get(executorFactory)
-                .Setup(x => x.GetRuleExecutorAsync(options, cancellationToken))
+                .Setup(x => x.GetRuleExecutorAsync(It.IsAny<ResolvedValidationOptions>(), cancellationToken))
                 .Returns(Task.FromResult(executor));
             Mock.Get(executor)
                 .Setup(x => x.ExecuteAllRulesAsync(ruleAndDependencies, cancellationToken))
                 .Returns(Task.FromResult((IReadOnlyCollection<ValidationRuleResult>) results));
             Mock.Get(ruleFactory)
-                .Setup(x => x.GetRulesWithDependencies(manifest.RootValue, validatedObject, options))
+                .Setup(x => x.GetRulesWithDependencies(manifest.RootValue, validatedObject, It.IsAny<ResolvedValidationOptions>()))
                 .Returns(ruleAndDependencies);
 
             var result = await ((IValidator) sut).ValidateAsync(validatedObject, options, cancellationToken);

@@ -20,7 +20,7 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A flattened collection of executable rules from the manifest value and the value's descendents.</returns>
         public IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestValue manifestValue,
                                                                 object objectToBeValidated,
-                                                                ValidationOptions options)
+                                                                ResolvedValidationOptions options)
         {
             var validatedValue = validatedValueProvider.GetValidatedValue(manifestValue, objectToBeValidated, options);
             return GetFlattenedExecutableRules(validatedValue).ToList();

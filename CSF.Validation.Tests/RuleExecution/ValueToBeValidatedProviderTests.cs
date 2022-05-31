@@ -13,7 +13,7 @@ namespace CSF.Validation.RuleExecution
         public void GetValueToBeValidatedShouldReturnSuccessResponseIfTheValueIsReadable(ValueToBeValidatedProvider sut,
                                                                                  [ManifestModel] ManifestValue manifestValue,
                                                                                  object parentValue,
-                                                                                 ValidationOptions validationOptions,
+                                                                                 ResolvedValidationOptions validationOptions,
                                                                                  object value)
         {
             manifestValue.AccessorFromParent = obj => value;
@@ -24,7 +24,7 @@ namespace CSF.Validation.RuleExecution
         public void GetValueToBeValidatedShouldExposeTheCorrectValueWhenItIsReadable(ValueToBeValidatedProvider sut,
                                                                                         [ManifestModel] ManifestValue manifestValue,
                                                                                         object parentValue,
-                                                                                        ValidationOptions validationOptions,
+                                                                                        ResolvedValidationOptions validationOptions,
                                                                                         object expected)
         {
             manifestValue.AccessorFromParent = obj => expected;
@@ -35,7 +35,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldReturnIgnoredResultIfTheParentValueIsNull(ValueToBeValidatedProvider sut,
                                                                                          [ManifestModel] ManifestValue manifestValue,
-                                                                                         ValidationOptions validationOptions)
+                                                                                         ResolvedValidationOptions validationOptions)
         {
             Assert.That(() => sut.GetValueToBeValidated(manifestValue, null, validationOptions), Is.InstanceOf<IgnoredGetValueToBeValidatedResponse>());
         }
@@ -45,7 +45,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                     ValueToBeValidatedProvider sut,
                                                                                                     [ManifestModel] ManifestValue manifestValue,
                                                                                                     object parentValue,
-                                                                                                    ValidationOptions validationOptions,
+                                                                                                    ResolvedValidationOptions validationOptions,
                                                                                                     Exception exception)
         {
             Mock.Get(behaviourProvider).Setup(x => x.GetBehaviour(manifestValue, validationOptions)).Returns(ValueAccessExceptionBehaviour.Throw);
@@ -59,7 +59,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                                 ValueToBeValidatedProvider sut,
                                                                                                                 [ManifestModel] ManifestValue manifestValue,
                                                                                                                 object parentValue,
-                                                                                                                ValidationOptions validationOptions,
+                                                                                                                ResolvedValidationOptions validationOptions,
                                                                                                                 Exception exception)
         {
             Mock.Get(behaviourProvider).Setup(x => x.GetBehaviour(manifestValue, validationOptions)).Returns(ValueAccessExceptionBehaviour.Ignore);
@@ -72,7 +72,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                              ValueToBeValidatedProvider sut,
                                                                                                              [ManifestModel] ManifestValue manifestValue,
                                                                                                              object parentValue,
-                                                                                                             ValidationOptions validationOptions,
+                                                                                                             ResolvedValidationOptions validationOptions,
                                                                                                              Exception exception)
         {
             Mock.Get(behaviourProvider).Setup(x => x.GetBehaviour(manifestValue, validationOptions)).Returns(ValueAccessExceptionBehaviour.TreatAsError);

@@ -25,7 +25,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                               ExecutableRulesFromValidatedValueProvider sut,
                                                                                                               [ManifestModel] ManifestValue manifestValue,
                                                                                                               object valueToBeValidated,
-                                                                                                              ValidationOptions validationOptions)
+                                                                                                              ResolvedValidationOptions validationOptions)
         {
             rootValue.ChildValues.Add(childVal1);
             rootValue.ChildValues.Add(childVal2);
@@ -61,7 +61,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                               ExecutableRulesFromValidatedValueProvider sut,
                                                                                                               [ManifestModel] ManifestValue manifestValue,
                                                                                                               object valueToBeValidated,
-                                                                                                              ValidationOptions validationOptions)
+                                                                                                              ResolvedValidationOptions validationOptions)
         {
             rootValue.ChildValues.Add(childVal1);
             rootValue.ChildValues.Add(childVal2);

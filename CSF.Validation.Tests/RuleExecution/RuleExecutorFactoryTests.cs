@@ -13,7 +13,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetRuleExecutorAsyncShouldReturnAnInstanceOfSerialRuleExecutor([Frozen] IServiceProvider resolver,
                                                                                    RuleExecutorFactory sut,
-                                                                                   ValidationOptions options,
+                                                                                   ResolvedValidationOptions options,
                                                                                    IGetsRuleDependencyTracker dependencyTrackerFactory,
                                                                                    IGetsSingleRuleExecutor ruleExecutorFactory,
                                                                                    IGetsRuleContext contextFactory)
