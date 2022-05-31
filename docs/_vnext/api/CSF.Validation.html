@@ -90,6 +90,9 @@ a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidat
       <h4><a class="xref" href="CSF.Validation.MessageSupportValidatorWrapper.html">MessageSupportValidatorWrapper</a></h4>
       <section><p>A service which wraps a validator with functionality which adds message support.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.ResolvedValidationOptions.html">ResolvedValidationOptions</a></h4>
+      <section><p>A model for options which affect how a validator should behave whilst it is performing its validation.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.RuleBuilderExtensions.html">RuleBuilderExtensions</a></h4>
       <section><p>Extension methods for instances of <a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule&lt;TRule&gt;</a>.</p>
 </section>
@@ -108,7 +111,7 @@ subset of a larger validation result.  This is usually due to some form of filte
 </section>
       <h4><a class="xref" href="CSF.Validation.ThrowingBehaviourValidatorDecorator-1.html">ThrowingBehaviourValidatorDecorator&lt;TValidated&gt;</a></h4>
       <section><p>A decorator for <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a> which throws an exception if the combination of
-validation result and <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour">RuleThrowingBehaviour</a> indicate that an exception
+validation result and <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_RuleThrowingBehaviour">RuleThrowingBehaviour</a> indicate that an exception
 should be thrown.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ValidationException.html">ValidationException</a></h4>
@@ -116,6 +119,9 @@ should be thrown.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a></h4>
       <section><p>A model for options which affect how a validator should behave whilst it is performing its validation.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.ValidationOptionsResolver.html">ValidationOptionsResolver</a></h4>
+      <section><p>A service which gets the resolved validation options.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ValidationResult.html">ValidationResult</a></h4>
       <section><p>A model for the results of a validation process.</p>
@@ -154,6 +160,10 @@ the rules which the validator will use.</p>
       <h4><a class="xref" href="CSF.Validation.IGetsBaseValidator.html">IGetsBaseValidator</a></h4>
       <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.Validator-1.html">Validator&lt;TValidated&gt;</a>,
 the basic/fundamental part of the validator.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.IGetsResolvedValidationOptions.html">IGetsResolvedValidationOptions</a></h4>
+      <section><p>An object which can get the resolved/final/effective validation options, combining all of the ways
+in which they might be specified.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IGetsValidator.html">IGetsValidator</a></h4>
       <section><p>An object which may be used as the factory from which to create validator instances.</p>

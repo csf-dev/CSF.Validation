@@ -124,12 +124,12 @@ with your dependency injection container.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseMessageProviders_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_Bootstrap_IRegistersMessageProviders__.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseMessageProviders(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Action%7BCSF.Validation.Bootstrap.IRegistersMessageProviders%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L229">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L247">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseMessageProviders_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseMessageProviders*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseMessageProviders_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_Bootstrap_IRegistersMessageProviders__" data-uid="CSF.Validation.ServiceCollectionExtensions.UseMessageProviders(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.Bootstrap.IRegistersMessageProviders})">UseMessageProviders(IServiceCollection, Action&lt;IRegistersMessageProviders&gt;)</h4>
   <div class="markdown level1 summary"><p>Configures the validation framework with types to use as failure message providers, when
-<a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableMessageGeneration">EnableMessageGeneration</a> is <span class="xref">true</span>.</p>
+<a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration">EnableMessageGeneration</a> is <span class="xref">true</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -178,20 +178,20 @@ with your dependency injection container.
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions__.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Action%7BCSF.Validation.ValidationOptions%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L40">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L53">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationFramework*"></a>
-  <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection)">UseValidationFramework(IServiceCollection)</h4>
+  <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions__" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.ValidationOptions})">UseValidationFramework(IServiceCollection, Action&lt;ValidationOptions&gt;)</h4>
   <div class="markdown level1 summary"><p>Adds the validation framework to the service collection, such that it may be injected into classes
 which should consume validation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection UseValidationFramework(this IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection UseValidationFramework(this IServiceCollection serviceCollection, Action&lt;ValidationOptions&gt; optionsAction = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -207,6 +207,12 @@ which should consume validation.</p>
         <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
         <td><p>The service collection to which the validation framework should be added.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a>&gt;</td>
+        <td><span class="parametername">optionsAction</span></td>
+        <td><p>An optional callback which allows setting up default validation options for the validator.</p>
 </td>
       </tr>
     </tbody>
@@ -227,7 +233,7 @@ which should consume validation.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection__remarks">Remarks</h5>
+  <h5 id="CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>
 Use this method to configure the validation framework with your own application&apos;s dependency injection.
 This method makes all of the interfaces in the <code>CSF.Validation.Abstractions</code> assembly (found in the
@@ -239,13 +245,28 @@ package.  These projects do not require a dependency upon the full CSF.Validatio
 For larger applications with good project separation, this will mean that the only project(s) which need a reference
 to the full CSF.Validation NuGet package are startup projects where dependency injection is configured.
 </p>
+<p>
+If you provide an <code data-dev-comment-type="paramref" class="paramref">optionsAction</code> then you may configure the default options for all validators
+created using this dependency injection container.
+Validation options may still be provided at the point of performing validation, using either
+<a class="xref" href="CSF.Validation.IValidator.html#CSF_Validation_IValidator_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_">ValidateAsync(Object, ValidationOptions, CancellationToken)</a> or
+<a class="xref" href="CSF.Validation.IValidator-1.html#CSF_Validation_IValidator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_">ValidateAsync(TValidated, ValidationOptions, CancellationToken)</a>.
+When both default options are configured here, and options are specified upon the <code>ValidateAsync</code> method, the
+options specified at the point of validation take precedence.
+</p>
 </div>
+  <h5 id="CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.IValidator.html#CSF_Validation_IValidator_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_">ValidateAsync</a>(<span class="xref">System.Object</span>, <a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a>, <span class="xref">System.Threading.CancellationToken</span>)</div>
+      <div><a class="xref" href="CSF.Validation.IValidator-1.html#CSF_Validation_IValidator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_">ValidateAsync</a>(TValidated, <a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a>, <span class="xref">System.Threading.CancellationToken</span>)</div>
+      <div><a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a></div>
+  </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidationRule_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidationRule(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L132">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L150">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidationRule_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRule*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidationRule_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRule(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">UseValidationRule(IServiceCollection, Type)</h4>
@@ -308,7 +329,7 @@ to use one of the following methods to add rules in bulk, using assembly-scannin
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Collections.Generic.IEnumerable%7BSystem.Reflection.Assembly%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L104">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L122">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">UseValidationRulesInAssemblies(IServiceCollection, IEnumerable&lt;Assembly&gt;)</h4>
@@ -372,7 +393,7 @@ way to add many validation rules to your dependency injection container.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Reflection.Assembly%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L87">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L105">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">UseValidationRulesInAssemblies(IServiceCollection, Assembly[])</h4>
@@ -436,7 +457,7 @@ way to add many validation rules to your dependency injection container.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Reflection.Assembly)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L70">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L88">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidationRulesInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">UseValidationRulesInAssembly(IServiceCollection, Assembly)</h4>
@@ -500,7 +521,7 @@ way to add many validation rules to your dependency injection container.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidatorBuilder_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L215">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L233">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuilder_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuilder_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Type_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">UseValidatorBuilder(IServiceCollection, Type)</h4>
@@ -563,7 +584,7 @@ to use one of the following methods to add builders in bulk, using assembly-scan
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Collections.Generic.IEnumerable%7BSystem.Reflection.Assembly%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L187">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L205">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">UseValidatorBuildersInAssemblies(IServiceCollection, IEnumerable&lt;Assembly&gt;)</h4>
@@ -627,7 +648,7 @@ way to add many validator builders to your dependency injection container.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Reflection.Assembly%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L170">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L188">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">UseValidatorBuildersInAssemblies(IServiceCollection, Assembly[])</h4>
@@ -691,7 +712,7 @@ way to add many validator builders to your dependency injection container.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_.md&amp;value=---%0Auid%3A%20CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.Reflection.Assembly)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L153">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ServiceCollectionExtensions.cs/#L171">View Source</a>
   </span>
   <a id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssembly_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly*"></a>
   <h4 id="CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssembly_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_" data-uid="CSF.Validation.ServiceCollectionExtensions.UseValidatorBuildersInAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">UseValidatorBuildersInAssembly(IServiceCollection, Assembly)</h4>

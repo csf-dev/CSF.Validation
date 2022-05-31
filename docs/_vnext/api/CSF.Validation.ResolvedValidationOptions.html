@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ValidationOptions
+    <title>Class ResolvedValidationOptions
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ValidationOptions
+    <meta name="title" content="Class ResolvedValidationOptions
    ">
     <meta name="generator" content="docfx 2.58.9.0">
     
@@ -68,10 +68,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="CSF.Validation.ValidationOptions">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.ResolvedValidationOptions">
   
   
-  <h1 id="CSF_Validation_ValidationOptions" data-uid="CSF.Validation.ValidationOptions" class="text-break">Class ValidationOptions
+  <h1 id="CSF_Validation_ResolvedValidationOptions" data-uid="CSF.Validation.ResolvedValidationOptions" class="text-break">Class ResolvedValidationOptions
   </h1>
   <div class="markdown level0 summary"><p>A model for options which affect how a validator should behave whilst it is performing its validation.</p>
 </div>
@@ -79,7 +79,7 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ValidationOptions</span></div>
+    <div class="level1"><span class="xref">ResolvedValidationOptions</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -107,47 +107,34 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.html">CSF.Validation</a></h6>
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
-  <h5 id="CSF_Validation_ValidationOptions_syntax">Syntax</h5>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ValidationOptions</code></pre>
+    <pre><code class="lang-csharp hljs">public class ResolvedValidationOptions</code></pre>
   </div>
-  <h5 id="CSF_Validation_ValidationOptions_remarks"><strong>Remarks</strong></h5>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>
-In this model, every property is nullable.  If any given property is set to a non-null value, then that value is used.
-Property which are set to <span class="xref">null</span> are treated as unset/not-specified will use a default value instead.
-</p>
-<p>
-Validation options may be specified in either or both of two places.  Thay may be configured at the point where the
-validator is added to dependency injection, with the <code>UseValidationFramework()</code> method.
-Options may also be specified when using either
-<a class="xref" href="CSF.Validation.IValidator.html#CSF_Validation_IValidator_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_">ValidateAsync(Object, ValidationOptions, CancellationToken)</a> or
-<a class="xref" href="CSF.Validation.IValidator-1.html#CSF_Validation_IValidator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_">ValidateAsync(TValidated, ValidationOptions, CancellationToken)</a>.
-The order of precendence for any option value (properties of this type) is:
-</p>
-<ol><li>If specified in the <code>ValidateAsync()</code> method then that specified value is used.</li><li>If specified as a default value in <code>UseValidationFramework()</code> then that default value is used.</li><li>If neither of the above is specified then a hard-coded default value is used.  See
-<a class="xref" href="CSF.Validation.ResolvedValidationOptions.html">ResolvedValidationOptions</a> for info on which values are used as the hard-coded defaults.</li></ol>
-<p>
-For more information about validation options, please <a class="xref" href="../articles/ValidationOptions.html">read the corresponding documentation article</a>.
+In this model, every property is non-nullable and has a concrete value. Do not use this class to
+specify options at the developer/API level.  Instead use <a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a> for that purpose.
 </p>
 </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationOptions_AccessorExceptionBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationOptions.AccessorExceptionBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions.AccessorExceptionBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidationOptions.cs/#L53">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L40">View Source</a>
   </span>
-  <a id="CSF_Validation_ValidationOptions_AccessorExceptionBehaviour_" data-uid="CSF.Validation.ValidationOptions.AccessorExceptionBehaviour*"></a>
-  <h4 id="CSF_Validation_ValidationOptions_AccessorExceptionBehaviour" data-uid="CSF.Validation.ValidationOptions.AccessorExceptionBehaviour">AccessorExceptionBehaviour</h4>
+  <a id="CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour_" data-uid="CSF.Validation.ResolvedValidationOptions.AccessorExceptionBehaviour*"></a>
+  <h4 id="CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour" data-uid="CSF.Validation.ResolvedValidationOptions.AccessorExceptionBehaviour">AccessorExceptionBehaviour</h4>
   <div class="markdown level1 summary"><p>Gets or sets a value which indicates the default behaviour should a value-accessor raise an exception
 during validation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueAccessExceptionBehaviour AccessorExceptionBehaviour { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,39 +146,42 @@ during validation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>&gt;</td>
+        <td><a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="CSF_Validation_ValidationOptions_AccessorExceptionBehaviour_remarks">Remarks</h5>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>
 This value indicates the default behaviour when an accessor raises an exception but this configuration
 value may be overridden by <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a> upon an individual
 manifest value if it is set to non-<span class="xref">null</span> value there.
 </p>
+<p>
+The default behaviour for this property if unset is <a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html#CSF_Validation_Manifest_ValueAccessExceptionBehaviour_TreatAsError">TreatAsError</a>.
+</p>
 </div>
-  <h5 id="CSF_Validation_ValidationOptions_AccessorExceptionBehaviour_seealso">See Also</h5>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour_seealso">See Also</h5>
   <div class="seealso">
       <div><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__">AccessorExceptionBehaviour</a>(<span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>&gt;)</div>
       <div><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationOptions_EnableMessageGeneration.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationOptions.EnableMessageGeneration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions.EnableMessageGeneration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidationOptions.cs/#L73">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L60">View Source</a>
   </span>
-  <a id="CSF_Validation_ValidationOptions_EnableMessageGeneration_" data-uid="CSF.Validation.ValidationOptions.EnableMessageGeneration*"></a>
-  <h4 id="CSF_Validation_ValidationOptions_EnableMessageGeneration" data-uid="CSF.Validation.ValidationOptions.EnableMessageGeneration">EnableMessageGeneration</h4>
+  <a id="CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration_" data-uid="CSF.Validation.ResolvedValidationOptions.EnableMessageGeneration*"></a>
+  <h4 id="CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration" data-uid="CSF.Validation.ResolvedValidationOptions.EnableMessageGeneration">EnableMessageGeneration</h4>
   <div class="markdown level1 summary"><p>Gets or sets a value which determines whether or not the validator should generate validation feedback
 messages, such as for rules which fail validation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? EnableMessageGeneration { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool EnableMessageGeneration { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -203,12 +193,12 @@ messages, such as for rules which fail validation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="CSF_Validation_ValidationOptions_EnableMessageGeneration_remarks">Remarks</h5>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>
 An optional piece of functionality within this validation framework is the generation of human-readable feedback
 messages relating to validation, typically for failures or errors.  By default this functionality is disabled and
@@ -224,19 +214,20 @@ of <span class="xref">null</span>.
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationOptions_RuleThrowingBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationOptions.RuleThrowingBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions_RuleThrowingBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions.RuleThrowingBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidationOptions.cs/#L38">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L22">View Source</a>
   </span>
-  <a id="CSF_Validation_ValidationOptions_RuleThrowingBehaviour_" data-uid="CSF.Validation.ValidationOptions.RuleThrowingBehaviour*"></a>
-  <h4 id="CSF_Validation_ValidationOptions_RuleThrowingBehaviour" data-uid="CSF.Validation.ValidationOptions.RuleThrowingBehaviour">RuleThrowingBehaviour</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the exception-throwing behaviour for validation rules.</p>
+  <a id="CSF_Validation_ResolvedValidationOptions_RuleThrowingBehaviour_" data-uid="CSF.Validation.ResolvedValidationOptions.RuleThrowingBehaviour*"></a>
+  <h4 id="CSF_Validation_ResolvedValidationOptions_RuleThrowingBehaviour" data-uid="CSF.Validation.ResolvedValidationOptions.RuleThrowingBehaviour">RuleThrowingBehaviour</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the exception-throwing behaviour for validation rules.
+The default &amp; recommended behaviour is <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validation_RuleThrowingBehaviour_OnError">OnError</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleThrowingBehaviour? RuleThrowingBehaviour { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public RuleThrowingBehaviour RuleThrowingBehaviour { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -248,14 +239,14 @@ of <span class="xref">null</span>.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html">RuleThrowingBehaviour</a>&gt;</td>
+        <td><a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html">RuleThrowingBehaviour</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
-      <div><a class="xref" href="CSF.Validation.ResolvedValidationOptions.html">ResolvedValidationOptions</a></div>
+      <div><a class="xref" href="CSF.Validation.ValidationOptions.html">ValidationOptions</a></div>
   </div>
 </article>
           </div>
@@ -265,10 +256,10 @@ of <span class="xref">null</span>.
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationOptions.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidationOptions.cs/#L33" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
