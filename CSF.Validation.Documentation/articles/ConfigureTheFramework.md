@@ -43,6 +43,11 @@ Registering builders with dependency injection is recommended though, even if on
 
 If you would like the framework [to generate human-readable validation feedback messages] then you should use [`UseMessageProviders`] to register your message-provider classes with dependency injection.
 
+### Optional: Configure default options
+
+The [`UseValidationFramework()`] takes an optional parameter of `Action<ValidationOptions>`.
+If specified then this configures some default [validation options] for use by any validator which is created from the dependency injection container.
+
 [the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
 [the standard validation rules NuGet package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
 [`UseValidationFramework()`]:xref:CSF.Validation.ServiceCollectionExtensions.UseValidationFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.ValidationOptions})
@@ -54,6 +59,7 @@ If you would like the framework [to generate human-readable validation feedback 
 [validator builder implementations]:WritingValidators/WritingValidatorBuilders/index.md
 [to generate human-readable validation feedback messages]:GeneratingFeedbackMessages.md
 [`UseMessageProviders`]:xref:CSF.Validation.ServiceCollectionExtensions.UseMessageProviders(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.Bootstrap.IRegistersMessageProviders})
+[validation options]:ValidationOptions.md
 
 ## Use the abstractions package in your app logic
 

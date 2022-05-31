@@ -8,8 +8,25 @@ namespace CSF.Validation
     /// </summary>
     /// <remarks>
     /// <para>
-    /// In this model, every property is nullable.  If any given property is set then its value is used.
-    /// Property which are set to <see langword="null" /> or which are unset will use a default value instead.
+    /// In this model, every property is nullable.  If any given property is set to a non-null value, then that value is used.
+    /// Property which are set to <see langword="null" /> are treated as unset/not-specified will use a default value instead.
+    /// </para>
+    /// <para>
+    /// Validation options may be specified in either or both of two places.  Thay may be configured at the point where the
+    /// validator is added to dependency injection, with the <c>UseValidationFramework()</c> method.
+    /// Options may also be specified when using either
+    /// <see cref="IValidator.ValidateAsync(object, ValidationOptions, System.Threading.CancellationToken)"/> or
+    /// <see cref="IValidator{TValidated}.ValidateAsync(TValidated, ValidationOptions, System.Threading.CancellationToken)"/>.
+    /// The order of precendence for any option value (properties of this type) is:
+    /// </para>
+    /// <list type="number">
+    /// <item><description>If specified in the <c>ValidateAsync()</c> method then that specified value is used.</description></item>
+    /// <item><description>If specified as a default value in <c>UseValidationFramework()</c> then that default value is used.</description></item>
+    /// <item><description>If neither of the above is specified then a hard-coded default value is used.  See
+    /// <see cref="ResolvedValidationOptions"/> for info on which values are used as the hard-coded defaults.</description></item>
+    /// </list>
+    /// <para>
+    /// For more information about validation options, please <xref href="ValidationOptions?text=read+the+corresponding+documentation+article" />.
     /// </para>
     /// </remarks>
     /// <seealso cref="ResolvedValidationOptions"/>

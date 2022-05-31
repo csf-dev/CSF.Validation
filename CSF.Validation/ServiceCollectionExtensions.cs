@@ -35,13 +35,18 @@ namespace CSF.Validation
         /// to the full CSF.Validation NuGet package are startup projects where dependency injection is configured.
         /// </para>
         /// <para>
-        /// If you provide an <paramref name="optionsAction"/> then you may use this to specify the default options for all validators
+        /// If you provide an <paramref name="optionsAction"/> then you may configure the default options for all validators
         /// created using this dependency injection container.
         /// Validation options may still be provided at the point of performing validation, using either
         /// <see cref="IValidator.ValidateAsync(object, ValidationOptions, System.Threading.CancellationToken)"/> or
         /// <see cref="IValidator{TValidated}.ValidateAsync(TValidated, ValidationOptions, System.Threading.CancellationToken)"/>.
+        /// When both default options are configured here, and options are specified upon the <c>ValidateAsync</c> method, the
+        /// options specified at the point of validation take precedence.
         /// </para>
         /// </remarks>
+        /// <seealso cref="IValidator.ValidateAsync(object, ValidationOptions, System.Threading.CancellationToken)"/>
+        /// <seealso cref="IValidator{TValidated}.ValidateAsync(TValidated, ValidationOptions, System.Threading.CancellationToken)"/>
+        /// <seealso cref="ValidationOptions"/>
         /// <param name="serviceCollection">The service collection to which the validation framework should be added.</param>
         /// <param name="optionsAction">An optional callback which allows setting up default validation options for the validator.</param>
         /// <returns>The service collection, so that calls may be chained.</returns>
