@@ -63,7 +63,7 @@ namespace CSF.Validation
 
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            var suffix = SerializableValidationResult.PropertySuffix;
+            const string suffix = SerializableValidationResult.PropertySuffix;
 
             info.AddValue($"{nameof(ObjectIdentityString)}{suffix}", ObjectIdentityString);
             info.AddValue($"{nameof(MemberName)}{suffix}", MemberName);
@@ -82,7 +82,7 @@ namespace CSF.Validation
 
         SerializableValidationRuleResult(SerializationInfo info, StreamingContext context)
         {
-            var suffix = SerializableValidationResult.PropertySuffix;
+            const string suffix = SerializableValidationResult.PropertySuffix;
 
             ObjectIdentityString = info.GetString($"{nameof(ObjectIdentityString)}{suffix}");
             MemberName = info.GetString($"{nameof(MemberName)}{suffix}");
