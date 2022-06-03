@@ -112,19 +112,31 @@ any circular dependencies are found.</p>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html">IgnoredGetValueToBeValidatedResponse</a></h4>
       <section><p>A <a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html">GetValueToBeValidatedResponse</a> which indicates failure but that the failure should be ignored.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.RuleExecution.RuleDependencyTracker.html">RuleDependencyTracker</a></h4>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.ParallelRuleExecutor.html">ParallelRuleExecutor</a></h4>
+      <section><p>An implementation of <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> which executes validation rules in parallel.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.html">ResultsForErroredValuesExecutionDecorator</a></h4>
+      <section><p>A decorator for <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> which adds additional results to the output for
+any validated values which raised an error when they were retrieved.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.html">ResultsForRulesWithFailedDependenciesExecutionDecorator</a></h4>
+      <section><p>A decorator for the interface <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> which populates the rule results
+for rules which have not been executed because one or more of their dependency rules did not
+result in a <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Passed">Passed</a> outcome.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.RuleExecutionContext.html">RuleExecutionContext</a></h4>
       <section><p>An object which tracks which rules may be executed and which are still
 awaiting the execution of their dependencies.  This may also be used to get a
 list of the rules which should not be executed because their dependencies failed.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.html">RuleDependencyTrackerFactory</a></h4>
-      <section><p>A factory service to get instances of <a class="xref" href="CSF.Validation.RuleExecution.ITracksRuleDependencies.html">ITracksRuleDependencies</a>.</p>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.RuleExecutionContextFactory.html">RuleExecutionContextFactory</a></h4>
+      <section><p>A factory service to get instances of <a class="xref" href="CSF.Validation.RuleExecution.IRuleExecutionContext.html">IRuleExecutionContext</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.RuleExecutorFactory.html">RuleExecutorFactory</a></h4>
       <section><p>A factory service which creates instances of <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> based upon the specified validation options.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.SerialRuleExecutor.html">SerialRuleExecutor</a></h4>
-      <section><p>An implementation of <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> which executed each rule in serial with no parallelisation.</p>
+      <section><p>An implementation of <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> which executes each rule in serial with no parallelisation.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.SingleRuleExecutor.html">SingleRuleExecutor</a></h4>
       <section><p>A service that executes a single validation rule and gets its result.</p>
@@ -180,8 +192,8 @@ a manifest value and an object to be validated.</p>
       <section><p>An object which can get a <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of individual items to be validated, based upon
 an object which should implement the correct enumerable interface and an intended type.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.html">IGetsRuleDependencyTracker</a></h4>
-      <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.RuleExecution.ITracksRuleDependencies.html">ITracksRuleDependencies</a> for
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.IGetsRuleExecutionContext.html">IGetsRuleExecutionContext</a></h4>
+      <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.RuleExecution.IRuleExecutionContext.html">IRuleExecutionContext</a> for
 a specified collection of rules.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.IGetsRuleExecutor.html">IGetsRuleExecutor</a></h4>
@@ -200,10 +212,8 @@ from a <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">Manifes
       <h4><a class="xref" href="CSF.Validation.RuleExecution.IGetsValueToBeValidated.html">IGetsValueToBeValidated</a></h4>
       <section><p>An object which gets the value to be validated: the &quot;actual&quot; value.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.RuleExecution.ITracksRuleDependencies.html">ITracksRuleDependencies</a></h4>
-      <section><p>An object which assists an in-progress execution of validation rules by tracking
-which rules have already executed and which rules may not yet be executed because
-their dependencies have yet to be executed.</p>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.IRuleExecutionContext.html">IRuleExecutionContext</a></h4>
+      <section><p>An object which provides context for the process of executing validation rules.</p>
 </section>
 </article>
           </div>
