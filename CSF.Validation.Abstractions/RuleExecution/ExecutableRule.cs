@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Reflection;
 using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
@@ -45,7 +46,7 @@ namespace CSF.Validation.RuleExecution
         /// must also be set to <see langword="true" />.
         /// </para>
         /// </remarks>
-        public bool IsEligibleToBeExecutedInParallel => RuleIdentifier.RuleType.CustomAttributes.OfType<ParallelizableAttribute>().Any();
+        public bool IsEligibleToBeExecutedInParallel => RuleIdentifier.RuleType.GetCustomAttributes().OfType<ParallelizableAttribute>().Any();
 
         /// <summary>
         /// Gets a string which represents the current executable rule.

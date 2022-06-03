@@ -12,12 +12,10 @@ namespace CSF.Validation.Rules
     /// </para>
     /// <para>
     /// If a validation rule is not suitable for execution in parallel with other rules then do not decorate
-    /// it with this attribute.  This ensures that errors do not occur, even when
+    /// it with this attribute.  This ensures that is run in serial, even when
     /// <see cref="ValidationOptions.EnableRuleParallelization"/> is enabled.
     /// </para>
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    public sealed class ParallelizableAttribute : Attribute
-    {
-    }
+    public sealed class ParallelizableAttribute : Attribute {}
 }

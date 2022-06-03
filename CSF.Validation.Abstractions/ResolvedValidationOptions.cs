@@ -106,6 +106,10 @@ namespace CSF.Validation
         /// to be eligible for parallel execution.</description></item>
         /// </list>
         /// <para>
+        /// For rules which are executed in parallel, the default .NET Task Parallel Library is used.  More can be read about this
+        /// at https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-based-asynchronous-programming
+        /// </para>
+        /// <para>
         /// The hard-coded default for this value (if not specified upon any <see cref="ValidationOptions"/> instance)
         /// is <see langword="false" />.
         /// </para>
@@ -113,21 +117,5 @@ namespace CSF.Validation
         /// <seealso cref="ValidationOptions.EnableRuleParallelization"/>
         /// <seealso cref="Rules.ParallelizableAttribute"/>
         public bool EnableRuleParallelization { get; set; } = false;
-
-        /// <summary>
-        /// Gets or sets a value indicating how many rules are permitted to be run in parallel at once.
-        /// This property is relevant only when <see cref="EnableRuleParallelization"/> is <see langword="true" />.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The hard-coded default for this value (if not specified upon any <see cref="ValidationOptions"/> instance)
-        /// is to be equal to the number of CPU cores detected by the .NET runtime, as indicated by
-        /// <see cref="System.Environment.ProcessorCount"/>.
-        /// </para>
-        /// </remarks>
-        /// <seealso cref="EnableRuleParallelization"/>
-        /// <seealso cref="ValidationOptions.DegreesOfParallelization"/>
-        /// <seealso cref="Rules.ParallelizableAttribute"/>
-        public int DegreesOfParallelization { get; set; } = System.Environment.ProcessorCount;
     }
 }

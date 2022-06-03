@@ -33,7 +33,6 @@ namespace CSF.Validation
                 AccessorExceptionBehaviour = GetEffectiveValue(x => x.AccessorExceptionBehaviour, specifiedOptions, hardcodedDefaults.AccessorExceptionBehaviour),
                 EnableMessageGeneration = GetEffectiveValue(x => x.EnableMessageGeneration, specifiedOptions, hardcodedDefaults.EnableMessageGeneration),
                 EnableRuleParallelization = GetEffectiveValue(x => x.EnableRuleParallelization, specifiedOptions, hardcodedDefaults.EnableRuleParallelization),
-                DegreesOfParallelization = GetEffectiveValue(x => x.DegreesOfParallelization, specifiedOptions, hardcodedDefaults.DegreesOfParallelization),
             };
         }
 

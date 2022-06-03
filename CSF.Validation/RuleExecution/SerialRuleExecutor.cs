@@ -22,27 +22,9 @@ namespace CSF.Validation.RuleExecution
                  availableRules.Any();
                  availableRules = executionContext.GetRulesWhichMayBeExecuted())
             {
-                var ruleResults = await ExecuteAvailableRulesAsync(availableRules, ruleExecutor, executionContext, cancellationToken)
+                var ruleResults = await RuleExecutor.ExecuteRulesAsync(availableRules, ruleExecutor, executionContext, cancellationToken)
                     .ConfigureAwait(false);
                 results.AddRange(ruleResults);
-            }
-
-            return results;
-        }
-
-        static async Task<IEnumerable<ValidationRuleResult>> ExecuteAvailableRulesAsync(IEnumerable<ExecutableRule> availableRules,
-                                                                                        IExeucutesSingleRule ruleExecutor,
-                                                                                        IRuleExecutionContext executionContext,
-                                                                                        CancellationToken cancellationToken)
-        {
-            var results = new List<ValidationRuleResult>();
-
-            foreach(var rule in availableRules)
-            {
-                var result = await ruleExecutor.ExecuteRuleAsync(rule, cancellationToken).ConfigureAwait(false);
-                rule.Result = result;
-                executionContext.HandleValidationRuleResult(rule);
-                results.Add(result);
             }
 
             return results;

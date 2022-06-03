@@ -117,16 +117,13 @@ namespace CSF.Validation
         /// <item><description>Individual rule classes must be decorated with the <see cref="Rules.ParallelizableAttribute"/>
         /// to be eligible for parallel execution.</description></item>
         /// </list>
+        /// <para>
+        /// For rules which are executed in parallel, the default .NET Task Parallel Library is used.  More can be read about this
+        /// at https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-based-asynchronous-programming
+        /// </para>
         /// </remarks>
         /// <seealso cref="ResolvedValidationOptions.EnableRuleParallelization"/>
         /// <seealso cref="Rules.ParallelizableAttribute"/>
         public bool? EnableRuleParallelization { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating how many rules are permitted to be run in parallel at once.
-        /// This property is relevant only when <see cref="EnableRuleParallelization"/> is <see langword="true" />.
-        /// </summary>
-        /// <seealso cref="ResolvedValidationOptions.DegreesOfParallelization"/>
-        public int? DegreesOfParallelization { get; set; }
     }
 }
