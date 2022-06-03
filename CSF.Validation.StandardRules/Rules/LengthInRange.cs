@@ -26,6 +26,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class LengthInRange : IRule<Array>, IRule<ICollection>, IRule<string>
     {
         readonly IntegerInRange inRangeRule;

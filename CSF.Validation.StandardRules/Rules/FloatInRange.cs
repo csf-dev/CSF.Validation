@@ -31,6 +31,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class FloatInRange : IRule<float>, IRule<double>, IRule<float?>, IRule<double?>
     {
         /// <summary>

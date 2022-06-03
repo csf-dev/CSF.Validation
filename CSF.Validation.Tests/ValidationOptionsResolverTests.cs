@@ -19,6 +19,7 @@ namespace CSF.Validation
             specifiedOptions.AccessorExceptionBehaviour = ValueAccessExceptionBehaviour.Throw;
             specifiedOptions.EnableMessageGeneration = true;
             specifiedOptions.RuleThrowingBehaviour = RuleThrowingBehaviour.OnFailure;
+            specifiedOptions.EnableRuleParallelization = true;
 
             var result = sut.GetResolvedValidationOptions(specifiedOptions);
 
@@ -33,6 +34,9 @@ namespace CSF.Validation
                 Assert.That(result.RuleThrowingBehaviour,
                             Is.EqualTo(RuleThrowingBehaviour.OnFailure),
                             nameof(ValidationOptions.RuleThrowingBehaviour));
+                Assert.That(result.EnableRuleParallelization,
+                            Is.EqualTo(true),
+                            nameof(ValidationOptions.EnableRuleParallelization));
             });
         }
         [Test,AutoMoqData]
@@ -44,6 +48,7 @@ namespace CSF.Validation
             defaultOptions.AccessorExceptionBehaviour = ValueAccessExceptionBehaviour.Throw;
             defaultOptions.EnableMessageGeneration = true;
             defaultOptions.RuleThrowingBehaviour = RuleThrowingBehaviour.OnFailure;
+            defaultOptions.EnableRuleParallelization = true;
 
             var result = sut.GetResolvedValidationOptions(null);
 
@@ -58,6 +63,9 @@ namespace CSF.Validation
                 Assert.That(result.RuleThrowingBehaviour,
                             Is.EqualTo(RuleThrowingBehaviour.OnFailure),
                             nameof(ValidationOptions.RuleThrowingBehaviour));
+                Assert.That(result.EnableRuleParallelization,
+                            Is.EqualTo(true),
+                            nameof(ValidationOptions.EnableRuleParallelization));
             });
         }
         [Test,AutoMoqData]
@@ -69,6 +77,7 @@ namespace CSF.Validation
             defaultOptions.AccessorExceptionBehaviour = null;
             defaultOptions.EnableMessageGeneration = null;
             defaultOptions.RuleThrowingBehaviour = null;
+            defaultOptions.EnableRuleParallelization = null;
 
             var result = sut.GetResolvedValidationOptions(null);
 
@@ -83,6 +92,9 @@ namespace CSF.Validation
                 Assert.That(result.RuleThrowingBehaviour,
                             Is.EqualTo(RuleThrowingBehaviour.OnError),
                             nameof(ValidationOptions.RuleThrowingBehaviour));
+                Assert.That(result.EnableRuleParallelization,
+                            Is.EqualTo(false),
+                            nameof(ValidationOptions.EnableRuleParallelization));
             });
         }
     }

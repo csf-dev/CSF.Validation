@@ -31,6 +31,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class IntegerInRange : IRule<byte>, IRule<short>, IRule<int>, IRule<long>, IRule<byte?>, IRule<short?>, IRule<int?>, IRule<long?>
     {
         /// <summary>

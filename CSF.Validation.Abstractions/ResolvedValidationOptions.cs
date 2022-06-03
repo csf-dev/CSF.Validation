@@ -58,5 +58,20 @@ namespace CSF.Validation
         /// </para>
         /// </remarks>
         public bool EnableMessageGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not rules are permitted to be executed/evaluated in parallel.
+        /// This may offer a modest performance gain in the right scenarios.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Running rules in parallel requires both of the following:
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description>This configuration option must be set to <see langword="true" />.</description></item>
+        /// <item><description>Individual rule classes must be decorated with the <see cref="Rules.ParallelizableAttribute"/> to be eligible for parallel execution.</description></item>
+        /// </list>
+        /// </remarks>
+        public bool EnableRuleParallelization { get; set; }
     }
 }

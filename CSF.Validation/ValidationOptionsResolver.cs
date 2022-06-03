@@ -24,6 +24,7 @@ namespace CSF.Validation
             RuleThrowingBehaviour = RuleThrowingBehaviour.OnError,
             AccessorExceptionBehaviour = Manifest.ValueAccessExceptionBehaviour.TreatAsError,
             EnableMessageGeneration = false,
+            EnableRuleParallelization = false,
         };
 
         readonly IOptions<ValidationOptions> defaultOptions;
@@ -42,6 +43,9 @@ namespace CSF.Validation
                 EnableMessageGeneration = specifiedOptions?.EnableMessageGeneration
                                             ?? defaultOptions.Value.EnableMessageGeneration
                                             ?? hardcodedDefaults.EnableMessageGeneration,
+                EnableRuleParallelization = specifiedOptions?.EnableRuleParallelization
+                                            ?? defaultOptions.Value.EnableRuleParallelization
+                                            ?? hardcodedDefaults.EnableRuleParallelization,
             };
         }
 
