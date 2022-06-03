@@ -38,6 +38,9 @@ namespace CSF.Validation
         /// <inheritdoc/>
         public IQueryableValidationResult<TValidated> WithoutSuccesses() => ResultQueries.WithoutSuccesses(this);
 
+        /// <inheritdoc/>
+        public SerializableValidationResult ToSerializableResult() => ResultQueries.ToSerializableValidationResult(this);
+
         IQueryableValidationResult<T> IQueryableValidationResult.AsResultFor<T>() => (IQueryableValidationResult<T>)this;
 
         IEnumerator<ValidationRuleResult> IEnumerable<ValidationRuleResult>.GetEnumerator() => RuleResults.GetEnumerator();

@@ -74,5 +74,28 @@ namespace CSF.Validation
 
             return new SubsetOfValidationResults<TValidated>(results.Where(x => x.Outcome != Rules.RuleOutcome.Passed), results.ManifestValue);
         }
+
+        internal static SerializableValidationResult ToSerializableValidationResult(IQueryableValidationResult result)
+        {
+            return new SerializableValidationResult
+            {
+                RuleResults = result.RuleResults
+                    .Select(ruleResult =>
+                    {
+                        return new SerializableValidationRuleResult
+                        {
+                            MemberName = ruleResult.Identifier?.MemberName,
+                            ObjectIdentityString = ruleResult.Identifier?.ObjectIdentity?.ToString(),
+                            RuleTypeName = ruleResult.Identifier?.RuleType.AssemblyQualifiedName,
+                            RuleName = ruleResult.Identifier?.RuleName,
+                            ValidatedTypeName = ruleResult.Identifier?.ValidatedType.AssemblyQualifiedName,
+                            Outcome = ruleResult.Outcome,
+                            Message = ruleResult.Message,
+                            ExceptionString = ruleResult.Exception?.ToString(),
+                        };
+                    })
+                    .ToArray(),
+            };
+        }
     }
 }

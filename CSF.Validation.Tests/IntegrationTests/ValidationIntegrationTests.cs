@@ -31,6 +31,7 @@ namespace CSF.Validation.IntegrationTests
             
             Assert.That(result.Passed, Is.True);
         }
+
         [Test,AutoMoqData]
         public async Task ValidateAsyncShouldReturnFailureResultForInvalidCollectionObject([IntegrationTesting] IGetsValidator validatorFactory)
         {
@@ -239,6 +240,29 @@ namespace CSF.Validation.IntegrationTests
             var expectedPet = customer.Person.Pets.Skip(1).First();
             Assert.That(result.ForMember(x => x.Person).ForMatchingMemberItem(x => x.Pets, expectedPet).ForOnlyThisValue().First().ValidatedValue,
                         Is.SameAs(expectedPet));
+        }
+
+        [Test,AutoMoqData]
+        public async Task ToSerializableResultShouldReturnSameNumberOfRuleResultsAsOriginalResult([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
+
+            var person = new Person
+            {
+                Name = "Bobby",
+                Birthday = new DateTime(2000, 1, 1),
+                Pets = new[] {
+                    new Pet {
+                        Name = "Miffles",
+                        NumberOfLegs = 4,
+                        Type = "Cat"
+                    },
+                },
+            };
+
+            var result = await validator.ValidateAsync(person).ConfigureAwait(false);
+            
+            Assert.That(result.ToSerializableResult().RuleResults.Length, Is.EqualTo(result.RuleResults.Count));
         }
     }
 }

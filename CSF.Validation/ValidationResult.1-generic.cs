@@ -25,6 +25,9 @@ namespace CSF.Validation
         /// <inheritdoc/>
         public IQueryableValidationResult<TValidated> WithoutSuccesses() => ResultQueries.WithoutSuccesses(this);
 
+        /// <inheritdoc/>
+        public override SerializableValidationResult ToSerializableResult() => ResultQueries.ToSerializableValidationResult(this);
+
         /// <summary>
         /// Initialises a new generic instance of <see cref="ValidationResult{TValidated}"/>.
         /// </summary>
