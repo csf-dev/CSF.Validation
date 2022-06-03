@@ -121,5 +121,12 @@ namespace CSF.Validation
         /// <seealso cref="ResolvedValidationOptions.EnableRuleParallelization"/>
         /// <seealso cref="Rules.ParallelizableAttribute"/>
         public bool? EnableRuleParallelization { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating how many rules are permitted to be run in parallel at once.
+        /// This property is relevant only when <see cref="EnableRuleParallelization"/> is <see langword="true" />.
+        /// </summary>
+        /// <seealso cref="ResolvedValidationOptions.DegreesOfParallelization"/>
+        public int? DegreesOfParallelization { get; set; }
     }
 }

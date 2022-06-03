@@ -21,16 +21,25 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A task which contains the rule-execution service implementation.</returns>
         public Task<IExecutesAllRules> GetRuleExecutorAsync(ResolvedValidationOptions options, CancellationToken token = default)
         {
-            IExecutesAllRules result;
-
-            result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
-                                            options);
-
+            var result = GetPrimaryRuleExecutor(options);
             result = WrapWithFailedDependenciesDecorator(result);
             result = WrapWithErroredValuesDecorator(result);
 
             return Task.FromResult(result);
         }
+
+        IExecutesAllRules GetPrimaryRuleExecutor(ResolvedValidationOptions options)
+        {
+            var singleRuleExecutor = GetSingleRuleExecutor(options);
+
+            if(options.EnableRuleParallelization)
+                return new ParallelRuleExecutor(singleRuleExecutor, options);
+            
+            return new SerialRuleExecutor(singleRuleExecutor);
+        }
+
+        IExeucutesSingleRule GetSingleRuleExecutor(ResolvedValidationOptions options)
+            => resolver.GetRequiredService<IGetsSingleRuleExecutor>().GetRuleExecutor(options);
 
         IExecutesAllRules WrapWithFailedDependenciesDecorator(IExecutesAllRules wrapped)
             => new ResultsForRulesWithFailedDependenciesExecutionDecorator(wrapped, resolver.GetRequiredService<IGetsRuleContext>());

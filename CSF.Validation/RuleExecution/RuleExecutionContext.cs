@@ -34,6 +34,14 @@ namespace CSF.Validation.RuleExecution
         {
             lock(syncRoot)
             {
+                /* In theory the right thing to do here would be to use a 'proper' topological
+                 * sorting algorithm, which would mean that we never need to re-scan the complete
+                 * collction.  However, because HandleValidationRuleResult removes already-executed
+                 * rules from the pendingRules collection, and we expect the dependency graphs
+                 * between rules to be very shallow, this approach is "good enough for now".
+                 *
+                 * If performance becomes an issue then this may need to be revisited.
+                 */
                 return (from rule in pendingRules.Values
                         where
                             rule.ExecutableRule.Result is null

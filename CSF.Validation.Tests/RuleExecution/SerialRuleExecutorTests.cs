@@ -13,14 +13,12 @@ namespace CSF.Validation.RuleExecution
     public class SerialRuleExecutorTests
     {
         [Test,AutoMoqData]
-        public void ExecuteAllRulesAsyncShouldReturnResultsForAllRules([Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                       [Frozen] ResolvedValidationOptions options,
+        public void ExecuteAllRulesAsyncShouldReturnResultsForAllRules([Frozen] IExeucutesSingleRule ruleExecutor,
                                                                        SerialRuleExecutor sut,
                                                                        [ExecutableModel] ExecutableRuleAndDependencies rule1,
                                                                        [ExecutableModel] ExecutableRuleAndDependencies rule2,
                                                                        [ExecutableModel] ExecutableRuleAndDependencies rule3,
                                                                        IRuleExecutionContext executionContext,
-                                                                       IExeucutesSingleRule ruleExecutor,
                                                                        [RuleResult] ValidationRuleResult result1,
                                                                        [RuleResult] ValidationRuleResult result2,
                                                                        [RuleResult] ValidationRuleResult result3)
@@ -29,7 +27,6 @@ namespace CSF.Validation.RuleExecution
             var sequence = new MockSequence();
             Mock.Get(executionContext).InSequence(sequence).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => allRules.Select(r => r.ExecutableRule));
             Mock.Get(executionContext).InSequence(sequence).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => Enumerable.Empty<ExecutableRule>());
-            Mock.Get(ruleExecutorFactory).Setup(x => x.GetRuleExecutor(options)).Returns(ruleExecutor);
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule1.ExecutableRule, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result1));
@@ -45,19 +42,16 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public async Task ExecuteAllRulesAsyncShouldUpdateTheResultUponTheRule([Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                               [Frozen] ResolvedValidationOptions options,
+        public async Task ExecuteAllRulesAsyncShouldUpdateTheResultUponTheRule([Frozen] IExeucutesSingleRule ruleExecutor,
                                                                                SerialRuleExecutor sut,
                                                                                [ExecutableModel] ExecutableRuleAndDependencies rule,
                                                                                IRuleExecutionContext executionContext,
-                                                                               IExeucutesSingleRule ruleExecutor,
                                                                                [RuleResult] ValidationRuleResult result)
         {
             var allRules = new[] { rule };
             var sequence = new MockSequence();
             Mock.Get(executionContext).InSequence(sequence).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => allRules.Select(r => r.ExecutableRule));
             Mock.Get(executionContext).InSequence(sequence).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => Enumerable.Empty<ExecutableRule>());
-            Mock.Get(ruleExecutorFactory).Setup(x => x.GetRuleExecutor(options)).Returns(ruleExecutor);
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule.ExecutableRule, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result));
@@ -70,14 +64,12 @@ namespace CSF.Validation.RuleExecution
         // This rule has a timeout of 1/10th a second because there is a risk of an infinite loop if something is wrong.
         // This way it fails quickly if it's broken and doesn't delay the test run.
         [Test,AutoMoqData,Timeout(100)]
-        public void ExecuteAllRulesAsyncShouldNotExecuteDependantRulesBeforeTheirDependenciesHaveResults([Frozen] IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                                                         [Frozen] ResolvedValidationOptions options,
+        public void ExecuteAllRulesAsyncShouldNotExecuteDependantRulesBeforeTheirDependenciesHaveResults([Frozen] IExeucutesSingleRule ruleExecutor,
                                                                                                          SerialRuleExecutor sut,
                                                                                                          [ExecutableModel] ExecutableRuleAndDependencies rule1,
                                                                                                          [ExecutableModel] ExecutableRuleAndDependencies rule2,
                                                                                                          [ExecutableModel] ExecutableRuleAndDependencies rule3,
                                                                                                          IRuleExecutionContext executionContext,
-                                                                                                         IExeucutesSingleRule ruleExecutor,
                                                                                                          [RuleResult] ValidationRuleResult result1,
                                                                                                          [RuleResult] ValidationRuleResult result2,
                                                                                                          [RuleResult] ValidationRuleResult result3)
@@ -92,7 +84,6 @@ namespace CSF.Validation.RuleExecution
                     if(rule3.ExecutableRule.Result is null) return new[] { rule3.ExecutableRule };
                     return Enumerable.Empty<ExecutableRule>();
                 });
-            Mock.Get(ruleExecutorFactory).Setup(x => x.GetRuleExecutor(options)).Returns(ruleExecutor);
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule1.ExecutableRule, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result1));
