@@ -13,7 +13,7 @@ namespace CSF.Validation.IntegrationTests
         /// An amount of time in milliseconds that we allow the validator to run, beyond
         /// what we would expect in the best case scenario.
         /// </summary>
-        const int millisecondsGrace = 100;
+        const int millisecondsGrace = 150;
 
         [Test,AutoMoqData]
         public async Task ValidateAsyncShouldTakeApproximatelyTheCorrectTimeToRunAParallelRuleset([IntegrationTesting] IGetsValidator validatorFactory,
