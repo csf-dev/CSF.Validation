@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.Rules
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class NotNullTests
     {
         [Test,AutoMoqData]

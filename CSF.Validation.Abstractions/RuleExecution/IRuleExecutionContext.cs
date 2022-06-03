@@ -3,12 +3,27 @@ using System.Collections.Generic;
 namespace CSF.Validation.RuleExecution
 {
     /// <summary>
-    /// An object which assists an in-progress execution of validation rules by tracking
-    /// which rules have already executed and which rules may not yet be executed because
-    /// their dependencies have yet to be executed.
+    /// An object which provides context for the process of executing validation rules.
     /// </summary>
-    public interface ITracksRuleDependencies
+    /// <remarks>
+    /// <para>
+    /// This object assists the validation process by tracking which rules have been executed and which have not.
+    /// It also tracks the dependencies between rules, so that <see cref="GetRulesWhichMayBeExecuted"/> will only
+    /// return those which either have no dependencies or where all of their dependencies have already been executed.
+    /// </para>
+    /// <para>
+    /// Use <see cref="HandleValidationRuleResult(ExecutableRule)"/> after each rule completes (regardless of its
+    /// outcome) in order to update this object so that it may return the appropriate result for future invocations
+    /// of <see cref="GetRulesWhichMayBeExecuted"/>.
+    /// </para>
+    /// </remarks>
+    public interface IRuleExecutionContext
     {
+        /// <summary>
+        /// Gets a read-only collection of all of the available validation rules and their dependencies.
+        /// </summary>
+        IEnumerable<ExecutableRuleAndDependencies> AllRules { get; }
+
         /// <summary>
         /// Gets a collection of rules which are ready to be executed.  Either they have no dependencies or
         /// their dependencies have executed and passed.

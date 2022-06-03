@@ -8,7 +8,7 @@ using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation
 {
-    [TestFixture, Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ThrowingBehaviourValidatorDecoratorTests
     {
         [Test, AutoMoqData]

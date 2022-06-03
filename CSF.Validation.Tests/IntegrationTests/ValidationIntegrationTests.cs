@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ValidationIntegrationTests
     {
         [Test,AutoMoqData]

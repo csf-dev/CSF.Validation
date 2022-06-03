@@ -1,3 +1,6 @@
+---
+uid: GeneratingFeedbackMessages
+---
 # Validation feedback messages
 
 Validation is usually used in combination with user-provided/user-entered data; if validation fails then the user must re-submit that data with corrections.

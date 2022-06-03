@@ -31,7 +31,8 @@ namespace CSF.Validation.Manifest
             return new Validator<TValidated>(manifest,
                                              resolver.GetRequiredService<IGetsRuleExecutor>(),
                                              resolver.GetRequiredService<IGetsAllExecutableRulesWithDependencies>(),
-                                             resolver.GetRequiredService<IGetsResolvedValidationOptions>());
+                                             resolver.GetRequiredService<IGetsResolvedValidationOptions>(),
+                                             resolver.GetRequiredService<IGetsRuleExecutionContext>());
         }
 
         /// <summary>

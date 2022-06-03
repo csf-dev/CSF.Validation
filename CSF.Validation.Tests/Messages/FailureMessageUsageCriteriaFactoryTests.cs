@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.Messages
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class FailureMessageUsageCriteriaFactoryTests
     {
         [Test,AutoMoqData]

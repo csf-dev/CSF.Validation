@@ -28,6 +28,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class DateTimeInRange : IRule<DateTime>, IRule<DateTime?>
     {
         /// <summary>

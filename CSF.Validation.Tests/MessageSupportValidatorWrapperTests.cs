@@ -1,9 +1,9 @@
 using Moq;
 using NUnit.Framework;
 
-namespace CSF.Validation.Tests
+namespace CSF.Validation
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class MessageSupportValidatorWrapperTests
     {
         [Test,AutoMoqData]

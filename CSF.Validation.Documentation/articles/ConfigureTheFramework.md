@@ -46,7 +46,8 @@ If you would like the framework [to generate human-readable validation feedback 
 ### Optional: Configure default options
 
 The [`UseValidationFramework()`] takes an optional parameter of `Action<ValidationOptions>`.
-If specified then this configures some default [validation options] for use by any validator which is created from the dependency injection container.
+If specified then this configures a [`ValidationOptions`] instance which is used by default for any validator created by that dependency injection container.
+Options specified in the configured default instance will be used unless overridden by explicitly-specified options provided directly to the validator.
 
 [the **CSF.Validation** NuGet package]:https://www.nuget.org/packages/CSF.Validation/
 [the standard validation rules NuGet package]:https://www.nuget.org/packages/CSF.Validation.StandardRules/
@@ -59,7 +60,7 @@ If specified then this configures some default [validation options] for use by a
 [validator builder implementations]:WritingValidators/WritingValidatorBuilders/index.md
 [to generate human-readable validation feedback messages]:GeneratingFeedbackMessages.md
 [`UseMessageProviders`]:xref:CSF.Validation.ServiceCollectionExtensions.UseMessageProviders(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{CSF.Validation.Bootstrap.IRegistersMessageProviders})
-[validation options]:ValidationOptions.md
+[`ValidationOptions`]:xref:CSF.Validation.ValidationOptions
 
 ## Use the abstractions package in your app logic
 

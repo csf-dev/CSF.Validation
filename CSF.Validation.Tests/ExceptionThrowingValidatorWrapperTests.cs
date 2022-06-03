@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ExceptionThrowingValidatorWrapperTests
     {
         [Test,AutoMoqData]

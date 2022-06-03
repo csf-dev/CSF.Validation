@@ -6,7 +6,7 @@ using System;
 
 namespace CSF.Validation
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ValueContextIsMatchForItemTests
     {
         [Test,AutoMoqData]

@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ValidatorBuilding
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class RuleBuilderContextFactoryTests
     {
         [Test,AutoMoqData]

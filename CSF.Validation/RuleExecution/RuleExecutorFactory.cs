@@ -21,15 +21,30 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A task which contains the rule-execution service implementation.</returns>
         public Task<IExecutesAllRules> GetRuleExecutorAsync(ResolvedValidationOptions options, CancellationToken token = default)
         {
-            IExecutesAllRules result;
+            var result = GetPrimaryRuleExecutor(options);
+            result = WrapWithFailedDependenciesDecorator(result);
+            result = WrapWithErroredValuesDecorator(result);
 
-            result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsRuleDependencyTracker>(),
-                                            resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
-                                            options,
-                                            resolver.GetRequiredService<IGetsRuleContext>());
-            
             return Task.FromResult(result);
         }
+
+        IExecutesAllRules GetPrimaryRuleExecutor(ResolvedValidationOptions options)
+        {
+            var singleRuleExecutor = GetSingleRuleExecutor(options);
+
+            return options.EnableRuleParallelization
+                ? (IExecutesAllRules) new ParallelRuleExecutor(singleRuleExecutor)
+                : (IExecutesAllRules) new SerialRuleExecutor(singleRuleExecutor);
+        }
+
+        IExeucutesSingleRule GetSingleRuleExecutor(ResolvedValidationOptions options)
+            => resolver.GetRequiredService<IGetsSingleRuleExecutor>().GetRuleExecutor(options);
+
+        IExecutesAllRules WrapWithFailedDependenciesDecorator(IExecutesAllRules wrapped)
+            => new ResultsForRulesWithFailedDependenciesExecutionDecorator(wrapped, resolver.GetRequiredService<IGetsRuleContext>());
+
+        static IExecutesAllRules WrapWithErroredValuesDecorator(IExecutesAllRules wrapped)
+            => new ResultsForErroredValuesExecutionDecorator(wrapped);
 
         /// <summary>
         /// Initialises a new instance of <see cref="RuleExecutorFactory"/>.

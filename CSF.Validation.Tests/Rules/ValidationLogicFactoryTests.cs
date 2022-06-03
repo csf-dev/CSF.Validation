@@ -11,7 +11,7 @@ using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ValidationLogicFactoryTests
     {
         [Test,AutoMoqData]

@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Reflection;
 using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
@@ -32,6 +34,19 @@ namespace CSF.Validation.RuleExecution
         /// Gets or sets the identifier for this particular rule.
         /// </summary>
         public RuleIdentifier RuleIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets a value that indicates whether or not this rule may be executed in parallel.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This corresponds to whether or not the class that provides the rule logic is decorated
+        /// with <see cref="ParallelizableAttribute"/>.
+        /// In order to actually run validation with parallelisation, <see cref="ValidationOptions.EnableRuleParallelization"/>
+        /// must also be set to <see langword="true" />.
+        /// </para>
+        /// </remarks>
+        public bool IsEligibleToBeExecutedInParallel => RuleIdentifier.RuleType.GetCustomAttributes().OfType<ParallelizableAttribute>().Any();
 
         /// <summary>
         /// Gets a string which represents the current executable rule.

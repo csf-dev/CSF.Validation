@@ -19,38 +19,42 @@ namespace CSF.Validation.RuleExecution
     /// For a new validation run, create a new instance of this service.
     /// </para>
     /// </remarks>
-    public class RuleDependencyTracker : ITracksRuleDependencies
+    public class RuleExecutionContext : IRuleExecutionContext
     {
+        readonly object syncRoot;
         readonly IDictionary<ExecutableRule,ExecutableRuleAndDependencies> pendingRules;
         readonly IDictionary<ExecutableRule,ExecutableRuleAndDependencies> allRules;
         readonly ISet<ExecutableRule> dependencyFailures = new HashSet<ExecutableRule>();
 
-        /// <summary>
-        /// Gets a collection of rules which are ready to be executed.  Either they have no dependencies or
-        /// their dependencies have executed and passed.
-        /// </summary>
-        /// <returns>A collection of rules that are ready to execute.</returns>
+        /// <inheritdoc />
+        public IEnumerable<ExecutableRuleAndDependencies> AllRules => allRules.Values;
+
+        /// <inheritdoc />
         public IEnumerable<ExecutableRule> GetRulesWhichMayBeExecuted()
         {
-            return (from rule in pendingRules.Values
-                    where
-                        rule.ExecutableRule.Result is null
-                     && rule.Dependencies.All(x => x.Result?.Outcome == RuleOutcome.Passed)
-                    select rule.ExecutableRule)
-                .ToList();
+            lock(syncRoot)
+            {
+                /* In theory the right thing to do here would be to use a 'proper' topological
+                 * sorting algorithm, which would mean that we never need to re-scan the complete
+                 * collction.  However, because HandleValidationRuleResult removes already-executed
+                 * rules from the pendingRules collection, and we expect the dependency graphs
+                 * between rules to be very shallow, this approach is "good enough for now".
+                 *
+                 * If performance becomes an issue then this may need to be revisited.
+                 */
+                return (from rule in pendingRules.Values
+                        where
+                            rule.ExecutableRule.Result is null
+                        && rule.Dependencies.All(x => x.Result?.Outcome == RuleOutcome.Passed)
+                        select rule.ExecutableRule)
+                    .ToList();
+            }
         }
 
-        /// <summary>
-        /// Gets a collection of rules which should not be executed because their dependency rule(s)
-        /// have failed.
-        /// </summary>
-        /// <returns>A collection of rules which have failed dependencies.</returns>
+        /// <inheritdoc />
         public IEnumerable<ExecutableRule> GetRulesWhoseDependenciesHaveFailed() => dependencyFailures;
 
-        /// <summary>
-        /// Handles the alteration of dependency chains and available rules based upon a single validation rule receiving a result.
-        /// </summary>
-        /// <param name="rule">The rule which now has a non-<see langword="null" /> <see cref="ExecutableRule.Result"/> property.</param>
+        /// <inheritdoc />
         public void HandleValidationRuleResult(ExecutableRule rule)
         {
             if(rule.Result is null)
@@ -59,10 +63,13 @@ namespace CSF.Validation.RuleExecution
                 throw new ArgumentException(message, nameof(rule));
             }
 
-            if(rule.Result.Outcome != RuleOutcome.Passed)
-                RemoveRuleAndAllDependentsFromPending(rule);
-            else
-                pendingRules.Remove(rule);
+            lock(syncRoot)
+            {
+                if(rule.Result.Outcome != RuleOutcome.Passed)
+                    RemoveRuleAndAllDependentsFromPending(rule);
+                else
+                    pendingRules.Remove(rule);
+            }
         }
 
         /// <summary>
@@ -96,17 +103,20 @@ namespace CSF.Validation.RuleExecution
         ExecutableRuleAndDependencies GetRuleAndDependencies(ExecutableRule rule) => allRules[rule];
 
         /// <summary>
-        /// Initialises a new instance of <see cref="RuleDependencyTracker"/>.
+        /// Initialises a new instance of <see cref="RuleExecutionContext"/>.
         /// </summary>
         /// <param name="allRules">A collection of all of the rules which could be executed.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="allRules"/> is <see langword="null" />.</exception>
-        public RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies> allRules)
+        public RuleExecutionContext(IEnumerable<ExecutableRuleAndDependencies> allRules)
         {
             if (allRules is null)
                 throw new ArgumentNullException(nameof(allRules));
 
             this.allRules = allRules.ToDictionary(k => k.ExecutableRule, v => v);
-            pendingRules = new Dictionary<ExecutableRule, ExecutableRuleAndDependencies>(this.allRules);
+            pendingRules = this.allRules
+                .Where(x => x.Key.ValidatedValue.ValueResponse.IsSuccess)
+                .ToDictionary(k => k.Key, v => v.Value);
+            syncRoot = new object();
         }
     }
 }

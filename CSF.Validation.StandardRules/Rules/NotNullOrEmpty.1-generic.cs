@@ -20,6 +20,7 @@ namespace CSF.Validation.Rules
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class NotNullOrEmpty<T> : IRule<ICollection<T>>, IRule<IReadOnlyCollection<T>>, IRule<IQueryable<T>>
     {
         readonly NotNull notNull;

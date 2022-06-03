@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.Rules
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class NotNullOrEmptyTests
     {
         // This is quite light on tests, because the NotNull and NotEmpty rules are already well-tested individually
