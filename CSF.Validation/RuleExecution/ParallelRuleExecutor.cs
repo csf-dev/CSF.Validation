@@ -42,7 +42,6 @@ namespace CSF.Validation.RuleExecution
     public class ParallelRuleExecutor : IExecutesAllRules
     {
         readonly IExeucutesSingleRule ruleExecutor;
-        readonly ResolvedValidationOptions options;
 
         /// <inheritdoc/>
         public async Task<IReadOnlyCollection<ValidationRuleResult>> ExecuteAllRulesAsync(IRuleExecutionContext executionContext,
@@ -109,19 +108,17 @@ namespace CSF.Validation.RuleExecution
             foreach (var rule in newAvailableRules.Where(x => !x.IsEligibleToBeExecutedInParallel))
                 parallelContext.NonParallelTodo.Add(rule);
 
-            return returnTrueOnlyIfNewParallelRulesFound ? parallelContext.ParallelTodo.Any() : true;
+            return parallelContext.ParallelTodo.Any() || !returnTrueOnlyIfNewParallelRulesFound;
         }
 
         /// <summary>
         /// Initialises a new instance of <see cref="ParallelRuleExecutor"/>.
         /// </summary>
         /// <param name="ruleExecutor">A service which executes rules.</param>
-        /// <param name="options">Validation options.</param>
-        /// <exception cref="ArgumentNullException">If any parameter value is <see langword="null" />.</exception>
-        public ParallelRuleExecutor(IExeucutesSingleRule ruleExecutor, ResolvedValidationOptions options)
+        /// <exception cref="ArgumentNullException">If <paramref name="ruleExecutor"/> is <see langword="null" />.</exception>
+        public ParallelRuleExecutor(IExeucutesSingleRule ruleExecutor)
         {
             this.ruleExecutor = ruleExecutor ?? throw new System.ArgumentNullException(nameof(ruleExecutor));
-            this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
 
         class ParallelExecutionContext

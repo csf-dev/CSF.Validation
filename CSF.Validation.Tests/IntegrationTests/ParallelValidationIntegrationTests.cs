@@ -40,13 +40,13 @@ namespace CSF.Validation.IntegrationTests
                 ThreadPool.SetMaxThreads(workerThreads, completionThreads);
             }
 
-            // Best case :  [largest of (200, 200, 50, 50)] + 500 + 300 = 1000
-            // Worst case:  200 + 200 + 50 + 50             + 500 + 300 = 1300
+            // Best case :  [largest of (300, 300, 200, 200)] + 200 + 150 = 650
+            // Worst case:  300 + 300 + 200 + 200             + 200 + 150 = 1350
             // We are giving "best case" + "a small grace period" which is well below the worst case for non-parallel execution.
-            var expectedMilliseconds = 1000;
+            var bestCaseMilliseconds = 650;
 
             Assert.That(stopwatch.ElapsedMilliseconds,
-                        Is.GreaterThan(expectedMilliseconds).And.LessThan(expectedMilliseconds + millisecondsGrace),
+                        Is.GreaterThan(bestCaseMilliseconds).And.LessThan(bestCaseMilliseconds + millisecondsGrace),
                         "The validator is expected to take around 1000 milliseconds to complete validation.");
         }
     }
