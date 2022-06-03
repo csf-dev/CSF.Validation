@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ValidationOptionsResolverTests
     {
         [Test,AutoMoqData]

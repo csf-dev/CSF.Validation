@@ -7,19 +7,19 @@ using NUnit.Framework;
 
 namespace CSF.Validation.RuleExecution
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class RuleExecutorFactoryTests
     {
         [Test,AutoMoqData]
-        public void GetRuleExecutorAsyncShouldReturnAnInstanceOfSerialRuleExecutor([Frozen] IServiceProvider resolver,
-                                                                                   RuleExecutorFactory sut,
-                                                                                   ResolvedValidationOptions options,
-                                                                                   IGetsRuleDependencyTracker dependencyTrackerFactory,
-                                                                                   IGetsSingleRuleExecutor ruleExecutorFactory,
-                                                                                   IGetsRuleContext contextFactory)
+        public void GetRuleExecutorAsyncShouldReturnANonNullRuleExecutor([Frozen] IServiceProvider resolver,
+                                                                         RuleExecutorFactory sut,
+                                                                         ResolvedValidationOptions options,
+                                                                         IGetsRuleExecutionContext dependencyTrackerFactory,
+                                                                         IGetsSingleRuleExecutor ruleExecutorFactory,
+                                                                         IGetsRuleContext contextFactory)
         {
             Mock.Get(resolver)
-                .Setup(x => x.GetService(typeof(IGetsRuleDependencyTracker)))
+                .Setup(x => x.GetService(typeof(IGetsRuleExecutionContext)))
                 .Returns(dependencyTrackerFactory);
             Mock.Get(resolver)
                 .Setup(x => x.GetService(typeof(IGetsSingleRuleExecutor)))
@@ -28,7 +28,7 @@ namespace CSF.Validation.RuleExecution
                 .Setup(x => x.GetService(typeof(IGetsRuleContext)))
                 .Returns(contextFactory);
 
-            Assert.That(async () => await sut.GetRuleExecutorAsync(options), Is.InstanceOf<SerialRuleExecutor>());
+            Assert.That(async () => await sut.GetRuleExecutorAsync(options), Is.Not.Null);
         }
     }
 }

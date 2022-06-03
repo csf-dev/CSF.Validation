@@ -15,7 +15,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsValidatedValue, ValidatedValueFactory>()
                 .AddTransient<IGetsSingleRuleExecutor, SingleRuleExecutorFactory>()
                 .AddTransient<IGetsAllExecutableRules, ExecutableRulesFromValidatedValueProvider>()
-                .AddTransient<IGetsRuleDependencyTracker, RuleDependencyTrackerFactory>()
+                .AddTransient<IGetsRuleExecutionContext, RuleExecutionContextFactory>()
                 .AddTransient<IGetsValidatedValueFromBasis, ValidatedValueFromBasisFactory>()
                 .AddTransient<IGetsEnumerableItemsToBeValidated, EnumerableItemProvider>()
                 .AddTransient<IGetsValueToBeValidated, ValueToBeValidatedProvider>()

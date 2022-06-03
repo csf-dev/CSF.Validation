@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ManifestModel
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ModelRuleToManifestRuleConverterTests
     {
         [Test,AutoMoqData]

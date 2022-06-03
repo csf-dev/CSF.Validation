@@ -23,13 +23,21 @@ namespace CSF.Validation.RuleExecution
         {
             IExecutesAllRules result;
 
-            result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsRuleDependencyTracker>(),
-                                            resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
+            result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
                                             options,
                                             resolver.GetRequiredService<IGetsRuleContext>());
-            
+
+            result = WrapWithFailedDependenciesDecorator(result);
+            result = WrapWithErroredValuesDecorator(result);
+
             return Task.FromResult(result);
         }
+
+        IExecutesAllRules WrapWithFailedDependenciesDecorator(IExecutesAllRules wrapped)
+            => new ResultsForRulesWithFailedDependenciesExecutionDecorator(wrapped, resolver.GetRequiredService<IGetsRuleContext>());
+
+        static IExecutesAllRules WrapWithErroredValuesDecorator(IExecutesAllRules wrapped)
+            => new ResultsForErroredValuesExecutionDecorator(wrapped);
 
         /// <summary>
         /// Initialises a new instance of <see cref="RuleExecutorFactory"/>.

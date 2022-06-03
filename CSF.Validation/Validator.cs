@@ -17,6 +17,7 @@ namespace CSF.Validation
         readonly IGetsRuleExecutor executorFactory;
         readonly IGetsAllExecutableRulesWithDependencies ruleFactory;
         readonly IGetsResolvedValidationOptions optionsResolver;
+        readonly IGetsRuleExecutionContext contextFactory;
 
         /// <inheritdoc/>
         public Type ValidatedType => typeof(TValidated);
@@ -27,7 +28,8 @@ namespace CSF.Validation
             var resolvedOptions = optionsResolver.GetResolvedValidationOptions(options);
             var rules = ruleFactory.GetRulesWithDependencies(manifest.RootValue, validatedObject, resolvedOptions);
             var executor = await executorFactory.GetRuleExecutorAsync(resolvedOptions, cancellationToken).ConfigureAwait(false);
-            var ruleResults = await executor.ExecuteAllRulesAsync(rules, cancellationToken).ConfigureAwait(false);
+            var context = contextFactory.GetExecutionContext(rules, resolvedOptions);
+            var ruleResults = await executor.ExecuteAllRulesAsync(context, cancellationToken).ConfigureAwait(false);
 
             return new ValidationResult<TValidated>(ruleResults, manifest);
         }
@@ -45,16 +47,19 @@ namespace CSF.Validation
         /// <param name="executorFactory">The rule-executor factory.</param>
         /// <param name="ruleFactory">The rule factory.</param>
         /// <param name="optionsResolver">An options resolver.</param>
+        /// <param name="contextFactory">A rule execution context factory.</param>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
         public Validator(ValidationManifest manifest,
                          IGetsRuleExecutor executorFactory,
                          IGetsAllExecutableRulesWithDependencies ruleFactory,
-                         IGetsResolvedValidationOptions optionsResolver)
+                         IGetsResolvedValidationOptions optionsResolver,
+                         IGetsRuleExecutionContext contextFactory)
         {
             this.manifest = manifest ?? throw new ArgumentNullException(nameof(manifest));
             this.executorFactory = executorFactory ?? throw new ArgumentNullException(nameof(executorFactory));
             this.ruleFactory = ruleFactory ?? throw new ArgumentNullException(nameof(ruleFactory));
             this.optionsResolver = optionsResolver ?? throw new ArgumentNullException(nameof(optionsResolver));
+            this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
         }
     }
 }
