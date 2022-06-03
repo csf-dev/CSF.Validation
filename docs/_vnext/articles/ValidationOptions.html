@@ -66,18 +66,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="ValidationOptions">
 <h1 id="validation-options">Validation options</h1>
 
 <p>The second parameter to the <code>ValidateAsync</code> method (of any validator) is an optional instance of <a class="xref" href="../api/CSF.Validation.ValidationOptions.html"><code>ValidationOptions</code></a>.
-The validation options class allows you to customise the behaviour of validation.</p>
+The validation options class allows you to customise the behaviour of validation.
+It is also <em>possible to specify default options for use by all validators</em> by using the optional <code>Action&lt;ValidationOptions&gt;</code> parameter to <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions__"><code>UseValidationFramework()</code></a> when the validator is added to dependency injection.</p>
 <h2 id="should-the-validator-throw-if-validation-fails">Should the validator throw if validation fails?</h2>
-<p>When a validator object completes validation, it may throw an exception.  This is governed by the <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour"><code>RuleThrowingBehaviour</code></a> property of the validation options passed to the <code>ValidateAsync</code> method.
+<p>When a validator object completes validation, it may throw an exception.  This is governed by the <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour"><code>RuleThrowingBehaviour</code> property</a> of the validation options passed to the <code>ValidateAsync</code> method.
 By default, if no options are specified or if this property is left unset upon the options, the validator will throw if any of the validation results indicates <a class="xref" href="../api/CSF.Validation.Rules.RuleOutcome.html">an outcome of <code>Errored</code></a>.
-Other behaviours are available, documented with the enum <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour"><code>RuleThrowingBehaviour</code></a>.</p>
+Other behaviours are available, documented with the <a class="xref" href="../api/CSF.Validation.RuleThrowingBehaviour.html"><code>RuleThrowingBehaviour</code> enum</a>.</p>
 <h2 id="how-should-exceptions-be-treated-when-accessing-values">How should exceptions be treated when accessing values?</h2>
 <p>Exceptions which occur within validation rules are automatically caught and converted into <code>Errored</code> outcomes within the validation results.
-The same is not automatically true for the accessors which gets values from the object model to be validated.
+Whilst <em>this happens to be the default behaviour</em>, it does not have to be the behaviour for accessors which gets values from the object model to be validated.
 This behaviour is controlled from two places:</p>
 <ul>
 <li>Upon the validation options, <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour">the property <code>AccessorExceptionBehaviour</code></a> decides the default behaviour</li>
