@@ -25,7 +25,7 @@
   homepage: ConsumingValidators.md
   items:
     - name: Validation options
-      href: ValidationOptions.md
+      href: xref:CSF.Validation.ValidationOptions
     - name: Querying results
       href: QueryingTheResults.md
 - name: Best practice

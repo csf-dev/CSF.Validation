@@ -21,5 +21,5 @@ Both validator interfaces provide the method `ValidateAsync`, which is used to v
 * [Customise the validation process using Validation Options]
 * [Querying the validation results]
 
-[Customise the validation process using Validation Options]:ValidationOptions.md
+[Customise the validation process using Validation Options]:xref:CSF.Validation.ValidationOptions
 [Querying the validation results]:QueryingTheResults.md

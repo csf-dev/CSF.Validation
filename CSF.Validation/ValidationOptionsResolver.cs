@@ -20,13 +20,7 @@ namespace CSF.Validation
     /// </remarks>
     public class ValidationOptionsResolver : IGetsResolvedValidationOptions
     {
-        static readonly ResolvedValidationOptions hardcodedDefaults = new ResolvedValidationOptions
-        {
-            RuleThrowingBehaviour = RuleThrowingBehaviour.OnError,
-            AccessorExceptionBehaviour = Manifest.ValueAccessExceptionBehaviour.TreatAsError,
-            EnableMessageGeneration = false,
-            EnableRuleParallelization = false,
-        };
+        static readonly ResolvedValidationOptions hardcodedDefaults = new ResolvedValidationOptions();
 
         readonly IOptions<ValidationOptions> defaultOptions;
 
