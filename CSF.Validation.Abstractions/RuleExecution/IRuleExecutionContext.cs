@@ -22,7 +22,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets a read-only collection of all of the available validation rules and their dependencies.
         /// </summary>
-        IReadOnlyCollection<ExecutableRuleAndDependencies> AllRules { get; }
+        IEnumerable<ExecutableRuleAndDependencies> AllRules { get; }
 
         /// <summary>
         /// Gets a collection of rules which are ready to be executed.  Either they have no dependencies or

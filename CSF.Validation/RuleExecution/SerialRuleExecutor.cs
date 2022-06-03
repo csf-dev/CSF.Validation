@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CSF.Validation.Rules;
 
 namespace CSF.Validation.RuleExecution
 {
@@ -14,7 +13,6 @@ namespace CSF.Validation.RuleExecution
     {
         readonly IGetsSingleRuleExecutor ruleExecutorFactory;
         readonly ResolvedValidationOptions options;
-        readonly IGetsRuleContext contextFactory;
         
         /// <inheritdoc/>
         public async Task<IReadOnlyCollection<ValidationRuleResult>> ExecuteAllRulesAsync(IRuleExecutionContext executionContext, CancellationToken cancellationToken = default)
@@ -57,15 +55,12 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <param name="ruleExecutorFactory">The factory for an object which executes rules.</param>
         /// <param name="options">The validation options.</param>
-        /// <param name="contextFactory">A factory for rule contexts.</param>
         /// <exception cref="ArgumentNullException">If any parameter value is <see langword="null" />.</exception>
         public SerialRuleExecutor(IGetsSingleRuleExecutor ruleExecutorFactory,
-                                  ResolvedValidationOptions options,
-                                  IGetsRuleContext contextFactory)
+                                  ResolvedValidationOptions options)
         {
             this.ruleExecutorFactory = ruleExecutorFactory ?? throw new ArgumentNullException(nameof(ruleExecutorFactory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
-            this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
         }
     }
 }

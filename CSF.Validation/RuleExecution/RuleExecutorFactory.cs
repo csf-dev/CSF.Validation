@@ -24,8 +24,7 @@ namespace CSF.Validation.RuleExecution
             IExecutesAllRules result;
 
             result = new SerialRuleExecutor(resolver.GetRequiredService<IGetsSingleRuleExecutor>(),
-                                            options,
-                                            resolver.GetRequiredService<IGetsRuleContext>());
+                                            options);
 
             result = WrapWithFailedDependenciesDecorator(result);
             result = WrapWithErroredValuesDecorator(result);

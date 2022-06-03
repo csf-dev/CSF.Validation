@@ -27,7 +27,7 @@ namespace CSF.Validation.RuleExecution
         readonly ISet<ExecutableRule> dependencyFailures = new HashSet<ExecutableRule>();
 
         /// <inheritdoc />
-        public IReadOnlyCollection<ExecutableRuleAndDependencies> AllRules => allRules.Values.ToList();
+        public IEnumerable<ExecutableRuleAndDependencies> AllRules => allRules.Values;
 
         /// <inheritdoc />
         public IEnumerable<ExecutableRule> GetRulesWhichMayBeExecuted()

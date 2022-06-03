@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Extensions.Options;
 
 namespace CSF.Validation
@@ -34,19 +35,40 @@ namespace CSF.Validation
         {
             return new ResolvedValidationOptions
             {
-                RuleThrowingBehaviour = specifiedOptions?.RuleThrowingBehaviour
-                                            ?? defaultOptions.Value.RuleThrowingBehaviour
-                                            ?? hardcodedDefaults.RuleThrowingBehaviour,
-                AccessorExceptionBehaviour = specifiedOptions?.AccessorExceptionBehaviour
-                                            ?? defaultOptions.Value.AccessorExceptionBehaviour
-                                            ?? hardcodedDefaults.AccessorExceptionBehaviour,
-                EnableMessageGeneration = specifiedOptions?.EnableMessageGeneration
-                                            ?? defaultOptions.Value.EnableMessageGeneration
-                                            ?? hardcodedDefaults.EnableMessageGeneration,
-                EnableRuleParallelization = specifiedOptions?.EnableRuleParallelization
-                                            ?? defaultOptions.Value.EnableRuleParallelization
-                                            ?? hardcodedDefaults.EnableRuleParallelization,
+                RuleThrowingBehaviour = GetEffectiveValue(x => x.RuleThrowingBehaviour, specifiedOptions, hardcodedDefaults.RuleThrowingBehaviour),
+                AccessorExceptionBehaviour = GetEffectiveValue(x => x.AccessorExceptionBehaviour, specifiedOptions, hardcodedDefaults.AccessorExceptionBehaviour),
+                EnableMessageGeneration = GetEffectiveValue(x => x.EnableMessageGeneration, specifiedOptions, hardcodedDefaults.EnableMessageGeneration),
+                EnableRuleParallelization = GetEffectiveValue(x => x.EnableRuleParallelization, specifiedOptions, hardcodedDefaults.EnableRuleParallelization),
             };
+        }
+
+        /// <summary>
+        /// Gets the effective value of an options, either from the specified options, from the <see cref="defaultOptions"/> or
+        /// from the <see cref="hardcodedDefaults"/>.  The first non-null value found is used.
+        /// </summary>
+        /// <typeparam name="T">The type of option value.</typeparam>
+        /// <param name="getter">A getter func</param>
+        /// <param name="specifiedOptions">The specified options</param>
+        /// <param name="hardcodedDefault">The hard-coded default value</param>
+        /// <returns>The effective option value</returns>
+        T GetEffectiveValue<T>(Func<ValidationOptions, Nullable<T>> getter,
+                               ValidationOptions specifiedOptions,
+                               T hardcodedDefault)
+                where T : struct
+        {
+            if(!(specifiedOptions is null))
+            {
+                var specifiedValue = getter(specifiedOptions);
+                if(specifiedValue.HasValue) return specifiedValue.Value;
+            }
+            
+            if(!(defaultOptions.Value is null))
+            {
+                var defaultValue = getter(defaultOptions.Value);
+                if(defaultValue.HasValue) return defaultValue.Value;
+            }
+
+            return hardcodedDefault;
         }
 
         /// <summary>
