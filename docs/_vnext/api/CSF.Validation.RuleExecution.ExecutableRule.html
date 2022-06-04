@@ -112,10 +112,49 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L49">View Source</a>
+  </span>
+  <a id="CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel*"></a>
+  <h4 id="CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel" data-uid="CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel">IsEligibleToBeExecutedInParallel</h4>
+  <div class="markdown level1 summary"><p>Gets a value that indicates whether or not this rule may be executed in parallel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEligibleToBeExecutedInParallel { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This corresponds to whether or not the class that provides the rule logic is decorated
+with <a class="xref" href="CSF.Validation.Rules.ParallelizableAttribute.html">ParallelizableAttribute</a>.
+In order to actually run validation with parallelisation, <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableRuleParallelization">EnableRuleParallelization</a>
+must also be set to <span class="xref">true</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_ManifestRule.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.ManifestRule%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L19">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L21">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ExecutableRule_ManifestRule_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.ManifestRule*"></a>
   <h4 id="CSF_Validation_RuleExecution_ExecutableRule_ManifestRule" data-uid="CSF.Validation.RuleExecution.ExecutableRule.ManifestRule">ManifestRule</h4>
@@ -146,7 +185,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_Result.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.Result%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L29">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L31">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ExecutableRule_Result_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.Result*"></a>
   <h4 id="CSF_Validation_RuleExecution_ExecutableRule_Result" data-uid="CSF.Validation.RuleExecution.ExecutableRule.Result">Result</h4>
@@ -177,7 +216,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_RuleIdentifier.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.RuleIdentifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L34">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L36">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ExecutableRule_RuleIdentifier_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.RuleIdentifier*"></a>
   <h4 id="CSF_Validation_RuleExecution_ExecutableRule_RuleIdentifier" data-uid="CSF.Validation.RuleExecution.ExecutableRule.RuleIdentifier">RuleIdentifier</h4>
@@ -208,7 +247,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_RuleLogic.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.RuleLogic%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L24">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L26">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ExecutableRule_RuleLogic_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.RuleLogic*"></a>
   <h4 id="CSF_Validation_RuleExecution_ExecutableRule_RuleLogic" data-uid="CSF.Validation.RuleExecution.ExecutableRule.RuleLogic">RuleLogic</h4>
@@ -239,7 +278,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_ValidatedValue.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.ValidatedValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L14">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L16">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ExecutableRule_ValidatedValue_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.ValidatedValue*"></a>
   <h4 id="CSF_Validation_RuleExecution_ExecutableRule_ValidatedValue" data-uid="CSF.Validation.RuleExecution.ExecutableRule.ValidatedValue">ValidatedValue</h4>
@@ -272,7 +311,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule_ToString.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L40">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L55">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ExecutableRule_ToString_" data-uid="CSF.Validation.RuleExecution.ExecutableRule.ToString*"></a>
   <h4 id="CSF_Validation_RuleExecution_ExecutableRule_ToString" data-uid="CSF.Validation.RuleExecution.ExecutableRule.ToString">ToString()</h4>
@@ -312,7 +351,7 @@
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ExecutableRule.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ExecutableRule%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/ExecutableRule.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

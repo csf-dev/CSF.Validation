@@ -3538,6 +3538,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ResolvedValidationOptions.EnableMessageGeneration
   nameWithType: ResolvedValidationOptions.EnableMessageGeneration
+- uid: CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization
+  name: EnableRuleParallelization
+  href: api/CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_EnableRuleParallelization
+  commentId: P:CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization
+  fullName: CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization
+  nameWithType: ResolvedValidationOptions.EnableRuleParallelization
+- uid: CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization*
+  name: EnableRuleParallelization
+  href: api/CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_EnableRuleParallelization_
+  commentId: Overload:CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization
+  isSpec: "True"
+  fullName: CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization
+  nameWithType: ResolvedValidationOptions.EnableRuleParallelization
 - uid: CSF.Validation.ResolvedValidationOptions.RuleThrowingBehaviour
   name: RuleThrowingBehaviour
   href: api/CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_RuleThrowingBehaviour
@@ -3735,6 +3748,19 @@ references:
   commentId: T:CSF.Validation.RuleExecution.ExecutableRule
   fullName: CSF.Validation.RuleExecution.ExecutableRule
   nameWithType: ExecutableRule
+- uid: CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel
+  name: IsEligibleToBeExecutedInParallel
+  href: api/CSF.Validation.RuleExecution.ExecutableRule.html#CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel
+  commentId: P:CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel
+  fullName: CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel
+  nameWithType: ExecutableRule.IsEligibleToBeExecutedInParallel
+- uid: CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel*
+  name: IsEligibleToBeExecutedInParallel
+  href: api/CSF.Validation.RuleExecution.ExecutableRule.html#CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel_
+  commentId: Overload:CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ExecutableRule.IsEligibleToBeExecutedInParallel
+  nameWithType: ExecutableRule.IsEligibleToBeExecutedInParallel
 - uid: CSF.Validation.RuleExecution.ExecutableRule.ManifestRule
   name: ManifestRule
   href: api/CSF.Validation.RuleExecution.ExecutableRule.html#CSF_Validation_RuleExecution_ExecutableRule_ManifestRule
@@ -3985,15 +4011,12 @@ references:
   commentId: T:CSF.Validation.RuleExecution.IExecutesAllRules
   fullName: CSF.Validation.RuleExecution.IExecutesAllRules
   nameWithType: IExecutesAllRules
-- uid: CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},System.Threading.CancellationToken)
-  name: ExecuteAllRulesAsync(IReadOnlyList<ExecutableRuleAndDependencies>, CancellationToken)
-  href: api/CSF.Validation.RuleExecution.IExecutesAllRules.html#CSF_Validation_RuleExecution_IExecutesAllRules_ExecuteAllRulesAsync_System_Collections_Generic_IReadOnlyList_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},System.Threading.CancellationToken)
-  name.vb: ExecuteAllRulesAsync(IReadOnlyList(Of ExecutableRuleAndDependencies), CancellationToken)
-  fullName: CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), System.Threading.CancellationToken)
-  nameWithType: IExecutesAllRules.ExecuteAllRulesAsync(IReadOnlyList<ExecutableRuleAndDependencies>, CancellationToken)
-  nameWithType.vb: IExecutesAllRules.ExecuteAllRulesAsync(IReadOnlyList(Of ExecutableRuleAndDependencies), CancellationToken)
+- uid: CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  name: ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+  href: api/CSF.Validation.RuleExecution.IExecutesAllRules.html#CSF_Validation_RuleExecution_IExecutesAllRules_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext, System.Threading.CancellationToken)
+  nameWithType: IExecutesAllRules.ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
 - uid: CSF.Validation.RuleExecution.IExecutesAllRules.ExecuteAllRulesAsync*
   name: ExecuteAllRulesAsync
   href: api/CSF.Validation.RuleExecution.IExecutesAllRules.html#CSF_Validation_RuleExecution_IExecutesAllRules_ExecuteAllRulesAsync_
@@ -4096,28 +4119,28 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.IGetsEnumerableItemsToBeValidated.GetEnumerableItems
   nameWithType: IGetsEnumerableItemsToBeValidated.GetEnumerableItems
-- uid: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker
-  name: IGetsRuleDependencyTracker
-  href: api/CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.html
-  commentId: T:CSF.Validation.RuleExecution.IGetsRuleDependencyTracker
-  fullName: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker
-  nameWithType: IGetsRuleDependencyTracker
-- uid: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
-  name: GetDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
-  href: api/CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.html#CSF_Validation_RuleExecution_IGetsRuleDependencyTracker_GetDependencyTracker_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ResolvedValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
-  name.vb: GetDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
-  fullName: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, CSF.Validation.ResolvedValidationOptions)
-  fullName.vb: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), CSF.Validation.ResolvedValidationOptions)
-  nameWithType: IGetsRuleDependencyTracker.GetDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
-  nameWithType.vb: IGetsRuleDependencyTracker.GetDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
-- uid: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker*
-  name: GetDependencyTracker
-  href: api/CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.html#CSF_Validation_RuleExecution_IGetsRuleDependencyTracker_GetDependencyTracker_
-  commentId: Overload:CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker
+- uid: CSF.Validation.RuleExecution.IGetsRuleExecutionContext
+  name: IGetsRuleExecutionContext
+  href: api/CSF.Validation.RuleExecution.IGetsRuleExecutionContext.html
+  commentId: T:CSF.Validation.RuleExecution.IGetsRuleExecutionContext
+  fullName: CSF.Validation.RuleExecution.IGetsRuleExecutionContext
+  nameWithType: IGetsRuleExecutionContext
+- uid: CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
+  name: GetExecutionContext(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
+  href: api/CSF.Validation.RuleExecution.IGetsRuleExecutionContext.html#CSF_Validation_RuleExecution_IGetsRuleExecutionContext_GetExecutionContext_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ResolvedValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
+  name.vb: GetExecutionContext(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
+  fullName: CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, CSF.Validation.ResolvedValidationOptions)
+  fullName.vb: CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), CSF.Validation.ResolvedValidationOptions)
+  nameWithType: IGetsRuleExecutionContext.GetExecutionContext(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
+  nameWithType.vb: IGetsRuleExecutionContext.GetExecutionContext(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
+- uid: CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext*
+  name: GetExecutionContext
+  href: api/CSF.Validation.RuleExecution.IGetsRuleExecutionContext.html#CSF_Validation_RuleExecution_IGetsRuleExecutionContext_GetExecutionContext_
+  commentId: Overload:CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.IGetsRuleDependencyTracker.GetDependencyTracker
-  nameWithType: IGetsRuleDependencyTracker.GetDependencyTracker
+  fullName: CSF.Validation.RuleExecution.IGetsRuleExecutionContext.GetExecutionContext
+  nameWithType: IGetsRuleExecutionContext.GetExecutionContext
 - uid: CSF.Validation.RuleExecution.IGetsRuleExecutor
   name: IGetsRuleExecutor
   href: api/CSF.Validation.RuleExecution.IGetsRuleExecutor.html
@@ -4245,134 +4268,256 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
   nameWithType: IgnoredGetValueToBeValidatedResponse.IsSuccess
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies
-  name: ITracksRuleDependencies
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html
-  commentId: T:CSF.Validation.RuleExecution.ITracksRuleDependencies
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies
-  nameWithType: ITracksRuleDependencies
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhichMayBeExecuted
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext
+  name: IRuleExecutionContext
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html
+  commentId: T:CSF.Validation.RuleExecution.IRuleExecutionContext
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext
+  nameWithType: IRuleExecutionContext
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.AllRules
+  name: AllRules
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_AllRules
+  commentId: P:CSF.Validation.RuleExecution.IRuleExecutionContext.AllRules
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.AllRules
+  nameWithType: IRuleExecutionContext.AllRules
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.AllRules*
+  name: AllRules
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_AllRules_
+  commentId: Overload:CSF.Validation.RuleExecution.IRuleExecutionContext.AllRules
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.AllRules
+  nameWithType: IRuleExecutionContext.AllRules
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhichMayBeExecuted
   name: GetRulesWhichMayBeExecuted()
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html#CSF_Validation_RuleExecution_ITracksRuleDependencies_GetRulesWhichMayBeExecuted
-  commentId: M:CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhichMayBeExecuted
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhichMayBeExecuted()
-  nameWithType: ITracksRuleDependencies.GetRulesWhichMayBeExecuted()
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhichMayBeExecuted*
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_GetRulesWhichMayBeExecuted
+  commentId: M:CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhichMayBeExecuted
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhichMayBeExecuted()
+  nameWithType: IRuleExecutionContext.GetRulesWhichMayBeExecuted()
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhichMayBeExecuted*
   name: GetRulesWhichMayBeExecuted
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html#CSF_Validation_RuleExecution_ITracksRuleDependencies_GetRulesWhichMayBeExecuted_
-  commentId: Overload:CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhichMayBeExecuted
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_GetRulesWhichMayBeExecuted_
+  commentId: Overload:CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhichMayBeExecuted
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhichMayBeExecuted
-  nameWithType: ITracksRuleDependencies.GetRulesWhichMayBeExecuted
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhichMayBeExecuted
+  nameWithType: IRuleExecutionContext.GetRulesWhichMayBeExecuted
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
   name: GetRulesWhoseDependenciesHaveFailed()
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html#CSF_Validation_RuleExecution_ITracksRuleDependencies_GetRulesWhoseDependenciesHaveFailed
-  commentId: M:CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed()
-  nameWithType: ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed()
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed*
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_GetRulesWhoseDependenciesHaveFailed
+  commentId: M:CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed()
+  nameWithType: IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed()
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed*
   name: GetRulesWhoseDependenciesHaveFailed
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html#CSF_Validation_RuleExecution_ITracksRuleDependencies_GetRulesWhoseDependenciesHaveFailed_
-  commentId: Overload:CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_GetRulesWhoseDependenciesHaveFailed_
+  commentId: Overload:CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed
-  nameWithType: ITracksRuleDependencies.GetRulesWhoseDependenciesHaveFailed
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
+  nameWithType: IRuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
   name: HandleValidationRuleResult(ExecutableRule)
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html#CSF_Validation_RuleExecution_ITracksRuleDependencies_HandleValidationRuleResult_CSF_Validation_RuleExecution_ExecutableRule_
-  commentId: M:CSF.Validation.RuleExecution.ITracksRuleDependencies.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
-  nameWithType: ITracksRuleDependencies.HandleValidationRuleResult(ExecutableRule)
-- uid: CSF.Validation.RuleExecution.ITracksRuleDependencies.HandleValidationRuleResult*
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_HandleValidationRuleResult_CSF_Validation_RuleExecution_ExecutableRule_
+  commentId: M:CSF.Validation.RuleExecution.IRuleExecutionContext.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
+  nameWithType: IRuleExecutionContext.HandleValidationRuleResult(ExecutableRule)
+- uid: CSF.Validation.RuleExecution.IRuleExecutionContext.HandleValidationRuleResult*
   name: HandleValidationRuleResult
-  href: api/CSF.Validation.RuleExecution.ITracksRuleDependencies.html#CSF_Validation_RuleExecution_ITracksRuleDependencies_HandleValidationRuleResult_
-  commentId: Overload:CSF.Validation.RuleExecution.ITracksRuleDependencies.HandleValidationRuleResult
+  href: api/CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_HandleValidationRuleResult_
+  commentId: Overload:CSF.Validation.RuleExecution.IRuleExecutionContext.HandleValidationRuleResult
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.ITracksRuleDependencies.HandleValidationRuleResult
-  nameWithType: ITracksRuleDependencies.HandleValidationRuleResult
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker
-  name: RuleDependencyTracker
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html
-  commentId: T:CSF.Validation.RuleExecution.RuleDependencyTracker
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker
-  nameWithType: RuleDependencyTracker
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})
-  name: RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>)
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__
-  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})
-  name.vb: RuleDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies))
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>)
-  fullName.vb: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies))
-  nameWithType: RuleDependencyTracker.RuleDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>)
-  nameWithType.vb: RuleDependencyTracker.RuleDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies))
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor*
-  name: RuleDependencyTracker
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker__ctor_
-  commentId: Overload:CSF.Validation.RuleExecution.RuleDependencyTracker.#ctor
+  fullName: CSF.Validation.RuleExecution.IRuleExecutionContext.HandleValidationRuleResult
+  nameWithType: IRuleExecutionContext.HandleValidationRuleResult
+- uid: CSF.Validation.RuleExecution.ParallelRuleExecutor
+  name: ParallelRuleExecutor
+  href: api/CSF.Validation.RuleExecution.ParallelRuleExecutor.html
+  commentId: T:CSF.Validation.RuleExecution.ParallelRuleExecutor
+  fullName: CSF.Validation.RuleExecution.ParallelRuleExecutor
+  nameWithType: ParallelRuleExecutor
+- uid: CSF.Validation.RuleExecution.ParallelRuleExecutor.#ctor(CSF.Validation.RuleExecution.IExeucutesSingleRule)
+  name: ParallelRuleExecutor(IExeucutesSingleRule)
+  href: api/CSF.Validation.RuleExecution.ParallelRuleExecutor.html#CSF_Validation_RuleExecution_ParallelRuleExecutor__ctor_CSF_Validation_RuleExecution_IExeucutesSingleRule_
+  commentId: M:CSF.Validation.RuleExecution.ParallelRuleExecutor.#ctor(CSF.Validation.RuleExecution.IExeucutesSingleRule)
+  fullName: CSF.Validation.RuleExecution.ParallelRuleExecutor.ParallelRuleExecutor(CSF.Validation.RuleExecution.IExeucutesSingleRule)
+  nameWithType: ParallelRuleExecutor.ParallelRuleExecutor(IExeucutesSingleRule)
+- uid: CSF.Validation.RuleExecution.ParallelRuleExecutor.#ctor*
+  name: ParallelRuleExecutor
+  href: api/CSF.Validation.RuleExecution.ParallelRuleExecutor.html#CSF_Validation_RuleExecution_ParallelRuleExecutor__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.ParallelRuleExecutor.#ctor
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.RuleDependencyTracker
-  nameWithType: RuleDependencyTracker.RuleDependencyTracker
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted
+  fullName: CSF.Validation.RuleExecution.ParallelRuleExecutor.ParallelRuleExecutor
+  nameWithType: ParallelRuleExecutor.ParallelRuleExecutor
+- uid: CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  name: ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+  href: api/CSF.Validation.RuleExecution.ParallelRuleExecutor.html#CSF_Validation_RuleExecution_ParallelRuleExecutor_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext, System.Threading.CancellationToken)
+  nameWithType: ParallelRuleExecutor.ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+- uid: CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync*
+  name: ExecuteAllRulesAsync
+  href: api/CSF.Validation.RuleExecution.ParallelRuleExecutor.html#CSF_Validation_RuleExecution_ParallelRuleExecutor_ExecuteAllRulesAsync_
+  commentId: Overload:CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync
+  nameWithType: ParallelRuleExecutor.ExecuteAllRulesAsync
+- uid: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator
+  name: ResultsForErroredValuesExecutionDecorator
+  href: api/CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.html
+  commentId: T:CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator
+  fullName: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator
+  nameWithType: ResultsForErroredValuesExecutionDecorator
+- uid: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.#ctor(CSF.Validation.RuleExecution.IExecutesAllRules)
+  name: ResultsForErroredValuesExecutionDecorator(IExecutesAllRules)
+  href: api/CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForErroredValuesExecutionDecorator__ctor_CSF_Validation_RuleExecution_IExecutesAllRules_
+  commentId: M:CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.#ctor(CSF.Validation.RuleExecution.IExecutesAllRules)
+  fullName: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ResultsForErroredValuesExecutionDecorator(CSF.Validation.RuleExecution.IExecutesAllRules)
+  nameWithType: ResultsForErroredValuesExecutionDecorator.ResultsForErroredValuesExecutionDecorator(IExecutesAllRules)
+- uid: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.#ctor*
+  name: ResultsForErroredValuesExecutionDecorator
+  href: api/CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForErroredValuesExecutionDecorator__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ResultsForErroredValuesExecutionDecorator
+  nameWithType: ResultsForErroredValuesExecutionDecorator.ResultsForErroredValuesExecutionDecorator
+- uid: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  name: ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+  href: api/CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForErroredValuesExecutionDecorator_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext, System.Threading.CancellationToken)
+  nameWithType: ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+- uid: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync*
+  name: ExecuteAllRulesAsync
+  href: api/CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForErroredValuesExecutionDecorator_ExecuteAllRulesAsync_
+  commentId: Overload:CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync
+  nameWithType: ResultsForErroredValuesExecutionDecorator.ExecuteAllRulesAsync
+- uid: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator
+  name: ResultsForRulesWithFailedDependenciesExecutionDecorator
+  href: api/CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.html
+  commentId: T:CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator
+  fullName: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator
+  nameWithType: ResultsForRulesWithFailedDependenciesExecutionDecorator
+- uid: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.#ctor(CSF.Validation.RuleExecution.IExecutesAllRules,CSF.Validation.Rules.IGetsRuleContext)
+  name: ResultsForRulesWithFailedDependenciesExecutionDecorator(IExecutesAllRules, IGetsRuleContext)
+  href: api/CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForRulesWithFailedDependenciesExecutionDecorator__ctor_CSF_Validation_RuleExecution_IExecutesAllRules_CSF_Validation_Rules_IGetsRuleContext_
+  commentId: M:CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.#ctor(CSF.Validation.RuleExecution.IExecutesAllRules,CSF.Validation.Rules.IGetsRuleContext)
+  fullName: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ResultsForRulesWithFailedDependenciesExecutionDecorator(CSF.Validation.RuleExecution.IExecutesAllRules, CSF.Validation.Rules.IGetsRuleContext)
+  nameWithType: ResultsForRulesWithFailedDependenciesExecutionDecorator.ResultsForRulesWithFailedDependenciesExecutionDecorator(IExecutesAllRules, IGetsRuleContext)
+- uid: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.#ctor*
+  name: ResultsForRulesWithFailedDependenciesExecutionDecorator
+  href: api/CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForRulesWithFailedDependenciesExecutionDecorator__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ResultsForRulesWithFailedDependenciesExecutionDecorator
+  nameWithType: ResultsForRulesWithFailedDependenciesExecutionDecorator.ResultsForRulesWithFailedDependenciesExecutionDecorator
+- uid: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  name: ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+  href: api/CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForRulesWithFailedDependenciesExecutionDecorator_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext, System.Threading.CancellationToken)
+  nameWithType: ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+- uid: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync*
+  name: ExecuteAllRulesAsync
+  href: api/CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.html#CSF_Validation_RuleExecution_ResultsForRulesWithFailedDependenciesExecutionDecorator_ExecuteAllRulesAsync_
+  commentId: Overload:CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync
+  nameWithType: ResultsForRulesWithFailedDependenciesExecutionDecorator.ExecuteAllRulesAsync
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext
+  name: RuleExecutionContext
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html
+  commentId: T:CSF.Validation.RuleExecution.RuleExecutionContext
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext
+  nameWithType: RuleExecutionContext
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})
+  name: RuleExecutionContext(IEnumerable<ExecutableRuleAndDependencies>)
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__
+  commentId: M:CSF.Validation.RuleExecution.RuleExecutionContext.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies})
+  name.vb: RuleExecutionContext(IEnumerable(Of ExecutableRuleAndDependencies))
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.RuleExecutionContext(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>)
+  fullName.vb: CSF.Validation.RuleExecution.RuleExecutionContext.RuleExecutionContext(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies))
+  nameWithType: RuleExecutionContext.RuleExecutionContext(IEnumerable<ExecutableRuleAndDependencies>)
+  nameWithType.vb: RuleExecutionContext.RuleExecutionContext(IEnumerable(Of ExecutableRuleAndDependencies))
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.#ctor*
+  name: RuleExecutionContext
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext__ctor_
+  commentId: Overload:CSF.Validation.RuleExecution.RuleExecutionContext.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.RuleExecutionContext
+  nameWithType: RuleExecutionContext.RuleExecutionContext
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.AllRules
+  name: AllRules
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_AllRules
+  commentId: P:CSF.Validation.RuleExecution.RuleExecutionContext.AllRules
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.AllRules
+  nameWithType: RuleExecutionContext.AllRules
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.AllRules*
+  name: AllRules
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_AllRules_
+  commentId: Overload:CSF.Validation.RuleExecution.RuleExecutionContext.AllRules
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.AllRules
+  nameWithType: RuleExecutionContext.AllRules
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhichMayBeExecuted
   name: GetRulesWhichMayBeExecuted()
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhichMayBeExecuted
-  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted()
-  nameWithType: RuleDependencyTracker.GetRulesWhichMayBeExecuted()
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted*
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_GetRulesWhichMayBeExecuted
+  commentId: M:CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhichMayBeExecuted
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhichMayBeExecuted()
+  nameWithType: RuleExecutionContext.GetRulesWhichMayBeExecuted()
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhichMayBeExecuted*
   name: GetRulesWhichMayBeExecuted
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhichMayBeExecuted_
-  commentId: Overload:CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_GetRulesWhichMayBeExecuted_
+  commentId: Overload:CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhichMayBeExecuted
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhichMayBeExecuted
-  nameWithType: RuleDependencyTracker.GetRulesWhichMayBeExecuted
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhichMayBeExecuted
+  nameWithType: RuleExecutionContext.GetRulesWhichMayBeExecuted
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
   name: GetRulesWhoseDependenciesHaveFailed()
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhoseDependenciesHaveFailed
-  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed()
-  nameWithType: RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed()
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed*
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_GetRulesWhoseDependenciesHaveFailed
+  commentId: M:CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed()
+  nameWithType: RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed()
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed*
   name: GetRulesWhoseDependenciesHaveFailed
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker_GetRulesWhoseDependenciesHaveFailed_
-  commentId: Overload:CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_GetRulesWhoseDependenciesHaveFailed_
+  commentId: Overload:CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed
-  nameWithType: RuleDependencyTracker.GetRulesWhoseDependenciesHaveFailed
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
+  nameWithType: RuleExecutionContext.GetRulesWhoseDependenciesHaveFailed
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
   name: HandleValidationRuleResult(ExecutableRule)
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker_HandleValidationRuleResult_CSF_Validation_RuleExecution_ExecutableRule_
-  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
-  nameWithType: RuleDependencyTracker.HandleValidationRuleResult(ExecutableRule)
-- uid: CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult*
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_HandleValidationRuleResult_CSF_Validation_RuleExecution_ExecutableRule_
+  commentId: M:CSF.Validation.RuleExecution.RuleExecutionContext.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.HandleValidationRuleResult(CSF.Validation.RuleExecution.ExecutableRule)
+  nameWithType: RuleExecutionContext.HandleValidationRuleResult(ExecutableRule)
+- uid: CSF.Validation.RuleExecution.RuleExecutionContext.HandleValidationRuleResult*
   name: HandleValidationRuleResult
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTracker.html#CSF_Validation_RuleExecution_RuleDependencyTracker_HandleValidationRuleResult_
-  commentId: Overload:CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContext.html#CSF_Validation_RuleExecution_RuleExecutionContext_HandleValidationRuleResult_
+  commentId: Overload:CSF.Validation.RuleExecution.RuleExecutionContext.HandleValidationRuleResult
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTracker.HandleValidationRuleResult
-  nameWithType: RuleDependencyTracker.HandleValidationRuleResult
-- uid: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory
-  name: RuleDependencyTrackerFactory
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.html
-  commentId: T:CSF.Validation.RuleExecution.RuleDependencyTrackerFactory
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory
-  nameWithType: RuleDependencyTrackerFactory
-- uid: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
-  name: GetDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.html#CSF_Validation_RuleExecution_RuleDependencyTrackerFactory_GetDependencyTracker_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ResolvedValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
-  name.vb: GetDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, CSF.Validation.ResolvedValidationOptions)
-  fullName.vb: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), CSF.Validation.ResolvedValidationOptions)
-  nameWithType: RuleDependencyTrackerFactory.GetDependencyTracker(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
-  nameWithType.vb: RuleDependencyTrackerFactory.GetDependencyTracker(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
-- uid: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker*
-  name: GetDependencyTracker
-  href: api/CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.html#CSF_Validation_RuleExecution_RuleDependencyTrackerFactory_GetDependencyTracker_
-  commentId: Overload:CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContext.HandleValidationRuleResult
+  nameWithType: RuleExecutionContext.HandleValidationRuleResult
+- uid: CSF.Validation.RuleExecution.RuleExecutionContextFactory
+  name: RuleExecutionContextFactory
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContextFactory.html
+  commentId: T:CSF.Validation.RuleExecution.RuleExecutionContextFactory
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContextFactory
+  nameWithType: RuleExecutionContextFactory
+- uid: CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
+  name: GetExecutionContext(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContextFactory.html#CSF_Validation_RuleExecution_RuleExecutionContextFactory_GetExecutionContext_System_Collections_Generic_IEnumerable_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__CSF_Validation_ResolvedValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext(System.Collections.Generic.IEnumerable{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},CSF.Validation.ResolvedValidationOptions)
+  name.vb: GetExecutionContext(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext(System.Collections.Generic.IEnumerable<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, CSF.Validation.ResolvedValidationOptions)
+  fullName.vb: CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext(System.Collections.Generic.IEnumerable(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), CSF.Validation.ResolvedValidationOptions)
+  nameWithType: RuleExecutionContextFactory.GetExecutionContext(IEnumerable<ExecutableRuleAndDependencies>, ResolvedValidationOptions)
+  nameWithType.vb: RuleExecutionContextFactory.GetExecutionContext(IEnumerable(Of ExecutableRuleAndDependencies), ResolvedValidationOptions)
+- uid: CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext*
+  name: GetExecutionContext
+  href: api/CSF.Validation.RuleExecution.RuleExecutionContextFactory.html#CSF_Validation_RuleExecution_RuleExecutionContextFactory_GetExecutionContext_
+  commentId: Overload:CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext
   isSpec: "True"
-  fullName: CSF.Validation.RuleExecution.RuleDependencyTrackerFactory.GetDependencyTracker
-  nameWithType: RuleDependencyTrackerFactory.GetDependencyTracker
+  fullName: CSF.Validation.RuleExecution.RuleExecutionContextFactory.GetExecutionContext
+  nameWithType: RuleExecutionContextFactory.GetExecutionContext
 - uid: CSF.Validation.RuleExecution.RuleExecutorFactory
   name: RuleExecutorFactory
   href: api/CSF.Validation.RuleExecution.RuleExecutorFactory.html
@@ -4411,12 +4556,12 @@ references:
   commentId: T:CSF.Validation.RuleExecution.SerialRuleExecutor
   fullName: CSF.Validation.RuleExecution.SerialRuleExecutor
   nameWithType: SerialRuleExecutor
-- uid: CSF.Validation.RuleExecution.SerialRuleExecutor.#ctor(CSF.Validation.RuleExecution.IGetsRuleDependencyTracker,CSF.Validation.RuleExecution.IGetsSingleRuleExecutor,CSF.Validation.ResolvedValidationOptions,CSF.Validation.Rules.IGetsRuleContext)
-  name: SerialRuleExecutor(IGetsRuleDependencyTracker, IGetsSingleRuleExecutor, ResolvedValidationOptions, IGetsRuleContext)
-  href: api/CSF.Validation.RuleExecution.SerialRuleExecutor.html#CSF_Validation_RuleExecution_SerialRuleExecutor__ctor_CSF_Validation_RuleExecution_IGetsRuleDependencyTracker_CSF_Validation_RuleExecution_IGetsSingleRuleExecutor_CSF_Validation_ResolvedValidationOptions_CSF_Validation_Rules_IGetsRuleContext_
-  commentId: M:CSF.Validation.RuleExecution.SerialRuleExecutor.#ctor(CSF.Validation.RuleExecution.IGetsRuleDependencyTracker,CSF.Validation.RuleExecution.IGetsSingleRuleExecutor,CSF.Validation.ResolvedValidationOptions,CSF.Validation.Rules.IGetsRuleContext)
-  fullName: CSF.Validation.RuleExecution.SerialRuleExecutor.SerialRuleExecutor(CSF.Validation.RuleExecution.IGetsRuleDependencyTracker, CSF.Validation.RuleExecution.IGetsSingleRuleExecutor, CSF.Validation.ResolvedValidationOptions, CSF.Validation.Rules.IGetsRuleContext)
-  nameWithType: SerialRuleExecutor.SerialRuleExecutor(IGetsRuleDependencyTracker, IGetsSingleRuleExecutor, ResolvedValidationOptions, IGetsRuleContext)
+- uid: CSF.Validation.RuleExecution.SerialRuleExecutor.#ctor(CSF.Validation.RuleExecution.IExeucutesSingleRule)
+  name: SerialRuleExecutor(IExeucutesSingleRule)
+  href: api/CSF.Validation.RuleExecution.SerialRuleExecutor.html#CSF_Validation_RuleExecution_SerialRuleExecutor__ctor_CSF_Validation_RuleExecution_IExeucutesSingleRule_
+  commentId: M:CSF.Validation.RuleExecution.SerialRuleExecutor.#ctor(CSF.Validation.RuleExecution.IExeucutesSingleRule)
+  fullName: CSF.Validation.RuleExecution.SerialRuleExecutor.SerialRuleExecutor(CSF.Validation.RuleExecution.IExeucutesSingleRule)
+  nameWithType: SerialRuleExecutor.SerialRuleExecutor(IExeucutesSingleRule)
 - uid: CSF.Validation.RuleExecution.SerialRuleExecutor.#ctor*
   name: SerialRuleExecutor
   href: api/CSF.Validation.RuleExecution.SerialRuleExecutor.html#CSF_Validation_RuleExecution_SerialRuleExecutor__ctor_
@@ -4424,15 +4569,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.SerialRuleExecutor.SerialRuleExecutor
   nameWithType: SerialRuleExecutor.SerialRuleExecutor
-- uid: CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},System.Threading.CancellationToken)
-  name: ExecuteAllRulesAsync(IReadOnlyList<ExecutableRuleAndDependencies>, CancellationToken)
-  href: api/CSF.Validation.RuleExecution.SerialRuleExecutor.html#CSF_Validation_RuleExecution_SerialRuleExecutor_ExecuteAllRulesAsync_System_Collections_Generic_IReadOnlyList_CSF_Validation_RuleExecution_ExecutableRuleAndDependencies__System_Threading_CancellationToken_
-  commentId: M:CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList{CSF.Validation.RuleExecution.ExecutableRuleAndDependencies},System.Threading.CancellationToken)
-  name.vb: ExecuteAllRulesAsync(IReadOnlyList(Of ExecutableRuleAndDependencies), CancellationToken)
-  fullName: CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList<CSF.Validation.RuleExecution.ExecutableRuleAndDependencies>, System.Threading.CancellationToken)
-  fullName.vb: CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(System.Collections.Generic.IReadOnlyList(Of CSF.Validation.RuleExecution.ExecutableRuleAndDependencies), System.Threading.CancellationToken)
-  nameWithType: SerialRuleExecutor.ExecuteAllRulesAsync(IReadOnlyList<ExecutableRuleAndDependencies>, CancellationToken)
-  nameWithType.vb: SerialRuleExecutor.ExecuteAllRulesAsync(IReadOnlyList(Of ExecutableRuleAndDependencies), CancellationToken)
+- uid: CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  name: ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
+  href: api/CSF.Validation.RuleExecution.SerialRuleExecutor.html#CSF_Validation_RuleExecution_SerialRuleExecutor_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_
+  commentId: M:CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)
+  fullName: CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext, System.Threading.CancellationToken)
+  nameWithType: SerialRuleExecutor.ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)
 - uid: CSF.Validation.RuleExecution.SerialRuleExecutor.ExecuteAllRulesAsync*
   name: ExecuteAllRulesAsync
   href: api/CSF.Validation.RuleExecution.SerialRuleExecutor.html#CSF_Validation_RuleExecution_SerialRuleExecutor_ExecuteAllRulesAsync_
@@ -6438,6 +6580,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.Null.GetResultAsync
   nameWithType: Null.GetResultAsync
+- uid: CSF.Validation.Rules.ParallelizableAttribute
+  name: ParallelizableAttribute
+  href: api/CSF.Validation.Rules.ParallelizableAttribute.html
+  commentId: T:CSF.Validation.Rules.ParallelizableAttribute
+  fullName: CSF.Validation.Rules.ParallelizableAttribute
+  nameWithType: ParallelizableAttribute
 - uid: CSF.Validation.Rules.RuleAdapter`1
   name: RuleAdapter<TValidated>
   href: api/CSF.Validation.Rules.RuleAdapter-1.html
@@ -7583,6 +7731,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValidationOptions.EnableMessageGeneration
   nameWithType: ValidationOptions.EnableMessageGeneration
+- uid: CSF.Validation.ValidationOptions.EnableRuleParallelization
+  name: EnableRuleParallelization
+  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableRuleParallelization
+  commentId: P:CSF.Validation.ValidationOptions.EnableRuleParallelization
+  fullName: CSF.Validation.ValidationOptions.EnableRuleParallelization
+  nameWithType: ValidationOptions.EnableRuleParallelization
+- uid: CSF.Validation.ValidationOptions.EnableRuleParallelization*
+  name: EnableRuleParallelization
+  href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableRuleParallelization_
+  commentId: Overload:CSF.Validation.ValidationOptions.EnableRuleParallelization
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationOptions.EnableRuleParallelization
+  nameWithType: ValidationOptions.EnableRuleParallelization
 - uid: CSF.Validation.ValidationOptions.RuleThrowingBehaviour
   name: RuleThrowingBehaviour
   href: api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour
@@ -7962,14 +8123,14 @@ references:
   fullName.vb: CSF.Validation.Validator(Of TValidated)
   nameWithType: Validator<TValidated>
   nameWithType.vb: Validator(Of TValidated)
-- uid: CSF.Validation.Validator`1.#ctor(CSF.Validation.Manifest.ValidationManifest,CSF.Validation.RuleExecution.IGetsRuleExecutor,CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies,CSF.Validation.IGetsResolvedValidationOptions)
-  name: Validator(ValidationManifest, IGetsRuleExecutor, IGetsAllExecutableRulesWithDependencies, IGetsResolvedValidationOptions)
-  href: api/CSF.Validation.Validator-1.html#CSF_Validation_Validator_1__ctor_CSF_Validation_Manifest_ValidationManifest_CSF_Validation_RuleExecution_IGetsRuleExecutor_CSF_Validation_RuleExecution_IGetsAllExecutableRulesWithDependencies_CSF_Validation_IGetsResolvedValidationOptions_
-  commentId: M:CSF.Validation.Validator`1.#ctor(CSF.Validation.Manifest.ValidationManifest,CSF.Validation.RuleExecution.IGetsRuleExecutor,CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies,CSF.Validation.IGetsResolvedValidationOptions)
-  fullName: CSF.Validation.Validator<TValidated>.Validator(CSF.Validation.Manifest.ValidationManifest, CSF.Validation.RuleExecution.IGetsRuleExecutor, CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies, CSF.Validation.IGetsResolvedValidationOptions)
-  fullName.vb: CSF.Validation.Validator(Of TValidated).Validator(CSF.Validation.Manifest.ValidationManifest, CSF.Validation.RuleExecution.IGetsRuleExecutor, CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies, CSF.Validation.IGetsResolvedValidationOptions)
-  nameWithType: Validator<TValidated>.Validator(ValidationManifest, IGetsRuleExecutor, IGetsAllExecutableRulesWithDependencies, IGetsResolvedValidationOptions)
-  nameWithType.vb: Validator(Of TValidated).Validator(ValidationManifest, IGetsRuleExecutor, IGetsAllExecutableRulesWithDependencies, IGetsResolvedValidationOptions)
+- uid: CSF.Validation.Validator`1.#ctor(CSF.Validation.Manifest.ValidationManifest,CSF.Validation.RuleExecution.IGetsRuleExecutor,CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies,CSF.Validation.IGetsResolvedValidationOptions,CSF.Validation.RuleExecution.IGetsRuleExecutionContext)
+  name: Validator(ValidationManifest, IGetsRuleExecutor, IGetsAllExecutableRulesWithDependencies, IGetsResolvedValidationOptions, IGetsRuleExecutionContext)
+  href: api/CSF.Validation.Validator-1.html#CSF_Validation_Validator_1__ctor_CSF_Validation_Manifest_ValidationManifest_CSF_Validation_RuleExecution_IGetsRuleExecutor_CSF_Validation_RuleExecution_IGetsAllExecutableRulesWithDependencies_CSF_Validation_IGetsResolvedValidationOptions_CSF_Validation_RuleExecution_IGetsRuleExecutionContext_
+  commentId: M:CSF.Validation.Validator`1.#ctor(CSF.Validation.Manifest.ValidationManifest,CSF.Validation.RuleExecution.IGetsRuleExecutor,CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies,CSF.Validation.IGetsResolvedValidationOptions,CSF.Validation.RuleExecution.IGetsRuleExecutionContext)
+  fullName: CSF.Validation.Validator<TValidated>.Validator(CSF.Validation.Manifest.ValidationManifest, CSF.Validation.RuleExecution.IGetsRuleExecutor, CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies, CSF.Validation.IGetsResolvedValidationOptions, CSF.Validation.RuleExecution.IGetsRuleExecutionContext)
+  fullName.vb: CSF.Validation.Validator(Of TValidated).Validator(CSF.Validation.Manifest.ValidationManifest, CSF.Validation.RuleExecution.IGetsRuleExecutor, CSF.Validation.RuleExecution.IGetsAllExecutableRulesWithDependencies, CSF.Validation.IGetsResolvedValidationOptions, CSF.Validation.RuleExecution.IGetsRuleExecutionContext)
+  nameWithType: Validator<TValidated>.Validator(ValidationManifest, IGetsRuleExecutor, IGetsAllExecutableRulesWithDependencies, IGetsResolvedValidationOptions, IGetsRuleExecutionContext)
+  nameWithType.vb: Validator(Of TValidated).Validator(ValidationManifest, IGetsRuleExecutor, IGetsAllExecutableRulesWithDependencies, IGetsResolvedValidationOptions, IGetsRuleExecutionContext)
 - uid: CSF.Validation.Validator`1.#ctor*
   name: Validator
   href: api/CSF.Validation.Validator-1.html#CSF_Validation_Validator_1__ctor_
@@ -9580,6 +9741,9 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ValueContextIsMatchForItem.GetExpression
   nameWithType: ValueContextIsMatchForItem.GetExpression
+- uid: GeneratingFeedbackMessages
+  name: Validation feedback messages
+  href: articles/GeneratingFeedbackMessages.html
 - uid: HandlingAccessorExceptions
   name: Handling accessor exceptions
   href: articles/WritingValidators/WritingValidatorBuilders/HandlingAccessorExceptions.html
@@ -9589,9 +9753,6 @@ references:
 - uid: RulesShouldOnlyFailForOneReason
   name: A rule should only fail for one conceptual reason
   href: articles/BestPractice/RulesShouldOnlyFailForOneReason.html
-- uid: ValidationOptions
-  name: Validation options
-  href: articles/ValidationOptions.html
 - uid: WritingMessageProviders
   name: Writing feedback message providers
   href: articles/WritingMessageProviders.html
