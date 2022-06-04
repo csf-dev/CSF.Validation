@@ -580,6 +580,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.IQueryableValidationResult.RuleResults
   nameWithType: IQueryableValidationResult.RuleResults
+- uid: CSF.Validation.IQueryableValidationResult.ToSerializableResult
+  name: ToSerializableResult()
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_ToSerializableResult
+  commentId: M:CSF.Validation.IQueryableValidationResult.ToSerializableResult
+  fullName: CSF.Validation.IQueryableValidationResult.ToSerializableResult()
+  nameWithType: IQueryableValidationResult.ToSerializableResult()
+- uid: CSF.Validation.IQueryableValidationResult.ToSerializableResult*
+  name: ToSerializableResult
+  href: api/CSF.Validation.IQueryableValidationResult.html#CSF_Validation_IQueryableValidationResult_ToSerializableResult_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult.ToSerializableResult
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult.ToSerializableResult
+  nameWithType: IQueryableValidationResult.ToSerializableResult
 - uid: CSF.Validation.IQueryableValidationResult`1
   name: IQueryableValidationResult<TValidated>
   href: api/CSF.Validation.IQueryableValidationResult-1.html
@@ -7210,6 +7223,208 @@ references:
   commentId: F:CSF.Validation.RuleThrowingBehaviour.OnFailure
   fullName: CSF.Validation.RuleThrowingBehaviour.OnFailure
   nameWithType: RuleThrowingBehaviour.OnFailure
+- uid: CSF.Validation.SerializableValidationResult
+  name: SerializableValidationResult
+  href: api/CSF.Validation.SerializableValidationResult.html
+  commentId: T:CSF.Validation.SerializableValidationResult
+  fullName: CSF.Validation.SerializableValidationResult
+  nameWithType: SerializableValidationResult
+- uid: CSF.Validation.SerializableValidationResult.#ctor
+  name: SerializableValidationResult()
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult__ctor
+  commentId: M:CSF.Validation.SerializableValidationResult.#ctor
+  fullName: CSF.Validation.SerializableValidationResult.SerializableValidationResult()
+  nameWithType: SerializableValidationResult.SerializableValidationResult()
+- uid: CSF.Validation.SerializableValidationResult.#ctor*
+  name: SerializableValidationResult
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult__ctor_
+  commentId: Overload:CSF.Validation.SerializableValidationResult.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationResult.SerializableValidationResult
+  nameWithType: SerializableValidationResult.SerializableValidationResult
+- uid: CSF.Validation.SerializableValidationResult.IsPass
+  name: IsPass()
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult_IsPass
+  commentId: M:CSF.Validation.SerializableValidationResult.IsPass
+  fullName: CSF.Validation.SerializableValidationResult.IsPass()
+  nameWithType: SerializableValidationResult.IsPass()
+- uid: CSF.Validation.SerializableValidationResult.IsPass*
+  name: IsPass
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult_IsPass_
+  commentId: Overload:CSF.Validation.SerializableValidationResult.IsPass
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationResult.IsPass
+  nameWithType: SerializableValidationResult.IsPass
+- uid: CSF.Validation.SerializableValidationResult.RuleResults
+  name: RuleResults
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult_RuleResults
+  commentId: P:CSF.Validation.SerializableValidationResult.RuleResults
+  fullName: CSF.Validation.SerializableValidationResult.RuleResults
+  nameWithType: SerializableValidationResult.RuleResults
+- uid: CSF.Validation.SerializableValidationResult.RuleResults*
+  name: RuleResults
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult_RuleResults_
+  commentId: Overload:CSF.Validation.SerializableValidationResult.RuleResults
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationResult.RuleResults
+  nameWithType: SerializableValidationResult.RuleResults
+- uid: CSF.Validation.SerializableValidationResult.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult_System_Runtime_Serialization_ISerializable_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:CSF.Validation.SerializableValidationResult.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: CSF.Validation.SerializableValidationResult.System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: SerializableValidationResult.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType.vb: SerializableValidationResult.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+- uid: CSF.Validation.SerializableValidationResult.System#Runtime#Serialization#ISerializable#GetObjectData*
+  name: ISerializable.GetObjectData
+  href: api/CSF.Validation.SerializableValidationResult.html#CSF_Validation_SerializableValidationResult_System_Runtime_Serialization_ISerializable_GetObjectData_
+  commentId: Overload:CSF.Validation.SerializableValidationResult.System#Runtime#Serialization#ISerializable#GetObjectData
+  isSpec: "True"
+  name.vb: System.Runtime.Serialization.ISerializable.GetObjectData
+  fullName: CSF.Validation.SerializableValidationResult.System.Runtime.Serialization.ISerializable.GetObjectData
+  nameWithType: SerializableValidationResult.ISerializable.GetObjectData
+  nameWithType.vb: SerializableValidationResult.System.Runtime.Serialization.ISerializable.GetObjectData
+- uid: CSF.Validation.SerializableValidationRuleResult
+  name: SerializableValidationRuleResult
+  href: api/CSF.Validation.SerializableValidationRuleResult.html
+  commentId: T:CSF.Validation.SerializableValidationRuleResult
+  fullName: CSF.Validation.SerializableValidationRuleResult
+  nameWithType: SerializableValidationRuleResult
+- uid: CSF.Validation.SerializableValidationRuleResult.#ctor
+  name: SerializableValidationRuleResult()
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult__ctor
+  commentId: M:CSF.Validation.SerializableValidationRuleResult.#ctor
+  fullName: CSF.Validation.SerializableValidationRuleResult.SerializableValidationRuleResult()
+  nameWithType: SerializableValidationRuleResult.SerializableValidationRuleResult()
+- uid: CSF.Validation.SerializableValidationRuleResult.#ctor*
+  name: SerializableValidationRuleResult
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult__ctor_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.SerializableValidationRuleResult
+  nameWithType: SerializableValidationRuleResult.SerializableValidationRuleResult
+- uid: CSF.Validation.SerializableValidationRuleResult.ExceptionString
+  name: ExceptionString
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_ExceptionString
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.ExceptionString
+  fullName: CSF.Validation.SerializableValidationRuleResult.ExceptionString
+  nameWithType: SerializableValidationRuleResult.ExceptionString
+- uid: CSF.Validation.SerializableValidationRuleResult.ExceptionString*
+  name: ExceptionString
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_ExceptionString_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.ExceptionString
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.ExceptionString
+  nameWithType: SerializableValidationRuleResult.ExceptionString
+- uid: CSF.Validation.SerializableValidationRuleResult.MemberName
+  name: MemberName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_MemberName
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.MemberName
+  fullName: CSF.Validation.SerializableValidationRuleResult.MemberName
+  nameWithType: SerializableValidationRuleResult.MemberName
+- uid: CSF.Validation.SerializableValidationRuleResult.MemberName*
+  name: MemberName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_MemberName_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.MemberName
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.MemberName
+  nameWithType: SerializableValidationRuleResult.MemberName
+- uid: CSF.Validation.SerializableValidationRuleResult.Message
+  name: Message
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_Message
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.Message
+  fullName: CSF.Validation.SerializableValidationRuleResult.Message
+  nameWithType: SerializableValidationRuleResult.Message
+- uid: CSF.Validation.SerializableValidationRuleResult.Message*
+  name: Message
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_Message_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.Message
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.Message
+  nameWithType: SerializableValidationRuleResult.Message
+- uid: CSF.Validation.SerializableValidationRuleResult.ObjectIdentityString
+  name: ObjectIdentityString
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_ObjectIdentityString
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.ObjectIdentityString
+  fullName: CSF.Validation.SerializableValidationRuleResult.ObjectIdentityString
+  nameWithType: SerializableValidationRuleResult.ObjectIdentityString
+- uid: CSF.Validation.SerializableValidationRuleResult.ObjectIdentityString*
+  name: ObjectIdentityString
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_ObjectIdentityString_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.ObjectIdentityString
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.ObjectIdentityString
+  nameWithType: SerializableValidationRuleResult.ObjectIdentityString
+- uid: CSF.Validation.SerializableValidationRuleResult.Outcome
+  name: Outcome
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_Outcome
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.Outcome
+  fullName: CSF.Validation.SerializableValidationRuleResult.Outcome
+  nameWithType: SerializableValidationRuleResult.Outcome
+- uid: CSF.Validation.SerializableValidationRuleResult.Outcome*
+  name: Outcome
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_Outcome_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.Outcome
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.Outcome
+  nameWithType: SerializableValidationRuleResult.Outcome
+- uid: CSF.Validation.SerializableValidationRuleResult.RuleName
+  name: RuleName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_RuleName
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.RuleName
+  fullName: CSF.Validation.SerializableValidationRuleResult.RuleName
+  nameWithType: SerializableValidationRuleResult.RuleName
+- uid: CSF.Validation.SerializableValidationRuleResult.RuleName*
+  name: RuleName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_RuleName_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.RuleName
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.RuleName
+  nameWithType: SerializableValidationRuleResult.RuleName
+- uid: CSF.Validation.SerializableValidationRuleResult.RuleTypeName
+  name: RuleTypeName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_RuleTypeName
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.RuleTypeName
+  fullName: CSF.Validation.SerializableValidationRuleResult.RuleTypeName
+  nameWithType: SerializableValidationRuleResult.RuleTypeName
+- uid: CSF.Validation.SerializableValidationRuleResult.RuleTypeName*
+  name: RuleTypeName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_RuleTypeName_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.RuleTypeName
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.RuleTypeName
+  nameWithType: SerializableValidationRuleResult.RuleTypeName
+- uid: CSF.Validation.SerializableValidationRuleResult.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_System_Runtime_Serialization_ISerializable_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:CSF.Validation.SerializableValidationRuleResult.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: CSF.Validation.SerializableValidationRuleResult.System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: SerializableValidationRuleResult.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType.vb: SerializableValidationRuleResult.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+- uid: CSF.Validation.SerializableValidationRuleResult.System#Runtime#Serialization#ISerializable#GetObjectData*
+  name: ISerializable.GetObjectData
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_System_Runtime_Serialization_ISerializable_GetObjectData_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.System#Runtime#Serialization#ISerializable#GetObjectData
+  isSpec: "True"
+  name.vb: System.Runtime.Serialization.ISerializable.GetObjectData
+  fullName: CSF.Validation.SerializableValidationRuleResult.System.Runtime.Serialization.ISerializable.GetObjectData
+  nameWithType: SerializableValidationRuleResult.ISerializable.GetObjectData
+  nameWithType.vb: SerializableValidationRuleResult.System.Runtime.Serialization.ISerializable.GetObjectData
+- uid: CSF.Validation.SerializableValidationRuleResult.ValidatedTypeName
+  name: ValidatedTypeName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_ValidatedTypeName
+  commentId: P:CSF.Validation.SerializableValidationRuleResult.ValidatedTypeName
+  fullName: CSF.Validation.SerializableValidationRuleResult.ValidatedTypeName
+  nameWithType: SerializableValidationRuleResult.ValidatedTypeName
+- uid: CSF.Validation.SerializableValidationRuleResult.ValidatedTypeName*
+  name: ValidatedTypeName
+  href: api/CSF.Validation.SerializableValidationRuleResult.html#CSF_Validation_SerializableValidationRuleResult_ValidatedTypeName_
+  commentId: Overload:CSF.Validation.SerializableValidationRuleResult.ValidatedTypeName
+  isSpec: "True"
+  fullName: CSF.Validation.SerializableValidationRuleResult.ValidatedTypeName
+  nameWithType: SerializableValidationRuleResult.ValidatedTypeName
 - uid: CSF.Validation.ServiceCollectionExtensions
   name: ServiceCollectionExtensions
   href: api/CSF.Validation.ServiceCollectionExtensions.html
@@ -7557,6 +7772,23 @@ references:
   fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).System.Collections.IEnumerable.GetEnumerator
   nameWithType: SubsetOfValidationResults<TValidated>.IEnumerable.GetEnumerator
   nameWithType.vb: SubsetOfValidationResults(Of TValidated).System.Collections.IEnumerable.GetEnumerator
+- uid: CSF.Validation.SubsetOfValidationResults`1.ToSerializableResult
+  name: ToSerializableResult()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ToSerializableResult
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.ToSerializableResult
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ToSerializableResult()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ToSerializableResult()
+  nameWithType: SubsetOfValidationResults<TValidated>.ToSerializableResult()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ToSerializableResult()
+- uid: CSF.Validation.SubsetOfValidationResults`1.ToSerializableResult*
+  name: ToSerializableResult
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_ToSerializableResult_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.ToSerializableResult
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.ToSerializableResult
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).ToSerializableResult
+  nameWithType: SubsetOfValidationResults<TValidated>.ToSerializableResult
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).ToSerializableResult
 - uid: CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses
   name: WithoutSuccesses()
   href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_WithoutSuccesses
@@ -7920,6 +8152,19 @@ references:
   fullName: CSF.Validation.ValidationResult.System.Collections.IEnumerable.GetEnumerator
   nameWithType: ValidationResult.IEnumerable.GetEnumerator
   nameWithType.vb: ValidationResult.System.Collections.IEnumerable.GetEnumerator
+- uid: CSF.Validation.ValidationResult.ToSerializableResult
+  name: ToSerializableResult()
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_ToSerializableResult
+  commentId: M:CSF.Validation.ValidationResult.ToSerializableResult
+  fullName: CSF.Validation.ValidationResult.ToSerializableResult()
+  nameWithType: ValidationResult.ToSerializableResult()
+- uid: CSF.Validation.ValidationResult.ToSerializableResult*
+  name: ToSerializableResult
+  href: api/CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_ToSerializableResult_
+  commentId: Overload:CSF.Validation.ValidationResult.ToSerializableResult
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult.ToSerializableResult
+  nameWithType: ValidationResult.ToSerializableResult
 - uid: CSF.Validation.ValidationResult`1
   name: ValidationResult<TValidated>
   href: api/CSF.Validation.ValidationResult-1.html
@@ -8000,6 +8245,23 @@ references:
   fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForOnlyThisValue
   nameWithType: ValidationResult<TValidated>.ForOnlyThisValue
   nameWithType.vb: ValidationResult(Of TValidated).ForOnlyThisValue
+- uid: CSF.Validation.ValidationResult`1.ToSerializableResult
+  name: ToSerializableResult()
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ToSerializableResult
+  commentId: M:CSF.Validation.ValidationResult`1.ToSerializableResult
+  fullName: CSF.Validation.ValidationResult<TValidated>.ToSerializableResult()
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ToSerializableResult()
+  nameWithType: ValidationResult<TValidated>.ToSerializableResult()
+  nameWithType.vb: ValidationResult(Of TValidated).ToSerializableResult()
+- uid: CSF.Validation.ValidationResult`1.ToSerializableResult*
+  name: ToSerializableResult
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ToSerializableResult_
+  commentId: Overload:CSF.Validation.ValidationResult`1.ToSerializableResult
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.ToSerializableResult
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ToSerializableResult
+  nameWithType: ValidationResult<TValidated>.ToSerializableResult
+  nameWithType.vb: ValidationResult(Of TValidated).ToSerializableResult
 - uid: CSF.Validation.ValidationResult`1.WithoutSuccesses
   name: WithoutSuccesses()
   href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_WithoutSuccesses

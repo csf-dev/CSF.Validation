@@ -251,6 +251,48 @@ the current validation result.</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_ToSerializableResult.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.ToSerializableResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L50">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_ToSerializableResult_" data-uid="CSF.Validation.IQueryableValidationResult.ToSerializableResult*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_ToSerializableResult" data-uid="CSF.Validation.IQueryableValidationResult.ToSerializableResult">ToSerializableResult()</h4>
+  <div class="markdown level1 summary"><p>Gets a representation of the current result as a serializable validation result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SerializableValidationResult ToSerializableResult()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.SerializableValidationResult.html">SerializableValidationResult</a></td>
+        <td><p>A copy of the current validation result, in an easily-serializable format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_IQueryableValidationResult_ToSerializableResult_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Whilst the validation result types represented by <a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a> &amp;
+<a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult&lt;TValidated&gt;</a> are powerful and include querying/matching
+functionality, they are cumbersome to serialize and/or transmit via network APIs such as JSON or XML.
+The <a class="xref" href="CSF.Validation.SerializableValidationResult.html">SerializableValidationResult</a> trades the powerful functionality for a simplified,
+flattened object model which is easy to serialize, and convert to other formats such as JSON, XML
+or data to be persisted in a relational database.
+</p>
+</div>
 </article>
           </div>
           
