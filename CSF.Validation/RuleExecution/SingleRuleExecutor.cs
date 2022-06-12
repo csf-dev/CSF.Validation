@@ -28,7 +28,7 @@ namespace CSF.Validation.RuleExecution
                                                              rule.ValidatedValue.ParentValue?.GetActualValue(),
                                                              context,
                                                              combinedTokenSource.Token);
-                var result = await WaitForResultAsync(ruleTask, combinedTokenSource.Token, timeout);
+                var result = await WaitForResultAsync(ruleTask, combinedTokenSource.Token, timeout).ConfigureAwait(false);
                 return new ValidationRuleResult(result, context, rule.RuleLogic);
             }
         }
@@ -36,10 +36,10 @@ namespace CSF.Validation.RuleExecution
         static async Task<RuleResult> WaitForResultAsync(Task<RuleResult> ruleTask, CancellationToken combinedToken, TimeSpan? timeout)
         {
             if (!timeout.HasValue)
-                return await ruleTask;
+                return await ruleTask.ConfigureAwait(false);
 
-            if (await Task.WhenAny(ruleTask, Task.Delay(timeout.Value, combinedToken)) == ruleTask)
-                return await ruleTask;
+            if (await Task.WhenAny(ruleTask, Task.Delay(timeout.Value, combinedToken)).ConfigureAwait(false) == ruleTask)
+                return await ruleTask.ConfigureAwait(false);
 
             return CommonResults.Error(data: new Dictionary<string,object> { { RuleResult.RuleTimeoutDataKey, timeout.Value } });
         }

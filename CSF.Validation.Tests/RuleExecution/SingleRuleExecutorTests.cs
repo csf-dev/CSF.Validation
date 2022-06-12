@@ -114,5 +114,24 @@ namespace CSF.Validation.RuleExecution
                     Assert.That(timeoutData, Is.EqualTo(timeout), "Timeout data is equal");
             });
         }
+
+        [Test,AutoMoqData]
+        public void ExecuteRuleAsyncShouldReturnPassResultWithTimeoutIfRuleCompletesInATimelyManner([Frozen] IGetsRuleContext contextFactory,
+                                                                                                    [RuleContext] RuleContext context,
+                                                                                                    [ExecutableModel] ExecutableRule rule,
+                                                                                                    SingleRuleExecutor sut)
+        {
+            var timeout = TimeSpan.FromMilliseconds(300);
+            Mock.Get(rule.RuleLogic).Setup(x => x.GetTimeout()).Returns(timeout);
+            Mock.Get(rule.RuleLogic)
+                .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
+                .Returns(() => Task.Run(async () => {
+                    await Task.Delay(50);
+                    return CommonResults.Pass();
+                }));
+            Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
+
+            Assert.That(() => sut.ExecuteRuleAsync(rule), Is.PassingValidationResult);
+        }
     }
 }

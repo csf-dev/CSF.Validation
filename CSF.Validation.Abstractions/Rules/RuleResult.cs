@@ -28,10 +28,11 @@ namespace CSF.Validation.Rules
         /// <remarks>
         /// <para>
         /// When a result contains a data item with this key, the value is the <see cref="TimeSpan"/> timeout which was set.
+        /// The string key is "<c>Validation rule timeout</c>".
         /// </para>
         /// </remarks>
         /// <seealso cref="IHasRuleTimeout"/>
-        public static readonly string RuleTimeoutDataKey = "_Validation rule timeout_";
+        public static string RuleTimeoutDataKey => "Validation rule timeout";
 
         /// <summary>
         /// Gets the outcome of the validation rule.

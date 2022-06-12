@@ -19,6 +19,11 @@ namespace CSF.Validation.Rules
     /// may be used as if it were an <c>IRule&lt;Dog&gt;</c>.
     /// </para>
     /// <para>
+    /// Rules run until they complete and in the majority of cases this is not a problem.  When designing a rule class which
+    /// has the potential to be long-running then there are a few best practices to consider, as noted in the article
+    /// linked below.  One of these is that you should consider implementing <see cref="IHasRuleTimeout"/>.
+    /// </para>
+    /// <para>
     /// You are encouraged to read more at <xref href="WritingValidationRules?text=the+documentation+for+writing+rule+classes"/>
     /// &amp; <xref href="BestPractices?text=best+practices+for+writing+rules"/>.
     /// </para>
