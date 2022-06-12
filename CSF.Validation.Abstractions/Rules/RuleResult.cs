@@ -23,6 +23,17 @@ namespace CSF.Validation.Rules
     public class RuleResult
     {
         /// <summary>
+        /// A special value that indicates that the result represents a rule which have timed-out when executing.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// When a result contains a data item with this key, the value is the <see cref="TimeSpan"/> timeout which was set.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="IHasRuleTimeout"/>
+        public static readonly string RuleTimeoutDataKey = "_Validation rule timeout_";
+
+        /// <summary>
         /// Gets the outcome of the validation rule.
         /// </summary>
         public RuleOutcome Outcome { get; }

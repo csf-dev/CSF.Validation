@@ -87,5 +87,32 @@ namespace CSF.Validation.RuleExecution
 
             Assert.That(capturedContext, Is.SameAs(context));
         }
+
+        [Test,AutoMoqData]
+        public async Task ExecuteRuleAsyncShouldReturnErrorResultWithTimeoutIfRuleTakesTooLongToExecute([Frozen] IGetsRuleContext contextFactory,
+                                                                                                        [RuleContext] RuleContext context,
+                                                                                                        [ExecutableModel] ExecutableRule rule,
+                                                                                                        SingleRuleExecutor sut)
+        {
+            var timeout = TimeSpan.FromMilliseconds(100);
+            Mock.Get(rule.RuleLogic).Setup(x => x.GetTimeout()).Returns(timeout);
+            Mock.Get(rule.RuleLogic)
+                .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
+                .Returns(() => Task.Run(async () => {
+                    await Task.Delay(200);
+                    return CommonResults.Pass();
+                }));
+            Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
+
+            var result = await sut.ExecuteRuleAsync(rule);
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.Outcome, Is.EqualTo(RuleOutcome.Errored), "Result has error outcome");
+                Assert.That(result.Data, Does.ContainKey(RuleResult.RuleTimeoutDataKey), "Result has a rule-timeout data key");
+                
+                if(result.Data.TryGetValue(RuleResult.RuleTimeoutDataKey, out var timeoutData))
+                    Assert.That(timeoutData, Is.EqualTo(timeout), "Timeout data is equal");
+            });
+        }
     }
 }
