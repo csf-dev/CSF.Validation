@@ -20,7 +20,7 @@ namespace CSF.Validation.Rules
     /// executing rule logic, regardless of the precise interface to which that logic were originally written.
     /// </para>
     /// </remarks>
-    public interface IValidationLogic
+    public interface IValidationLogic : IHasRuleTimeout
     {
         /// <summary>
         /// Gets the type of rule interface that is used by this rule logic.

@@ -47,7 +47,7 @@ namespace CSF.Validation.IntegrationTests
 
             Assert.That(stopwatch.ElapsedMilliseconds,
                         Is.GreaterThan(bestCaseMilliseconds).And.LessThan(bestCaseMilliseconds + millisecondsGrace),
-                        "The validator is expected to take around 1000 milliseconds to complete validation.");
+                        "The validator is expected to take between 650 and 800 milliseconds to complete validation.");
         }
     }
 }

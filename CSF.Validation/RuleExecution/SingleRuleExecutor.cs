@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Rules;
@@ -12,30 +12,36 @@ namespace CSF.Validation.RuleExecution
     public class SingleRuleExecutor : IExeucutesSingleRule
     {
         readonly IGetsRuleContext contextFactory;
-
-        /// <summary>
-        /// Execute the validation rule and return its result.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This method will also throw if the <paramref name="cancellationToken"/> requests cancellation.
-        /// </para>
-        /// </remarks>
-        /// <param name="rule">The executable rule.</param>
-        /// <param name="cancellationToken">An optional cancellation token.</param>
-        /// <returns>A task containing the result of running the single rule.</returns>
+        
+        /// <inheritdoc/>
         public async Task<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
-
+            
             var context = contextFactory.GetRuleContext(rule);
-            var result = await rule.RuleLogic.GetResultAsync(rule.ValidatedValue.GetActualValue(),
+            var timeout = rule.RuleLogic.GetTimeout();
+
+            using(var ruleTokenSource = timeout.HasValue ? new CancellationTokenSource(timeout.Value) : new CancellationTokenSource())
+            using(var combinedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, ruleTokenSource.Token))
+            {
+                var ruleTask = rule.RuleLogic.GetResultAsync(rule.ValidatedValue.GetActualValue(),
                                                              rule.ValidatedValue.ParentValue?.GetActualValue(),
                                                              context,
-                                                             cancellationToken)
-                .ConfigureAwait(false);
+                                                             combinedTokenSource.Token);
+                var result = await WaitForResultAsync(ruleTask, combinedTokenSource.Token, timeout).ConfigureAwait(false);
+                return new ValidationRuleResult(result, context, rule.RuleLogic);
+            }
+        }
 
-            return new ValidationRuleResult(result, context, rule.RuleLogic);
+        static async Task<RuleResult> WaitForResultAsync(Task<RuleResult> ruleTask, CancellationToken combinedToken, TimeSpan? timeout)
+        {
+            if (!timeout.HasValue)
+                return await ruleTask.ConfigureAwait(false);
+
+            if (await Task.WhenAny(ruleTask, Task.Delay(timeout.Value, combinedToken)).ConfigureAwait(false) == ruleTask)
+                return await ruleTask.ConfigureAwait(false);
+
+            return CommonResults.Error(data: new Dictionary<string,object> { { RuleResult.RuleTimeoutDataKey, timeout.Value } });
         }
 
         /// <summary>
