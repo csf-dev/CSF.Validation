@@ -5630,6 +5630,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetResultAsync
   nameWithType: ExceptionHandlingRuleLogicDecorator.GetResultAsync
+- uid: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetTimeout
+  name: GetTimeout()
+  href: api/CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.html#CSF_Validation_Rules_ExceptionHandlingRuleLogicDecorator_GetTimeout
+  commentId: M:CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetTimeout
+  fullName: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetTimeout()
+  nameWithType: ExceptionHandlingRuleLogicDecorator.GetTimeout()
+- uid: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetTimeout*
+  name: GetTimeout
+  href: api/CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.html#CSF_Validation_Rules_ExceptionHandlingRuleLogicDecorator_GetTimeout_
+  commentId: Overload:CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetTimeout
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.GetTimeout
+  nameWithType: ExceptionHandlingRuleLogicDecorator.GetTimeout
 - uid: CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.RuleInterface
   name: RuleInterface
   href: api/CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.html#CSF_Validation_Rules_ExceptionHandlingRuleLogicDecorator_RuleInterface
@@ -5784,6 +5797,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.IGetsValidationLogic.GetValidationLogic
   nameWithType: IGetsValidationLogic.GetValidationLogic
+- uid: CSF.Validation.Rules.IHasRuleTimeout
+  name: IHasRuleTimeout
+  href: api/CSF.Validation.Rules.IHasRuleTimeout.html
+  commentId: T:CSF.Validation.Rules.IHasRuleTimeout
+  fullName: CSF.Validation.Rules.IHasRuleTimeout
+  nameWithType: IHasRuleTimeout
+- uid: CSF.Validation.Rules.IHasRuleTimeout.GetTimeout
+  name: GetTimeout()
+  href: api/CSF.Validation.Rules.IHasRuleTimeout.html#CSF_Validation_Rules_IHasRuleTimeout_GetTimeout
+  commentId: M:CSF.Validation.Rules.IHasRuleTimeout.GetTimeout
+  fullName: CSF.Validation.Rules.IHasRuleTimeout.GetTimeout()
+  nameWithType: IHasRuleTimeout.GetTimeout()
+- uid: CSF.Validation.Rules.IHasRuleTimeout.GetTimeout*
+  name: GetTimeout
+  href: api/CSF.Validation.Rules.IHasRuleTimeout.html#CSF_Validation_Rules_IHasRuleTimeout_GetTimeout_
+  commentId: Overload:CSF.Validation.Rules.IHasRuleTimeout.GetTimeout
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.IHasRuleTimeout.GetTimeout
+  nameWithType: IHasRuleTimeout.GetTimeout
 - uid: CSF.Validation.Rules.IntegerInRange
   name: IntegerInRange
   href: api/CSF.Validation.Rules.IntegerInRange.html
@@ -6643,6 +6675,23 @@ references:
   fullName.vb: CSF.Validation.Rules.RuleAdapter(Of TValidated).GetResultAsync
   nameWithType: RuleAdapter<TValidated>.GetResultAsync
   nameWithType.vb: RuleAdapter(Of TValidated).GetResultAsync
+- uid: CSF.Validation.Rules.RuleAdapter`1.GetTimeout
+  name: GetTimeout()
+  href: api/CSF.Validation.Rules.RuleAdapter-1.html#CSF_Validation_Rules_RuleAdapter_1_GetTimeout
+  commentId: M:CSF.Validation.Rules.RuleAdapter`1.GetTimeout
+  fullName: CSF.Validation.Rules.RuleAdapter<TValidated>.GetTimeout()
+  fullName.vb: CSF.Validation.Rules.RuleAdapter(Of TValidated).GetTimeout()
+  nameWithType: RuleAdapter<TValidated>.GetTimeout()
+  nameWithType.vb: RuleAdapter(Of TValidated).GetTimeout()
+- uid: CSF.Validation.Rules.RuleAdapter`1.GetTimeout*
+  name: GetTimeout
+  href: api/CSF.Validation.Rules.RuleAdapter-1.html#CSF_Validation_Rules_RuleAdapter_1_GetTimeout_
+  commentId: Overload:CSF.Validation.Rules.RuleAdapter`1.GetTimeout
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.RuleAdapter<TValidated>.GetTimeout
+  fullName.vb: CSF.Validation.Rules.RuleAdapter(Of TValidated).GetTimeout
+  nameWithType: RuleAdapter<TValidated>.GetTimeout
+  nameWithType.vb: RuleAdapter(Of TValidated).GetTimeout
 - uid: CSF.Validation.Rules.RuleAdapter`1.RuleInterface
   name: RuleInterface
   href: api/CSF.Validation.Rules.RuleAdapter-1.html#CSF_Validation_Rules_RuleAdapter_1_RuleInterface
@@ -7002,6 +7051,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Rules.RuleResult.Outcome
   nameWithType: RuleResult.Outcome
+- uid: CSF.Validation.Rules.RuleResult.RuleTimeoutDataKey
+  name: RuleTimeoutDataKey
+  href: api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_RuleTimeoutDataKey
+  commentId: P:CSF.Validation.Rules.RuleResult.RuleTimeoutDataKey
+  fullName: CSF.Validation.Rules.RuleResult.RuleTimeoutDataKey
+  nameWithType: RuleResult.RuleTimeoutDataKey
+- uid: CSF.Validation.Rules.RuleResult.RuleTimeoutDataKey*
+  name: RuleTimeoutDataKey
+  href: api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_RuleTimeoutDataKey_
+  commentId: Overload:CSF.Validation.Rules.RuleResult.RuleTimeoutDataKey
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.RuleResult.RuleTimeoutDataKey
+  nameWithType: RuleResult.RuleTimeoutDataKey
 - uid: CSF.Validation.Rules.RuleResult.ToString
   name: ToString()
   href: api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_ToString
@@ -7059,6 +7121,23 @@ references:
   fullName.vb: CSF.Validation.Rules.RuleWithParentValueAdapter(Of TValue, TValidated).GetResultAsync
   nameWithType: RuleWithParentValueAdapter<TValue, TValidated>.GetResultAsync
   nameWithType.vb: RuleWithParentValueAdapter(Of TValue, TValidated).GetResultAsync
+- uid: CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetTimeout
+  name: GetTimeout()
+  href: api/CSF.Validation.Rules.RuleWithParentValueAdapter-2.html#CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetTimeout
+  commentId: M:CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetTimeout
+  fullName: CSF.Validation.Rules.RuleWithParentValueAdapter<TValue, TValidated>.GetTimeout()
+  fullName.vb: CSF.Validation.Rules.RuleWithParentValueAdapter(Of TValue, TValidated).GetTimeout()
+  nameWithType: RuleWithParentValueAdapter<TValue, TValidated>.GetTimeout()
+  nameWithType.vb: RuleWithParentValueAdapter(Of TValue, TValidated).GetTimeout()
+- uid: CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetTimeout*
+  name: GetTimeout
+  href: api/CSF.Validation.Rules.RuleWithParentValueAdapter-2.html#CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetTimeout_
+  commentId: Overload:CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetTimeout
+  isSpec: "True"
+  fullName: CSF.Validation.Rules.RuleWithParentValueAdapter<TValue, TValidated>.GetTimeout
+  fullName.vb: CSF.Validation.Rules.RuleWithParentValueAdapter(Of TValue, TValidated).GetTimeout
+  nameWithType: RuleWithParentValueAdapter<TValue, TValidated>.GetTimeout
+  nameWithType.vb: RuleWithParentValueAdapter(Of TValue, TValidated).GetTimeout
 - uid: CSF.Validation.Rules.RuleWithParentValueAdapter`2.RuleInterface
   name: RuleInterface
   href: api/CSF.Validation.Rules.RuleWithParentValueAdapter-2.html#CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleInterface

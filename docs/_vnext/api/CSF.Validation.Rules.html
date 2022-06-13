@@ -193,6 +193,11 @@ from <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRu
       <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> for a specified
 <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.IHasRuleTimeout.html">IHasRuleTimeout</a></h4>
+      <section><p>An object (intended to be a validation rule) which can provide a timeout value, which will terminate
+the rule early (with an <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a> outcome) if the timeout expires before the
+rule completes execution.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.IResolvesRule.html">IResolvesRule</a></h4>
       <section><p>An object which can get/resolve instances of validation rule types based upon their concrete <span class="xref">System.Type</span>.</p>
 </section>

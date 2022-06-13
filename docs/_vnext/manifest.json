@@ -1665,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.RuleExecution.SingleRuleExecutor.html",
-          "hash": "Q/vOTZ20cAB4jmBUCeL1Wlp3CgVp1OtK9W1Ua4OcFeg="
+          "hash": "Qyl4zDw2EXJ/89NbiLrO6o9pADZwD48q5dxS3IRWYjk="
         }
       },
       "is_incremental": false,
@@ -1881,7 +1881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.ExceptionHandlingRuleLogicDecorator.html",
-          "hash": "ANZfxaWm1bcznCmvXKOtm6Kh0/PO1pMIcTjGl3WBlII="
+          "hash": "tkzW7hZcJ8a87Mj3lw8/8oPGsFgipEYDIKCQkoL5b0E="
         }
       },
       "is_incremental": false,
@@ -1925,6 +1925,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CSF.Validation.Rules.IHasRuleTimeout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSF.Validation.Rules.IHasRuleTimeout.html",
+          "hash": "6amLVjt/p9R7zOakzwOMASWK23xUK2f9n/uaOX6Gumc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CSF.Validation.Rules.IResolvesRule.yml",
       "output": {
         ".html": {
@@ -1941,7 +1953,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-1.html",
-          "hash": "ps4q8RPJEwmpjaSyue7HofXOGSKp/IBQ46WT+f1YCSo="
+          "hash": "toYIrpWjH/lCFFYGRONylvzuQaKGhmWcYhYXFBmSVVQ="
         }
       },
       "is_incremental": false,
@@ -1953,7 +1965,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IRule-2.html",
-          "hash": "5uKfwPFxciXQR6I/xvcQLLXOCZSVzss8/fDG4MEK7KE="
+          "hash": "HyZSESpJEYzwbpXvnIZjpkdYDMxPzxj8vmP+xw6Cb/8="
         }
       },
       "is_incremental": false,
@@ -1989,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.IValidationLogic.html",
-          "hash": "iHTAOQ1/Pk4A/wQ+1tUWnFe1x1SRnx+8Dcrnf1hV3Nc="
+          "hash": "zBN8uHpXqszuroAyQCVywn+NOtUlZHPEuykZFCTjFVQ="
         }
       },
       "is_incremental": false,
@@ -2145,7 +2157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleAdapter-1.html",
-          "hash": "zzbwEVuMEpj/HfKp6HfgiCyBDIFYt30PuFFTVPPuQ+0="
+          "hash": "sqG7y00iZEqDr2SZ6rLWRHTzbC5HgoiUzpAPSBVHp7g="
         }
       },
       "is_incremental": false,
@@ -2217,7 +2229,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleResult.html",
-          "hash": "W/varBfHwxWdUspWJ2l7BJ/7Efv6n4rJM6rBbN9it04="
+          "hash": "Zg5+xgNXkvn6X0Uoejq6HMop/b4jNs+QisSxatIw0gg="
         }
       },
       "is_incremental": false,
@@ -2229,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.RuleWithParentValueAdapter-2.html",
-          "hash": "W2re8BaziaknYn6Kv0gRikLNvuf11bFW3gEFHaweBLw="
+          "hash": "hhAhS/4gjyN1+a8fto66GRzfZ46UNX4+AErx+pEXaYw="
         }
       },
       "is_incremental": false,
@@ -2265,7 +2277,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.Rules.html",
-          "hash": "VWcobHgKjJKvcfSYbhqTqLjQBvEEFqbqBscx38E8Eh4="
+          "hash": "eco78gklTL5hIcez46xzPJAx5pex3fxxOXIxsdYY0Nw="
         }
       },
       "is_incremental": false,
@@ -2409,7 +2421,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSF.Validation.ValidationRuleResult.html",
-          "hash": "qt+WsF5Y3jHJzipPS24UjL0Uf2oX2/i5rV362LOdGQ0="
+          "hash": "W79JFpSGGA8z4kbEE0zHW6Op+QmdAfFPGkdv5L31j2c="
         }
       },
       "is_incremental": false,
@@ -2901,7 +2913,19 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "VLyN93pYFNjBvq5Vb69pZkVb2KNy7hwlxuUfx9Uw8LQ="
+          "hash": "b5F3/DUsmj4qlzeOmH2OPHB9Hih4DW2vWVD0vXJvmuk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/BestPractice/RuleCancellationAndTimeout.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/BestPractice/RuleCancellationAndTimeout.html",
+          "hash": "O6883v6fh+bsKVFN3ygeNBg3rk8HysTmJqKXMpshltQ="
         }
       },
       "is_incremental": false,
@@ -2961,7 +2985,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/BestPractice/index.html",
-          "hash": "jO4FewILes8y7nauN5tmekxR6CGpZL/yR01ybPxBug0="
+          "hash": "qHyMSTxO4/KoTvWoD/0kGtzqgNYmvxiLVfqYY4uhvQA="
         }
       },
       "is_incremental": false,
@@ -3306,13 +3330,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 30,
+          "total_file_count": 31,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 240,
+          "total_file_count": 241,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
