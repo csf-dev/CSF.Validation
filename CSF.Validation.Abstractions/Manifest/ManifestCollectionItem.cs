@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace CSF.Validation.Manifest
 {
     /// <summary>
@@ -24,13 +27,22 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ManifestValueBase"/>
     /// <seealso cref="ManifestValue"/>
-    public class ManifestCollectionItem : ManifestValueBase
+    public class ManifestCollectionItem : ManifestValueBase, IHasPolymorphicTypes
     {
+        ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
+
         /// <summary>
         /// Gets a string representation of the current instance.
         /// </summary>
         /// <returns>A string which represents the current instance.</returns>
         public override string ToString()
             => $"[{nameof(ManifestCollectionItem)}: Type = {ValidatedType.Name}]";
+
+        /// <inheritdoc/>
+        public ICollection<ManifestPolymorphicType> PolymorphicTypes
+        {
+            get => polymorphicTypes;
+            set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
+        }
     }
 }

@@ -24,8 +24,8 @@ namespace CSF.Validation.Manifest
         public void Customize(IFixture fixture)
         {
             fixture.Customize<ManifestValueBase>(c => c.FromFactory((ManifestValue v) => v).OmitAutoProperties());
-            fixture.Customize<ManifestValue>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
-            fixture.Customize<ManifestCollectionItem>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
+            fixture.Customize<ManifestValue>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicTypes));
+            fixture.Customize<ManifestCollectionItem>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicTypes));
             fixture.Customize<ManifestRuleIdentifier>(c => c.FromFactory((ManifestValue val, Type ruleType) => new ManifestRuleIdentifier(val, ruleType)));
             fixture.Customize<ManifestRule>(c => {
                 return c

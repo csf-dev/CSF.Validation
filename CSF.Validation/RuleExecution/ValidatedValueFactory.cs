@@ -99,7 +99,7 @@ namespace CSF.Validation.RuleExecution
                                                          currentValue.ValueResponse,
                                                          currentValue));
 
-            foreach(var childManifestValue in currentBasis.ManifestValue.Children)
+            foreach(var childManifestValue in currentBasis.GetChildManifestValues())
             {
                 var valueResponse = valueProvider.GetValueToBeValidated(childManifestValue, actualValue, options);
                 openList.Enqueue(new ValidatedValueBasis(childManifestValue, valueResponse, currentValue));
