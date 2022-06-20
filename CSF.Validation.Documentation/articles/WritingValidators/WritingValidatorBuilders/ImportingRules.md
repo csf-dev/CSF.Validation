@@ -7,9 +7,11 @@ Validator builders may also consume the rules and configuration from another bui
 * De-duplicating validation configuration for base types
 * Creating alternative validation scenarios
 * Validating referenced objects
+* [Polymorphic validation]
 
 Using a validator builder, importing another builder is accomplished via the `AddRules<TBuilder>()` method from either an instance of [`IConfiguresValidator<TValidated>`] or (for validating referenced objects) from an instance of [`IConfiguresValueAccessor<TValidated, TValue>`].
 
+[Polymorphic validation]:PolymorphicValidation.md
 [`IConfiguresValidator<TValidated>`]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddRules``1
 [`IConfiguresValueAccessor<TValidated, TValue>`]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.AddRules``1
 
