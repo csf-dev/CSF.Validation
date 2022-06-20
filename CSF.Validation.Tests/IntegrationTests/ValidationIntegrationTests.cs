@@ -264,5 +264,34 @@ namespace CSF.Validation.IntegrationTests
             
             Assert.That(result.ToSerializableResult().RuleResults.Length, Is.EqualTo(result.RuleResults.Count));
         }
+
+        [Test,AutoMoqData]
+        public async Task PolymorphicValidationShouldBeAbleToCreateAnErrorResultForADerivedClass([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidator<Customer>(typeof(CustomerValidatorBuilder));
+            var customer = new FrequentShopper
+            {
+                Person = new Employee
+                {
+                    Name = "John Smith",
+                    Birthday = new DateTime(2000, 1, 1),
+                    Pets = new[] {
+                        new Pet {Name = "Pet1"},
+                        new Pet {Name = "Pet2"},
+                        new Pet {Name = "Pet3"},
+                        new Pet {Name = "Pet4"},
+                        new Pet {Name = "Pet5"},
+                        new Pet {Name = "Pet6"},
+                    },
+                    PayrollNumber = -5,
+                },
+                LoyaltyPoints = -100,
+            };
+
+            var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
+
+            Assert.That(result.ForMember(x => x.Person).PolymorphicAs<Employee>().ForMember(x => x.PayrollNumber).First().Identifier.RuleType,
+                        Is.EqualTo(typeof(IntegerInRange)));
+        }
     }
 }

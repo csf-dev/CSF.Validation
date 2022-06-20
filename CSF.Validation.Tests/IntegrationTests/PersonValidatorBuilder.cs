@@ -29,6 +29,11 @@ namespace CSF.Validation.IntegrationTests
             config.ForMember(x => x.Pets, m => m.AddRule<NotNull>());
 
             config.ForMemberItems(x => x.Pets, m => m.AddRules<PetValidatorBuilder>());
+
+            config.WhenValueIs<Employee>(c =>
+            {
+                c.AddRules<EmployeePolymorphicBuilder>();
+            });
         }
     }
 }

@@ -17,6 +17,11 @@ namespace CSF.Validation.IntegrationTests
             });
 
             config.AddRule<NotNull>();
+
+            config.WhenValueIs<FrequentShopper>(c =>
+            {
+                c.AddRules<FrequentShopperPolymorphicBuilder>();
+            });
         }
     }
 }

@@ -28,6 +28,10 @@ namespace CSF.Validation
         /// <inheritdoc/>
         public override SerializableValidationResult ToSerializableResult() => ResultQueries.ToSerializableValidationResult(this);
 
+        /// <inheritdoc/>
+        public IQueryableValidationResult<TDerived> PolymorphicAs<TDerived>() where TDerived : TValidated
+            => ResultQueries.PolymorphicAs<TValidated, TDerived>(this);
+
         /// <summary>
         /// Initialises a new generic instance of <see cref="ValidationResult{TValidated}"/>.
         /// </summary>

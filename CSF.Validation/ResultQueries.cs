@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using CSF.Specifications;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation
 {
@@ -73,6 +74,32 @@ namespace CSF.Validation
                 throw new ArgumentNullException(nameof(results));
 
             return new SubsetOfValidationResults<TValidated>(results.Where(x => x.Outcome != Rules.RuleOutcome.Passed), results.ManifestValue);
+        }
+
+        internal static IQueryableValidationResult<TDerived> PolymorphicAs<TValidated,TDerived>(IQueryableValidationResult<TValidated> results)
+            where TDerived : TValidated
+        {
+            if (results is null)
+                throw new ArgumentNullException(nameof(results));
+
+            if(!(results.ManifestValue is IHasPolymorphicTypes poly))
+            {
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
+                                            typeof(IHasPolymorphicTypes),
+                                            results.ManifestValue.GetType().FullName);
+                throw new ArgumentException(message, nameof(results));
+            }
+
+            var polymorphicManifest = poly.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == typeof(TDerived));
+            if(polymorphicManifest is null)
+            {
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustHaveMatchingPolymorphicManifest"),
+                                            results.ManifestValue.ValidatedType.FullName,
+                                            typeof(TDerived).FullName);
+                throw new ArgumentException(message, nameof(results));
+            }
+
+            return new SubsetOfValidationResults<TDerived>(results.RuleResults, polymorphicManifest);
         }
 
         internal static SerializableValidationResult ToSerializableValidationResult(IQueryableValidationResult result)

@@ -162,5 +162,25 @@ namespace CSF.Validation.ValidatorBuilding
         /// <exception cref="ArgumentNullException">If either <paramref name="valuesAccessor"/> or <paramref name="valueConfig"/> are <see langword="null"/>.</exception>
         /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
         IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
+
+        /// <summary>
+        /// Adds validation configuration for polymorphic validatation when the runtime type
+        /// of the validated value is <typeparamref name="TDerived"/>.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Where the current validator configuration works to validate an object of type <typeparamref name="TValidated"/>,
+        /// the value being validated might be a derived type of <typeparamref name="TValidated"/> at runtime.
+        /// Polymorphic validation allows a developer to specify how a derived type should be validated, if that is the runtime
+        /// type of the value to be validated.
+        /// </para>
+        /// <para>
+        /// This method may be used multiple times, each time for a different type that is derived from <typeparamref name="TValidated"/>.
+        /// </para>
+        /// </remarks>
+        /// <typeparam name="TDerived">The derived (child) type to be configured for validation in this polymorphic validation configuration.</typeparam>
+        /// <param name="derivedConfig">Configuration which indicates what validation will be performed upon the value if its runtime type is <typeparamref name="TDerived"/>.</param>
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        IConfiguresValidator<TValidated> WhenValueIs<TDerived>(Action<IConfiguresValidator<TDerived>> derivedConfig) where TDerived : TValidated;
     }
 }
