@@ -10,7 +10,5 @@ namespace CSF.Validation.Stubs
         public string AProperty { get; set; }
 
         public ICollection<string> Strings { get; set; } = new List<string>();
-
-
     }
 }
