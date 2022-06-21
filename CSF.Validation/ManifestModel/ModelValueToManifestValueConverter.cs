@@ -106,7 +106,7 @@ namespace CSF.Validation.ManifestModel
             return value;
         }
 
-        ManifestValueBase GetManifestValueBase(ModelToManifestConversionContext context)
+        static ManifestValueBase GetManifestValueBase(ModelToManifestConversionContext context)
         {
             switch(context.ConversionType)
             {
