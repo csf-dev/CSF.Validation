@@ -265,4 +265,8 @@
     <value>The validation manifest value (for {0}) must contain a polymorphic validation manifest for the type {1}.</value>
     <comment/>
   </data>
+  <data name="UnexpectedModelToManifestConversionType" xml:space="preserve">
+    <value>The {0} must be an expected value.</value>
+    <comment/>
+  </data>
 </root>

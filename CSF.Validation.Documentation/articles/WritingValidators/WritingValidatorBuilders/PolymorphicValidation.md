@@ -9,7 +9,7 @@ Polymorphic validation allows the creation of a validator which validates `Perso
 
 ## How to use polymorphic validation
 
-Configuring polymorphic validation is easy from a validator builder; use [the `WhenValueIs` method] to set up validation configuration related to the specified subtype.
+Configuring polymorphic validation is easy from a validator builder; use [the `WhenValueIs` method] (or [its equivalent for a value accessor]) to set up validation configuration related to the specified subtype.
 
 ## Example
 
@@ -47,5 +47,6 @@ For `Person` instances that are also `Employee` instances then the additional ru
 When using [the `WhenValueIs` method], you may import rules from another validator builder, using [the same technique described elsewhere].
 This allows keeping rules specific to particular subclasses contained within their own validator builders.
 
-[the `WhenValueIs` method]:xref:TODO
+[the `WhenValueIs` method]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValidator{``0}})
+[its equivalent for a value accessor]:xref:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
 [the same technique described elsewhere]:ImportingRules.md

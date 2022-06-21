@@ -32,7 +32,8 @@ namespace CSF.Validation.Manifest
                     .FromFactory((ManifestValue val, ManifestRuleIdentifier id) => new ManifestRule(val, id))
                     .Without(x => x.DependencyRules);
             });
-            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
+            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicValues));
+            fixture.Customize<PolymorphicValue>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
             fixture.Customize<Rule>(c => c.Without(x => x.Dependencies));
             fixture.Customize<ValidatorBuilderContext>(c => c.FromFactory((ManifestValue val) => new ValidatorBuilderContext(val)));
             fixture.Customize<ModelToManifestConversionContext>(c =>
@@ -40,7 +41,7 @@ namespace CSF.Validation.Manifest
                 return c
                     .FromFactory((Value v) => new ModelToManifestConversionContext { CurrentValue = v })
                     .Without(x => x.CurrentValue)
-                    .Without(x => x.IsCollectionItem);
+                    .Without(x => x.ConversionType);
             });
         }
     }

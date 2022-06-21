@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ManifestModel
@@ -20,8 +22,10 @@ namespace CSF.Validation.ManifestModel
     /// </remarks>
     /// <seealso cref="Rule"/>
     /// <seealso cref="RelativeIdentifier"/>
-    public class Value : ValueBase
+    public class Value : ValueBase, IHasPolymorphicValues
     {
+        IDictionary<string,PolymorphicValue> polymorphicValues = new Dictionary<string,PolymorphicValue>();
+        
         /// <summary>
         /// Gets or sets an optional value which indicates the desired behaviour should the member accessor
         /// raise an exception.
@@ -38,5 +42,12 @@ namespace CSF.Validation.ManifestModel
         /// </remarks>
         /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
+        
+        /// <inheritdoc/>
+        public IDictionary<string,PolymorphicValue> PolymorphicValues
+        {
+            get => polymorphicValues;
+            set => polymorphicValues = value ?? throw new ArgumentNullException(nameof(value));
+        }
     }
 }

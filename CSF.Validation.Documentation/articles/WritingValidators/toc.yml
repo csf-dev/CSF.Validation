@@ -24,6 +24,8 @@
       href: WritingValidatorBuilders/HandlingAccessorExceptions.md
     - name: Rule dependencies
       href: WritingValidatorBuilders/SpecifyingRuleDependencies.md
+    - name: Polymorphic validation
+      href: WritingValidatorBuilders/PolymorphicValidation.md
 - name: The manifest model
   href: UsingTheManifestModel/index.md
   items:

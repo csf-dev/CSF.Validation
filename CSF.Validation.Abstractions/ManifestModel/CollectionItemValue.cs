@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace CSF.Validation.ManifestModel
 {
     /// <summary>
@@ -24,5 +27,15 @@ namespace CSF.Validation.ManifestModel
     /// <seealso cref="RelativeIdentifier"/>
     /// <seealso cref="Value"/>
     /// <seealso cref="ValueBase"/>
-    public class CollectionItemValue : ValueBase {}
+    public class CollectionItemValue : ValueBase, IHasPolymorphicValues
+    {
+        IDictionary<string,PolymorphicValue> polymorphicValues = new Dictionary<string,PolymorphicValue>();
+        
+        /// <inheritdoc/>
+        public IDictionary<string,PolymorphicValue> PolymorphicValues
+        {
+            get => polymorphicValues;
+            set => polymorphicValues = value ?? throw new ArgumentNullException(nameof(value));
+        }
+    }
 }

@@ -77,6 +77,7 @@ The links below will describe the remaining techniques.
 * [Adding rules which receive a parent object]
 * [Dealing with exceptions accessing a member or value]
 * [Specifying dependencies between rules]
+* [Polymorphic validation]
 
 [Importing rules from another builder]:ImportingRules.md
 [Validating items in a collection]:ValidatingCollectionItems.md
@@ -84,3 +85,4 @@ The links below will describe the remaining techniques.
 [Adding rules which receive a parent object]:RulesWhichIncludeAParentObject.md
 [Dealing with exceptions accessing a member or value]:HandlingAccessorExceptions.md
 [Specifying dependencies between rules]:SpecifyingRuleDependencies.md
+[Polymorphic validation]:PolymorphicValidation.md
