@@ -50,6 +50,7 @@ namespace CSF.Validation.ManifestModel
                                                                                        [ManifestModel] Value child2,
                                                                                        [ManifestModel] Value grandchild1,
                                                                                        [ManifestModel] Value grandchild2,
+                                                                                       [ManifestModel] PolymorphicValue poly,
                                                                                        AccessorFunctionAndType accessor)
         {
             Mock.Get(accessorFactory)
@@ -62,12 +63,13 @@ namespace CSF.Validation.ManifestModel
             context.CurrentValue.Children.Add("Bar", child2);
             child1.Children.Add("Foo", grandchild1);
             child1.Children.Add("Bar", grandchild2);
+            child1.PolymorphicValues["System.String"] = poly;
 
             var result = sut.ConvertAllValues(context);
 
             Assert.Multiple(() =>
             {
-                Assert.That(result.ConvertedValues, Has.Count.EqualTo(5), "Count of converted values");
+                Assert.That(result.ConvertedValues, Has.Count.EqualTo(6), "Count of converted values");
                 Assert.That(result.RootValue, Has.Property(nameof(ManifestValue.Parent)).SameAs(context.ParentManifestValue), "Correct parent for root value");
             });
         }

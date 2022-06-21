@@ -30,7 +30,7 @@ namespace CSF.Validation.RuleExecution
                 CollectionItemOrder = basis.CollectionOrder,
             };
 
-            value.Rules = basis.ManifestValue.Rules
+            value.Rules = basis.GetManifestRules()
                 .Select(manifestRule => new ExecutableRule
                         {
                             ValidatedValue = value,

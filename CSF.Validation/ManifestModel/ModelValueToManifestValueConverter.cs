@@ -57,7 +57,7 @@ namespace CSF.Validation.ManifestModel
                 var collectionItem = new ModelToManifestConversionContext
                 {
                     CurrentValue = currentContext.CurrentValue.CollectionItemValue,
-                    IsCollectionItem = true,
+                    ConversionType = ModelToManifestConversionType.CollectionItem,
                     MemberName = currentContext.MemberName,
                     ParentManifestValue = parent,
                     ValidatedType = validatedType,
@@ -75,21 +75,52 @@ namespace CSF.Validation.ManifestModel
                     MemberName = child.Key,
                     ParentManifestValue = parent,
                     ValidatedType = accessor.ExpectedType,
+                    ConversionType = ModelToManifestConversionType.Manifest,
                 };
                 openList.Enqueue(collectionItem);
+            }
+
+            if(currentContext.CurrentValue is IHasPolymorphicValues hasPolyValues)
+            {
+                foreach(var polyValue in hasPolyValues.PolymorphicValues)
+                {
+                    var polymorphicItem = new ModelToManifestConversionContext
+                    {
+                        CurrentValue = polyValue.Value,
+                        ParentManifestValue = parent,
+                        PolymorphicTypeName = polyValue.Key,
+                        ConversionType = ModelToManifestConversionType.PolymorphicType,
+                    };
+                    openList.Enqueue(polymorphicItem);
+                }
             }
         }
 
         ManifestValueBase ConvertToManifestValueBase(ModelToManifestConversionContext context)
         {
-            var value = context.IsCollectionItem
-                ? (ManifestValueBase) ConvertToManifestCollectionItem(context)
-                : (ManifestValueBase) ConvertToManifestValue(context);
+            var value = GetManifestValueBase(context);
 
             if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
                 value.IdentityAccessor = accessorFactory.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
 
             return value;
+        }
+
+        static ManifestValueBase GetManifestValueBase(ModelToManifestConversionContext context)
+        {
+            switch(context.ConversionType)
+            {
+            case ModelToManifestConversionType.Manifest:
+                return ConvertToManifestValue(context);
+            case ModelToManifestConversionType.CollectionItem:
+                return ConvertToManifestCollectionItem(context);
+            case ModelToManifestConversionType.PolymorphicType:
+                return ConvertToPolymorphicType(context);
+            default:
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("UnexpectedModelToManifestConversionType"),
+                                            nameof(ModelToManifestConversionType));
+                throw new ArgumentException(message, nameof(context));
+            }
         }
 
         static ManifestCollectionItem ConvertToManifestCollectionItem(ModelToManifestConversionContext context)
@@ -99,7 +130,7 @@ namespace CSF.Validation.ManifestModel
                 Parent = context.ParentManifestValue.Parent,
                 ValidatedType = context.ValidatedType,
             };
-            if (context.ParentManifestValue != null && context.IsCollectionItem)
+            if (context.ParentManifestValue != null)
                 context.ParentManifestValue.CollectionItemValue = manifestValue;
             return manifestValue;
         }
@@ -115,8 +146,23 @@ namespace CSF.Validation.ManifestModel
             };
             if(context.CurrentValue is Value val)
                 manifestValue.AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
-            if (context.ParentManifestValue != null && !context.IsCollectionItem)
+            if (context.ParentManifestValue != null)
                 context.ParentManifestValue.Children.Add(manifestValue);
+            return manifestValue;
+        }
+
+        static ManifestPolymorphicType ConvertToPolymorphicType(ModelToManifestConversionContext context)
+        {
+            var polymorphicType = Type.GetType(context.PolymorphicTypeName, true);
+
+            var manifestValue = new ManifestPolymorphicType
+            {
+                Parent = context.ParentManifestValue,
+                ValidatedType = polymorphicType,
+            };
+            if (context.ParentManifestValue is IHasPolymorphicTypes polyParent)
+                polyParent.PolymorphicTypes.Add(manifestValue);
+
             return manifestValue;
         }
 

@@ -9,6 +9,7 @@ namespace CSF.Validation.ValidatorBuilding
     {
         readonly Func<IGetsRuleBuilder> ruleBuilderFactory;
         readonly Func<IGetsValidatorManifest> validatorManifestFactory;
+        readonly Func<IGetsValidatorBuilderContext> contextFactory;
 
         /// <summary>
         /// Gets a builder for validating a value of a validated object (typically retrieved via member access).
@@ -23,7 +24,8 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var builder = new ValueAccessorBuilder<TValidated, TValue>(ValidatorBuilderContext,
                                                                        ruleBuilderFactory(),
-                                                                       validatorManifestFactory());
+                                                                       validatorManifestFactory(),
+                                                                       contextFactory());
             if(!(valueConfig is null))
                 valueConfig(builder);
 
@@ -35,11 +37,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// </summary>
         /// <param name="ruleBuilderFactory">A function which gets a rule builder factory.</param>
         /// <param name="validatorManifestFactory">A function which gets a validator manifest factory.</param>
+        /// <param name="contextFactory">A function which gets a validation context factory.</param>
         public ValueAccessorBuilderFactory(Func<IGetsRuleBuilder> ruleBuilderFactory,
-                                           Func<IGetsValidatorManifest> validatorManifestFactory)
+                                           Func<IGetsValidatorManifest> validatorManifestFactory,
+                                           Func<IGetsValidatorBuilderContext> contextFactory)
         {
             this.ruleBuilderFactory = ruleBuilderFactory ?? throw new ArgumentNullException(nameof(ruleBuilderFactory));
             this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));
+            this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
         }
     }
 }

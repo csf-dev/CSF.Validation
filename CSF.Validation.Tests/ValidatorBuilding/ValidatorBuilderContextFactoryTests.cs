@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace CSF.Validation.ValidatorBuilding
 {
     [TestFixture, NUnit.Framework.Parallelizable]
-    public class RuleBuilderContextFactoryTests
+    public class ValidatorBuilderContextFactoryTests
     {
         [Test,AutoMoqData]
         public void GetContextForMemberShouldReturnContextWithMemberName([Frozen] IStaticallyReflects reflect,
@@ -117,5 +117,37 @@ namespace CSF.Validation.ValidatorBuilding
             Assert.That(result.ManifestValue, Is.SameAs(collectionValue));
         }
 
+        [Test,AutoMoqData]
+        public void GetPolymorphicContextShouldThrowIfManifestValueCannotHavePolymorphicTypes([ManifestModel] ManifestPolymorphicType manifestModel,
+                                                                                              ValidatorBuilderContextFactory sut)
+        {
+            var validationContext = new ValidatorBuilderContext(manifestModel);
+            Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(object)),
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must implement IHasPolymorphicTypes"));
+        }
+
+        [Test,AutoMoqData]
+        public void GetPolymorphicContextShouldReturnAContextFromAnExistingPolymorphicTypeIfItExists([ManifestModel] ManifestPolymorphicType polymorphicValue,
+                                                                                                     [ManifestModel] ManifestValue manifestValue,
+                                                                                                     ValidatorBuilderContextFactory sut)
+        {
+            manifestValue.PolymorphicTypes.Add(polymorphicValue);
+            polymorphicValue.ValidatedType = typeof(string);
+            var validationContext = new ValidatorBuilderContext(manifestValue);
+
+            Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(string))?.ManifestValue,
+                        Is.SameAs(polymorphicValue));
+        }
+
+        [Test,AutoMoqData]
+        public void GetPolymorphicContextShouldReturnANewContextIfAnExistingPolymorphicTypeDoesNotExist([ManifestModel] ManifestValue manifestValue,
+                                                                                                        ValidatorBuilderContextFactory sut)
+        {
+            manifestValue.PolymorphicTypes.Clear();
+            var validationContext = new ValidatorBuilderContext(manifestValue);
+
+            Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(string))?.ManifestValue,
+                        Is.InstanceOf<ManifestPolymorphicType>());
+        }
     }
 }

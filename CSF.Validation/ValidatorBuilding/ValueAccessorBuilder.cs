@@ -16,6 +16,7 @@ namespace CSF.Validation.ValidatorBuilding
         readonly ValidatorBuilderContext context;
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
+        readonly IGetsValidatorBuilderContext builderContextFactory;
         readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
         ValueAccessExceptionBehaviour? accessExceptionBehaviour;
 
@@ -50,21 +51,51 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <inheritdoc/>
+        public IConfiguresValueAccessor<TValidated, TValue> WhenValueIs<TDerived>(Action<IConfiguresValueAccessor<TValidated,TDerived>> derivedConfig)
+            where TDerived : TValue
+        {
+            var derivedContext = builderContextFactory.GetPolymorphicContext(context, typeof(TDerived));
+            var derivedBuilder = new ValueAccessorBuilder<TValidated, TDerived>(derivedContext,
+                                                                                ruleBuilderFactory,
+                                                                                validatorManifestFactory,
+                                                                                builderContextFactory);
+            if(!(derivedConfig is null))
+                derivedConfig(derivedBuilder);
+            ruleBuilders.Add(derivedBuilder);
+
+            return this;
+        }
+
+        /// <inheritdoc/>
         public ManifestValueBase GetManifestValue()
         {
             var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
             
-            foreach(var manifestValue in manifestValues)
-            {
-                if(manifestValue == context.ManifestValue) continue;
-                if(!(manifestValue is ManifestValue val)) continue;
-                context.ManifestValue.Children.Add(val);
-            }
+            foreach(var manifestItem in manifestValues)
+                HandleManifestItem(manifestItem);
 
             if(accessExceptionBehaviour.HasValue && context.ManifestValue is ManifestValue value)
                 value.AccessorExceptionBehaviour = accessExceptionBehaviour.Value;
 
             return context.ManifestValue;
+        }
+
+        void HandleManifestItem(ManifestValueBase manifestItem)
+        {
+            if(manifestItem == context.ManifestValue) return;
+
+            if (manifestItem is ManifestValue value
+             && !(context.ManifestValue.Children.Contains(manifestItem)))
+            {
+                context.ManifestValue.Children.Add(value);
+            }
+
+            if (manifestItem is ManifestPolymorphicType poly
+             && context.ManifestValue is IHasPolymorphicTypes hasPoly
+             && !(hasPoly.PolymorphicTypes.Contains(poly)))
+            {
+                hasPoly.PolymorphicTypes.Add(poly);
+            }
         }
 
         /// <summary>
@@ -73,9 +104,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">The context which should be used for newly-added rule-builders.</param>
         /// <param name="ruleBuilderFactory">A factory for rule-builder instances.</param>
         /// <param name="validatorManifestFactory">A factory for validator manifest instances.</param>
-        public ValueAccessorBuilder(ValidatorBuilderContext context, IGetsRuleBuilder ruleBuilderFactory, IGetsValidatorManifest validatorManifestFactory)
+        /// <param name="builderContextFactory">A factory for validator builder contexts.</param>
+        public ValueAccessorBuilder(ValidatorBuilderContext context,
+                                    IGetsRuleBuilder ruleBuilderFactory,
+                                    IGetsValidatorManifest validatorManifestFactory,
+                                    IGetsValidatorBuilderContext builderContextFactory)
         {
             this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));
+            this.builderContextFactory = builderContextFactory ?? throw new ArgumentNullException(nameof(builderContextFactory));
             this.context = context ?? throw new ArgumentNullException(nameof(context));
             this.ruleBuilderFactory = ruleBuilderFactory ?? throw new ArgumentNullException(nameof(ruleBuilderFactory));
         }

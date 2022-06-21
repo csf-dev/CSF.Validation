@@ -38,8 +38,14 @@ namespace CSF.Validation.ManifestModel
         public Type ValidatedType { get; set; }
 
         /// <summary>
-        /// Gets a value that indicates whether or not the current context represents a collection item value.
+        /// Gets a value that indicates the conversion type.
         /// </summary>
-        public bool IsCollectionItem { get; set; }
+        public ModelToManifestConversionType ConversionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the string name of the polymorphic type.  Unused when <see cref="ConversionType"/> is
+        /// not <see cref="ModelToManifestConversionType.PolymorphicType"/>.
+        /// </summary>
+        public string PolymorphicTypeName { get; set; }
     }
 }

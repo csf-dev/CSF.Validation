@@ -94,5 +94,27 @@ namespace CSF.Validation.ValidatorBuilding
             ((ManifestValue) context.ManifestValue).AccessorExceptionBehaviour = null;
             Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestValue.AccessorExceptionBehaviour)).Null);
         }
+
+        [Test,AutoMoqData]
+        public void WhenValueIsShouldAddAPolymorphicTypeToTheManifestValue([Frozen] IGetsValidatorBuilderContext contextFactory,
+                                                                           [Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                           ValueAccessorBuilder<object, ValidatedObject> sut,
+                                                                           [ManifestModel] ManifestPolymorphicType polymorphicType)
+        {
+            var derivedContext = new ValidatorBuilderContext(polymorphicType);
+            Mock.Get(contextFactory).Setup(x => x.GetPolymorphicContext(context, typeof(DerivedValidatedObject))).Returns(derivedContext);
+            sut.WhenValueIs<DerivedValidatedObject>(c => { });
+
+            Assert.Multiple(() =>
+            {
+                var manifestValue = sut.GetManifestValue();
+                Assert.That(manifestValue,
+                            Is.InstanceOf<IHasPolymorphicTypes>(),
+                            "Manifest value has polymorphic types.");
+                Assert.That(manifestValue,
+                            Has.Property(nameof(IHasPolymorphicTypes.PolymorphicTypes)).One.SameAs(polymorphicType),
+                            "Manifest includes expected polymotphic type");
+            });
+        }
     }
 }

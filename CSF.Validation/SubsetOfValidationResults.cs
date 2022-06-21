@@ -39,6 +39,10 @@ namespace CSF.Validation
         public IQueryableValidationResult<TValidated> WithoutSuccesses() => ResultQueries.WithoutSuccesses(this);
 
         /// <inheritdoc/>
+        public IQueryableValidationResult<TDerived> PolymorphicAs<TDerived>() where TDerived : TValidated
+            => ResultQueries.PolymorphicAs<TValidated, TDerived>(this);
+
+        /// <inheritdoc/>
         public SerializableValidationResult ToSerializableResult() => ResultQueries.ToSerializableValidationResult(this);
 
         IQueryableValidationResult<T> IQueryableValidationResult.AsResultFor<T>() => (IQueryableValidationResult<T>)this;

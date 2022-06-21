@@ -14,19 +14,7 @@ namespace CSF.Validation.ValidatorBuilding
     {
         readonly IStaticallyReflects reflect;
 
-        /// <summary>
-        /// Gets the rule builder context for validating values of a specified member of a validated object.
-        /// </summary>
-        /// <typeparam name="TValidated">The type of the primary object under validation.</typeparam>
-        /// <typeparam name="TValue">The type of the member being validated.</typeparam>
-        /// <param name="memberAccessor">An expression which indicates the member of <typeparamref name="TValidated"/> to validate.</param>
-        /// <param name="validatorContext">Contextual information relating to how a validator is built.</param>
-        /// <param name="enumerateItems">
-        /// A value that indicates whether or not the items within the validated member should be enumerated
-        /// and validated independently.  This is relevant when <typeparamref name="TValue"/> implements
-        /// <see cref="IEnumerable{T}"/>.
-        /// </param>
-        /// <returns>A context object for building validation rules.</returns>
+        /// <inheritdoc/>
         public ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
             if (enumerateItems)
@@ -40,25 +28,41 @@ namespace CSF.Validation.ValidatorBuilding
             return GetContext(obj => accessor((TValidated)obj), validatorContext, typeof(TValue), member.Name);
         }
 
-        /// <summary>
-        /// Gets the rule builder context for validating values that have been derived from a validated object.
-        /// </summary>
-        /// <typeparam name="TValidated">The type of the primary object under validation.</typeparam>
-        /// <typeparam name="TValue">The type of the derived value being validated.</typeparam>
-        /// <param name="valueAccessor">An accessor function which gets the value to be validated from a <typeparamref name="TValidated"/>.</param>
-        /// <param name="validatorContext">Contextual information relating to how a validator is built.</param>
-        /// <param name="enumerateItems">
-        /// A value that indicates whether or not the items within the derived value should be enumerated
-        /// and validated independently.  This is relevant when <typeparamref name="TValue"/> implements
-        /// <see cref="IEnumerable{T}"/>.
-        /// </param>
-        /// <returns>A context object for building validation rules.</returns>
+        /// <inheritdoc/>
         public ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
         {
             if(enumerateItems)
                 return GetCollectionItemContext(validatorContext, typeof(TValue));
 
             return GetContext(obj => valueAccessor((TValidated)obj), validatorContext, typeof(TValue));
+        }
+
+        /// <inheritdoc/>
+        public ValidatorBuilderContext GetPolymorphicContext(ValidatorBuilderContext validatorContext, Type derivedType)
+        {
+            if (validatorContext is null)
+                throw new ArgumentNullException(nameof(validatorContext));
+            if (derivedType is null)
+                throw new ArgumentNullException(nameof(derivedType));
+            if (!(validatorContext.ManifestValue is IHasPolymorphicTypes polyManifest))
+            {
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
+                                            typeof(IHasPolymorphicTypes).Name,
+                                            validatorContext.ManifestValue?.GetType().FullName ?? "<null>");
+                throw new ArgumentException(message, nameof(validatorContext));
+            }
+
+            ManifestPolymorphicType existingPoly;
+            if ((existingPoly = polyManifest.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == derivedType)) != null)
+                return new ValidatorBuilderContext(existingPoly);
+
+            var polymorphicValue = new ManifestPolymorphicType
+            {
+                Parent = validatorContext.ManifestValue.Parent,
+                ValidatedType = derivedType,
+            };
+            polyManifest.PolymorphicTypes.Add(polymorphicValue);
+            return new ValidatorBuilderContext(polymorphicValue);
         }
 
         static ValidatorBuilderContext GetContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)

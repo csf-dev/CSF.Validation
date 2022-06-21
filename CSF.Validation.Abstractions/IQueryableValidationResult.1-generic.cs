@@ -42,5 +42,13 @@ namespace CSF.Validation
         /// </summary>
         /// <returns>A queryable result, filtered for only rule results that do not indicate success.</returns>
         IQueryableValidationResult<TValidated> WithoutSuccesses();
+
+        /// <summary>
+        /// 'Casts' the current validation result for an object of type <typeparamref name="TDerived"/>, enabling access to
+        /// rules and values added as part of polymorphic validation.
+        /// </summary>
+        /// <typeparam name="TDerived">A derived validated type.</typeparam>
+        /// <returns>A queryable result, enabling access to members and rules for the derived type..</returns>
+        IQueryableValidationResult<TDerived> PolymorphicAs<TDerived>() where TDerived : TValidated;
     }
 }
