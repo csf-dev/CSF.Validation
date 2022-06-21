@@ -62,5 +62,18 @@ namespace CSF.Validation
             Assert.That(() => sut.ForMatchingMemberItem(x => x.Pets, pet),
                         Throws.ArgumentException.And.Message.Contains("but in order to use ForMatchingMemberItem, that value must represent a collection of items"));
         }
+
+        [Test,AutoMoqData]
+        public void PolymorphicAsShouldThrowIfTheManifestDoesNotHaveAMatchingPolymorphicType([ManifestModel] ValidationManifest manifest,
+                                                                                             [ManifestModel] ManifestValue value)
+        {
+            manifest.ValidatedType = typeof(Person);
+            manifest.RootValue = value;
+            value.ValidatedType = typeof(Person);
+            value.PolymorphicTypes.Clear();
+            var sut = new ValidationResult<Person>(Enumerable.Empty<ValidationRuleResult>(), manifest);
+            Assert.That(() => sut.PolymorphicAs<Employee>(),
+                        Throws.ArgumentException.And.Message.StartsWith("The validation manifest value (for CSF.Validation.IntegrationTests.Person) must contain a polymorphic"));
+        }
     }
 }

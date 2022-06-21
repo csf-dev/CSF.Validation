@@ -290,8 +290,39 @@ namespace CSF.Validation.IntegrationTests
 
             var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
 
-            Assert.That(result.ForMember(x => x.Person).PolymorphicAs<Employee>().ForMember(x => x.PayrollNumber).First().Identifier.RuleType,
-                        Is.EqualTo(typeof(IntegerInRange)));
+            Assert.That(result.ForMember(x => x.Person).PolymorphicAs<Employee>().ForMember(x => x.PayrollNumber),
+                        Has.One.Matches<ValidationRuleResult>(r => r.Identifier.RuleType == typeof(IntegerInRange)
+                                                                && r.IsPass == false
+                                                                && Equals(r.ValidatedValue, -5)));
+        }
+
+        [Test,AutoMoqData]
+        public async Task PolymorphicAsShouldThrowIfUsedTwiceInSuccessionFromAResult([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var validator = validatorFactory.GetValidator<Customer>(typeof(CustomerValidatorBuilder));
+            var customer = new FrequentShopper
+            {
+                Person = new Employee
+                {
+                    Name = "John Smith",
+                    Birthday = new DateTime(2000, 1, 1),
+                    Pets = new[] {
+                        new Pet {Name = "Pet1"},
+                        new Pet {Name = "Pet2"},
+                        new Pet {Name = "Pet3"},
+                        new Pet {Name = "Pet4"},
+                        new Pet {Name = "Pet5"},
+                        new Pet {Name = "Pet6"},
+                    },
+                    PayrollNumber = -5,
+                },
+                LoyaltyPoints = -100,
+            };
+
+            var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
+
+            Assert.That(() => result.ForMember(x => x.Person).PolymorphicAs<Employee>().PolymorphicAs<Employee>(),
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must implement IHasPolymorphicTypes"));
         }
     }
 }

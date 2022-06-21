@@ -47,7 +47,7 @@ namespace CSF.Validation.ValidatorBuilding
             if (!(validatorContext.ManifestValue is IHasPolymorphicTypes polyManifest))
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
-                                            typeof(IHasPolymorphicTypes),
+                                            typeof(IHasPolymorphicTypes).Name,
                                             validatorContext.ManifestValue?.GetType().FullName ?? "<null>");
                 throw new ArgumentException(message, nameof(validatorContext));
             }
