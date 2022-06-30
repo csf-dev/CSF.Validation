@@ -12,7 +12,7 @@ namespace CSF.Validation.RuleExecution
         readonly IGetsAccessorExceptionBehaviour behaviourProvider;
 
         /// <inheritdoc/>
-        public GetValueToBeValidatedResponse GetValueToBeValidated(ManifestValue manifestValue, object parentValue, ResolvedValidationOptions validationOptions)
+        public GetValueToBeValidatedResponse GetValueToBeValidated(IManifestValue manifestValue, object parentValue, ResolvedValidationOptions validationOptions)
         {
             if(parentValue is null) return IgnoredGetValueToBeValidatedResponse.Default;
 

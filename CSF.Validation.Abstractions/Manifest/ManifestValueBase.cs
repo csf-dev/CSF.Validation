@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSF.Validation.Manifest
 {
@@ -25,7 +26,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestCollectionItem"/>
     public abstract class ManifestValueBase : IManifestItem
     {
-        ICollection<ManifestValue> children = new List<ManifestValue>();
+        ICollection<IManifestValue> children = new List<IManifestValue>();
         ICollection<ManifestRule> rules = new List<ManifestRule>();
 
         /// <summary>
@@ -45,18 +46,6 @@ namespace CSF.Validation.Manifest
         /// validated, given a reference to that object being validated.
         /// </summary>
         public Func<object, object> IdentityAccessor { get; set; }
-
-        /// <summary>
-        /// Where the current value represents a member access invocation (such as
-        /// a property getter), this property gets the name of that member.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Note that in some derived types, such as <see cref="ManifestCollectionItem"/>, this property will always
-        /// return <see langword="null" /> and may not be set to any other value.
-        /// </para>
-        /// </remarks>
-        public string MemberName { get; protected set; }
 
         /// <summary>
         /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
@@ -81,7 +70,7 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets or sets a collection of the immediate descendents of the current manifest value.
         /// </summary>
-        public ICollection<ManifestValue> Children
+        public ICollection<IManifestValue> Children
         {
             get => children;
             set => children = value ?? throw new ArgumentNullException(nameof(value));
@@ -94,6 +83,24 @@ namespace CSF.Validation.Manifest
         {
             get => rules;
             set => rules = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string which represents the current instance.</returns>
+        public override string ToString()
+        {
+            var properties = new Dictionary<string, string>
+            {
+                { nameof(Type), ValidatedType?.Name },
+                { nameof(IManifestValue.MemberName), (this is IManifestValue val)? val.MemberName : null },
+            };
+            var propertyStrings = properties
+                .Where(x => !(x.Value is null))
+                .Select(x => $"{x.Key} = {x.Value}").ToList();
+            
+            return $"[{GetType().Name}: {String.Join(", ",  propertyStrings)}]";
         }
     }
 }

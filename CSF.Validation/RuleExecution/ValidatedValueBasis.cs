@@ -58,7 +58,7 @@ namespace CSF.Validation.RuleExecution
         /// </para>
         /// </remarks>
         /// <returns>A collection of manifest values.</returns>
-        public IEnumerable<ManifestValue> GetChildManifestValues()
+        public IEnumerable<IManifestValue> GetChildManifestValues()
         {
             return new [] { ManifestValue }
                 .Union(polymorphicTypes)

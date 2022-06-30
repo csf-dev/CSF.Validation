@@ -320,7 +320,7 @@ namespace CSF.Validation.RuleExecution
                     },
                 },
             };
-            var child = manifestValue.Children.Single();
+            var child = (ManifestValue) manifestValue.Children.Single();
             child.Parent = manifestValue;
             child.CollectionItemValue.Parent = manifestValue;
             child.CollectionItemValue.CollectionItemValue.Parent = manifestValue;

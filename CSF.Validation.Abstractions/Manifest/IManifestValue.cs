@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// A model which represents a value which is validated within a validation hierarchy.
+    /// An object which behaves like a value within a validation manifest.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -21,26 +20,24 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
-    public class ManifestValue : ManifestValueBase, IHasPolymorphicTypes, IManifestValue
+    public interface IManifestValue : IManifestItem
     {
-        ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
-
         /// <summary>
-        /// Gets or sets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
+        /// Gets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
         /// the value for the current instance.
         /// </summary>
-        public Func<object, object> AccessorFromParent { get; set; }
+        Func<object, object> AccessorFromParent { get; }
 
         /// <summary>
         /// Where the current value represents a member access invocation (such as
-        /// a property getter), this property gets or sets the name of that member.
+        /// a property getter), this property gets the name of that member.
         /// </summary>
-        public string MemberName { get; set; }
+        string MemberName { get; }
 
         /// <summary>
-        /// Gets or sets an optional value which indicates the desired behaviour should the <see cref="AccessorFromParent"/> raise an exception.
+        /// Gets an optional value which indicates the desired behaviour should the <see cref="AccessorFromParent"/> raise an exception.
         /// </summary>
         /// <remarks>
         /// <para>
@@ -53,20 +50,6 @@ namespace CSF.Validation.Manifest
         /// </para>
         /// </remarks>
         /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
-        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
-
-        /// <summary>
-        /// Gets a string representation of the current instance.
-        /// </summary>
-        /// <returns>A string which represents the current instance.</returns>
-        public override string ToString()
-            => $"[{nameof(ManifestValue)}: Type = {ValidatedType.Name}, Member = {MemberName}]";
-
-        /// <inheritdoc/>
-        public ICollection<ManifestPolymorphicType> PolymorphicTypes
-        {
-            get => polymorphicTypes;
-            set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
-        }
+        ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; }
     }
 }

@@ -31,13 +31,6 @@ namespace CSF.Validation.Manifest
     {
         ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
 
-        /// <summary>
-        /// Gets a string representation of the current instance.
-        /// </summary>
-        /// <returns>A string which represents the current instance.</returns>
-        public override string ToString()
-            => $"[{nameof(ManifestCollectionItem)}: Type = {ValidatedType.Name}]";
-
         /// <inheritdoc/>
         public ICollection<ManifestPolymorphicType> PolymorphicTypes
         {

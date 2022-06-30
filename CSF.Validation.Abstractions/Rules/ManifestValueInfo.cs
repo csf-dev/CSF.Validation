@@ -27,7 +27,7 @@ namespace CSF.Validation.Rules
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets the name of that member.
         /// </summary>
-        public string MemberName => manifestValue.MemberName;
+        public string MemberName => (manifestValue is IManifestValue val)? val.MemberName : null;
 
         /// <summary>
         /// Gets an optional value object which indicates how items within a collection are to be validated.
@@ -91,7 +91,12 @@ namespace CSF.Validation.Rules
             CollectionItemValue = manifestValue.CollectionItemValue is null
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);
-            Children = new List<ManifestValueInfo>(manifestValue.Children.Select(x => new ManifestValueInfo(x)));
+            
+            Children = manifestValue.Children
+                .Where(x => !(x is RecursiveManifestValue))
+                .Select(x => new ManifestValueInfo(x))
+                .ToList();
+            
             if(manifestValue is ManifestValue val)
                 AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
         }

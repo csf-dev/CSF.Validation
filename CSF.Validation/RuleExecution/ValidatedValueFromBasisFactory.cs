@@ -1,4 +1,5 @@
 using System.Linq;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
 namespace CSF.Validation.RuleExecution
@@ -17,9 +18,7 @@ namespace CSF.Validation.RuleExecution
         /// <returns>A validated value.</returns>
         public ValidatedValue GetValidatedValue(ValidatedValueBasis basis)
         {
-            var valueIdentity = basis.ManifestValue.IdentityAccessor is null
-                ? null
-                : basis.ManifestValue.IdentityAccessor(basis.GetActualValue());
+            var valueIdentity = GetIdentity(basis);
             
             var value = new ValidatedValue
             {
@@ -41,6 +40,16 @@ namespace CSF.Validation.RuleExecution
                 .ToList();
 
             return value;
+        }
+
+        static object GetIdentity(ValidatedValueBasis basis)
+        {
+            var actualValue = basis.GetActualValue();
+            if(actualValue is null) return null;
+
+            return basis.ManifestValue.IdentityAccessor is null
+                ? null
+                : basis.ManifestValue.IdentityAccessor(actualValue);
         }
 
         /// <summary>

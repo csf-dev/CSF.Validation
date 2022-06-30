@@ -68,7 +68,7 @@ namespace CSF.Validation.ValidatorBuilding
         static ValidatorBuilderContext GetContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
         {
             ManifestValue existingManifest;
-            if(!(memberName is null) && (existingManifest = parentContext.ManifestValue.Children.FirstOrDefault(x => x.MemberName == memberName)) != null)
+            if(!(memberName is null) && (existingManifest = parentContext.ManifestValue.Children.OfType<ManifestValue>().FirstOrDefault(x => x.MemberName == memberName)) != null)
                 return new ValidatorBuilderContext(existingManifest);
 
             var manifestValue = new ManifestValue

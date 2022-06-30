@@ -23,13 +23,5 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="IManifestItem"/>
     /// <seealso cref="ManifestValue"/>
-    public class ManifestPolymorphicType : ManifestValueBase
-    {
-        /// <summary>
-        /// Gets a string representation of the current instance.
-        /// </summary>
-        /// <returns>A string which represents the current instance.</returns>
-        public override string ToString()
-            => $"[{nameof(ManifestPolymorphicType)}: Type = {ValidatedType.Name}, Runtime type = {ValidatedType.Name}]";
-    }
+    public class ManifestPolymorphicType : ManifestValueBase {}
 }

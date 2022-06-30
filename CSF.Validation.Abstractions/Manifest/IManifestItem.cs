@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// An object which behaves like a value within a validation manifest.
+    /// An object which behaves like an item within a validation manifest.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -44,18 +44,6 @@ namespace CSF.Validation.Manifest
         Func<object, object> IdentityAccessor { get; }
 
         /// <summary>
-        /// Where the current value represents a member access invocation (such as
-        /// a property getter), this property gets the name of that member.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Note that in some derived types, such as <see cref="ManifestCollectionItem"/>, this property will always
-        /// return <see langword="null" /> and may not be set to any other value.
-        /// </para>
-        /// </remarks>
-        string MemberName { get; }
-
-        /// <summary>
         /// Gets an optional value object which indicates how items within a collection are to be validated.
         /// </summary>
         /// <remarks>
@@ -78,7 +66,7 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets a collection of the immediate descendents of the current manifest value.
         /// </summary>
-        ICollection<ManifestValue> Children { get; }
+        ICollection<IManifestValue> Children { get; }
 
         /// <summary>
         /// Gets a collection of the rules associated with the current value.

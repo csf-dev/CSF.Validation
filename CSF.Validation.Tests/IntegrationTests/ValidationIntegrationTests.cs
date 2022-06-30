@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 using NUnit.Framework;
 
@@ -323,6 +324,60 @@ namespace CSF.Validation.IntegrationTests
 
             Assert.That(() => result.ForMember(x => x.Person).PolymorphicAs<Employee>().PolymorphicAs<Employee>(),
                         Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must implement IHasPolymorphicTypes"));
+        }
+
+        [Test,AutoMoqData,Timeout(500)]
+        public async Task RecursiveValidationShouldReturnaResultFromADescendentObjectValidatedUsingTheSameManifestAsAnAncestor([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var manifest = new ValidationManifest
+            {
+                ValidatedType = typeof(Node),
+                RootValue = new ManifestValue
+                {
+                    ValidatedType = typeof(Node),
+                    IdentityAccessor = obj => ((Node)obj).Identity,
+                    Children = new[] {
+                        new ManifestValue
+                        {
+                            ValidatedType = typeof(NodeChild),
+                            IdentityAccessor = obj => ((NodeChild) obj).Identity,
+                            AccessorFromParent = obj => ((Node) obj).Child,
+                        },
+                        new ManifestValue
+                        {
+                            ValidatedType = typeof(string),
+                            AccessorFromParent = obj => ((Node) obj).Name,
+                        }
+                    }
+                }
+            };
+            var nameValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(string));
+            var nameRule = new ManifestRule(nameValue, new ManifestRuleIdentifier(nameValue, typeof(MatchesRegex)))
+            {
+                RuleConfiguration = obj => ((MatchesRegex) obj).Pattern = "^Foo",
+            };
+            nameValue.Rules.Add(nameRule);
+            var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
+            var recursiveValue = new RecursiveManifestValue(manifest.RootValue)
+            {
+                AccessorFromParent = obj => ((NodeChild)obj).Node,
+            };
+            childValue.Children.Add(recursiveValue);
+
+            var validatedObject = new Node
+            {
+                Child = new NodeChild
+                {
+                    Node = new Node
+                    {
+                        Child = new NodeChild { Node = new Node { Name = "Invalid" } }
+                    }
+                }
+            };
+            var sut = validatorFactory.GetValidator<Node>(manifest);
+
+            var result = await sut.ValidateAsync(validatedObject);
+            Assert.That(result, Has.One.Matches<ValidationRuleResult>(r => r.Outcome == RuleOutcome.Failed && Equals(r.ValidatedValue, "Invalid")));
         }
     }
 }

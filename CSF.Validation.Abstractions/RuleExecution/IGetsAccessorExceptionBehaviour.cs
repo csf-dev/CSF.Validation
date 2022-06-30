@@ -13,6 +13,6 @@ namespace CSF.Validation.RuleExecution
         /// <param name="manifestValue">The manifest value for which behaviour is required.</param>
         /// <param name="validationOptions">The validation options.</param>
         /// <returns>The exception behaviour to use.</returns>
-        ValueAccessExceptionBehaviour GetBehaviour(ManifestValue manifestValue, ResolvedValidationOptions validationOptions);
+        ValueAccessExceptionBehaviour GetBehaviour(IManifestValue manifestValue, ResolvedValidationOptions validationOptions);
     }
 }
