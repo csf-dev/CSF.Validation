@@ -5,7 +5,7 @@ using System.Linq;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// Abstract base class used for values which are validated.
+    /// Abstract base class used for values which are validated, implementors of <see cref="IManifestItem"/>.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -20,10 +20,15 @@ namespace CSF.Validation.Manifest
     /// </para>
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ValidationManifest"/>
+    /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="IManifestValue"/>
+    /// <seealso cref="IHasPolymorphicTypes"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public abstract class ManifestValueBase : IManifestItem
     {
         ICollection<IManifestValue> children = new List<IManifestValue>();

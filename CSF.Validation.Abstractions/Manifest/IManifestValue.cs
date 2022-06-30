@@ -3,7 +3,7 @@ using System;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// An object which behaves like a value within a validation manifest.
+    /// A specialisation of <see cref="IManifestItem"/> which behaves like a value within a validation manifest.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -18,10 +18,15 @@ namespace CSF.Validation.Manifest
     /// </para>
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ValidationManifest"/>
+    /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="IHasPolymorphicTypes"/>
+    /// <seealso cref="ManifestValueBase"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public interface IManifestValue : IManifestItem
     {
         /// <summary>

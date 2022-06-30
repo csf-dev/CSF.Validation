@@ -18,12 +18,31 @@ namespace CSF.Validation.Manifest
     /// If you are looking for a way to create/define a validator using serialized data then please read the
     /// article <xref href="ManifestModelIndexPage?text=Using+the+Manifest+Model"/>.
     /// </para>
+    /// <para>
+    /// Recursive validation is used when validating an object model which may contain references back to a type which
+    /// already appears in the validation manifest and has appropriate validation configuration.
+    /// This would be appropriate when validating a node-based object graph such as an HTML DOM.  In HTML a
+    /// <c>&lt;div&gt;</c> element is permitted to contain <c>&lt;div&gt;</c> elements.  If writing a validator for this
+    /// you would not want to write an endless nested series of validation manifest values, rather we would like something
+    /// which essentially means "If this div contains a div, validate the child in the same way we would validate the parent,
+    /// including its children".
+    /// </para>
+    /// <para>
+    /// The recursive manifest value wraps another manifest value (which would have already appeared in the same manifest
+    /// as a value).  It means "Validate in the same way as the wrapped value", except that it may have a different accessor
+    /// function and member name.
+    /// </para>
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ValidationManifest"/>
+    /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="IManifestValue"/>
+    /// <seealso cref="IHasPolymorphicTypes"/>
+    /// <seealso cref="ManifestValueBase"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
     public class RecursiveManifestValue : IManifestValue
     {
         readonly IManifestValue wrapped;

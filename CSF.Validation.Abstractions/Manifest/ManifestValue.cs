@@ -19,10 +19,15 @@ namespace CSF.Validation.Manifest
     /// </para>
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="IManifestValue"/>
+    /// <seealso cref="IHasPolymorphicTypes"/>
+    /// <seealso cref="ManifestValueBase"/>
     /// <seealso cref="ManifestCollectionItem"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public class ManifestValue : ManifestValueBase, IHasPolymorphicTypes, IManifestValue
     {
         ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();

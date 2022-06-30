@@ -23,5 +23,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="IManifestItem"/>
     /// <seealso cref="ManifestValue"/>
+    /// <seealso cref="IManifestValue"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public class ManifestPolymorphicType : ManifestValueBase {}
 }

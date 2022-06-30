@@ -19,11 +19,16 @@ namespace CSF.Validation.Manifest
     /// article <xref href="ManifestModelIndexPage?text=Using+the+Manifest+Model"/>.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ManifestValue"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="IManifestValue"/>
+    /// <seealso cref="IHasPolymorphicTypes"/>
+    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public class ManifestRule
     {
         ICollection<ManifestRuleIdentifier> dependencyRules = new List<ManifestRuleIdentifier>();
