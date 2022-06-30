@@ -96,16 +96,23 @@ namespace CSF.Validation.Manifest
         /// <returns>A string which represents the current instance.</returns>
         public override string ToString()
         {
-            var properties = new Dictionary<string, string>
-            {
-                { nameof(Type), ValidatedType?.Name },
-                { nameof(IManifestValue.MemberName), (this is IManifestValue val)? val.MemberName : null },
-            };
-            var propertyStrings = properties
+            var propertyStrings = GetPropertyValuesForToString()
                 .Where(x => !(x.Value is null))
                 .Select(x => $"{x.Key} = {x.Value}").ToList();
             
             return $"[{GetType().Name}: {String.Join(", ",  propertyStrings)}]";
+        }
+
+        /// <summary>
+        /// Gets a collection of property values which will be used for the <see cref="ToString()"/> method.
+        /// </summary>
+        /// <returns>The property names &amp; values</returns>
+        protected virtual IDictionary<string, string> GetPropertyValuesForToString()
+        {
+            return new Dictionary<string, string>
+            {
+                { nameof(Type), ValidatedType?.Name },
+            };
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSF.Validation.Manifest
 {
@@ -59,13 +60,17 @@ namespace CSF.Validation.Manifest
         /// </remarks>
         /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
-
-        /// <summary>
-        /// Gets a string representation of the current instance.
-        /// </summary>
-        /// <returns>A string which represents the current instance.</returns>
-        public override string ToString()
-            => $"[{nameof(ManifestValue)}: Type = {ValidatedType.Name}, Member = {MemberName}]";
+        
+        /// <inheritdoc/>
+        protected override IDictionary<string, string> GetPropertyValuesForToString()
+        {
+            return base.GetPropertyValuesForToString()
+                .Union(new Dictionary<string,string>
+                {
+                    { nameof(IManifestValue.MemberName), this.MemberName },
+                })
+                .ToDictionary(k => k.Key, v => v.Value);
+        }
 
         /// <inheritdoc/>
         public ICollection<ManifestPolymorphicType> PolymorphicTypes
