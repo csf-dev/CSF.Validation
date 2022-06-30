@@ -13,9 +13,6 @@ namespace CSF.Validation.RuleExecution
         /// <inheritdoc/>
         public override bool Equals(GetValueToBeValidatedResponse other) => ReferenceEquals(this, other);
 
-        /// <inheritdoc/>
-        public override int GetHashCode() => base.GetHashCode();
-
         /// <summary>
         /// Gets a singleton/flyweight instance of this type.
         /// </summary>

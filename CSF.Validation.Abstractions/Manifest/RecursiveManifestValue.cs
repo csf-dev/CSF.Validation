@@ -45,12 +45,12 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestPolymorphicType"/>
     public class RecursiveManifestValue : IManifestValue
     {
-        readonly IManifestValue wrapped;
+        readonly IManifestItem wrapped;
 
         /// <summary>
         /// Gets a reference to the original value that current instance wraps.
         /// </summary>
-        public IManifestValue WrappedValue => wrapped;
+        public IManifestItem WrappedValue => wrapped;
 
         /// <summary>
         /// Gets or sets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
@@ -87,7 +87,7 @@ namespace CSF.Validation.Manifest
         public ICollection<ManifestRule> Rules => wrapped.Rules;
 
         /// <inheritdoc/>
-        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour => wrapped.AccessorExceptionBehaviour;
+        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour => (wrapped is IManifestValue val) ? val.AccessorExceptionBehaviour : null;
 
         /// <summary>
         /// Gets a string representation of the current instance.
@@ -111,7 +111,7 @@ namespace CSF.Validation.Manifest
         /// Initialises a new <see cref="RecursiveManifestValue"/>.
         /// </summary>
         /// <param name="wrapped">The wrapped manifest value.</param>
-        public RecursiveManifestValue(IManifestValue wrapped)
+        public RecursiveManifestValue(IManifestItem wrapped)
         {
             this.wrapped = wrapped ?? throw new ArgumentNullException(nameof(wrapped));
         }

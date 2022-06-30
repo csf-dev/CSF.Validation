@@ -18,9 +18,6 @@ namespace CSF.Validation.RuleExecution
         /// <inheritdoc/>
         public override bool Equals(GetValueToBeValidatedResponse other) => ReferenceEquals(this, other);
 
-        /// <inheritdoc/>
-        public override int GetHashCode() => base.GetHashCode();
-
         /// <summary>
         /// Initialises a new instance of <see cref="ErrorGetValueToBeValidatedResponse"/>.
         /// </summary>

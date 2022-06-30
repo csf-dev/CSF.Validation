@@ -95,5 +95,23 @@ namespace CSF.Validation.ManifestModel
         /// </para>
         /// </remarks>
         public CollectionItemValue CollectionItemValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value which indicates that the current value should represent recursive validation as an ancestor value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// If <see langword="null" /> then this value is treated as a normal manifest value.  If not null then this value
+        /// will be treated as a recursive (or re-entrant) validation manifest value.  It will be converted as a
+        /// <see cref="CSF.Validation.Manifest.RecursiveManifestValue"/> rather than a normal value.
+        /// </para>
+        /// <para>
+        /// The numeric value of this property (which must be a positive integer if non-null) indicates which level of ancestor
+        /// <see cref="Value"/> is used to provide the recursive validation.  For example a value of 1 indicates that the immediate
+        /// parent value should be used as the wrapped value for the recursive manifest value.  A value of 2 would indicate the
+        /// grandparent value.
+        /// </para>
+        /// </remarks>
+        public int? ValidateRecursivelyAsAncestor { get; set; }
     }
 }

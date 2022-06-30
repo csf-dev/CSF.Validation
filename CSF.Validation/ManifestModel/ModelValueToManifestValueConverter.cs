@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ManifestModel
@@ -57,10 +58,12 @@ namespace CSF.Validation.ManifestModel
                 var collectionItem = new ModelToManifestConversionContext
                 {
                     CurrentValue = currentContext.CurrentValue.CollectionItemValue,
-                    ConversionType = ModelToManifestConversionType.CollectionItem,
                     MemberName = currentContext.MemberName,
                     ParentManifestValue = parent,
                     ValidatedType = validatedType,
+                    ConversionType = currentContext.CurrentValue.CollectionItemValue.ValidateRecursivelyAsAncestor.HasValue
+                        ? ModelToManifestConversionType.RecursiveManifestValue
+                        : ModelToManifestConversionType.CollectionItem,
                 };
                 openList.Enqueue(collectionItem);
             }
@@ -75,7 +78,9 @@ namespace CSF.Validation.ManifestModel
                     MemberName = child.Key,
                     ParentManifestValue = parent,
                     ValidatedType = accessor.ExpectedType,
-                    ConversionType = ModelToManifestConversionType.Manifest,
+                    ConversionType = child.Value.ValidateRecursivelyAsAncestor.HasValue
+                        ? ModelToManifestConversionType.RecursiveManifestValue
+                        : ModelToManifestConversionType.Manifest,
                 };
                 openList.Enqueue(collectionItem);
             }
@@ -98,15 +103,15 @@ namespace CSF.Validation.ManifestModel
 
         IManifestItem ConvertToManifestValueBase(ModelToManifestConversionContext context)
         {
-            var value = GetManifestValueBase(context);
+            var value = GetManifestItem(context);
 
-            if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
-                value.IdentityAccessor = accessorFactory.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
+            if (value is ManifestValueBase valueBase && !String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
+                valueBase.IdentityAccessor = accessorFactory.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
 
             return value;
         }
 
-        static ManifestValueBase GetManifestValueBase(ModelToManifestConversionContext context)
+        static IManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             switch(context.ConversionType)
             {
@@ -116,6 +121,8 @@ namespace CSF.Validation.ManifestModel
                 return ConvertToManifestCollectionItem(context);
             case ModelToManifestConversionType.PolymorphicType:
                 return ConvertToPolymorphicType(context);
+            case ModelToManifestConversionType.RecursiveManifestValue:
+                return ConvertToRecursiveManifestValue(context);
             default:
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("UnexpectedModelToManifestConversionType"),
                                             nameof(ModelToManifestConversionType));
@@ -164,6 +171,28 @@ namespace CSF.Validation.ManifestModel
                 polyParent.PolymorphicTypes.Add(manifestValue);
 
             return manifestValue;
+        }
+
+        static RecursiveManifestValue ConvertToRecursiveManifestValue(ModelToManifestConversionContext context)
+        {
+            var ancestorLevels = context.CurrentValue.ValidateRecursivelyAsAncestor.Value;
+            var ancestor = GetAncestorManifestItems(context).Skip(ancestorLevels - 1).First();
+            return new RecursiveManifestValue(ancestor)
+            {
+                AccessorFromParent = context.AccessorFromParent,
+                MemberName = context.MemberName,
+                Parent = context.ParentManifestValue,
+            };
+        }
+
+        static IEnumerable<IManifestItem> GetAncestorManifestItems(ModelToManifestConversionContext context)
+        {
+            var current = context.ParentManifestValue;
+            while(!(current is null))
+            {
+                yield return current;
+                current = current.Parent;
+            }
         }
 
         /// <summary>
