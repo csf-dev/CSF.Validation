@@ -48,6 +48,11 @@ namespace CSF.Validation.Manifest
         readonly IManifestValue wrapped;
 
         /// <summary>
+        /// Gets a reference to the original value that current instance wraps.
+        /// </summary>
+        public IManifestValue WrappedValue => wrapped;
+
+        /// <summary>
         /// Gets or sets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
         /// the value for the current instance.
         /// </summary>
@@ -59,11 +64,15 @@ namespace CSF.Validation.Manifest
         /// </summary>
         public string MemberName { get; set; }
 
-        /// <inheritdoc/>
-        public Type ValidatedType => wrapped.ValidatedType;
+        /// <summary>
+        /// Gets or sets an optional parent manifest value.
+        /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
+        /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
+        /// </summary>
+        public IManifestItem Parent { get; set; }
 
         /// <inheritdoc/>
-        public IManifestItem Parent => wrapped.Parent;
+        public Type ValidatedType => wrapped.ValidatedType;
 
         /// <inheritdoc/>
         public Func<object, object> IdentityAccessor => wrapped.IdentityAccessor;

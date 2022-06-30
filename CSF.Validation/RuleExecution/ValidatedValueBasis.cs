@@ -86,6 +86,26 @@ namespace CSF.Validation.RuleExecution
         }
 
         /// <summary>
+        /// Gets a value which indicates whether the current validated value basis represents a
+        /// circular reference to a value which has already been converted to a <see cref="ValidatedValue"/>.
+        /// </summary>
+        /// <returns><see langword="true" /> if the current instance appears as a <see cref="ValidatedValue"/>
+        /// amongst the chain of <see cref="Parent"/> validated values; <see langword="false" /> otherwise.</returns>
+        public bool IsCircularReference() => GetAllParents().Any(IsMatch);
+
+        IEnumerable<ValidatedValue> GetAllParents()
+        {
+            var current = Parent;
+            while(!(current is null))
+            {
+                yield return current;
+                current = current.ParentValue;
+            }
+        }
+
+        bool IsMatch(ValidatedValue value) => value.IsMatch(ManifestValue, ValidatedValueResponse);
+
+        /// <summary>
         /// Gets a collection of applicable polymorphic types which are applicable to the current validated value.
         /// </summary>
         IEnumerable<ManifestPolymorphicType> GetPolymorphicTypes()
