@@ -29,7 +29,7 @@ namespace CSF.Validation.RuleExecution
                                                                                [ExecutableModel] ValidatedValueBasis basis,
                                                                                int identity)
         {
-            basis.ManifestValue.IdentityAccessor = obj => identity;
+            ((ManifestValueBase) basis.ManifestValue).IdentityAccessor = obj => identity;
             Assert.That(() => sut.GetValidatedValue(basis).ValueIdentity, Is.EqualTo(identity));
         }
 
@@ -37,7 +37,7 @@ namespace CSF.Validation.RuleExecution
         public void GetValidatedValueShouldLeaveIdentityNullIfThereIsNoAccessor(ValidatedValueFromBasisFactory sut,
                                                                                 [ExecutableModel] ValidatedValueBasis basis)
         {
-            basis.ManifestValue.IdentityAccessor = null;
+            ((ManifestValueBase) basis.ManifestValue).IdentityAccessor = null;
             Assert.That(() => sut.GetValidatedValue(basis).ValueIdentity, Is.Null);
         }
 

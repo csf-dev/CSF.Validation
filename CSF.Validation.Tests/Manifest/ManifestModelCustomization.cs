@@ -23,6 +23,7 @@ namespace CSF.Validation.Manifest
     {
         public void Customize(IFixture fixture)
         {
+            fixture.Customize<IManifestItem>(c => c.FromFactory((ManifestValueBase v) => v).OmitAutoProperties());
             fixture.Customize<ManifestValueBase>(c => c.FromFactory((ManifestValue v) => v).OmitAutoProperties());
             fixture.Customize<ManifestValue>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicTypes));
             fixture.Customize<ManifestCollectionItem>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicTypes));

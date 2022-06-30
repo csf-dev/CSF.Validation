@@ -10,13 +10,13 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This type roughly corresponds to a <see cref="ManifestValueBase"/> and its derived types.  The key difference
+    /// This type roughly corresponds to a <see cref="IManifestItem"/> and its derived types.  The key difference
     /// between that and this 'info' class is that this type is immutable and presents a read-only API.
     /// </para>
     /// </remarks>
     public class ManifestValueInfo
     {
-        readonly ManifestValueBase manifestValue;
+        readonly IManifestItem manifestValue;
 
         /// <summary>
         /// Gets the type of the object which the current manifest value describes.
@@ -76,15 +76,15 @@ namespace CSF.Validation.Rules
         /// </para>
         /// </remarks>
         /// <returns>The original manifest value from which this instance was created.</returns>
-        public ManifestValueBase GetOriginalManifestValue() => manifestValue;
+        public IManifestItem GetOriginalManifestValue() => manifestValue;
 
         /// <summary>
         /// Initialises an instance of <see cref="ManifestValueInfo"/>.
-        /// This is essentially a copy-constructor for a <see cref="ManifestValueBase"/>.
+        /// This is essentially a copy-constructor for a <see cref="IManifestItem"/>.
         /// </summary>
         /// <param name="manifestValue">The manifest value from which to create this instance.</param>
         /// <exception cref="System.ArgumentNullException">If <paramref name="manifestValue"/> is <see langword="null" />.</exception>
-        public ManifestValueInfo(ManifestValueBase manifestValue)
+        public ManifestValueInfo(IManifestItem manifestValue)
         {
             this.manifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
 

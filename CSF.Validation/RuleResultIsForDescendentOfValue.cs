@@ -32,7 +32,7 @@ namespace CSF.Validation
         /// ancestor context, as well as the rule's own context.  If <see langword="false" /> then only the rule's immediate
         /// context will be searched, indicating that this is a specification for immediate children only.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="value"/> is <see langword="null" />.</exception>
-        public RuleResultIsForDescendentOfValue(ManifestValueBase value, bool allowAncestors = true)
+        public RuleResultIsForDescendentOfValue(IManifestItem value, bool allowAncestors = true)
         {
             valueConextIsMatch = new ValueContextIsMatchForItem(value ?? throw new ArgumentNullException(nameof(value)));
             this.allowAncestors = allowAncestors;
@@ -47,7 +47,7 @@ namespace CSF.Validation
         /// ancestor context, as well as the rule's own context.  If <see langword="false" /> then only the rule's immediate
         /// context will be searched, indicating that this is a specification for immediate children only.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="value"/> is <see langword="null" />.</exception>
-        public RuleResultIsForDescendentOfValue(ManifestValueBase value, object item, bool allowAncestors = true)
+        public RuleResultIsForDescendentOfValue(IManifestItem value, object item, bool allowAncestors = true)
         {
             valueConextIsMatch = new ValueContextIsMatchForItem(value ?? throw new ArgumentNullException(nameof(value)), item);
             this.allowAncestors = allowAncestors;

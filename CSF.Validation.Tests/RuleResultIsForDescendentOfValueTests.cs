@@ -18,7 +18,7 @@ namespace CSF.Validation
                                                                                                                  [RuleResult] RuleResult ruleResult,
                                                                                                                  IValidationLogic logic)
         {
-            rule.ManifestValue.IdentityAccessor = null;
+            ((ManifestValueBase) rule.ManifestValue).IdentityAccessor = null;
             var context = new RuleContext(rule, ruleIdentifier, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
             var validationRuleResult = new ValidationRuleResult(ruleResult, context, logic);
             var sut = new RuleResultIsForDescendentOfValue(rule.ManifestValue);
@@ -35,7 +35,7 @@ namespace CSF.Validation
                                                                                                            [RuleResult] RuleResult ruleResult,
                                                                                                            IValidationLogic logic)
         {
-            rule.ManifestValue.IdentityAccessor = null;
+            ((ManifestValueBase) rule.ManifestValue).IdentityAccessor = null;
             var context = new RuleContext(rule, ruleIdentifier, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
             var validationRuleResult = new ValidationRuleResult(ruleResult, context, logic);
             var sut = new RuleResultIsForDescendentOfValue(otherValue);
@@ -89,7 +89,7 @@ namespace CSF.Validation
                                                                                                                            [RuleResult] RuleResult ruleResult,
                                                                                                                            IValidationLogic logic)
         {
-            rule.ManifestValue.IdentityAccessor = null;
+            ((ManifestValueBase) rule.ManifestValue).IdentityAccessor = null;
             var context = new RuleContext(rule, ruleIdentifier, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
             var validationRuleResult = new ValidationRuleResult(ruleResult, context, logic);
             var sut = new RuleResultIsForDescendentOfValue(rule.ManifestValue, actualValue);

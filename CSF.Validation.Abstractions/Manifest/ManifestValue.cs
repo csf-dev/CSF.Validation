@@ -21,14 +21,14 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="IManifestItem"/>
     /// <seealso cref="ManifestCollectionItem"/>
     public class ManifestValue : ManifestValueBase, IHasPolymorphicTypes
     {
         ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
 
         /// <summary>
-        /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestValueBase.Parent"/>)
+        /// Gets or sets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
         /// the value for the current instance.
         /// </summary>
         public Func<object, object> AccessorFromParent { get; set; }

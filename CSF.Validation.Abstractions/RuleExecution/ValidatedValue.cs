@@ -12,7 +12,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets or sets the manifest value to which the current instance relates.
         /// </summary>
-        public ManifestValueBase ManifestValue { get; set;  }
+        public IManifestItem ManifestValue { get; set;  }
 
         /// <summary>
         /// Gets or sets a response object which may expose an "actual value" of the validated value.

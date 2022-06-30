@@ -49,7 +49,7 @@ namespace CSF.Validation.ManifestModel
             return result;
         }
 
-        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, ManifestValueBase parent)
+        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, IManifestItem parent)
         {
             if(!(currentContext.CurrentValue.CollectionItemValue is null))
             {
@@ -96,7 +96,7 @@ namespace CSF.Validation.ManifestModel
             }
         }
 
-        ManifestValueBase ConvertToManifestValueBase(ModelToManifestConversionContext context)
+        IManifestItem ConvertToManifestValueBase(ModelToManifestConversionContext context)
         {
             var value = GetManifestValueBase(context);
 
@@ -130,8 +130,8 @@ namespace CSF.Validation.ManifestModel
                 Parent = context.ParentManifestValue.Parent,
                 ValidatedType = context.ValidatedType,
             };
-            if (context.ParentManifestValue != null)
-                context.ParentManifestValue.CollectionItemValue = manifestValue;
+            if (context.ParentManifestValue is ManifestValueBase mvb)
+                mvb.CollectionItemValue = manifestValue;
             return manifestValue;
         }
 

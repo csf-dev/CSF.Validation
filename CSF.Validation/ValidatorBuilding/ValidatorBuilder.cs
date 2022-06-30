@@ -95,7 +95,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <inheritdoc/>
-        public ManifestValueBase GetManifestValue()
+        public IManifestItem GetManifestValue()
         {
             var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
             
@@ -105,7 +105,7 @@ namespace CSF.Validation.ValidatorBuilding
             return context.ManifestValue;
         }
 
-        void HandleManifestItem(ManifestValueBase manifestItem)
+        void HandleManifestItem(IManifestItem manifestItem)
         {
             if(manifestItem == context.ManifestValue) return;
 

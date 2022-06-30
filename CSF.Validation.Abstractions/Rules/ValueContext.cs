@@ -72,7 +72,7 @@ namespace CSF.Validation.Rules
         /// <param name="actualValue">The object being validated in this ancestor context.</param>
         /// <param name="manifestValue">The manifest value.</param>
         /// <param name="collectionItemOrder">The collection index by which you would traverse from this ancestor context to its immediate child (where applicable).</param>
-        public ValueContext(object identity, object actualValue, ManifestValueBase manifestValue, long? collectionItemOrder = null)
+        public ValueContext(object identity, object actualValue, IManifestItem manifestValue, long? collectionItemOrder = null)
         {
             if (manifestValue is null)
                 throw new ArgumentNullException(nameof(manifestValue));

@@ -24,7 +24,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="IManifestItem"/>
     /// <seealso cref="ManifestCollectionItem"/>
     public class ValidationManifest
     {

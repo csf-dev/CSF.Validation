@@ -17,7 +17,7 @@ namespace CSF.Validation
         /// Gets a reference to the manifest value which forms the logical
         /// root of the results in the current instance.
         /// </summary>
-        ManifestValueBase ManifestValue { get; }
+        IManifestItem ManifestValue { get; }
 
         /// <summary>
         /// Gets a collection of the results of individual validation rules, making up

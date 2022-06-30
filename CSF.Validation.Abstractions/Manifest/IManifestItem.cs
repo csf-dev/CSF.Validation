@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// Abstract base class used for values which are validated.
+    /// An object which behaves like a value within a validation manifest.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -23,28 +23,25 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
-    public abstract class ManifestValueBase : IManifestItem
+    public interface IManifestItem
     {
-        ICollection<ManifestValue> children = new List<ManifestValue>();
-        ICollection<ManifestRule> rules = new List<ManifestRule>();
-
         /// <summary>
-        /// Gets or sets the type of the object which the current manifest value describes.
+        /// Gets  the type of the object which the current manifest value describes.
         /// </summary>
-        public Type ValidatedType { get; set; }
+        Type ValidatedType { get; }
 
         /// <summary>
-        /// Gets or sets an optional parent manifest value.
+        /// Gets an optional parent manifest value.
         /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
         /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
         /// </summary>
-        public IManifestItem Parent { get; set; }
+        IManifestItem Parent { get; }
 
         /// <summary>
-        /// Gets or sets a function which retrieves a unique identity of the object being
+        /// Gets a function which retrieves a unique identity of the object being
         /// validated, given a reference to that object being validated.
         /// </summary>
-        public Func<object, object> IdentityAccessor { get; set; }
+        Func<object, object> IdentityAccessor { get; }
 
         /// <summary>
         /// Where the current value represents a member access invocation (such as
@@ -56,15 +53,15 @@ namespace CSF.Validation.Manifest
         /// return <see langword="null" /> and may not be set to any other value.
         /// </para>
         /// </remarks>
-        public string MemberName { get; protected set; }
+        string MemberName { get; }
 
         /// <summary>
-        /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
+        /// Gets an optional value object which indicates how items within a collection are to be validated.
         /// </summary>
         /// <remarks>
         /// <para>
         /// If the value representd by the current instance is a collection/enumerable of items then these items may
-        /// be validated individually.  In this scenario, the <see cref="IManifestItem.ValidatedType"/> must be a
+        /// be validated individually.  In this scenario, the <see cref="ValidatedType"/> must be a
         /// type that implements <see cref="System.Collections.Generic.IEnumerable{T}"/> for at least one generic type.
         /// </para>
         /// <para>
@@ -76,24 +73,16 @@ namespace CSF.Validation.Manifest
         /// property must be <see langword="null" />.
         /// </para>
         /// </remarks>
-        public ManifestCollectionItem CollectionItemValue { get; set; }
+        ManifestCollectionItem CollectionItemValue { get; }
 
         /// <summary>
-        /// Gets or sets a collection of the immediate descendents of the current manifest value.
+        /// Gets a collection of the immediate descendents of the current manifest value.
         /// </summary>
-        public ICollection<ManifestValue> Children
-        {
-            get => children;
-            set => children = value ?? throw new ArgumentNullException(nameof(value));
-        }
+        ICollection<ManifestValue> Children { get; }
 
         /// <summary>
         /// Gets a collection of the rules associated with the current value.
         /// </summary>
-        public ICollection<ManifestRule> Rules
-        {
-            get => rules;
-            set => rules = value ?? throw new ArgumentNullException(nameof(value));
-        }
+        ICollection<ManifestRule> Rules { get; }
     }
 }

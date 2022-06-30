@@ -27,7 +27,7 @@ namespace CSF.Validation
         /// <inheritdoc/>
         public abstract SerializableValidationResult ToSerializableResult();
 
-        ManifestValueBase IQueryableValidationResult.ManifestValue => Manifest.RootValue;
+        IManifestItem IQueryableValidationResult.ManifestValue => Manifest.RootValue;
 
         IEnumerator<ValidationRuleResult> IEnumerable<ValidationRuleResult>.GetEnumerator() => RuleResults.GetEnumerator();
 
