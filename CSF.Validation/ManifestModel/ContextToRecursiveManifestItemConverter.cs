@@ -36,39 +36,22 @@ namespace CSF.Validation.ManifestModel
         static IManifestItem GetAncestor(ModelToManifestConversionContext context)
         {
             var ancestorLevels = context.CurrentValue.ValidateRecursivelyAsAncestor.Value;
-            if(ancestorLevels < 1)
+            try
+            {
+                return context.ParentManifestValue.GetAncestor(ancestorLevels - 1);
+            }
+            catch(ArgumentOutOfRangeException ex)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AncestorLevelsMustNotBeLessThanOne"),
                                             nameof(ValueBase.ValidateRecursivelyAsAncestor));
-                throw new ValidationException(message);
-            }
-
-            var ancestors = GetAncestorManifestItems(context);
-
-            try
-            {
-                return ancestors
-                    .Skip(ancestorLevels - 1)
-                    .First();
+                throw new ValidationException(message, ex);
             }
             catch(InvalidOperationException ex)
             {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("NotEnougAncestorsForAncestorLevels"),
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("NotEnoughAncestorsForAncestorLevels"),
                                             nameof(ValueBase.ValidateRecursivelyAsAncestor),
-                                            ancestorLevels,
-                                            ancestors.Count(),
                                             nameof(ValueBase));
                 throw new ValidationException(message, ex);
-            }
-        }
-
-        static IEnumerable<IManifestItem> GetAncestorManifestItems(ModelToManifestConversionContext context)
-        {
-            var current = context.ParentManifestValue;
-            while(!(current is null))
-            {
-                yield return current;
-                current = current.Parent;
             }
         }
 

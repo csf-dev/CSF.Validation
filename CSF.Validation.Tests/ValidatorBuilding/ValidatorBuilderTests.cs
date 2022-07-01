@@ -298,5 +298,61 @@ namespace CSF.Validation.ValidatorBuilding
             Mock.Get(valueBuilderFactory)
                 .Verify(x => x.GetValueAccessorBuilder<ValidatedObject, char>(ruleContext, configAction), Times.Once);
         }
+
+        [Test,AutoMoqData]
+        public void ValidateAsAncestorShouldThrowIfForMemberHasAlreadyBeenUsed([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                               [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
+                                                                               [Frozen] IGetsValueAccessorBuilder valueBuilderFactory,
+                                                                               ValidatorBuilder<ValidatedObject> sut,
+                                                                               ValidatorBuilderContext ruleContext,
+                                                                               IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
+                                                                               [ManifestModel] ManifestValue value)
+        {
+            Mock.Get(ruleContextFactory)
+                .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
+                .Returns(ruleContext);
+            Mock.Get(valueBuilderFactory)
+                .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,string>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,string>>>()))
+                .Returns(valueBuilder);
+            Mock.Get(valueBuilder)
+                .Setup(x => x.GetManifestValue())
+                .Returns(() => value);
+
+            sut.ForMember(x => x.AProperty, v => { });
+            Assert.That(() => sut.ValidateAsAncestor(1), Throws.InvalidOperationException);
+        }
+
+        [Test,AutoMoqData]
+        public void ValidateAsAncestorShouldThrowIfUsedTwice([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                             ValidatorBuilder<ValidatedObject> sut,
+                                                             [ManifestModel] ManifestValue parent)
+        {
+            context.ManifestValue.Parent = parent;
+            sut.ValidateAsAncestor(1);
+            Assert.That(() => sut.ValidateAsAncestor(1), Throws.InvalidOperationException);
+        }
+
+        [Test,AutoMoqData]
+        public void ForMemberShouldThrowIfValidateAsAncestorHasAlreadyBeenUsed([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                               ValidatorBuilder<ValidatedObject> sut,
+                                                                               [ManifestModel] ManifestValue parent)
+        {
+            context.ManifestValue.Parent = parent;
+            sut.ValidateAsAncestor(1);
+            Assert.That(() => sut.ForMember(x => x.AProperty, v => { }), Throws.InvalidOperationException);
+        }
+
+        [Test,AutoMoqData]
+        public void ValidateAsAncestorShouldSetupGetManifestValueToReturnARecursiveManifestValue([Frozen, ManifestModel] ValidatorBuilderContext context,
+                                                                                                 ValidatorBuilder<ValidatedObject> sut,
+                                                                                                 [ManifestModel] ManifestValue parent,
+                                                                                                 [ManifestModel] ManifestValue grandParent)
+        {
+            context.ManifestValue.Parent = parent;
+            parent.Parent = grandParent;
+            sut.ValidateAsAncestor(2);
+            var result = sut.GetManifestValue();
+            Assert.That(result, Is.InstanceOf<RecursiveManifestValue>().And.Property(nameof(RecursiveManifestValue.WrappedValue)).SameAs(grandParent));
+        }
     }
 }

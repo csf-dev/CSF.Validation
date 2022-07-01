@@ -273,8 +273,20 @@
     <value>The value of {0} must not be less than one.</value>
     <comment/>
   </data>
-  <data name="NotEnougAncestorsForAncestorLevels" xml:space="preserve">
-    <value>The instance of {3} must have sufficient ancestors to satisfy its value of {0}.  The property indicates that it should recursively behave as ancestor number {1} but there is/are only {2} ancestor(s) available.</value>
+  <data name="NotEnoughAncestorsForAncestorLevels" xml:space="preserve">
+    <value>The instance of {1} must have sufficient ancestors to satisfy its value of {0}.</value>
+    <comment/>
+  </data>
+  <data name="NotEnoughAncestors" xml:space="preserve">
+    <value>A depth of {0} ancestors was requested but only {1} ancestors are available.</value>
+    <comment/>
+  </data>
+  <data name="MustBeRecursive" xml:space="preserve">
+    <value>You must not use any other functionality upon a validator builder if you have used {0}.</value>
+    <comment/>
+  </data>
+  <data name="MustNotBeRecursive" xml:space="preserve">
+    <value>You must not use {0} if you have performed any other configuration upon a validator builder.</value>
     <comment/>
   </data>
 </root>
