@@ -20,7 +20,11 @@ namespace CSF.Validation.Manifest
         {
             if (item is null)
                 throw new ArgumentNullException(nameof(item));
+            return GetAncestorsPrivate(item);
+        }
 
+        static IEnumerable<IManifestItem> GetAncestorsPrivate(IManifestItem item)
+        {
             IManifestItem current = item;
             while(!(current is null))
             {
