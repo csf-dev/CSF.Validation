@@ -655,6 +655,24 @@ references:
   fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).ForOnlyThisValue
   nameWithType: IQueryableValidationResult<TValidated>.ForOnlyThisValue
   nameWithType.vb: IQueryableValidationResult(Of TValidated).ForOnlyThisValue
+- uid: CSF.Validation.IQueryableValidationResult`1.PolymorphicAs*
+  name: PolymorphicAs
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_PolymorphicAs_
+  commentId: Overload:CSF.Validation.IQueryableValidationResult`1.PolymorphicAs
+  isSpec: "True"
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.PolymorphicAs
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).PolymorphicAs
+  nameWithType: IQueryableValidationResult<TValidated>.PolymorphicAs
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).PolymorphicAs
+- uid: CSF.Validation.IQueryableValidationResult`1.PolymorphicAs``1
+  name: PolymorphicAs<TDerived>()
+  href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_PolymorphicAs__1
+  commentId: M:CSF.Validation.IQueryableValidationResult`1.PolymorphicAs``1
+  name.vb: PolymorphicAs(Of TDerived)()
+  fullName: CSF.Validation.IQueryableValidationResult<TValidated>.PolymorphicAs<TDerived>()
+  fullName.vb: CSF.Validation.IQueryableValidationResult(Of TValidated).PolymorphicAs(Of TDerived)()
+  nameWithType: IQueryableValidationResult<TValidated>.PolymorphicAs<TDerived>()
+  nameWithType.vb: IQueryableValidationResult(Of TValidated).PolymorphicAs(Of TDerived)()
 - uid: CSF.Validation.IQueryableValidationResult`1.WithoutSuccesses
   name: WithoutSuccesses()
   href: api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_WithoutSuccesses
@@ -852,12 +870,44 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.IGetsValidatorFromManifest.GetValidator
   nameWithType: IGetsValidatorFromManifest.GetValidator
+- uid: CSF.Validation.Manifest.IHasPolymorphicTypes
+  name: IHasPolymorphicTypes
+  href: api/CSF.Validation.Manifest.IHasPolymorphicTypes.html
+  commentId: T:CSF.Validation.Manifest.IHasPolymorphicTypes
+  fullName: CSF.Validation.Manifest.IHasPolymorphicTypes
+  nameWithType: IHasPolymorphicTypes
+- uid: CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes
+  name: PolymorphicTypes
+  href: api/CSF.Validation.Manifest.IHasPolymorphicTypes.html#CSF_Validation_Manifest_IHasPolymorphicTypes_PolymorphicTypes
+  commentId: P:CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes
+  fullName: CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes
+  nameWithType: IHasPolymorphicTypes.PolymorphicTypes
+- uid: CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes*
+  name: PolymorphicTypes
+  href: api/CSF.Validation.Manifest.IHasPolymorphicTypes.html#CSF_Validation_Manifest_IHasPolymorphicTypes_PolymorphicTypes_
+  commentId: Overload:CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes
+  nameWithType: IHasPolymorphicTypes.PolymorphicTypes
 - uid: CSF.Validation.Manifest.ManifestCollectionItem
   name: ManifestCollectionItem
   href: api/CSF.Validation.Manifest.ManifestCollectionItem.html
   commentId: T:CSF.Validation.Manifest.ManifestCollectionItem
   fullName: CSF.Validation.Manifest.ManifestCollectionItem
   nameWithType: ManifestCollectionItem
+- uid: CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes
+  name: PolymorphicTypes
+  href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_PolymorphicTypes
+  commentId: P:CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes
+  fullName: CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes
+  nameWithType: ManifestCollectionItem.PolymorphicTypes
+- uid: CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes*
+  name: PolymorphicTypes
+  href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_PolymorphicTypes_
+  commentId: Overload:CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes
+  nameWithType: ManifestCollectionItem.PolymorphicTypes
 - uid: CSF.Validation.Manifest.ManifestCollectionItem.ToString
   name: ToString()
   href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_ToString
@@ -906,6 +956,25 @@ references:
   fullName.vb: CSF.Validation.Manifest.ManifestFromBuilderProvider.GetManifest(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
   nameWithType: ManifestFromBuilderProvider.GetManifest<TValidated>(IBuildsValidator<TValidated>)
   nameWithType.vb: ManifestFromBuilderProvider.GetManifest(Of TValidated)(IBuildsValidator(Of TValidated))
+- uid: CSF.Validation.Manifest.ManifestPolymorphicType
+  name: ManifestPolymorphicType
+  href: api/CSF.Validation.Manifest.ManifestPolymorphicType.html
+  commentId: T:CSF.Validation.Manifest.ManifestPolymorphicType
+  fullName: CSF.Validation.Manifest.ManifestPolymorphicType
+  nameWithType: ManifestPolymorphicType
+- uid: CSF.Validation.Manifest.ManifestPolymorphicType.ToString
+  name: ToString()
+  href: api/CSF.Validation.Manifest.ManifestPolymorphicType.html#CSF_Validation_Manifest_ManifestPolymorphicType_ToString
+  commentId: M:CSF.Validation.Manifest.ManifestPolymorphicType.ToString
+  fullName: CSF.Validation.Manifest.ManifestPolymorphicType.ToString()
+  nameWithType: ManifestPolymorphicType.ToString()
+- uid: CSF.Validation.Manifest.ManifestPolymorphicType.ToString*
+  name: ToString
+  href: api/CSF.Validation.Manifest.ManifestPolymorphicType.html#CSF_Validation_Manifest_ManifestPolymorphicType_ToString_
+  commentId: Overload:CSF.Validation.Manifest.ManifestPolymorphicType.ToString
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestPolymorphicType.ToString
+  nameWithType: ManifestPolymorphicType.ToString
 - uid: CSF.Validation.Manifest.ManifestRule
   name: ManifestRule
   href: api/CSF.Validation.Manifest.ManifestRule.html
@@ -1099,6 +1168,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValue.MemberName
   nameWithType: ManifestValue.MemberName
+- uid: CSF.Validation.Manifest.ManifestValue.PolymorphicTypes
+  name: PolymorphicTypes
+  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_PolymorphicTypes
+  commentId: P:CSF.Validation.Manifest.ManifestValue.PolymorphicTypes
+  fullName: CSF.Validation.Manifest.ManifestValue.PolymorphicTypes
+  nameWithType: ManifestValue.PolymorphicTypes
+- uid: CSF.Validation.Manifest.ManifestValue.PolymorphicTypes*
+  name: PolymorphicTypes
+  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_PolymorphicTypes_
+  commentId: Overload:CSF.Validation.Manifest.ManifestValue.PolymorphicTypes
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestValue.PolymorphicTypes
+  nameWithType: ManifestValue.PolymorphicTypes
 - uid: CSF.Validation.Manifest.ManifestValue.ToString
   name: ToString()
   href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_ToString
@@ -1360,6 +1442,19 @@ references:
   commentId: T:CSF.Validation.ManifestModel.CollectionItemValue
   fullName: CSF.Validation.ManifestModel.CollectionItemValue
   nameWithType: CollectionItemValue
+- uid: CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues
+  name: PolymorphicValues
+  href: api/CSF.Validation.ManifestModel.CollectionItemValue.html#CSF_Validation_ManifestModel_CollectionItemValue_PolymorphicValues
+  commentId: P:CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues
+  fullName: CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues
+  nameWithType: CollectionItemValue.PolymorphicValues
+- uid: CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues*
+  name: PolymorphicValues
+  href: api/CSF.Validation.ManifestModel.CollectionItemValue.html#CSF_Validation_ManifestModel_CollectionItemValue_PolymorphicValues_
+  commentId: Overload:CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues
+  nameWithType: CollectionItemValue.PolymorphicValues
 - uid: CSF.Validation.ManifestModel.IConvertsModelRulesToManifestRules
   name: IConvertsModelRulesToManifestRules
   href: api/CSF.Validation.ManifestModel.IConvertsModelRulesToManifestRules.html
@@ -1480,6 +1575,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.IGetsValidationManifestFromModel.GetValidationManifest
   nameWithType: IGetsValidationManifestFromModel.GetValidationManifest
+- uid: CSF.Validation.ManifestModel.IHasPolymorphicValues
+  name: IHasPolymorphicValues
+  href: api/CSF.Validation.ManifestModel.IHasPolymorphicValues.html
+  commentId: T:CSF.Validation.ManifestModel.IHasPolymorphicValues
+  fullName: CSF.Validation.ManifestModel.IHasPolymorphicValues
+  nameWithType: IHasPolymorphicValues
+- uid: CSF.Validation.ManifestModel.IHasPolymorphicValues.PolymorphicValues
+  name: PolymorphicValues
+  href: api/CSF.Validation.ManifestModel.IHasPolymorphicValues.html#CSF_Validation_ManifestModel_IHasPolymorphicValues_PolymorphicValues
+  commentId: P:CSF.Validation.ManifestModel.IHasPolymorphicValues.PolymorphicValues
+  fullName: CSF.Validation.ManifestModel.IHasPolymorphicValues.PolymorphicValues
+  nameWithType: IHasPolymorphicValues.PolymorphicValues
+- uid: CSF.Validation.ManifestModel.IHasPolymorphicValues.PolymorphicValues*
+  name: PolymorphicValues
+  href: api/CSF.Validation.ManifestModel.IHasPolymorphicValues.html#CSF_Validation_ManifestModel_IHasPolymorphicValues_PolymorphicValues_
+  commentId: Overload:CSF.Validation.ManifestModel.IHasPolymorphicValues.PolymorphicValues
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.IHasPolymorphicValues.PolymorphicValues
+  nameWithType: IHasPolymorphicValues.PolymorphicValues
 - uid: CSF.Validation.ManifestModel.IResolvesRuleType
   name: IResolvesRuleType
   href: api/CSF.Validation.ManifestModel.IResolvesRuleType.html
@@ -1585,6 +1699,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.AccessorFromParent
   nameWithType: ModelToManifestConversionContext.AccessorFromParent
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ConversionType
+  name: ConversionType
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_ConversionType
+  commentId: P:CSF.Validation.ManifestModel.ModelToManifestConversionContext.ConversionType
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ConversionType
+  nameWithType: ModelToManifestConversionContext.ConversionType
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ConversionType*
+  name: ConversionType
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_ConversionType_
+  commentId: Overload:CSF.Validation.ManifestModel.ModelToManifestConversionContext.ConversionType
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ConversionType
+  nameWithType: ModelToManifestConversionContext.ConversionType
 - uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.CurrentValue
   name: CurrentValue
   href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_CurrentValue
@@ -1598,19 +1725,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.CurrentValue
   nameWithType: ModelToManifestConversionContext.CurrentValue
-- uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.IsCollectionItem
-  name: IsCollectionItem
-  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_IsCollectionItem
-  commentId: P:CSF.Validation.ManifestModel.ModelToManifestConversionContext.IsCollectionItem
-  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.IsCollectionItem
-  nameWithType: ModelToManifestConversionContext.IsCollectionItem
-- uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.IsCollectionItem*
-  name: IsCollectionItem
-  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_IsCollectionItem_
-  commentId: Overload:CSF.Validation.ManifestModel.ModelToManifestConversionContext.IsCollectionItem
-  isSpec: "True"
-  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.IsCollectionItem
-  nameWithType: ModelToManifestConversionContext.IsCollectionItem
 - uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.MemberName
   name: MemberName
   href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_MemberName
@@ -1637,6 +1751,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ParentManifestValue
   nameWithType: ModelToManifestConversionContext.ParentManifestValue
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.PolymorphicTypeName
+  name: PolymorphicTypeName
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_PolymorphicTypeName
+  commentId: P:CSF.Validation.ManifestModel.ModelToManifestConversionContext.PolymorphicTypeName
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.PolymorphicTypeName
+  nameWithType: ModelToManifestConversionContext.PolymorphicTypeName
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.PolymorphicTypeName*
+  name: PolymorphicTypeName
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_PolymorphicTypeName_
+  commentId: Overload:CSF.Validation.ManifestModel.ModelToManifestConversionContext.PolymorphicTypeName
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.PolymorphicTypeName
+  nameWithType: ModelToManifestConversionContext.PolymorphicTypeName
 - uid: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ValidatedType
   name: ValidatedType
   href: api/CSF.Validation.ManifestModel.ModelToManifestConversionContext.html#CSF_Validation_ManifestModel_ModelToManifestConversionContext_ValidatedType
@@ -1650,6 +1777,30 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ModelToManifestConversionContext.ValidatedType
   nameWithType: ModelToManifestConversionContext.ValidatedType
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionType
+  name: ModelToManifestConversionType
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionType.html
+  commentId: T:CSF.Validation.ManifestModel.ModelToManifestConversionType
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionType
+  nameWithType: ModelToManifestConversionType
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionType.CollectionItem
+  name: CollectionItem
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionType.html#CSF_Validation_ManifestModel_ModelToManifestConversionType_CollectionItem
+  commentId: F:CSF.Validation.ManifestModel.ModelToManifestConversionType.CollectionItem
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionType.CollectionItem
+  nameWithType: ModelToManifestConversionType.CollectionItem
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionType.Manifest
+  name: Manifest
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionType.html#CSF_Validation_ManifestModel_ModelToManifestConversionType_Manifest
+  commentId: F:CSF.Validation.ManifestModel.ModelToManifestConversionType.Manifest
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionType.Manifest
+  nameWithType: ModelToManifestConversionType.Manifest
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionType.PolymorphicType
+  name: PolymorphicType
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionType.html#CSF_Validation_ManifestModel_ModelToManifestConversionType_PolymorphicType
+  commentId: F:CSF.Validation.ManifestModel.ModelToManifestConversionType.PolymorphicType
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionType.PolymorphicType
+  nameWithType: ModelToManifestConversionType.PolymorphicType
 - uid: CSF.Validation.ManifestModel.ModelToManifestValueConversionResult
   name: ModelToManifestValueConversionResult
   href: api/CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html
@@ -1714,6 +1865,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.ConvertAllValues
   nameWithType: ModelValueToManifestValueConverter.ConvertAllValues
+- uid: CSF.Validation.ManifestModel.PolymorphicValue
+  name: PolymorphicValue
+  href: api/CSF.Validation.ManifestModel.PolymorphicValue.html
+  commentId: T:CSF.Validation.ManifestModel.PolymorphicValue
+  fullName: CSF.Validation.ManifestModel.PolymorphicValue
+  nameWithType: PolymorphicValue
 - uid: CSF.Validation.ManifestModel.ReflectionDelegateFactory
   name: ReflectionDelegateFactory
   href: api/CSF.Validation.ManifestModel.ReflectionDelegateFactory.html
@@ -1967,6 +2124,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.Value.AccessorExceptionBehaviour
   nameWithType: Value.AccessorExceptionBehaviour
+- uid: CSF.Validation.ManifestModel.Value.PolymorphicValues
+  name: PolymorphicValues
+  href: api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_PolymorphicValues
+  commentId: P:CSF.Validation.ManifestModel.Value.PolymorphicValues
+  fullName: CSF.Validation.ManifestModel.Value.PolymorphicValues
+  nameWithType: Value.PolymorphicValues
+- uid: CSF.Validation.ManifestModel.Value.PolymorphicValues*
+  name: PolymorphicValues
+  href: api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_PolymorphicValues_
+  commentId: Overload:CSF.Validation.ManifestModel.Value.PolymorphicValues
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.Value.PolymorphicValues
+  nameWithType: Value.PolymorphicValues
 - uid: CSF.Validation.ManifestModel.ValueBase
   name: ValueBase
   href: api/CSF.Validation.ManifestModel.ValueBase.html
@@ -4875,6 +5045,32 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetActualValue
   nameWithType: ValidatedValueBasis.GetActualValue
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.GetChildManifestValues
+  name: GetChildManifestValues()
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_GetChildManifestValues
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.GetChildManifestValues
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetChildManifestValues()
+  nameWithType: ValidatedValueBasis.GetChildManifestValues()
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.GetChildManifestValues*
+  name: GetChildManifestValues
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_GetChildManifestValues_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValueBasis.GetChildManifestValues
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetChildManifestValues
+  nameWithType: ValidatedValueBasis.GetChildManifestValues
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules
+  name: GetManifestRules()
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_GetManifestRules
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules()
+  nameWithType: ValidatedValueBasis.GetManifestRules()
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules*
+  name: GetManifestRules
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_GetManifestRules_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules
+  nameWithType: ValidatedValueBasis.GetManifestRules
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ManifestValue
   name: ManifestValue
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ManifestValue
@@ -7796,6 +7992,24 @@ references:
   fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).Passed
   nameWithType: SubsetOfValidationResults<TValidated>.Passed
   nameWithType.vb: SubsetOfValidationResults(Of TValidated).Passed
+- uid: CSF.Validation.SubsetOfValidationResults`1.PolymorphicAs*
+  name: PolymorphicAs
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_PolymorphicAs_
+  commentId: Overload:CSF.Validation.SubsetOfValidationResults`1.PolymorphicAs
+  isSpec: "True"
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.PolymorphicAs
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).PolymorphicAs
+  nameWithType: SubsetOfValidationResults<TValidated>.PolymorphicAs
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).PolymorphicAs
+- uid: CSF.Validation.SubsetOfValidationResults`1.PolymorphicAs``1
+  name: PolymorphicAs<TDerived>()
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_PolymorphicAs__1
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.PolymorphicAs``1
+  name.vb: PolymorphicAs(Of TDerived)()
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.PolymorphicAs<TDerived>()
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).PolymorphicAs(Of TDerived)()
+  nameWithType: SubsetOfValidationResults<TValidated>.PolymorphicAs<TDerived>()
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).PolymorphicAs(Of TDerived)()
 - uid: CSF.Validation.SubsetOfValidationResults`1.RuleResults
   name: RuleResults
   href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1_RuleResults
@@ -8324,6 +8538,24 @@ references:
   fullName.vb: CSF.Validation.ValidationResult(Of TValidated).ForOnlyThisValue
   nameWithType: ValidationResult<TValidated>.ForOnlyThisValue
   nameWithType.vb: ValidationResult(Of TValidated).ForOnlyThisValue
+- uid: CSF.Validation.ValidationResult`1.PolymorphicAs*
+  name: PolymorphicAs
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_PolymorphicAs_
+  commentId: Overload:CSF.Validation.ValidationResult`1.PolymorphicAs
+  isSpec: "True"
+  fullName: CSF.Validation.ValidationResult<TValidated>.PolymorphicAs
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).PolymorphicAs
+  nameWithType: ValidationResult<TValidated>.PolymorphicAs
+  nameWithType.vb: ValidationResult(Of TValidated).PolymorphicAs
+- uid: CSF.Validation.ValidationResult`1.PolymorphicAs``1
+  name: PolymorphicAs<TDerived>()
+  href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_PolymorphicAs__1
+  commentId: M:CSF.Validation.ValidationResult`1.PolymorphicAs``1
+  name.vb: PolymorphicAs(Of TDerived)()
+  fullName: CSF.Validation.ValidationResult<TValidated>.PolymorphicAs<TDerived>()
+  fullName.vb: CSF.Validation.ValidationResult(Of TValidated).PolymorphicAs(Of TDerived)()
+  nameWithType: ValidationResult<TValidated>.PolymorphicAs<TDerived>()
+  nameWithType.vb: ValidationResult(Of TValidated).PolymorphicAs(Of TDerived)()
 - uid: CSF.Validation.ValidationResult`1.ToSerializableResult
   name: ToSerializableResult()
   href: api/CSF.Validation.ValidationResult-1.html#CSF_Validation_ValidationResult_1_ToSerializableResult
@@ -8840,6 +9072,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TValidated).UseObjectIdentity
   nameWithType: IConfiguresValidator<TValidated>.UseObjectIdentity
   nameWithType.vb: IConfiguresValidator(Of TValidated).UseObjectIdentity
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs*
+  name: WhenValueIs
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValidator<TValidated>.WhenValueIs
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TValidated).WhenValueIs
+  nameWithType: IConfiguresValidator<TValidated>.WhenValueIs
+  nameWithType.vb: IConfiguresValidator(Of TValidated).WhenValueIs
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValidator{``0}})
+  name: WhenValueIs<TDerived>(Action<IConfiguresValidator<TDerived>>)
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0___
+  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValidator{``0}})
+  name.vb: WhenValueIs(Of TDerived)(Action(Of IConfiguresValidator(Of TDerived)))
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValidator<TValidated>.WhenValueIs<TDerived>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresValidator<TDerived>>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TValidated).WhenValueIs(Of TDerived)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TDerived)))
+  nameWithType: IConfiguresValidator<TValidated>.WhenValueIs<TDerived>(Action<IConfiguresValidator<TDerived>>)
+  nameWithType.vb: IConfiguresValidator(Of TValidated).WhenValueIs(Of TDerived)(Action(Of IConfiguresValidator(Of TDerived)))
 - uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2
   name: IConfiguresValueAccessor<TValidated, TValue>
   href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html
@@ -8921,6 +9171,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent(Of TRule)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresRule(Of TRule)))
   nameWithType: IConfiguresValueAccessor<TValidated, TValue>.AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>>)
   nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).AddRuleWithParent(Of TRule)(Action(Of IConfiguresRule(Of TRule)))
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.WhenValueIs*
+  name: WhenValueIs
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_WhenValueIs_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.WhenValueIs
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.WhenValueIs
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).WhenValueIs
+  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.WhenValueIs
+  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).WhenValueIs
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
+  name: WhenValueIs<TDerived>(Action<IConfiguresValueAccessor<TValidated, TDerived>>)
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___
+  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor`2.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
+  name.vb: WhenValueIs(Of TDerived)(Action(Of IConfiguresValueAccessor(Of TValidated, TDerived)))
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TValue>.WhenValueIs<TDerived>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TDerived>>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TValue).WhenValueIs(Of TDerived)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TDerived)))
+  nameWithType: IConfiguresValueAccessor<TValidated, TValue>.WhenValueIs<TDerived>(Action<IConfiguresValueAccessor<TValidated, TDerived>>)
+  nameWithType.vb: IConfiguresValueAccessor(Of TValidated, TValue).WhenValueIs(Of TDerived)(Action(Of IConfiguresValueAccessor(Of TValidated, TDerived)))
 - uid: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier
   name: IGetsManifestRuleIdentifier
   href: api/CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier.html
@@ -9098,6 +9366,19 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetContextForValue(Of TValidated, TValue)(System.Func(Of TValidated, TValue), CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, System.Boolean)
   nameWithType: IGetsValidatorBuilderContext.GetContextForValue<TValidated, TValue>(Func<TValidated, TValue>, ValidatorBuilderContext, Boolean)
   nameWithType.vb: IGetsValidatorBuilderContext.GetContextForValue(Of TValidated, TValue)(Func(Of TValidated, TValue), ValidatorBuilderContext, Boolean)
+- uid: CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Type)
+  name: GetPolymorphicContext(ValidatorBuilderContext, Type)
+  href: api/CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.html#CSF_Validation_ValidatorBuilding_IGetsValidatorBuilderContext_GetPolymorphicContext_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Type_
+  commentId: M:CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Type)
+  fullName: CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, System.Type)
+  nameWithType: IGetsValidatorBuilderContext.GetPolymorphicContext(ValidatorBuilderContext, Type)
+- uid: CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetPolymorphicContext*
+  name: GetPolymorphicContext
+  href: api/CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.html#CSF_Validation_ValidatorBuilding_IGetsValidatorBuilderContext_GetPolymorphicContext_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetPolymorphicContext
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.GetPolymorphicContext
+  nameWithType: IGetsValidatorBuilderContext.GetPolymorphicContext
 - uid: CSF.Validation.ValidatorBuilding.IGetsValidatorManifest
   name: IGetsValidatorManifest
   href: api/CSF.Validation.ValidatorBuilding.IGetsValidatorManifest.html
@@ -9640,6 +9921,24 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilder(Of TValidated).UseObjectIdentity
   nameWithType: ValidatorBuilder<TValidated>.UseObjectIdentity
   nameWithType.vb: ValidatorBuilder(Of TValidated).UseObjectIdentity
+- uid: CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.WhenValueIs*
+  name: WhenValueIs
+  href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilder-1.html#CSF_Validation_ValidatorBuilding_ValidatorBuilder_1_WhenValueIs_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.WhenValueIs
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.ValidatorBuilder<TValidated>.WhenValueIs
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilder(Of TValidated).WhenValueIs
+  nameWithType: ValidatorBuilder<TValidated>.WhenValueIs
+  nameWithType.vb: ValidatorBuilder(Of TValidated).WhenValueIs
+- uid: CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValidator{``0}})
+  name: WhenValueIs<TDerived>(Action<IConfiguresValidator<TDerived>>)
+  href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilder-1.html#CSF_Validation_ValidatorBuilding_ValidatorBuilder_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0___
+  commentId: M:CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValidator{``0}})
+  name.vb: WhenValueIs(Of TDerived)(Action(Of IConfiguresValidator(Of TDerived)))
+  fullName: CSF.Validation.ValidatorBuilding.ValidatorBuilder<TValidated>.WhenValueIs<TDerived>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresValidator<TDerived>>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilder(Of TValidated).WhenValueIs(Of TDerived)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TDerived)))
+  nameWithType: ValidatorBuilder<TValidated>.WhenValueIs<TDerived>(Action<IConfiguresValidator<TDerived>>)
+  nameWithType.vb: ValidatorBuilder(Of TValidated).WhenValueIs(Of TDerived)(Action(Of IConfiguresValidator(Of TDerived)))
 - uid: CSF.Validation.ValidatorBuilding.ValidatorBuilderContext
   name: ValidatorBuilderContext
   href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html
@@ -9723,6 +10022,19 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForValue(Of TValidated, TValue)(System.Func(Of TValidated, TValue), CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, System.Boolean)
   nameWithType: ValidatorBuilderContextFactory.GetContextForValue<TValidated, TValue>(Func<TValidated, TValue>, ValidatorBuilderContext, Boolean)
   nameWithType.vb: ValidatorBuilderContextFactory.GetContextForValue(Of TValidated, TValue)(Func(Of TValidated, TValue), ValidatorBuilderContext, Boolean)
+- uid: CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Type)
+  name: GetPolymorphicContext(ValidatorBuilderContext, Type)
+  href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.html#CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetPolymorphicContext_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Type_
+  commentId: M:CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Type)
+  fullName: CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, System.Type)
+  nameWithType: ValidatorBuilderContextFactory.GetPolymorphicContext(ValidatorBuilderContext, Type)
+- uid: CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext*
+  name: GetPolymorphicContext
+  href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.html#CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetPolymorphicContext_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext
+  nameWithType: ValidatorBuilderContextFactory.GetPolymorphicContext
 - uid: CSF.Validation.ValidatorBuilding.ValidatorBuilderFactory
   name: ValidatorBuilderFactory
   href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilderFactory.html
@@ -9770,14 +10082,14 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue)
   nameWithType: ValueAccessorBuilder<TValidated, TValue>
   nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue)
-- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,CSF.Validation.ValidatorBuilding.IGetsRuleBuilder,CSF.Validation.ValidatorBuilding.IGetsValidatorManifest)
-  name: ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest)
-  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2__ctor_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest_
-  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,CSF.Validation.ValidatorBuilding.IGetsRuleBuilder,CSF.Validation.ValidatorBuilding.IGetsValidatorManifest)
-  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.ValueAccessorBuilder(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, CSF.Validation.ValidatorBuilding.IGetsRuleBuilder, CSF.Validation.ValidatorBuilding.IGetsValidatorManifest)
-  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).ValueAccessorBuilder(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, CSF.Validation.ValidatorBuilding.IGetsRuleBuilder, CSF.Validation.ValidatorBuilding.IGetsValidatorManifest)
-  nameWithType: ValueAccessorBuilder<TValidated, TValue>.ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest)
-  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest)
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,CSF.Validation.ValidatorBuilding.IGetsRuleBuilder,CSF.Validation.ValidatorBuilding.IGetsValidatorManifest,CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext)
+  name: ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest, IGetsValidatorBuilderContext)
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2__ctor_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest_CSF_Validation_ValidatorBuilding_IGetsValidatorBuilderContext_
+  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,CSF.Validation.ValidatorBuilding.IGetsRuleBuilder,CSF.Validation.ValidatorBuilding.IGetsValidatorManifest,CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext)
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.ValueAccessorBuilder(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, CSF.Validation.ValidatorBuilding.IGetsRuleBuilder, CSF.Validation.ValidatorBuilding.IGetsValidatorManifest, CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).ValueAccessorBuilder(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext, CSF.Validation.ValidatorBuilding.IGetsRuleBuilder, CSF.Validation.ValidatorBuilding.IGetsValidatorManifest, CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext)
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest, IGetsValidatorBuilderContext)
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).ValueAccessorBuilder(ValidatorBuilderContext, IGetsRuleBuilder, IGetsValidatorManifest, IGetsValidatorBuilderContext)
 - uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.#ctor*
   name: ValueAccessorBuilder
   href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2__ctor_
@@ -9876,21 +10188,39 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).GetManifestValue
   nameWithType: ValueAccessorBuilder<TValidated, TValue>.GetManifestValue
   nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).GetManifestValue
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.WhenValueIs*
+  name: WhenValueIs
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_WhenValueIs_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.WhenValueIs
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.WhenValueIs
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).WhenValueIs
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.WhenValueIs
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).WhenValueIs
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
+  name: WhenValueIs<TDerived>(Action<IConfiguresValueAccessor<TValidated, TDerived>>)
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilder-2.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilder_2_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___
+  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilder`2.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})
+  name.vb: WhenValueIs(Of TDerived)(Action(Of IConfiguresValueAccessor(Of TValidated, TDerived)))
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder<TValidated, TValue>.WhenValueIs<TDerived>(System.Action<CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor<TValidated, TDerived>>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilder(Of TValidated, TValue).WhenValueIs(Of TDerived)(System.Action(Of CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor(Of TValidated, TDerived)))
+  nameWithType: ValueAccessorBuilder<TValidated, TValue>.WhenValueIs<TDerived>(Action<IConfiguresValueAccessor<TValidated, TDerived>>)
+  nameWithType.vb: ValueAccessorBuilder(Of TValidated, TValue).WhenValueIs(Of TDerived)(Action(Of IConfiguresValueAccessor(Of TValidated, TDerived)))
 - uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory
   name: ValueAccessorBuilderFactory
   href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.html
   commentId: T:CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory
   fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory
   nameWithType: ValueAccessorBuilderFactory
-- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor(System.Func{CSF.Validation.ValidatorBuilding.IGetsRuleBuilder},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorManifest})
-  name: ValueAccessorBuilderFactory(Func<IGetsRuleBuilder>, Func<IGetsValidatorManifest>)
-  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_System_Func_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest__
-  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor(System.Func{CSF.Validation.ValidatorBuilding.IGetsRuleBuilder},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorManifest})
-  name.vb: ValueAccessorBuilderFactory(Func(Of IGetsRuleBuilder), Func(Of IGetsValidatorManifest))
-  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(System.Func<CSF.Validation.ValidatorBuilding.IGetsRuleBuilder>, System.Func<CSF.Validation.ValidatorBuilding.IGetsValidatorManifest>)
-  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(System.Func(Of CSF.Validation.ValidatorBuilding.IGetsRuleBuilder), System.Func(Of CSF.Validation.ValidatorBuilding.IGetsValidatorManifest))
-  nameWithType: ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(Func<IGetsRuleBuilder>, Func<IGetsValidatorManifest>)
-  nameWithType.vb: ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(Func(Of IGetsRuleBuilder), Func(Of IGetsValidatorManifest))
+- uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor(System.Func{CSF.Validation.ValidatorBuilding.IGetsRuleBuilder},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorManifest},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext})
+  name: ValueAccessorBuilderFactory(Func<IGetsRuleBuilder>, Func<IGetsValidatorManifest>, Func<IGetsValidatorBuilderContext>)
+  href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_System_Func_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorBuilderContext__
+  commentId: M:CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor(System.Func{CSF.Validation.ValidatorBuilding.IGetsRuleBuilder},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorManifest},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext})
+  name.vb: ValueAccessorBuilderFactory(Func(Of IGetsRuleBuilder), Func(Of IGetsValidatorManifest), Func(Of IGetsValidatorBuilderContext))
+  fullName: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(System.Func<CSF.Validation.ValidatorBuilding.IGetsRuleBuilder>, System.Func<CSF.Validation.ValidatorBuilding.IGetsValidatorManifest>, System.Func<CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext>)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(System.Func(Of CSF.Validation.ValidatorBuilding.IGetsRuleBuilder), System.Func(Of CSF.Validation.ValidatorBuilding.IGetsValidatorManifest), System.Func(Of CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext))
+  nameWithType: ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(Func<IGetsRuleBuilder>, Func<IGetsValidatorManifest>, Func<IGetsValidatorBuilderContext>)
+  nameWithType.vb: ValueAccessorBuilderFactory.ValueAccessorBuilderFactory(Func(Of IGetsRuleBuilder), Func(Of IGetsValidatorManifest), Func(Of IGetsValidatorBuilderContext))
 - uid: CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor*
   name: ValueAccessorBuilderFactory
   href: api/CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.html#CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_

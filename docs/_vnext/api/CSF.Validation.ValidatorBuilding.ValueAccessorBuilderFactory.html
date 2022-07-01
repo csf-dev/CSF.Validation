@@ -119,19 +119,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_System_Func_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest__.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.%23ctor(System.Func%7BCSF.Validation.ValidatorBuilding.IGetsRuleBuilder%7D%2CSystem.Func%7BCSF.Validation.ValidatorBuilding.IGetsValidatorManifest%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_System_Func_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorBuilderContext__.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.%23ctor(System.Func%7BCSF.Validation.ValidatorBuilding.IGetsRuleBuilder%7D%2CSystem.Func%7BCSF.Validation.ValidatorBuilding.IGetsValidatorManifest%7D%2CSystem.Func%7BCSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilderFactory.cs/#L38">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilderFactory.cs/#L41">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor*"></a>
-  <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_System_Func_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest__" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor(System.Func{CSF.Validation.ValidatorBuilding.IGetsRuleBuilder},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorManifest})">ValueAccessorBuilderFactory(Func&lt;IGetsRuleBuilder&gt;, Func&lt;IGetsValidatorManifest&gt;)</h4>
+  <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory__ctor_System_Func_CSF_Validation_ValidatorBuilding_IGetsRuleBuilder__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorManifest__System_Func_CSF_Validation_ValidatorBuilding_IGetsValidatorBuilderContext__" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.#ctor(System.Func{CSF.Validation.ValidatorBuilding.IGetsRuleBuilder},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorManifest},System.Func{CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext})">ValueAccessorBuilderFactory(Func&lt;IGetsRuleBuilder&gt;, Func&lt;IGetsValidatorManifest&gt;, Func&lt;IGetsValidatorBuilderContext&gt;)</h4>
   <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.html">ValueAccessorBuilderFactory</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValueAccessorBuilderFactory(Func&lt;IGetsRuleBuilder&gt; ruleBuilderFactory, Func&lt;IGetsValidatorManifest&gt; validatorManifestFactory)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueAccessorBuilderFactory(Func&lt;IGetsRuleBuilder&gt; ruleBuilderFactory, Func&lt;IGetsValidatorManifest&gt; validatorManifestFactory, Func&lt;IGetsValidatorBuilderContext&gt; contextFactory)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -155,6 +155,12 @@
         <td><p>A function which gets a validator manifest factory.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsValidatorBuilderContext.html">IGetsValidatorBuilderContext</a>&gt;</td>
+        <td><span class="parametername">contextFactory</span></td>
+        <td><p>A function which gets a validation context factory.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
@@ -164,7 +170,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory_GetValueAccessorBuilder__2_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor___0___1___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.GetValueAccessorBuilder%60%602(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CSystem.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%60%600%2C%60%601%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilderFactory.cs/#L21">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/ValueAccessorBuilderFactory.cs/#L22">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory_GetValueAccessorBuilder_" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.GetValueAccessorBuilder*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValueAccessorBuilderFactory_GetValueAccessorBuilder__2_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor___0___1___" data-uid="CSF.Validation.ValidatorBuilding.ValueAccessorBuilderFactory.GetValueAccessorBuilder``2(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{``0,``1}})">GetValueAccessorBuilder&lt;TValidated, TValue&gt;(ValidatorBuilderContext, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</h4>
