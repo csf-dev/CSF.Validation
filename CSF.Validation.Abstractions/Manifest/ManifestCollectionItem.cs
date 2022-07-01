@@ -9,7 +9,7 @@ namespace CSF.Validation.Manifest
     /// <remarks>
     /// <para>
     /// Instances of that type are similar to <see cref="ManifestValue"/> except that they describe items
-    /// of a collection, indicated by <see cref="ManifestValueBase.CollectionItemValue"/>.
+    /// of a collection, indicated by <see cref="IManifestItem.CollectionItemValue"/>.
     /// </para>
     /// <para>
     /// The validation manifest is the model by which validators are described, including how they should
@@ -25,18 +25,11 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="IManifestItem"/>
     /// <seealso cref="ManifestValue"/>
     public class ManifestCollectionItem : ManifestValueBase, IHasPolymorphicTypes
     {
         ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
-
-        /// <summary>
-        /// Gets a string representation of the current instance.
-        /// </summary>
-        /// <returns>A string which represents the current instance.</returns>
-        public override string ToString()
-            => $"[{nameof(ManifestCollectionItem)}: Type = {ValidatedType.Name}]";
 
         /// <inheritdoc/>
         public ICollection<ManifestPolymorphicType> PolymorphicTypes

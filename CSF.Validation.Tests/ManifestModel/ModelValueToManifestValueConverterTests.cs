@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using AutoFixture.NUnit3;
 using CSF.Validation.Manifest;
-using CSF.Validation.Stubs;
 using Moq;
 using NUnit.Framework;
 
@@ -13,44 +11,12 @@ namespace CSF.Validation.ManifestModel
     public class ModelValueToManifestValueConverterTests
     {
         [Test,AutoMoqData]
-        public void ConvertAllValuesShouldSuccessfullyConvertASingleRootModelValue([Frozen] IGetsAccessorFunction accessorFactory,
-                                                                                   [Frozen] IGetsValidatedType validatedTypeProvider,
-                                                                                   ModelValueToManifestValueConverter sut,
-                                                                                   [ManifestModel] ModelToManifestConversionContext context,
-                                                                                   AccessorFunctionAndType accessor)
-        {
-            Mock.Get(accessorFactory)
-                .Setup(x => x.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName))
-                .Returns(accessor);
-            Mock.Get(validatedTypeProvider)
-                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
-                .Returns((Type t, bool b) => t);
-
-            var result = sut.ConvertAllValues(context);
-
-            Assert.Multiple(() =>
-            {
-                Assert.That(result.ConvertedValues, Has.Count.EqualTo(1), "Count of converted values");
-                var converted = result.ConvertedValues.Single();
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.AccessorFromParent)).SameAs(context.AccessorFromParent));
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.Children)).Empty);
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.IdentityAccessor)).SameAs(accessor.AccessorFunction));
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(context.MemberName));
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.Parent)).SameAs(context.ParentManifestValue));
-                Assert.That(converted.ManifestValue, Has.Property(nameof(ManifestValue.Rules)).Empty);
-            });
-        }
-
-        [Test,AutoMoqData]
         public void ConvertAllValuesShouldSuccessfullyConvertAMultiLevelValueHierarchy([Frozen] IGetsAccessorFunction accessorFactory,
                                                                                        [Frozen] IGetsValidatedType validatedTypeProvider,
+                                                                                       [Frozen] IGetsManifestItemFromModelToManifestConversionContext itemFactory,
                                                                                        ModelValueToManifestValueConverter sut,
                                                                                        [ManifestModel] ModelToManifestConversionContext context,
-                                                                                       [ManifestModel] Value child1,
-                                                                                       [ManifestModel] Value child2,
-                                                                                       [ManifestModel] Value grandchild1,
-                                                                                       [ManifestModel] Value grandchild2,
-                                                                                       [ManifestModel] PolymorphicValue poly,
+                                                                                       IManifestItem item,
                                                                                        AccessorFunctionAndType accessor)
         {
             Mock.Get(accessorFactory)
@@ -59,68 +25,55 @@ namespace CSF.Validation.ManifestModel
             Mock.Get(validatedTypeProvider)
                 .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
                 .Returns((Type t, bool b) => t);
-            context.CurrentValue.Children.Add("Foo", child1);
-            context.CurrentValue.Children.Add("Bar", child2);
-            child1.Children.Add("Foo", grandchild1);
-            child1.Children.Add("Bar", grandchild2);
-            child1.PolymorphicValues["System.String"] = poly;
+            Mock.Get(itemFactory)
+                .Setup(x => x.GetManifestItem(It.IsAny<ModelToManifestConversionContext>())).Returns(item);
 
-            var result = sut.ConvertAllValues(context);
+            context.CurrentValue = new Value
+            {
+                Children = new Dictionary<string, Value>
+                {
+                    { "Foo", new Value
+                        {
+                            Children = new Dictionary<string,Value>
+                            {
+                                { "Foo", new Value() },
+                                { "Bar", new Value { ValidateRecursivelyAsAncestor = 1 } },
+                                { "Baz", new Value
+                                    {
+                                        CollectionItemValue = new CollectionItemValue(),
+                                    }
+                                },
+                            },
+                            PolymorphicValues = new Dictionary<string,PolymorphicValue>
+                            {
+                                { "System.String", new PolymorphicValue() },
+                            }
+                        }
+                    },
+                    { "Bar", new Value() },
+                }
+            };
+
+            sut.ConvertAllValues(context);
 
             Assert.Multiple(() =>
             {
-                Assert.That(result.ConvertedValues, Has.Count.EqualTo(6), "Count of converted values");
-                Assert.That(result.RootValue, Has.Property(nameof(ManifestValue.Parent)).SameAs(context.ParentManifestValue), "Correct parent for root value");
+                Mock.Get(itemFactory)
+                    .Verify(x => x.GetManifestItem(It.Is<ModelToManifestConversionContext>(c => c.ConversionType == ModelToManifestConversionType.Manifest)),
+                            Times.Exactly(5));
+                Mock.Get(itemFactory)
+                    .Verify(x => x.GetManifestItem(It.Is<ModelToManifestConversionContext>(c => c.ConversionType == ModelToManifestConversionType.PolymorphicType)),
+                            Times.Exactly(1));
+                Mock.Get(itemFactory)
+                    .Verify(x => x.GetManifestItem(It.Is<ModelToManifestConversionContext>(c => c.ConversionType == ModelToManifestConversionType.CollectionItem)),
+                            Times.Exactly(1));
+                Mock.Get(itemFactory)
+                    .Verify(x => x.GetManifestItem(It.Is<ModelToManifestConversionContext>(c => c.ConversionType == ModelToManifestConversionType.RecursiveManifestValue)),
+                            Times.Exactly(1));
             });
-        }
 
-        [Test,AutoMoqData]
-        public void ConvertAllValuesShouldCreateChildAccessorFromEnumeratedTypeWhereAppropriate([Frozen] IGetsAccessorFunction accessorFactory,
-                                                                                                [Frozen] IGetsValidatedType validatedTypeProvider,
-                                                                                                ModelValueToManifestValueConverter sut,
-                                                                                                [ManifestModel] ModelToManifestConversionContext context,
-                                                                                                [ManifestModel] Value collectionChild,
-                                                                                                AccessorFunctionAndType accessor)
-        {
-            Mock.Get(accessorFactory)
-                .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
-                .Returns(accessor);
-            Mock.Get(validatedTypeProvider)
-                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
-                .Returns((Type t, bool b) => t);
-            Mock.Get(validatedTypeProvider)
-                .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
-                .Returns(typeof(ComplexObject));
-            context.CurrentValue.CollectionItemValue = new CollectionItemValue { Children = new Dictionary<string,Value>{ { "Foo", collectionChild } }, };
-            context.ValidatedType = typeof(List<ComplexObject>);
-
-            var result = sut.ConvertAllValues(context);
-
-            Mock.Get(accessorFactory).Verify(x => x.GetAccessorFunction(typeof(ComplexObject), "Foo"), Times.Once);
-        }
-
-        [Test,AutoMoqData]
-        public void ConvertAllValuesShouldCreateIdentityAccessorFromEnumeratedTypeWhereAppropriate([Frozen] IGetsAccessorFunction accessorFactory,
-                                                                                                   [Frozen] IGetsValidatedType validatedTypeProvider,
-                                                                                                   ModelValueToManifestValueConverter sut,
-                                                                                                   [ManifestModel] ModelToManifestConversionContext context,
-                                                                                                   AccessorFunctionAndType accessor)
-        {
-            Mock.Get(accessorFactory)
-                .Setup(x => x.GetAccessorFunction(It.IsAny<Type>(), It.IsAny<string>()))
-                .Returns(accessor);
-            Mock.Get(validatedTypeProvider)
-                .Setup(x => x.GetValidatedType(It.IsAny<Type>(), It.IsAny<bool>()))
-                .Returns((Type t, bool b) => t);
-            Mock.Get(validatedTypeProvider)
-                .Setup(x => x.GetValidatedType(typeof(List<ComplexObject>), true))
-                .Returns(typeof(ComplexObject));
-            context.CurrentValue.CollectionItemValue = new CollectionItemValue { IdentityMemberName = "Foo" };
-            context.ValidatedType = typeof(List<ComplexObject>);
-
-            var result = sut.ConvertAllValues(context);
-
-            Mock.Get(accessorFactory).Verify(x => x.GetAccessorFunction(typeof(ComplexObject), "Foo"), Times.Once);
+            Mock.Get(itemFactory)
+                .Verify(x => x.GetManifestItem(It.IsAny<ModelToManifestConversionContext>()), Times.Exactly(8));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="currentValue">The current manifest value from which the <paramref name="relativeIdentifier"/> should be derived.</param>
         /// <param name="relativeIdentifier">The relative rule identifier.</param>
         /// <returns>A manifest rule identifier.</returns>
-        public ManifestRuleIdentifier GetManifestRuleIdentifier(ManifestValueBase currentValue, RelativeRuleIdentifier relativeIdentifier)
+        public ManifestRuleIdentifier GetManifestRuleIdentifier(IManifestItem currentValue, RelativeRuleIdentifier relativeIdentifier)
         {
             if (currentValue is null)
                 throw new ArgumentNullException(nameof(currentValue));
@@ -27,7 +27,7 @@ namespace CSF.Validation.ValidatorBuilding
             return new ManifestRuleIdentifier(manifestValue, relativeIdentifier.RuleType, relativeIdentifier.RuleName);
         }
 
-        static ManifestValueBase GetManifestValue(ManifestValueBase baseValue, RelativeRuleIdentifier relativeIdentifier)
+        static IManifestItem GetManifestValue(IManifestItem baseValue, RelativeRuleIdentifier relativeIdentifier)
         {
             var current = baseValue;
 

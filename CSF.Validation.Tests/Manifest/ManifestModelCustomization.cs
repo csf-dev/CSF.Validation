@@ -23,6 +23,7 @@ namespace CSF.Validation.Manifest
     {
         public void Customize(IFixture fixture)
         {
+            fixture.Customize<IManifestItem>(c => c.FromFactory((ManifestValueBase v) => v).OmitAutoProperties());
             fixture.Customize<ManifestValueBase>(c => c.FromFactory((ManifestValue v) => v).OmitAutoProperties());
             fixture.Customize<ManifestValue>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicTypes));
             fixture.Customize<ManifestCollectionItem>(c => c.Without(x => x.Parent).Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicTypes));
@@ -32,7 +33,7 @@ namespace CSF.Validation.Manifest
                     .FromFactory((ManifestValue val, ManifestRuleIdentifier id) => new ManifestRule(val, id))
                     .Without(x => x.DependencyRules);
             });
-            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicValues));
+            fixture.Customize<Value>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue).Without(x => x.PolymorphicValues).Without(x => x.ValidateRecursivelyAsAncestor));
             fixture.Customize<PolymorphicValue>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
             fixture.Customize<Rule>(c => c.Without(x => x.Dependencies));
             fixture.Customize<ValidatorBuilderContext>(c => c.FromFactory((ManifestValue val) => new ValidatorBuilderContext(val)));

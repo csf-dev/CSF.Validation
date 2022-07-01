@@ -164,6 +164,29 @@ namespace CSF.Validation.ValidatorBuilding
         IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
 
         /// <summary>
+        /// Configures the current value to be validated in the same manner as an ancestor value which already has validation configuration.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// If this method is used then the current value will be configured for recursive (or re-entrant) validation.  It will be converted as a
+        /// <see cref="CSF.Validation.Manifest.RecursiveManifestValue"/> rather than a normal value.
+        /// </para>
+        /// <para>
+        /// The numeric value of <paramref name="depth"/> must be a positive integer &amp; indicates the level of ancestor
+        /// value is used to provide the recursive validation.  For example a value of 1 indicates that the immediate
+        /// parent value should be used as the wrapped value for the recursive manifest value.  A value of 2 would indicate the
+        /// grandparent value.
+        /// </para>
+        /// <para>
+        /// When recursive validation is configured, no other methods upon this builder may be called.  Doing so will raise an exception.
+        /// The validation of the current value will be treated in the same way as the indicated ancestor value.
+        /// </para>
+        /// </remarks>
+        /// <param name="depth">The ancestor number to use when validating the current value.</param>
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        IConfiguresValidator<TValidated> ValidateAsAncestor(int depth);
+
+        /// <summary>
         /// Adds validation configuration for polymorphic validatation when the runtime type
         /// of the validated value is <typeparamref name="TDerived"/>.
         /// </summary>

@@ -21,5 +21,10 @@ namespace CSF.Validation.ManifestModel
         /// A <see cref="PolymorphicValue"/> which is to be converted to a <see cref="ManifestPolymorphicType"/>.
         /// </summary>
         PolymorphicType,
+
+        /// <summary>
+        /// A <see cref="Value"/> or <see cref="CollectionItemValue"/> which is to be converted to a <see cref="RecursiveManifestValue"/>.
+        /// </summary>
+        RecursiveManifestValue,
     }
 }

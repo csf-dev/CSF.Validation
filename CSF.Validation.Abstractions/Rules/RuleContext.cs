@@ -57,7 +57,7 @@ namespace CSF.Validation.Rules
         /// </list>
         /// <para>
         /// Equivalents to the above exist for the Manifest Model: <see cref="CSF.Validation.ManifestModel.ValueBase.Children"/>
-        /// and also for a Validation Manifest: <see cref="CSF.Validation.Manifest.ManifestValueBase.Children"/>.
+        /// and also for a Validation Manifest: <see cref="CSF.Validation.Manifest.IManifestItem.Children"/>.
         /// </para>
         /// <para>
         /// If the currently-executing validation rule lies within a child context, this property provides access to all

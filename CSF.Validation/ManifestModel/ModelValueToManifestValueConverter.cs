@@ -12,6 +12,7 @@ namespace CSF.Validation.ManifestModel
     {
         readonly IGetsAccessorFunction accessorFactory;
         readonly IGetsValidatedType validatedTypeProvider;
+        readonly IGetsManifestItemFromModelToManifestConversionContext contextToItemConverter;
 
         /// <summary>
         /// Converts all of the hierarchy of <see cref="Value"/> instances within the specified context into
@@ -33,7 +34,8 @@ namespace CSF.Validation.ManifestModel
             while (openList.Count != 0)
             {
                 var current = openList.Dequeue();
-                var value = ConvertToManifestValueBase(current);
+                var value = contextToItemConverter.GetManifestItem(current);
+
                 if (result.RootValue is null && value is ManifestValue manifestValue)
                     result.RootValue = manifestValue;
 
@@ -49,7 +51,7 @@ namespace CSF.Validation.ManifestModel
             return result;
         }
 
-        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, ManifestValueBase parent)
+        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, IManifestItem parent)
         {
             if(!(currentContext.CurrentValue.CollectionItemValue is null))
             {
@@ -57,10 +59,12 @@ namespace CSF.Validation.ManifestModel
                 var collectionItem = new ModelToManifestConversionContext
                 {
                     CurrentValue = currentContext.CurrentValue.CollectionItemValue,
-                    ConversionType = ModelToManifestConversionType.CollectionItem,
                     MemberName = currentContext.MemberName,
                     ParentManifestValue = parent,
                     ValidatedType = validatedType,
+                    ConversionType = currentContext.CurrentValue.CollectionItemValue.ValidateRecursivelyAsAncestor.HasValue
+                        ? ModelToManifestConversionType.RecursiveManifestValue
+                        : ModelToManifestConversionType.CollectionItem,
                 };
                 openList.Enqueue(collectionItem);
             }
@@ -75,7 +79,9 @@ namespace CSF.Validation.ManifestModel
                     MemberName = child.Key,
                     ParentManifestValue = parent,
                     ValidatedType = accessor.ExpectedType,
-                    ConversionType = ModelToManifestConversionType.Manifest,
+                    ConversionType = child.Value.ValidateRecursivelyAsAncestor.HasValue
+                        ? ModelToManifestConversionType.RecursiveManifestValue
+                        : ModelToManifestConversionType.Manifest,
                 };
                 openList.Enqueue(collectionItem);
             }
@@ -96,84 +102,18 @@ namespace CSF.Validation.ManifestModel
             }
         }
 
-        ManifestValueBase ConvertToManifestValueBase(ModelToManifestConversionContext context)
-        {
-            var value = GetManifestValueBase(context);
-
-            if (!String.IsNullOrWhiteSpace(context.CurrentValue.IdentityMemberName))
-                value.IdentityAccessor = accessorFactory.GetAccessorFunction(context.ValidatedType, context.CurrentValue.IdentityMemberName).AccessorFunction;
-
-            return value;
-        }
-
-        static ManifestValueBase GetManifestValueBase(ModelToManifestConversionContext context)
-        {
-            switch(context.ConversionType)
-            {
-            case ModelToManifestConversionType.Manifest:
-                return ConvertToManifestValue(context);
-            case ModelToManifestConversionType.CollectionItem:
-                return ConvertToManifestCollectionItem(context);
-            case ModelToManifestConversionType.PolymorphicType:
-                return ConvertToPolymorphicType(context);
-            default:
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("UnexpectedModelToManifestConversionType"),
-                                            nameof(ModelToManifestConversionType));
-                throw new ArgumentException(message, nameof(context));
-            }
-        }
-
-        static ManifestCollectionItem ConvertToManifestCollectionItem(ModelToManifestConversionContext context)
-        {
-            var manifestValue = new ManifestCollectionItem
-            {
-                Parent = context.ParentManifestValue.Parent,
-                ValidatedType = context.ValidatedType,
-            };
-            if (context.ParentManifestValue != null)
-                context.ParentManifestValue.CollectionItemValue = manifestValue;
-            return manifestValue;
-        }
-
-        static ManifestValue ConvertToManifestValue(ModelToManifestConversionContext context)
-        {
-            var manifestValue = new ManifestValue
-            {
-                Parent = context.ParentManifestValue,
-                MemberName = context.MemberName,
-                AccessorFromParent = context.AccessorFromParent,
-                ValidatedType = context.ValidatedType,
-            };
-            if(context.CurrentValue is Value val)
-                manifestValue.AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
-            if (context.ParentManifestValue != null)
-                context.ParentManifestValue.Children.Add(manifestValue);
-            return manifestValue;
-        }
-
-        static ManifestPolymorphicType ConvertToPolymorphicType(ModelToManifestConversionContext context)
-        {
-            var polymorphicType = Type.GetType(context.PolymorphicTypeName, true);
-
-            var manifestValue = new ManifestPolymorphicType
-            {
-                Parent = context.ParentManifestValue,
-                ValidatedType = polymorphicType,
-            };
-            if (context.ParentManifestValue is IHasPolymorphicTypes polyParent)
-                polyParent.PolymorphicTypes.Add(manifestValue);
-
-            return manifestValue;
-        }
-
         /// <summary>
         /// Initialises an instance of <see cref="ModelValueToManifestValueConverter"/>.
         /// </summary>
         /// <param name="accessorFactory">A factory for accessor functions.</param>
         /// <param name="validatedTypeProvider">A service that gets the validated type.</param>
-        public ModelValueToManifestValueConverter(IGetsAccessorFunction accessorFactory, IGetsValidatedType validatedTypeProvider)
+        /// <param name="contextToItemConverter">A converter service for model conversion contexts.</param>
+        public ModelValueToManifestValueConverter(IGetsAccessorFunction accessorFactory,
+                                                  IGetsValidatedType validatedTypeProvider,
+                                                  IGetsManifestItemFromModelToManifestConversionContext contextToItemConverter)
         {
             this.validatedTypeProvider = validatedTypeProvider ?? throw new ArgumentNullException(nameof(validatedTypeProvider));
+            this.contextToItemConverter = contextToItemConverter ?? throw new ArgumentNullException(nameof(contextToItemConverter));
             this.accessorFactory = accessorFactory ?? throw new ArgumentNullException(nameof(accessorFactory));
         }
     }

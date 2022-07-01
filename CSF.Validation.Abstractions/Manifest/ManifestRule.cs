@@ -19,11 +19,16 @@ namespace CSF.Validation.Manifest
     /// article <xref href="ManifestModelIndexPage?text=Using+the+Manifest+Model"/>.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ManifestValue"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
+    /// <seealso cref="ValidationManifest"/>
+    /// <seealso cref="IManifestItem"/>
+    /// <seealso cref="IManifestValue"/>
+    /// <seealso cref="IHasPolymorphicTypes"/>
     /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public class ManifestRule
     {
         ICollection<ManifestRuleIdentifier> dependencyRules = new List<ManifestRuleIdentifier>();
@@ -32,7 +37,7 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets the manifest value to which this rule applies.
         /// </summary>
-        public ManifestValueBase ManifestValue { get; }
+        public IManifestItem ManifestValue { get; }
 
         /// <summary>
         /// Gets or sets the rule's unique identifier.
@@ -76,7 +81,7 @@ namespace CSF.Validation.Manifest
         /// </summary>
         /// <param name="manifestValue">The manifest value for which this rule applies.</param>
         /// <param name="identifier">The identifier for this rule.</param>
-        public ManifestRule(ManifestValueBase manifestValue, ManifestRuleIdentifier identifier)
+        public ManifestRule(IManifestItem manifestValue, ManifestRuleIdentifier identifier)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));

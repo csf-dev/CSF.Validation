@@ -10,13 +10,13 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This type roughly corresponds to a <see cref="ManifestValueBase"/> and its derived types.  The key difference
+    /// This type roughly corresponds to a <see cref="IManifestItem"/> and its derived types.  The key difference
     /// between that and this 'info' class is that this type is immutable and presents a read-only API.
     /// </para>
     /// </remarks>
     public class ManifestValueInfo
     {
-        readonly ManifestValueBase manifestValue;
+        readonly IManifestItem manifestValue;
 
         /// <summary>
         /// Gets the type of the object which the current manifest value describes.
@@ -27,7 +27,7 @@ namespace CSF.Validation.Rules
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets the name of that member.
         /// </summary>
-        public string MemberName => manifestValue.MemberName;
+        public string MemberName => (manifestValue is IManifestValue val)? val.MemberName : null;
 
         /// <summary>
         /// Gets an optional value object which indicates how items within a collection are to be validated.
@@ -76,22 +76,27 @@ namespace CSF.Validation.Rules
         /// </para>
         /// </remarks>
         /// <returns>The original manifest value from which this instance was created.</returns>
-        public ManifestValueBase GetOriginalManifestValue() => manifestValue;
+        public IManifestItem GetOriginalManifestValue() => manifestValue;
 
         /// <summary>
         /// Initialises an instance of <see cref="ManifestValueInfo"/>.
-        /// This is essentially a copy-constructor for a <see cref="ManifestValueBase"/>.
+        /// This is essentially a copy-constructor for a <see cref="IManifestItem"/>.
         /// </summary>
         /// <param name="manifestValue">The manifest value from which to create this instance.</param>
         /// <exception cref="System.ArgumentNullException">If <paramref name="manifestValue"/> is <see langword="null" />.</exception>
-        public ManifestValueInfo(ManifestValueBase manifestValue)
+        public ManifestValueInfo(IManifestItem manifestValue)
         {
             this.manifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
 
             CollectionItemValue = manifestValue.CollectionItemValue is null
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);
-            Children = new List<ManifestValueInfo>(manifestValue.Children.Select(x => new ManifestValueInfo(x)));
+            
+            Children = manifestValue.Children
+                .Where(x => !(x is RecursiveManifestValue))
+                .Select(x => new ManifestValueInfo(x))
+                .ToList();
+            
             if(manifestValue is ManifestValue val)
                 AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
         }

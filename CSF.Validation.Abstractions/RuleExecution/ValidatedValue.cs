@@ -12,7 +12,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets or sets the manifest value to which the current instance relates.
         /// </summary>
-        public ManifestValueBase ManifestValue { get; set;  }
+        public IManifestItem ManifestValue { get; set;  }
 
         /// <summary>
         /// Gets or sets a response object which may expose an "actual value" of the validated value.
@@ -65,6 +65,39 @@ namespace CSF.Validation.RuleExecution
         /// </para>
         /// </remarks>
         public long? CollectionItemOrder { get; set; }
+
+        /// <summary>
+        /// Gets a value that indicates whether the current instance matches the specified manifest item and value response.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This method is used only to detect circular references in the validated object model.
+        /// Circular references are not validated, because they would lead to an endless loop.
+        /// </para>
+        /// </remarks>
+        /// <param name="item">A manifest item</param>
+        /// <param name="valueResponse">A value response</param>
+        /// <returns><see langword="true" /> if the current instance matches the item and value response; <see langword="false" /> otherwise.</returns>
+        public bool IsMatch(IManifestItem item, GetValueToBeValidatedResponse valueResponse)
+        {
+            if (item is null)
+                throw new ArgumentNullException(nameof(item));
+            if (valueResponse is null)
+                throw new ArgumentNullException(nameof(valueResponse));
+
+            IManifestItem
+                thisItem = GetManifestItemForMatching(ManifestValue),
+                thatItem = GetManifestItemForMatching(item);
+            
+            return ReferenceEquals(thisItem, thatItem) && Equals(ValueResponse, valueResponse);
+        }
+
+        static IManifestItem GetManifestItemForMatching(IManifestItem item)
+        {
+            if(item is RecursiveManifestValue recursiveItem)
+                return recursiveItem.WrappedValue;
+            return item;
+        }
 
         /// <summary>
         /// Gets the 'actual value' from the <see cref="ValueResponse"/>.  If that is not an instance of

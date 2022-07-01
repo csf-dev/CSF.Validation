@@ -17,6 +17,8 @@ The validation manifest is created from the following model classes. These are a
 * [`VariationManifest`]
 * [`ManifestValue`]
 * [`ManifestCollectionItem`]
+* [`ManifestPolymorphicType`]
+* [`RecursiveManifestValue`]
 * [`ManifestRule`]
 * [`ManifestRuleIdentifier`]
 
@@ -25,6 +27,8 @@ The validation manifest is created from the following model classes. These are a
 [`VariationManifest`]:xref:CSF.Validation.Manifest.ValidationManifest
 [`ManifestValue`]:xref:CSF.Validation.Manifest.ManifestValue
 [`ManifestCollectionItem`]:xref:CSF.Validation.Manifest.ManifestCollectionItem
+[`ManifestPolymorphicType`]:xref:CSF.Validation.Manifest.ManifestPolymorphicType
+[`RecursiveManifestValue`]:xref:CSF.Validation.Manifest.RecursiveManifestValue
 [`ManifestRule`]:xref:CSF.Validation.Manifest.ManifestRule
 [`ManifestRuleIdentifier`]:xref:CSF.Validation.Manifest.ManifestRuleIdentifier
 [`RuleIdentifierBase`]:xref:CSF.Validation.Rules.RuleIdentifierBase

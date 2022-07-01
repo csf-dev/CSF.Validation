@@ -12,7 +12,7 @@ namespace CSF.Validation
     /// </summary>
     public class ValueContextIsMatchForItem : ISpecificationExpression<ValueContext>
     {
-        readonly ManifestValueBase value;
+        readonly IManifestItem value;
         readonly bool hasItem;
         readonly object item;
 
@@ -42,7 +42,7 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="value">The manifest value which must be matched</param>
         /// <exception cref="ArgumentNullException">If <paramref name="value"/> is <see langword="null" />.</exception>
-        public ValueContextIsMatchForItem(ManifestValueBase value)
+        public ValueContextIsMatchForItem(IManifestItem value)
         {
             this.value = value ?? throw new ArgumentNullException(nameof(value));
             hasItem = false;
@@ -54,7 +54,7 @@ namespace CSF.Validation
         /// <param name="value">The manifest value which must be matched</param>
         /// <param name="item">An optional item (of the type indicated by the <paramref name="value"/>) which the value content must match.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="value"/> is <see langword="null" />.</exception>
-        public ValueContextIsMatchForItem(ManifestValueBase value, object item) : this(value)
+        public ValueContextIsMatchForItem(IManifestItem value, object item) : this(value)
         {
             this.item = item;
             hasItem = true;

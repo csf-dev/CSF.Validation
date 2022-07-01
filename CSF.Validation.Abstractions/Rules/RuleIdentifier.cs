@@ -72,7 +72,7 @@ namespace CSF.Validation.Rules
                               object objectIdentity) : this(manifestRule.Identifier.RuleType,
                                                             manifestRule.Identifier.ValidatedType,
                                                             objectIdentity,
-                                                            manifestRule.ManifestValue.MemberName,
+                                                            (manifestRule.ManifestValue is IManifestValue val)? val.MemberName : null,
                                                             manifestRule.Identifier.RuleName) {}
     }
 }

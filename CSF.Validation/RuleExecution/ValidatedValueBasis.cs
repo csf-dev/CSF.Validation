@@ -15,7 +15,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets the manifest value.
         /// </summary>
-        public ManifestValueBase ManifestValue { get; }
+        public IManifestItem ManifestValue { get; }
 
         /// <summary>
         /// Gets the actual value.
@@ -53,12 +53,12 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This method considers not only the <see cref="ManifestValueBase.Children"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
+        /// This method considers not only the <see cref="IManifestItem.Children"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
         /// but also the children of every value returned by <see cref="GetPolymorphicTypes"/>.
         /// </para>
         /// </remarks>
         /// <returns>A collection of manifest values.</returns>
-        public IEnumerable<ManifestValue> GetChildManifestValues()
+        public IEnumerable<IManifestValue> GetChildManifestValues()
         {
             return new [] { ManifestValue }
                 .Union(polymorphicTypes)
@@ -72,7 +72,7 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This method considers not only the <see cref="ManifestValueBase.Rules"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
+        /// This method considers not only the <see cref="IManifestItem.Rules"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
         /// but also the rules of every value returned by <see cref="GetPolymorphicTypes"/>.
         /// </para>
         /// </remarks>
@@ -84,6 +84,26 @@ namespace CSF.Validation.RuleExecution
                 .SelectMany(x => x.Rules)
                 .ToList();
         }
+
+        /// <summary>
+        /// Gets a value which indicates whether the current validated value basis represents a
+        /// circular reference to a value which has already been converted to a <see cref="ValidatedValue"/>.
+        /// </summary>
+        /// <returns><see langword="true" /> if the current instance appears as a <see cref="ValidatedValue"/>
+        /// amongst the chain of <see cref="Parent"/> validated values; <see langword="false" /> otherwise.</returns>
+        public bool IsCircularReference() => GetAllParents().Any(IsMatch);
+
+        IEnumerable<ValidatedValue> GetAllParents()
+        {
+            var current = Parent;
+            while(!(current is null))
+            {
+                yield return current;
+                current = current.ParentValue;
+            }
+        }
+
+        bool IsMatch(ValidatedValue value) => value.IsMatch(ManifestValue, ValidatedValueResponse);
 
         /// <summary>
         /// Gets a collection of applicable polymorphic types which are applicable to the current validated value.
@@ -107,7 +127,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="actualValue">The actual value for this basis.</param>
         /// <param name="parent">An optional parent validated value for this basis.</param>
         /// <param name="collectionOrder">An optional collection order for this basis.</param>
-        public ValidatedValueBasis(ManifestValueBase manifestValue,
+        public ValidatedValueBasis(IManifestItem manifestValue,
                                    GetValueToBeValidatedResponse actualValue,
                                    ValidatedValue parent,
                                    long? collectionOrder = default)

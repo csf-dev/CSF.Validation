@@ -48,6 +48,7 @@ namespace CSF.Validation.RuleExecution
             while(openList.Any())
             {
                 var currentBasis = openList.Dequeue();
+                if(currentBasis.IsCircularReference()) continue;
 
                 if(currentBasis.ValidatedValueResponse is IgnoredGetValueToBeValidatedResponse)
                     continue;
