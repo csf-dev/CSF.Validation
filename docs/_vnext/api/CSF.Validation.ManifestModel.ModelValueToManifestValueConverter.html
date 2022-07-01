@@ -120,19 +120,19 @@ into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestValue.
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsAccessorFunction_CSF_Validation_Manifest_IGetsValidatedType_.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.%23ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction%2CCSF.Validation.Manifest.IGetsValidatedType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsAccessorFunction_CSF_Validation_Manifest_IGetsValidatedType_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.%23ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction%2CCSF.Validation.Manifest.IGetsValidatedType%2CCSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ManifestModel/ModelValueToManifestValueConverter.cs/#L174">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ManifestModel/ModelValueToManifestValueConverter.cs/#L111">View Source</a>
   </span>
   <a id="CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_" data-uid="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor*"></a>
-  <h4 id="CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsAccessorFunction_CSF_Validation_Manifest_IGetsValidatedType_" data-uid="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction,CSF.Validation.Manifest.IGetsValidatedType)">ModelValueToManifestValueConverter(IGetsAccessorFunction, IGetsValidatedType)</h4>
+  <h4 id="CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsAccessorFunction_CSF_Validation_Manifest_IGetsValidatedType_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_" data-uid="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction,CSF.Validation.Manifest.IGetsValidatedType,CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)">ModelValueToManifestValueConverter(IGetsAccessorFunction, IGetsValidatedType, IGetsManifestItemFromModelToManifestConversionContext)</h4>
   <div class="markdown level1 summary"><p>Initialises an instance of <a class="xref" href="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.html">ModelValueToManifestValueConverter</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ModelValueToManifestValueConverter(IGetsAccessorFunction accessorFactory, IGetsValidatedType validatedTypeProvider)</code></pre>
+    <pre><code class="lang-csharp hljs">public ModelValueToManifestValueConverter(IGetsAccessorFunction accessorFactory, IGetsValidatedType validatedTypeProvider, IGetsManifestItemFromModelToManifestConversionContext contextToItemConverter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -156,6 +156,12 @@ into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestValue.
         <td><p>A service that gets the validated type.</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html">IGetsManifestItemFromModelToManifestConversionContext</a></td>
+        <td><span class="parametername">contextToItemConverter</span></td>
+        <td><p>A converter service for model conversion contexts.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
@@ -165,7 +171,7 @@ into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestValue.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ManifestModel_ModelValueToManifestValueConverter_ConvertAllValues_CSF_Validation_ManifestModel_ModelToManifestConversionContext_.md&amp;value=---%0Auid%3A%20CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.ConvertAllValues(CSF.Validation.ManifestModel.ModelToManifestConversionContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ManifestModel/ModelValueToManifestValueConverter.cs/#L25">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ManifestModel/ModelValueToManifestValueConverter.cs/#L26">View Source</a>
   </span>
   <a id="CSF_Validation_ManifestModel_ModelValueToManifestValueConverter_ConvertAllValues_" data-uid="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.ConvertAllValues*"></a>
   <h4 id="CSF_Validation_ManifestModel_ModelValueToManifestValueConverter_ConvertAllValues_CSF_Validation_ManifestModel_ModelToManifestConversionContext_" data-uid="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.ConvertAllValues(CSF.Validation.ManifestModel.ModelToManifestConversionContext)">ConvertAllValues(ModelToManifestConversionContext)</h4>
