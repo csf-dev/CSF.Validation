@@ -65,7 +65,8 @@
       "globalMetadataFiles": [],
       "fileMetadataFiles": [],
       "template": [
-        "default"
+        "default",
+        "validation-template"
       ],
       "postProcessors": [],
       "markdownEngineName": "markdig",
