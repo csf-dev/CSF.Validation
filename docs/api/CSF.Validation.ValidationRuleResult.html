@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ValidationRuleResult
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ValidationRuleResult
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.ValidationRuleResult">
+  
+  
+  <h1 id="CSF_Validation_ValidationRuleResult" data-uid="CSF.Validation.ValidationRuleResult" class="text-break">Class ValidationRuleResult
+  </h1>
+  <div class="markdown level0 summary"><p>Represents information about the result of running a single validation rule.
+Typically this is a class which implements either <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
+or <a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a></div>
+    <div class="level2"><span class="xref">ValidationRuleResult</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_RuleTimeoutDataKey">RuleResult.RuleTimeoutDataKey</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Outcome">RuleResult.Outcome</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_IsPass">RuleResult.IsPass</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Data">RuleResult.Data</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Exception">RuleResult.Exception</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_ToString">RuleResult.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.html">CSF.Validation</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
+  <h5 id="CSF_Validation_ValidationRuleResult_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ValidationRuleResult : RuleResult</code></pre>
+  </div>
+  <h5 id="CSF_Validation_ValidationRuleResult_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+This class is a more complete version of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>.  Where the rule result only contains
+the information which would be directly output from the rule itself, this class provides more contextual
+information which may be &apos;backfilled&apos; by the validation framework.
+</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult__ctor_CSF_Validation_Rules_RuleResult_CSF_Validation_Rules_RuleContext_CSF_Validation_Rules_IValidationLogic_System_String_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.%23ctor(CSF.Validation.Rules.RuleResult%2CCSF.Validation.Rules.RuleContext%2CCSF.Validation.Rules.IValidationLogic%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L76">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult__ctor_" data-uid="CSF.Validation.ValidationRuleResult.#ctor*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult__ctor_CSF_Validation_Rules_RuleResult_CSF_Validation_Rules_RuleContext_CSF_Validation_Rules_IValidationLogic_System_String_" data-uid="CSF.Validation.ValidationRuleResult.#ctor(CSF.Validation.Rules.RuleResult,CSF.Validation.Rules.RuleContext,CSF.Validation.Rules.IValidationLogic,System.String)">ValidationRuleResult(RuleResult, RuleContext, IValidationLogic, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValidationRuleResult(RuleResult result, RuleContext ruleContext, IValidationLogic validationLogic, string message = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>The rule result.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td><span class="parametername">ruleContext</span></td>
+        <td><p>The rule context.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a></td>
+        <td><span class="parametername">validationLogic</span></td>
+        <td><p>The validation logic for the rule.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The human-readable validation feedback message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidationRuleResult__ctor_CSF_Validation_Rules_RuleResult_CSF_Validation_Rules_RuleContext_CSF_Validation_Rules_IValidationLogic_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This constructor copies-information-from and then enriches a <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> with further information.
+</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult_Identifier.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L23">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult_Identifier_" data-uid="CSF.Validation.ValidationRuleResult.Identifier*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult_Identifier" data-uid="CSF.Validation.ValidationRuleResult.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>Gets a unique identifier for the rule to which this result corresponds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RuleIdentifier Identifier { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleIdentifier.html">RuleIdentifier</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult_Message.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L62">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult_Message_" data-uid="CSF.Validation.ValidationRuleResult.Message*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult_Message" data-uid="CSF.Validation.ValidationRuleResult.Message">Message</h4>
+  <div class="markdown level1 summary"><p>Gets a human-readable feedback message to be associated with this rule result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Message { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidationRuleResult_Message_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This property will always contain a <span class="xref">null</span> reference unless <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html">ResolvedValidationOptions</a>
+are specified and the <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration">EnableMessageGeneration</a> is set to <span class="xref">true</span>.
+If the options are not specified or message generation is not enabled, then generation of feedback messages
+is disabled/skipped.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult_RuleContext.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.RuleContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L44">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult_RuleContext_" data-uid="CSF.Validation.ValidationRuleResult.RuleContext*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult_RuleContext" data-uid="CSF.Validation.ValidationRuleResult.RuleContext">RuleContext</h4>
+  <div class="markdown level1 summary"><p>Gets contextual information about this rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RuleContext RuleContext { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult_RuleInterface.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.RuleInterface%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L34">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult_RuleInterface_" data-uid="CSF.Validation.ValidationRuleResult.RuleInterface*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult_RuleInterface" data-uid="CSF.Validation.ValidationRuleResult.RuleInterface">RuleInterface</h4>
+  <div class="markdown level1 summary"><p>Gets a reference to the <span class="xref">System.Type</span> of rule interface which was used for this rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type RuleInterface { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidationRuleResult_RuleInterface_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This will be a closed-generic form of either <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a> or
+<a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult_ValidatedValue.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.ValidatedValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L39">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult_ValidatedValue_" data-uid="CSF.Validation.ValidationRuleResult.ValidatedValue*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult_ValidatedValue" data-uid="CSF.Validation.ValidationRuleResult.ValidatedValue">ValidatedValue</h4>
+  <div class="markdown level1 summary"><p>Gets the actual value which was validated by this rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object ValidatedValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult_ValidationLogic.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult.ValidationLogic%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L49">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidationRuleResult_ValidationLogic_" data-uid="CSF.Validation.ValidationRuleResult.ValidationLogic*"></a>
+  <h4 id="CSF_Validation_ValidationRuleResult_ValidationLogic" data-uid="CSF.Validation.ValidationRuleResult.ValidationLogic">ValidationLogic</h4>
+  <div class="markdown level1 summary"><p>Gets a reference to the validation rule logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValidationLogic ValidationLogic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationRuleResult.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationRuleResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/ValidationRuleResult.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
