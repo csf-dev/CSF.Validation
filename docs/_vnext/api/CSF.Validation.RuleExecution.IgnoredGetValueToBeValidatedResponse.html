@@ -82,16 +82,20 @@
     <div class="level1"><a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html">GetValueToBeValidatedResponse</a></div>
     <div class="level2"><span class="xref">IgnoredGetValueToBeValidatedResponse</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html">GetValueToBeValidatedResponse</a>&gt;</div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_Equals_System_Object_">GetValueToBeValidatedResponse.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_GetHashCode">GetValueToBeValidatedResponse.GetHashCode()</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
@@ -110,7 +114,7 @@
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
   <h5 id="CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class IgnoredGetValueToBeValidatedResponse : GetValueToBeValidatedResponse</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class IgnoredGetValueToBeValidatedResponse : GetValueToBeValidatedResponse, IEquatable&lt;GetValueToBeValidatedResponse&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -119,7 +123,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Default.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/IgnoredGetValueToBeValidatedResponse.cs/#L16">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/IgnoredGetValueToBeValidatedResponse.cs/#L19">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Default_" data-uid="CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default*"></a>
   <h4 id="CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Default" data-uid="CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default">Default</h4>
@@ -178,6 +182,64 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_IsSuccess">GetValueToBeValidatedResponse.IsSuccess</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/RuleExecution/IgnoredGetValueToBeValidatedResponse.cs/#L14">View Source</a>
+  </span>
+  <a id="CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Equals_" data-uid="CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals*"></a>
+  <h4 id="CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_" data-uid="CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)">Equals(GetValueToBeValidatedResponse)</h4>
+  <div class="markdown level1 summary"><p>Gets a value that indicates whether or not the current instance is equal to the specified <a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html">GetValueToBeValidatedResponse</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(GetValueToBeValidatedResponse other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html">GetValueToBeValidatedResponse</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The value response.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the current instance is equal to the specified valuse response; <span class="xref">false</span> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_">GetValueToBeValidatedResponse.Equals(GetValueToBeValidatedResponse)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
 </article>
           </div>
           

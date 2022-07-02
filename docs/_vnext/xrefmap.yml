@@ -889,6 +889,135 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes
   nameWithType: IHasPolymorphicTypes.PolymorphicTypes
+- uid: CSF.Validation.Manifest.IManifestItem
+  name: IManifestItem
+  href: api/CSF.Validation.Manifest.IManifestItem.html
+  commentId: T:CSF.Validation.Manifest.IManifestItem
+  fullName: CSF.Validation.Manifest.IManifestItem
+  nameWithType: IManifestItem
+- uid: CSF.Validation.Manifest.IManifestItem.Children
+  name: Children
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Children
+  commentId: P:CSF.Validation.Manifest.IManifestItem.Children
+  fullName: CSF.Validation.Manifest.IManifestItem.Children
+  nameWithType: IManifestItem.Children
+- uid: CSF.Validation.Manifest.IManifestItem.Children*
+  name: Children
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Children_
+  commentId: Overload:CSF.Validation.Manifest.IManifestItem.Children
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestItem.Children
+  nameWithType: IManifestItem.Children
+- uid: CSF.Validation.Manifest.IManifestItem.CollectionItemValue
+  name: CollectionItemValue
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_CollectionItemValue
+  commentId: P:CSF.Validation.Manifest.IManifestItem.CollectionItemValue
+  fullName: CSF.Validation.Manifest.IManifestItem.CollectionItemValue
+  nameWithType: IManifestItem.CollectionItemValue
+- uid: CSF.Validation.Manifest.IManifestItem.CollectionItemValue*
+  name: CollectionItemValue
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_CollectionItemValue_
+  commentId: Overload:CSF.Validation.Manifest.IManifestItem.CollectionItemValue
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestItem.CollectionItemValue
+  nameWithType: IManifestItem.CollectionItemValue
+- uid: CSF.Validation.Manifest.IManifestItem.IdentityAccessor
+  name: IdentityAccessor
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_IdentityAccessor
+  commentId: P:CSF.Validation.Manifest.IManifestItem.IdentityAccessor
+  fullName: CSF.Validation.Manifest.IManifestItem.IdentityAccessor
+  nameWithType: IManifestItem.IdentityAccessor
+- uid: CSF.Validation.Manifest.IManifestItem.IdentityAccessor*
+  name: IdentityAccessor
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_IdentityAccessor_
+  commentId: Overload:CSF.Validation.Manifest.IManifestItem.IdentityAccessor
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestItem.IdentityAccessor
+  nameWithType: IManifestItem.IdentityAccessor
+- uid: CSF.Validation.Manifest.IManifestItem.Parent
+  name: Parent
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Parent
+  commentId: P:CSF.Validation.Manifest.IManifestItem.Parent
+  fullName: CSF.Validation.Manifest.IManifestItem.Parent
+  nameWithType: IManifestItem.Parent
+- uid: CSF.Validation.Manifest.IManifestItem.Parent*
+  name: Parent
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Parent_
+  commentId: Overload:CSF.Validation.Manifest.IManifestItem.Parent
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestItem.Parent
+  nameWithType: IManifestItem.Parent
+- uid: CSF.Validation.Manifest.IManifestItem.Rules
+  name: Rules
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Rules
+  commentId: P:CSF.Validation.Manifest.IManifestItem.Rules
+  fullName: CSF.Validation.Manifest.IManifestItem.Rules
+  nameWithType: IManifestItem.Rules
+- uid: CSF.Validation.Manifest.IManifestItem.Rules*
+  name: Rules
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Rules_
+  commentId: Overload:CSF.Validation.Manifest.IManifestItem.Rules
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestItem.Rules
+  nameWithType: IManifestItem.Rules
+- uid: CSF.Validation.Manifest.IManifestItem.ValidatedType
+  name: ValidatedType
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_ValidatedType
+  commentId: P:CSF.Validation.Manifest.IManifestItem.ValidatedType
+  fullName: CSF.Validation.Manifest.IManifestItem.ValidatedType
+  nameWithType: IManifestItem.ValidatedType
+- uid: CSF.Validation.Manifest.IManifestItem.ValidatedType*
+  name: ValidatedType
+  href: api/CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_ValidatedType_
+  commentId: Overload:CSF.Validation.Manifest.IManifestItem.ValidatedType
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestItem.ValidatedType
+  nameWithType: IManifestItem.ValidatedType
+- uid: CSF.Validation.Manifest.IManifestValue
+  name: IManifestValue
+  href: api/CSF.Validation.Manifest.IManifestValue.html
+  commentId: T:CSF.Validation.Manifest.IManifestValue
+  fullName: CSF.Validation.Manifest.IManifestValue
+  nameWithType: IManifestValue
+- uid: CSF.Validation.Manifest.IManifestValue.AccessorExceptionBehaviour
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_AccessorExceptionBehaviour
+  commentId: P:CSF.Validation.Manifest.IManifestValue.AccessorExceptionBehaviour
+  fullName: CSF.Validation.Manifest.IManifestValue.AccessorExceptionBehaviour
+  nameWithType: IManifestValue.AccessorExceptionBehaviour
+- uid: CSF.Validation.Manifest.IManifestValue.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.Manifest.IManifestValue.AccessorExceptionBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestValue.AccessorExceptionBehaviour
+  nameWithType: IManifestValue.AccessorExceptionBehaviour
+- uid: CSF.Validation.Manifest.IManifestValue.AccessorFromParent
+  name: AccessorFromParent
+  href: api/CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_AccessorFromParent
+  commentId: P:CSF.Validation.Manifest.IManifestValue.AccessorFromParent
+  fullName: CSF.Validation.Manifest.IManifestValue.AccessorFromParent
+  nameWithType: IManifestValue.AccessorFromParent
+- uid: CSF.Validation.Manifest.IManifestValue.AccessorFromParent*
+  name: AccessorFromParent
+  href: api/CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_AccessorFromParent_
+  commentId: Overload:CSF.Validation.Manifest.IManifestValue.AccessorFromParent
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestValue.AccessorFromParent
+  nameWithType: IManifestValue.AccessorFromParent
+- uid: CSF.Validation.Manifest.IManifestValue.MemberName
+  name: MemberName
+  href: api/CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_MemberName
+  commentId: P:CSF.Validation.Manifest.IManifestValue.MemberName
+  fullName: CSF.Validation.Manifest.IManifestValue.MemberName
+  nameWithType: IManifestValue.MemberName
+- uid: CSF.Validation.Manifest.IManifestValue.MemberName*
+  name: MemberName
+  href: api/CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_MemberName_
+  commentId: Overload:CSF.Validation.Manifest.IManifestValue.MemberName
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.IManifestValue.MemberName
+  nameWithType: IManifestValue.MemberName
 - uid: CSF.Validation.Manifest.ManifestCollectionItem
   name: ManifestCollectionItem
   href: api/CSF.Validation.Manifest.ManifestCollectionItem.html
@@ -908,19 +1037,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestCollectionItem.PolymorphicTypes
   nameWithType: ManifestCollectionItem.PolymorphicTypes
-- uid: CSF.Validation.Manifest.ManifestCollectionItem.ToString
-  name: ToString()
-  href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_ToString
-  commentId: M:CSF.Validation.Manifest.ManifestCollectionItem.ToString
-  fullName: CSF.Validation.Manifest.ManifestCollectionItem.ToString()
-  nameWithType: ManifestCollectionItem.ToString()
-- uid: CSF.Validation.Manifest.ManifestCollectionItem.ToString*
-  name: ToString
-  href: api/CSF.Validation.Manifest.ManifestCollectionItem.html#CSF_Validation_Manifest_ManifestCollectionItem_ToString_
-  commentId: Overload:CSF.Validation.Manifest.ManifestCollectionItem.ToString
-  isSpec: "True"
-  fullName: CSF.Validation.Manifest.ManifestCollectionItem.ToString
-  nameWithType: ManifestCollectionItem.ToString
 - uid: CSF.Validation.Manifest.ManifestFromBuilderProvider
   name: ManifestFromBuilderProvider
   href: api/CSF.Validation.Manifest.ManifestFromBuilderProvider.html
@@ -956,37 +1072,56 @@ references:
   fullName.vb: CSF.Validation.Manifest.ManifestFromBuilderProvider.GetManifest(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
   nameWithType: ManifestFromBuilderProvider.GetManifest<TValidated>(IBuildsValidator<TValidated>)
   nameWithType.vb: ManifestFromBuilderProvider.GetManifest(Of TValidated)(IBuildsValidator(Of TValidated))
+- uid: CSF.Validation.Manifest.ManifestItemExtensions
+  name: ManifestItemExtensions
+  href: api/CSF.Validation.Manifest.ManifestItemExtensions.html
+  commentId: T:CSF.Validation.Manifest.ManifestItemExtensions
+  fullName: CSF.Validation.Manifest.ManifestItemExtensions
+  nameWithType: ManifestItemExtensions
+- uid: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestor(CSF.Validation.Manifest.IManifestItem,System.Int32)
+  name: GetAncestor(IManifestItem, Int32)
+  href: api/CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestor_CSF_Validation_Manifest_IManifestItem_System_Int32_
+  commentId: M:CSF.Validation.Manifest.ManifestItemExtensions.GetAncestor(CSF.Validation.Manifest.IManifestItem,System.Int32)
+  fullName: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestor(CSF.Validation.Manifest.IManifestItem, System.Int32)
+  nameWithType: ManifestItemExtensions.GetAncestor(IManifestItem, Int32)
+- uid: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestor*
+  name: GetAncestor
+  href: api/CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestor_
+  commentId: Overload:CSF.Validation.Manifest.ManifestItemExtensions.GetAncestor
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestor
+  nameWithType: ManifestItemExtensions.GetAncestor
+- uid: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestors(CSF.Validation.Manifest.IManifestItem)
+  name: GetAncestors(IManifestItem)
+  href: api/CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestors_CSF_Validation_Manifest_IManifestItem_
+  commentId: M:CSF.Validation.Manifest.ManifestItemExtensions.GetAncestors(CSF.Validation.Manifest.IManifestItem)
+  fullName: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestors(CSF.Validation.Manifest.IManifestItem)
+  nameWithType: ManifestItemExtensions.GetAncestors(IManifestItem)
+- uid: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestors*
+  name: GetAncestors
+  href: api/CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestors_
+  commentId: Overload:CSF.Validation.Manifest.ManifestItemExtensions.GetAncestors
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestItemExtensions.GetAncestors
+  nameWithType: ManifestItemExtensions.GetAncestors
 - uid: CSF.Validation.Manifest.ManifestPolymorphicType
   name: ManifestPolymorphicType
   href: api/CSF.Validation.Manifest.ManifestPolymorphicType.html
   commentId: T:CSF.Validation.Manifest.ManifestPolymorphicType
   fullName: CSF.Validation.Manifest.ManifestPolymorphicType
   nameWithType: ManifestPolymorphicType
-- uid: CSF.Validation.Manifest.ManifestPolymorphicType.ToString
-  name: ToString()
-  href: api/CSF.Validation.Manifest.ManifestPolymorphicType.html#CSF_Validation_Manifest_ManifestPolymorphicType_ToString
-  commentId: M:CSF.Validation.Manifest.ManifestPolymorphicType.ToString
-  fullName: CSF.Validation.Manifest.ManifestPolymorphicType.ToString()
-  nameWithType: ManifestPolymorphicType.ToString()
-- uid: CSF.Validation.Manifest.ManifestPolymorphicType.ToString*
-  name: ToString
-  href: api/CSF.Validation.Manifest.ManifestPolymorphicType.html#CSF_Validation_Manifest_ManifestPolymorphicType_ToString_
-  commentId: Overload:CSF.Validation.Manifest.ManifestPolymorphicType.ToString
-  isSpec: "True"
-  fullName: CSF.Validation.Manifest.ManifestPolymorphicType.ToString
-  nameWithType: ManifestPolymorphicType.ToString
 - uid: CSF.Validation.Manifest.ManifestRule
   name: ManifestRule
   href: api/CSF.Validation.Manifest.ManifestRule.html
   commentId: T:CSF.Validation.Manifest.ManifestRule
   fullName: CSF.Validation.Manifest.ManifestRule
   nameWithType: ManifestRule
-- uid: CSF.Validation.Manifest.ManifestRule.#ctor(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.Manifest.ManifestRuleIdentifier)
-  name: ManifestRule(ManifestValueBase, ManifestRuleIdentifier)
-  href: api/CSF.Validation.Manifest.ManifestRule.html#CSF_Validation_Manifest_ManifestRule__ctor_CSF_Validation_Manifest_ManifestValueBase_CSF_Validation_Manifest_ManifestRuleIdentifier_
-  commentId: M:CSF.Validation.Manifest.ManifestRule.#ctor(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.Manifest.ManifestRuleIdentifier)
-  fullName: CSF.Validation.Manifest.ManifestRule.ManifestRule(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.Manifest.ManifestRuleIdentifier)
-  nameWithType: ManifestRule.ManifestRule(ManifestValueBase, ManifestRuleIdentifier)
+- uid: CSF.Validation.Manifest.ManifestRule.#ctor(CSF.Validation.Manifest.IManifestItem,CSF.Validation.Manifest.ManifestRuleIdentifier)
+  name: ManifestRule(IManifestItem, ManifestRuleIdentifier)
+  href: api/CSF.Validation.Manifest.ManifestRule.html#CSF_Validation_Manifest_ManifestRule__ctor_CSF_Validation_Manifest_IManifestItem_CSF_Validation_Manifest_ManifestRuleIdentifier_
+  commentId: M:CSF.Validation.Manifest.ManifestRule.#ctor(CSF.Validation.Manifest.IManifestItem,CSF.Validation.Manifest.ManifestRuleIdentifier)
+  fullName: CSF.Validation.Manifest.ManifestRule.ManifestRule(CSF.Validation.Manifest.IManifestItem, CSF.Validation.Manifest.ManifestRuleIdentifier)
+  nameWithType: ManifestRule.ManifestRule(IManifestItem, ManifestRuleIdentifier)
 - uid: CSF.Validation.Manifest.ManifestRule.#ctor*
   name: ManifestRule
   href: api/CSF.Validation.Manifest.ManifestRule.html#CSF_Validation_Manifest_ManifestRule__ctor_
@@ -1052,12 +1187,12 @@ references:
   commentId: T:CSF.Validation.Manifest.ManifestRuleIdentifier
   fullName: CSF.Validation.Manifest.ManifestRuleIdentifier
   nameWithType: ManifestRuleIdentifier
-- uid: CSF.Validation.Manifest.ManifestRuleIdentifier.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Type,System.String)
-  name: ManifestRuleIdentifier(ManifestValueBase, Type, String)
-  href: api/CSF.Validation.Manifest.ManifestRuleIdentifier.html#CSF_Validation_Manifest_ManifestRuleIdentifier__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Type_System_String_
-  commentId: M:CSF.Validation.Manifest.ManifestRuleIdentifier.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Type,System.String)
-  fullName: CSF.Validation.Manifest.ManifestRuleIdentifier.ManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase, System.Type, System.String)
-  nameWithType: ManifestRuleIdentifier.ManifestRuleIdentifier(ManifestValueBase, Type, String)
+- uid: CSF.Validation.Manifest.ManifestRuleIdentifier.#ctor(CSF.Validation.Manifest.IManifestItem,System.Type,System.String)
+  name: ManifestRuleIdentifier(IManifestItem, Type, String)
+  href: api/CSF.Validation.Manifest.ManifestRuleIdentifier.html#CSF_Validation_Manifest_ManifestRuleIdentifier__ctor_CSF_Validation_Manifest_IManifestItem_System_Type_System_String_
+  commentId: M:CSF.Validation.Manifest.ManifestRuleIdentifier.#ctor(CSF.Validation.Manifest.IManifestItem,System.Type,System.String)
+  fullName: CSF.Validation.Manifest.ManifestRuleIdentifier.ManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem, System.Type, System.String)
+  nameWithType: ManifestRuleIdentifier.ManifestRuleIdentifier(IManifestItem, Type, String)
 - uid: CSF.Validation.Manifest.ManifestRuleIdentifier.#ctor*
   name: ManifestRuleIdentifier
   href: api/CSF.Validation.Manifest.ManifestRuleIdentifier.html#CSF_Validation_Manifest_ManifestRuleIdentifier__ctor_
@@ -1155,6 +1290,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValue.AccessorFromParent
   nameWithType: ManifestValue.AccessorFromParent
+- uid: CSF.Validation.Manifest.ManifestValue.GetPropertyValuesForToString
+  name: GetPropertyValuesForToString()
+  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_GetPropertyValuesForToString
+  commentId: M:CSF.Validation.Manifest.ManifestValue.GetPropertyValuesForToString
+  fullName: CSF.Validation.Manifest.ManifestValue.GetPropertyValuesForToString()
+  nameWithType: ManifestValue.GetPropertyValuesForToString()
+- uid: CSF.Validation.Manifest.ManifestValue.GetPropertyValuesForToString*
+  name: GetPropertyValuesForToString
+  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_GetPropertyValuesForToString_
+  commentId: Overload:CSF.Validation.Manifest.ManifestValue.GetPropertyValuesForToString
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestValue.GetPropertyValuesForToString
+  nameWithType: ManifestValue.GetPropertyValuesForToString
 - uid: CSF.Validation.Manifest.ManifestValue.MemberName
   name: MemberName
   href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_MemberName
@@ -1181,19 +1329,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValue.PolymorphicTypes
   nameWithType: ManifestValue.PolymorphicTypes
-- uid: CSF.Validation.Manifest.ManifestValue.ToString
-  name: ToString()
-  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_ToString
-  commentId: M:CSF.Validation.Manifest.ManifestValue.ToString
-  fullName: CSF.Validation.Manifest.ManifestValue.ToString()
-  nameWithType: ManifestValue.ToString()
-- uid: CSF.Validation.Manifest.ManifestValue.ToString*
-  name: ToString
-  href: api/CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_ToString_
-  commentId: Overload:CSF.Validation.Manifest.ManifestValue.ToString
-  isSpec: "True"
-  fullName: CSF.Validation.Manifest.ManifestValue.ToString
-  nameWithType: ManifestValue.ToString
 - uid: CSF.Validation.Manifest.ManifestValueBase
   name: ManifestValueBase
   href: api/CSF.Validation.Manifest.ManifestValueBase.html
@@ -1226,6 +1361,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValueBase.CollectionItemValue
   nameWithType: ManifestValueBase.CollectionItemValue
+- uid: CSF.Validation.Manifest.ManifestValueBase.GetPropertyValuesForToString
+  name: GetPropertyValuesForToString()
+  href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_GetPropertyValuesForToString
+  commentId: M:CSF.Validation.Manifest.ManifestValueBase.GetPropertyValuesForToString
+  fullName: CSF.Validation.Manifest.ManifestValueBase.GetPropertyValuesForToString()
+  nameWithType: ManifestValueBase.GetPropertyValuesForToString()
+- uid: CSF.Validation.Manifest.ManifestValueBase.GetPropertyValuesForToString*
+  name: GetPropertyValuesForToString
+  href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_GetPropertyValuesForToString_
+  commentId: Overload:CSF.Validation.Manifest.ManifestValueBase.GetPropertyValuesForToString
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestValueBase.GetPropertyValuesForToString
+  nameWithType: ManifestValueBase.GetPropertyValuesForToString
 - uid: CSF.Validation.Manifest.ManifestValueBase.IdentityAccessor
   name: IdentityAccessor
   href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_IdentityAccessor
@@ -1239,19 +1387,6 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValueBase.IdentityAccessor
   nameWithType: ManifestValueBase.IdentityAccessor
-- uid: CSF.Validation.Manifest.ManifestValueBase.MemberName
-  name: MemberName
-  href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_MemberName
-  commentId: P:CSF.Validation.Manifest.ManifestValueBase.MemberName
-  fullName: CSF.Validation.Manifest.ManifestValueBase.MemberName
-  nameWithType: ManifestValueBase.MemberName
-- uid: CSF.Validation.Manifest.ManifestValueBase.MemberName*
-  name: MemberName
-  href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_MemberName_
-  commentId: Overload:CSF.Validation.Manifest.ManifestValueBase.MemberName
-  isSpec: "True"
-  fullName: CSF.Validation.Manifest.ManifestValueBase.MemberName
-  nameWithType: ManifestValueBase.MemberName
 - uid: CSF.Validation.Manifest.ManifestValueBase.Parent
   name: Parent
   href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_Parent
@@ -1278,6 +1413,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValueBase.Rules
   nameWithType: ManifestValueBase.Rules
+- uid: CSF.Validation.Manifest.ManifestValueBase.ToString
+  name: ToString()
+  href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_ToString
+  commentId: M:CSF.Validation.Manifest.ManifestValueBase.ToString
+  fullName: CSF.Validation.Manifest.ManifestValueBase.ToString()
+  nameWithType: ManifestValueBase.ToString()
+- uid: CSF.Validation.Manifest.ManifestValueBase.ToString*
+  name: ToString
+  href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_ToString_
+  commentId: Overload:CSF.Validation.Manifest.ManifestValueBase.ToString
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.ManifestValueBase.ToString
+  nameWithType: ManifestValueBase.ToString
 - uid: CSF.Validation.Manifest.ManifestValueBase.ValidatedType
   name: ValidatedType
   href: api/CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_ValidatedType
@@ -1291,6 +1439,168 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.Manifest.ManifestValueBase.ValidatedType
   nameWithType: ManifestValueBase.ValidatedType
+- uid: CSF.Validation.Manifest.RecursiveManifestValue
+  name: RecursiveManifestValue
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html
+  commentId: T:CSF.Validation.Manifest.RecursiveManifestValue
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue
+  nameWithType: RecursiveManifestValue
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.#ctor(CSF.Validation.Manifest.IManifestItem)
+  name: RecursiveManifestValue(IManifestItem)
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue__ctor_CSF_Validation_Manifest_IManifestItem_
+  commentId: M:CSF.Validation.Manifest.RecursiveManifestValue.#ctor(CSF.Validation.Manifest.IManifestItem)
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.RecursiveManifestValue(CSF.Validation.Manifest.IManifestItem)
+  nameWithType: RecursiveManifestValue.RecursiveManifestValue(IManifestItem)
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.#ctor*
+  name: RecursiveManifestValue
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue__ctor_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.RecursiveManifestValue
+  nameWithType: RecursiveManifestValue.RecursiveManifestValue
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour
+  nameWithType: RecursiveManifestValue.AccessorExceptionBehaviour
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour*
+  name: AccessorExceptionBehaviour
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour
+  nameWithType: RecursiveManifestValue.AccessorExceptionBehaviour
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent
+  name: AccessorFromParent
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_AccessorFromParent
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent
+  nameWithType: RecursiveManifestValue.AccessorFromParent
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent*
+  name: AccessorFromParent
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_AccessorFromParent_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent
+  nameWithType: RecursiveManifestValue.AccessorFromParent
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.Children
+  name: Children
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_Children
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.Children
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.Children
+  nameWithType: RecursiveManifestValue.Children
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.Children*
+  name: Children
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_Children_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.Children
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.Children
+  nameWithType: RecursiveManifestValue.Children
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue
+  name: CollectionItemValue
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_CollectionItemValue
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue
+  nameWithType: RecursiveManifestValue.CollectionItemValue
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue*
+  name: CollectionItemValue
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_CollectionItemValue_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue
+  nameWithType: RecursiveManifestValue.CollectionItemValue
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor
+  name: IdentityAccessor
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_IdentityAccessor
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor
+  nameWithType: RecursiveManifestValue.IdentityAccessor
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor*
+  name: IdentityAccessor
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_IdentityAccessor_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor
+  nameWithType: RecursiveManifestValue.IdentityAccessor
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.MemberName
+  name: MemberName
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_MemberName
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.MemberName
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.MemberName
+  nameWithType: RecursiveManifestValue.MemberName
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.MemberName*
+  name: MemberName
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_MemberName_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.MemberName
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.MemberName
+  nameWithType: RecursiveManifestValue.MemberName
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.Parent
+  name: Parent
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_Parent
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.Parent
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.Parent
+  nameWithType: RecursiveManifestValue.Parent
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.Parent*
+  name: Parent
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_Parent_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.Parent
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.Parent
+  nameWithType: RecursiveManifestValue.Parent
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.Rules
+  name: Rules
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_Rules
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.Rules
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.Rules
+  nameWithType: RecursiveManifestValue.Rules
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.Rules*
+  name: Rules
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_Rules_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.Rules
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.Rules
+  nameWithType: RecursiveManifestValue.Rules
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.ToString
+  name: ToString()
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_ToString
+  commentId: M:CSF.Validation.Manifest.RecursiveManifestValue.ToString
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.ToString()
+  nameWithType: RecursiveManifestValue.ToString()
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.ToString*
+  name: ToString
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_ToString_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.ToString
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.ToString
+  nameWithType: RecursiveManifestValue.ToString
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType
+  name: ValidatedType
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_ValidatedType
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType
+  nameWithType: RecursiveManifestValue.ValidatedType
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType*
+  name: ValidatedType
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_ValidatedType_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType
+  nameWithType: RecursiveManifestValue.ValidatedType
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue
+  name: WrappedValue
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_WrappedValue
+  commentId: P:CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue
+  nameWithType: RecursiveManifestValue.WrappedValue
+- uid: CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue*
+  name: WrappedValue
+  href: api/CSF.Validation.Manifest.RecursiveManifestValue.html#CSF_Validation_Manifest_RecursiveManifestValue_WrappedValue_
+  commentId: Overload:CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue
+  isSpec: "True"
+  fullName: CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue
+  nameWithType: RecursiveManifestValue.WrappedValue
 - uid: CSF.Validation.Manifest.ValidatedTypeProvider
   name: ValidatedTypeProvider
   href: api/CSF.Validation.Manifest.ValidatedTypeProvider.html
@@ -1455,6 +1765,134 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.CollectionItemValue.PolymorphicValues
   nameWithType: CollectionItemValue.PolymorphicValues
+- uid: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter
+  name: ContextToManifestCollectionItemConverter
+  href: api/CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.html
+  commentId: T:CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter
+  fullName: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter
+  nameWithType: ContextToManifestCollectionItemConverter
+- uid: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  name: ContextToManifestCollectionItemConverter(IGetsManifestItemFromModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.html#CSF_Validation_ManifestModel_ContextToManifestCollectionItemConverter__ctor_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.ContextToManifestCollectionItemConverter(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  nameWithType: ContextToManifestCollectionItemConverter.ContextToManifestCollectionItemConverter(IGetsManifestItemFromModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.#ctor*
+  name: ContextToManifestCollectionItemConverter
+  href: api/CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.html#CSF_Validation_ManifestModel_ContextToManifestCollectionItemConverter__ctor_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.ContextToManifestCollectionItemConverter
+  nameWithType: ContextToManifestCollectionItemConverter.ContextToManifestCollectionItemConverter
+- uid: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.html#CSF_Validation_ManifestModel_ContextToManifestCollectionItemConverter_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: ContextToManifestCollectionItemConverter.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.html#CSF_Validation_ManifestModel_ContextToManifestCollectionItemConverter_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.GetManifestItem
+  nameWithType: ContextToManifestCollectionItemConverter.GetManifestItem
+- uid: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter
+  name: ContextToManifestPolymorphicTypeConverter
+  href: api/CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.html
+  commentId: T:CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter
+  fullName: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter
+  nameWithType: ContextToManifestPolymorphicTypeConverter
+- uid: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  name: ContextToManifestPolymorphicTypeConverter(IGetsManifestItemFromModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.html#CSF_Validation_ManifestModel_ContextToManifestPolymorphicTypeConverter__ctor_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.ContextToManifestPolymorphicTypeConverter(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  nameWithType: ContextToManifestPolymorphicTypeConverter.ContextToManifestPolymorphicTypeConverter(IGetsManifestItemFromModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.#ctor*
+  name: ContextToManifestPolymorphicTypeConverter
+  href: api/CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.html#CSF_Validation_ManifestModel_ContextToManifestPolymorphicTypeConverter__ctor_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.ContextToManifestPolymorphicTypeConverter
+  nameWithType: ContextToManifestPolymorphicTypeConverter.ContextToManifestPolymorphicTypeConverter
+- uid: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.html#CSF_Validation_ManifestModel_ContextToManifestPolymorphicTypeConverter_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: ContextToManifestPolymorphicTypeConverter.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.html#CSF_Validation_ManifestModel_ContextToManifestPolymorphicTypeConverter_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToManifestPolymorphicTypeConverter.GetManifestItem
+  nameWithType: ContextToManifestPolymorphicTypeConverter.GetManifestItem
+- uid: CSF.Validation.ManifestModel.ContextToManifestValueConverter
+  name: ContextToManifestValueConverter
+  href: api/CSF.Validation.ManifestModel.ContextToManifestValueConverter.html
+  commentId: T:CSF.Validation.ManifestModel.ContextToManifestValueConverter
+  fullName: CSF.Validation.ManifestModel.ContextToManifestValueConverter
+  nameWithType: ContextToManifestValueConverter
+- uid: CSF.Validation.ManifestModel.ContextToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  name: ContextToManifestValueConverter(IGetsManifestItemFromModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToManifestValueConverter.html#CSF_Validation_ManifestModel_ContextToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToManifestValueConverter.ContextToManifestValueConverter(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  nameWithType: ContextToManifestValueConverter.ContextToManifestValueConverter(IGetsManifestItemFromModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToManifestValueConverter.#ctor*
+  name: ContextToManifestValueConverter
+  href: api/CSF.Validation.ManifestModel.ContextToManifestValueConverter.html#CSF_Validation_ManifestModel_ContextToManifestValueConverter__ctor_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToManifestValueConverter.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToManifestValueConverter.ContextToManifestValueConverter
+  nameWithType: ContextToManifestValueConverter.ContextToManifestValueConverter
+- uid: CSF.Validation.ManifestModel.ContextToManifestValueConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToManifestValueConverter.html#CSF_Validation_ManifestModel_ContextToManifestValueConverter_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToManifestValueConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToManifestValueConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: ContextToManifestValueConverter.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToManifestValueConverter.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.ContextToManifestValueConverter.html#CSF_Validation_ManifestModel_ContextToManifestValueConverter_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToManifestValueConverter.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToManifestValueConverter.GetManifestItem
+  nameWithType: ContextToManifestValueConverter.GetManifestItem
+- uid: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter
+  name: ContextToRecursiveManifestItemConverter
+  href: api/CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.html
+  commentId: T:CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter
+  fullName: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter
+  nameWithType: ContextToRecursiveManifestItemConverter
+- uid: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  name: ContextToRecursiveManifestItemConverter(IGetsManifestItemFromModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.html#CSF_Validation_ManifestModel_ContextToRecursiveManifestItemConverter__ctor_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.ContextToRecursiveManifestItemConverter(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  nameWithType: ContextToRecursiveManifestItemConverter.ContextToRecursiveManifestItemConverter(IGetsManifestItemFromModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.#ctor*
+  name: ContextToRecursiveManifestItemConverter
+  href: api/CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.html#CSF_Validation_ManifestModel_ContextToRecursiveManifestItemConverter__ctor_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.ContextToRecursiveManifestItemConverter
+  nameWithType: ContextToRecursiveManifestItemConverter.ContextToRecursiveManifestItemConverter
+- uid: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.html#CSF_Validation_ManifestModel_ContextToRecursiveManifestItemConverter_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: ContextToRecursiveManifestItemConverter.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.html#CSF_Validation_ManifestModel_ContextToRecursiveManifestItemConverter_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ContextToRecursiveManifestItemConverter.GetManifestItem
+  nameWithType: ContextToRecursiveManifestItemConverter.GetManifestItem
 - uid: CSF.Validation.ManifestModel.IConvertsModelRulesToManifestRules
   name: IConvertsModelRulesToManifestRules
   href: api/CSF.Validation.ManifestModel.IConvertsModelRulesToManifestRules.html
@@ -1496,6 +1934,38 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.IConvertsModelValuesToManifestValues.ConvertAllValues
   nameWithType: IConvertsModelValuesToManifestValues.ConvertAllValues
+- uid: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+  name: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+  href: api/CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.html
+  commentId: T:CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+  fullName: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+  nameWithType: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+- uid: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext,CSF.Validation.ManifestModel.IGetsAccessorFunction)
+  name: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator(IGetsManifestItemFromModelToManifestConversionContext, IGetsAccessorFunction)
+  href: api/CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.html#CSF_Validation_ManifestModel_IdentityAccessorPopulatingManifestFromModelConversionContextDecorator__ctor_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_CSF_Validation_ManifestModel_IGetsAccessorFunction_
+  commentId: M:CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.#ctor(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext,CSF.Validation.ManifestModel.IGetsAccessorFunction)
+  fullName: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator(CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext, CSF.Validation.ManifestModel.IGetsAccessorFunction)
+  nameWithType: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator(IGetsManifestItemFromModelToManifestConversionContext, IGetsAccessorFunction)
+- uid: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.#ctor*
+  name: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+  href: api/CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.html#CSF_Validation_ManifestModel_IdentityAccessorPopulatingManifestFromModelConversionContextDecorator__ctor_
+  commentId: Overload:CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.#ctor
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+  nameWithType: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator
+- uid: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.html#CSF_Validation_ManifestModel_IdentityAccessorPopulatingManifestFromModelConversionContextDecorator_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.html#CSF_Validation_ManifestModel_IdentityAccessorPopulatingManifestFromModelConversionContextDecorator_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem
+  nameWithType: IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.GetManifestItem
 - uid: CSF.Validation.ManifestModel.IGetsAccessorFunction
   name: IGetsAccessorFunction
   href: api/CSF.Validation.ManifestModel.IGetsAccessorFunction.html
@@ -1515,6 +1985,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.IGetsAccessorFunction.GetAccessorFunction
   nameWithType: IGetsAccessorFunction.GetAccessorFunction
+- uid: CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext
+  name: IGetsManifestItemFromModelToManifestConversionContext
+  href: api/CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html
+  commentId: T:CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext
+  fullName: CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext
+  nameWithType: IGetsManifestItemFromModelToManifestConversionContext
+- uid: CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html#CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html#CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem
+  nameWithType: IGetsManifestItemFromModelToManifestConversionContext.GetManifestItem
 - uid: CSF.Validation.ManifestModel.IGetsPropertySetterAction
   name: IGetsPropertySetterAction
   href: api/CSF.Validation.ManifestModel.IGetsPropertySetterAction.html
@@ -1801,6 +2290,12 @@ references:
   commentId: F:CSF.Validation.ManifestModel.ModelToManifestConversionType.PolymorphicType
   fullName: CSF.Validation.ManifestModel.ModelToManifestConversionType.PolymorphicType
   nameWithType: ModelToManifestConversionType.PolymorphicType
+- uid: CSF.Validation.ManifestModel.ModelToManifestConversionType.RecursiveManifestValue
+  name: RecursiveManifestValue
+  href: api/CSF.Validation.ManifestModel.ModelToManifestConversionType.html#CSF_Validation_ManifestModel_ModelToManifestConversionType_RecursiveManifestValue
+  commentId: F:CSF.Validation.ManifestModel.ModelToManifestConversionType.RecursiveManifestValue
+  fullName: CSF.Validation.ManifestModel.ModelToManifestConversionType.RecursiveManifestValue
+  nameWithType: ModelToManifestConversionType.RecursiveManifestValue
 - uid: CSF.Validation.ManifestModel.ModelToManifestValueConversionResult
   name: ModelToManifestValueConversionResult
   href: api/CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html
@@ -1839,12 +2334,12 @@ references:
   commentId: T:CSF.Validation.ManifestModel.ModelValueToManifestValueConverter
   fullName: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter
   nameWithType: ModelValueToManifestValueConverter
-- uid: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction,CSF.Validation.Manifest.IGetsValidatedType)
-  name: ModelValueToManifestValueConverter(IGetsAccessorFunction, IGetsValidatedType)
-  href: api/CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.html#CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsAccessorFunction_CSF_Validation_Manifest_IGetsValidatedType_
-  commentId: M:CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction,CSF.Validation.Manifest.IGetsValidatedType)
-  fullName: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.ModelValueToManifestValueConverter(CSF.Validation.ManifestModel.IGetsAccessorFunction, CSF.Validation.Manifest.IGetsValidatedType)
-  nameWithType: ModelValueToManifestValueConverter.ModelValueToManifestValueConverter(IGetsAccessorFunction, IGetsValidatedType)
+- uid: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction,CSF.Validation.Manifest.IGetsValidatedType,CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  name: ModelValueToManifestValueConverter(IGetsAccessorFunction, IGetsValidatedType, IGetsManifestItemFromModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.html#CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_CSF_Validation_ManifestModel_IGetsAccessorFunction_CSF_Validation_Manifest_IGetsValidatedType_CSF_Validation_ManifestModel_IGetsManifestItemFromModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor(CSF.Validation.ManifestModel.IGetsAccessorFunction,CSF.Validation.Manifest.IGetsValidatedType,CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.ModelValueToManifestValueConverter(CSF.Validation.ManifestModel.IGetsAccessorFunction, CSF.Validation.Manifest.IGetsValidatedType, CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext)
+  nameWithType: ModelValueToManifestValueConverter.ModelValueToManifestValueConverter(IGetsAccessorFunction, IGetsValidatedType, IGetsManifestItemFromModelToManifestConversionContext)
 - uid: CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.#ctor*
   name: ModelValueToManifestValueConverter
   href: api/CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.html#CSF_Validation_ManifestModel_ModelValueToManifestValueConverter__ctor_
@@ -2073,6 +2568,25 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.RuleTypeResolver.GetRuleType
   nameWithType: RuleTypeResolver.GetRuleType
+- uid: CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter
+  name: ThrowingContextToManifestItemConverter
+  href: api/CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.html
+  commentId: T:CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter
+  fullName: CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter
+  nameWithType: ThrowingContextToManifestItemConverter
+- uid: CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  name: GetManifestItem(ModelToManifestConversionContext)
+  href: api/CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.html#CSF_Validation_ManifestModel_ThrowingContextToManifestItemConverter_GetManifestItem_CSF_Validation_ManifestModel_ModelToManifestConversionContext_
+  commentId: M:CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  fullName: CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.GetManifestItem(CSF.Validation.ManifestModel.ModelToManifestConversionContext)
+  nameWithType: ThrowingContextToManifestItemConverter.GetManifestItem(ModelToManifestConversionContext)
+- uid: CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.GetManifestItem*
+  name: GetManifestItem
+  href: api/CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.html#CSF_Validation_ManifestModel_ThrowingContextToManifestItemConverter_GetManifestItem_
+  commentId: Overload:CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.GetManifestItem
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ThrowingContextToManifestItemConverter.GetManifestItem
+  nameWithType: ThrowingContextToManifestItemConverter.GetManifestItem
 - uid: CSF.Validation.ManifestModel.ValidationManifestFromModelConverter
   name: ValidationManifestFromModelConverter
   href: api/CSF.Validation.ManifestModel.ValidationManifestFromModelConverter.html
@@ -2195,6 +2709,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.ManifestModel.ValueBase.Rules
   nameWithType: ValueBase.Rules
+- uid: CSF.Validation.ManifestModel.ValueBase.ValidateRecursivelyAsAncestor
+  name: ValidateRecursivelyAsAncestor
+  href: api/CSF.Validation.ManifestModel.ValueBase.html#CSF_Validation_ManifestModel_ValueBase_ValidateRecursivelyAsAncestor
+  commentId: P:CSF.Validation.ManifestModel.ValueBase.ValidateRecursivelyAsAncestor
+  fullName: CSF.Validation.ManifestModel.ValueBase.ValidateRecursivelyAsAncestor
+  nameWithType: ValueBase.ValidateRecursivelyAsAncestor
+- uid: CSF.Validation.ManifestModel.ValueBase.ValidateRecursivelyAsAncestor*
+  name: ValidateRecursivelyAsAncestor
+  href: api/CSF.Validation.ManifestModel.ValueBase.html#CSF_Validation_ManifestModel_ValueBase_ValidateRecursivelyAsAncestor_
+  commentId: Overload:CSF.Validation.ManifestModel.ValueBase.ValidateRecursivelyAsAncestor
+  isSpec: "True"
+  fullName: CSF.Validation.ManifestModel.ValueBase.ValidateRecursivelyAsAncestor
+  nameWithType: ValueBase.ValidateRecursivelyAsAncestor
 - uid: CSF.Validation.MessageEnrichingValidatorDecorator`1
   name: MessageEnrichingValidatorDecorator<TValidated>
   href: api/CSF.Validation.MessageEnrichingValidatorDecorator-1.html
@@ -3899,6 +4426,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.ErrorGetValueToBeValidatedResponse
   nameWithType: ErrorGetValueToBeValidatedResponse.ErrorGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  name: Equals(GetValueToBeValidatedResponse)
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_
+  commentId: M:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  nameWithType: ErrorGetValueToBeValidatedResponse.Equals(GetValueToBeValidatedResponse)
+- uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Equals*
+  name: Equals
+  href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_Equals_
+  commentId: Overload:CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Equals
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Equals
+  nameWithType: ErrorGetValueToBeValidatedResponse.Equals
 - uid: CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.Exception
   name: Exception
   href: api/CSF.Validation.RuleExecution.ErrorGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_ErrorGetValueToBeValidatedResponse_Exception
@@ -4153,6 +4693,38 @@ references:
   commentId: T:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse
   fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse
   nameWithType: GetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  name: Equals(GetValueToBeValidatedResponse)
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_
+  commentId: M:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  nameWithType: GetValueToBeValidatedResponse.Equals(GetValueToBeValidatedResponse)
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_Equals_System_Object_
+  commentId: M:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals(System.Object)
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals(System.Object)
+  nameWithType: GetValueToBeValidatedResponse.Equals(Object)
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals*
+  name: Equals
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_Equals_
+  commentId: Overload:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.Equals
+  nameWithType: GetValueToBeValidatedResponse.Equals
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.GetHashCode
+  name: GetHashCode()
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_GetHashCode
+  commentId: M:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.GetHashCode
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.GetHashCode()
+  nameWithType: GetValueToBeValidatedResponse.GetHashCode()
+- uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.GetHashCode*
+  name: GetHashCode
+  href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_GetHashCode_
+  commentId: Overload:CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.GetHashCode
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.GetHashCode
+  nameWithType: GetValueToBeValidatedResponse.GetHashCode
 - uid: CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.IsSuccess
   name: IsSuccess
   href: api/CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_IsSuccess
@@ -4232,12 +4804,12 @@ references:
   commentId: T:CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour
   fullName: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour
   nameWithType: IGetsAccessorExceptionBehaviour
-- uid: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ResolvedValidationOptions)
-  name: GetBehaviour(ManifestValue, ResolvedValidationOptions)
-  href: api/CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.html#CSF_Validation_RuleExecution_IGetsAccessorExceptionBehaviour_GetBehaviour_CSF_Validation_Manifest_ManifestValue_CSF_Validation_ResolvedValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ResolvedValidationOptions)
-  fullName: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.ManifestValue, CSF.Validation.ResolvedValidationOptions)
-  nameWithType: IGetsAccessorExceptionBehaviour.GetBehaviour(ManifestValue, ResolvedValidationOptions)
+- uid: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.IManifestValue,CSF.Validation.ResolvedValidationOptions)
+  name: GetBehaviour(IManifestValue, ResolvedValidationOptions)
+  href: api/CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.html#CSF_Validation_RuleExecution_IGetsAccessorExceptionBehaviour_GetBehaviour_CSF_Validation_Manifest_IManifestValue_CSF_Validation_ResolvedValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.IManifestValue,CSF.Validation.ResolvedValidationOptions)
+  fullName: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour(CSF.Validation.Manifest.IManifestValue, CSF.Validation.ResolvedValidationOptions)
+  nameWithType: IGetsAccessorExceptionBehaviour.GetBehaviour(IManifestValue, ResolvedValidationOptions)
 - uid: CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.GetBehaviour*
   name: GetBehaviour
   href: api/CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour.html#CSF_Validation_RuleExecution_IGetsAccessorExceptionBehaviour_GetBehaviour_
@@ -4406,12 +4978,12 @@ references:
   commentId: T:CSF.Validation.RuleExecution.IGetsValueToBeValidated
   fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated
   nameWithType: IGetsValueToBeValidated
-- uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
-  name: GetValueToBeValidated(ManifestValue, Object, ResolvedValidationOptions)
-  href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_GetValueToBeValidated_CSF_Validation_Manifest_ManifestValue_System_Object_CSF_Validation_ResolvedValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
-  fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ResolvedValidationOptions)
-  nameWithType: IGetsValueToBeValidated.GetValueToBeValidated(ManifestValue, Object, ResolvedValidationOptions)
+- uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.IManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
+  name: GetValueToBeValidated(IManifestValue, Object, ResolvedValidationOptions)
+  href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_GetValueToBeValidated_CSF_Validation_Manifest_IManifestValue_System_Object_CSF_Validation_ResolvedValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.IManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
+  fullName: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated(CSF.Validation.Manifest.IManifestValue, System.Object, CSF.Validation.ResolvedValidationOptions)
+  nameWithType: IGetsValueToBeValidated.GetValueToBeValidated(IManifestValue, Object, ResolvedValidationOptions)
 - uid: CSF.Validation.RuleExecution.IGetsValueToBeValidated.GetValueToBeValidated*
   name: GetValueToBeValidated
   href: api/CSF.Validation.RuleExecution.IGetsValueToBeValidated.html#CSF_Validation_RuleExecution_IGetsValueToBeValidated_GetValueToBeValidated_
@@ -4438,6 +5010,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Default
   nameWithType: IgnoredGetValueToBeValidatedResponse.Default
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  name: Equals(GetValueToBeValidatedResponse)
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_
+  commentId: M:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  nameWithType: IgnoredGetValueToBeValidatedResponse.Equals(GetValueToBeValidatedResponse)
+- uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals*
+  name: Equals
+  href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_Equals_
+  commentId: Overload:CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.Equals
+  nameWithType: IgnoredGetValueToBeValidatedResponse.Equals
 - uid: CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.IsSuccess
   name: IsSuccess
   href: api/CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_IgnoredGetValueToBeValidatedResponse_IsSuccess
@@ -4848,6 +5433,32 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.SuccessfulGetValueToBeValidatedResponse
   nameWithType: SuccessfulGetValueToBeValidatedResponse.SuccessfulGetValueToBeValidatedResponse
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  name: Equals(GetValueToBeValidatedResponse)
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_Equals_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_
+  commentId: M:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Equals(CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.Equals(GetValueToBeValidatedResponse)
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Equals*
+  name: Equals
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_Equals_
+  commentId: Overload:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Equals
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.Equals
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.Equals
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.GetHashCode
+  name: GetHashCode()
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_GetHashCode
+  commentId: M:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.GetHashCode
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.GetHashCode()
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.GetHashCode()
+- uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.GetHashCode*
+  name: GetHashCode
+  href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_GetHashCode_
+  commentId: Overload:CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.GetHashCode
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.GetHashCode
+  nameWithType: SuccessfulGetValueToBeValidatedResponse.GetHashCode
 - uid: CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.IsSuccess
   name: IsSuccess
   href: api/CSF.Validation.RuleExecution.SuccessfulGetValueToBeValidatedResponse.html#CSF_Validation_RuleExecution_SuccessfulGetValueToBeValidatedResponse_IsSuccess
@@ -4932,6 +5543,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValue.GetActualValue
   nameWithType: ValidatedValue.GetActualValue
+- uid: CSF.Validation.RuleExecution.ValidatedValue.IsMatch(CSF.Validation.Manifest.IManifestItem,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  name: IsMatch(IManifestItem, GetValueToBeValidatedResponse)
+  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_IsMatch_CSF_Validation_Manifest_IManifestItem_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValue.IsMatch(CSF.Validation.Manifest.IManifestItem,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  fullName: CSF.Validation.RuleExecution.ValidatedValue.IsMatch(CSF.Validation.Manifest.IManifestItem, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse)
+  nameWithType: ValidatedValue.IsMatch(IManifestItem, GetValueToBeValidatedResponse)
+- uid: CSF.Validation.RuleExecution.ValidatedValue.IsMatch*
+  name: IsMatch
+  href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_IsMatch_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValue.IsMatch
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValue.IsMatch
+  nameWithType: ValidatedValue.IsMatch
 - uid: CSF.Validation.RuleExecution.ValidatedValue.ManifestValue
   name: ManifestValue
   href: api/CSF.Validation.RuleExecution.ValidatedValue.html#CSF_Validation_RuleExecution_ValidatedValue_ManifestValue
@@ -5003,15 +5627,15 @@ references:
   commentId: T:CSF.Validation.RuleExecution.ValidatedValueBasis
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis
   nameWithType: ValidatedValueBasis
-- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
-  name: ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable<Int64>)
-  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis__ctor_CSF_Validation_Manifest_ManifestValueBase_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_CSF_Validation_RuleExecution_ValidatedValue_System_Nullable_System_Int64__
-  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
-  name.vb: ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable(Of Int64))
-  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable<System.Int64>)
-  fullName.vb: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable(Of System.Int64))
-  nameWithType: ValidatedValueBasis.ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable<Int64>)
-  nameWithType.vb: ValidatedValueBasis.ValidatedValueBasis(ManifestValueBase, GetValueToBeValidatedResponse, ValidatedValue, Nullable(Of Int64))
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.IManifestItem,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
+  name: ValidatedValueBasis(IManifestItem, GetValueToBeValidatedResponse, ValidatedValue, Nullable<Int64>)
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis__ctor_CSF_Validation_Manifest_IManifestItem_CSF_Validation_RuleExecution_GetValueToBeValidatedResponse_CSF_Validation_RuleExecution_ValidatedValue_System_Nullable_System_Int64__
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor(CSF.Validation.Manifest.IManifestItem,CSF.Validation.RuleExecution.GetValueToBeValidatedResponse,CSF.Validation.RuleExecution.ValidatedValue,System.Nullable{System.Int64})
+  name.vb: ValidatedValueBasis(IManifestItem, GetValueToBeValidatedResponse, ValidatedValue, Nullable(Of Int64))
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.IManifestItem, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable<System.Int64>)
+  fullName.vb: CSF.Validation.RuleExecution.ValidatedValueBasis.ValidatedValueBasis(CSF.Validation.Manifest.IManifestItem, CSF.Validation.RuleExecution.GetValueToBeValidatedResponse, CSF.Validation.RuleExecution.ValidatedValue, System.Nullable(Of System.Int64))
+  nameWithType: ValidatedValueBasis.ValidatedValueBasis(IManifestItem, GetValueToBeValidatedResponse, ValidatedValue, Nullable<Int64>)
+  nameWithType.vb: ValidatedValueBasis.ValidatedValueBasis(IManifestItem, GetValueToBeValidatedResponse, ValidatedValue, Nullable(Of Int64))
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis.#ctor*
   name: ValidatedValueBasis
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis__ctor_
@@ -5071,6 +5695,19 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.GetManifestRules
   nameWithType: ValidatedValueBasis.GetManifestRules
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.IsCircularReference
+  name: IsCircularReference()
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_IsCircularReference
+  commentId: M:CSF.Validation.RuleExecution.ValidatedValueBasis.IsCircularReference
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.IsCircularReference()
+  nameWithType: ValidatedValueBasis.IsCircularReference()
+- uid: CSF.Validation.RuleExecution.ValidatedValueBasis.IsCircularReference*
+  name: IsCircularReference
+  href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_IsCircularReference_
+  commentId: Overload:CSF.Validation.RuleExecution.ValidatedValueBasis.IsCircularReference
+  isSpec: "True"
+  fullName: CSF.Validation.RuleExecution.ValidatedValueBasis.IsCircularReference
+  nameWithType: ValidatedValueBasis.IsCircularReference
 - uid: CSF.Validation.RuleExecution.ValidatedValueBasis.ManifestValue
   name: ManifestValue
   href: api/CSF.Validation.RuleExecution.ValidatedValueBasis.html#CSF_Validation_RuleExecution_ValidatedValueBasis_ManifestValue
@@ -5193,12 +5830,12 @@ references:
   commentId: T:CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider
   fullName: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider
   nameWithType: ValueAccessExceptionBehaviourProvider
-- uid: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ResolvedValidationOptions)
-  name: GetBehaviour(ManifestValue, ResolvedValidationOptions)
-  href: api/CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.html#CSF_Validation_RuleExecution_ValueAccessExceptionBehaviourProvider_GetBehaviour_CSF_Validation_Manifest_ManifestValue_CSF_Validation_ResolvedValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.ManifestValue,CSF.Validation.ResolvedValidationOptions)
-  fullName: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.ManifestValue, CSF.Validation.ResolvedValidationOptions)
-  nameWithType: ValueAccessExceptionBehaviourProvider.GetBehaviour(ManifestValue, ResolvedValidationOptions)
+- uid: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.IManifestValue,CSF.Validation.ResolvedValidationOptions)
+  name: GetBehaviour(IManifestValue, ResolvedValidationOptions)
+  href: api/CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.html#CSF_Validation_RuleExecution_ValueAccessExceptionBehaviourProvider_GetBehaviour_CSF_Validation_Manifest_IManifestValue_CSF_Validation_ResolvedValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.IManifestValue,CSF.Validation.ResolvedValidationOptions)
+  fullName: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour(CSF.Validation.Manifest.IManifestValue, CSF.Validation.ResolvedValidationOptions)
+  nameWithType: ValueAccessExceptionBehaviourProvider.GetBehaviour(IManifestValue, ResolvedValidationOptions)
 - uid: CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.GetBehaviour*
   name: GetBehaviour
   href: api/CSF.Validation.RuleExecution.ValueAccessExceptionBehaviourProvider.html#CSF_Validation_RuleExecution_ValueAccessExceptionBehaviourProvider_GetBehaviour_
@@ -5225,12 +5862,12 @@ references:
   isSpec: "True"
   fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.ValueToBeValidatedProvider
   nameWithType: ValueToBeValidatedProvider.ValueToBeValidatedProvider
-- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
-  name: GetValueToBeValidated(ManifestValue, Object, ResolvedValidationOptions)
-  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_GetValueToBeValidated_CSF_Validation_Manifest_ManifestValue_System_Object_CSF_Validation_ResolvedValidationOptions_
-  commentId: M:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
-  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.ManifestValue, System.Object, CSF.Validation.ResolvedValidationOptions)
-  nameWithType: ValueToBeValidatedProvider.GetValueToBeValidated(ManifestValue, Object, ResolvedValidationOptions)
+- uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.IManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
+  name: GetValueToBeValidated(IManifestValue, Object, ResolvedValidationOptions)
+  href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_GetValueToBeValidated_CSF_Validation_Manifest_IManifestValue_System_Object_CSF_Validation_ResolvedValidationOptions_
+  commentId: M:CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.IManifestValue,System.Object,CSF.Validation.ResolvedValidationOptions)
+  fullName: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated(CSF.Validation.Manifest.IManifestValue, System.Object, CSF.Validation.ResolvedValidationOptions)
+  nameWithType: ValueToBeValidatedProvider.GetValueToBeValidated(IManifestValue, Object, ResolvedValidationOptions)
 - uid: CSF.Validation.RuleExecution.ValueToBeValidatedProvider.GetValueToBeValidated*
   name: GetValueToBeValidated
   href: api/CSF.Validation.RuleExecution.ValueToBeValidatedProvider.html#CSF_Validation_RuleExecution_ValueToBeValidatedProvider_GetValueToBeValidated_
@@ -5244,18 +5881,18 @@ references:
   commentId: T:CSF.Validation.RuleResultIsForDescendentOfValue
   fullName: CSF.Validation.RuleResultIsForDescendentOfValue
   nameWithType: RuleResultIsForDescendentOfValue
-- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Boolean)
-  name: RuleResultIsForDescendentOfValue(ManifestValueBase, Boolean)
-  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Boolean_
-  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Boolean)
-  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(CSF.Validation.Manifest.ManifestValueBase, System.Boolean)
-  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(ManifestValueBase, Boolean)
-- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object,System.Boolean)
-  name: RuleResultIsForDescendentOfValue(ManifestValueBase, Object, Boolean)
-  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Object_System_Boolean_
-  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object,System.Boolean)
-  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(CSF.Validation.Manifest.ManifestValueBase, System.Object, System.Boolean)
-  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(ManifestValueBase, Object, Boolean)
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.IManifestItem,System.Boolean)
+  name: RuleResultIsForDescendentOfValue(IManifestItem, Boolean)
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_CSF_Validation_Manifest_IManifestItem_System_Boolean_
+  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.IManifestItem,System.Boolean)
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(CSF.Validation.Manifest.IManifestItem, System.Boolean)
+  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(IManifestItem, Boolean)
+- uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.IManifestItem,System.Object,System.Boolean)
+  name: RuleResultIsForDescendentOfValue(IManifestItem, Object, Boolean)
+  href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_CSF_Validation_Manifest_IManifestItem_System_Object_System_Boolean_
+  commentId: M:CSF.Validation.RuleResultIsForDescendentOfValue.#ctor(CSF.Validation.Manifest.IManifestItem,System.Object,System.Boolean)
+  fullName: CSF.Validation.RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(CSF.Validation.Manifest.IManifestItem, System.Object, System.Boolean)
+  nameWithType: RuleResultIsForDescendentOfValue.RuleResultIsForDescendentOfValue(IManifestItem, Object, Boolean)
 - uid: CSF.Validation.RuleResultIsForDescendentOfValue.#ctor*
   name: RuleResultIsForDescendentOfValue
   href: api/CSF.Validation.RuleResultIsForDescendentOfValue.html#CSF_Validation_RuleResultIsForDescendentOfValue__ctor_
@@ -6442,12 +7079,12 @@ references:
   commentId: T:CSF.Validation.Rules.ManifestValueInfo
   fullName: CSF.Validation.Rules.ManifestValueInfo
   nameWithType: ManifestValueInfo
-- uid: CSF.Validation.Rules.ManifestValueInfo.#ctor(CSF.Validation.Manifest.ManifestValueBase)
-  name: ManifestValueInfo(ManifestValueBase)
-  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo__ctor_CSF_Validation_Manifest_ManifestValueBase_
-  commentId: M:CSF.Validation.Rules.ManifestValueInfo.#ctor(CSF.Validation.Manifest.ManifestValueBase)
-  fullName: CSF.Validation.Rules.ManifestValueInfo.ManifestValueInfo(CSF.Validation.Manifest.ManifestValueBase)
-  nameWithType: ManifestValueInfo.ManifestValueInfo(ManifestValueBase)
+- uid: CSF.Validation.Rules.ManifestValueInfo.#ctor(CSF.Validation.Manifest.IManifestItem)
+  name: ManifestValueInfo(IManifestItem)
+  href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo__ctor_CSF_Validation_Manifest_IManifestItem_
+  commentId: M:CSF.Validation.Rules.ManifestValueInfo.#ctor(CSF.Validation.Manifest.IManifestItem)
+  fullName: CSF.Validation.Rules.ManifestValueInfo.ManifestValueInfo(CSF.Validation.Manifest.IManifestItem)
+  nameWithType: ManifestValueInfo.ManifestValueInfo(IManifestItem)
 - uid: CSF.Validation.Rules.ManifestValueInfo.#ctor*
   name: ManifestValueInfo
   href: api/CSF.Validation.Rules.ManifestValueInfo.html#CSF_Validation_Rules_ManifestValueInfo__ctor_
@@ -7406,15 +8043,15 @@ references:
   commentId: T:CSF.Validation.Rules.ValueContext
   fullName: CSF.Validation.Rules.ValueContext
   nameWithType: ValueContext
-- uid: CSF.Validation.Rules.ValueContext.#ctor(System.Object,System.Object,CSF.Validation.Manifest.ManifestValueBase,System.Nullable{System.Int64})
-  name: ValueContext(Object, Object, ManifestValueBase, Nullable<Int64>)
-  href: api/CSF.Validation.Rules.ValueContext.html#CSF_Validation_Rules_ValueContext__ctor_System_Object_System_Object_CSF_Validation_Manifest_ManifestValueBase_System_Nullable_System_Int64__
-  commentId: M:CSF.Validation.Rules.ValueContext.#ctor(System.Object,System.Object,CSF.Validation.Manifest.ManifestValueBase,System.Nullable{System.Int64})
-  name.vb: ValueContext(Object, Object, ManifestValueBase, Nullable(Of Int64))
-  fullName: CSF.Validation.Rules.ValueContext.ValueContext(System.Object, System.Object, CSF.Validation.Manifest.ManifestValueBase, System.Nullable<System.Int64>)
-  fullName.vb: CSF.Validation.Rules.ValueContext.ValueContext(System.Object, System.Object, CSF.Validation.Manifest.ManifestValueBase, System.Nullable(Of System.Int64))
-  nameWithType: ValueContext.ValueContext(Object, Object, ManifestValueBase, Nullable<Int64>)
-  nameWithType.vb: ValueContext.ValueContext(Object, Object, ManifestValueBase, Nullable(Of Int64))
+- uid: CSF.Validation.Rules.ValueContext.#ctor(System.Object,System.Object,CSF.Validation.Manifest.IManifestItem,System.Nullable{System.Int64})
+  name: ValueContext(Object, Object, IManifestItem, Nullable<Int64>)
+  href: api/CSF.Validation.Rules.ValueContext.html#CSF_Validation_Rules_ValueContext__ctor_System_Object_System_Object_CSF_Validation_Manifest_IManifestItem_System_Nullable_System_Int64__
+  commentId: M:CSF.Validation.Rules.ValueContext.#ctor(System.Object,System.Object,CSF.Validation.Manifest.IManifestItem,System.Nullable{System.Int64})
+  name.vb: ValueContext(Object, Object, IManifestItem, Nullable(Of Int64))
+  fullName: CSF.Validation.Rules.ValueContext.ValueContext(System.Object, System.Object, CSF.Validation.Manifest.IManifestItem, System.Nullable<System.Int64>)
+  fullName.vb: CSF.Validation.Rules.ValueContext.ValueContext(System.Object, System.Object, CSF.Validation.Manifest.IManifestItem, System.Nullable(Of System.Int64))
+  nameWithType: ValueContext.ValueContext(Object, Object, IManifestItem, Nullable<Int64>)
+  nameWithType.vb: ValueContext.ValueContext(Object, Object, IManifestItem, Nullable(Of Int64))
 - uid: CSF.Validation.Rules.ValueContext.#ctor*
   name: ValueContext
   href: api/CSF.Validation.Rules.ValueContext.html#CSF_Validation_Rules_ValueContext__ctor_
@@ -7868,15 +8505,15 @@ references:
   fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated)
   nameWithType: SubsetOfValidationResults<TValidated>
   nameWithType.vb: SubsetOfValidationResults(Of TValidated)
-- uid: CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ManifestValueBase)
-  name: SubsetOfValidationResults(IEnumerable<ValidationRuleResult>, ManifestValueBase)
-  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ManifestValueBase_
-  commentId: M:CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ManifestValueBase)
-  name.vb: SubsetOfValidationResults(IEnumerable(Of ValidationRuleResult), ManifestValueBase)
-  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.SubsetOfValidationResults(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>, CSF.Validation.Manifest.ManifestValueBase)
-  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResult), CSF.Validation.Manifest.ManifestValueBase)
-  nameWithType: SubsetOfValidationResults<TValidated>.SubsetOfValidationResults(IEnumerable<ValidationRuleResult>, ManifestValueBase)
-  nameWithType.vb: SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults(IEnumerable(Of ValidationRuleResult), ManifestValueBase)
+- uid: CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.IManifestItem)
+  name: SubsetOfValidationResults(IEnumerable<ValidationRuleResult>, IManifestItem)
+  href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_IManifestItem_
+  commentId: M:CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.IManifestItem)
+  name.vb: SubsetOfValidationResults(IEnumerable(Of ValidationRuleResult), IManifestItem)
+  fullName: CSF.Validation.SubsetOfValidationResults<TValidated>.SubsetOfValidationResults(System.Collections.Generic.IEnumerable<CSF.Validation.ValidationRuleResult>, CSF.Validation.Manifest.IManifestItem)
+  fullName.vb: CSF.Validation.SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults(System.Collections.Generic.IEnumerable(Of CSF.Validation.ValidationRuleResult), CSF.Validation.Manifest.IManifestItem)
+  nameWithType: SubsetOfValidationResults<TValidated>.SubsetOfValidationResults(IEnumerable<ValidationRuleResult>, IManifestItem)
+  nameWithType.vb: SubsetOfValidationResults(Of TValidated).SubsetOfValidationResults(IEnumerable(Of ValidationRuleResult), IManifestItem)
 - uid: CSF.Validation.SubsetOfValidationResults`1.#ctor*
   name: SubsetOfValidationResults
   href: api/CSF.Validation.SubsetOfValidationResults-1.html#CSF_Validation_SubsetOfValidationResults_1__ctor_
@@ -9072,6 +9709,23 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TValidated).UseObjectIdentity
   nameWithType: IConfiguresValidator<TValidated>.UseObjectIdentity
   nameWithType.vb: IConfiguresValidator(Of TValidated).UseObjectIdentity
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ValidateAsAncestor(System.Int32)
+  name: ValidateAsAncestor(Int32)
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ValidateAsAncestor_System_Int32_
+  commentId: M:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ValidateAsAncestor(System.Int32)
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValidator<TValidated>.ValidateAsAncestor(System.Int32)
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TValidated).ValidateAsAncestor(System.Int32)
+  nameWithType: IConfiguresValidator<TValidated>.ValidateAsAncestor(Int32)
+  nameWithType.vb: IConfiguresValidator(Of TValidated).ValidateAsAncestor(Int32)
+- uid: CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ValidateAsAncestor*
+  name: ValidateAsAncestor
+  href: api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ValidateAsAncestor_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ValidateAsAncestor
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.IConfiguresValidator<TValidated>.ValidateAsAncestor
+  fullName.vb: CSF.Validation.ValidatorBuilding.IConfiguresValidator(Of TValidated).ValidateAsAncestor
+  nameWithType: IConfiguresValidator<TValidated>.ValidateAsAncestor
+  nameWithType.vb: IConfiguresValidator(Of TValidated).ValidateAsAncestor
 - uid: CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs*
   name: WhenValueIs
   href: api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs_
@@ -9214,12 +9868,12 @@ references:
   commentId: T:CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier
   fullName: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier
   nameWithType: IGetsManifestRuleIdentifierFromRelativeIdentifier
-- uid: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
-  name: GetManifestRuleIdentifier(ManifestValueBase, RelativeRuleIdentifier)
-  href: api/CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.html#CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_GetManifestRuleIdentifier_CSF_Validation_Manifest_ManifestValueBase_CSF_Validation_ValidatorBuilding_RelativeRuleIdentifier_
-  commentId: M:CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
-  fullName: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
-  nameWithType: IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(ManifestValueBase, RelativeRuleIdentifier)
+- uid: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
+  name: GetManifestRuleIdentifier(IManifestItem, RelativeRuleIdentifier)
+  href: api/CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.html#CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_GetManifestRuleIdentifier_CSF_Validation_Manifest_IManifestItem_CSF_Validation_ValidatorBuilding_RelativeRuleIdentifier_
+  commentId: M:CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
+  fullName: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem, CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
+  nameWithType: IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier(IManifestItem, RelativeRuleIdentifier)
 - uid: CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.GetManifestRuleIdentifier*
   name: GetManifestRuleIdentifier
   href: api/CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.html#CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_GetManifestRuleIdentifier_
@@ -9589,12 +10243,12 @@ references:
   commentId: T:CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter
   fullName: CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter
   nameWithType: RelativeToManifestRuleIdentifierConverter
-- uid: CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
-  name: GetManifestRuleIdentifier(ManifestValueBase, RelativeRuleIdentifier)
-  href: api/CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.html#CSF_Validation_ValidatorBuilding_RelativeToManifestRuleIdentifierConverter_GetManifestRuleIdentifier_CSF_Validation_Manifest_ManifestValueBase_CSF_Validation_ValidatorBuilding_RelativeRuleIdentifier_
-  commentId: M:CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
-  fullName: CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(CSF.Validation.Manifest.ManifestValueBase, CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
-  nameWithType: RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(ManifestValueBase, RelativeRuleIdentifier)
+- uid: CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
+  name: GetManifestRuleIdentifier(IManifestItem, RelativeRuleIdentifier)
+  href: api/CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.html#CSF_Validation_ValidatorBuilding_RelativeToManifestRuleIdentifierConverter_GetManifestRuleIdentifier_CSF_Validation_Manifest_IManifestItem_CSF_Validation_ValidatorBuilding_RelativeRuleIdentifier_
+  commentId: M:CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem,CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
+  fullName: CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(CSF.Validation.Manifest.IManifestItem, CSF.Validation.ValidatorBuilding.RelativeRuleIdentifier)
+  nameWithType: RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier(IManifestItem, RelativeRuleIdentifier)
 - uid: CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.GetManifestRuleIdentifier*
   name: GetManifestRuleIdentifier
   href: api/CSF.Validation.ValidatorBuilding.RelativeToManifestRuleIdentifierConverter.html#CSF_Validation_ValidatorBuilding_RelativeToManifestRuleIdentifierConverter_GetManifestRuleIdentifier_
@@ -9921,6 +10575,23 @@ references:
   fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilder(Of TValidated).UseObjectIdentity
   nameWithType: ValidatorBuilder<TValidated>.UseObjectIdentity
   nameWithType.vb: ValidatorBuilder(Of TValidated).UseObjectIdentity
+- uid: CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.ValidateAsAncestor(System.Int32)
+  name: ValidateAsAncestor(Int32)
+  href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilder-1.html#CSF_Validation_ValidatorBuilding_ValidatorBuilder_1_ValidateAsAncestor_System_Int32_
+  commentId: M:CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.ValidateAsAncestor(System.Int32)
+  fullName: CSF.Validation.ValidatorBuilding.ValidatorBuilder<TValidated>.ValidateAsAncestor(System.Int32)
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilder(Of TValidated).ValidateAsAncestor(System.Int32)
+  nameWithType: ValidatorBuilder<TValidated>.ValidateAsAncestor(Int32)
+  nameWithType.vb: ValidatorBuilder(Of TValidated).ValidateAsAncestor(Int32)
+- uid: CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.ValidateAsAncestor*
+  name: ValidateAsAncestor
+  href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilder-1.html#CSF_Validation_ValidatorBuilding_ValidatorBuilder_1_ValidateAsAncestor_
+  commentId: Overload:CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.ValidateAsAncestor
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorBuilding.ValidatorBuilder<TValidated>.ValidateAsAncestor
+  fullName.vb: CSF.Validation.ValidatorBuilding.ValidatorBuilder(Of TValidated).ValidateAsAncestor
+  nameWithType: ValidatorBuilder<TValidated>.ValidateAsAncestor
+  nameWithType.vb: ValidatorBuilder(Of TValidated).ValidateAsAncestor
 - uid: CSF.Validation.ValidatorBuilding.ValidatorBuilder`1.WhenValueIs*
   name: WhenValueIs
   href: api/CSF.Validation.ValidatorBuilding.ValidatorBuilder-1.html#CSF_Validation_ValidatorBuilding_ValidatorBuilder_1_WhenValueIs_
@@ -10380,18 +11051,18 @@ references:
   commentId: T:CSF.Validation.ValueContextIsMatchForItem
   fullName: CSF.Validation.ValueContextIsMatchForItem
   nameWithType: ValueContextIsMatchForItem
-- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase)
-  name: ValueContextIsMatchForItem(ManifestValueBase)
-  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_CSF_Validation_Manifest_ManifestValueBase_
-  commentId: M:CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase)
-  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem(CSF.Validation.Manifest.ManifestValueBase)
-  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem(ManifestValueBase)
-- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object)
-  name: ValueContextIsMatchForItem(ManifestValueBase, Object)
-  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_CSF_Validation_Manifest_ManifestValueBase_System_Object_
-  commentId: M:CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.ManifestValueBase,System.Object)
-  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem(CSF.Validation.Manifest.ManifestValueBase, System.Object)
-  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem(ManifestValueBase, Object)
+- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.IManifestItem)
+  name: ValueContextIsMatchForItem(IManifestItem)
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_CSF_Validation_Manifest_IManifestItem_
+  commentId: M:CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.IManifestItem)
+  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem(CSF.Validation.Manifest.IManifestItem)
+  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem(IManifestItem)
+- uid: CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.IManifestItem,System.Object)
+  name: ValueContextIsMatchForItem(IManifestItem, Object)
+  href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_CSF_Validation_Manifest_IManifestItem_System_Object_
+  commentId: M:CSF.Validation.ValueContextIsMatchForItem.#ctor(CSF.Validation.Manifest.IManifestItem,System.Object)
+  fullName: CSF.Validation.ValueContextIsMatchForItem.ValueContextIsMatchForItem(CSF.Validation.Manifest.IManifestItem, System.Object)
+  nameWithType: ValueContextIsMatchForItem.ValueContextIsMatchForItem(IManifestItem, Object)
 - uid: CSF.Validation.ValueContextIsMatchForItem.#ctor*
   name: ValueContextIsMatchForItem
   href: api/CSF.Validation.ValueContextIsMatchForItem.html#CSF_Validation_ValueContextIsMatchForItem__ctor_

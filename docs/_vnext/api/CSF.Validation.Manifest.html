@@ -83,6 +83,9 @@
       <h4><a class="xref" href="CSF.Validation.Manifest.ManifestFromBuilderProvider.html">ManifestFromBuilderProvider</a></h4>
       <section><p>A service which gets a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a> from an instance of <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html">ManifestItemExtensions</a></h4>
+      <section><p>Extension methods for <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ManifestPolymorphicType.html">ManifestPolymorphicType</a></h4>
       <section><p>A model which represents how a specific runtime type should be validated, when performing polymorphic validation.</p>
 </section>
@@ -96,7 +99,10 @@
       <section><p>A model which represents a value which is validated within a validation hierarchy.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ManifestValueBase.html">ManifestValueBase</a></h4>
-      <section><p>Abstract base class used for values which are validated.</p>
+      <section><p>Abstract base class used for values which are validated, implementors of <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Manifest.RecursiveManifestValue.html">RecursiveManifestValue</a></h4>
+      <section><p>Represents a recursive reference to a manifest value which already appears within the current manifest.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ValidatedTypeProvider.html">ValidatedTypeProvider</a></h4>
       <section><p>A service that gets the validated type from a value type.</p>
@@ -120,6 +126,12 @@
 </section>
       <h4><a class="xref" href="CSF.Validation.Manifest.IHasPolymorphicTypes.html">IHasPolymorphicTypes</a></h4>
       <section><p>An object within a validation manifest which supports polymorphic validation.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></h4>
+      <section><p>An object which behaves like an item within a validation manifest.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a></h4>
+      <section><p>A specialisation of <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a> which behaves like a value within a validation manifest.</p>
 </section>
     <h3 id="enums">Enums
   </h3>
