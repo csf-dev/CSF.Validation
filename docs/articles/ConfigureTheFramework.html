@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuring the Validation Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configuring the Validation Framework ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ConfiguringTheFramework">
+<h1 id="configuring-the-validation-framework">Configuring the Validation Framework</h1>
+
+<p>The recommended and easiest way to configure and consume the Validation Framework is to add it to your application's <strong>dependency injection</strong>.</p>
+<h2 id="adding-csfvalidation-to-your-app">Adding CSF.Validation to your app</h2>
+<p>In the method where you configure your <code>IServiceCollection</code>, typically in your application's startup project, you would use something like the following.
+You will also require a reference to <a href="https://www.nuget.org/packages/CSF.Validation/">the <strong>CSF.Validation</strong> NuGet package</a>.</p>
+<pre><code class="lang-csharp">services
+    // You will almost-certainly need to use these
+    .UseValidationFramework()
+    .UseValidationRulesInAssemblies(assemblies)
+
+    // The following are optional
+    .UseStandardValidationRules()
+    .UseValidatorBuildersInAssemblies(assemblies)
+    .UseMessageProviders(x =&gt; x.AddMessageProvidersInAssemblies(assemblies))
+    ;
+</code></pre>
+<p>The <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions__"><code>UseValidationFramework()</code></a> method adds the mandatory services to enable the framework.</p>
+<p>It is almost certain that developers will want to <a href="WritingValidators/WritingValidationRules/index.html">write their own validation rule logic classes</a>, which will also need to be added to DI.
+The most convenient way to accomplish this is via a method such as <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationRulesInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidationRulesInAssemblies(IEnumerable&lt;Assembly&gt;)</code></a>. This method scans the specified assemblies for rule classes and registers all of them with the service collection.
+See <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html"><code>ServiceCollectionExtensions</code></a> for other methods/overloads which add rules.</p>
+<h3 id="optional-add-the-standard-rules">Optional: Add the Standard Rules</h3>
+<p>If you wish to use <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard validation rules NuGet package</a> then you should additionally use the <a class="xref" href="../api/CSF.Validation.StandardRulesServiceCollectionExtensions.html#CSF_Validation_StandardRulesServiceCollectionExtensions_UseStandardValidationRules_Microsoft_Extensions_DependencyInjection_IServiceCollection_"><code>UseStandardValidationRules()</code></a> method to register &amp; enable them.</p>
+<h3 id="optional-register-validator-builders">Optional: Register Validator Builders</h3>
+<p>It is recommended to use the <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidatorBuildersInAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Collections_Generic_IEnumerable_System_Reflection_Assembly__"><code>UseValidatorBuildersInAssemblies(IEnumerable&lt;Assembly&gt;)</code></a> method to register your <a href="WritingValidators/WritingValidatorBuilders/index.html">validator builder implementations</a> with dependency injection.
+Validator builders often have no injected dependencies; as long as they do not the validation framework is actually able to instantiate them without using dependency injection.
+Registering builders with dependency injection is recommended though, even if only for consistency.</p>
+<h3 id="optional-register-message-providers">Optional: Register Message Providers</h3>
+<p>If you would like the framework <a href="GeneratingFeedbackMessages.html">to generate human-readable validation feedback messages</a> then you should use <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseMessageProviders_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_Bootstrap_IRegistersMessageProviders__"><code>UseMessageProviders</code></a> to register your message-provider classes with dependency injection.</p>
+<h3 id="optional-configure-default-options">Optional: Configure default options</h3>
+<p>The <a class="xref" href="../api/CSF.Validation.ServiceCollectionExtensions.html#CSF_Validation_ServiceCollectionExtensions_UseValidationFramework_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_CSF_Validation_ValidationOptions__"><code>UseValidationFramework()</code></a> takes an optional parameter of <code>Action&lt;ValidationOptions&gt;</code>.
+If specified then this configures a <a class="xref" href="../api/CSF.Validation.ValidationOptions.html"><code>ValidationOptions</code></a> instance which is used by default for any validator created by that dependency injection container.
+Options specified in the configured default instance will be used unless overridden by explicitly-specified options provided directly to the validator.</p>
+<h2 id="use-the-abstractions-package-in-your-app-logic">Use the abstractions package in your app logic</h2>
+<p>Assuming you are writing a multi-project application, you will unlikely want to take a dependency upon the main CSF.Validation NuGet package throughout the app.
+Apart from your startup project(s) where DI is configured, other projects need only reference <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">the <strong>CSF.Validation.Abstractions</strong> package</a>.
+You may optionally also reference <a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">the standard rules package</a> if you are using it.</p>
+<p>The abstractions package contains just interfaces and models which make-up the validator's API.
+With property-configured dependency injection, this is sufficient to create and consume validators without depending upon the main package.
+The abstractions package does not contain the core logic of the framework and has no external dependencies of its own.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/ConfigureTheFramework.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
