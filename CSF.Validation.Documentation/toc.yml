@@ -1,0 +1,11 @@
+- name: Documentation
+  href: articles/
+  homepage: articles/index.md
+- name: Writing validators
+  href: articles/WritingValidators/
+  homepage: articles/WritingValidators/index.md
+- name: Api docs
+  href: api/
+  homepage: api/index.md
+- name: GitHub project
+  href: https://github.com/csf-dev/CSF.Validation

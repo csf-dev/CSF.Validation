@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Polymorphic Validation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Polymorphic Validation ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="polymorphic-validation">Polymorphic Validation</h1>
+
+<p>Polymorphic validation is a technique for validating objects of a base type, but applying additional validation configuration (values and rules) at runtime.
+This additional validation configuration depends upon the validated object's concrete type.</p>
+<p>For example, when validating a <code>Person</code> object, a rule might be applied which asserts that the <code>Name</code> property is not null or empty.
+If that <code>Person</code> object is in fact an instance of <code>Employee</code> (a subclass of person) then the object should also have a <code>PayrollNumber</code> property which should be validated.
+Polymorphic validation allows the creation of a validator which validates <code>Person</code> objects, but also applies the appropriate validation for <code>Employee</code> when the validated object is actually an employee.</p>
+<h2 id="how-to-use-polymorphic-validation">How to use polymorphic validation</h2>
+<p>Configuring polymorphic validation is easy from a validator builder; use <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0___">the <code>WhenValueIs</code> method</a> (or <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">its equivalent for a value accessor</a>) to set up validation configuration related to the specified subtype.</p>
+<h2 id="example">Example</h2>
+<p>Here is an example of polymorphic validation, matching the hypothetical scenario specified above.</p>
+<pre><code class="lang-csharp">public class PersonValidatorBuilder : IBuildsValidator&lt;Person&gt;
+{
+  public void ConfigureValidator(IConfiguresValidator&lt;Person&gt; config)
+  {
+    config.ForMember(x =&gt; x.Name, m =&gt;
+    {
+      m.AddRule&lt;NotNullOrEmpty&gt;();
+    });
+
+    config.WhenValueIs&lt;Employee&gt;(v =&gt;
+    {
+      v.ForMember(x =&gt; x.PayrollNumber, m =&gt;
+      {
+        m.AddRule&lt;IntegerInRange&gt;(r =&gt;
+        {
+          r.ConfigureRule(c =&gt; c.Min = 1);
+        });
+      });
+    }
+  }
+}
+</code></pre>
+<p>The validator created from the builder above will validate any <code>Person</code> instance, applying a rule to the <code>Name</code> property.
+For <code>Person</code> instances that are also <code>Employee</code> instances then the additional rule, relating to the <code>PayrollNumber</code> property, will be applied.</p>
+<h2 id="polymorphic-rules-may-be-imported">Polymorphic rules may be imported</h2>
+<p>When using <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0___">the <code>WhenValueIs</code> method</a>, you may import rules from another validator builder, using <a href="ImportingRules.html">the same technique described elsewhere</a>.
+This allows keeping rules specific to particular subclasses contained within their own validator builders.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/WritingValidators/WritingValidatorBuilders/PolymorphicValidation.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

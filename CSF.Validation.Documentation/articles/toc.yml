@@ -1,0 +1,41 @@
+- name: Introduction
+  href: index.md
+- name: Configuration
+  href: ConfigureTheFramework.md
+- name: Writing validators
+  href: WritingValidators/
+  homepage: WritingValidators/index.md
+  items:
+    - name: Creating rules
+      topicHref: WritingValidators/WritingValidationRules/index.md
+    - name: Validator builders
+      topicHref: WritingValidators/WritingValidatorBuilders/index.md
+    - name: The manifest model
+      topicHref: WritingValidators/UsingTheManifestModel/index.md
+    - name: The validation manifest
+      topicHref: WritingValidators/TheValidationManifest/index.md
+- name: Generating feedback messages
+  href: GeneratingFeedbackMessages.md
+  homepage: GeneratingFeedbackMessages.md
+  items:
+    - name: Writing message providers
+      href: WritingMessageProviders.md
+- name: Performing validation
+  href: ConsumingValidators.md
+  homepage: ConsumingValidators.md
+  items:
+    - name: Validation options
+      href: xref:CSF.Validation.ValidationOptions
+    - name: Querying results
+      href: QueryingTheResults.md
+- name: Best practice
+  topicHref: BestPractice/index.md
+  items:
+    - name: Only fail for one reason
+      href: BestPractice/RulesShouldOnlyFailForOneReason.md
+    - name: Avoid unnecessary errors
+      href: BestPractice/RulesShouldAvoidUnnecessaryErrors.md
+    - name: Use dependency injection
+      href: BestPractice/UseDependencyInjectionForRules.md
+    - name: Use CommonResults
+      href: BestPractice/UseCommonRuleResults.md

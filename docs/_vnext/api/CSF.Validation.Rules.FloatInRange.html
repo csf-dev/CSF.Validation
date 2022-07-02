@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FloatInRange
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FloatInRange
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Rules.FloatInRange">
+  
+  
+  <h1 id="CSF_Validation_Rules_FloatInRange" data-uid="CSF.Validation.Rules.FloatInRange" class="text-break">Class FloatInRange
+  </h1>
+  <div class="markdown level0 summary"><p>A validation rule which passes if the validated floating-point number or <span class="xref">System.Nullable&lt;T&gt;</span> floating-point number is within
+an inclusive <a class="xref" href="CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Min">Min</a> &amp; <a class="xref" href="CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Max">Max</a> range.  This rule works with all of the CLR-standard floating-point number types.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FloatInRange</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule</a>&lt;<span class="xref">System.Single</span>&gt;</div>
+    <div><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule</a>&lt;<span class="xref">System.Double</span>&gt;</div>
+    <div><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule</a>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;&gt;</div>
+    <div><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule</a>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.Rules.html">CSF.Validation.Rules</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.StandardRules.dll</h6>
+  <h5 id="CSF_Validation_Rules_FloatInRange_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FloatInRange : IRule&lt;float&gt;, IRule&lt;double&gt;, IRule&lt;float?&gt;, IRule&lt;double?&gt;</code></pre>
+  </div>
+  <h5 id="CSF_Validation_Rules_FloatInRange_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+Either of <a class="xref" href="CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Min">Min</a> or <a class="xref" href="CSF.Validation.Rules.FloatInRange.html#CSF_Validation_Rules_FloatInRange_Max">Max</a> may be <span class="xref">null</span>.  If either is null then either the minimum or maximum
+of the range will not be used (which means that this becomes simply a &quot;greater-then&quot; or &quot;less-than&quot; validation rule).  If both ends of
+the range are null then this validation rule will always pass.
+</p>
+<p>
+This validation rule may additionally be used with <span class="xref">System.Nullable&lt;T&gt;</span> numbers, in which case this rule will pass
+if the validated value is <span class="xref">null</span>.  Combine this rule with a <a class="xref" href="CSF.Validation.Rules.NotNull.html">NotNull</a> rule if nulls are not
+permitted.
+</p>
+<p>
+The logic of this rule does not verify that the minimum is not greater-than the maximum.  Thus it is possible to set up scenarios where
+this rule will always return a failure result for any number, as the pass criteria cannot be satisfied.
+</p>
+<p>
+This rule supports both non-nullable and nullable instances of <span class="xref">System.Single</span> &amp; <span class="xref">System.Double</span>.
+</p>
+<p>
+This rule will always return a synchronous result.
+</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange_Max.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange.Max%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L45">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_FloatInRange_Max_" data-uid="CSF.Validation.Rules.FloatInRange.Max*"></a>
+  <h4 id="CSF_Validation_Rules_FloatInRange_Max" data-uid="CSF.Validation.Rules.FloatInRange.Max">Max</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the (inclusive) maximum for the validated value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? Max { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange_Min.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange.Min%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L40">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_FloatInRange_Min_" data-uid="CSF.Validation.Rules.FloatInRange.Min*"></a>
+  <h4 id="CSF_Validation_Rules_FloatInRange_Min" data-uid="CSF.Validation.Rules.FloatInRange.Min">Min</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the (inclusive) minimum for the validated value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? Min { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange_GetResultAsync_System_Double_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Double%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L54">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_FloatInRange_GetResultAsync_" data-uid="CSF.Validation.Rules.FloatInRange.GetResultAsync*"></a>
+  <h4 id="CSF_Validation_Rules_FloatInRange_GetResultAsync_System_Double_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Double,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">GetResultAsync(Double, RuleContext, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Performs the validation logic asynchronously and returns a task of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(double validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">validated</span></td>
+        <td><p>The object being validated</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Contextual information about the validation</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>An object which may be used to cancel the process</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><p>A task which provides a result object, indicating the result of validation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange_GetResultAsync_System_Nullable_System_Double__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Nullable%7BSystem.Double%7D%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L68">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_FloatInRange_GetResultAsync_" data-uid="CSF.Validation.Rules.FloatInRange.GetResultAsync*"></a>
+  <h4 id="CSF_Validation_Rules_FloatInRange_GetResultAsync_System_Nullable_System_Double__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.FloatInRange.GetResultAsync(System.Nullable{System.Double},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">GetResultAsync(Nullable&lt;Double&gt;, RuleContext, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Performs the validation logic asynchronously and returns a task of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(double? validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td><span class="parametername">validated</span></td>
+        <td><p>The object being validated</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Contextual information about the validation</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>An object which may be used to cancel the process</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><p>A task which provides a result object, indicating the result of validation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_System_Nullable_System_Single__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange.CSF%23Validation%23Rules%23IRule%7BSystem%23Single%3F%7D%23GetResultAsync(System.Nullable%7BSystem.Single%7D%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L74">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_" data-uid="CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync*"></a>
+  <h4 id="CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single___GetResultAsync_System_Nullable_System_Single__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single?}#GetResultAsync(System.Nullable{System.Single},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">IRule&lt;Nullable&lt;Single&gt;&gt;.GetResultAsync(Nullable&lt;Single&gt;, RuleContext, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;RuleResult&gt; IRule&lt;float?&gt;.GetResultAsync(float? validated, RuleContext context, CancellationToken token)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">validated</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_System_Single_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange.CSF%23Validation%23Rules%23IRule%7BSystem%23Single%7D%23GetResultAsync(System.Single%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L71">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_" data-uid="CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync*"></a>
+  <h4 id="CSF_Validation_Rules_FloatInRange_CSF_Validation_Rules_IRule_System_Single__GetResultAsync_System_Single_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.FloatInRange.CSF#Validation#Rules#IRule{System#Single}#GetResultAsync(System.Single,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">IRule&lt;Single&gt;.GetResultAsync(Single, RuleContext, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;RuleResult&gt; IRule&lt;float&gt;.GetResultAsync(float validated, RuleContext context, CancellationToken token)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">validated</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_FloatInRange.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.FloatInRange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/FloatInRange.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

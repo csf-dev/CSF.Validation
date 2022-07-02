@@ -1,126 +1,78 @@
-﻿//
-// ValidatorFactory.cs
-//
-// Author:
-//       Craig Fowler <craig@csf-dev.com>
-//
-// Copyright (c) 2017 Craig Fowler
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
 using System;
+using System.Reflection;
 using CSF.Validation.Manifest;
-using CSF.Validation.Rules;
-using CSF.Validation.ValidationRuns;
+using CSF.Validation.ManifestModel;
+using CSF.Validation.ValidatorBuilding;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation
 {
-  /// <summary>
-  /// Default implementation of <see cref="IValidatorFactory"/>.
-  /// </summary>
-  public class ValidatorFactory : IValidatorFactory
-  {
-    readonly IValidationRunFactory runFactory;
-    readonly IRuleResolver ruleResolver;
-    readonly IManifestIdentityGenerator identityGenerator;
-    readonly IValidationRunner validationRunner;
-
     /// <summary>
-    /// Gets a validator instance for the given validation manifest.
+    /// A service which gets a validator from any of a number of mechanisms.
     /// </summary>
-    /// <returns>The validator.</returns>
-    /// <param name="manifest">The validation manifest.</param>
-    public virtual IValidator GetValidator(IValidationManifest manifest)
+    public class ValidatorFactory : IGetsValidator
     {
-      if(manifest == null)
-        throw new ArgumentNullException(nameof(manifest));
+        static readonly MethodInfo
+            getValidatorPrivateMethod = typeof(ValidatorFactory).GetTypeInfo().GetDeclaredMethod(nameof(GetValidatorPrivate));
 
-      var run = GetValidationRunFactory().CreateRun(manifest);
-      var runner = GetValidationRunner();
+        readonly IServiceProvider serviceProvider;
 
-      return new Validator(run, runner);
+        Bootstrap.IResolvesServices Resolver => serviceProvider.GetRequiredService<Bootstrap.IResolvesServices>();
+        IGetsValidationManifestFromModel ManifestFromModelProvider => serviceProvider.GetRequiredService<IGetsValidationManifestFromModel>();
+        IGetsValidatedTypeForBuilderType BuilderTypeProvider => serviceProvider.GetRequiredService<IGetsValidatedTypeForBuilderType>();
+        IGetsBaseValidator BaseValidatorFactory => serviceProvider.GetRequiredService<IGetsBaseValidator>();
+        IWrapsValidatorWithExceptionBehaviour ExceptionBehaviourWrapper => serviceProvider.GetRequiredService<IWrapsValidatorWithExceptionBehaviour>();
+        IWrapsValidatorWithMessageSupport MessageSupportWrapper => serviceProvider.GetRequiredService<IWrapsValidatorWithMessageSupport>();
+
+        #region Without message support
+
+        /// <inheritdoc/>
+        public IValidator GetValidator(Type builderType)
+        {
+            var validatedType = BuilderTypeProvider.GetValidatedType(builderType);
+            var validatorBuilder = GetValidatorBuilder(builderType);
+            var method = getValidatorPrivateMethod.MakeGenericMethod(validatedType);
+            return (IValidator) method.Invoke(this, new[] { validatorBuilder });
+        }
+
+        /// <inheritdoc/>
+        public IValidator<TValidated> GetValidator<TValidated>(IBuildsValidator<TValidated> builder)
+            => GetValidatorPrivate(builder);
+
+        /// <inheritdoc/>
+        public IValidator GetValidator(ValidationManifest manifest)
+        {
+            var validator = BaseValidatorFactory.GetValidator(manifest);
+            var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);
+            return ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
+        }
+
+        /// <inheritdoc/>
+        public IValidator GetValidator(Value manifestModel, Type validatedType)
+        {
+            var manifest = ManifestFromModelProvider.GetValidationManifest(manifestModel, validatedType);
+            return GetValidator(manifest);
+        }
+
+        #endregion
+        
+        object GetValidatorBuilder(Type builderType) => Resolver.ResolveService<object>(builderType);
+        
+        IValidator<TValidated> GetValidatorPrivate<TValidated>(IBuildsValidator<TValidated> builder)
+        {
+            var validator = BaseValidatorFactory.GetValidator(builder);
+            var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);
+            return ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
+        }
+
+        /// <summary>
+        /// Initialises a new instance of <see cref="ValidatorFactory"/>.
+        /// </summary>
+        /// <param name="serviceProvider">A service provider.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="serviceProvider"/> is <see langword="null" />.</exception>
+        public ValidatorFactory(IServiceProvider serviceProvider)
+        {
+            this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+        }
     }
-
-    /// <summary>
-    /// Gets the validation run factory.
-    /// </summary>
-    /// <returns>The validation run factory.</returns>
-    protected virtual IValidationRunFactory GetValidationRunFactory()
-    {
-      return runFactory?? new ValidationRunFactory(GetRuleResolver(), GetIdentityGenerator());
-    }
-
-    /// <summary>
-    /// Gets the rule resolver.
-    /// </summary>
-    /// <returns>The rule resolver.</returns>
-    protected virtual IRuleResolver GetRuleResolver()
-    {
-      return ruleResolver?? new SimpleRuleResolver();
-    }
-
-    /// <summary>
-    /// Gets the identity generator.
-    /// </summary>
-    /// <returns>The identity generator.</returns>
-    protected virtual IManifestIdentityGenerator GetIdentityGenerator()
-    {
-      return identityGenerator?? new DefaultManifestIdentityGenerator();
-    }
-
-    /// <summary>
-    /// Gets the validation runner.
-    /// </summary>
-    /// <returns>The validation runner.</returns>
-    protected virtual IValidationRunner GetValidationRunner()
-    {
-      return validationRunner?? new ValidationRunner();
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="T:CSF.Validation.ValidatorFactory"/> class.
-    /// </summary>
-    public ValidatorFactory() {}
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="T:CSF.Validation.ValidatorFactory"/> class.
-    /// </summary>
-    /// <param name="runFactory">Run factory.</param>
-    /// <param name="validationRunner">Validation runner.</param>
-    public ValidatorFactory(IValidationRunFactory runFactory, IValidationRunner validationRunner)
-    {
-      this.runFactory = runFactory;
-      this.validationRunner = validationRunner;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="T:CSF.Validation.ValidatorFactory"/> class.
-    /// </summary>
-    /// <param name="ruleResolver">Rule resolver.</param>
-    /// <param name="identityGenerator">Identity generator.</param>
-    /// <param name="validationRunner">Validation runner.</param>
-    public ValidatorFactory(IRuleResolver ruleResolver,
-                            IManifestIdentityGenerator identityGenerator,
-                            IValidationRunner validationRunner)
-    {
-      this.ruleResolver = ruleResolver;
-      this.identityGenerator = identityGenerator;
-      this.validationRunner = validationRunner;
-    }
-  }
 }

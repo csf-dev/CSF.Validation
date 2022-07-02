@@ -1,5 +1,110 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -12,48 +117,176 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-	<data name="AccessorFunctionMustNotBeNull" xml:space="preserve">
-    <value>The accessor function must not be null.</value>
-	</data>
-  <data name="MinMustNotBeGreaterThanMax" xml:space="preserve">
-    <value>Impossible validation rule: The minimum must not be greater than the maximum.</value>
+  <data name="BuilderTypeMustImplementOpenGenericIBuildsValidator" xml:space="preserve">
+    <value>The validation definition type must implement {0}&lt;T&gt;.</value>
+    <comment/>
   </data>
-  <data name="LengthMustNotBeNegative" xml:space="preserve">
-    <value>Impossible validation rule: A minimum or maximum length must not be negative.</value>
+  <data name="BuilderTypeMustOnlyImplementIBuildsValidatorOnce" xml:space="preserve">
+    <value>The validation definition type must implement {0}&lt;T&gt; a maximum of once, for one generic validated type.</value>
+    <comment/>
   </data>
-  <data name="DependencyMustHaveAResult" xml:space="preserve">
-    <value>The dependency rule must have a result.</value>
+  <data name="ManifestValueDoesNotHaveSufficientAncestorLevels" xml:space="preserve">
+    <value>The {0} must have at least {1} level(s) of ancestors.</value>
+    <comment/>
   </data>
-  <data name="RuleMayNotBeExecuted" xml:space="preserve">
-    <value>The rule is not marked as ready for execution.</value>
+  <data name="ManifestValueDoesNotHaveChildMember" xml:space="preserve">
+    <value>The {0} must have configuration for a member named "{1}".</value>
+    <comment/>
   </data>
-  <data name="RuleMustHaveAResult" xml:space="preserve">
-    <value>The rule must have a result; please check {0} first.</value>
+  <data name="MissingMember" xml:space="preserve">
+    <value>The type {0} does not have an accessible member named "{1}".</value>
+    <comment/>
   </data>
-  <data name="ProvideDependenciesMayOnlyBeCalledOnce" xml:space="preserve">
-    <value>The {0} method may only be called once for a given `{1}' instance.</value>
+  <data name="MustBeAGettableMember" xml:space="preserve">
+    <value>The member {0}.{1} must be a member that may provide a value: A readable property, a field or a parameterless method with a non-void return type.</value>
+    <comment/>
   </data>
-  <data name="DependenciesCannotBeRetrievedUntilProvided" xml:space="preserve">
-    <value>The {0} method may only be called after {1} has been used to provide the dependencies.</value>
+  <data name="PropertyMustBeReadable" xml:space="preserve">
+    <value>The property {0}.{1} must be readable.</value>
+    <comment/>
   </data>
-  <data name="SomeValidationRulesCouldNotBeRun" xml:space="preserve">
-    <value>Validation has stalled - one or more validation rules have yet to be executed but there are none in the validation run which report that they may be.</value>
+  <data name="PropertyMustNotBeIndexer" xml:space="preserve">
+    <value>The property {0}.{1} must be parameterless; it must not be an indexer.</value>
+    <comment/>
   </data>
-  <data name="ParentRuleIdentityMustBeTypeOrNull" xml:space="preserve">
-    <value>The identity of the parent validation rule must be either an instance of `{0}' or it must be null.</value>
+  <data name="MethodMustHaveNonVoidReturn" xml:space="preserve">
+    <value>The method {0}.{1} must have a non-void return type.</value>
+    <comment/>
   </data>
-  <data name="MemberMustBelongToValidatedType" xml:space="preserve">
-    <value>The member must belong to the validated type `{0}'.
-Member name: {1}</value>
+  <data name="MethodMustNotHaveParameters" xml:space="preserve">
+    <value>The method {0}.{1} must not have any parameters (including generic type arguments).</value>
+    <comment/>
   </data>
-  <data name="ValueTypeConversionFailureFormat" xml:space="preserve">
-    <value>The value provided to the current 'value' validation rule must be of an appropriate type.
-Expected type:`{0}'
-Actual type:{1}</value>
+  <data name="MissingProperty" xml:space="preserve">
+    <value>The type {0} does not have an accessible property named "{1}".</value>
+    <comment/>
   </data>
-  <data name="ValidatedObjectTypeConversionFailureFormat" xml:space="preserve">
-    <value>The object under validation, provided to the current validation rule, must be of an appropriate type.
-Expected type:`{0}'
-Actual type:{1}</value>
+  <data name="PropertyMustBeWritable" xml:space="preserve">
+    <value>The property {0}.{1} must be writable.</value>
+    <comment/>
+  </data>
+  <data name="UnexpectedExceptionConfiguringRule" xml:space="preserve">
+    <value>There was an unexpected exception whilst configuring {0}.</value>
+    <comment/>
+  </data>
+  <data name="ObjectMustBeEnumerable" xml:space="preserve">
+    <value>The value must implement {0}&lt;{2}&gt; in order to enumerate items, but {1} is not.</value>
+    <comment/>
+  </data>
+  <data name="ErrorAccessingValue" xml:space="preserve">
+    <value>An unexpected error occurred when accessing a value using {0} from the object {1}.  Please refer to the inner exception for further details.</value>
+    <comment/>
+  </data>
+  <data name="CannotGetMatchingValueForDependency" xml:space="preserve">
+    <value>Rule {0} depends upon rule {1}.  The dependency rule must be available upon either the same manifest value, an ancestor value or a direct sibling of the same or any ancestor value.</value>
+    <comment/>
+  </data>
+  <data name="DependencyRuleNotOnMatchingValue" xml:space="preserve">
+    <value>Rule {0} depends upon rule {1}.  A matching validated value for this dependency was found but the dependency rule was not found upon that value.  Dependency rules must be available upon the matching validated value.</value>
+    <comment/>
+  </data>
+  <data name="CircularDependenciesNotAllowedInRules" xml:space="preserve">
+    <value>Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first {0}.</value>
+    <comment/>
+  </data>
+  <data name="BuilderTypeDoesNotImplementBuilderInterface" xml:space="preserve">
+    <value>The type {0} must implement {1} to be used as a validator-builder with this method.</value>
+    <comment/>
+  </data>
+  <data name="BuilderTypeImplementsTooManyBuilderInterfaces" xml:space="preserve">
+    <value>The type {0} must implements {1} only once to be used as a validator-builder with this method.</value>
+    <comment/>
+  </data>
+  <data name="RuleTypeMustImplementAppropriateRuleOrValueRuleInterface" xml:space="preserve">
+    <value>The rule type {0} must implement either {3}&lt;{1}&gt; or {4}&lt;{1}, {2}&gt;.</value>
+    <comment/>
+  </data>
+  <data name="RuleTypeMustImplementAppropriateRuleInterface" xml:space="preserve">
+    <value>The rule type {0} must implement {3}&lt;{1}&gt;.</value>
+    <comment/>
+  </data>
+  <data name="EnumerateItemsIsTrueButValueIsNotEnumerable" xml:space="preserve">
+    <value>For value accessors where {0} is true, the value {1} must implement {2}&lt;T&gt;.</value>
+    <comment/>
+  </data>
+  <data name="RuleResultMustNotBeNull" xml:space="preserve">
+    <value>The {0} property of the rule must not be null.</value>
+    <comment/>
+  </data>
+  <data name="ImplTypeMustBeAssignableToServiceType" xml:space="preserve">
+    <value>The implementation type (0) must be assignable from the service type {1}.</value>
+    <comment/>
+  </data>
+  <data name="CouldNotResolveImplementation" xml:space="preserve">
+    <value>The implementation type {0} could not be resolved.  Please ensure that it is not abstract and that it is (ideally) registered with dependency injection or that it has a public parameterless constructor.</value>
+    <comment/>
+  </data>
+  <data name="MustNotAlreadyHaveACollectionItemManifestValue" xml:space="preserve">
+    <value>The current builder context must not already have a manifest collection-item value associated.  Cannot create a new context for {0}.</value>
+    <comment/>
+  </data>
+  <data name="NoTypesMayBeNull" xml:space="preserve">
+    <value>The collection of types may not contain any null values.</value>
+    <comment/>
+  </data>
+  <data name="DuplicateTypesNotAllowed" xml:space="preserve">
+    <value>The type {0} has already been registered in this {1}.  Duplicates are not allowed.</value>
+    <comment/>
+  </data>
+  <data name="MustBeGenericRuleInterface" xml:space="preserve">
+    <value>The rule interface must be a closed-generic form of either {0}&lt;TValue&gt; or {0}&lt;TValue, TParent&gt;.  Instead it is {1}.</value>
+    <comment/>
+  </data>
+  <data name="ErrorInValidation" xml:space="preserve">
+    <value>One or more errors were encountered during validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.Please look through the {4} for results which have an outcome of {5} for more information.</value>
+    <comment/>
+  </data>
+  <data name="FailureInValidation" xml:space="preserve">
+    <value>One or more validation rules failed validation.  Because the {0}.{1} is set to {2}.{3}, this exception has been thrown.Please look through the {4} for results which have an outcome of {5} or {6} for more information.</value>
+    <comment/>
+  </data>
+  <data name="ValidationResultMustBeOfCorrectType" xml:space="preserve">
+    <value>This validation result is being constructed generically for {0} but the validation manifest is for type {1}.  The two types must be compatible.</value>
+    <comment/>
+  </data>
+  <data name="NoMatchingMemberInManifest" xml:space="preserve">
+    <value>The validation manifest for the instance of {0} does not contain any values for a member named '{1}'; the value must exist in order to use it to filter the results.</value>
+    <comment/>
+  </data>
+  <data name="ValueMustBeACollection" xml:space="preserve">
+    <value>The validation manifest for the instance of {0} contain a value for a member named '{1}' but in order to use {2}, that value must represent a collection of items.</value>
+    <comment/>
+  </data>
+  <data name="MustImplementPolymorphicInterface" xml:space="preserve">
+    <value>The validation manifest value for the current context must implement {0}, but instead was an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="MustHaveMatchingPolymorphicManifest" xml:space="preserve">
+    <value>The validation manifest value (for {0}) must contain a polymorphic validation manifest for the type {1}.</value>
+    <comment/>
+  </data>
+  <data name="UnexpectedModelToManifestConversionType" xml:space="preserve">
+    <value>The {0} must be an expected value.</value>
+    <comment/>
+  </data>
+  <data name="AncestorLevelsMustNotBeLessThanOne" xml:space="preserve">
+    <value>The value of {0} must not be less than one.</value>
+    <comment/>
+  </data>
+  <data name="NotEnoughAncestorsForAncestorLevels" xml:space="preserve">
+    <value>The instance of {1} must have sufficient ancestors to satisfy its value of {0}.</value>
+    <comment/>
+  </data>
+  <data name="NotEnoughAncestors" xml:space="preserve">
+    <value>A depth of {0} ancestors was requested but only {1} ancestors are available.</value>
+    <comment/>
+  </data>
+  <data name="MustBeRecursive" xml:space="preserve">
+    <value>You must not use any other functionality upon a validator builder if you have used {0}.</value>
+    <comment/>
+  </data>
+  <data name="MustNotBeRecursive" xml:space="preserve">
+    <value>You must not use {0} if you have performed any other configuration upon a validator builder.</value>
+    <comment/>
   </data>
 </root>

@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <RootNamespace>CSF.Validation</RootNamespace>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.StandardRules.xml</DocumentationFile>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
+    <PackageId>CSF.Validation.StandardRules</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Authors>craigfowler</Authors>
+    <Title>CSF.Validation.StandardRules</Title>
+    <Description>A library of stock validation rules for general usage.</Description>
+    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
+    <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" Condition="'$(TargetFramework)' == 'net461'" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+</Project>

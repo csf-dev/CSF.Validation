@@ -1,50 +1,39 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;netstandard1.0</TargetFrameworks>
-    <ReleaseVersion>2.0.0</ReleaseVersion>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <RootNamespace>CSF.Validation</RootNamespace>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.xml</DocumentationFile>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
     <PackageId>CSF.Validation</PackageId>
     <Authors>craigfowler</Authors>
     <Title>CSF.Validation</Title>
     <Description>A framework for business rule validation</Description>
-    <Version>$(ReleaseVersion)</Version>
-    <PackageVersion>$(ReleaseVersion)</PackageVersion>
+    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>Copyright 2020 - CSF Software Limited</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
     <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
     <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.xml</DocumentationFile>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType></DebugType>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.xml</DocumentationFile>
-  </PropertyGroup>
-    
-  <Import Project="..\Tools\EnableNet45BuildOnUnix.targets" />
-  
-  <ItemGroup>
-    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Resources\ExceptionMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
-      <LogicalName>ExceptionMessages.resx.resources</LogicalName>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\ExceptionMessages.Designer.cs">
-      <DependentUpon>ExceptionMessages.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CSF.Reflector" Version="3.0.0" />
-    <PackageReference Include="CSF.Enums" Version="7.0.0" />
+    <PackageReference Include="CSF.ReflectionSpecifications" Version="3.1.0" />
+    <PackageReference Include="CSF.Specifications" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.0" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" Condition="'$(TargetFramework)' == 'net461'" />
+    <PackageReference Include="System.ValueTuple" Version="4.3.0" Condition="'$(TargetFramework)' == 'net461'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>
