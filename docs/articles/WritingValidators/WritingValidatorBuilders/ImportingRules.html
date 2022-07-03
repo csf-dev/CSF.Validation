@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Importing rules from another builder </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Importing rules from another builder ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="importing-rules-from-another-builder">Importing rules from another builder</h1>
+
+<p>Validator builders are used to specify which rules should be applied to an object and its directly-accessible members/values.
+They can be used as a self-contained piece of validation configuration.
+Validator builders may also consume the rules and configuration from another builder; there are a few scenarios where this technique is useful.</p>
+<ul>
+<li>De-duplicating validation configuration for base types</li>
+<li>Creating alternative validation scenarios</li>
+<li>Validating referenced objects</li>
+<li><a href="PolymorphicValidation.html">Polymorphic validation</a></li>
+</ul>
+<p>Using a validator builder, importing another builder is accomplished via the <code>AddRules&lt;TBuilder&gt;()</code> method from either an instance of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules__1"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> or (for validating referenced objects) from an instance of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddRules__1"><code>IConfiguresValueAccessor&lt;TValidated, TValue&gt;</code></a>.</p>
+<h2 id="example-de-duplicating-base-type-validation">Example: De-duplicating base type validation</h2>
+<p>This technique is useful when you want to validate members of a class hierarchy.
+Consider this very simple example of an object model for validation:</p>
+<pre><code class="lang-csharp">public abstract class Pet
+{
+    public string Name { get; set; }
+}
+
+public class PetCat : Pet
+{
+    public string FurColour { get; set; }
+}
+
+public class PetFish : Pet
+{
+    public int MinimumTankSizeCubicCm { get; set; }
+}
+</code></pre>
+<p>Now, we wish to validate instances of <code>PetCat</code> and <code>PetFish</code> but we don't want to duplicate any validation rules for <code>Pet</code>.
+Here is how this could be laid out using some validator builders.</p>
+<pre><code class="lang-csharp">public class PetValidatorBuilder : IBuildsValidator&lt;Pet&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;Pet&gt; config)
+    {
+        config.ForMember(x =&gt; x.Name, m =&gt;
+        {
+            m.AddRule&lt;NotNullOrEmpty&gt;();
+        });
+    }
+}
+
+public class PetCatValidatorBuilder : IBuildsValidator&lt;PetCat&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;PetCat&gt; config)
+    {
+        config.AddRules&lt;PetValidatorBuilder&gt;();
+
+        config.ForMember(x =&gt; x.FurColour, m =&gt;
+        {
+            m.AddRule&lt;NotNullOrEmpty&gt;();
+        });
+    }
+}
+</code></pre>
+<p>Notice how the the <code>PetCatValidatorBuilder</code> imports the rules from the <code>PetValidatorBuilder</code>.
+This has the same effect as consuming any and all configuration in the <code>PetValidatorBuilder</code> as if it were a part of <code>PetCatValidatorBuilder</code>.</p>
+<h2 id="example-creating-alternate-validation-scenarios">Example: Creating alternate validation scenarios</h2>
+<p>Imagine that a single object type needs to be validated in more than one conceptual manner.
+Imagine you run a library that loans books and members are allowed to take a loan to a maximum initial duration of 12 weeks but they are also allowed to extend a loan but only for 4 additional weeks at a time.
+A request for a loan might look like this:</p>
+<pre><code class="lang-csharp">public class BookLoanRequest
+{
+    public long BookId { get; set; }
+    public long MemberId { get; set; }
+    public int LoanDurationWeeks { get; set; }
+}
+</code></pre>
+<p>Now we want to validate this model, but under two different scenarios: For an initial loan and for a loan extension.
+We do not want to duplicate common rules across those two validator builders though.</p>
+<pre><code class="lang-csharp">public class BookLoanRequestCommonBuilder : IBuildsValidator&lt;BookLoanRequest&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;BookLoanRequest&gt; config)
+    {
+        // This example uses two fictitious rules,
+        // their implementation is unimportant.
+        config.ForMember(x =&gt; x.BookId, m =&gt;
+        {
+            m.AddRule&lt;MustExistInDatabase&gt;();
+        });
+
+        config.ForMember(x =&gt; x.MemberId, m =&gt;
+        {
+            m.AddRule&lt;MustBeActiveMember&gt;();
+        });
+    }
+}
+
+public class InitialBookLoanRequestBuilder : IBuildsValidator&lt;BookLoanRequest&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;BookLoanRequest&gt; config)
+    {
+        config.AddRules&lt;BookLoanRequestCommonBuilder&gt;();
+
+        config.ForMember(x =&gt; x.LoanDurationWeeks, m =&gt;
+        {
+            m.AddRule&lt;IntegerInRange&gt;(c =&gt;
+            {
+                c.ConfigureRule(r =&gt;
+                {
+                    r.Min = 1;
+                    r.Max = 12;
+                })
+            });
+        });
+    }
+}
+
+public class ExtensionBookLoanRequestBuilder : IBuildsValidator&lt;BookLoanRequest&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;BookLoanRequest&gt; config)
+    {
+        config.AddRules&lt;BookLoanRequestCommonBuilder&gt;();
+
+        config.ForMember(x =&gt; x.LoanDurationWeeks, m =&gt;
+        {
+            m.AddRule&lt;IntegerInRange&gt;(c =&gt;
+            {
+                c.ConfigureRule(r =&gt;
+                {
+                    r.Min = 1;
+                    r.Max = 4;
+                })
+            });
+        });
+    }
+}
+</code></pre>
+<p>This produces a validator for each of the Initial &amp; Extension loans, both of which consume the rules configured within the common validator builder.</p>
+<h2 id="example-validating-referenced-objects">Example: Validating referenced objects</h2>
+<p>When validating <a href="https://en.wikipedia.org/wiki/Object_graph">object graphs</a>, each nontrivial object-type included in that graph should have its own validator builder.
+Then, when validating across references, import the rules from the appropriate builder within <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">a <code>ForMember</code> or <code>ForValue</code> or <code>ForMemberItems</code> or <code>ForValues</code> declaration</a>.</p>
+<p>Consider these models</p>
+<pre><code class="lang-csharp">public class Vehicle
+{
+    public DateTime? ManufacturedDate { get; set; }
+    public ICollection&lt;Wheel&gt; Wheels { get; set; }
+}
+
+public class Wheel
+{
+    public decimal? DiameterCm { get; set; }
+}
+</code></pre>
+<p>The validator builders for these might look something like the following:</p>
+<pre><code class="lang-csharp">public class VehicleBuilder : IBuildsValidator&lt;Vehicle&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;Vehicle&gt; config)
+    {
+        config.ForMember(x =&gt; x.ManufacturedDate, m =&gt;
+        {
+            m.AddRule&lt;NotNull&gt;();
+        });
+
+        config.ForMemberItems(x =&gt; x.Wheels, m =&gt;
+        {
+            m.AddRules&lt;WheelBuilder&gt;();
+        });
+    }
+}
+
+public class WheelBuilder : IBuildsValidator&lt;Wheel&gt;
+{
+    public void ConfigureValidator(IConfiguresValidator&lt;Wheel&gt; config)
+    {
+        config.ForMember(x =&gt; x.DiameterCm, m =&gt;
+        {
+            m.AddRule&lt;NotNull&gt;();
+        });
+    }
+}
+</code></pre>
+<p>By creating a validator from the <code>VehicleBuilder</code>, every one of its wheels will be validated using the rules within <code>WheelBuilder</code>.
+Such parent/child consumption of validator builders can continue through unlimited levels of relationships.
+Incidentally this also demonstrates <a href="ValidatingCollectionItems.html">the validation of collection items</a>, via the usage of <code>ForMemberItems</code>.</p>
+<p>The important thing to avoid is <strong>circular consumption</strong>, which will cause an error.
+In the example above, the <code>WheelBuilder</code> must not import the rules from <code>VehicleBuilder</code>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/WritingValidators/WritingValidatorBuilders/ImportingRules.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

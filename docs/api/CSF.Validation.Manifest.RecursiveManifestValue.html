@@ -1,0 +1,636 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RecursiveManifestValue
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RecursiveManifestValue
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Manifest.RecursiveManifestValue">
+  
+  
+  <h1 id="CSF_Validation_Manifest_RecursiveManifestValue" data-uid="CSF.Validation.Manifest.RecursiveManifestValue" class="text-break">Class RecursiveManifestValue
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a recursive reference to a manifest value which already appears within the current manifest.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">RecursiveManifestValue</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a></div>
+    <div><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.Manifest.html">CSF.Validation.Manifest</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
+  <h5 id="CSF_Validation_Manifest_RecursiveManifestValue_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RecursiveManifestValue : IManifestValue, IManifestItem</code></pre>
+  </div>
+  <h5 id="CSF_Validation_Manifest_RecursiveManifestValue_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+The validation manifest is the model by which validators are described, including how they should
+validate objects and values.
+</p>
+<p>
+The validation manifest objects are not particularly suited to serialization,
+as they support the use of types that cannot be easily serialized.
+If you are looking for a way to create/define a validator using serialized data then please read the
+article <a class="xref" href="../articles/WritingValidators/UsingTheManifestModel/index.html">Using the Manifest Model</a>.
+</p>
+<p>
+Recursive validation is used when validating an object model which may contain references back to a type which
+already appears in the validation manifest and has appropriate validation configuration.
+This would be appropriate when validating a node-based object graph such as an HTML DOM.  In HTML a
+<code>&lt;div></code> element is permitted to contain <code>&lt;div></code> elements.  If writing a validator for this
+you would not want to write an endless nested series of validation manifest values, rather we would like something
+which essentially means &quot;If this div contains a div, validate the child in the same way we would validate the parent,
+including its children&quot;.
+</p>
+<p>
+The recursive manifest value wraps another manifest value (which would have already appeared in the same manifest
+as a value).  It means &quot;Validate in the same way as the wrapped value&quot;, except that it may have a different accessor
+function and member name.
+</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue__ctor_CSF_Validation_Manifest_IManifestItem_.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.%23ctor(CSF.Validation.Manifest.IManifestItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L114">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue__ctor_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.#ctor*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue__ctor_CSF_Validation_Manifest_IManifestItem_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.#ctor(CSF.Validation.Manifest.IManifestItem)">RecursiveManifestValue(IManifestItem)</h4>
+  <div class="markdown level1 summary"><p>Initialises a new <a class="xref" href="CSF.Validation.Manifest.RecursiveManifestValue.html">RecursiveManifestValue</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RecursiveManifestValue(IManifestItem wrapped)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></td>
+        <td><span class="parametername">wrapped</span></td>
+        <td><p>The wrapped manifest value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L90">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.AccessorExceptionBehaviour">AccessorExceptionBehaviour</h4>
+  <div class="markdown level1 summary"><p>Gets an optional value which indicates the desired behaviour should the <a class="xref" href="CSF.Validation.Manifest.IManifestValue.html#CSF_Validation_Manifest_IManifestValue_AccessorFromParent">AccessorFromParent</a> raise an exception.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This option will override the behaviour specified at <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>
+for the current manifest value, if this property is set to any non-<span class="xref">null</span> value.
+</p>
+<p>
+If this property is set to <span class="xref">null</span> then the behaviour at <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>
+will be used.
+</p>
+</div>
+  <h5 id="CSF_Validation_Manifest_RecursiveManifestValue_AccessorExceptionBehaviour_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_AccessorFromParent.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L59">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_AccessorFromParent_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_AccessorFromParent" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.AccessorFromParent">AccessorFromParent</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a function which gets (from the object represented by the <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_Parent">Parent</a>)
+the value for the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;object, object&gt; AccessorFromParent { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_Children.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.Children%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L84">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_Children_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.Children*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_Children" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.Children">Children</h4>
+  <div class="markdown level1 summary"><p>Gets a collection of the immediate descendents of the current manifest value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;IManifestValue&gt; Children { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_CollectionItemValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L81">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_CollectionItemValue_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_CollectionItemValue" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.CollectionItemValue">CollectionItemValue</h4>
+  <div class="markdown level1 summary"><p>Gets an optional value object which indicates how items within a collection are to be validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ManifestCollectionItem CollectionItemValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_RecursiveManifestValue_CollectionItemValue_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If the value representd by the current instance is a collection/enumerable of items then these items may
+be validated individually.  In this scenario, the <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html#CSF_Validation_Manifest_IManifestItem_ValidatedType">ValidatedType</a> must be a
+type that implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> for at least one generic type.
+</p>
+<p>
+If this property has a non-null value, then the <a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a> will be used to validate
+each item within that collection.
+</p>
+<p>
+If the current manifest value does not represent a collection of items to be validated individually then this
+property must be <span class="xref">null</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_IdentityAccessor.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L78">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_IdentityAccessor_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_IdentityAccessor" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.IdentityAccessor">IdentityAccessor</h4>
+  <div class="markdown level1 summary"><p>Gets a function which retrieves a unique identity of the object being
+validated, given a reference to that object being validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;object, object&gt; IdentityAccessor { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_MemberName.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.MemberName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L65">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_MemberName_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.MemberName*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_MemberName" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.MemberName">MemberName</h4>
+  <div class="markdown level1 summary"><p>Where the current value represents a member access invocation (such as
+a property getter), this property gets or sets the name of that member.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MemberName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_Parent.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.Parent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L72">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_Parent_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.Parent*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_Parent" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.Parent">Parent</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an optional parent manifest value.
+Where this is <span class="xref">null</span> that indicates that this model is the root of the validation hierarchy.
+If it is non-<span class="xref">null</span> then it is a descendent of the root of the hierarchy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IManifestItem Parent { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_Rules.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L87">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_Rules_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.Rules*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_Rules" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.Rules">Rules</h4>
+  <div class="markdown level1 summary"><p>Gets a collection of the rules associated with the current value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ManifestRule&gt; Rules { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_ValidatedType.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L75">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_ValidatedType_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_ValidatedType" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.ValidatedType">ValidatedType</h4>
+  <div class="markdown level1 summary"><p>Gets  the type of the object which the current manifest value describes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type ValidatedType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_WrappedValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L53">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_WrappedValue_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_WrappedValue" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.WrappedValue">WrappedValue</h4>
+  <div class="markdown level1 summary"><p>Gets a reference to the original value that current instance wraps.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IManifestItem WrappedValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue_ToString.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L96">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_RecursiveManifestValue_ToString_" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.ToString*"></a>
+  <h4 id="CSF_Validation_Manifest_RecursiveManifestValue_ToString" data-uid="CSF.Validation.Manifest.RecursiveManifestValue.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Gets a string representation of the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A string which represents the current instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestors_CSF_Validation_Manifest_IManifestItem_">ManifestItemExtensions.GetAncestors(IManifestItem)</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestor_CSF_Validation_Manifest_IManifestItem_System_Int32_">ManifestItemExtensions.GetAncestor(IManifestItem, Int32)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestRuleIdentifier.html">ManifestRuleIdentifier</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.IHasPolymorphicTypes.html">IHasPolymorphicTypes</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValueBase.html">ManifestValueBase</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestPolymorphicType.html">ManifestPolymorphicType</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_RecursiveManifestValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.RecursiveManifestValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/RecursiveManifestValue.cs/#L46" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
