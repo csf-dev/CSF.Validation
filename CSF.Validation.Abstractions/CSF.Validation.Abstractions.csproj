@@ -13,8 +13,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
-    <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
-    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <PackageProjectUrl>https://csf-dev.github.io/CSF.Validation/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/csf-dev/CSF.Validation/</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
