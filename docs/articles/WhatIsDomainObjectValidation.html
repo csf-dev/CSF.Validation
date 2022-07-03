@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Domain Object Validation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Domain Object Validation ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="domain-object-validation">Domain Object Validation</h1>
+
+<p>For the sake of this framework, <strong>domain objects</strong> are defined as models (typically .NET classes) which contain state such as properties and/or fields.
+Domain object models relate to business-logic concepts and are free from technical/architectural concerns, particularly those related to user interface.
+The term &quot;domain&quot; borrows somewhat from <em><a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a></em> but your application/team does not need to be following DDD; if you are then it matters not if these are <a href="https://en.wikipedia.org/wiki/Domain-driven_design#Kinds_of_models">entities, value objects or others</a>.</p>
+<p>Validated domain objects need not be limited to a single instance of a single class.
+CSF.Validation can validate complete graphs of related objects which are connected by associations such as properties.</p>
+<h2 id="a-sample-domain-object-to-validate">A sample domain object to validate</h2>
+<p>Let's imagine that we are building an international e-commerce web application.
+One of its features is to purchase all of the items in the shopping cart.
+That request might be modelled using an object similar to the following.</p>
+<pre><code class="lang-csharp">public class PurchaseShoppingCartRequest
+{
+    public PostalAddress ShippingAddress { get; set; }
+    public ICollection&lt;LineItem&gt; LineItems { get; set; }
+}
+
+public class PostalAddress
+{
+    public string StreetLine1 { get; set; }
+    public string StreetLine2 { get; set; }
+    public string CityOrTownName { get; set; }
+    public string StateOrCountyName { get; set; }
+    public string ZipOrPostalCode { get; set; }
+    public long? CountryId { get; set; }
+}
+
+public class LineItem
+{
+    public long? ProductId { get; set; }
+    public int Quantity { get; set; }
+}
+</code></pre>
+<p>Now let's imagine some of the possibilities for validation:</p>
+<ul>
+<li>When validating the shipping address, the <code>CountryId</code> must not be null and must correspond to a country that is known-about by the application.</li>
+<li>When validating a ZIP or postal code there will be country-specific rules for the format of this value.</li>
+<li>Perhaps some products are not available in all countries.  The object should be validated to verify that the selected product may be shipped to the selected country.</li>
+</ul>
+<p>These rules are all non-trivial and would typically require the consumption of dependency-injected services.
+This is the sort of validation that <strong>CSF.Validation</strong> is well-suited to perform.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Documentation/articles/WhatIsDomainObjectValidation.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
