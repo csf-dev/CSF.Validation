@@ -7,3 +7,4 @@ TestResult.formatted.xml
 .directory
 packages/
 .vs/
+*.drawio.bkp
