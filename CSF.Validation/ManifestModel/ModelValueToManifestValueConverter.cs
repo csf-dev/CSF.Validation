@@ -51,7 +51,7 @@ namespace CSF.Validation.ManifestModel
             return result;
         }
 
-        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, IManifestItem parent)
+        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, ManifestItem parent)
         {
             if(!(currentContext.CurrentValue.CollectionItemValue is null))
             {

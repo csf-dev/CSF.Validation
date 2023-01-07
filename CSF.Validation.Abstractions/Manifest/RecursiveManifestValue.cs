@@ -36,82 +36,151 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestItem"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
-    public class RecursiveManifestValue : IManifestValue
+    public class RecursiveManifestValue : ManifestValue
     {
-        readonly IManifestItem wrapped;
+        readonly ManifestItem wrapped;
 
         /// <summary>
         /// Gets a reference to the original value that current instance wraps.
         /// </summary>
-        public IManifestItem WrappedValue => wrapped;
+        public ManifestItem WrappedValue => wrapped;
 
         /// <summary>
-        /// Gets or sets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
-        /// the value for the current instance.
+        /// Gets the type of the object which the current manifest value describes.
         /// </summary>
-        public Func<object, object> AccessorFromParent { get; set; }
-
-        /// <summary>
-        /// Where the current value represents a member access invocation (such as
-        /// a property getter), this property gets or sets the name of that member.
-        /// </summary>
-        public string MemberName { get; set; }
-
-        /// <summary>
-        /// Gets or sets an optional parent manifest value.
-        /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
-        /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
-        /// </summary>
-        public IManifestItem Parent { get; set; }
-
-        /// <inheritdoc/>
-        public Type ValidatedType => wrapped.ValidatedType;
-
-        /// <inheritdoc/>
-        public Func<object, object> IdentityAccessor => wrapped.IdentityAccessor;
-
-        /// <inheritdoc/>
-        public ManifestCollectionItem CollectionItemValue => wrapped.CollectionItemValue;
-
-        /// <inheritdoc/>
-        public ICollection<IManifestValue> Children => wrapped.Children;
-
-        /// <inheritdoc/>
-        public ICollection<ManifestRule> Rules => wrapped.Rules;
-
-        /// <inheritdoc/>
-        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour => (wrapped is IManifestValue val) ? val.AccessorExceptionBehaviour : null;
-
-        /// <summary>
-        /// Gets a string representation of the current instance.
-        /// </summary>
-        /// <returns>A string which represents the current instance.</returns>
-        public override string ToString()
+        /// <remarks>
+        /// <para>
+        /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
+        /// the setter will raise <see cref="NotSupportedException"/>.
+        /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// </para>
+        /// </remarks>
+        public override Type ValidatedType
         {
-            var properties = new Dictionary<string, string>
-            {
-                { nameof(Type), ValidatedType?.Name },
-                { nameof(MemberName), MemberName },
-            };
-            var propertyStrings = properties
-                .Where(x => !(x.Value is null))
-                .Select(x => $"{x.Key} = {x.Value}").ToList();
-            
-            return $"[{nameof(RecursiveManifestValue)}: {String.Join(", ",  propertyStrings)}]";
+            get => wrapped.ValidatedType;
+            set => throw GetNoSetterException(nameof(ValidatedType));
+        }
+
+        /// <summary>
+        /// Gets a function which retrieves a unique identity of the object being
+        /// validated, given a reference to that object being validated.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
+        /// the setter will raise <see cref="NotSupportedException"/>.
+        /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// </para>
+        /// </remarks>
+        public override Func<object, object> IdentityAccessor
+        {
+            get => wrapped.IdentityAccessor;
+            set => throw GetNoSetterException(nameof(IdentityAccessor));
+        }
+
+        /// <summary>
+        /// Gets an optional value object which indicates how items within a collection are to be validated.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
+        /// the setter will raise <see cref="NotSupportedException"/>.
+        /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// </para>
+        /// <para>
+        /// If the value representd by the current instance is a collection/enumerable of items then these items may
+        /// be validated individually.  In this scenario, the <see cref="ManifestItem.ValidatedType"/> must be a
+        /// type that implements <see cref="System.Collections.Generic.IEnumerable{T}"/> for at least one generic type.
+        /// </para>
+        /// <para>
+        /// If this property has a non-null value, then the <see cref="ManifestCollectionItem"/> will be used to validate
+        /// each item within that collection.
+        /// </para>
+        /// <para>
+        /// If the current manifest value does not represent a collection of items to be validated individually then this
+        /// property must be <see langword="null" />.
+        /// </para>
+        /// </remarks>
+        public override ManifestCollectionItem CollectionItemValue
+        {
+            get => wrapped.CollectionItemValue;
+            set => throw GetNoSetterException(nameof(CollectionItemValue));
+        }
+
+        /// <summary>
+        /// Gets a collection of the immediate descendents of the current manifest value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
+        /// the setter will raise <see cref="NotSupportedException"/>.
+        /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// </para>
+        /// </remarks>
+        public override ICollection<ManifestValue> Children
+        {
+            get => wrapped.Children;
+            set => throw GetNoSetterException(nameof(Children));
+        }
+
+        /// <summary>
+        /// Gets a collection of the rules associated with the current value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
+        /// the setter will raise <see cref="NotSupportedException"/>.
+        /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// </para>
+        /// </remarks>
+        public override ICollection<ManifestRule> Rules
+        {
+            get => wrapped.Rules;
+            set => throw GetNoSetterException(nameof(Rules));
+        }
+
+        /// <summary>
+        /// Gets an optional value which indicates the desired behaviour should the <see cref="ManifestValue.AccessorFromParent"/> raise an exception.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
+        /// the setter will raise <see cref="NotSupportedException"/>.
+        /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// </para>
+        /// <para>
+        /// This option will override the behaviour specified at <see cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
+        /// for the current manifest value, if this property is set to any non-<see langword="null" /> value.
+        /// </para>
+        /// <para>
+        /// If this property is set to <see langword="null" /> then the behaviour at <see cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
+        /// will be used.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
+        public override ValueAccessExceptionBehaviour? AccessorExceptionBehaviour
+        {
+            get => (wrapped is ManifestValue val) ? val.AccessorExceptionBehaviour : null;
+            set => throw GetNoSetterException(nameof(AccessorExceptionBehaviour));
+        }
+
+        static NotSupportedException GetNoSetterException(string propertyName)
+        {
+            var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("PropertyMayNotBeSetForRecursiveItem"),
+                                        propertyName,
+                                        nameof(RecursiveManifestValue));
+            return new NotSupportedException(message);
         }
 
         /// <summary>
         /// Initialises a new <see cref="RecursiveManifestValue"/>.
         /// </summary>
         /// <param name="wrapped">The wrapped manifest value.</param>
-        public RecursiveManifestValue(IManifestItem wrapped)
+        public RecursiveManifestValue(ManifestItem wrapped)
         {
             this.wrapped = wrapped ?? throw new ArgumentNullException(nameof(wrapped));
         }

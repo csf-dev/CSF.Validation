@@ -3,7 +3,7 @@ using CSF.Validation.Manifest;
 namespace CSF.Validation.ManifestModel
 {
     /// <summary>
-    /// An object which converts a <see cref="ModelToManifestConversionContext"/> into a <see cref="IManifestItem"/>.
+    /// An object which converts a <see cref="ModelToManifestConversionContext"/> into a <see cref="ManifestItem"/>.
     /// </summary>
     public interface IGetsManifestItemFromModelToManifestConversionContext
     {
@@ -12,6 +12,6 @@ namespace CSF.Validation.ManifestModel
         /// </summary>
         /// <param name="context">A conversion context.</param>
         /// <returns>A manifest item.</returns>
-        IManifestItem GetManifestItem(ModelToManifestConversionContext context);
+        ManifestItem GetManifestItem(ModelToManifestConversionContext context);
     }
 }

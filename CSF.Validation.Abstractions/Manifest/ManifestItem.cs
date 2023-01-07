@@ -5,7 +5,7 @@ using System.Linq;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// Abstract base class used for values which are validated, implementors of <see cref="IManifestItem"/>.
+    /// Base class used for values which are validated.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -22,35 +22,33 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
-    public abstract class ManifestValueBase : IManifestItem
+    public abstract class ManifestItem
     {
-        ICollection<IManifestValue> children = new List<IManifestValue>();
+        ICollection<ManifestValue> children = new List<ManifestValue>();
         ICollection<ManifestRule> rules = new List<ManifestRule>();
+        ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
 
         /// <summary>
         /// Gets or sets the type of the object which the current manifest value describes.
         /// </summary>
-        public Type ValidatedType { get; set; }
+        public virtual Type ValidatedType { get; set; }
 
         /// <summary>
         /// Gets or sets an optional parent manifest value.
         /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
         /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
         /// </summary>
-        public IManifestItem Parent { get; set; }
+        public virtual ManifestItem Parent { get; set; }
 
         /// <summary>
         /// Gets or sets a function which retrieves a unique identity of the object being
         /// validated, given a reference to that object being validated.
         /// </summary>
-        public Func<object, object> IdentityAccessor { get; set; }
+        public virtual Func<object, object> IdentityAccessor { get; set; }
 
         /// <summary>
         /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
@@ -58,7 +56,7 @@ namespace CSF.Validation.Manifest
         /// <remarks>
         /// <para>
         /// If the value representd by the current instance is a collection/enumerable of items then these items may
-        /// be validated individually.  In this scenario, the <see cref="IManifestItem.ValidatedType"/> must be a
+        /// be validated individually.  In this scenario, the <see cref="ManifestItem.ValidatedType"/> must be a
         /// type that implements <see cref="System.Collections.Generic.IEnumerable{T}"/> for at least one generic type.
         /// </para>
         /// <para>
@@ -70,24 +68,33 @@ namespace CSF.Validation.Manifest
         /// property must be <see langword="null" />.
         /// </para>
         /// </remarks>
-        public ManifestCollectionItem CollectionItemValue { get; set; }
+        public virtual ManifestCollectionItem CollectionItemValue { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of the immediate descendents of the current manifest value.
         /// </summary>
-        public ICollection<IManifestValue> Children
+        public virtual ICollection<ManifestValue> Children
         {
             get => children;
             set => children = value ?? throw new ArgumentNullException(nameof(value));
         }
 
         /// <summary>
-        /// Gets a collection of the rules associated with the current value.
+        /// Gets or sets a collection of the rules associated with the current value.
         /// </summary>
-        public ICollection<ManifestRule> Rules
+        public virtual ICollection<ManifestRule> Rules
         {
             get => rules;
             set => rules = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Gets or sets a mapping of the runtime types to polymorphic validation manifest definitions for those types.
+        /// </summary>
+        public virtual ICollection<ManifestPolymorphicType> PolymorphicTypes
+        {
+            get => polymorphicTypes;
+            set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
         }
 
         /// <summary>

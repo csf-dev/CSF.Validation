@@ -8,7 +8,7 @@ namespace CSF.Validation.ManifestModel
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This type roughly corresponds to <see cref="CSF.Validation.Manifest.IManifestItem"/>.
+    /// This type roughly corresponds to <see cref="CSF.Validation.Manifest.ManifestItem"/>.
     /// The manifest model classes are simplified when compared with the validation manifest
     /// and offer only a subset of functionality.  Importantly though, manifest model classes
     /// such as this are suitable for easy serialization to/from various data formats, such as

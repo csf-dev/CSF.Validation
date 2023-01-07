@@ -5,7 +5,7 @@ using System.Linq;
 namespace CSF.Validation.Manifest
 {
     /// <summary>
-    /// Extension methods for <see cref="IManifestItem"/>.
+    /// Extension methods for <see cref="ManifestItem"/>.
     /// </summary>
     public static class ManifestItemExtensions
     {
@@ -16,16 +16,16 @@ namespace CSF.Validation.Manifest
         /// <param name="item">The manifest item.</param>
         /// <returns>A collection of the ancestor items.</returns>
         /// <exception cref="ArgumentNullException">If <paramref name="item"/> is <see langword="null" />.</exception>
-        public static IEnumerable<IManifestItem> GetAncestors(this IManifestItem item)
+        public static IEnumerable<ManifestItem> GetAncestors(this ManifestItem item)
         {
             if (item is null)
                 throw new ArgumentNullException(nameof(item));
             return GetAncestorsPrivate(item);
         }
 
-        static IEnumerable<IManifestItem> GetAncestorsPrivate(IManifestItem item)
+        static IEnumerable<ManifestItem> GetAncestorsPrivate(ManifestItem item)
         {
-            IManifestItem current = item;
+            ManifestItem current = item;
             while(!(current is null))
             {
                 yield return current;
@@ -41,7 +41,7 @@ namespace CSF.Validation.Manifest
         /// <param name="depth">The depth of ancestor to return.</param>
         /// <returns>The ancestor manifest item.</returns>
         /// 
-        public static IManifestItem GetAncestor(this IManifestItem item, int depth)
+        public static ManifestItem GetAncestor(this ManifestItem item, int depth)
         {
             if (item is null)
                 throw new ArgumentNullException(nameof(item));

@@ -21,10 +21,7 @@ namespace CSF.Validation.Manifest
     /// </remarks>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestItem"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
@@ -37,7 +34,7 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets the manifest value to which this rule applies.
         /// </summary>
-        public IManifestItem ManifestValue { get; }
+        public ManifestItem ManifestValue { get; }
 
         /// <summary>
         /// Gets or sets the rule's unique identifier.
@@ -81,7 +78,7 @@ namespace CSF.Validation.Manifest
         /// </summary>
         /// <param name="manifestValue">The manifest value for which this rule applies.</param>
         /// <param name="identifier">The identifier for this rule.</param>
-        public ManifestRule(IManifestItem manifestValue, ManifestRuleIdentifier identifier)
+        public ManifestRule(ManifestItem manifestValue, ManifestRuleIdentifier identifier)
         {
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));

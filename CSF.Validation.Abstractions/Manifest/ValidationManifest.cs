@@ -23,10 +23,8 @@ namespace CSF.Validation.Manifest
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestItem"/>
+    /// <seealso cref="ManifestItem"/>
     /// <seealso cref="ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>

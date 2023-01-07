@@ -109,7 +109,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// If the validation rule has a parent validated type - the <seealso cref="IManifestItem.Parent"/> property
+        /// If the validation rule has a parent validated type - the <seealso cref="ManifestItem.Parent"/> property
         /// of the <see cref="ManifestRule.ManifestValue"/> is not <see langword="null"/> - and the rule type implements
         /// <see cref="IRule{TValue, TValidated}"/> of the appropriate generic types the type of the value rule
         /// interface will be returned.

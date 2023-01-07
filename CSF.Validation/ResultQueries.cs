@@ -82,15 +82,14 @@ namespace CSF.Validation
             if (results is null)
                 throw new ArgumentNullException(nameof(results));
 
-            if(!(results.ManifestValue is IHasPolymorphicTypes poly))
+            if(results.ManifestValue is ManifestPolymorphicType)
             {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
-                                            typeof(IHasPolymorphicTypes).Name,
-                                            results.ManifestValue.GetType().FullName);
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeAPolymorphicType"),
+                                            typeof(ManifestPolymorphicType).Name);
                 throw new ArgumentException(message, nameof(results));
             }
 
-            var polymorphicManifest = poly.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == typeof(TDerived));
+            var polymorphicManifest = results.ManifestValue.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == typeof(TDerived));
             if(polymorphicManifest is null)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustHaveMatchingPolymorphicManifest"),

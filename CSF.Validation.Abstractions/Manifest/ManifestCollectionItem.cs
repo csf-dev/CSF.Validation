@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace CSF.Validation.Manifest
 {
     /// <summary>
@@ -9,7 +6,7 @@ namespace CSF.Validation.Manifest
     /// <remarks>
     /// <para>
     /// Instances of that type are similar to <see cref="ManifestValue"/> except that they describe items
-    /// of a collection, indicated by <see cref="IManifestItem.CollectionItemValue"/>.
+    /// of a collection, indicated by <see cref="ManifestItem.CollectionItemValue"/>.
     /// </para>
     /// <para>
     /// The validation manifest is the model by which validators are described, including how they should
@@ -25,17 +22,6 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="IManifestItem"/>
     /// <seealso cref="ManifestValue"/>
-    public class ManifestCollectionItem : ManifestValueBase, IHasPolymorphicTypes
-    {
-        ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
-
-        /// <inheritdoc/>
-        public ICollection<ManifestPolymorphicType> PolymorphicTypes
-        {
-            get => polymorphicTypes;
-            set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
-        }
-    }
+    public class ManifestCollectionItem : ManifestItem {}
 }

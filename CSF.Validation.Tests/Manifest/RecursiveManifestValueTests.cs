@@ -8,7 +8,7 @@ namespace CSF.Validation.Manifest
     public class RecursiveManifestValueTests
     {
         [Test,AutoMoqData]
-        public void ToStringShouldReturnAStringWithTheTypeAndMemberName([Frozen] IManifestItem item)
+        public void ToStringShouldReturnAStringWithTheTypeAndMemberName([Frozen] ManifestItem item)
         {
             Mock.Get(item).SetupGet(x => x.ValidatedType).Returns(typeof(string));
 

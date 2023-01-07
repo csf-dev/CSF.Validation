@@ -323,7 +323,7 @@ namespace CSF.Validation.IntegrationTests
             var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
 
             Assert.That(() => result.ForMember(x => x.Person).PolymorphicAs<Employee>().PolymorphicAs<Employee>(),
-                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must implement IHasPolymorphicTypes"));
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestPolymorphicType"));
         }
 
         [Test,AutoMoqData,Timeout(300)]

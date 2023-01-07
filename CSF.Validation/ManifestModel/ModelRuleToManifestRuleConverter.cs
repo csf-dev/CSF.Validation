@@ -46,7 +46,7 @@ namespace CSF.Validation.ManifestModel
             }
         }
 
-        ManifestRule ConvertRule(Rule rule, IManifestItem value)
+        ManifestRule ConvertRule(Rule rule, ManifestItem value)
         {
             var ruleType = ruleTypeResolver.GetRuleType(rule.RuleTypeName);
 
@@ -57,7 +57,7 @@ namespace CSF.Validation.ManifestModel
             };
         }
 
-        ICollection<ManifestRuleIdentifier> GetDependencyRules(IManifestItem value, IEnumerable<RelativeIdentifier> dependencyIdentifiers)
+        ICollection<ManifestRuleIdentifier> GetDependencyRules(ManifestItem value, IEnumerable<RelativeIdentifier> dependencyIdentifiers)
         {
             return dependencyIdentifiers
                 .Select(x => new RelativeRuleIdentifier(ruleTypeResolver.GetRuleType(x.RuleTypeName), x.MemberName, x.RuleName, x.AncestorLevels))

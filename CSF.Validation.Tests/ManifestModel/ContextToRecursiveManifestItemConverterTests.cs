@@ -23,8 +23,8 @@ namespace CSF.Validation.ManifestModel
             {
                 Assert.That(result, Is.InstanceOf<RecursiveManifestValue>(), "Correct type");
                 Assert.That(result, Has.Property(nameof(RecursiveManifestValue.WrappedValue)).SameAs(grandparent), "Correct wrapped value");
-                Assert.That(result, Has.Property(nameof(IManifestValue.MemberName)).EqualTo(context.MemberName), "Correct member name");
-                Assert.That(result, Has.Property(nameof(IManifestValue.AccessorFromParent)).EqualTo(context.AccessorFromParent), "Correct accessor");
+                Assert.That(result, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(context.MemberName), "Correct member name");
+                Assert.That(result, Has.Property(nameof(ManifestValue.AccessorFromParent)).EqualTo(context.AccessorFromParent), "Correct accessor");
                 Assert.That(parent.Children, Does.Contain(result), "Parent contains the result");
             });
         }

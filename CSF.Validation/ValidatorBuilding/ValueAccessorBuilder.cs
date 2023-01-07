@@ -67,7 +67,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestValue()
+        public ManifestItem GetManifestValue()
         {
             var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
             
@@ -80,7 +80,7 @@ namespace CSF.Validation.ValidatorBuilding
             return context.ManifestValue;
         }
 
-        void HandleManifestItem(IManifestItem manifestItem)
+        void HandleManifestItem(ManifestItem manifestItem)
         {
             if(manifestItem == context.ManifestValue) return;
 
@@ -91,10 +91,10 @@ namespace CSF.Validation.ValidatorBuilding
             }
 
             if (manifestItem is ManifestPolymorphicType poly
-             && context.ManifestValue is IHasPolymorphicTypes hasPoly
-             && !(hasPoly.PolymorphicTypes.Contains(poly)))
+             && !(context.ManifestValue is ManifestPolymorphicType)
+             && !(context.ManifestValue.PolymorphicTypes.Contains(poly)))
             {
-                hasPoly.PolymorphicTypes.Add(poly);
+                context.ManifestValue.PolymorphicTypes.Add(poly);
             }
         }
 

@@ -19,7 +19,7 @@ namespace CSF.Validation.ValidatorBuilding
         readonly IGetsValueAccessorBuilder valueBuilderFactory;
         readonly IGetsValidatorManifest validatorManifestFactory;
         readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
-        IManifestItem recursiveAncestor;
+        ManifestItem recursiveAncestor;
         bool isEligibleToBeRecursive = true;
 
         /// <inheritdoc/>
@@ -130,7 +130,7 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestValue()
+        public ManifestItem GetManifestValue()
         {
             if(!(recursiveAncestor is null))
                 return GetRecursiveValue();
@@ -143,31 +143,31 @@ namespace CSF.Validation.ValidatorBuilding
             return context.ManifestValue;
         }
 
-        void HandleManifestItem(IManifestItem manifestItem)
+        void HandleManifestItem(ManifestItem manifestItem)
         {
             if(Equals(manifestItem, context.ManifestValue)) return;
 
-            if (manifestItem is IManifestValue value
+            if (manifestItem is ManifestValue value
              && !(context.ManifestValue.Children.Contains(manifestItem)))
             {
                 context.ManifestValue.Children.Add(value);
             }
 
             if (manifestItem is ManifestPolymorphicType poly
-             && context.ManifestValue is IHasPolymorphicTypes hasPoly
-             && !(hasPoly.PolymorphicTypes.Contains(poly)))
+             && !(context.ManifestValue is ManifestPolymorphicType)
+             && !(context.ManifestValue.PolymorphicTypes.Contains(poly)))
             {
-                hasPoly.PolymorphicTypes.Add(poly);
+                context.ManifestValue.PolymorphicTypes.Add(poly);
             }
         }
 
-        IManifestItem GetRecursiveValue()
+        ManifestItem GetRecursiveValue()
         {
             var recursiveValue = new RecursiveManifestValue(recursiveAncestor)
             {
                 Parent = context.ManifestValue.Parent,
             };
-            if(context.ManifestValue is IManifestValue val)
+            if(context.ManifestValue is ManifestValue val)
             {
                 recursiveValue.AccessorFromParent = val.AccessorFromParent;
                 recursiveValue.MemberName = val.MemberName;

@@ -19,7 +19,7 @@ namespace CSF.Validation
         public bool Passed  { get; }
 
         /// <inheritdoc/>
-        public IManifestItem ManifestValue  { get; }
+        public ManifestItem ManifestValue  { get; }
 
         /// <inheritdoc/>
         public IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
@@ -57,7 +57,7 @@ namespace CSF.Validation
         /// <param name="ruleResults">The rule results.</param>
         /// <param name="manifestValue">The manifest value.</param>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
-        public SubsetOfValidationResults(IEnumerable<ValidationRuleResult> ruleResults, IManifestItem manifestValue)
+        public SubsetOfValidationResults(IEnumerable<ValidationRuleResult> ruleResults, ManifestItem manifestValue)
         {
             RuleResults = ruleResults?.ToList() ?? throw new ArgumentNullException(nameof(ruleResults));
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));

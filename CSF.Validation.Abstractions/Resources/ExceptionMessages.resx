@@ -137,4 +137,8 @@
     <value>The dependency identity builder function must return an instance of {0}.</value>
     <comment/>
   </data>
+  <data name="PropertyMayNotBeSetForRecursiveItem" xml:space="preserve">
+    <value>Setting {0} is not supported in an instance of {1}; the value is derived from the wrapped object.</value>
+    <comment/>
+  </data>
 </root>

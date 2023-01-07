@@ -257,8 +257,8 @@
     <value>The validation manifest for the instance of {0} contain a value for a member named '{1}' but in order to use {2}, that value must represent a collection of items.</value>
     <comment/>
   </data>
-  <data name="MustImplementPolymorphicInterface" xml:space="preserve">
-    <value>The validation manifest value for the current context must implement {0}, but instead was an instance of {1}.</value>
+  <data name="MustNotBeAPolymorphicType" xml:space="preserve">
+    <value>The validation manifest value for the current context must not be {0}, which may not have further polymorphic.types of its own.</value>
     <comment/>
   </data>
   <data name="MustHaveMatchingPolymorphicManifest" xml:space="preserve">

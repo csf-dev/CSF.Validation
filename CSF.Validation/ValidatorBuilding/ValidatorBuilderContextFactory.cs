@@ -44,16 +44,15 @@ namespace CSF.Validation.ValidatorBuilding
                 throw new ArgumentNullException(nameof(validatorContext));
             if (derivedType is null)
                 throw new ArgumentNullException(nameof(derivedType));
-            if (!(validatorContext.ManifestValue is IHasPolymorphicTypes polyManifest))
+            if (validatorContext.ManifestValue is ManifestPolymorphicType)
             {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
-                                            typeof(IHasPolymorphicTypes).Name,
-                                            validatorContext.ManifestValue?.GetType().FullName ?? "<null>");
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeAPolymorphicType"),
+                                            typeof(ManifestPolymorphicType).Name);
                 throw new ArgumentException(message, nameof(validatorContext));
             }
 
             ManifestPolymorphicType existingPoly;
-            if ((existingPoly = polyManifest.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == derivedType)) != null)
+            if ((existingPoly = validatorContext.ManifestValue.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == derivedType)) != null)
                 return new ValidatorBuilderContext(existingPoly);
 
             var polymorphicValue = new ManifestPolymorphicType
@@ -61,7 +60,7 @@ namespace CSF.Validation.ValidatorBuilding
                 Parent = validatorContext.ManifestValue.Parent,
                 ValidatedType = derivedType,
             };
-            polyManifest.PolymorphicTypes.Add(polymorphicValue);
+            validatorContext.ManifestValue.PolymorphicTypes.Add(polymorphicValue);
             return new ValidatorBuilderContext(polymorphicValue);
         }
 

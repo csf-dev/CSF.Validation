@@ -109,10 +109,10 @@ namespace CSF.Validation.ValidatorBuilding
             {
                 var manifestValue = sut.GetManifestValue();
                 Assert.That(manifestValue,
-                            Is.InstanceOf<IHasPolymorphicTypes>(),
+                            Is.InstanceOf<ManifestValue>(),
                             "Manifest value has polymorphic types.");
                 Assert.That(manifestValue,
-                            Has.Property(nameof(IHasPolymorphicTypes.PolymorphicTypes)).One.SameAs(polymorphicType),
+                            Has.Property(nameof(ManifestValue.PolymorphicTypes)).One.SameAs(polymorphicType),
                             "Manifest includes expected polymotphic type");
             });
         }

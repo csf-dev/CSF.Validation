@@ -22,28 +22,23 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
-    /// <seealso cref="ManifestValueBase"/>
+    /// <seealso cref="ManifestItem"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
-    public class ManifestValue : ManifestValueBase, IHasPolymorphicTypes, IManifestValue
+    public class ManifestValue : ManifestItem
     {
-        ICollection<ManifestPolymorphicType> polymorphicTypes = new HashSet<ManifestPolymorphicType>();
-
         /// <summary>
-        /// Gets or sets a function which gets (from the object represented by the <see cref="IManifestItem.Parent"/>)
+        /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestItem.Parent"/>)
         /// the value for the current instance.
         /// </summary>
-        public Func<object, object> AccessorFromParent { get; set; }
+        public virtual Func<object, object> AccessorFromParent { get; set; }
 
         /// <summary>
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets or sets the name of that member.
         /// </summary>
-        public string MemberName { get; set; }
+        public virtual string MemberName { get; set; }
 
         /// <summary>
         /// Gets or sets an optional value which indicates the desired behaviour should the <see cref="AccessorFromParent"/> raise an exception.
@@ -59,7 +54,7 @@ namespace CSF.Validation.Manifest
         /// </para>
         /// </remarks>
         /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
-        public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
+        public virtual ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }
         
         /// <inheritdoc/>
         protected override IDictionary<string, string> GetPropertyValuesForToString()
@@ -67,16 +62,9 @@ namespace CSF.Validation.Manifest
             return base.GetPropertyValuesForToString()
                 .Union(new Dictionary<string,string>
                 {
-                    { nameof(IManifestValue.MemberName), this.MemberName },
+                    { nameof(ManifestValue.MemberName), this.MemberName },
                 })
                 .ToDictionary(k => k.Key, v => v.Value);
-        }
-
-        /// <inheritdoc/>
-        public ICollection<ManifestPolymorphicType> PolymorphicTypes
-        {
-            get => polymorphicTypes;
-            set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
         }
     }
 }

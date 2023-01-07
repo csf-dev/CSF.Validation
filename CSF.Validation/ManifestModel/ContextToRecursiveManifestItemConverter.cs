@@ -14,7 +14,7 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsManifestItemFromModelToManifestConversionContext next;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             if(context.ConversionType != ModelToManifestConversionType.RecursiveManifestValue)
                 return next.GetManifestItem(context);
@@ -33,7 +33,7 @@ namespace CSF.Validation.ManifestModel
             return recursiveItem;
         }
 
-        static IManifestItem GetAncestor(ModelToManifestConversionContext context)
+        static ManifestItem GetAncestor(ModelToManifestConversionContext context)
         {
             var ancestorLevels = context.CurrentValue.ValidateRecursivelyAsAncestor.Value;
             try

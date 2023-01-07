@@ -16,7 +16,7 @@ namespace CSF.Validation.ManifestModel
                                                                                        [Frozen] IGetsManifestItemFromModelToManifestConversionContext itemFactory,
                                                                                        ModelValueToManifestValueConverter sut,
                                                                                        [ManifestModel] ModelToManifestConversionContext context,
-                                                                                       IManifestItem item,
+                                                                                       ManifestItem item,
                                                                                        AccessorFunctionAndType accessor)
         {
             Mock.Get(accessorFactory)

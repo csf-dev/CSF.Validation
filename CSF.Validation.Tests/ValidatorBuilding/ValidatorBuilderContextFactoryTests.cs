@@ -123,7 +123,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var validationContext = new ValidatorBuilderContext(manifestModel);
             Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(object)),
-                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must implement IHasPolymorphicTypes"));
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestPolymorphicType"));
         }
 
         [Test,AutoMoqData]

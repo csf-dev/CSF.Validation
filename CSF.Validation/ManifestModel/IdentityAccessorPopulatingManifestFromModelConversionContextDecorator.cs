@@ -5,7 +5,7 @@ namespace CSF.Validation.ManifestModel
 {
     /// <summary>
     /// A decorator for <see cref="IGetsManifestItemFromModelToManifestConversionContext"/> which populates the
-    /// <see cref="ManifestValueBase.IdentityAccessor"/> if the result of the appropriate type.
+    /// <see cref="ManifestItem.IdentityAccessor"/> if the result of the appropriate type.
     /// </summary>
     public class IdentityAccessorPopulatingManifestFromModelConversionContextDecorator : IGetsManifestItemFromModelToManifestConversionContext
     {
@@ -13,12 +13,12 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsAccessorFunction accessorFactory;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             var result = wrapped.GetManifestItem(context);
 
             var identityMember = context.CurrentValue.IdentityMemberName;
-            if (result is ManifestValueBase valueBase && !String.IsNullOrWhiteSpace(identityMember))
+            if (result is ManifestItem valueBase && !String.IsNullOrWhiteSpace(identityMember))
             {
                 var accessorFunction = accessorFactory.GetAccessorFunction(context.ValidatedType, identityMember).AccessorFunction;
                 valueBase.IdentityAccessor = accessorFunction;
