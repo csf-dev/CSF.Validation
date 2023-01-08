@@ -28,11 +28,14 @@ namespace CSF.Validation.ManifestModel
             var valueConversionResult = valueConverter.ConvertAllValues(context);
             ruleConverter.ConvertAllRulesAndAddToManifestValues(valueConversionResult.ConvertedValues);
 
-            return new ValidationManifest
+            var manifestValue = valueConversionResult.RootValue;
+            var manifest = new ValidationManifest
             {
-                RootValue = valueConversionResult.RootValue,
+                RootValue = manifestValue,
                 ValidatedType = validatedType,
             };
+            manifestValue.Parent = manifest;
+            return manifest;
         }
 
         /// <summary>

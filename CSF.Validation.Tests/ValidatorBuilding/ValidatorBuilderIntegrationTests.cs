@@ -43,22 +43,6 @@ namespace CSF.Validation.ValidatorBuilding
             Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.StringProperty)).Rules, Has.Count.EqualTo(2));
         }
 
-        // [Test,AutoMoqData]
-        // public void GetManifestValueShouldEnumerateItemsInTheChildrenValue([IntegrationTesting] IServiceProvider services)
-        // {
-        //     var sut = GetValidatorBuilderForComplexObjectValidator(services);
-        //     var manifestValue = sut.GetManifestValue();
-        //     Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Children)).EnumerateItems, Is.True);
-        // }
-
-        // [Test,AutoMoqData]
-        // public void GetManifestValueShouldNotEnumerateItemsInTheAssociatedValue([IntegrationTesting] IServiceProvider services)
-        // {
-        //     var sut = GetValidatorBuilderForComplexObjectValidator(services);
-        //     var manifestValue = sut.GetManifestValue();
-        //     Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).EnumerateItems, Is.False);
-        // }
-
         [Test,AutoMoqData]
         public void GetManifestValueShouldHaveTwoChildValuesForTheAssociatedValue([IntegrationTesting] IServiceProvider services)
         {
@@ -73,6 +57,14 @@ namespace CSF.Validation.ValidatorBuilding
             var sut = GetValidatorBuilderForComplexObjectValidator(services);
             var manifestValue = sut.GetManifestValue();
             Assert.That(manifestValue.Children.Single(x => x.MemberName == nameof(ComplexObject.Associated)).Rules, Has.Count.EqualTo(1));
+        }
+
+        [Test,AutoMoqData]
+        public void GetManifestShouldSetTheParentOfTheRootManifestValueToBeTheManifestItself([IntegrationTesting] IServiceProvider services)
+        {
+            var sut = GetValidatorBuilderForComplexObjectValidator(services);
+            var manifest = sut.GetManifest();
+            Assert.That(manifest?.RootValue?.Parent, Is.SameAs(manifest));
         }
 
         [Test,AutoMoqData]
@@ -97,7 +89,7 @@ namespace CSF.Validation.ValidatorBuilding
             Assert.That(childRule.DependencyRules, Has.Count.EqualTo(1).And.One.EqualTo(expectedIdentifier));
         }
 
-        static IGetsManifestValue GetValidatorBuilderForComplexObjectValidator(IServiceProvider services)
+        static IValidatorBuilder<ComplexObject> GetValidatorBuilderForComplexObjectValidator(IServiceProvider services)
         {
             var factory = services.GetRequiredService<IGetsValidatorBuilder>();
             var sut = factory.GetValidatorBuilder<ComplexObject>();

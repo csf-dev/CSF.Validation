@@ -29,7 +29,7 @@ namespace CSF.Validation.Manifest
             while(!(current is null))
             {
                 yield return current;
-                current = current.Parent;
+                current = current.ParentItem;
             }
         }
 

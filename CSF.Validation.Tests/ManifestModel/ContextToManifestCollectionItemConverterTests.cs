@@ -20,7 +20,7 @@ namespace CSF.Validation.ManifestModel
             Assert.Multiple(() =>
             {
                 Assert.That(result, Is.InstanceOf<ManifestCollectionItem>(), "Correct type");
-                Assert.That(result.Parent, Is.SameAs(grandparent), "Correct parent item");
+                Assert.That(result.ParentItem, Is.SameAs(grandparent), "Correct parent item");
                 Assert.That(result.ValidatedType, Is.EqualTo(context.ValidatedType), "Correct validated type");
                 Assert.That(parent.CollectionItemValue, Is.SameAs(result), "Result added as parent's collection value");
             });

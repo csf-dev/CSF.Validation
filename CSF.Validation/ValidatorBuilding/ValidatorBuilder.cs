@@ -178,11 +178,14 @@ namespace CSF.Validation.ValidatorBuilding
         /// <inheritdoc/>
         public ValidationManifest GetManifest()
         {
-            return new ValidationManifest
+            var manifestValue = GetManifestValue() as ManifestValue;
+            var manifest = new ValidationManifest
             {
-                RootValue = GetManifestValue() as ManifestValue,
+                RootValue = manifestValue,
                 ValidatedType = typeof(TValidated),
             };
+            manifestValue.Parent = manifest;
+            return manifest;
         }
 
         void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, ValidatorBuilderContext context)

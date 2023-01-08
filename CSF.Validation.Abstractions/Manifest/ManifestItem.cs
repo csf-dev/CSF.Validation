@@ -26,7 +26,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
-    public abstract class ManifestItem
+    public abstract class ManifestItem : IManifestNode
     {
         ICollection<ManifestValue> children = new List<ManifestValue>();
         ICollection<ManifestRule> rules = new List<ManifestRule>();
@@ -38,11 +38,28 @@ namespace CSF.Validation.Manifest
         public virtual Type ValidatedType { get; set; }
 
         /// <summary>
-        /// Gets or sets an optional parent manifest value.
-        /// Where this is <see langword="null"/> that indicates that this model is the root of the validation hierarchy.
-        /// If it is non-<see langword="null"/> then it is a descendent of the root of the hierarchy.
+        /// Gets the <see cref="Parent"/> value, typed as a <see cref="ManifestItem"/>.
         /// </summary>
-        public virtual ManifestItem Parent { get; set; }
+        /// <remarks>
+        /// <para>
+        /// Where this value is <see langword="null"/>, it should indicate that the current instance is the root of the validation hierarchy
+        /// and that <see cref="Parent"/> is in fact a <see cref="ValidationManifest"/>.
+        /// If it is non-<see langword="null"/> then this property allows access to the parent, without additional casting required.
+        /// </para>
+        /// </remarks>
+        public virtual ManifestItem ParentItem => Parent as ManifestItem;
+
+        /// <summary>
+        /// Gets or sets the parent of the current manifest item.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This must be either a <see cref="ValidationManifest"/> (indicating that this item is the root of the
+        /// validation manifest data-structure) or another <see cref="ManifestItem"/>, indicating the parent of the
+        /// current item.
+        /// </para>
+        /// </remarks>
+        public virtual IManifestNode Parent { get; set; }
 
         /// <summary>
         /// Gets or sets a function which retrieves a unique identity of the object being

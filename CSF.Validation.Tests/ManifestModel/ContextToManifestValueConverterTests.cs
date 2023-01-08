@@ -20,7 +20,7 @@ namespace CSF.Validation.ManifestModel
             Assert.Multiple(() =>
             {
                 Assert.That(result, Is.InstanceOf<ManifestValue>(), "Correct type");
-                Assert.That(result.Parent, Is.SameAs(parent), "Correct parent item");
+                Assert.That(result.ParentItem, Is.SameAs(parent), "Correct parent item");
                 Assert.That(result, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(context.MemberName), "Correct member name");
                 Assert.That(result, Has.Property(nameof(ManifestValue.AccessorFromParent)).EqualTo(context.AccessorFromParent), "Correct accessor");
                 Assert.That(result.ValidatedType, Is.EqualTo(context.ValidatedType), "Correct validated type");

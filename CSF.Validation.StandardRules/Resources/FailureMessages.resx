@@ -117,16 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegexPatternMustNotBeNull" xml:space="preserve">
-    <value>The regular expression pattern must not be null. Set the pattern before using this rule.</value>
+  <data name="RootValueMustBeForSameTypeAsManifest" xml:space="preserve">
+    <value>The {0} of the {1} must be be assignable to the type stored at {2} (it must be the same type or must be less-derived).
+{3} = {4}
+{5} = {6}</value>
     <comment/>
   </data>
-  <data name="DerivesFrom" xml:space="preserve">
-    <value>The desired type must not be null.  Set the type before using this rule.</value>
+  <data name="RootValueMustNotHaveAParent" xml:space="preserve">
+    <value>The {0} of the root {1} in a {2} must be null.</value>
     <comment/>
   </data>
-  <data name="DoesNotDeriveFrom" xml:space="preserve">
-    <value>The unwanted type must not be null.  Set the type before using this rule.</value>
+  <data name="DoesNotDeriveFromRecursiveManifestValueMessage" xml:space="preserve">
+    <value>The root {0} of a {1} must not derive from {2}.</value>
     <comment/>
   </data>
 </root>

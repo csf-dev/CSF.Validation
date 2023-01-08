@@ -29,7 +29,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
-    public class ValidationManifest
+    public class ValidationManifest : IManifestNode
     {
         /// <summary>
         /// Gets or sets the type of object which the validator should validate.

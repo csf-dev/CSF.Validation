@@ -32,7 +32,7 @@ namespace CSF.Validation.ValidatorBuilding
             var current = baseValue;
 
             for (var i = relativeIdentifier.AncestorLevels; i > 0; i--)
-                current = current?.Parent ?? throw GetInsufficientParentsException(relativeIdentifier.AncestorLevels, nameof(relativeIdentifier));
+                current = current?.ParentItem ?? throw GetInsufficientParentsException(relativeIdentifier.AncestorLevels, nameof(relativeIdentifier));
 
             var memberName = relativeIdentifier.MemberName;
             if(!String.IsNullOrEmpty(memberName))

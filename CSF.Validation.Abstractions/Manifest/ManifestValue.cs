@@ -29,7 +29,7 @@ namespace CSF.Validation.Manifest
     public class ManifestValue : ManifestItem
     {
         /// <summary>
-        /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestItem.Parent"/>)
+        /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestItem.ParentItem"/>)
         /// the value for the current instance.
         /// </summary>
         public virtual Func<object, object> AccessorFromParent { get; set; }
