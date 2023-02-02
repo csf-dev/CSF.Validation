@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -44,58 +45,48 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class NotEmpty : IRule<ICollection>, IRule<IEnumerable>, IRule<Array>, IRule<string>
+    public class NotEmpty : IRuleWithMessage<ICollection>, IRuleWithMessage<IEnumerable>, IRuleWithMessage<Array>, IRuleWithMessage<string>
     {
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Count > 0 ? PassAsync() : FailAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.GetEnumerator().MoveNext() ? PassAsync() : FailAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Length > 0 ? PassAsync() : FailAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Length > 0 ? PassAsync() : FailAsync();
         }
+
+        static Task<string> GetFailureMessageAsync() => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotEmpty"));
+
+        Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync();
+
+        Task<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync();
+
+        Task<string> IGetsFailureMessage<IEnumerable>.GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync();
+
+        Task<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync();
     }
 }

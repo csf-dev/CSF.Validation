@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -32,7 +33,7 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class DecimalInRange : IRule<decimal>, IRule<decimal?>
+    public class DecimalInRange : IRuleWithMessage<decimal>, IRuleWithMessage<decimal?>
     {
         /// <summary>
         /// Gets or sets the (inclusive) minimum for the validated value.
@@ -44,13 +45,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         public decimal? Max { get; set; }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(decimal validated, RuleContext context, CancellationToken token = default)
         {
             var result = (!Min.HasValue || Min.Value <= validated)
@@ -58,14 +53,21 @@ namespace CSF.Validation.Rules
             return result ? PassAsync() : FailAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        public Task<RuleResult> GetResultAsync(decimal? validated, RuleContext context, CancellationToken token = default)
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(decimal? value, ValidationRuleResult result, CancellationToken token)
+        {
+            if(Min.HasValue && Max.HasValue)
+                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeRange"), Min, Max, value));
+            if(Min.HasValue)
+                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMin"), Min, value));
+
+            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMax"), Max, value));
+        }
+
+        Task<RuleResult> IRule<decimal?>.GetResultAsync(decimal? validated, RuleContext context, CancellationToken token)
             => validated.HasValue ? GetResultAsync(validated.Value, context, token) : PassAsync();
+
+        Task<string> IGetsFailureMessage<decimal>.GetFailureMessageAsync(decimal value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync(value, result, token);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -27,7 +28,7 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class LengthInRange : IRule<Array>, IRule<ICollection>, IRule<string>
+    public class LengthInRange : IRuleWithMessage<Array>, IRuleWithMessage<ICollection>, IRuleWithMessage<string>
     {
         readonly IntegerInRange inRangeRule;
 
@@ -41,13 +42,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         public int? Max { get; set; }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
@@ -56,13 +51,7 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Length, context, token);
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
@@ -71,13 +60,7 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Count, context, token);
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
@@ -85,6 +68,25 @@ namespace CSF.Validation.Rules
             inRangeRule.Max = Max;
             return inRangeRule.GetResultAsync(validated.Length, context, token);
         }
+
+        Task<string> GetFailureMessageAsync(ValidationRuleResult result)
+        {
+            if(Min.HasValue && Max.HasValue)
+                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeRange"), Min, Max, result.Data[IntegerInRange.ActualKey]));
+            if(Min.HasValue)
+                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeMin"), Min, result.Data[IntegerInRange.ActualKey]));
+
+            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeMax"), Max, result.Data[IntegerInRange.ActualKey]));
+        }
+
+        Task<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync(result);
+
+        Task<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync(result);
+
+        Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync(result);
 
         /// <summary>
         /// Initialises a new instance of <see cref="LengthInRange"/>.

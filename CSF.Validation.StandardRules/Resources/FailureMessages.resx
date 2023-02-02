@@ -123,12 +123,112 @@
 {5} = {6}</value>
     <comment/>
   </data>
-  <data name="RootValueMustNotHaveAParent" xml:space="preserve">
-    <value>The {0} of the root {1} in a {2} must be null.</value>
+  <data name="ParentMustBeAValidationManifest" xml:space="preserve">
+    <value>The {0} of the root {1} in a {2} must be an instance of {2}.</value>
     <comment/>
   </data>
   <data name="DoesNotDeriveFromRecursiveManifestValueMessage" xml:space="preserve">
     <value>The root {0} of a {1} must not derive from {2}.</value>
+    <comment/>
+  </data>
+  <data name="ParentMustDeriveFromValidationManifest" xml:space="preserve">
+    <value>The {0} property of a {1} that is the root of a validation manifest must be an instance of type {2}.</value>
+    <comment/>
+  </data>
+  <data name="MustBeDefinedEnumConstant" xml:space="preserve">
+    <value>The value must be a defined constant of the enum {0}, but it is not.</value>
+    <comment/>
+  </data>
+  <data name="IntegerInRangeRange" xml:space="preserve">
+    <value>The value must be in the range {0} to {1} (inclusive).  The actual value is {2}.</value>
+    <comment/>
+  </data>
+  <data name="IntegerInRangeMin" xml:space="preserve">
+    <value>The value must be greater than or equal to {0}.  The actual value is {1}.</value>
+    <comment/>
+  </data>
+  <data name="IntegerInRangeMax" xml:space="preserve">
+    <value>The value must be less than or equal to {0}.  The actual value is {1}.</value>
+    <comment/>
+  </data>
+  <data name="CountInRangeRange" xml:space="preserve">
+    <value>The value must have a count in the range {0} to {1} (inclusive).  The actual count is {2}.</value>
+    <comment/>
+  </data>
+  <data name="CountInRangeMin" xml:space="preserve">
+    <value>The value must have a count greater than or equal to {0}.  The actual count is {1}.</value>
+    <comment/>
+  </data>
+  <data name="CountInRangeMax" xml:space="preserve">
+    <value>The value must have a count less than or equal to {0}.  The actual count is {1}.</value>
+    <comment/>
+  </data>
+  <data name="LengthInRangeRange" xml:space="preserve">
+    <value>The value must have a length in the range {0} to {1} (inclusive).  The actual length is {2}.</value>
+    <comment/>
+  </data>
+  <data name="LengthInRangeMin" xml:space="preserve">
+    <value>The value must have a length greater than or equal to {0}.  The actual length is {1}.</value>
+    <comment/>
+  </data>
+  <data name="LengthInRangeMax" xml:space="preserve">
+    <value>The value must have a length less than or equal to {0}.  The actual length is {1}.</value>
+    <comment/>
+  </data>
+  <data name="DateTimeInRangeRange" xml:space="preserve">
+    <value>The date/time must be in the range {0} to {1} (inclusive).  The actual date/time is {2}.</value>
+    <comment/>
+  </data>
+  <data name="DateTimeInRangeMin" xml:space="preserve">
+    <value>The date/time must be {0} or afterward.  The actual date/time is {1}.</value>
+    <comment/>
+  </data>
+  <data name="DateTimeInRangeMax" xml:space="preserve">
+    <value>The date/time must be {0} or earlier.  The actual date/time is {1}.</value>
+    <comment/>
+  </data>
+  <data name="DerivesFrom" xml:space="preserve">
+    <value>The value must derive from {0}.  The actual value is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="DoesNotDeriveFrom" xml:space="preserve">
+    <value>The value must not derive from {0}.  The actual value is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="EmptyWithCountOne" xml:space="preserve">
+    <value>The value must be empty but it actually has one item.</value>
+    <comment/>
+  </data>
+  <data name="EmptyWithCount" xml:space="preserve">
+    <value>The value must be empty but it actually has {0} items.</value>
+    <comment/>
+  </data>
+  <data name="EmptyWithNoCount" xml:space="preserve">
+    <value>The value must be empty but it is not.</value>
+    <comment/>
+  </data>
+  <data name="EmptyString" xml:space="preserve">
+    <value>The value must be empty but it is "{0}".</value>
+    <comment/>
+  </data>
+  <data name="MatchesRegex" xml:space="preserve">
+    <value>The value must match the regular expression "{0}", using the regex options {1}.  The actual value is "{2}".</value>
+    <comment/>
+  </data>
+  <data name="NotEmpty" xml:space="preserve">
+    <value>The value must not be empty.</value>
+    <comment/>
+  </data>
+  <data name="NotNull" xml:space="preserve">
+    <value>The value must not be null.</value>
+    <comment/>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>The value must be null.</value>
+    <comment/>
+  </data>
+  <data name="NotNullOrEmpty" xml:space="preserve">
+    <value>The value must not be null and must not be empty.</value>
     <comment/>
   </data>
 </root>

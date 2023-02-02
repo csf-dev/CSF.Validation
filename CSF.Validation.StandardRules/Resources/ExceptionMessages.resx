@@ -129,4 +129,8 @@
     <value>The unwanted type must not be null.  Set the type before using this rule.</value>
     <comment/>
   </data>
+  <data name="TypeNotFound" xml:space="preserve">
+    <value>If {0} is null then {1} must not be null and must correspond to a type which may be loaded via {2}.</value>
+    <comment/>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Resources;
@@ -9,8 +10,10 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A rule that passes if the validated value is <see langword="null" /> or if it derives from a specified type, and fails if it does not.
     /// </summary>
-    public class DerivesFrom : IRule<object>
+    public class DerivesFrom : IRuleWithMessage<object>
     {
+        internal const string ActualTypeKey = "Actual type";
+
         /// <summary>
         /// Gets or sets the type that the validated value must derive from.
         /// </summary>
@@ -21,7 +24,18 @@ namespace CSF.Validation.Rules
         {
             if(Type is null) throw new InvalidOperationException(String.Format(ExceptionMessages.GetExceptionMessage("DerivesFrom")));
             if(validated is null) return PassAsync();
-            return Type.IsAssignableFrom(validated.GetType()) ? PassAsync() : FailAsync();
+            var actualType = validated.GetType();
+            var data = new Dictionary<string, object> { { ActualTypeKey, actualType } };
+            return Type.IsAssignableFrom(actualType) ? PassAsync(data) : FailAsync(data);
+        }
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
+        {
+            var message = String.Format(Resources.FailureMessages.GetFailureMessage("DerivesFrom"),
+                                        Type.AssemblyQualifiedName,
+                                        ((Type)result.Data[DerivesFrom.ActualTypeKey]).AssemblyQualifiedName);
+            return Task.FromResult(message);
         }
     }
 }

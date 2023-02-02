@@ -24,7 +24,7 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class MatchesRegex : IRule<string>
+    public class MatchesRegex : IRuleWithMessage<string>
     {
         /// <summary>
         /// Gets or sets the regular expression pattern.
@@ -36,13 +36,7 @@ namespace CSF.Validation.Rules
         /// </summary>
         public RegexOptions RegexOptions { get; set; } = RegexOptions.None;
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null)
@@ -51,6 +45,14 @@ namespace CSF.Validation.Rules
                 throw new InvalidOperationException(Resources.ExceptionMessages.GetExceptionMessage("RegexPatternMustNotBeNull"));
 
             return Regex.IsMatch(validated, Pattern, RegexOptions) ? PassAsync() : FailAsync();
+        }
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+        {
+            var message = String.Format(Resources.FailureMessages.GetFailureMessage("MatchesRegex"),
+                                        Pattern, RegexOptions, value);
+            return Task.FromResult(message);
         }
     }
 }
