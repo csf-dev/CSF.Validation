@@ -9,7 +9,7 @@ namespace CSF.Validation.ValidatorValidation
     /// </summary>
     public class ValidationManifestValidatorBuilder : IBuildsValidator<ValidationManifest>
     {
-        internal const string RootValueOfManifestMustNotBeRecursive = "RootValueOfManifestMustNotBeRecursive";
+        internal const string RootValueOfManifestMustNotBeRecursive = nameof(RootValueOfManifestMustNotBeRecursive);
 
         /// <inheritdoc/>
         public void ConfigureValidator(IConfiguresValidator<ValidationManifest> config)
@@ -18,14 +18,12 @@ namespace CSF.Validation.ValidatorValidation
 
             config.ForMember(x => x.RootValue, m =>
             {
-                m.AddRule<NotNull>();
-                m.AddRule<RootValueMustNotHaveAParent>();
-                m.AddRule<RootValueMustNotHaveAnAccessor>();
-                m.AddRule<RootValueMustNotHaveAMemberName>();
+                m.AddRules<ManifestValueValidatorBuilder>();
+                m.AddRule<ParentMustDeriveFromValidationManifest>();
                 m.AddRule<DoesNotDeriveFrom<RecursiveManifestValue>>(r => r.Name = RootValueOfManifestMustNotBeRecursive);
+                m.AddRuleWithParent<RootValueMustBeForSameTypeAsManifest>();
             });
 
-            config.AddRule<RootValueMustBeForSameTypeAsManifest>();
         }
     }
 }

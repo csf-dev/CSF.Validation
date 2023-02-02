@@ -11,8 +11,9 @@ namespace CSF.Validation.ValidatorValidation
     /// A validation failure message provider for the rule which ensures that the <see cref="ValidationManifest.RootValue"/>
     /// of a <see cref="ValidationManifest"/> does not derive from <see cref="RecursiveManifestValue"/>.
     /// </summary>
-    [FailureMessageStrategy(RuleType = typeof(DoesNotDeriveFrom<ManifestValue>),
+    [FailureMessageStrategy(RuleType = typeof(DoesNotDeriveFrom<RecursiveManifestValue>),
                             MemberName = nameof(ValidationManifest.RootValue),
+                            ValidatedType = typeof(ManifestValue),
                             ParentValidatedType = typeof(ValidationManifest),
                             RuleName = ValidationManifestValidatorBuilder.RootValueOfManifestMustNotBeRecursive)]
     public class DoesNotDeriveFromRecursiveManifestValueMessage : IGetsFailureMessage<ManifestValue>

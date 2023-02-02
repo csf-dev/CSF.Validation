@@ -231,4 +231,22 @@
     <value>The value must not be null and must not be empty.</value>
     <comment/>
   </data>
+  <data name="NullIfTheParentIsAManifest" xml:space="preserve">
+    <value>The value must be null if the {0} is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="MemberMustExist" xml:space="preserve">
+    <value>The {0} {1} must have a member named {2}, or else the {3} property of the {4} must be null.</value>
+    <comment/>
+  </data>
+  <data name="CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable" xml:space="preserve">
+    <value>If the {0} of the {1} does not implement {2}&lt;{3}&gt; then {0} must be null.</value>
+    <comment/>
+  </data>
+  <data name="CollectionItemValueMustValidateCompatibleTypeForValidatedType" xml:space="preserve">
+    <value>When validating collection items, the {0}.{1} must be assignable to {2}&lt;T&gt; for a generic type that matches {0}.{3}.{1}.
+{0}.{1} = {4}
+{3}.{1} = {5}</value>
+    <comment/>
+  </data>
 </root>
