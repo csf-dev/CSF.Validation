@@ -289,4 +289,8 @@
     <value>You must not use {0} if you have performed any other configuration upon a validator builder.</value>
     <comment/>
   </data>
+  <data name="ValidatedTypeMustDeriveFromBaseType" xml:space="preserve">
+    <value>When using {2}, the specified base type ({1}) must be a less derived form of the validated type ({0}).  In other words, the validated type must derive from the base type, but it does not.</value>
+    <comment/>
+  </data>
 </root>

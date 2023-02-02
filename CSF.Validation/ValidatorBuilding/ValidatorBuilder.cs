@@ -49,6 +49,20 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         /// <inheritdoc/>
+        public IConfiguresValidator<TValidated> AddBaseRules<TBase, TBuilder>() where TBuilder : IBuildsValidator<TBase>
+        {
+            AssertNotRecursive();
+            if(!typeof(TBase).IsAssignableFrom(typeof(TValidated)))
+                throw new InvalidCastException(String.Format(Resources.ExceptionMessages.GetExceptionMessage("ValidatedTypeMustDeriveFromBaseType"),
+                                                             typeof(TValidated).FullName,
+                                                             typeof(TBase).FullName,
+                                                             nameof(AddBaseRules)));
+            var importedRules = validatorManifestFactory.GetValidatorManifest(typeof(TBuilder), context);
+            ruleBuilders.Add(importedRules);
+            return this;
+        }
+
+        /// <inheritdoc/>
         public IConfiguresValidator<TValidated> ForMember<TValue>(Expression<Func<TValidated, TValue>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
             AssertNotRecursive();

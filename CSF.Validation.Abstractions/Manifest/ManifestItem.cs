@@ -26,7 +26,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
-    public abstract class ManifestItem : IManifestNode
+    public abstract class ManifestItem
     {
         ICollection<ManifestValue> children = new List<ManifestValue>();
         ICollection<ManifestRule> rules = new List<ManifestRule>();
