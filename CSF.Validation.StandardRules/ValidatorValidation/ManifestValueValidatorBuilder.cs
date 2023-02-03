@@ -17,6 +17,7 @@ namespace CSF.Validation.ValidatorValidation
             config.ForMember(x => x.AccessorFromParent, m =>
             {
                 m.AddRuleWithParent<NullIfTheParentIsAManifest>();
+                m.AddRuleWithParent<NotNullIfTheParentIsNotAManifest>();
             });
 
             config.ForMember(x => x.MemberName, m =>

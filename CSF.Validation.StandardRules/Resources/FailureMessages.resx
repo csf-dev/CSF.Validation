@@ -231,8 +231,24 @@
     <value>The value must not be null and must not be empty.</value>
     <comment/>
   </data>
+  <data name="ContainsNoNullItems" xml:space="preserve">
+    <value>No items within this queryable value may be null; at least one null item was found.</value>
+    <comment/>
+  </data>
+  <data name="ContainsNoNullItemsOne" xml:space="preserve">
+    <value>No items within this collection may be null; one null item was found.</value>
+    <comment/>
+  </data>
+  <data name="ContainsNoNullItemsCount" xml:space="preserve">
+    <value>No items within this collection may be null; {0} null items were found.</value>
+    <comment/>
+  </data>
   <data name="NullIfTheParentIsAManifest" xml:space="preserve">
     <value>The value must be null if the {0} is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="NotNullIfTheParentIsNotAManifest" xml:space="preserve">
+    <value>The value must not be null if the {0} is not an instance of {1}.</value>
     <comment/>
   </data>
   <data name="MemberMustExist" xml:space="preserve">
@@ -249,4 +265,15 @@
 {3}.{1} = {5}</value>
     <comment/>
   </data>
+  <data name="RuleMustImplementCompatibleValidationLogicOneInterface" xml:space="preserve">
+    <value>The rule logic type {0}.{1} must implement {2}&lt;{3}&gt;, either directly or contravariantly via a less-specific interface.
+The type {4} does not implement this interface, though.</value>
+    <comment/>
+  </data>
+  <data name="RuleMustImplementCompatibleValidationLogicTwoInterfaces" xml:space="preserve">
+    <value>The rule logic type {0}.{1} must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface.
+The type {5} does not implement either of these interfaces, though.</value>
+    <comment/>
+  </data>
+  
 </root>

@@ -37,7 +37,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestItem"/>
-    /// <seealso cref="ManifestValue"/>
+    /// <seealso cref="Manifest.ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     public class RecursiveManifestValue : ManifestValue
@@ -119,11 +119,14 @@ namespace CSF.Validation.Manifest
         /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
         /// the setter will raise <see cref="NotSupportedException"/>.
         /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// Additionally, the getter of this property will always produce a new collection, copying the elements from
+        /// the same collection in the <see cref="WrappedValue"/>.  This means that modifying the contents of this
+        /// collection will not be effective.
         /// </para>
         /// </remarks>
         public override ICollection<ManifestValue> Children
         {
-            get => wrapped.Children;
+            get => new List<ManifestValue>(wrapped.Children);
             set => throw GetNoSetterException(nameof(Children));
         }
 
@@ -135,11 +138,14 @@ namespace CSF.Validation.Manifest
         /// A <see cref="RecursiveManifestValue"/> does not support setting this property value, any usage of
         /// the setter will raise <see cref="NotSupportedException"/>.
         /// The value of this property always be derived from the <see cref="WrappedValue"/>.
+        /// Additionally, the getter of this property will always produce a new collection, copying the elements from
+        /// the same collection in the <see cref="WrappedValue"/>.  This means that modifying the contents of this
+        /// collection will not be effective.
         /// </para>
         /// </remarks>
         public override ICollection<ManifestRule> Rules
         {
-            get => wrapped.Rules;
+            get => new List<ManifestRule>(wrapped.Rules);
             set => throw GetNoSetterException(nameof(Rules));
         }
 

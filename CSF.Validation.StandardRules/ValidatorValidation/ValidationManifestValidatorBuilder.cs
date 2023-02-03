@@ -18,6 +18,7 @@ namespace CSF.Validation.ValidatorValidation
 
             config.ForMember(x => x.RootValue, m =>
             {
+                m.AddRule<NotNull>();
                 m.AddRules<ManifestValueValidatorBuilder>();
                 m.AddRule<ParentMustDeriveFromValidationManifest>();
                 m.AddRule<DoesNotDeriveFrom<RecursiveManifestValue>>(r => r.Name = RootValueOfManifestMustNotBeRecursive);

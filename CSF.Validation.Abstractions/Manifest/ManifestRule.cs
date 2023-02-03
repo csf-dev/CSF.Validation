@@ -22,7 +22,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestItem"/>
-    /// <seealso cref="ManifestValue"/>
+    /// <seealso cref="Manifest.ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
@@ -37,7 +37,7 @@ namespace CSF.Validation.Manifest
         public ManifestItem ManifestValue { get; }
 
         /// <summary>
-        /// Gets or sets the rule's unique identifier.
+        /// Gets the rule's unique identifier.
         /// </summary>
         /// <remarks>
         /// <para>

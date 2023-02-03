@@ -21,7 +21,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestItem"/>
-    /// <seealso cref="ManifestValue"/>
+    /// <seealso cref="Manifest.ManifestValue"/>
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>

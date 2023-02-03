@@ -20,8 +20,11 @@ namespace CSF.Validation.Manifest
     /// </para>
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
-    /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="ManifestValue"/>
+    /// <seealso cref="ValidationManifest"/>
+    /// <seealso cref="ManifestItem"/>
+    /// <seealso cref="Manifest.ManifestValue"/>
+    /// <seealso cref="ManifestPolymorphicType"/>
+    /// <seealso cref="RecursiveManifestValue"/>
     public class ManifestCollectionItem : ManifestItem {}
 }
