@@ -7,10 +7,11 @@ namespace CSF.Validation.ValidatorValidation
     public class ValidationManifestValidatorTests
     {
         [Test,AutoMoqData]
-        public void ValidateAsyncShouldReturnPassResultForItsOwnManifest([IntegrationTesting] IValidatesValidationManifest sut)
+        public async Task ValidateAsyncShouldReturnPassResultForItsOwnManifest([IntegrationTesting] IValidatesValidationManifest sut)
         {
             var options = new ValidationOptions { RuleThrowingBehaviour = RuleThrowingBehaviour.Never };
-            Assert.That(async () => await sut.ValidateAsync(new ValidationManifestValidatorBuilder(), options), Is.PassingValidationResult);
+            var result = await sut.ValidateAsync(new ValidationManifestValidatorBuilder(), options);
+            Assert.That(result, Is.PassingValidationResult);
         }
     }
 }
