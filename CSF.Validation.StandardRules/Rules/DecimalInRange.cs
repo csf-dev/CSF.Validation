@@ -54,7 +54,11 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(decimal? value, ValidationRuleResult result, CancellationToken token)
+        public Task<RuleResult> GetResultAsync(decimal? validated, RuleContext context, CancellationToken token = default)
+            => validated.HasValue ? GetResultAsync(validated.Value, context, token) : PassAsync();
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(decimal? value, ValidationRuleResult result, CancellationToken token = default)
         {
             if(Min.HasValue && Max.HasValue)
                 return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeRange"), Min, Max, value));
@@ -63,10 +67,6 @@ namespace CSF.Validation.Rules
 
             return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMax"), Max, value));
         }
-
-        /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(decimal? validated, RuleContext context, CancellationToken token = default)
-            => validated.HasValue ? GetResultAsync(validated.Value, context, token) : PassAsync();
 
         Task<string> IGetsFailureMessage<decimal>.GetFailureMessageAsync(decimal value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);

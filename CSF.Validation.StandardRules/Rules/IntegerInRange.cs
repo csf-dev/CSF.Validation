@@ -69,7 +69,7 @@ namespace CSF.Validation.Rules
             => validated.HasValue ? GetResultAsync(validated.Value, context, token) : PassAsync(new Dictionary<string, object> { { MinKey, Min }, { MaxKey, Max }, { ActualKey, validated } });
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(long? value, ValidationRuleResult result, CancellationToken token)
+        public Task<string> GetFailureMessageAsync(long? value, ValidationRuleResult result, CancellationToken token = default)
         {
             if(Min.HasValue && Max.HasValue)
                 return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeRange"), Min, Max, value));

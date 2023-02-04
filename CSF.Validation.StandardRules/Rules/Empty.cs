@@ -60,7 +60,7 @@ namespace CSF.Validation.Rules
         {
             if(validated is null) return PassAsync();
             var data = new Dictionary<string, object> { { Empty.CountKey, validated.Count } };
-            return validated.Count == 0 ? PassAsync() : FailAsync();
+            return validated.Count == 0 ? PassAsync() : FailAsync(data);
         }
 
         /// <inheritdoc/>
@@ -75,7 +75,7 @@ namespace CSF.Validation.Rules
         {
             if(validated is null) return PassAsync();
             var data = new Dictionary<string, object> { { Empty.CountKey, validated.Length } };
-            return validated.Length == 0 ? PassAsync() : FailAsync();
+            return validated.Length == 0 ? PassAsync() : FailAsync(data);
         }
 
         /// <inheritdoc/>
@@ -83,22 +83,21 @@ namespace CSF.Validation.Rules
         {
             if(validated is null) return PassAsync();
             var data = new Dictionary<string, object> { { Empty.CountKey, validated.Length } };
-            return validated.Length == 0 ? PassAsync() : FailAsync();
+            return validated.Length == 0 ? PassAsync() : FailAsync(data);
         }
 
-        static Task<string> GetFailureMessageAsyncWithCount(ValidationRuleResult result)
+        static string GetFailureMessageAsyncWithCount(ValidationRuleResult result)
         {
-            var message = Equals(result.Data[Empty.CountKey], 1)
+            return Equals(result.Data[Empty.CountKey], 1)
                 ? Resources.FailureMessages.GetFailureMessage("EmptyWithCountOne")
                 : String.Format(Resources.FailureMessages.GetFailureMessage("EmptyWithCount"), result.Data[Empty.CountKey]);
-            return Task.FromResult(message);
         }
 
         Task<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsyncWithCount(result);
+            => Task.FromResult(GetFailureMessageAsyncWithCount(result));
 
         Task<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsyncWithCount(result);
+            => Task.FromResult(GetFailureMessageAsyncWithCount(result));
 
         Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
             => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("EmptyString"), value));

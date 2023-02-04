@@ -75,19 +75,18 @@ namespace CSF.Validation.Rules
         public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
             => Task.FromResult(Resources.FailureMessages.GetFailureMessage("EmptyWithNoCount"));
 
-        static Task<string> GetFailureMessageAsyncWithCount(ValidationRuleResult result)
+        static string GetFailureMessageAsyncWithCount(ValidationRuleResult result)
         {
-            var message = Equals(result.Data[Empty.CountKey], 1)
+            return Equals(result.Data[Empty.CountKey], 1)
                 ? Resources.FailureMessages.GetFailureMessage("EmptyWithCountOne")
                 : String.Format(Resources.FailureMessages.GetFailureMessage("EmptyWithCount"), result.Data[Empty.CountKey]);
-            return Task.FromResult(message);
         }
 
         Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsyncWithCount(result);
+            => Task.FromResult(GetFailureMessageAsyncWithCount(result));
 
         Task<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsyncWithCount(result);
+            => Task.FromResult(GetFailureMessageAsyncWithCount(result));
 
         Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
         {

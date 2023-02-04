@@ -26,7 +26,7 @@ namespace CSF.Validation.ValidatorValidation
     /// which is only capable of validating "Cat" instances.
     /// </para>
     /// </example>
-    public class CollectionItemValueMustValidateCompatibleTypeForValidatedType : IRule<ManifestItem>
+    public class CollectionItemValueMustValidateCompatibleTypeForValidatedType : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
