@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,17 @@ namespace CSF.Validation.Rules
 
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(GetFailureMessage(value, result));
+
+        internal static string GetFailureMessage(IEnumerable value, ValidationRuleResult result)
         {
-            var countOfNulls = (int) result.Data[CountOfNullsKey];
-            if(countOfNulls == 1) return Task.FromResult(Resources.FailureMessages.GetFailureMessage("ContainsNoNullItemsOne"));
-            return Task.FromResult(string.Format(Resources.FailureMessages.GetFailureMessage("ContainsNoNullItemsCount"), countOfNulls));
+            if(!result.Data.TryGetValue(CountOfNullsKey, out var count))
+                return Resources.FailureMessages.GetFailureMessage("ContainsNoNullItems");
+
+            var countOfNulls = (int) count;
+            return (countOfNulls == 1)
+                ? Resources.FailureMessages.GetFailureMessage("ContainsNoNullItemsOne")
+                : String.Format(Resources.FailureMessages.GetFailureMessage("ContainsNoNullItemsCount"), countOfNulls);
         }
     }
 }

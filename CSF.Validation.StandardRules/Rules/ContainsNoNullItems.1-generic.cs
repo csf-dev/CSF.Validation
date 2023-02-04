@@ -29,15 +29,11 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(IEnumerable<T> value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            var countOfNulls = (int) result.Data[ContainsNoNullItems.CountOfNullsKey];
-            if(countOfNulls == 1) return Task.FromResult(Resources.FailureMessages.GetFailureMessage("ContainsNoNullItemsOne"));
-            return Task.FromResult(string.Format(Resources.FailureMessages.GetFailureMessage("ContainsNoNullItemsCount"), countOfNulls));
-        }
+        public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(ContainsNoNullItems.GetFailureMessage(value, result));
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("ContainsNoNullItems"));
+        public Task<string> GetFailureMessageAsync(IEnumerable<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(ContainsNoNullItems.GetFailureMessage(value, result));
     }
 }

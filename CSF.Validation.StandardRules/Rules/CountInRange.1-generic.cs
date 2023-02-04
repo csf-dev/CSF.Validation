@@ -81,7 +81,8 @@ namespace CSF.Validation.Rules
             return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeMax"), Max, result.Data[IntegerInRange.ActualKey]));
         }
 
-        Task<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token = default)
             => GetFailureMessageAsync(result);
 
         Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)

@@ -118,9 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RootValueMustBeForSameTypeAsManifest" xml:space="preserve">
-    <value>The {0} of the {1} must be be assignable to the type stored at {2} (it must be the same type or must be less-derived).
-{3} = {4}
-{5} = {6}</value>
+    <value>The {0} of the {1} must be be assignable to the type stored at {2} (it must be the same type or must be less-derived).{3} = {4}{5} = {6}</value>
     <comment/>
   </data>
   <data name="ParentMustBeAValidationManifest" xml:space="preserve">
@@ -140,27 +138,27 @@
     <comment/>
   </data>
   <data name="IntegerInRangeRange" xml:space="preserve">
-    <value>The value must be in the range {0} to {1} (inclusive).  The actual value is {2}.</value>
+    <value>The value must be in the range {0} to {1} (inclusive). The actual value is {2}.</value>
     <comment/>
   </data>
   <data name="IntegerInRangeMin" xml:space="preserve">
-    <value>The value must be greater than or equal to {0}.  The actual value is {1}.</value>
+    <value>The value must be greater than or equal to {0}. The actual value is {1}.</value>
     <comment/>
   </data>
   <data name="IntegerInRangeMax" xml:space="preserve">
-    <value>The value must be less than or equal to {0}.  The actual value is {1}.</value>
+    <value>The value must be less than or equal to {0}. The actual value is {1}.</value>
     <comment/>
   </data>
   <data name="CountInRangeRange" xml:space="preserve">
-    <value>The value must have a count in the range {0} to {1} (inclusive).  The actual count is {2}.</value>
+    <value>The value must have a count in the range {0} to {1} (inclusive). The actual count is {2}.</value>
     <comment/>
   </data>
   <data name="CountInRangeMin" xml:space="preserve">
-    <value>The value must have a count greater than or equal to {0}.  The actual count is {1}.</value>
+    <value>The value must have a count greater than or equal to {0}. The actual count is {1}.</value>
     <comment/>
   </data>
   <data name="CountInRangeMax" xml:space="preserve">
-    <value>The value must have a count less than or equal to {0}.  The actual count is {1}.</value>
+    <value>The value must have a count less than or equal to {0}. The actual count is {1}.</value>
     <comment/>
   </data>
   <data name="LengthInRangeRange" xml:space="preserve">
@@ -232,7 +230,7 @@
     <comment/>
   </data>
   <data name="ContainsNoNullItems" xml:space="preserve">
-    <value>No items within this queryable value may be null; at least one null item was found.</value>
+    <value>No items within this value may be null; at least one null item was found.</value>
     <comment/>
   </data>
   <data name="ContainsNoNullItemsOne" xml:space="preserve">
@@ -260,20 +258,15 @@
     <comment/>
   </data>
   <data name="CollectionItemValueMustValidateCompatibleTypeForValidatedType" xml:space="preserve">
-    <value>When validating collection items, the {0}.{1} must be assignable to {2}&lt;T&gt; for a generic type that matches {0}.{3}.{1}.
-{0}.{1} = {4}
-{3}.{1} = {5}</value>
+    <value>When validating collection items, the {0}.{1} must be assignable to {2}&lt;T&gt; for a generic type that matches {0}.{3}.{1}.{0}.{1} = {4}{3}.{1} = {5}</value>
     <comment/>
   </data>
   <data name="RuleMustImplementCompatibleValidationLogicOneInterface" xml:space="preserve">
-    <value>The rule logic type {0}.{1} must implement {2}&lt;{3}&gt;, either directly or contravariantly via a less-specific interface.
-The type {4} does not implement this interface, though.</value>
+    <value>The rule logic type {0}.{1} must implement {2}&lt;{3}&gt;, either directly or contravariantly via a less-specific interface.The type {4} does not implement this interface, though.</value>
     <comment/>
   </data>
   <data name="RuleMustImplementCompatibleValidationLogicTwoInterfaces" xml:space="preserve">
-    <value>The rule logic type {0}.{1} must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface.
-The type {5} does not implement either of these interfaces, though.</value>
+    <value>The rule logic type {0}.{1} must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface.The type {5} does not implement either of these interfaces, though.</value>
     <comment/>
   </data>
-  
 </root>

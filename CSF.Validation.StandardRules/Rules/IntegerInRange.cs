@@ -70,14 +70,7 @@ namespace CSF.Validation.Rules
 
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(long? value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            if(Min.HasValue && Max.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeRange"), Min, Max, value));
-            if(Min.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMin"), Min, value));
-
-            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMax"), Max, value));
-        }
+            => Task.FromResult(GetFailureMessage<long>(value, result, Min, Max));
 
         Task<string> IGetsFailureMessage<byte>.GetFailureMessageAsync(byte value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
@@ -117,5 +110,15 @@ namespace CSF.Validation.Rules
 
         Task<RuleResult> IRule<int?>.GetResultAsync(int? validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long?)validated, context, token);
+
+        internal static string GetFailureMessage<TNumeric>(TNumeric? value, ValidationRuleResult result, TNumeric? min, TNumeric? max) where TNumeric : struct
+        {
+            if(min.HasValue && max.HasValue)
+                return String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeRange"), min, max, value);
+            if(min.HasValue)
+                return String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMin"), min, value);
+
+            return String.Format(Resources.FailureMessages.GetFailureMessage("IntegerInRangeMax"), max, value);
+        }
     }
 }
