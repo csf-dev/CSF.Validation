@@ -2,10 +2,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
-using CSF.Validation.Rules;
 using static CSF.Validation.Rules.CommonResults;
 
-namespace CSF.Validation.ValidatorValidation
+namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A rule which asserts that the value indicates a member which exists upon the <see cref="ManifestItem.ValidatedType"/> of the <see cref="ManifestValue"/>.

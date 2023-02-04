@@ -9,7 +9,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfStringIsNull(LengthInRange sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync((string) null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync((string) null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -17,7 +17,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 2;
             sut.Max = 4;
-            Assert.That(() => sut.GetResultAsync("XYZ", context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync("XYZ", context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -25,7 +25,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 2;
             sut.Max = 4;
-            Assert.That(() => sut.GetResultAsync("X", context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync("X", context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -33,13 +33,13 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 2;
             sut.Max = 4;
-            Assert.That(() => sut.GetResultAsync("XYZ123", context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync("XYZ123", context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfArrayIsNull(LengthInRange sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync((int[]) null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync((int[]) null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -47,13 +47,13 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 2;
             sut.Max = 4;
-            Assert.That(() => sut.GetResultAsync(new [] {1, 2, 3}, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new [] {1, 2, 3}, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfListIsNull(LengthInRange sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync((List<int>) null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync((List<int>) null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -61,7 +61,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 2;
             sut.Max = 4;
-            Assert.That(() => sut.GetResultAsync(new List<int>{1, 2, 3}, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new List<int>{1, 2, 3}, context), Is.PassingRuleResult);
         }
     }
 }

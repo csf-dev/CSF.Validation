@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
@@ -32,6 +33,16 @@ namespace CSF.Validation
         IEnumerator<ValidationRuleResult> IEnumerable<ValidationRuleResult>.GetEnumerator() => RuleResults.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => RuleResults.GetEnumerator();
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine($"[{nameof(ValidationResult)}<{Manifest.ValidatedType}>: {nameof(ValidationResult.Passed)} = {Passed}]\nRule results:");
+            foreach(var ruleResult in RuleResults)
+                builder.AppendLine($"    {ruleResult}");
+            return builder.ToString();
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidationResult"/>.

@@ -2,10 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
-using CSF.Validation.Rules;
 using static CSF.Validation.Rules.CommonResults;
 
-namespace CSF.Validation.ValidatorValidation
+namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A validation rule which asserts that the <see cref="ManifestItem.Parent"/> is an instance of

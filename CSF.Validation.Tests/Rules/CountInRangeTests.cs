@@ -12,7 +12,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 1;
             sut.Max = 3;
-            Assert.That(() => sut.GetResultAsync(new[] { 1, 2 }, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new[] { 1, 2 }, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -20,7 +20,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 1;
             sut.Max = 2;
-            Assert.That(() => sut.GetResultAsync(new[] { 1, 2, 3 }, context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new[] { 1, 2, 3 }, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -28,7 +28,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 1;
             sut.Max = 3;
-            Assert.That(() => ((IRule<IReadOnlyCollection<int>>) sut).GetResultAsync(new[] { 1, 2 }, context), Is.PassingValidationResult);
+            Assert.That(() => ((IRule<IReadOnlyCollection<int>>) sut).GetResultAsync(new[] { 1, 2 }, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -36,7 +36,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 1;
             sut.Max = 2;
-            Assert.That(() => ((IRule<IReadOnlyCollection<int>>) sut).GetResultAsync(new[] { 1, 2, 3 }, context), Is.FailingValidationResult);
+            Assert.That(() => ((IRule<IReadOnlyCollection<int>>) sut).GetResultAsync(new[] { 1, 2, 3 }, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -44,7 +44,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 1;
             sut.Max = 3;
-            Assert.That(() => sut.GetResultAsync(new[] { 1, 2 }.AsQueryable(), context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new[] { 1, 2 }.AsQueryable(), context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -52,7 +52,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 1;
             sut.Max = 2;
-            Assert.That(() => sut.GetResultAsync(new[] { 1, 2, 3 }.AsQueryable(), context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new[] { 1, 2, 3 }.AsQueryable(), context), Is.FailingRuleResult);
         }
     }
 }

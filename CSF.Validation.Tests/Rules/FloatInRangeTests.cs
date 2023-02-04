@@ -8,7 +8,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValueIsNull(FloatInRange sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -16,7 +16,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => sut.GetResultAsync(6, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(6, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -24,7 +24,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => sut.GetResultAsync(2, context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(2, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -32,7 +32,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => sut.GetResultAsync(20, context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(20, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -40,7 +40,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = null;
             sut.Max = null;
-            Assert.That(() => sut.GetResultAsync(anyNumber, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(anyNumber, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -48,7 +48,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => ((IRule<float>) sut).GetResultAsync(6, context), Is.PassingValidationResult);
+            Assert.That(() => ((IRule<float>) sut).GetResultAsync(6, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -56,7 +56,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => ((IRule<float?>) sut).GetResultAsync(6, context), Is.PassingValidationResult);
+            Assert.That(() => ((IRule<float?>) sut).GetResultAsync(6, context), Is.PassingRuleResult);
         }
     }
 }

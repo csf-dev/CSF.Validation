@@ -1,10 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
-using CSF.Validation.Rules;
 using static CSF.Validation.Rules.CommonResults;
 
-namespace CSF.Validation.ValidatorValidation
+namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A rule which asserts that a value is <see langword="null" /> if the <see cref="ManifestItem.Parent"/>

@@ -61,6 +61,15 @@ namespace CSF.Validation
         /// </remarks>
         public string Message { get; }
 
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            if(Outcome == RuleOutcome.Errored)
+                return $"[{nameof(ValidationRuleResult)}: {nameof(RuleResult.Outcome)} = {Outcome}, {nameof(Identifier)} = {Identifier}, {nameof(Exception)} = {Exception}]";
+            
+            return $"[{nameof(ValidationRuleResult)}: {nameof(RuleResult.Outcome)} = {Outcome}, {nameof(Identifier)} = {Identifier}, {nameof(Message)} = {Message}]";
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>

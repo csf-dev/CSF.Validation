@@ -181,7 +181,7 @@ namespace CSF.Validation.ValidatorBuilding
             {
                 Parent = context.ManifestValue.Parent,
             };
-            if(context.ManifestValue is ManifestValue val)
+            if(recursiveAncestor is ManifestValue val)
             {
                 recursiveValue.AccessorFromParent = val.AccessorFromParent;
                 recursiveValue.MemberName = val.MemberName;

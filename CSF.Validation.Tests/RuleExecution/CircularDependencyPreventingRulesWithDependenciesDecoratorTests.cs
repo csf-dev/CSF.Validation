@@ -40,27 +40,13 @@ namespace CSF.Validation.RuleExecution
             var circularDependencies = GetSomeCircularDependencies(manifestValue);
             var expectedMessage = @"Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first 10.
 
-Type               = System.String
-Name               = Foo
-Validated type     = System.Int32
-Validated identity = Identity 1
-->  Type           = System.DateTime
-    Validated type = System.Int64
-    ->  Type               = System.String
-        Name               = Foo
-        Validated type     = System.Int32
-        Validated identity = Identity 1
+[RuleIdentifier: Type = System.String, Name = Foo, Validated type = System.Int32, Validated identity = Identity 1]
+->  [RuleIdentifier: Type = System.DateTime, Validated type = System.Int64]
+    ->  [RuleIdentifier: Type = System.String, Name = Foo, Validated type = System.Int32, Validated identity = Identity 1]
 
-Type               = System.String
-Name               = Bar
-Validated type     = System.Int32
-Validated identity = Identity 2
-->  Type           = System.Object
-    Validated type = System.Int64
-    ->  Type               = System.String
-        Name               = Bar
-        Validated type     = System.Int32
-        Validated identity = Identity 2
+[RuleIdentifier: Type = System.String, Name = Bar, Validated type = System.Int32, Validated identity = Identity 2]
+->  [RuleIdentifier: Type = System.Object, Validated type = System.Int64]
+    ->  [RuleIdentifier: Type = System.String, Name = Bar, Validated type = System.Int32, Validated identity = Identity 2]
 ";
 
             Mock.Get(wrapped)

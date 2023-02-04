@@ -131,7 +131,7 @@ namespace CSF.Validation.RuleExecution
                 }));
             Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
 
-            Assert.That(() => sut.ExecuteRuleAsync(rule), Is.PassingValidationResult);
+            Assert.That(() => sut.ExecuteRuleAsync(rule), Is.PassingRuleResult);
         }
     }
 }

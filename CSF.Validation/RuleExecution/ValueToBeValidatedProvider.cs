@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.RuleExecution
