@@ -1,2 +1,0 @@
-REM This command file is used with AppVeyor to ensure that it treats commandline params correctly
-dotnet test --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=\"opencover,json\" /p:CoverletOutput=\"TestResults/\" --test-adapter-path:. --logger:nunit

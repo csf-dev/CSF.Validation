@@ -15,6 +15,7 @@ init:
     
 install:
     - cmd: dotnet tool install --global dotnet-sonarscanner
+    - cmd: dotnet tool install --global coverlet.console
     
 before_build:
     - dotnet --version
@@ -35,10 +36,16 @@ before_build:
         /s:%APPVEYOR_BUILD_FOLDER%\.sonarqube-analysisproperties.xml
 
 build_script:
-    - dotnet build
+    - dotnet build --no-incremental
 
 test_script:
-    - cmd: Tools\appveyor-tests.cmd
+    - cmd: >
+        coverlet
+        .\CSF.Validation.Tests\bin\Debug\net6.0\CSF.Validation.Tests.dll
+        --target "dotnet"
+        --targetargs "test --no-build --logger:nunit --test-adapter-path:."
+        -f=opencover
+        -o="TestResults\coverage.opencover.xml"
     - sh: >
         dotnet test
         --test-adapter-path:.
@@ -48,5 +55,6 @@ after_test:
     - cmd: >
         dotnet-sonarscanner end
         /d:"sonar.login=%SONARCLOUD_SECRET_KEY%"
+    - ps: Tools\appveyor-upload-test-results.ps1
     - ps: if ($isWindows) { Tools\appveyor-publish-docs.ps1 }
     - cmd: Tools\appveyor-create-packages.cmd
