@@ -39,3 +39,5 @@
       href: BestPractice/UseDependencyInjectionForRules.md
     - name: Use CommonResults
       href: BestPractice/UseCommonRuleResults.md
+- name: Testing
+  href: Testing.md

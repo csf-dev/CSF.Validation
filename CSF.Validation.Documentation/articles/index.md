@@ -59,6 +59,18 @@ The definition of a validator (which rules should be applied to which values, an
 An optional function of the validation logic is the generation of human-readable feedback messages for validation.
 Typically this is used for validation rules which fail, to inform the user why the data is invalid and to help them correct the problem.
 
+### Unit testable
+
+Each validation rule is held within its own class, which only needs implement one or more interfaces.
+Because these classes are compatible with dependency injection, they are easy to unit test.
+It is also possible [_to test a validator_ or a validation manifest]; use the default implementation
+of [`IValidatesValidationManifest`] within your own integration tests to sanity-check your own validators
+for common mistakes.
+
+For more information about testing validators & rules, please read [the testing documentation].
+
 [domain objects]:WhatIsDomainObjectValidation.md
 [Validation rule classes]: WritingValidators/WritingValidationRules/index.md
 [follow the SOLID principles]:https://en.wikipedia.org/wiki/SOLID
+[`IValidatesValidationManifest`]:xref:CSF.Validation.ValidatorValidation.IValidatesValidationManifest
+[the testing documentation]: Testing.md
