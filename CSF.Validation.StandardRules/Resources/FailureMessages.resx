@@ -186,7 +186,7 @@
     <comment/>
   </data>
   <data name="DerivesFrom" xml:space="preserve">
-    <value>The value must derive from {0}.  The actual value is an instance of {1}.</value>
+    <value>The value must derive from {0}. The actual value is an instance of {1}.</value>
     <comment/>
   </data>
   <data name="DoesNotDeriveFrom" xml:space="preserve">

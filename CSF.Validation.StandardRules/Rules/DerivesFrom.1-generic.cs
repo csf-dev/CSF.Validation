@@ -22,11 +22,6 @@ namespace CSF.Validation.Rules
 
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            var message = String.Format(Resources.FailureMessages.GetFailureMessage("DerivesFrom"),
-                                        typeof(T).AssemblyQualifiedName,
-                                        ((Type)result.Data[DerivesFrom.ActualTypeKey]).AssemblyQualifiedName);
-            return Task.FromResult(message);
-        }
+            => Task.FromResult(DerivesFrom.GetFailureMessage(value, result, typeof(T)));
     }
 }
