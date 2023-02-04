@@ -38,14 +38,7 @@ build_script:
     - dotnet build
 
 test_script:
-    - cmd: >
-        dotnet test
-        /p:CollectCoverage=true
-        /p:CoverletOutputFormat=opencover
-        /p:CoverletOutput=TestResults/
-        --test-adapter-path:.
-        --logger:nunit
-    
+    - cmd: Tools\appveyor-tests.cmd
     - sh: >
         dotnet test
         --test-adapter-path:.
