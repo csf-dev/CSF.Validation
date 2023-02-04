@@ -144,21 +144,21 @@ namespace CSF.Validation.IntegrationTests
             });
         }
 
-        [Test,AutoMoqData]
+        [Test,AutoMoqData,SetCulture("en-GB")]
         public async Task ValidateAsyncWithMessageSupportShouldReturnMessagesForAFailingRule([IntegrationTesting] IGetsValidator validatorFactory)
         {
             var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
             var person = new Person
             {
                 Name = "John Smith",
-                Birthday = new DateTime(1750, 1, 1),
+                Birthday = new DateTime(1750, 2, 1),
                 Pets = Array.Empty<Pet>(),
             };
 
             var result = await validator.ValidateAsync(person, new ValidationOptions { EnableMessageGeneration = true }).ConfigureAwait(false);
 
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
-                        Is.EqualTo("The date 1750-01-01 is invalid. It must equal-to or later than 1900-01-01."));
+                        Is.EqualTo("The date/time must be 01/01/1900 00:00:00 or afterward.  The actual date/time is 01/02/1750 00:00:00."));
         }
 
         [Test,AutoMoqData]
