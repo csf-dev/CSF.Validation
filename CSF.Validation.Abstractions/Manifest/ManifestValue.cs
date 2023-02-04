@@ -26,7 +26,7 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestCollectionItem"/>
     /// <seealso cref="ManifestPolymorphicType"/>
     /// <seealso cref="RecursiveManifestValue"/>
-    public class ManifestValue : ManifestItem, IManifestNode
+    public class ManifestValue : ManifestItem
     {
         /// <summary>
         /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestItem.ParentItem"/>)
