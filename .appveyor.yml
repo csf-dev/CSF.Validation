@@ -41,7 +41,7 @@ test_script:
     - >
         dotnet test
         /p:CollectCoverage=true
-        /p:CoverletOutputFormat=\"json,opencover\"
+        /p:CoverletOutputFormat=\"opencover\"
         /p:CoverletOutput=\"TestResults/\"
         --test-adapter-path:.
         --logger:\"nunit\"
