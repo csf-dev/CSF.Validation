@@ -38,13 +38,18 @@ build_script:
     - dotnet build
 
 test_script:
-    - >
+    - cmd: >
         dotnet test
         /p:CollectCoverage=true
-        /p:CoverletOutputFormat=\"opencover\"
-        /p:CoverletOutput=\"TestResults/\"
+        /p:CoverletOutputFormat=opencover
+        /p:CoverletOutput=TestResults/
         --test-adapter-path:.
-        --logger:\"nunit\"
+        --logger:nunit
+    
+    - sh: >
+        dotnet test
+        --test-adapter-path:.
+        --logger:nunit
 
 after_test:
     - cmd: >

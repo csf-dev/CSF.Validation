@@ -1,7 +1,6 @@
 bin/
 obj/
-TestResult.xml
-TestResult.formatted.xml
+TestResults/
 *.userprefs
 *.orig
 .directory
