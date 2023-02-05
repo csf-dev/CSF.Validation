@@ -18,7 +18,10 @@ namespace CSF.Validation.ValidatorValidation
 
             config.ForMember(x => x.CollectionItemValue, m => m.AddRules<ManifestCollectionItemValidatorBuilder>());
             config.AddRule<CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable>();
-            config.AddRule<CollectionItemValueMustValidateCompatibleTypeForValidatedType>();
+            config.AddRule<CollectionItemValueMustValidateCompatibleTypeForValidatedType>(r =>
+            {
+                r.AddDependency(d => d.RuleType<CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable>());
+            });
 
             config.ForMember(x => x.Children, m => m.AddRule<ContainsNoNullItems<ManifestValue>>());
             config.ForMemberItems(x => x.Children, m => m.AddRules<ChildValueValidatorBuilder>());

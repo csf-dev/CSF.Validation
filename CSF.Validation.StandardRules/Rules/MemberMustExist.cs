@@ -23,7 +23,7 @@ namespace CSF.Validation.Rules
         {
             var message = string.Format(Resources.FailureMessages.GetFailureMessage("MemberMustExist"),
                                         nameof(ManifestItem.ValidatedType),
-                                        parentValue.ValidatedType.AssemblyQualifiedName,
+                                        parentValue.ValidatedType,
                                         value,
                                         nameof(ManifestValue.MemberName),
                                         nameof(ManifestValue));

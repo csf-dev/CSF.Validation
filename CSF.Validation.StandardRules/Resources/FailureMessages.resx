@@ -254,11 +254,13 @@
     <comment/>
   </data>
   <data name="CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable" xml:space="preserve">
-    <value>If the {0} of the {1} does not implement {2}&lt;{3}&gt; then {0} must be null.</value>
+    <value>If the {0} of the {1} does not implement {2}&lt;{3}&gt; then {4} must be null.</value>
     <comment/>
   </data>
   <data name="CollectionItemValueMustValidateCompatibleTypeForValidatedType" xml:space="preserve">
-    <value>When validating collection items, the {0}.{1} must be assignable to {2}&lt;T&gt; for a generic type that matches {0}.{3}.{1}.{0}.{1} = {4}{3}.{1} = {5}</value>
+    <value>When validating collection items, the {0}.{1} must be assignable to {2}&lt;T&gt; for a generic type that matches the {0}.{3}.{1}.
+{0}.{1} = {4}
+{0}.{3}.{1} = {5}</value>
     <comment/>
   </data>
   <data name="RuleMustImplementCompatibleValidationLogicOneInterface" xml:space="preserve">
