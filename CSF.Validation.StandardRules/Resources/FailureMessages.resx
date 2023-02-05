@@ -248,7 +248,7 @@
     <comment/>
   </data>
   <data name="NotNullIfTheParentIsNotAManifest" xml:space="preserve">
-    <value>The value must not be null if the {0} is not an instance of {1}.</value>
+    <value>The value must not be null if the {0} is not the root of a {1}.</value>
     <comment/>
   </data>
   <data name="MemberMustExist" xml:space="preserve">

@@ -9,6 +9,12 @@ namespace CSF.Validation.Rules
     /// A rule which asserts that a value is not <see langword="null" /> if the <see cref="ManifestItem.Parent"/>
     /// is not an instance of <see cref="ValidationManifest"/>.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This rule is used to indicate mandatory (not-<see langword="null" />) properties upon any <see cref="ManifestValue"/>, when that
+    /// manifest value is not the root value of a validation manifest.
+    /// </para>
+    /// </remarks>
     public class NotNullIfTheParentIsNotAManifest : IRuleWithMessage<object, ManifestValue>
     {
         /// <inheritdoc/>
@@ -18,7 +24,7 @@ namespace CSF.Validation.Rules
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(object value, ManifestValue parentValue, ValidationRuleResult result, CancellationToken token = default)
             => Task.FromResult(string.Format(Resources.FailureMessages.GetFailureMessage("NotNullIfTheParentIsNotAManifest"),
-                                             nameof(ManifestItem.Parent),
+                                             nameof(ManifestValue),
                                              nameof(ValidationManifest)));
     }
 }
