@@ -126,7 +126,7 @@
     <comment/>
   </data>
   <data name="DoesNotDeriveFromRecursiveManifestValueMessage" xml:space="preserve">
-    <value>The root {0} of a {1} must not derive from {2}.</value>
+    <value>The {0} property of a {1} must not be an object that derives from {2}.</value>
     <comment/>
   </data>
   <data name="ParentMustDeriveFromValidationManifest" xml:space="preserve">
