@@ -132,7 +132,7 @@
     <comment/>
   </data>
   <data name="ParentMustDeriveFromValidationManifest" xml:space="preserve">
-    <value>The {0} property of a {1} that is the root of a validation manifest must be an instance of type {2}.</value>
+    <value>The {0} property of a {1} that is the root of a validation manifest must be an instance of {2}.</value>
     <comment/>
   </data>
   <data name="MustBeDefinedEnumConstant" xml:space="preserve">
