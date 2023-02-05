@@ -262,11 +262,11 @@
     <comment/>
   </data>
   <data name="RuleMustImplementCompatibleValidationLogicOneInterface" xml:space="preserve">
-    <value>The rule logic type {0}.{1} must implement {2}&lt;{3}&gt;, either directly or contravariantly via a less-specific interface.The type {4} does not implement this interface, though.</value>
+    <value>The rule logic type ({0}.{1}) must implement {2}&lt;{3}&gt;, either directly or contravariantly via a less-specific interface. The type {4} does not implement this interface, though.</value>
     <comment/>
   </data>
   <data name="RuleMustImplementCompatibleValidationLogicTwoInterfaces" xml:space="preserve">
-    <value>The rule logic type {0}.{1} must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface.The type {5} does not implement either of these interfaces, though.</value>
+    <value>The rule logic type ({0}.{1}) must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface. The type {5} does not implement either of these interfaces, though.</value>
     <comment/>
   </data>
 </root>

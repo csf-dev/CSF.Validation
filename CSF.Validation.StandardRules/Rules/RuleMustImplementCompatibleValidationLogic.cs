@@ -28,9 +28,9 @@ namespace CSF.Validation.Rules
             if(rule?.ManifestValue?.ValidatedType is null) return Type.EmptyTypes;
 
             var singleGenericInterface = typeof(IRule<>).MakeGenericType(rule.ManifestValue.ValidatedType);
-            if(rule.ManifestValue.Parent?.ValidatedType is null) return new[] { singleGenericInterface };
+            if(!(rule.ManifestValue.Parent is ManifestItem parentItem) || parentItem?.ValidatedType is null) return new[] { singleGenericInterface };
 
-            var doubleGenericInterface = typeof(IRule<,>).MakeGenericType(rule.ManifestValue.Parent.ValidatedType);
+            var doubleGenericInterface = typeof(IRule<,>).MakeGenericType(rule.ManifestValue.ValidatedType, parentItem.ValidatedType);
             return new[] { singleGenericInterface, doubleGenericInterface };
         }
 
