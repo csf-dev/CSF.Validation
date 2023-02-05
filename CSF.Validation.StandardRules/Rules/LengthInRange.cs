@@ -69,24 +69,28 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Length, context, token);
         }
 
-        Task<string> GetFailureMessageAsync(ValidationRuleResult result)
+        static string GetFailureMessage(ValidationRuleResult result, int? min, int? max)
         {
-            if(Min.HasValue && Max.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeRange"), Min, Max, result.Data[IntegerInRange.ActualKey]));
-            if(Min.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeMin"), Min, result.Data[IntegerInRange.ActualKey]));
+            var actual = result.Data.TryGetValue(IntegerInRange.ActualKey, out var value) ? value.ToString() : "unknown";
+            if(min.HasValue && max.HasValue)
+                return String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeRange"), min, max, actual);
+            if(min.HasValue)
+                return String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeMin"), min, actual);
 
-            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeMax"), Max, result.Data[IntegerInRange.ActualKey]));
+            return String.Format(Resources.FailureMessages.GetFailureMessage("LengthInRangeMax"), max, actual);
         }
 
-        Task<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsync(result);
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(GetFailureMessage(result, Min, Max));
 
-        Task<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsync(result);
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(GetFailureMessage(result, Min, Max));
 
-        Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
-            => GetFailureMessageAsync(result);
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(GetFailureMessage(result, Min, Max));
 
         /// <summary>
         /// Initialises a new instance of <see cref="LengthInRange"/>.
