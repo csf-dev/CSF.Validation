@@ -17,7 +17,7 @@ namespace CSF.Validation.Rules
     /// result if the validated value is <see langword="null" />.
     /// </para>
     /// </remarks>
-    public class MustBeDefinedEnumConstant<T> : IRuleWithMessage<T>, IRuleWithMessage<T?> where T : struct
+    public class MustBeDefinedEnumConstant<T> : IRuleWithMessage<T>, IRuleWithMessage<T?> where T : struct, Enum
     {
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(T? validated, RuleContext context, CancellationToken token = default)
@@ -31,11 +31,7 @@ namespace CSF.Validation.Rules
 
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(T? value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            var message = String.Format(Resources.FailureMessages.GetFailureMessage("MustBeDefinedEnumConstant"),
-                                        typeof(T));
-            return Task.FromResult(message);
-        }
+            => Task.FromResult(MustBeDefinedEnumConstant.GetFailureMessage(typeof(T)));
 
         Task<string> IGetsFailureMessage<T>.GetFailureMessageAsync(T value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
