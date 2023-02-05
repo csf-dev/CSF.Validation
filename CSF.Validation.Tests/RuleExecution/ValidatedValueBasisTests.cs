@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.RuleExecution
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ValidatedValueBasisTests
     {
         [Test,AutoMoqData]

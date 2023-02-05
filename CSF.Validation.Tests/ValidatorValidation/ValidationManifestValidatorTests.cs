@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.ValidatorValidation
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class ValidationManifestValidatorTests
     {
         [Test,AutoMoqData]

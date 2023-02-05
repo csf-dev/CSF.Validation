@@ -1,10 +1,12 @@
+using System;
+using System.Collections.Generic;
 using AutoFixture.NUnit3;
 using Moq;
 using NUnit.Framework;
 
 namespace CSF.Validation.Manifest
 {
-    [TestFixture,Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable]
     public class RecursiveManifestValueTests
     {
         [Test,AutoMoqData]
