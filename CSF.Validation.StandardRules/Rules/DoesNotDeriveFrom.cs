@@ -29,11 +29,14 @@ namespace CSF.Validation.Rules
 
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(GetFailureMessage(value, result, Type));
+
+        static internal string GetFailureMessage(object value, ValidationRuleResult result, Type unwantedType)
         {
-            var message = String.Format(Resources.FailureMessages.GetFailureMessage("DoesNotDeriveFrom"),
-                                        Type.AssemblyQualifiedName,
-                                        ((Type)result.Data[DerivesFrom.ActualTypeKey]).AssemblyQualifiedName);
-            return Task.FromResult(message);
+            var actualType = result.Data.TryGetValue(DerivesFrom.ActualTypeKey, out var typ) ? typ as Type : null;
+            return String.Format(Resources.FailureMessages.GetFailureMessage("DoesNotDeriveFrom"),
+                                 unwantedType,
+                                 actualType?.ToString() ?? "<unknown>");
         }
     }
 }
