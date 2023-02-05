@@ -71,28 +71,23 @@ namespace CSF.Validation.Rules
             return validated.Any() ? FailAsync() : PassAsync();
         }
 
-        /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("EmptyWithNoCount"));
-
-        static string GetFailureMessageAsyncWithCount(ValidationRuleResult result)
-        {
-            return Equals(result.Data[Empty.CountKey], 1)
-                ? Resources.FailureMessages.GetFailureMessage("EmptyWithCountOne")
-                : String.Format(Resources.FailureMessages.GetFailureMessage("EmptyWithCount"), result.Data[Empty.CountKey]);
-        }
-
-        Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(GetFailureMessageAsyncWithCount(result));
-
-        Task<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(GetFailureMessageAsyncWithCount(result));
-
         Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
         {
             if(validated is null) return PassAsync();
             var data = new Dictionary<string, object> { { Empty.CountKey, validated.Count } };
             return validated.Count == 0 ? PassAsync(data) : FailAsync(data);
         }
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(Empty.GetFailureMessage(result));
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(Empty.GetFailureMessage(result));
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(Empty.GetFailureMessage(result));
     }
 }
