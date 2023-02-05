@@ -18,7 +18,7 @@ namespace CSF.Validation.Rules
         {
             if(parentValue?.ValidatedType is null) return PassAsync();
             if(value?.ValidatedType is null) return PassAsync();
-            return value.ValidatedType.IsAssignableFrom(parentValue.RootValue.ValidatedType) ? PassAsync() : FailAsync();
+            return value.ValidatedType.IsAssignableFrom(parentValue.ValidatedType) ? PassAsync() : FailAsync();
         }
         
         /// <inheritdoc/>
@@ -26,12 +26,11 @@ namespace CSF.Validation.Rules
         {
             var message = string.Format(FailureMessages.GetFailureMessage("RootValueMustBeForSameTypeAsManifest"),
                                         nameof(ManifestItem.ValidatedType),
+                                        nameof(ValidationManifest),
+                                        nameof(ManifestValue),
                                         nameof(ValidationManifest.RootValue),
-                                        $"{nameof(ValidationManifest)}.{nameof(ValidationManifest.ValidatedType)}",
-                                        $"{nameof(ValidationManifest)}.{nameof(ValidationManifest.RootValue)}.{nameof(ManifestItem.ValidatedType)}",
-                                        value?.ValidatedType?.AssemblyQualifiedName,
-                                        $"{nameof(ValidationManifest)}.{nameof(ValidationManifest.ValidatedType)}",
-                                        value?.ValidatedType?.AssemblyQualifiedName);
+                                        parentValue?.ValidatedType,
+                                        value?.ValidatedType);
             return Task.FromResult(message);
         }
     }

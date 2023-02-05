@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RootValueMustBeForSameTypeAsManifest" xml:space="preserve">
-    <value>The {0} of the {1} must be be assignable to the type stored at {2} (it must be the same type or must be less-derived).{3} = {4}{5} = {6}</value>
+    <value>The {0} of a {1} must be be assignable to the {0} of the {2} used as the manifest's {3}.
+{1}.{0} = {4}
+{1}.{3}.{0} = {5}</value>
     <comment/>
   </data>
   <data name="ParentMustBeAValidationManifest" xml:space="preserve">
