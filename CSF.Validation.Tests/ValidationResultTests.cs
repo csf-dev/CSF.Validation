@@ -49,7 +49,7 @@ namespace CSF.Validation
 
         [Test,AutoMoqData]
         public void ForMatchingMemberItemShouldThrowIfTheRequestedMemberIsNotACollectionItem([ManifestModel] ValidationManifest manifest,
-                                                                                             [ManifestModel] ManifestValue value,
+                                                                                             [ManifestModel] ManifestItem value,
                                                                                              Person person,
                                                                                              Pet pet)
         {
@@ -65,7 +65,7 @@ namespace CSF.Validation
 
         [Test,AutoMoqData]
         public void PolymorphicAsShouldThrowIfTheManifestDoesNotHaveAMatchingPolymorphicType([ManifestModel] ValidationManifest manifest,
-                                                                                             [ManifestModel] ManifestValue value)
+                                                                                             [ManifestModel] ManifestItem value)
         {
             manifest.ValidatedType = typeof(Person);
             manifest.RootValue = value;

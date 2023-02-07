@@ -94,8 +94,8 @@ namespace CSF.Validation.RuleExecution
 
         static ManifestItem GetManifestItemForMatching(ManifestItem item)
         {
-            if(item is RecursiveManifestValue recursiveItem)
-                return recursiveItem.WrappedValue;
+            if(item.IsRecursive)
+                return item.RecursiveAncestor;
             return item;
         }
 

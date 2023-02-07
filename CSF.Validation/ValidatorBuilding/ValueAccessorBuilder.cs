@@ -74,8 +74,8 @@ namespace CSF.Validation.ValidatorBuilding
             foreach(var manifestItem in manifestValues)
                 HandleManifestItem(manifestItem);
 
-            if(accessExceptionBehaviour.HasValue && context.ManifestValue is ManifestValue value)
-                value.AccessorExceptionBehaviour = accessExceptionBehaviour.Value;
+            if(accessExceptionBehaviour.HasValue && context.ManifestValue.IsValue)
+                context.ManifestValue.AccessorExceptionBehaviour = accessExceptionBehaviour.Value;
 
             return context.ManifestValue;
         }
@@ -84,17 +84,17 @@ namespace CSF.Validation.ValidatorBuilding
         {
             if(manifestItem == context.ManifestValue) return;
 
-            if (manifestItem is ManifestValue value
+            if (manifestItem.IsValue
              && !(context.ManifestValue.Children.Contains(manifestItem)))
             {
-                context.ManifestValue.Children.Add(value);
+                context.ManifestValue.Children.Add(manifestItem);
             }
 
-            if (manifestItem is ManifestPolymorphicType poly
-             && !(context.ManifestValue is ManifestPolymorphicType)
-             && !(context.ManifestValue.PolymorphicTypes.Contains(poly)))
+            if (manifestItem.IsPolymorphicType
+             && !(context.ManifestValue.IsPolymorphicType)
+             && !(context.ManifestValue.PolymorphicTypes.Contains(manifestItem)))
             {
-                context.ManifestValue.PolymorphicTypes.Add(poly);
+                context.ManifestValue.PolymorphicTypes.Add(manifestItem);
             }
         }
 

@@ -9,14 +9,14 @@ namespace CSF.Validation.Rules
     /// A rule which asserts that a value is <see langword="null" /> if the <see cref="ManifestItem.Parent"/>
     /// is an instance of <see cref="ValidationManifest"/>.
     /// </summary>
-    public class NullIfTheParentIsAManifest : IRuleWithMessage<object, ManifestValue>
+    public class NullIfTheParentIsAManifest : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object value, ManifestValue parentValue, RuleContext context, CancellationToken token = default)
+        public Task<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
             => (!(parentValue?.Parent is ValidationManifest) || value is null) ? PassAsync() : FailAsync();
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ManifestValue parentValue, ValidationRuleResult result, CancellationToken token = default)
+        public Task<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
             => Task.FromResult(string.Format(Resources.FailureMessages.GetFailureMessage("NullIfTheParentIsAManifest"),
                                              nameof(ManifestItem.Parent),
                                              nameof(ValidationManifest)));

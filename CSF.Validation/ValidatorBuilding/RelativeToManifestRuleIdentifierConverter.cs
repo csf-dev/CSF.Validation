@@ -32,7 +32,7 @@ namespace CSF.Validation.ValidatorBuilding
             var current = baseValue;
 
             for (var i = relativeIdentifier.AncestorLevels; i > 0; i--)
-                current = current?.ParentItem ?? throw GetInsufficientParentsException(relativeIdentifier.AncestorLevels, nameof(relativeIdentifier));
+                current = current?.Parent as ManifestItem ?? throw GetInsufficientParentsException(relativeIdentifier.AncestorLevels, nameof(relativeIdentifier));
 
             var memberName = relativeIdentifier.MemberName;
             if(!String.IsNullOrEmpty(memberName))
@@ -43,13 +43,13 @@ namespace CSF.Validation.ValidatorBuilding
 
         static Exception GetCannotFindMemberException(string memberName, string paramName)
         {
-            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveChildMember"), nameof(ManifestValue), memberName);
+            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveChildMember"), nameof(ManifestItem), memberName);
             return new ArgumentException(message, paramName);
         }
 
         static ArgumentException GetInsufficientParentsException(int ancestorLevels, string paramName)
         {
-            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveSufficientAncestorLevels"), nameof(ManifestValue), ancestorLevels);
+            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveSufficientAncestorLevels"), nameof(ManifestItem), ancestorLevels);
             return new ArgumentException(message, paramName);
         }
     }

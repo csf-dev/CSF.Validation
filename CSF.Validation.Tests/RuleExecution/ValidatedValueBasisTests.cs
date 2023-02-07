@@ -7,19 +7,22 @@ namespace CSF.Validation.RuleExecution
     public class ValidatedValueBasisTests
     {
         [Test,AutoMoqData]
-        public void GetChildManifestValuesShouldCombineApplicablePolymorphicValuesWithManifestValue([ManifestModel] ManifestValue value,
-                                                                                                    [ManifestModel] ManifestPolymorphicType type1,
-                                                                                                    [ManifestModel] ManifestPolymorphicType type2,
-                                                                                                    [ManifestModel] ManifestPolymorphicType type3,
-                                                                                                    [ManifestModel] ManifestValue child1,
-                                                                                                    [ManifestModel] ManifestValue child2,
-                                                                                                    [ManifestModel] ManifestValue child3,
-                                                                                                    [ManifestModel] ManifestValue child4)
+        public void GetChildManifestValuesShouldCombineApplicablePolymorphicValuesWithManifestValue([ManifestModel] ManifestItem value,
+                                                                                                    [ManifestModel] ManifestItem type1,
+                                                                                                    [ManifestModel] ManifestItem type2,
+                                                                                                    [ManifestModel] ManifestItem type3,
+                                                                                                    [ManifestModel] ManifestItem child1,
+                                                                                                    [ManifestModel] ManifestItem child2,
+                                                                                                    [ManifestModel] ManifestItem child3,
+                                                                                                    [ManifestModel] ManifestItem child4)
         {
             value.ValidatedType = typeof(Person);
             type1.ValidatedType = typeof(Employee);
+            type1.ItemType = ManifestItemType.PolymorphicType;
             type2.ValidatedType = typeof(Manager);
+            type2.ItemType = ManifestItemType.PolymorphicType;
             type3.ValidatedType = typeof(Cleaner);
+            type3.ItemType = ManifestItemType.PolymorphicType;
             value.Children = new[] { child1 };
             type1.Children = new[] { child2 };
             type2.Children = new[] { child3 };
@@ -32,10 +35,10 @@ namespace CSF.Validation.RuleExecution
         }
 
         [Test,AutoMoqData]
-        public void GetManifestRulesShouldCombineApplicablePolymorphicRulesWithManifestValue([ManifestModel] ManifestValue value,
-                                                                                             [ManifestModel] ManifestPolymorphicType type1,
-                                                                                             [ManifestModel] ManifestPolymorphicType type2,
-                                                                                             [ManifestModel] ManifestPolymorphicType type3,
+        public void GetManifestRulesShouldCombineApplicablePolymorphicRulesWithManifestValue([ManifestModel] ManifestItem value,
+                                                                                             [ManifestModel] ManifestItem type1,
+                                                                                             [ManifestModel] ManifestItem type2,
+                                                                                             [ManifestModel] ManifestItem type3,
                                                                                              [ManifestModel] ManifestRule rule1,
                                                                                              [ManifestModel] ManifestRule rule2,
                                                                                              [ManifestModel] ManifestRule rule3,
@@ -43,8 +46,11 @@ namespace CSF.Validation.RuleExecution
         {
             value.ValidatedType = typeof(Person);
             type1.ValidatedType = typeof(Employee);
+            type1.ItemType = ManifestItemType.PolymorphicType;
             type2.ValidatedType = typeof(Manager);
+            type2.ItemType = ManifestItemType.PolymorphicType;
             type3.ValidatedType = typeof(Cleaner);
+            type3.ItemType = ManifestItemType.PolymorphicType;
             value.Rules = new[] { rule1 };
             type1.Rules = new[] { rule2 };
             type2.Rules = new[] { rule3 };

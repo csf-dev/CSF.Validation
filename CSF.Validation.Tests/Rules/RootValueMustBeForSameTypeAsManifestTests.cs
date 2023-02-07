@@ -8,7 +8,7 @@ namespace CSF.Validation.Rules
     {
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfTheParentValidatedTypeIsNull(RootValueMustBeForSameTypeAsManifest sut,
-                                                                                 [ManifestModel] ManifestValue value,
+                                                                                 [ManifestModel] ManifestItem value,
                                                                                  [ManifestModel] ValidationManifest manifest,
                                                                                  [RuleContext] RuleContext context)
         {
@@ -19,7 +19,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfTheValidatedTypeIsNull(RootValueMustBeForSameTypeAsManifest sut,
-                                                                           [ManifestModel] ManifestValue value,
+                                                                           [ManifestModel] ManifestItem value,
                                                                            [ManifestModel] ValidationManifest manifest,
                                                                            [RuleContext] RuleContext context)
         {
@@ -30,7 +30,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfTheValidatedTypesAreCompatible(RootValueMustBeForSameTypeAsManifest sut,
-                                                                                   [ManifestModel] ManifestValue value,
+                                                                                   [ManifestModel] ManifestItem value,
                                                                                    [ManifestModel] ValidationManifest manifest,
                                                                                    [RuleContext] RuleContext context)
         {
@@ -41,7 +41,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnFailIfTheValidatedTypesAreNotCompatible(RootValueMustBeForSameTypeAsManifest sut,
-                                                                                      [ManifestModel] ManifestValue value,
+                                                                                      [ManifestModel] ManifestItem value,
                                                                                       [ManifestModel] ValidationManifest manifest,
                                                                                       [RuleContext] RuleContext context)
         {
@@ -52,14 +52,14 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldReturnTheCorrectMessage(RootValueMustBeForSameTypeAsManifest sut,
-                                                                        [ManifestModel] ManifestValue value,
+                                                                        [ManifestModel] ManifestItem value,
                                                                         [ManifestModel] ValidationManifest manifest,
                                                                         [RuleResult] ValidationRuleResult result)
         {
             value.ValidatedType = typeof(Cat);
             manifest.ValidatedType = typeof(Pet);
             Assert.That(async () => await sut.GetFailureMessageAsync(value, manifest, result),
-                        Is.EqualTo(@"The ValidatedType of a ValidationManifest must be be assignable to the ValidatedType of the ManifestValue used as the manifest's RootValue.
+                        Is.EqualTo(@"The ValidatedType of a ValidationManifest must be be assignable to the ValidatedType of the ManifestItem used as the manifest's RootValue.
 ValidationManifest.ValidatedType = CSF.Validation.Rules.RootValueMustBeForSameTypeAsManifestTests+Pet
 ValidationManifest.RootValue.ValidatedType = CSF.Validation.Rules.RootValueMustBeForSameTypeAsManifestTests+Cat"));
         }

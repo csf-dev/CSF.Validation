@@ -192,7 +192,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <remarks>
         /// <para>
         /// If this method is used then the current value will be configured for recursive (or re-entrant) validation.  It will be converted as a
-        /// <see cref="CSF.Validation.Manifest.RecursiveManifestValue"/> rather than a normal value.
+        /// <see cref="CSF.Validation.Manifest.ManifestItem"/> that is recursive rather than a normal value.
         /// </para>
         /// <para>
         /// The numeric value of <paramref name="depth"/> must be a positive integer &amp; indicates the level of ancestor

@@ -24,7 +24,7 @@ namespace CSF.Validation.ValidatorBuilding
             
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).EqualTo(nameof(ValidatedObject.AProperty)));
+            Assert.That(result.ManifestValue, Has.Property(nameof(ManifestItem.MemberName)).EqualTo(nameof(ValidatedObject.AProperty)));
         }
 
         [Test,AutoMoqData]
@@ -33,7 +33,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(result.ManifestValue, Has.Property(nameof(ManifestValue.MemberName)).Null);
+            Assert.That(result.ManifestValue, Has.Property(nameof(ManifestItem.MemberName)).Null);
         }
 
         [Test,AutoMoqData]
@@ -47,7 +47,7 @@ namespace CSF.Validation.ValidatorBuilding
             
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(result.ManifestValue, Is.InstanceOf<ManifestValue>());
+            Assert.That(result.ManifestValue, Is.InstanceOf<ManifestItem>());
         }
 
         [Test,AutoMoqData]
@@ -61,7 +61,7 @@ namespace CSF.Validation.ValidatorBuilding
             
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext, true);
 
-            Assert.That(result.ManifestValue, Is.InstanceOf<ManifestCollectionItem>());
+            Assert.That(result.ManifestValue.IsCollectionItem, Is.True);
         }
 
         [Test,AutoMoqData]
@@ -71,7 +71,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(() => ((ManifestValue) result.ManifestValue).AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
+            Assert.That(() => result.ManifestValue.AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
 
         [Test,AutoMoqData]
@@ -81,14 +81,14 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var result = sut.GetContextForValue<ValidatedObject,string>(v => v.AProperty, validationContext);
 
-            Assert.That(() => ((ManifestValue) result.ManifestValue).AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
+            Assert.That(() => result.ManifestValue.AccessorFromParent(obj), Is.EqualTo(obj.AProperty));
         }
 
         [Test,AutoMoqData]
         public void GetContextForMemberThatAlreadyExistsShouldReturnSameManifestValue([Frozen] IStaticallyReflects reflect,
                                                                                       [ManifestModel] ValidatorBuilderContext validationContext,
                                                                                       ValidatorBuilderContextFactory sut,
-                                                                                      [ManifestModel] ManifestValue aPropertyValue)
+                                                                                      [ManifestModel] ManifestItem aPropertyValue)
         {
             Mock.Get(reflect)
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
@@ -105,8 +105,9 @@ namespace CSF.Validation.ValidatorBuilding
         public void GetContextForMemberThatAlreadyExistsAsCollectionItemShouldReturnSameManifestValue([Frozen] IStaticallyReflects reflect,
                                                                                                       [ManifestModel] ValidatorBuilderContext validationContext,
                                                                                                       ValidatorBuilderContextFactory sut,
-                                                                                                      [ManifestModel] ManifestCollectionItem collectionValue)
+                                                                                                      [ManifestModel] ManifestItem collectionValue)
         {
+            collectionValue.ItemType = ManifestItemType.CollectionItem;
             Mock.Get(reflect)
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
@@ -118,19 +119,21 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetPolymorphicContextShouldThrowIfManifestValueCannotHavePolymorphicTypes([ManifestModel] ManifestPolymorphicType manifestModel,
+        public void GetPolymorphicContextShouldThrowIfManifestValueCannotHavePolymorphicTypes([ManifestModel] ManifestItem manifestModel,
                                                                                               ValidatorBuilderContextFactory sut)
         {
+            manifestModel.ItemType = ManifestItemType.PolymorphicType;
             var validationContext = new ValidatorBuilderContext(manifestModel);
             Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(object)),
-                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestPolymorphicType"));
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestItem"));
         }
 
         [Test,AutoMoqData]
-        public void GetPolymorphicContextShouldReturnAContextFromAnExistingPolymorphicTypeIfItExists([ManifestModel] ManifestPolymorphicType polymorphicValue,
-                                                                                                     [ManifestModel] ManifestValue manifestValue,
+        public void GetPolymorphicContextShouldReturnAContextFromAnExistingPolymorphicTypeIfItExists([ManifestModel] ManifestItem polymorphicValue,
+                                                                                                     [ManifestModel] ManifestItem manifestValue,
                                                                                                      ValidatorBuilderContextFactory sut)
         {
+            polymorphicValue.ItemType = ManifestItemType.PolymorphicType;
             manifestValue.PolymorphicTypes.Add(polymorphicValue);
             polymorphicValue.ValidatedType = typeof(string);
             var validationContext = new ValidatorBuilderContext(manifestValue);
@@ -140,14 +143,14 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void GetPolymorphicContextShouldReturnANewContextIfAnExistingPolymorphicTypeDoesNotExist([ManifestModel] ManifestValue manifestValue,
+        public void GetPolymorphicContextShouldReturnANewContextIfAnExistingPolymorphicTypeDoesNotExist([ManifestModel] ManifestItem manifestValue,
                                                                                                         ValidatorBuilderContextFactory sut)
         {
             manifestValue.PolymorphicTypes.Clear();
             var validationContext = new ValidatorBuilderContext(manifestValue);
 
-            Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(string))?.ManifestValue,
-                        Is.InstanceOf<ManifestPolymorphicType>());
+            Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(string))?.ManifestValue?.IsPolymorphicType,
+                        Is.True);
         }
     }
 }

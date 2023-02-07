@@ -11,20 +11,20 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This rule is used to indicate mandatory (not-<see langword="null" />) properties upon any <see cref="ManifestValue"/>, when that
+    /// This rule is used to indicate mandatory (not-<see langword="null" />) properties upon any <see cref="ManifestItem"/>, when that
     /// manifest value is not the root value of a validation manifest.
     /// </para>
     /// </remarks>
-    public class NotNullIfTheParentIsNotAManifest : IRuleWithMessage<object, ManifestValue>
+    public class NotNullIfTheParentIsNotAManifest : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object value, ManifestValue parentValue, RuleContext context, CancellationToken token = default)
+        public Task<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
             => (parentValue?.Parent is ValidationManifest || !(value is null)) ? PassAsync() : FailAsync();
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ManifestValue parentValue, ValidationRuleResult result, CancellationToken token = default)
+        public Task<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
             => Task.FromResult(string.Format(Resources.FailureMessages.GetFailureMessage("NotNullIfTheParentIsNotAManifest"),
-                                             nameof(ManifestValue),
+                                             nameof(ManifestItem),
                                              nameof(ValidationManifest)));
     }
 }

@@ -161,38 +161,33 @@ namespace CSF.Validation.ValidatorBuilding
         {
             if(Equals(manifestItem, context.ManifestValue)) return;
 
-            if (manifestItem is ManifestValue value
+            if (manifestItem.IsValue
              && !(context.ManifestValue.Children.Contains(manifestItem)))
             {
-                context.ManifestValue.Children.Add(value);
+                context.ManifestValue.Children.Add(manifestItem);
             }
 
-            if (manifestItem is ManifestPolymorphicType poly
-             && !(context.ManifestValue is ManifestPolymorphicType)
-             && !(context.ManifestValue.PolymorphicTypes.Contains(poly)))
+            if (manifestItem.IsPolymorphicType
+             && !(context.ManifestValue.IsPolymorphicType)
+             && !(context.ManifestValue.PolymorphicTypes.Contains(manifestItem)))
             {
-                context.ManifestValue.PolymorphicTypes.Add(poly);
+                context.ManifestValue.PolymorphicTypes.Add(manifestItem);
             }
         }
 
         ManifestItem GetRecursiveValue()
         {
-            var recursiveValue = new RecursiveManifestValue(recursiveAncestor)
-            {
-                Parent = context.ManifestValue.Parent,
-            };
-            if(recursiveAncestor is ManifestValue val)
-            {
-                recursiveValue.AccessorFromParent = val.AccessorFromParent;
-                recursiveValue.MemberName = val.MemberName;
-            }
+            var recursiveValue = ManifestItem.CreateRecursive(recursiveAncestor);
+            recursiveValue.Parent = context.ManifestValue.Parent;
+            recursiveValue.AccessorFromParent = recursiveAncestor.AccessorFromParent;
+            recursiveValue.MemberName = recursiveAncestor.MemberName;
             return recursiveValue;
         }
 
         /// <inheritdoc/>
         public ValidationManifest GetManifest()
         {
-            var manifestValue = GetManifestValue() as ManifestValue;
+            var manifestValue = GetManifestValue();
             var manifest = new ValidationManifest
             {
                 RootValue = manifestValue,

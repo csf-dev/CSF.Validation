@@ -9,10 +9,11 @@ namespace CSF.Validation.Rules
     {
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfCollectionItemValidatedTypeIsNull(CollectionItemValueMustValidateCompatibleTypeForValidatedType sut,
-                                                                                      [ManifestModel] ManifestValue value,
-                                                                                      [ManifestModel] ManifestCollectionItem item,
+                                                                                      [ManifestModel] ManifestItem value,
+                                                                                      [ManifestModel] ManifestItem item,
                                                                                       [RuleContext] RuleContext context)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = null;
             Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
@@ -20,10 +21,11 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValidatedTypeIsNull(CollectionItemValueMustValidateCompatibleTypeForValidatedType sut,
-                                                                        [ManifestModel] ManifestValue value,
-                                                                        [ManifestModel] ManifestCollectionItem item,
+                                                                        [ManifestModel] ManifestItem value,
+                                                                        [ManifestModel] ManifestItem item,
                                                                         [RuleContext] RuleContext context)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.ValidatedType = null;
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(int);
@@ -32,10 +34,11 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValidatedTypeIsCompatibleEnumerable(CollectionItemValueMustValidateCompatibleTypeForValidatedType sut,
-                                                                                        [ManifestModel] ManifestValue value,
-                                                                                        [ManifestModel] ManifestCollectionItem item,
+                                                                                        [ManifestModel] ManifestItem value,
+                                                                                        [ManifestModel] ManifestItem item,
                                                                                         [RuleContext] RuleContext context)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.ValidatedType = typeof(List<Cat>);
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Pet);
@@ -44,10 +47,11 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnFailIfValidatedTypeIsIncompaatibleEnumerable(CollectionItemValueMustValidateCompatibleTypeForValidatedType sut,
-                                                                                           [ManifestModel] ManifestValue value,
-                                                                                           [ManifestModel] ManifestCollectionItem item,
+                                                                                           [ManifestModel] ManifestItem value,
+                                                                                           [ManifestModel] ManifestItem item,
                                                                                            [RuleContext] RuleContext context)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.ValidatedType = typeof(List<Pet>);
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Cat);
@@ -56,10 +60,11 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldReturnCorrectMessage(CollectionItemValueMustValidateCompatibleTypeForValidatedType sut,
-                                                                     [ManifestModel] ManifestValue value,
-                                                                     [ManifestModel] ManifestCollectionItem item,
+                                                                     [ManifestModel] ManifestItem value,
+                                                                     [ManifestModel] ManifestItem item,
                                                                      [RuleResult] ValidationRuleResult result)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.ValidatedType = typeof(List<Pet>);
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Cat);

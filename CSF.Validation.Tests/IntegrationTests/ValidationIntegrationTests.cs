@@ -323,7 +323,7 @@ namespace CSF.Validation.IntegrationTests
             var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
 
             Assert.That(() => result.ForMember(x => x.Person).PolymorphicAs<Employee>().PolymorphicAs<Employee>(),
-                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestPolymorphicType"));
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestItem"));
         }
 
         [Test,AutoMoqData,Timeout(300)]
@@ -332,18 +332,18 @@ namespace CSF.Validation.IntegrationTests
             var manifest = new ValidationManifest
             {
                 ValidatedType = typeof(Node),
-                RootValue = new ManifestValue
+                RootValue = new ManifestItem
                 {
                     ValidatedType = typeof(Node),
                     IdentityAccessor = obj => ((Node)obj).Identity,
                     Children = new[] {
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(NodeChild),
                             IdentityAccessor = obj => ((NodeChild) obj).Identity,
                             AccessorFromParent = obj => ((Node) obj).Child,
                         },
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(string),
                             AccessorFromParent = obj => ((Node) obj).Name,
@@ -358,10 +358,8 @@ namespace CSF.Validation.IntegrationTests
             };
             nameValue.Rules.Add(nameRule);
             var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
-            var recursiveValue = new RecursiveManifestValue(manifest.RootValue)
-            {
-                AccessorFromParent = obj => ((NodeChild)obj).Node,
-            };
+            var recursiveValue = ManifestItem.CreateRecursive(manifest.RootValue);
+            recursiveValue.AccessorFromParent = obj => ((NodeChild)obj).Node;
             childValue.Children.Add(recursiveValue);
 
             var validatedObject = new Node
@@ -386,18 +384,18 @@ namespace CSF.Validation.IntegrationTests
             var manifest = new ValidationManifest
             {
                 ValidatedType = typeof(Node),
-                RootValue = new ManifestValue
+                RootValue = new ManifestItem
                 {
                     ValidatedType = typeof(Node),
                     IdentityAccessor = obj => ((Node)obj).Identity,
                     Children = new[] {
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(NodeChild),
                             IdentityAccessor = obj => ((NodeChild) obj).Identity,
                             AccessorFromParent = obj => ((Node) obj).Child,
                         },
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(string),
                             AccessorFromParent = obj => ((Node) obj).Name,
@@ -412,10 +410,8 @@ namespace CSF.Validation.IntegrationTests
             };
             nameValue.Rules.Add(nameRule);
             var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
-            var recursiveValue = new RecursiveManifestValue(manifest.RootValue)
-            {
-                AccessorFromParent = obj => ((NodeChild)obj).Node,
-            };
+            var recursiveValue = ManifestItem.CreateRecursive(manifest.RootValue);
+            recursiveValue.AccessorFromParent = obj => ((NodeChild)obj).Node;
             childValue.Children.Add(recursiveValue);
 
             var validatedObject = new Node

@@ -27,7 +27,7 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionShouldReturnAnExpressionWhichReturnsFalseForAResultWhichMatchesNoContexts([ManifestModel] ManifestValue otherValue,
+        public void GetExpressionShouldReturnAnExpressionWhichReturnsFalseForAResultWhichMatchesNoContexts([ManifestModel] ManifestItem otherValue,
                                                                                                            [ManifestModel] ManifestRule rule,
                                                                                                            [RuleId] RuleIdentifier ruleIdentifier,
                                                                                                            object actualValue,
@@ -44,8 +44,8 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionShouldReturnAnExpressionWhichReturnsTrueForAResultWhichMatchesAnAncestorContextWhenAllowAncestorsIsTrue([ManifestModel] ManifestValue value,
-                                                                                                                                         [ManifestModel] ManifestValue otherValue,
+        public void GetExpressionShouldReturnAnExpressionWhichReturnsTrueForAResultWhichMatchesAnAncestorContextWhenAllowAncestorsIsTrue([ManifestModel] ManifestItem value,
+                                                                                                                                         [ManifestModel] ManifestItem otherValue,
                                                                                                                                          [ManifestModel] ManifestRule rule,
                                                                                                                                          [RuleId] RuleIdentifier ruleIdentifier,
                                                                                                                                          object identity,
@@ -63,8 +63,8 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionShouldReturnAnExpressionWhichReturnsFalseForAResultWhichMatchesAnAncestorContextWhenAllowAncestorsIsFalse([ManifestModel] ManifestValue value,
-                                                                                                                                         [ManifestModel] ManifestValue otherValue,
+        public void GetExpressionShouldReturnAnExpressionWhichReturnsFalseForAResultWhichMatchesAnAncestorContextWhenAllowAncestorsIsFalse([ManifestModel] ManifestItem value,
+                                                                                                                                         [ManifestModel] ManifestItem otherValue,
                                                                                                                                          [ManifestModel] ManifestRule rule,
                                                                                                                                          [RuleId] RuleIdentifier ruleIdentifier,
                                                                                                                                          object identity,

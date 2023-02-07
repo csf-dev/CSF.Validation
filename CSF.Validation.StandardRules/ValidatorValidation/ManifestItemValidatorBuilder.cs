@@ -16,62 +16,55 @@ namespace CSF.Validation.ValidatorValidation
 
             config.ForMember(x => x.Parent, m => m.AddRule<NotNull>());
 
-            config.ForMember(x => x.CollectionItemValue, m => m.AddRules<ManifestCollectionItemValidatorBuilder>());
+            config.ForMember(x => x.CollectionItemValue, m => m.AddRules<RecursiveItemValidatorBuilder>());
             config.AddRule<CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable>();
             config.AddRule<CollectionItemValueMustValidateCompatibleTypeForValidatedType>(r =>
             {
                 r.AddDependency(d => d.RuleType<CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable>());
             });
 
-            config.ForMember(x => x.Children, m => m.AddRule<ContainsNoNullItems<ManifestValue>>());
-            config.ForMemberItems(x => x.Children, m => m.AddRules<ChildValueValidatorBuilder>());
+            config.ForMember(x => x.Children, m => m.AddRule<ContainsNoNullItems<ManifestItem>>());
+            config.ForMemberItems(x => x.Children, m => m.AddRules<RecursiveItemValidatorBuilder>());
 
             config.ForMember(x => x.Rules, m => m.AddRule<ContainsNoNullItems<ManifestRule>>());
             config.ForMemberItems(x => x.Rules, m => m.AddRules<ManifestRuleValidatorBuilder>());
 
-            config.ForMember(x => x.PolymorphicTypes, m => m.AddRule<ContainsNoNullItems<ManifestPolymorphicType>>());
-            config.ForMemberItems(x => x.PolymorphicTypes, m => m.AddRules<PolymorphicTypeValidatorBuilder>());
+            config.ForMember(x => x.PolymorphicTypes, m => m.AddRule<ContainsNoNullItems<ManifestItem>>());
+            config.ForMemberItems(x => x.PolymorphicTypes, m => m.AddRules<RecursiveItemValidatorBuilder>());
+            
+            config.ForMember(x => x.AccessorFromParent, m =>
+            {
+                m.AddRuleWithParent<NullIfTheParentIsAManifest>();
+                m.AddRuleWithParent<NotNullIfTheParentIsNotAManifest>();
+            });
 
-            config.WhenValueIs<ManifestPolymorphicType>(t =>
+            config.ForMember(x => x.MemberName, m =>
+            {
+                m.AddRuleWithParent<NullIfTheParentIsAManifest>();
+                m.AddRuleWithParent<MemberMustExist>();
+            });
+
+            config.ForMember(x => x.AccessorExceptionBehaviour, m =>
+            {
+                m.AddRule<MustBeDefinedEnumConstant<ValueAccessExceptionBehaviour>>();
+            });
+
+            config.WhenValueIs<ManifestItem>(t =>
             {
                 t.ForMember(x => x.PolymorphicTypes, m => m.AddRule<Empty>());
             });
         }
 
         /// <summary>
-        /// Validator builder which adds recursive validaiton for child values within a validation manifest object graph.
+        /// Validator builder which adds recursive validaiton for items which are attached to the manifest item object graph.
         /// </summary>
-        public class ChildValueValidatorBuilder : IBuildsValidator<ManifestValue>
+        public class RecursiveItemValidatorBuilder : IBuildsValidator<ManifestItem>
         {
             /// <inheritdoc/>
-            public void ConfigureValidator(IConfiguresValidator<ManifestValue> config)
+            public void ConfigureValidator(IConfiguresValidator<ManifestItem> config)
             {
                 config.ValidateAsAncestor(1);
             }
         }
-
-        /// <summary>
-        /// Validator builder which adds recursive validaiton for collection items within a validation manifest object graph.
-        /// </summary>
-        public class ManifestCollectionItemValidatorBuilder : IBuildsValidator<ManifestCollectionItem>
-        {
-            /// <inheritdoc/>
-            public void ConfigureValidator(IConfiguresValidator<ManifestCollectionItem> config)
-            {
-                config.ValidateAsAncestor(1);
-            }
-        }
-
-        /// <summary>
-        /// Validator builder which adds recursive validaiton for polymorphic types within a validation manifest object graph.
-        /// </summary>
-        public class PolymorphicTypeValidatorBuilder : IBuildsValidator<ManifestPolymorphicType>
-        {
-            /// <inheritdoc/>
-            public void ConfigureValidator(IConfiguresValidator<ManifestPolymorphicType> config)
-            {
-                config.ValidateAsAncestor(1);
-            }
-        }
-    }
+   }
 }

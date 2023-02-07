@@ -9,7 +9,7 @@ namespace CSF.Validation.Rules
     {
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfCollectionItemValueIsNull(CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable sut,
-                                                                              [ManifestModel] ManifestValue value,
+                                                                              [ManifestModel] ManifestItem value,
                                                                               [RuleContext] RuleContext context)
         {
             value.CollectionItemValue = null;
@@ -18,7 +18,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValidatedTypeIsNull(CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable sut,
-                                                                        [ManifestModel] ManifestValue value,
+                                                                        [ManifestModel] ManifestItem value,
                                                                         [RuleContext] RuleContext context)
         {
             value.ValidatedType = null;
@@ -27,10 +27,11 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValidatedTypeIsEnumerable(CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable sut,
-                                                                              [ManifestModel] ManifestValue value,
-                                                                              [ManifestModel] ManifestCollectionItem item,
+                                                                              [ManifestModel] ManifestItem value,
+                                                                              [ManifestModel] ManifestItem item,
                                                                               [RuleContext] RuleContext context)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.CollectionItemValue = item;
             value.ValidatedType = typeof(List<string>);
             Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
@@ -38,10 +39,11 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnFailIfValidatedTypeIsNotEnumerable(CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable sut,
-                                                                                 [ManifestModel] ManifestValue value,
-                                                                                 [ManifestModel] ManifestCollectionItem item,
+                                                                                 [ManifestModel] ManifestItem value,
+                                                                                 [ManifestModel] ManifestItem item,
                                                                                  [RuleContext] RuleContext context)
         {
+            item.ItemType = ManifestItemType.CollectionItem;
             value.CollectionItemValue = item;
             value.ValidatedType = typeof(int);
             Assert.That(() => sut.GetResultAsync(value, context), Is.FailingRuleResult);
@@ -49,7 +51,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldReturnCorrectMessage(CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable sut,
-                                                                     [ManifestModel] ManifestValue value,
+                                                                     [ManifestModel] ManifestItem value,
                                                                      [RuleResult] ValidationRuleResult result)
         {
             Assert.That(async () => await sut.GetFailureMessageAsync(value, result),

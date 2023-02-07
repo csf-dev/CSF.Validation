@@ -30,7 +30,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="validationOptions">Validation options.</param>
         /// <returns>A result object which indicates success/failure and provides further contextual information.</returns>
         /// <exception cref="ValidationException">If the attempt fails and the error-handling behaviour is <see cref="ValueAccessExceptionBehaviour.Throw"/>.</exception>
-        GetValueToBeValidatedResponse GetValueToBeValidated(ManifestValue manifestValue,
+        GetValueToBeValidatedResponse GetValueToBeValidated(ManifestItem manifestValue,
                                                             object parentValue,
                                                             ResolvedValidationOptions validationOptions);
     }

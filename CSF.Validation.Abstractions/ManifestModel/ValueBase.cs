@@ -103,7 +103,7 @@ namespace CSF.Validation.ManifestModel
         /// <para>
         /// If <see langword="null" /> then this value is treated as a normal manifest value.  If not null then this value
         /// will be treated as a recursive (or re-entrant) validation manifest value.  It will be converted as a
-        /// <see cref="CSF.Validation.Manifest.RecursiveManifestValue"/> rather than a normal value.
+        /// <see cref="CSF.Validation.Manifest.ManifestItem"/> that is recursive rather than a normal value.
         /// </para>
         /// <para>
         /// The numeric value of this property (which must be a positive integer if non-null) indicates which level of ancestor

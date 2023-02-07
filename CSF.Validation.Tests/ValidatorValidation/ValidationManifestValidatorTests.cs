@@ -42,12 +42,12 @@ namespace CSF.Validation.ValidatorValidation
             var manifest = new ValidationManifest
             {
                 ValidatedType = typeof(ValidatedObject),
-                RootValue = new ManifestValue
+                RootValue = new ManifestItem
                 {
                     ValidatedType = typeof(ValidatedObject),
                     Children = new []
                     {
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(string),
                             AccessorFromParent = p => ((ValidatedObject) p).AProperty,

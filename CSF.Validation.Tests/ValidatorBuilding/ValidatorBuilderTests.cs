@@ -29,7 +29,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                        IBuildsRule<ObjectRule> ruleBuilder,
                                                                        ValidatorBuilder<ValidatedObject> sut,
-                                                                       [ManifestModel] ManifestValue value)
+                                                                       [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<ObjectRule>(context, It.IsAny<Action<IConfiguresRule<ObjectRule>>>()))
@@ -48,7 +48,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                     [Frozen] IGetsValidatorBuilderContext ruleContextFactory,
                                                                     [Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     ValidatorBuilder<ValidatedObject> sut,
-                                                                    [ManifestModel] ManifestValue value)
+                                                                    [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<ObjectRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<ObjectRule>>>()))
@@ -75,7 +75,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                         [Frozen] IGetsValidatorManifest manifestFactory,
                                                                         ValidatorBuilder<ValidatedObject> sut,
                                                                         IGetsManifestValue manifest,
-                                                                        [ManifestModel] ManifestValue value)
+                                                                        [ManifestModel] ManifestItem value)
         {
             Mock.Get(manifestFactory)
                 .Setup(x => x.GetValidatorManifest(typeof(ValidatedObjectValidator), context))
@@ -94,7 +94,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                              ValidatorBuilder<ValidatedObject> sut,
                                                                              ValidatorBuilderContext ruleContext,
                                                                              IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                             [ManifestModel] ManifestValue value)
+                                                                             [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
@@ -118,7 +118,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                   ValidatorBuilder<ValidatedObject> sut,
                                                                                   [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                                   IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                                  [ManifestModel] ManifestValue value)
+                                                                                  [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, false))
@@ -145,7 +145,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                             ValidatorBuilder<ValidatedObject> sut,
                                                                             [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                             IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                            [ManifestModel] ManifestValue value)
+                                                                            [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,string>>(), context, false))
@@ -169,7 +169,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                              ValidatorBuilder<ValidatedObject> sut,
                                                                              [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                              IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                             [ManifestModel] ManifestValue value)
+                                                                             [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, false))
@@ -196,7 +196,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        ValidatorBuilder<ValidatedObject> sut,
                                                                        [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                        IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                       [ManifestModel] ManifestValue value)
+                                                                       [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
@@ -222,7 +222,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                             ValidatorBuilder<ValidatedObject> sut,
                                                                             [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                             IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                            [ManifestModel] ManifestValue value)
+                                                                            [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,IEnumerable<char>>>>(), context, false))
@@ -251,7 +251,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                       ValidatorBuilder<ValidatedObject> sut,
                                                                       [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                       IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                      [ManifestModel] ManifestValue value)
+                                                                      [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,string>>(), context, false))
@@ -277,7 +277,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                        ValidatorBuilder<ValidatedObject> sut,
                                                                        [ManifestModel] ValidatorBuilderContext ruleContext,
                                                                        IBuildsValueAccessor<ValidatedObject,char> valueBuilder,
-                                                                       [ManifestModel] ManifestValue value)
+                                                                       [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForValue(It.IsAny<Func<ValidatedObject,IEnumerable<char>>>(), context, false))
@@ -306,7 +306,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                ValidatorBuilder<ValidatedObject> sut,
                                                                                ValidatorBuilderContext ruleContext,
                                                                                IBuildsValueAccessor<ValidatedObject,string> valueBuilder,
-                                                                               [ManifestModel] ManifestValue value)
+                                                                               [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleContextFactory)
                 .Setup(x => x.GetContextForMember(It.IsAny<Expression<Func<ValidatedObject,string>>>(), context, false))
@@ -325,7 +325,7 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void ValidateAsAncestorShouldThrowIfUsedTwice([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                              ValidatorBuilder<ValidatedObject> sut,
-                                                             [ManifestModel] ManifestValue parent)
+                                                             [ManifestModel] ManifestItem parent)
         {
             context.ManifestValue.Parent = parent;
             sut.ValidateAsAncestor(1);
@@ -335,7 +335,7 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void ForMemberShouldThrowIfValidateAsAncestorHasAlreadyBeenUsed([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                ValidatorBuilder<ValidatedObject> sut,
-                                                                               [ManifestModel] ManifestValue parent)
+                                                                               [ManifestModel] ManifestItem parent)
         {
             context.ManifestValue.Parent = parent;
             sut.ValidateAsAncestor(1);
@@ -345,14 +345,18 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void ValidateAsAncestorShouldSetupGetManifestValueToReturnARecursiveManifestValue([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                                                  ValidatorBuilder<ValidatedObject> sut,
-                                                                                                 [ManifestModel] ManifestValue parent,
-                                                                                                 [ManifestModel] ManifestValue grandParent)
+                                                                                                 [ManifestModel] ManifestItem parent,
+                                                                                                 [ManifestModel] ManifestItem grandParent)
         {
             context.ManifestValue.Parent = parent;
             parent.Parent = grandParent;
             sut.ValidateAsAncestor(2);
             var result = sut.GetManifestValue();
-            Assert.That(result, Is.InstanceOf<RecursiveManifestValue>().And.Property(nameof(RecursiveManifestValue.WrappedValue)).SameAs(grandParent));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.IsRecursive, Is.True, "Result is recursive");
+                Assert.That(result.RecursiveAncestor, Is.SameAs(grandParent), "Result has correct ancestor");
+            });
         }
     }
 }

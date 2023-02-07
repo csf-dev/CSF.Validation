@@ -3,7 +3,7 @@ using CSF.Validation.Manifest;
 namespace CSF.Validation.ManifestModel
 {
     /// <summary>
-    /// A simple object that describes both a <see cref="ManifestValue"/> instanec and
+    /// A simple object that describes both a <see cref="ManifestItem"/> instanec and
     /// also the model <see cref="Value"/> instance which was used to create it.
     /// </summary>
     public class ModelAndManifestValuePair

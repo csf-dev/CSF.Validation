@@ -20,7 +20,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassResultIfRuleLogicImplementsSingleRuleInterface(RuleMustImplementCompatibleValidationLogic sut,
-                                                                                                 [ManifestModel] ManifestValue value,
+                                                                                                 [ManifestModel] ManifestItem value,
                                                                                                  [RuleContext] RuleContext context)
         {
             value.ValidatedType = typeof(int);
@@ -31,8 +31,8 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassResultIfRuleLogicImplementsDoubleRuleInterface(RuleMustImplementCompatibleValidationLogic sut,
-                                                                                                 [ManifestModel] ManifestValue value,
-                                                                                                 [ManifestModel] ManifestValue parent,
+                                                                                                 [ManifestModel] ManifestItem value,
+                                                                                                 [ManifestModel] ManifestItem parent,
                                                                                                  [RuleContext] RuleContext context)
         {
             value.ValidatedType = typeof(int);
@@ -44,8 +44,8 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassResultIfRuleLogicImplementsSingleRuleInterfaceWhenManifestHasAParent(RuleMustImplementCompatibleValidationLogic sut,
-                                                                                                                       [ManifestModel] ManifestValue value,
-                                                                                                                       [ManifestModel] ManifestValue parent,
+                                                                                                                       [ManifestModel] ManifestItem value,
+                                                                                                                       [ManifestModel] ManifestItem parent,
                                                                                                                        [RuleContext] RuleContext context)
         {
             value.ValidatedType = typeof(int);
@@ -57,7 +57,7 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldReturnCorrectMessageWhenOneCandidateInterface(RuleMustImplementCompatibleValidationLogic sut,
-                                                                                              [ManifestModel] ManifestValue value,
+                                                                                              [ManifestModel] ManifestItem value,
                                                                                               [RuleResult] ValidationRuleResult result)
         {
             value.ValidatedType = typeof(decimal);
@@ -69,8 +69,8 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldReturnCorrectMessageWhenTwoCandidateInterfaces(RuleMustImplementCompatibleValidationLogic sut,
-                                                                                               [ManifestModel] ManifestValue value,
-                                                                                               [ManifestModel] ManifestValue parent,
+                                                                                               [ManifestModel] ManifestItem value,
+                                                                                               [ManifestModel] ManifestItem parent,
                                                                                                [RuleResult] ValidationRuleResult result)
         {
             value.ValidatedType = typeof(decimal);
@@ -83,8 +83,8 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldThrowIfNoCandidateInterfaces(RuleMustImplementCompatibleValidationLogic sut,
-                                                                             [ManifestModel] ManifestValue value,
-                                                                             [ManifestModel] ManifestValue otherValue,
+                                                                             [ManifestModel] ManifestItem value,
+                                                                             [ManifestModel] ManifestItem otherValue,
                                                                              [RuleResult] ValidationRuleResult result)
         {
             value.ValidatedType = null;

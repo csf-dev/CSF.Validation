@@ -34,7 +34,10 @@ namespace CSF.Validation
 
         IEnumerator IEnumerable.GetEnumerator() => RuleResults.GetEnumerator();
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string representation.</returns>
         public override string ToString()
         {
             var builder = new StringBuilder();

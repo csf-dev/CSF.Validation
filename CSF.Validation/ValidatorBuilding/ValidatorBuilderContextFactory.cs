@@ -44,21 +44,22 @@ namespace CSF.Validation.ValidatorBuilding
                 throw new ArgumentNullException(nameof(validatorContext));
             if (derivedType is null)
                 throw new ArgumentNullException(nameof(derivedType));
-            if (validatorContext.ManifestValue is ManifestPolymorphicType)
+            if (validatorContext.ManifestValue.IsPolymorphicType)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeAPolymorphicType"),
-                                            typeof(ManifestPolymorphicType).Name);
+                                            typeof(ManifestItem).Name);
                 throw new ArgumentException(message, nameof(validatorContext));
             }
 
-            ManifestPolymorphicType existingPoly;
+            ManifestItem existingPoly;
             if ((existingPoly = validatorContext.ManifestValue.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == derivedType)) != null)
                 return new ValidatorBuilderContext(existingPoly);
 
-            var polymorphicValue = new ManifestPolymorphicType
+            var polymorphicValue = new ManifestItem
             {
                 Parent = validatorContext.ManifestValue.Parent,
                 ValidatedType = derivedType,
+                ItemType = ManifestItemType.PolymorphicType,
             };
             validatorContext.ManifestValue.PolymorphicTypes.Add(polymorphicValue);
             return new ValidatorBuilderContext(polymorphicValue);
@@ -66,11 +67,11 @@ namespace CSF.Validation.ValidatorBuilding
 
         static ValidatorBuilderContext GetContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
         {
-            ManifestValue existingManifest;
-            if(!(memberName is null) && (existingManifest = parentContext.ManifestValue.Children.OfType<ManifestValue>().FirstOrDefault(x => x.MemberName == memberName)) != null)
+            ManifestItem existingManifest;
+            if(!(memberName is null) && (existingManifest = parentContext.ManifestValue.Children.OfType<ManifestItem>().FirstOrDefault(x => x.MemberName == memberName)) != null)
                 return new ValidatorBuilderContext(existingManifest);
 
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 Parent = parentContext.ManifestValue,
                 AccessorFromParent = accessor,
@@ -86,10 +87,11 @@ namespace CSF.Validation.ValidatorBuilding
             if(parentContext.ManifestValue.CollectionItemValue != null)
                 return new ValidatorBuilderContext(parentContext.ManifestValue.CollectionItemValue);
 
-            var manifestValue = new ManifestCollectionItem
+            var manifestValue = new ManifestItem
             {
                 Parent = parentContext.ManifestValue,
                 ValidatedType = validatedType,
+                ItemType = ManifestItemType.CollectionItem,
             };
             parentContext.ManifestValue.CollectionItemValue = manifestValue;
             return new ValidatorBuilderContext(manifestValue);

@@ -82,10 +82,10 @@ namespace CSF.Validation
             if (results is null)
                 throw new ArgumentNullException(nameof(results));
 
-            if(results.ManifestValue is ManifestPolymorphicType)
+            if(results.ManifestValue.IsPolymorphicType)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeAPolymorphicType"),
-                                            typeof(ManifestPolymorphicType).Name);
+                                            typeof(ManifestItem).Name);
                 throw new ArgumentException(message, nameof(results));
             }
 

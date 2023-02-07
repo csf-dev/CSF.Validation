@@ -16,7 +16,7 @@ namespace CSF.Validation.ManifestModel
             if(context.ConversionType != ModelToManifestConversionType.Manifest)
                 return next.GetManifestItem(context);
 
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 Parent = context.ParentManifestValue,
                 MemberName = context.MemberName,

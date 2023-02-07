@@ -24,10 +24,6 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ManifestItem"/>
-    /// <seealso cref="Manifest.ManifestValue"/>
-    /// <seealso cref="ManifestCollectionItem"/>
-    /// <seealso cref="ManifestPolymorphicType"/>
-    /// <seealso cref="RecursiveManifestValue"/>
     public class ValidationManifest : IManifestNode
     {
         /// <summary>
@@ -38,6 +34,12 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets or sets the root value for the current manifest.
         /// </summary>
-        public ManifestValue RootValue { get; set; }
+        /// <remarks>
+        /// <para>
+        /// The root item (referenced by this property) must be of <see cref="ManifestItem.ItemType"/>
+        /// <see cref="ManifestItemType.Value"/> and nothing else.
+        /// </para>
+        /// </remarks>
+        public ManifestItem RootValue { get; set; }
     }
 }

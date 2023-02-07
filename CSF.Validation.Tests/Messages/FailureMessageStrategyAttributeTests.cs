@@ -90,7 +90,7 @@ namespace CSF.Validation.Messages
                                                                                                        IValidationLogic validationLogic)
         {
             var id = new RuleIdentifier(type, type, objectId);
-            var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(objectId, actualValue, new ManifestValue { ValidatedType = typeof(Employee) }) }, typeof(string));
+            var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(objectId, actualValue, new ManifestItem { ValidatedType = typeof(Employee) }) }, typeof(string));
             var ruleResult = new ValidationRuleResult(result, context, validationLogic);
             var sut = new FailureMessageStrategyAttribute
             {

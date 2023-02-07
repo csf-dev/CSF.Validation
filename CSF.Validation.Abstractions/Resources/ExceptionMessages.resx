@@ -141,4 +141,12 @@
     <value>Setting {0} is not supported in an instance of {1}; the value is derived from the wrapped object.</value>
     <comment/>
   </data>
+  <data name="InvalidManifestItemType" xml:space="preserve">
+    <value>Invalid {0}; all manifest items must have a valid type.  See the enum {1} for permitted values.</value>
+    <comment/>
+  </data>
+  <data name="AlreadyRecursive" xml:space="preserve">
+    <value>Cannot create a recursive manifest item from an item which is already recursive.</value>
+    <comment/>
+  </data>
 </root>

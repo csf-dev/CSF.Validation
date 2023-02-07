@@ -16,12 +16,12 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWithDependenciesShouldNotThrowIfThereAreNoCircularDependencies([Frozen] IGetsAllExecutableRulesWithDependencies wrapped,
                                                                                            [Frozen] IDetectsCircularDependencies circularDependencyDetector,
                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
-                                                                                           [ManifestModel] ManifestValue manifestValue,
+                                                                                           [ManifestModel] ManifestItem manifestValue,
                                                                                            object objectToBeValidated,
                                                                                            ResolvedValidationOptions validationOptions)
         {
             Mock.Get(wrapped)
-                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
+                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestItem>(), It.IsAny<object>(), validationOptions))
                 .Returns(new ExecutableRuleAndDependencies[0]);
             Mock.Get(circularDependencyDetector)
                 .Setup(x => x.GetCircularDependencies(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>()))
@@ -33,7 +33,7 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWithDependenciesShouldThrowValidationExceptionWithCorrectMessageIfThereAreCircularDependencies([Frozen] IGetsAllExecutableRulesWithDependencies wrapped,
                                                                                                                            [Frozen] IDetectsCircularDependencies circularDependencyDetector,
                                                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
-                                                                                                                           [ManifestModel] ManifestValue manifestValue,
+                                                                                                                           [ManifestModel] ManifestItem manifestValue,
                                                                                                                            object objectToBeValidated,
                                                                                                                            ResolvedValidationOptions validationOptions)
         {
@@ -50,7 +50,7 @@ namespace CSF.Validation.RuleExecution
 ";
 
             Mock.Get(wrapped)
-                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
+                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestItem>(), It.IsAny<object>(), validationOptions))
                 .Returns(new ExecutableRuleAndDependencies[0]);
             Mock.Get(circularDependencyDetector)
                 .Setup(x => x.GetCircularDependencies(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>()))
@@ -59,7 +59,7 @@ namespace CSF.Validation.RuleExecution
             Assert.That(() => sut.GetRulesWithDependencies(manifestValue, objectToBeValidated, validationOptions), Throws.InstanceOf<ValidationException>().And.Message.EqualTo(expectedMessage));
         }
 
-        static IEnumerable<CircularDependency> GetSomeCircularDependencies(ManifestValue manifestValue)
+        static IEnumerable<CircularDependency> GetSomeCircularDependencies(ManifestItem manifestValue)
         {
             return new[] {
                 new CircularDependency

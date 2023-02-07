@@ -18,7 +18,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                           ResolvedValidationOptions validationOptions,
                                                                                                           [ExecutableModel] ValidatedValue value)
         {
-            var manifestValue = new ManifestValue { ValidatedType = typeof(object) };
+            var manifestValue = new ManifestItem { ValidatedType = typeof(object) };
             Mock.Get(valueFromBasisFactory)
                 .Setup(x => x.GetValidatedValue(It.Is<ValidatedValueBasis>(b => b.ManifestValue == manifestValue)))
                 .Returns(value);
@@ -38,12 +38,13 @@ namespace CSF.Validation.RuleExecution
                                                                                                         [ExecutableModel] ValidatedValue collectionValue,
                                                                                                         object item)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(IEnumerable<object>),
-                CollectionItemValue = new ManifestCollectionItem
+                CollectionItemValue = new ManifestItem
                 {
-                    ValidatedType = typeof(object)
+                    ValidatedType = typeof(object),
+                    ItemType = ManifestItemType.CollectionItem,
                 },
             };
             Mock.Get(valueFromBasisFactory)
@@ -74,16 +75,17 @@ namespace CSF.Validation.RuleExecution
                                                                                                         [ExecutableModel] ValidatedValue collectionValue,
                                                                                                         object item)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(object),
                 Children = new[] {
-                    new ManifestValue
+                    new ManifestItem
                     {
                         ValidatedType = typeof(IEnumerable<object>),
-                        CollectionItemValue = new ManifestCollectionItem
+                        CollectionItemValue = new ManifestItem
                         {
-                            ValidatedType = typeof(object)
+                            ValidatedType = typeof(object),
+                            ItemType = ManifestItemType.CollectionItem,
                         },
                     }
                 }
@@ -127,12 +129,13 @@ namespace CSF.Validation.RuleExecution
                                                                                              object item2,
                                                                                              object item3)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(IEnumerable<object>),
-                CollectionItemValue = new ManifestCollectionItem
+                CollectionItemValue = new ManifestItem
                 {
-                    ValidatedType = typeof(object)
+                    ValidatedType = typeof(object),
+                    ItemType = ManifestItemType.CollectionItem,
                 },
             };
             Mock.Get(valueFromBasisFactory)
@@ -162,11 +165,11 @@ namespace CSF.Validation.RuleExecution
                                                                                                     [ExecutableModel] ValidatedValue val,
                                                                                                     [ExecutableModel] ValidatedValue childVal)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(ComplexObject),
             };
-            var childManifest = new ManifestValue
+            var childManifest = new ManifestItem
             {
                 Parent = manifestValue,
                 ValidatedType = typeof(string),
@@ -201,11 +204,11 @@ namespace CSF.Validation.RuleExecution
                                                                                                           [ExecutableModel] ValidatedValue val,
                                                                                                           [ExecutableModel] ValidatedValue childVal)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(ComplexObject),
             };
-            var childManifest = new ManifestValue
+            var childManifest = new ManifestItem
             {
                 Parent = manifestValue,
                 ValidatedType = typeof(string),
@@ -240,16 +243,16 @@ namespace CSF.Validation.RuleExecution
                                                                                                     [ExecutableModel] ValidatedValue childVal,
                                                                                                     [ExecutableModel] ValidatedValue grandchildVal)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(ComplexObject),
             };
-            var childManifest = new ManifestValue
+            var childManifest = new ManifestItem
             {
                 Parent = manifestValue,
                 ValidatedType = typeof(ComplexObject),
             };
-            var grandchildManifest = new ManifestValue
+            var grandchildManifest = new ManifestItem
             {
                 Parent = childManifest,
                 ValidatedType = typeof(string),
@@ -300,27 +303,29 @@ namespace CSF.Validation.RuleExecution
                                                                                                     [ExecutableModel] ValidatedValue secondCollection,
                                                                                                     [ExecutableModel] ValidatedValue item)
         {
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 ValidatedType = typeof(ComplexObject),
                 Children = new [] {
-                    new ManifestValue
+                    new ManifestItem
                     {
                         ValidatedType = typeof(ICollection<List<ComplexObject>>),
                         MemberName = nameof(ComplexObject.DoubleCollection),
                         AccessorFromParent = obj => ((ComplexObject) obj).DoubleCollection,
-                        CollectionItemValue = new ManifestCollectionItem
+                        CollectionItemValue = new ManifestItem
                         {
                             ValidatedType = typeof(List<ComplexObject>),
-                            CollectionItemValue = new ManifestCollectionItem
+                            ItemType = ManifestItemType.CollectionItem,
+                            CollectionItemValue = new ManifestItem
                             {
                                 ValidatedType = typeof(ComplexObject),
+                                ItemType = ManifestItemType.CollectionItem,
                             }
                         },
                     },
                 },
             };
-            var child = (ManifestValue) manifestValue.Children.Single();
+            var child = manifestValue.Children.Single();
             child.Parent = manifestValue;
             child.CollectionItemValue.Parent = manifestValue;
             child.CollectionItemValue.CollectionItemValue.Parent = manifestValue;

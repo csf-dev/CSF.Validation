@@ -16,10 +16,11 @@ namespace CSF.Validation.ManifestModel
             if(context.ConversionType != ModelToManifestConversionType.CollectionItem)
                 return next.GetManifestItem(context);
 
-            var collectionItem = new ManifestCollectionItem
+            var collectionItem = new ManifestItem
             {
                 Parent = context.ParentManifestValue.Parent,
                 ValidatedType = context.ValidatedType,
+                ItemType = ManifestItemType.CollectionItem,
             };
 
             if (context.ParentManifestValue is ManifestItem mvb)

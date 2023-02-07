@@ -9,7 +9,6 @@ namespace CSF.Validation.Bootstrap
         {
             return serviceCollection
                 .AddTransient<ManifestItemValidatorBuilder>()
-                .AddTransient<ManifestValueValidatorBuilder>()
                 .AddTransient<ValidationManifestValidatorBuilder>()
                 .AddTransient<ManifestRuleValidatorBuilder>()
                 .AddTransient<IValidatesValidationManifest, ValidationManifestValidator>()

@@ -4,7 +4,7 @@ using CSF.Validation.Manifest;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// An object which can get a <see cref="ManifestValue"/> which may contain a
+    /// An object which can get a <see cref="ManifestItem"/> which may contain a
     /// collection of rules and/or descendent values.
     /// </summary>
     public interface IGetsManifestValue

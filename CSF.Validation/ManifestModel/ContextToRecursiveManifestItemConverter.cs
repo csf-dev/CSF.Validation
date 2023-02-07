@@ -20,13 +20,12 @@ namespace CSF.Validation.ManifestModel
                 return next.GetManifestItem(context);
 
             var ancestor = GetAncestor(context);
-            var recursiveItem = new RecursiveManifestValue(ancestor)
-            {
-                AccessorFromParent = context.AccessorFromParent,
-                MemberName = context.MemberName,
-                Parent = context.ParentManifestValue,
-            };
-            
+            var recursiveItem = ManifestItem.CreateRecursive(ancestor);
+            recursiveItem.AccessorFromParent = context.AccessorFromParent;
+            recursiveItem.MemberName = context.MemberName;
+            recursiveItem.Parent = context.ParentManifestValue;
+
+
             if (context.ParentManifestValue != null)
                 context.ParentManifestValue.Children.Add(recursiveItem);
 

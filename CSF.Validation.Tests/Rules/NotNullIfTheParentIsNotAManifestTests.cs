@@ -8,7 +8,7 @@ namespace CSF.Validation.Rules
     {
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfTheParentValueIsAValidationManifest(NotNullIfTheParentIsNotAManifest sut,
-                                                                                        [ManifestModel] ManifestValue parent,
+                                                                                        [ManifestModel] ManifestItem parent,
                                                                                         [RuleContext] RuleContext context)
         {
             parent.Parent = new ValidationManifest();
@@ -18,8 +18,8 @@ namespace CSF.Validation.Rules
         [Test, AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfTheValueIsNotNull(NotNullIfTheParentIsNotAManifest sut,
                                                                       object value,
-                                                                      [ManifestModel] ManifestValue parent,
-                                                                      [ManifestModel] ManifestValue grandParent,
+                                                                      [ManifestModel] ManifestItem parent,
+                                                                      [ManifestModel] ManifestItem grandParent,
                                                                       [RuleContext] RuleContext context)
         {
             parent.Parent = grandParent;
@@ -28,8 +28,8 @@ namespace CSF.Validation.Rules
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnFailIfTheValueIsNull(NotNullIfTheParentIsNotAManifest sut,
-                                                                   [ManifestModel] ManifestValue parent,
-                                                                   [ManifestModel] ManifestValue grandParent,
+                                                                   [ManifestModel] ManifestItem parent,
+                                                                   [ManifestModel] ManifestItem grandParent,
                                                                    [RuleContext] RuleContext context)
         {
             parent.Parent = grandParent;
@@ -39,11 +39,11 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetFailureMessageAsyncShouldReturnCorrectMessage(NotNullIfTheParentIsNotAManifest sut,
                                                                      object value,
-                                                                     [ManifestModel] ManifestValue parent,
+                                                                     [ManifestModel] ManifestItem parent,
                                                                      [RuleResult] ValidationRuleResult result)
         {
             Assert.That(async () => await sut.GetFailureMessageAsync(value, parent, result),
-                        Is.EqualTo("The value must not be null if the ManifestValue is not the root of a ValidationManifest."));
+                        Is.EqualTo("The value must not be null if the ManifestItem is not the root of a ValidationManifest."));
         }
     }
 }

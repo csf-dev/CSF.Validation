@@ -9,8 +9,8 @@ namespace CSF.Validation.ManifestModel
         [Test,AutoMoqData]
         public void GetManifestItemShouldReturnACollectionItem([ManifestModel] ModelToManifestConversionContext context,
                                                                ContextToManifestCollectionItemConverter sut,
-                                                               [ManifestModel] ManifestValue parent,
-                                                               [ManifestModel] ManifestValue grandparent)
+                                                               [ManifestModel] ManifestItem parent,
+                                                               [ManifestModel] ManifestItem grandparent)
         {
             context.ConversionType = ModelToManifestConversionType.CollectionItem;
             context.ParentManifestValue = parent;
@@ -19,8 +19,8 @@ namespace CSF.Validation.ManifestModel
 
             Assert.Multiple(() =>
             {
-                Assert.That(result, Is.InstanceOf<ManifestCollectionItem>(), "Correct type");
-                Assert.That(result.ParentItem, Is.SameAs(grandparent), "Correct parent item");
+                Assert.That(result.IsCollectionItem, Is.True, "Is converted to a collection item");
+                Assert.That(result.Parent, Is.SameAs(grandparent), "Correct parent item");
                 Assert.That(result.ValidatedType, Is.EqualTo(context.ValidatedType), "Correct validated type");
                 Assert.That(parent.CollectionItemValue, Is.SameAs(result), "Result added as parent's collection value");
             });

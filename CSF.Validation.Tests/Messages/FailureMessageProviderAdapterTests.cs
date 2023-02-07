@@ -34,7 +34,7 @@ namespace CSF.Validation.Messages
                                                                                     FailureMessageProviderAdapter<string, int> sut,
                                                                                     [RuleResult] RuleResult ruleResult,
                                                                                     [ManifestModel] ManifestRule rule,
-                                                                                    [ManifestModel] ManifestValue value,
+                                                                                    [ManifestModel] ManifestItem value,
                                                                                     Type ruleInterface,
                                                                                     RuleIdentifier id,
                                                                                     string actualValue,

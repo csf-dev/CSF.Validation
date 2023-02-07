@@ -21,7 +21,7 @@ namespace CSF.Validation.Rules
     /// <para>
     /// On the other hand, if <c>item.CollectionItemValue.ValidatedType</c> is <c>typeof(Cat)</c>
     /// but <c>item.ValidatedType</c> derives from only <c>IEnumerable&lt;Pet&gt;</c> then this rule would fail validation.
-    /// That's because if the collection may contain any "Pet", then it can't be validated by a <see cref="ManifestCollectionItem"/>
+    /// That's because if the collection may contain any "Pet", then it can't be validated by a <see cref="ManifestItem"/>
     /// which is only capable of validating "Cat" instances.
     /// </para>
     /// </example>

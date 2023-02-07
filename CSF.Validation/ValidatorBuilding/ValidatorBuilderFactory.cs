@@ -32,7 +32,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         static ValidatorBuilderContext CreateEmptyContext(Type validatedType)
         {
-            var value = new ManifestValue
+            var value = new ManifestItem
             {
                 ValidatedType = validatedType
             };

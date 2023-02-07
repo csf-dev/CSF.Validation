@@ -22,10 +22,6 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestItem"/>
-    /// <seealso cref="Manifest.ManifestValue"/>
-    /// <seealso cref="ManifestCollectionItem"/>
-    /// <seealso cref="ManifestPolymorphicType"/>
-    /// <seealso cref="RecursiveManifestValue"/>
     public class ManifestRule
     {
         ICollection<ManifestRuleIdentifier> dependencyRules = new List<ManifestRuleIdentifier>();

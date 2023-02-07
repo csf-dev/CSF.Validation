@@ -19,13 +19,14 @@ namespace CSF.Validation.ManifestModel
 
             var validatedType = Type.GetType(context.PolymorphicTypeName, true);
 
-            var polymorphicType = new ManifestPolymorphicType
+            var polymorphicType = new ManifestItem
             {
                 Parent = context.ParentManifestValue,
                 ValidatedType = validatedType,
+                ItemType = ManifestItemType.PolymorphicType,
             };
             
-            if (!(context.ParentManifestValue is ManifestPolymorphicType))
+            if (!(context.ParentManifestValue.IsPolymorphicType))
                 context.ParentManifestValue.PolymorphicTypes.Add(polymorphicType);
 
             return polymorphicType;

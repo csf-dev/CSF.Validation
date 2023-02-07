@@ -21,10 +21,6 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
     /// <seealso cref="ManifestItem"/>
-    /// <seealso cref="Manifest.ManifestValue"/>
-    /// <seealso cref="ManifestCollectionItem"/>
-    /// <seealso cref="ManifestPolymorphicType"/>
-    /// <seealso cref="RecursiveManifestValue"/>
     public sealed class ManifestRuleIdentifier : RuleIdentifierBase, IEquatable<ManifestRuleIdentifier>
     {
         /// <summary>
