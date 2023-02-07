@@ -10,22 +10,21 @@ namespace CSF.Validation.Rules
     /// A validation rule which asserts that the <see cref="ManifestItem.Parent"/> is an instance of
     /// <see cref="ValidationManifest"/>.
     /// </summary>
-    public class ParentMustDeriveFromValidationManifest : IRuleWithMessage<ManifestItem>
+    public class RootManifestValueMustHaveParentThatIsValidationManifest : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
         {
-            if(validated?.Parent is null) return PassAsync();
-            return validated.Parent is ValidationManifest ? PassAsync() : FailAsync();
+            if(validated?.RootValue?.Parent is null) return PassAsync();
+            return ReferenceEquals(validated.RootValue.Parent, validated) ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+        public Task<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("ParentMustDeriveFromValidationManifest"),
                                         nameof(ManifestItem.Parent),
-                                        nameof(ManifestItem),
-                                        nameof(ValidationManifest));
+                                        nameof(ManifestItem));
             return Task.FromResult(message);
         }
     }

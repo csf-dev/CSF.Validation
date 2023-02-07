@@ -7,41 +7,55 @@ namespace CSF.Validation.Rules
     public class ParentMustDeriveFromValidationManifestTests
     {
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfTheParentIsNull(ParentMustDeriveFromValidationManifest sut,
-                                                                    [ManifestModel] ManifestItem value,
-                                                                    RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfTheRootItemIsNull(RootManifestValueMustHaveParentThatIsValidationManifest sut,
+                                                                      [ManifestModel] ValidationManifest value,
+                                                                      RuleContext context)
         {
-            value.Parent = null;
+            value.RootValue = null;
             Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassIfTheParentIsAValidationManifest(ParentMustDeriveFromValidationManifest sut,
-                                                                                   [ManifestModel] ManifestItem value,
-                                                                                   [ManifestModel] ValidationManifest manifest,
-                                                                                   RuleContext context)
+        public void GetResultAsyncShouldReturnPassIfTheRootItemParentIsNull(RootManifestValueMustHaveParentThatIsValidationManifest sut,
+                                                                            [ManifestModel] ValidationManifest value,
+                                                                            [ManifestModel] ManifestItem item,
+                                                                            RuleContext context)
+        {
+            value.RootValue = item;
+            value.RootValue.Parent = null;
+            Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
+        }
+
+        [Test,AutoMoqData]
+        public void GetResultAsyncShouldReturnPassIfTheParentIsTheSameValidationManifest(RootManifestValueMustHaveParentThatIsValidationManifest sut,
+                                                                                         [ManifestModel] ManifestItem value,
+                                                                                         [ManifestModel] ValidationManifest manifest,
+                                                                                         RuleContext context)
         {
             value.Parent = manifest;
-            Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
+            manifest.RootValue = value;
+            Assert.That(() => sut.GetResultAsync(manifest, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnFailIfTheParentIsNotAValidationManifest(ParentMustDeriveFromValidationManifest sut,
+        public void GetResultAsyncShouldReturnFailIfTheParentIsNotAValidationManifest(RootManifestValueMustHaveParentThatIsValidationManifest sut,
                                                                                       [ManifestModel] ManifestItem value,
                                                                                       [ManifestModel] ManifestItem other,
+                                                                                      [ManifestModel] ValidationManifest manifest,
                                                                                       RuleContext context)
         {
+            manifest.RootValue = value;
             value.Parent = other;
-            Assert.That(() => sut.GetResultAsync(value, context), Is.FailingRuleResult);
+            Assert.That(() => sut.GetResultAsync(manifest, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
-        public void GetFailureMessageAsyncShouldReturnCorrectMessage(ParentMustDeriveFromValidationManifest sut,
-                                                                     [ManifestModel] ManifestItem value,
+        public void GetFailureMessageAsyncShouldReturnCorrectMessage(RootManifestValueMustHaveParentThatIsValidationManifest sut,
+                                                                     [ManifestModel] ValidationManifest value,
                                                                      [RuleResult] ValidationRuleResult result)
         {
             Assert.That(async () => await sut.GetFailureMessageAsync(value, result),
-                        Is.EqualTo("The Parent property of a ManifestItem that is the root of a validation manifest must be an instance of ValidationManifest."));
+                        Is.EqualTo("The Parent property of a ManifestItem that is the root of a validation manifest must be a reference to that same validation manifest."));
         }
     }
 }

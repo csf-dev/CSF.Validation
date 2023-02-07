@@ -20,11 +20,11 @@ namespace CSF.Validation.ValidatorValidation
             {
                 m.AddRule<NotNull>();
                 m.AddRules<ManifestItemValidatorBuilder>();
-                m.AddRule<ParentMustDeriveFromValidationManifest>();
-                m.AddRule<DoesNotDeriveFrom<ManifestItem>>(r => r.Name = RootValueOfManifestMustNotBeRecursive);
-                m.AddRuleWithParent<RootValueMustBeForSameTypeAsManifest>();
             });
 
+            config.AddRule<RootManifestValueMustHaveParentThatIsValidationManifest>();
+            config.AddRule<RootValueOfManifestMustBeASimpleValue>();
+            config.AddRule<RootValueMustBeForSameTypeAsManifest>();
         }
     }
 }

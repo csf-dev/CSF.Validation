@@ -14,7 +14,8 @@ namespace CSF.Validation.Rules
         {
             value.ValidatedType = typeof(int);
             manifest.ValidatedType = null;
-            Assert.That(() => sut.GetResultAsync(value, manifest, context), Is.PassingRuleResult);
+            manifest.RootValue = value;
+            Assert.That(() => sut.GetResultAsync(manifest, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -25,7 +26,8 @@ namespace CSF.Validation.Rules
         {
             value.ValidatedType = null;
             manifest.ValidatedType = typeof(int);
-            Assert.That(() => sut.GetResultAsync(value, manifest, context), Is.PassingRuleResult);
+            manifest.RootValue = value;
+            Assert.That(() => sut.GetResultAsync(manifest, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -36,7 +38,8 @@ namespace CSF.Validation.Rules
         {
             value.ValidatedType = typeof(Pet);
             manifest.ValidatedType = typeof(Cat);
-            Assert.That(() => sut.GetResultAsync(value, manifest, context), Is.PassingRuleResult);
+            manifest.RootValue = value;
+            Assert.That(() => sut.GetResultAsync(manifest, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -47,7 +50,8 @@ namespace CSF.Validation.Rules
         {
             value.ValidatedType = typeof(Cat);
             manifest.ValidatedType = typeof(Pet);
-            Assert.That(() => sut.GetResultAsync(value, manifest, context), Is.FailingRuleResult);
+            manifest.RootValue = value;
+            Assert.That(() => sut.GetResultAsync(manifest, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -58,7 +62,8 @@ namespace CSF.Validation.Rules
         {
             value.ValidatedType = typeof(Cat);
             manifest.ValidatedType = typeof(Pet);
-            Assert.That(async () => await sut.GetFailureMessageAsync(value, manifest, result),
+            manifest.RootValue = value;
+            Assert.That(async () => await sut.GetFailureMessageAsync(manifest, result),
                         Is.EqualTo(@"The ValidatedType of a ValidationManifest must be be assignable to the ValidatedType of the ManifestItem used as the manifest's RootValue.
 ValidationManifest.ValidatedType = CSF.Validation.Rules.RootValueMustBeForSameTypeAsManifestTests+Pet
 ValidationManifest.RootValue.ValidatedType = CSF.Validation.Rules.RootValueMustBeForSameTypeAsManifestTests+Cat"));
