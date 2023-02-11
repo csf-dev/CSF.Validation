@@ -36,7 +36,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var collectionItemValue = collectionContext.ManifestValue.CollectionItemValue ?? new ManifestItem
             {
-                Parent = collectionContext.ManifestValue,
+                Parent = collectionContext.ManifestValue.Parent,
                 ValidatedType = collectionItemType,
                 ItemType = ManifestItemType.CollectionItem,
             };

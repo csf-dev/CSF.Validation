@@ -9,15 +9,15 @@ namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A rule which asserts that - if the <see cref="ManifestItem.ValidatedType"/> of a <see cref="ManifestItem"/> is
-    /// not a type that derives from <see cref="IEnumerable{T}"/> then the <see cref="ManifestItem.CollectionItemValue"/>
-    /// of that manifest item must be null (because the )
+    /// not a type that derives from <see cref="IEnumerable{T}"/> then the <see cref="ManifestItem.OwnCollectionItemValue"/>
+    /// of that manifest item must be null.
     /// </summary>
     public class CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
-            if(validated?.CollectionItemValue is null || validated?.ValidatedType is null) return PassAsync();
+            if(validated?.OwnCollectionItemValue is null || validated?.ValidatedType is null) return PassAsync();
             return typeof(IEnumerable<object>).IsAssignableFrom(validated.ValidatedType) ? PassAsync() : FailAsync();
         }
 
@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
                                         nameof(ManifestItem),
                                         nameof(IEnumerable<object>),
                                         nameof(Object),
-                                        nameof(ManifestItem.CollectionItemValue));
+                                        nameof(ManifestItem.OwnCollectionItemValue));
             return Task.FromResult(message);
         }
     }

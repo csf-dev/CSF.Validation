@@ -31,6 +31,7 @@ namespace CSF.Validation.Rules
                     { "Type", RuleType.FullName },
                     { "Name", RuleName },
                     { "Validated type", ValidatedType.FullName },
+                    { "Member name", MemberName },
                     { "Validated identity", ObjectIdentity?.ToString() },
                 }
                 .Where(x => x.Value != null)

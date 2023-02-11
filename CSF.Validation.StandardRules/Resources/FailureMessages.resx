@@ -127,6 +127,10 @@
     <value>The {0} of the root {1} in a {2} must be an instance of {2}.</value>
     <comment/>
   </data>
+  <data name="RootValueMustNotBeNull" xml:space="preserve">
+    <value>The root value of a {0} must not be null.</value>
+    <comment/>
+  </data>
   <data name="ParentMustDeriveFromValidationManifest" xml:space="preserve">
     <value>The {0} property of a {1} that is the root of a validation manifest must be a reference to that same validation manifest.</value>
     <comment/>

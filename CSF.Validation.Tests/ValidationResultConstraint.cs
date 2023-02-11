@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using CSF.Validation.Rules;
 using NUnit.Framework.Constraints;
 
 namespace CSF.Validation
@@ -10,9 +12,9 @@ namespace CSF.Validation
         public override ConstraintResult ApplyTo<TActual>(TActual actual)
         {
             if(actual is ValidationResult result)
-                return new ValidationResultConstraintResult(this, result, result.Passed == expectedPass);
+                return new ValidationResultConstraintResult(this, result, result.Passed == expectedPass, expectedPass);
             if(actual is Task<ValidationResult> resultTask)
-                return new ValidationResultConstraintResult(this, resultTask.Result, resultTask.Result.Passed == expectedPass);
+                return new ValidationResultConstraintResult(this, resultTask.Result, resultTask.Result.Passed == expectedPass, expectedPass);
             
             return new ConstraintResult(this, actual, ConstraintStatus.Error);
         }
@@ -25,18 +27,24 @@ namespace CSF.Validation
 
         class ValidationResultConstraintResult : ConstraintResult
         {
+            public bool ExpectedPass { get; }
+
             public override void WriteActualValueTo(MessageWriter writer)
             {
                 if(ActualValue is ValidationResult result)
                 {
-                    writer.WriteLine(result);
+                    var omittedOutcomes = ExpectedPass ? new[] { RuleOutcome.Passed } : Array.Empty<RuleOutcome>();
+                    writer.WriteLine(result.ToString(omittedOutcomes));
                     return;
                 }
 
                 base.WriteActualValueTo(writer);
             }
 
-            public ValidationResultConstraintResult(Constraint constraint, object actual, bool outcome) : base(constraint, actual, outcome) {}
+            public ValidationResultConstraintResult(Constraint constraint, object actual, bool outcome, bool expectedPass) : base(constraint, actual, outcome)
+            {
+                ExpectedPass = expectedPass;
+            }
         }
     }
 }

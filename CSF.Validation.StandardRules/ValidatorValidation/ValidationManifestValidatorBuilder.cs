@@ -18,10 +18,10 @@ namespace CSF.Validation.ValidatorValidation
 
             config.ForMember(x => x.RootValue, m =>
             {
-                m.AddRule<NotNull>();
                 m.AddRules<ManifestItemValidatorBuilder>();
             });
 
+            config.AddRule<RootValueMustNotBeNull>();
             config.AddRule<RootManifestValueMustHaveParentThatIsValidationManifest>();
             config.AddRule<RootValueOfManifestMustBeASimpleValue>();
             config.AddRule<RootValueMustBeForSameTypeAsManifest>();

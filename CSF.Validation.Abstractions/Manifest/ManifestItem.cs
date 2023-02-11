@@ -38,6 +38,9 @@ namespace CSF.Validation.Manifest
         ICollection<ManifestRule> rules = new List<ManifestRule>();
         ICollection<ManifestItem> polymorphicTypes = new HashSet<ManifestItem>();
         ManifestItemType itemType = ManifestItemType.Value;
+        Type validatedType;
+        ManifestItem collectionItemValue;
+        Func<object, object> identityAccessor;
 
         /// <summary>
         /// Gets or sets a value which indicates the type &amp; behaviour of the current manifest item.
@@ -45,8 +48,9 @@ namespace CSF.Validation.Manifest
         public ManifestItemType ItemType
         {
             get => itemType;
-            set {
-                if(!permittedTypes.Contains(value))
+            set
+            {
+                if (!permittedTypes.Contains(value))
                 {
                     var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("InvalidManifestItemType"),
                                                 nameof(ItemType),
@@ -91,7 +95,11 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets or sets the type of the object which the current manifest value describes.
         /// </summary>
-        public Type ValidatedType { get; set; }
+        public Type ValidatedType
+        {
+            get => RecursiveAncestor?.ValidatedType ?? validatedType;
+            set => validatedType = value;
+        }
 
         /// <summary>
         /// Gets or sets the parent of the current manifest item.
@@ -109,7 +117,11 @@ namespace CSF.Validation.Manifest
         /// Gets or sets a function which retrieves a unique identity of the object being
         /// validated, given a reference to that object being validated.
         /// </summary>
-        public Func<object, object> IdentityAccessor { get; set; }
+        public Func<object, object> IdentityAccessor
+        {
+            get => RecursiveAncestor?.IdentityAccessor ?? identityAccessor;
+            set => identityAccessor = value;
+        }
 
         /// <summary>
         /// Gets or sets an optional value object which indicates how items within a collection are to be validated.
@@ -129,25 +141,47 @@ namespace CSF.Validation.Manifest
         /// property must be <see langword="null" />.
         /// </para>
         /// </remarks>
-        public ManifestItem CollectionItemValue { get; set; }
+        public ManifestItem CollectionItemValue
+        {
+            get => RecursiveAncestor?.CollectionItemValue ?? collectionItemValue;
+            set => collectionItemValue = value;
+        }
+
+        /// <summary>
+        /// Gets a value equivalent to <see cref="CollectionItemValue"/>, except that <see langword="null" /> will be
+        /// returned if the collection item value is only inherited via recursion, should <see cref="IsRecursive"/> be true.
+        /// </summary>
+        public ManifestItem OwnCollectionItemValue => collectionItemValue;
 
         /// <summary>
         /// Gets or sets a collection of the immediate descendents of the current manifest value.
         /// </summary>
         public ICollection<ManifestItem> Children
         {
-            get => children;
+            get => RecursiveAncestor?.Children ?? children;
             set => children = value ?? throw new ArgumentNullException(nameof(value));
         }
+
+        /// <summary>
+        /// Gets a collection of <see cref="Children"/>, excluding any children which are exposed via
+        /// recursion, should <see cref="IsRecursive"/> true.
+        /// </summary>
+        public IReadOnlyCollection<ManifestItem> OwnChildren => children.ToList();
 
         /// <summary>
         /// Gets or sets a collection of the rules associated with the current value.
         /// </summary>
         public ICollection<ManifestRule> Rules
         {
-            get => rules;
+            get => RecursiveAncestor?.Rules ?? rules;
             set => rules = value ?? throw new ArgumentNullException(nameof(value));
         }
+
+        /// <summary>
+        /// Gets a collection of <see cref="Rules"/>, excluding any rules which are exposed via
+        /// recursion, should <see cref="IsRecursive"/> true.
+        /// </summary>
+        public IReadOnlyCollection<ManifestRule> OwnRules => rules.ToList();
 
         /// <summary>
         /// Gets or sets a mapping of the runtime types to polymorphic validation manifest definitions for those types.
@@ -159,9 +193,15 @@ namespace CSF.Validation.Manifest
         /// </remarks>
         public ICollection<ManifestItem> PolymorphicTypes
         {
-            get => polymorphicTypes;
+            get => RecursiveAncestor?.PolymorphicTypes ?? polymorphicTypes;
             set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
         }
+
+        /// <summary>
+        /// Gets a collection of <see cref="PolymorphicTypes"/>, excluding any types which are exposed via
+        /// recursion, should <see cref="IsRecursive"/> true.
+        /// </summary>
+        public IReadOnlyCollection<ManifestItem> OwnPolymorphicTypes => polymorphicTypes.ToList();
 
         /// <summary>
         /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestItem.Parent"/>)
@@ -213,8 +253,8 @@ namespace CSF.Validation.Manifest
             var propertyStrings = GetPropertyValuesForToString()
                 .Where(x => !(x.Value is null))
                 .Select(x => $"{x.Key} = {x.Value}").ToList();
-            
-            return $"[{GetType().Name}: {String.Join(", ",  propertyStrings)}]";
+
+            return $"[{GetType().Name}: {String.Join(", ", propertyStrings)}]";
         }
 
         /// <summary>
@@ -252,17 +292,11 @@ namespace CSF.Validation.Manifest
         {
             if (ancestor is null)
                 throw new ArgumentNullException(nameof(ancestor));
-            if(IsRecursive)
+            if (IsRecursive)
                 throw new ArgumentException(String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyRecursive")), nameof(ancestor));
 
-            Children = ancestor.Children.ToList();
             ItemType |= ManifestItemType.Recursive;
-            CollectionItemValue = ancestor.CollectionItemValue;
-            IdentityAccessor = ancestor.IdentityAccessor;
-            PolymorphicTypes = ancestor.PolymorphicTypes;
             RecursiveAncestor = ancestor;
-            Rules = ancestor.Rules.ToList();
-            ValidatedType = ancestor.ValidatedType;
         }
 
         /// <summary>
@@ -301,9 +335,9 @@ namespace CSF.Validation.Manifest
                 Children.Add(other);
                 other.Parent = this;
             }
-            else if(other.IsCollectionItem && !ReferenceEquals(other, CollectionItemValue))
+            else if (other.IsCollectionItem && !ReferenceEquals(other, CollectionItemValue))
             {
-                if(!(CollectionItemValue is null))
+                if (!(CollectionItemValue is null))
                 {
                     var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyHaveACollectionItem"),
                                                 nameof(CollectionItemValue),
@@ -314,11 +348,11 @@ namespace CSF.Validation.Manifest
                 CollectionItemValue = other;
                 other.Parent = this.Parent;
             }
-            else if(other.IsPolymorphicType && !PolymorphicTypes.Contains(other))
+            else if (other.IsPolymorphicType && !PolymorphicTypes.Contains(other))
             {
-                if(IsPolymorphicType)
+                if (IsPolymorphicType)
                     throw new InvalidOperationException(Resources.ExceptionMessages.GetExceptionMessage("AlreadyPolymorphic"));
-                    
+
                 PolymorphicTypes.Add(other);
                 other.Parent = this.Parent;
             }
@@ -335,7 +369,7 @@ namespace CSF.Validation.Manifest
         {
             if (others is null)
                 throw new ArgumentNullException(nameof(others));
-            foreach(var other in others)
+            foreach (var other in others)
                 CombineWithDescendent(other);
         }
 

@@ -13,7 +13,7 @@ namespace CSF.Validation.ValidatorValidation
         [Test,AutoMoqData]
         public async Task ValidateAsyncShouldReturnPassResultForItsOwnManifest([IntegrationTesting] IValidatesValidationManifest sut)
         {
-            var options = new ValidationOptions { RuleThrowingBehaviour = RuleThrowingBehaviour.Never };
+            var options = new ValidationOptions { RuleThrowingBehaviour = RuleThrowingBehaviour.Never, EnableMessageGeneration = true };
             var result = await sut.ValidateAsync(new ValidationManifestValidatorBuilder(), options);
             Assert.That(result, Is.PassingValidationResult);
         }
@@ -21,7 +21,7 @@ namespace CSF.Validation.ValidatorValidation
         [Test,AutoMoqData]
         public async Task ValidateAsyncShouldReturnFailingResultForAValidationManifestWithAnIncompatibleRule([IntegrationTesting] IValidatesValidationManifest sut)
         {
-            var options = new ValidationOptions { RuleThrowingBehaviour = RuleThrowingBehaviour.Never };
+            var options = new ValidationOptions { RuleThrowingBehaviour = RuleThrowingBehaviour.Never, EnableMessageGeneration = true };
             var result = await sut.ValidateAsync(GetManifestThatIncludesIncompatibleRule(), options);
 
             Assert.Multiple(() =>

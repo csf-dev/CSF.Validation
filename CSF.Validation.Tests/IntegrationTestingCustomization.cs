@@ -27,6 +27,8 @@ namespace CSF.Validation
                 .UseMessageProviders(c => {
                     c.AddMessageProvider(typeof(IntegrationTests.DateTimeInRangeMessageProvider));
                     c.AddMessageProvider(typeof(IntegrationTests.CantBeOwnedByUnderageChildrenMessageProvider));
+                    // Blocked on #76
+                    // c.AddMessageProvidersInAssemblies(typeof(StandardRulesServiceCollectionExtensions).Assembly);
                 })
                 ;
             return serviceCollection.BuildServiceProvider();

@@ -55,7 +55,7 @@ namespace CSF.Validation.Rules
                                                                      [RuleResult] ValidationRuleResult result)
         {
             Assert.That(async () => await sut.GetFailureMessageAsync(value, result),
-                        Is.EqualTo("If the ValidatedType of the ManifestItem does not implement IEnumerable<Object> then CollectionItemValue must be null."));
+                        Is.EqualTo("If the ValidatedType of the ManifestItem does not implement IEnumerable<Object> then OwnCollectionItemValue must be null."));
         }
     }
 }

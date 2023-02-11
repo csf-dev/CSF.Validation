@@ -69,9 +69,9 @@ namespace CSF.Validation.Rules
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Cat);
             Assert.That(async () => await sut.GetFailureMessageAsync(value, result),
-                        Is.EqualTo(@"When validating collection items, the ManifestItem.ValidatedType must be assignable to IEnumerable<T> for a generic type that matches the ManifestItem.CollectionItemValue.ValidatedType.
+                        Is.EqualTo(@"When validating collection items, the ManifestItem.ValidatedType must be assignable to IEnumerable<T> for a generic type that matches the ManifestItem.OwnCollectionItemValue.ValidatedType.
 ManifestItem.ValidatedType = System.Collections.Generic.List`1[CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedTypeTests+Pet]
-ManifestItem.CollectionItemValue.ValidatedType = CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedTypeTests+Cat"));
+ManifestItem.OwnCollectionItemValue.ValidatedType = CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedTypeTests+Cat"));
         }
 
         public class Pet {}

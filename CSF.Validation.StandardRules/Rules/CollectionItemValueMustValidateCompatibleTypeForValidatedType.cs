@@ -8,7 +8,7 @@ using static CSF.Validation.Rules.CommonResults;
 namespace CSF.Validation.Rules
 {
     /// <summary>
-    /// A rule which asserts that - where the <see cref="ManifestItem.CollectionItemValue"/> is not <see langword="null" />,
+    /// A rule which asserts that - where the <see cref="ManifestItem.OwnCollectionItemValue"/> is not <see langword="null" />,
     /// it is configured to validate a type (via its own <see cref="ManifestItem.ValidatedType"/> property) that is compatible with
     /// the generic type for which the current <see cref="ManifestItem.ValidatedType"/> implements <see cref="IEnumerable{T}"/>.
     /// </summary>
@@ -30,8 +30,8 @@ namespace CSF.Validation.Rules
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
-            if(validated?.CollectionItemValue?.ValidatedType is null || validated?.ValidatedType is null) return PassAsync();
-            var requiredEnumerableType = typeof(IEnumerable<>).MakeGenericType(validated.CollectionItemValue.ValidatedType);
+            if(validated?.OwnCollectionItemValue?.ValidatedType is null || validated?.ValidatedType is null) return PassAsync();
+            var requiredEnumerableType = typeof(IEnumerable<>).MakeGenericType(validated.OwnCollectionItemValue.ValidatedType);
             return requiredEnumerableType.IsAssignableFrom(validated.ValidatedType) ? PassAsync() : FailAsync();
         }
 
@@ -42,9 +42,9 @@ namespace CSF.Validation.Rules
                                         nameof(ManifestItem),
                                         nameof(ManifestItem.ValidatedType),
                                         nameof(IEnumerable<object>),
-                                        nameof(ManifestItem.CollectionItemValue),
+                                        nameof(ManifestItem.OwnCollectionItemValue),
                                         value.ValidatedType,
-                                        value.CollectionItemValue.ValidatedType);
+                                        value.OwnCollectionItemValue.ValidatedType);
             return Task.FromResult(message);
         }
     }

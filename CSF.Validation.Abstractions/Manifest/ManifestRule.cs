@@ -69,6 +69,9 @@ namespace CSF.Validation.Manifest
             set => dependencyRules = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <inheritdoc/>
+        public override string ToString() => $"[{nameof(ManifestRule)}: {Identifier}]";
+
         /// <summary>
         /// Initialises a new instance of <see cref="ManifestRule"/>.
         /// </summary>

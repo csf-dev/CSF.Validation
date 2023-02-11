@@ -17,6 +17,8 @@ namespace CSF.Validation.Rules
     public class ManifestValueInfo
     {
         readonly ManifestItem manifestValue;
+        readonly Lazy<ManifestValueInfo> collectionItemValue;
+        readonly Lazy<IReadOnlyCollection<ManifestValueInfo>> children;
 
         /// <summary>
         /// Gets the type of the object which the current manifest value describes.
@@ -43,12 +45,12 @@ namespace CSF.Validation.Rules
         /// property will be <see langword="null" />.
         /// </para>
         /// </remarks>
-        public ManifestValueInfo CollectionItemValue { get; }
+        public ManifestValueInfo CollectionItemValue => collectionItemValue.Value;
 
         /// <summary>
         /// Gets a collection of the immediate descendents of the current manifest value.
         /// </summary>
-        public IReadOnlyCollection<ManifestValueInfo> Children { get; }
+        public IReadOnlyCollection<ManifestValueInfo> Children => children.Value;
 
         /// <summary>
         /// Gets or sets an optional value which indicates the desired behaviour should the value-accessor raise an exception.
@@ -88,14 +90,19 @@ namespace CSF.Validation.Rules
         {
             this.manifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
 
-            CollectionItemValue = manifestValue.CollectionItemValue is null
+            collectionItemValue = new Lazy<ManifestValueInfo>(() =>
+            {
+                return manifestValue.CollectionItemValue is null
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);
-            
-            Children = manifestValue.Children
-                .Where(x => !x.IsRecursive)
+            });
+
+            children = new Lazy<IReadOnlyCollection<ManifestValueInfo>>(() =>
+            {
+                return manifestValue.Children
                 .Select(x => new ManifestValueInfo(x))
                 .ToList();
+            });
             
             if(manifestValue.IsValue)
                 AccessorExceptionBehaviour = manifestValue.AccessorExceptionBehaviour;

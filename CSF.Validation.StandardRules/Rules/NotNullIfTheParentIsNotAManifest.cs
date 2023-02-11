@@ -19,7 +19,7 @@ namespace CSF.Validation.Rules
     {
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
-            => (parentValue?.Parent is ValidationManifest || !(value is null)) ? PassAsync() : FailAsync();
+            => (parentValue?.Parent is ValidationManifest || !parentValue.IsValue || !(value is null)) ? PassAsync() : FailAsync();
 
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)

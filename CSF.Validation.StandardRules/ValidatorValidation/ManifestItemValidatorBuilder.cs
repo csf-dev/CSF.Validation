@@ -16,21 +16,21 @@ namespace CSF.Validation.ValidatorValidation
 
             config.ForMember(x => x.Parent, m => m.AddRule<NotNull>());
 
-            config.ForMember(x => x.CollectionItemValue, m => m.AddRules<RecursiveItemValidatorBuilder>());
+            config.ForMember(x => x.OwnCollectionItemValue, m => m.AddRules<RecursiveItemValidatorBuilder>());
             config.AddRule<CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable>();
             config.AddRule<CollectionItemValueMustValidateCompatibleTypeForValidatedType>(r =>
             {
                 r.AddDependency(d => d.RuleType<CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable>());
             });
 
-            config.ForMember(x => x.Children, m => m.AddRule<ContainsNoNullItems<ManifestItem>>());
-            config.ForMemberItems(x => x.Children, m => m.AddRules<RecursiveItemValidatorBuilder>());
+            config.ForMember(x => x.OwnChildren, m => m.AddRule<ContainsNoNullItems<ManifestItem>>());
+            config.ForMemberItems(x => x.OwnChildren, m => m.AddRules<RecursiveItemValidatorBuilder>());
 
-            config.ForMember(x => x.Rules, m => m.AddRule<ContainsNoNullItems<ManifestRule>>());
-            config.ForMemberItems(x => x.Rules, m => m.AddRules<ManifestRuleValidatorBuilder>());
+            config.ForMember(x => x.OwnRules, m => m.AddRule<ContainsNoNullItems<ManifestRule>>());
+            config.ForMemberItems(x => x.OwnRules, m => m.AddRules<ManifestRuleValidatorBuilder>());
 
-            config.ForMember(x => x.PolymorphicTypes, m => m.AddRule<ContainsNoNullItems<ManifestItem>>());
-            config.ForMemberItems(x => x.PolymorphicTypes, m => m.AddRules<RecursiveItemValidatorBuilder>());
+            config.ForMember(x => x.OwnPolymorphicTypes, m => m.AddRule<ContainsNoNullItems<ManifestItem>>());
+            config.ForMemberItems(x => x.OwnPolymorphicTypes, m => m.AddRules<RecursiveItemValidatorBuilder>());
             
             config.ForMember(x => x.AccessorFromParent, m =>
             {
@@ -47,11 +47,6 @@ namespace CSF.Validation.ValidatorValidation
             config.ForMember(x => x.AccessorExceptionBehaviour, m =>
             {
                 m.AddRule<MustBeDefinedEnumConstant<ValueAccessExceptionBehaviour>>();
-            });
-
-            config.WhenValueIs<ManifestItem>(t =>
-            {
-                t.ForMember(x => x.PolymorphicTypes, m => m.AddRule<Empty>());
             });
         }
 
