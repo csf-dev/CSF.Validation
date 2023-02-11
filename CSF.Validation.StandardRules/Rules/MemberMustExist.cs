@@ -14,8 +14,8 @@ namespace CSF.Validation.Rules
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(string value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
         {
-            if(value is null || parentValue?.Parent is ValidationManifest || parentValue?.ValidatedType is null) return PassAsync();
-            return parentValue.ValidatedType.GetMember(value).Any() ? PassAsync() : FailAsync();
+            if(value is null || !(parentValue?.Parent is ManifestItem grandparentItem) || grandparentItem?.ValidatedType is null) return PassAsync();
+            return grandparentItem.ValidatedType.GetMember(value).Any() ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>

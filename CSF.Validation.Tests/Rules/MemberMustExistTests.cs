@@ -21,18 +21,22 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassResultIfValidatedTypeHasNamedMember(MemberMustExist sut,
                                                                                       [RuleContext] RuleContext context,
-                                                                                      [ManifestModel] ManifestItem parent)
+                                                                                      [ManifestModel] ManifestItem parent,
+                                                                                        [ManifestModel] ManifestItem grandparent)
         {
-            parent.ValidatedType = typeof(Person);
+            grandparent.ValidatedType = typeof(Person);
+            parent.Parent = grandparent;
             Assert.That(() => sut.GetResultAsync("Name", parent, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
-        public void GetResultAsyncShouldReturnPassResultIfValidatedTypeHasNoNamedMember(MemberMustExist sut,
+        public void GetResultAsyncShouldReturnFailResultIfValidatedTypeHasNoNamedMember(MemberMustExist sut,
                                                                                         [RuleContext] RuleContext context,
-                                                                                        [ManifestModel] ManifestItem parent)
+                                                                                        [ManifestModel] ManifestItem parent,
+                                                                                        [ManifestModel] ManifestItem grandparent)
         {
-            parent.ValidatedType = typeof(Person);
+            grandparent.ValidatedType = typeof(Person);
+            parent.Parent = grandparent;
             Assert.That(() => sut.GetResultAsync("ThisMemberDoesNotExist", parent, context), Is.FailingRuleResult);
         }
 
