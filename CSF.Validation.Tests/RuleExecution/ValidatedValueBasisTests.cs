@@ -18,11 +18,11 @@ namespace CSF.Validation.RuleExecution
         {
             value.ValidatedType = typeof(Person);
             type1.ValidatedType = typeof(Employee);
-            type1.ItemType = ManifestItemType.PolymorphicType;
+            type1.ItemType = ManifestItemTypes.PolymorphicType;
             type2.ValidatedType = typeof(Manager);
-            type2.ItemType = ManifestItemType.PolymorphicType;
+            type2.ItemType = ManifestItemTypes.PolymorphicType;
             type3.ValidatedType = typeof(Cleaner);
-            type3.ItemType = ManifestItemType.PolymorphicType;
+            type3.ItemType = ManifestItemTypes.PolymorphicType;
             value.Children = new[] { child1 };
             type1.Children = new[] { child2 };
             type2.Children = new[] { child3 };
@@ -46,11 +46,11 @@ namespace CSF.Validation.RuleExecution
         {
             value.ValidatedType = typeof(Person);
             type1.ValidatedType = typeof(Employee);
-            type1.ItemType = ManifestItemType.PolymorphicType;
+            type1.ItemType = ManifestItemTypes.PolymorphicType;
             type2.ValidatedType = typeof(Manager);
-            type2.ItemType = ManifestItemType.PolymorphicType;
+            type2.ItemType = ManifestItemTypes.PolymorphicType;
             type3.ValidatedType = typeof(Cleaner);
-            type3.ItemType = ManifestItemType.PolymorphicType;
+            type3.ItemType = ManifestItemTypes.PolymorphicType;
             value.Rules = new[] { rule1 };
             type1.Rules = new[] { rule2 };
             type2.Rules = new[] { rule3 };

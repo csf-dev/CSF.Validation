@@ -30,8 +30,8 @@ namespace CSF.Validation.Rules
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
-            if(validated?.OwnCollectionItemValue?.ValidatedType is null || validated?.ValidatedType is null) return PassAsync();
-            var requiredEnumerableType = typeof(IEnumerable<>).MakeGenericType(validated.OwnCollectionItemValue.ValidatedType);
+            if(validated?.CollectionItemValue?.ValidatedType is null || validated?.ValidatedType is null) return PassAsync();
+            var requiredEnumerableType = typeof(IEnumerable<>).MakeGenericType(validated.CollectionItemValue.ValidatedType);
             return requiredEnumerableType.IsAssignableFrom(validated.ValidatedType) ? PassAsync() : FailAsync();
         }
 
@@ -42,9 +42,9 @@ namespace CSF.Validation.Rules
                                         nameof(ManifestItem),
                                         nameof(ManifestItem.ValidatedType),
                                         nameof(IEnumerable<object>),
-                                        nameof(ManifestItem.OwnCollectionItemValue),
+                                        nameof(ManifestItem.CollectionItemValue),
                                         value.ValidatedType,
-                                        value.OwnCollectionItemValue.ValidatedType);
+                                        value.CollectionItemValue.ValidatedType);
             return Task.FromResult(message);
         }
     }

@@ -44,7 +44,7 @@ namespace CSF.Validation.RuleExecution
                 CollectionItemValue = new ManifestItem
                 {
                     ValidatedType = typeof(object),
-                    ItemType = ManifestItemType.CollectionItem,
+                    ItemType = ManifestItemTypes.CollectionItem,
                 },
             };
             Mock.Get(valueFromBasisFactory)
@@ -85,7 +85,7 @@ namespace CSF.Validation.RuleExecution
                         CollectionItemValue = new ManifestItem
                         {
                             ValidatedType = typeof(object),
-                            ItemType = ManifestItemType.CollectionItem,
+                            ItemType = ManifestItemTypes.CollectionItem,
                         },
                     }
                 }
@@ -135,7 +135,7 @@ namespace CSF.Validation.RuleExecution
                 CollectionItemValue = new ManifestItem
                 {
                     ValidatedType = typeof(object),
-                    ItemType = ManifestItemType.CollectionItem,
+                    ItemType = ManifestItemTypes.CollectionItem,
                 },
             };
             Mock.Get(valueFromBasisFactory)
@@ -315,11 +315,11 @@ namespace CSF.Validation.RuleExecution
                         CollectionItemValue = new ManifestItem
                         {
                             ValidatedType = typeof(List<ComplexObject>),
-                            ItemType = ManifestItemType.CollectionItem,
+                            ItemType = ManifestItemTypes.CollectionItem,
                             CollectionItemValue = new ManifestItem
                             {
                                 ValidatedType = typeof(ComplexObject),
-                                ItemType = ManifestItemType.CollectionItem,
+                                ItemType = ManifestItemTypes.CollectionItem,
                             }
                         },
                     },

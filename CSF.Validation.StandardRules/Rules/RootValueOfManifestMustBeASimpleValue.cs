@@ -7,7 +7,7 @@ namespace CSF.Validation.Rules
 {
     /// <summary>
     /// A rule which verifies that the root manifest item within a validation manifest has an
-    /// item type equal to <see cref="ManifestItemType.Value"/>.
+    /// item type equal to <see cref="ManifestItemTypes.Value"/>.
     /// </summary>
     [Parallelizable]
     public class RootValueOfManifestMustBeASimpleValue : IRuleWithMessage<ValidationManifest>
@@ -22,7 +22,7 @@ namespace CSF.Validation.Rules
         public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.RootValue is null) return PassAsync();
-            return validated.RootValue.ItemType == ManifestItemType.Value ? PassAsync() : FailAsync();
+            return validated.RootValue.ItemType == ManifestItemTypes.Value ? PassAsync() : FailAsync();
         }
     }
 }

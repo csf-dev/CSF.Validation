@@ -20,7 +20,7 @@ namespace CSF.Validation.ManifestModel
             {
                 Parent = context.ParentManifestValue.Parent,
                 ValidatedType = context.ValidatedType,
-                ItemType = ManifestItemType.CollectionItem,
+                ItemType = ManifestItemTypes.CollectionItem,
             };
 
             if (context.ParentManifestValue is ManifestItem mvb)

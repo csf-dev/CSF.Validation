@@ -22,22 +22,22 @@ namespace CSF.Validation.Manifest
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
     /// <seealso cref="ValidationManifest"/>
-    /// <seealso cref="ManifestItemType"/>
+    /// <seealso cref="ManifestItemTypes"/>
     public class ManifestItem : IManifestNode
     {
-        static readonly ManifestItemType[] permittedTypes = {
-            ManifestItemType.Value,
-            ManifestItemType.CollectionItem,
-            ManifestItemType.PolymorphicType,
-            ManifestItemType.RecursiveValue,
-            ManifestItemType.RecursiveCollectionItem,
-            ManifestItemType.RecursivePolymorphicType
+        static readonly ManifestItemTypes[] permittedTypes = {
+            ManifestItemTypes.Value,
+            ManifestItemTypes.CollectionItem,
+            ManifestItemTypes.PolymorphicType,
+            ManifestItemTypes.RecursiveValue,
+            ManifestItemTypes.RecursiveCollectionItem,
+            ManifestItemTypes.RecursivePolymorphicType
         };
 
-        ICollection<ManifestItem> children = new List<ManifestItem>();
-        ICollection<ManifestRule> rules = new List<ManifestRule>();
-        ICollection<ManifestItem> polymorphicTypes = new HashSet<ManifestItem>();
-        ManifestItemType itemType = ManifestItemType.Value;
+        HashSet<ManifestItem> children = new HashSet<ManifestItem>();
+        HashSet<ManifestRule> rules = new HashSet<ManifestRule>();
+        HashSet<ManifestItem> polymorphicTypes = new HashSet<ManifestItem>();
+        ManifestItemTypes itemType = ManifestItemTypes.Value;
         Type validatedType;
         ManifestItem collectionItemValue;
         Func<object, object> identityAccessor;
@@ -45,7 +45,7 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets or sets a value which indicates the type &amp; behaviour of the current manifest item.
         /// </summary>
-        public ManifestItemType ItemType
+        public ManifestItemTypes ItemType
         {
             get => itemType;
             set
@@ -54,7 +54,7 @@ namespace CSF.Validation.Manifest
                 {
                     var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("InvalidManifestItemType"),
                                                 nameof(ItemType),
-                                                typeof(ManifestItemType));
+                                                typeof(ManifestItemTypes));
                     throw new ArgumentException(message, nameof(value));
                 }
                 itemType = value;
@@ -62,24 +62,24 @@ namespace CSF.Validation.Manifest
         }
 
         /// <summary>
-        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemType.Value"/>.
+        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemTypes.Value"/>.
         /// </summary>
-        public bool IsValue => ItemType.HasFlag(ManifestItemType.Value);
+        public bool IsValue => ItemType.HasFlag(ManifestItemTypes.Value);
 
         /// <summary>
-        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemType.CollectionItem"/>.
+        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemTypes.CollectionItem"/>.
         /// </summary>
-        public bool IsCollectionItem => ItemType.HasFlag(ManifestItemType.CollectionItem);
+        public bool IsCollectionItem => ItemType.HasFlag(ManifestItemTypes.CollectionItem);
 
         /// <summary>
-        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemType.PolymorphicType"/>.
+        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemTypes.PolymorphicType"/>.
         /// </summary>
-        public bool IsPolymorphicType => ItemType.HasFlag(ManifestItemType.PolymorphicType);
+        public bool IsPolymorphicType => ItemType.HasFlag(ManifestItemTypes.PolymorphicType);
 
         /// <summary>
-        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemType.Recursive"/>.
+        /// Gets a value indicating whether or not the <see cref="ItemType"/> includes the flag <see cref="ManifestItemTypes.Recursive"/>.
         /// </summary>
-        public bool IsRecursive => ItemType.HasFlag(ManifestItemType.Recursive);
+        public bool IsRecursive => ItemType.HasFlag(ManifestItemTypes.Recursive);
 
         /// <summary>
         /// Gets or sets a reference to an ancestor manifest item, to which the current item refers.
@@ -159,14 +159,14 @@ namespace CSF.Validation.Manifest
         public ICollection<ManifestItem> Children
         {
             get => RecursiveAncestor?.Children ?? children;
-            set => children = value ?? throw new ArgumentNullException(nameof(value));
+            set => children = new HashSet<ManifestItem>(value ?? throw new ArgumentNullException(nameof(value)));
         }
 
         /// <summary>
         /// Gets a collection of <see cref="Children"/>, excluding any children which are exposed via
         /// recursion, should <see cref="IsRecursive"/> true.
         /// </summary>
-        public IReadOnlyCollection<ManifestItem> OwnChildren => children.ToList();
+        public IReadOnlyCollection<ManifestItem> OwnChildren => children;
 
         /// <summary>
         /// Gets or sets a collection of the rules associated with the current value.
@@ -174,14 +174,14 @@ namespace CSF.Validation.Manifest
         public ICollection<ManifestRule> Rules
         {
             get => RecursiveAncestor?.Rules ?? rules;
-            set => rules = value ?? throw new ArgumentNullException(nameof(value));
+            set => rules = new HashSet<ManifestRule>(value ?? throw new ArgumentNullException(nameof(value)));
         }
 
         /// <summary>
         /// Gets a collection of <see cref="Rules"/>, excluding any rules which are exposed via
         /// recursion, should <see cref="IsRecursive"/> true.
         /// </summary>
-        public IReadOnlyCollection<ManifestRule> OwnRules => rules.ToList();
+        public IReadOnlyCollection<ManifestRule> OwnRules => rules;
 
         /// <summary>
         /// Gets or sets a mapping of the runtime types to polymorphic validation manifest definitions for those types.
@@ -194,14 +194,14 @@ namespace CSF.Validation.Manifest
         public ICollection<ManifestItem> PolymorphicTypes
         {
             get => RecursiveAncestor?.PolymorphicTypes ?? polymorphicTypes;
-            set => polymorphicTypes = value ?? throw new ArgumentNullException(nameof(value));
+            set => polymorphicTypes = new HashSet<ManifestItem>(value ?? throw new ArgumentNullException(nameof(value)));
         }
 
         /// <summary>
         /// Gets a collection of <see cref="PolymorphicTypes"/>, excluding any types which are exposed via
         /// recursion, should <see cref="IsRecursive"/> true.
         /// </summary>
-        public IReadOnlyCollection<ManifestItem> OwnPolymorphicTypes => polymorphicTypes.ToList();
+        public IReadOnlyCollection<ManifestItem> OwnPolymorphicTypes => polymorphicTypes;
 
         /// <summary>
         /// Gets or sets a function which gets (from the object represented by the <see cref="ManifestItem.Parent"/>)
@@ -276,7 +276,7 @@ namespace CSF.Validation.Manifest
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This process will add the <see cref="ManifestItemType.Recursive"/> type to the current instance's
+        /// This process will add the <see cref="ManifestItemTypes.Recursive"/> type to the current instance's
         /// <see cref="ItemType"/>.
         /// </para>
         /// <para>
@@ -295,7 +295,7 @@ namespace CSF.Validation.Manifest
             if (IsRecursive)
                 throw new ArgumentException(String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyRecursive")), nameof(ancestor));
 
-            ItemType |= ManifestItemType.Recursive;
+            ItemType |= ManifestItemTypes.Recursive;
             RecursiveAncestor = ancestor;
         }
 
@@ -327,35 +327,43 @@ namespace CSF.Validation.Manifest
         public void CombineWithDescendent(ManifestItem other)
         {
             if (other is null) throw new ArgumentNullException(nameof(other));
-            if (ReferenceEquals(other, this)) return;
-            if (IsRecursive) return;
+            if (ReferenceEquals(other, this) || IsRecursive) return;
 
             if (other.IsValue && !Children.Contains(other))
-            {
-                Children.Add(other);
-                other.Parent = this;
-            }
+                AddChild(other);
             else if (other.IsCollectionItem && !ReferenceEquals(other, CollectionItemValue))
-            {
-                if (!(CollectionItemValue is null))
-                {
-                    var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyHaveACollectionItem"),
-                                                nameof(CollectionItemValue),
-                                                nameof(CombineWithDescendent));
-                    throw new InvalidOperationException(message);
-                }
-
-                CollectionItemValue = other;
-                other.Parent = this.Parent;
-            }
+                AddCollectionItem(other);
             else if (other.IsPolymorphicType && !PolymorphicTypes.Contains(other))
-            {
-                if (IsPolymorphicType)
-                    throw new InvalidOperationException(Resources.ExceptionMessages.GetExceptionMessage("AlreadyPolymorphic"));
+                AddPolymorphicType(other);
+        }
 
-                PolymorphicTypes.Add(other);
-                other.Parent = this.Parent;
+        void AddChild(ManifestItem other)
+        {
+            Children.Add(other);
+            other.Parent = this;
+        }
+
+        void AddCollectionItem(ManifestItem other)
+        {
+            if (!(CollectionItemValue is null))
+            {
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyHaveACollectionItem"),
+                                            nameof(CollectionItemValue),
+                                            nameof(CombineWithDescendent));
+                throw new InvalidOperationException(message);
             }
+
+            CollectionItemValue = other;
+            other.Parent = this.Parent;
+        }
+
+        void AddPolymorphicType(ManifestItem other)
+        {
+            if (IsPolymorphicType)
+                throw new InvalidOperationException(Resources.ExceptionMessages.GetExceptionMessage("AlreadyPolymorphic"));
+
+            PolymorphicTypes.Add(other);
+            other.Parent = this.Parent;
         }
 
         /// <summary>

@@ -100,7 +100,7 @@ namespace CSF.Validation.ValidatorBuilding
             Mock.Get(valueBuilderFactory)
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(ruleContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(() => valueBuilder);
-            itemContext.ManifestValue.ItemType = ManifestItemType.CollectionItem;
+            itemContext.ManifestValue.ItemType = ManifestItemTypes.CollectionItem;
 
             sut.ForMemberItems(x => x.AProperty, c => {});
 
@@ -145,7 +145,7 @@ namespace CSF.Validation.ValidatorBuilding
             Mock.Get(valueBuilderFactory)
                 .Setup(x => x.GetValueAccessorBuilder<ValidatedObject,char>(valueContext, It.IsAny<Action<IConfiguresValueAccessor<ValidatedObject,char>>>()))
                 .Returns(() => valueBuilder);
-            itemContext.ManifestValue.ItemType = ManifestItemType.CollectionItem;
+            itemContext.ManifestValue.ItemType = ManifestItemTypes.CollectionItem;
 
             sut.ForValues(x => x.AProperty, c => {});
 

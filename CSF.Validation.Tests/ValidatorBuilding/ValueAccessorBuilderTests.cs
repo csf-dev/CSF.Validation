@@ -84,7 +84,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                            ValueAccessorBuilder<object, ValidatedObject> sut,
                                                                            [ManifestModel] ManifestItem polymorphicType)
         {
-            polymorphicType.ItemType = ManifestItemType.PolymorphicType;
+            polymorphicType.ItemType = ManifestItemTypes.PolymorphicType;
             var derivedContext = new ValidatorBuilderContext(polymorphicType);
             Mock.Get(contextFactory).Setup(x => x.GetPolymorphicContext(context, typeof(DerivedValidatedObject))).Returns(derivedContext);
             sut.WhenValueIs<DerivedValidatedObject>(c => { });

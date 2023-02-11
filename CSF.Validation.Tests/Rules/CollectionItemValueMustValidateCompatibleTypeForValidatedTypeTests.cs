@@ -13,7 +13,7 @@ namespace CSF.Validation.Rules
                                                                                       [ManifestModel] ManifestItem item,
                                                                                       [RuleContext] RuleContext context)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = null;
             Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
@@ -25,7 +25,7 @@ namespace CSF.Validation.Rules
                                                                         [ManifestModel] ManifestItem item,
                                                                         [RuleContext] RuleContext context)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.ValidatedType = null;
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(int);
@@ -38,7 +38,7 @@ namespace CSF.Validation.Rules
                                                                                         [ManifestModel] ManifestItem item,
                                                                                         [RuleContext] RuleContext context)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.ValidatedType = typeof(List<Cat>);
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Pet);
@@ -51,7 +51,7 @@ namespace CSF.Validation.Rules
                                                                                            [ManifestModel] ManifestItem item,
                                                                                            [RuleContext] RuleContext context)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.ValidatedType = typeof(List<Pet>);
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Cat);
@@ -64,14 +64,14 @@ namespace CSF.Validation.Rules
                                                                      [ManifestModel] ManifestItem item,
                                                                      [RuleResult] ValidationRuleResult result)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.ValidatedType = typeof(List<Pet>);
             value.CollectionItemValue = item;
             value.CollectionItemValue.ValidatedType = typeof(Cat);
             Assert.That(async () => await sut.GetFailureMessageAsync(value, result),
-                        Is.EqualTo(@"When validating collection items, the ManifestItem.ValidatedType must be assignable to IEnumerable<T> for a generic type that matches the ManifestItem.OwnCollectionItemValue.ValidatedType.
+                        Is.EqualTo(@"When validating collection items, the ManifestItem.ValidatedType must be assignable to IEnumerable<T> for a generic type that matches the ManifestItem.CollectionItemValue.ValidatedType.
 ManifestItem.ValidatedType = System.Collections.Generic.List`1[CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedTypeTests+Pet]
-ManifestItem.OwnCollectionItemValue.ValidatedType = CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedTypeTests+Cat"));
+ManifestItem.CollectionItemValue.ValidatedType = CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedTypeTests+Cat"));
         }
 
         public class Pet {}

@@ -38,7 +38,7 @@ namespace CSF.Validation.ValidatorBuilding
             {
                 Parent = collectionContext.ManifestValue.Parent,
                 ValidatedType = collectionItemType,
-                ItemType = ManifestItemType.CollectionItem,
+                ItemType = ManifestItemTypes.CollectionItem,
             };
 
             return new ValidatorBuilderContext(collectionItemValue);
@@ -62,14 +62,14 @@ namespace CSF.Validation.ValidatorBuilding
             {
                 Parent = validatorContext.ManifestValue.Parent,
                 ValidatedType = derivedType,
-                ItemType = ManifestItemType.PolymorphicType,
+                ItemType = ManifestItemTypes.PolymorphicType,
             };
             return new ValidatorBuilderContext(polymorphicValue);
         }
 
         static ValidatorBuilderContext GetOrCreateContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
         {
-            return GetExistingContextForMember(parentContext, validatedType, memberName) ?? new ValidatorBuilderContext(new ManifestItem
+            return GetExistingContextForMember(parentContext, memberName) ?? new ValidatorBuilderContext(new ManifestItem
             {
                 Parent = parentContext.ManifestValue,
                 AccessorFromParent = accessor,
@@ -78,7 +78,7 @@ namespace CSF.Validation.ValidatorBuilding
             });
         }
 
-        static ValidatorBuilderContext GetExistingContextForMember(ValidatorBuilderContext parentContext, Type validatedType, string memberName)
+        static ValidatorBuilderContext GetExistingContextForMember(ValidatorBuilderContext parentContext, string memberName)
         {
             if(memberName is null) return null;
             return parentContext.Contexts.FirstOrDefault(x => x.ManifestValue.MemberName == memberName);

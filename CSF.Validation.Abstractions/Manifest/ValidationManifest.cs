@@ -37,7 +37,7 @@ namespace CSF.Validation.Manifest
         /// <remarks>
         /// <para>
         /// The root item (referenced by this property) must be of <see cref="ManifestItem.ItemType"/>
-        /// <see cref="ManifestItemType.Value"/> and nothing else.
+        /// <see cref="ManifestItemTypes.Value"/> and nothing else.
         /// </para>
         /// </remarks>
         public ManifestItem RootValue { get; set; }

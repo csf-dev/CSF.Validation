@@ -31,7 +31,7 @@ namespace CSF.Validation.Rules
                                                                               [ManifestModel] ManifestItem item,
                                                                               [RuleContext] RuleContext context)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.CollectionItemValue = item;
             value.ValidatedType = typeof(List<string>);
             Assert.That(() => sut.GetResultAsync(value, context), Is.PassingRuleResult);
@@ -43,7 +43,7 @@ namespace CSF.Validation.Rules
                                                                                  [ManifestModel] ManifestItem item,
                                                                                  [RuleContext] RuleContext context)
         {
-            item.ItemType = ManifestItemType.CollectionItem;
+            item.ItemType = ManifestItemTypes.CollectionItem;
             value.CollectionItemValue = item;
             value.ValidatedType = typeof(int);
             Assert.That(() => sut.GetResultAsync(value, context), Is.FailingRuleResult);
@@ -55,7 +55,7 @@ namespace CSF.Validation.Rules
                                                                      [RuleResult] ValidationRuleResult result)
         {
             Assert.That(async () => await sut.GetFailureMessageAsync(value, result),
-                        Is.EqualTo("If the ValidatedType of the ManifestItem does not implement IEnumerable<Object> then OwnCollectionItemValue must be null."));
+                        Is.EqualTo("If the ValidatedType of the ManifestItem does not implement IEnumerable<Object> then CollectionItemValue must be null."));
         }
     }
 }

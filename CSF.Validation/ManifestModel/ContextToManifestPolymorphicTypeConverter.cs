@@ -23,7 +23,7 @@ namespace CSF.Validation.ManifestModel
             {
                 Parent = context.ParentManifestValue,
                 ValidatedType = validatedType,
-                ItemType = ManifestItemType.PolymorphicType,
+                ItemType = ManifestItemTypes.PolymorphicType,
             };
             
             if (!(context.ParentManifestValue.IsPolymorphicType))

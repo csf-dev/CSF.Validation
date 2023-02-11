@@ -8,7 +8,7 @@ namespace CSF.Validation.ValidatorBuilding
     /// <summary>
     /// A model for contextual information about a validator-builder.
     /// </summary>
-    public class ValidatorBuilderContext : IGetsValidationManifest, IEquatable<ValidatorBuilderContext>
+    public sealed class ValidatorBuilderContext : IGetsValidationManifest, IEquatable<ValidatorBuilderContext>
     {
         /// <summary>
         /// Gets the <see cref="ManifestItem"/> instance associated with the current context.

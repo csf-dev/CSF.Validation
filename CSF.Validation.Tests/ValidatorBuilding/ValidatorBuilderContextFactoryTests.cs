@@ -107,7 +107,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                                       ValidatorBuilderContextFactory sut,
                                                                                                       [ManifestModel] ManifestItem collectionValue)
         {
-            collectionValue.ItemType = ManifestItemType.CollectionItem;
+            collectionValue.ItemType = ManifestItemTypes.CollectionItem;
             Mock.Get(reflect)
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
@@ -122,7 +122,7 @@ namespace CSF.Validation.ValidatorBuilding
         public void GetPolymorphicContextShouldThrowIfManifestValueCannotHavePolymorphicTypes([ManifestModel] ManifestItem manifestModel,
                                                                                               ValidatorBuilderContextFactory sut)
         {
-            manifestModel.ItemType = ManifestItemType.PolymorphicType;
+            manifestModel.ItemType = ManifestItemTypes.PolymorphicType;
             var validationContext = new ValidatorBuilderContext(manifestModel);
             Assert.That(() => sut.GetPolymorphicContext(validationContext, typeof(object)),
                         Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestItem"));
@@ -133,7 +133,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                                      [ManifestModel] ManifestItem manifestValue,
                                                                                                      ValidatorBuilderContextFactory sut)
         {
-            polymorphicValue.ItemType = ManifestItemType.PolymorphicType;
+            polymorphicValue.ItemType = ManifestItemTypes.PolymorphicType;
             manifestValue.PolymorphicTypes.Add(polymorphicValue);
             polymorphicValue.ValidatedType = typeof(string);
             var validationContext = new ValidatorBuilderContext(manifestValue);

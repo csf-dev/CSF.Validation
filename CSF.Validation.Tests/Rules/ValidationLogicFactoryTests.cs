@@ -148,7 +148,7 @@ namespace CSF.Validation.Rules
                 CollectionItemValue = new ManifestItem
                 {
                     ValidatedType = typeof(string),
-                    ItemType = ManifestItemType.CollectionItem,
+                    ItemType = ManifestItemTypes.CollectionItem,
                 },
             };
             var rule = new ManifestRule(value.CollectionItemValue, new ManifestRuleIdentifier(value.CollectionItemValue, typeof(StringRule)));
@@ -173,7 +173,7 @@ namespace CSF.Validation.Rules
                 CollectionItemValue = new ManifestItem
                 {
                     ValidatedType = typeof(int),
-                    ItemType = ManifestItemType.CollectionItem,
+                    ItemType = ManifestItemTypes.CollectionItem,
                 }
             };
             var rule = new ManifestRule(value.CollectionItemValue, new ManifestRuleIdentifier(value.CollectionItemValue, typeof(StringRule)));

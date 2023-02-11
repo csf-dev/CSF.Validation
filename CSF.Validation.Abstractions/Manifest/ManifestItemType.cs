@@ -12,7 +12,7 @@ namespace CSF.Validation.Manifest
     /// </para>
     /// </remarks>
     [Flags]
-    public enum ManifestItemType
+    public enum ManifestItemTypes
     {
         /// <summary>
         /// The manifest item represents a regular value to be validated.
