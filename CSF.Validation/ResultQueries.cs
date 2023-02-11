@@ -37,16 +37,9 @@ namespace CSF.Validation
                 throw new ArgumentNullException(nameof(results));
 
             var member = Reflection.Reflect.Member(memberExpression);
-            var collectionValue = results.ManifestValue.Children.FirstOrDefault(x => x.MemberName == member.Name);
+            var collectionValue = results.ManifestValue.Children.FirstOrDefault(x => x.MemberName == member.Name && x.CollectionItemValue != null);
 
-            if(collectionValue is null)
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("NoMatchingMemberInManifest"),
-                                            typeof(TValidated).FullName,
-                                            member.Name);
-                throw new ArgumentException(message, nameof(memberExpression));
-            }
-            if(collectionValue.CollectionItemValue is null)
+            if(collectionValue?.CollectionItemValue is null)
             {
                 var message = string.Format(Resources.ExceptionMessages.GetExceptionMessage("ValueMustBeACollection"),
                                             typeof(TValidated).FullName,

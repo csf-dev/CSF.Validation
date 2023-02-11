@@ -231,10 +231,14 @@ namespace CSF.Validation.Manifest
         }
 
         /// <summary>
-        /// Creates a new <see cref="ManifestItem"/> from the specified <paramref name="ancestor"/>,
-        /// but with the <see cref="ManifestItemType.Recursive"/> added to its type.
+        /// Converts the current <see cref="ManifestItem"/> into a recursive item, using information
+        /// from the specified <paramref name="ancestor"/>.
         /// </summary>
         /// <remarks>
+        /// <para>
+        /// This process will add the <see cref="ManifestItemType.Recursive"/> type to the current instance's
+        /// <see cref="ItemType"/>.
+        /// </para>
         /// <para>
         /// Many property values are copied from the <paramref name="ancestor"/> by this method, as the
         /// recursive item has many of the same properties as its ancestor.
@@ -244,26 +248,96 @@ namespace CSF.Validation.Manifest
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">If the <paramref name="ancestor"/> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">If the <paramref name="ancestor"/> is already recursive.</exception>
-        public static ManifestItem CreateRecursive(ManifestItem ancestor)
+        public void MakeRecursive(ManifestItem ancestor)
         {
             if (ancestor is null)
                 throw new ArgumentNullException(nameof(ancestor));
-
-            if(ancestor.IsRecursive)
+            if(IsRecursive)
                 throw new ArgumentException(String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyRecursive")), nameof(ancestor));
 
-            return new ManifestItem
-            {
-                AccessorExceptionBehaviour = ancestor.AccessorExceptionBehaviour,
-                Children = ancestor.Children.ToList(),
-                ItemType = ancestor.ItemType | ManifestItemType.Recursive,
-                CollectionItemValue = ancestor.CollectionItemValue,
-                IdentityAccessor = ancestor.IdentityAccessor,
-                PolymorphicTypes = ancestor.PolymorphicTypes,
-                RecursiveAncestor = ancestor,
-                Rules = ancestor.Rules.ToList(),
-                ValidatedType = ancestor.ValidatedType,
-            };
+            Children = ancestor.Children.ToList();
+            ItemType |= ManifestItemType.Recursive;
+            CollectionItemValue = ancestor.CollectionItemValue;
+            IdentityAccessor = ancestor.IdentityAccessor;
+            PolymorphicTypes = ancestor.PolymorphicTypes;
+            RecursiveAncestor = ancestor;
+            Rules = ancestor.Rules.ToList();
+            ValidatedType = ancestor.ValidatedType;
         }
+
+        /// <summary>
+        /// Combines the current instance with a descendent manifest item.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A descendent item might be any of:
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description>A child item, to be placed in <see cref="Children"/></description></item>
+        /// <item><description>A collection item value, to be stored at in <see cref="CollectionItemValue"/></description></item>
+        /// <item><description>A polymorphic type, to be placed in <see cref="PolymorphicTypes"/></description></item>
+        /// </list>
+        /// <para>
+        /// This method will work with any of these.
+        /// </para>
+        /// <para>
+        /// This method will silently discard duplicates; so if the <paramref name="other"/> is reference equal to
+        /// the current instance, or if it is already contained within the appropriate property/collection then
+        /// it will be ignored and the method will complete without making any change to the state of the current
+        /// instance.
+        /// </para>
+        /// </remarks>
+        /// <param name="other">Another manifest item.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="other"/> is <see langword="null" />.</exception>
+        /// <exception cref="InvalidOperationException">If the current item is not eligible to be combined with the specified other item.</exception>
+        public void CombineWithDescendent(ManifestItem other)
+        {
+            if (other is null) throw new ArgumentNullException(nameof(other));
+            if (ReferenceEquals(other, this)) return;
+            if (IsRecursive) return;
+
+            if (other.IsValue && !Children.Contains(other))
+            {
+                Children.Add(other);
+                other.Parent = this;
+            }
+            else if(other.IsCollectionItem && !ReferenceEquals(other, CollectionItemValue))
+            {
+                if(!(CollectionItemValue is null))
+                {
+                    var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AlreadyHaveACollectionItem"),
+                                                nameof(CollectionItemValue),
+                                                nameof(CombineWithDescendent));
+                    throw new InvalidOperationException(message);
+                }
+
+                CollectionItemValue = other;
+                other.Parent = this.Parent;
+            }
+            else if(other.IsPolymorphicType && !PolymorphicTypes.Contains(other))
+            {
+                if(IsPolymorphicType)
+                    throw new InvalidOperationException(Resources.ExceptionMessages.GetExceptionMessage("AlreadyPolymorphic"));
+                    
+                PolymorphicTypes.Add(other);
+                other.Parent = this.Parent;
+            }
+        }
+
+        /// <summary>
+        /// Iterates through a collection of manifest items and calls <see cref="CombineWithDescendent(ManifestItem)"/> upon each.
+        /// See the documentation for that method for more information.
+        /// </summary>
+        /// <param name="others">A collection of manifest items to combine with the current instance.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="others"/>, or if any item in that collection is <see langword="null" />.</exception>
+        /// <exception cref="InvalidOperationException">If the current item is not eligible to be combined with any of the other items within the collection.</exception>
+        public void CombineWithDescendents(IEnumerable<ManifestItem> others)
+        {
+            if (others is null)
+                throw new ArgumentNullException(nameof(others));
+            foreach(var other in others)
+                CombineWithDescendent(other);
+        }
+
     }
 }

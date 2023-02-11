@@ -11,92 +11,100 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to configure how an object should be validated.
     /// </summary>
     /// <typeparam name="TValidated">The type of the object being validated.</typeparam>
-    public class ValidatorBuilder<TValidated> : IValidatorBuilder<TValidated>
+    public class ValidatorBuilder<TValidated> : IConfiguresValidator<TValidated>, IHasValidationBuilderContext
     {
         readonly ValidatorBuilderContext context;
         readonly IGetsValidatorBuilderContext ruleContextFactory;
         readonly IGetsRuleBuilder ruleBuilderFactory;
         readonly IGetsValueAccessorBuilder valueBuilderFactory;
-        readonly IGetsValidatorManifest validatorManifestFactory;
-        readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
-        ManifestItem recursiveAncestor;
-        bool isEligibleToBeRecursive = true;
+        readonly IGetsValidatorBuilderContextFromBuilder validatorManifestFactory;
+
+        /// <inheritdoc/>
+        public ValidatorBuilderContext Context => context;
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> UseObjectIdentity(Func<TValidated, object> identityAccessor)
         {
-            AssertNotRecursive();
-            context.ManifestValue.IdentityAccessor = o => identityAccessor((TValidated) o);
+            Context.AssertNotRecursive();
+            Context.ManifestValue.IdentityAccessor = o => identityAccessor((TValidated) o);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> AddRule<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = default) where TRule : IRule<TValidated>
         {
-            AssertNotRecursive();
-            var ruleBuilder = ruleBuilderFactory.GetRuleBuilder(context, ruleDefinition);
-            ruleBuilders.Add(ruleBuilder);
+            Context.AssertNotRecursive();
+            var builder = ruleBuilderFactory.GetRuleBuilder(Context, ruleDefinition);
+            context.ConfigurationCallbacks.Add(builder);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValidated>
         {
-            AssertNotRecursive();
-            var importedRules = validatorManifestFactory.GetValidatorManifest(typeof(TBuilder), context);
-            ruleBuilders.Add(importedRules);
+            Context.AssertNotRecursive();
+            var importContext = validatorManifestFactory.GetValidatorBuilderContext(typeof(TBuilder), Context);
+            Context.Contexts.Add(importContext);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> AddBaseRules<TBase, TBuilder>() where TBuilder : IBuildsValidator<TBase>
         {
-            AssertNotRecursive();
+            Context.AssertNotRecursive();
             if(!typeof(TBase).IsAssignableFrom(typeof(TValidated)))
                 throw new InvalidCastException(String.Format(Resources.ExceptionMessages.GetExceptionMessage("ValidatedTypeMustDeriveFromBaseType"),
                                                              typeof(TValidated).FullName,
                                                              typeof(TBase).FullName,
                                                              nameof(AddBaseRules)));
-            var importedRules = validatorManifestFactory.GetValidatorManifest(typeof(TBuilder), context);
-            ruleBuilders.Add(importedRules);
+            var importContext = validatorManifestFactory.GetValidatorBuilderContext(typeof(TBuilder), Context);
+            Context.Contexts.Add(importContext);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> ForMember<TValue>(Expression<Func<TValidated, TValue>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
-            AssertNotRecursive();
-            var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, context);
-            AddValueValidation(valueConfig, ruleContext);
+            Context.AssertNotRecursive();
+            var ruleContext = ruleContextFactory.GetContextForMember(memberAccessor, Context);
+            valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext, valueConfig);
+            Context.Contexts.Add(ruleContext);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> ForMemberItems<TValue>(Expression<Func<TValidated, IEnumerable<TValue>>> memberAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
-            AssertNotRecursive();
-            var memberContext = ruleContextFactory.GetContextForMember<TValidated,IEnumerable<TValue>>(memberAccessor, context);
-            var ruleContext = ruleContextFactory.GetContextForMember<TValidated, TValue>(null, memberContext, true);
-            AddValueValidation(valueConfig, ruleContext);
+            Context.AssertNotRecursive();
+            var memberContext = ruleContextFactory.GetContextForMember<TValidated,IEnumerable<TValue>>(memberAccessor, Context);
+            Context.Contexts.Add(memberContext);
+            var ruleContext = ruleContextFactory.GetContextForCollection(memberContext, typeof(TValue));
+            memberContext.Contexts.Add(ruleContext);
+            valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext, valueConfig);
+
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> ForValue<TValue>(Func<TValidated, TValue> valueAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
-            AssertNotRecursive();
-            var ruleContext = ruleContextFactory.GetContextForValue(valueAccessor, context);
-            AddValueValidation(valueConfig, ruleContext);
+            Context.AssertNotRecursive();
+            var ruleContext = ruleContextFactory.GetContextForValue(valueAccessor, Context);
+            valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext, valueConfig);
+            Context.Contexts.Add(ruleContext);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValidator<TValidated> ForValues<TValue>(Func<TValidated, IEnumerable<TValue>> valuesAccessor, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
-            AssertNotRecursive();
-            var valueContext = ruleContextFactory.GetContextForValue<TValidated,IEnumerable<TValue>>(valuesAccessor, context);
-            var ruleContext = ruleContextFactory.GetContextForValue<TValidated, TValue>(null, valueContext, true);
-            AddValueValidation(valueConfig, ruleContext);
+            Context.AssertNotRecursive();
+            var valueContext = ruleContextFactory.GetContextForValue<TValidated,IEnumerable<TValue>>(valuesAccessor, Context);
+            Context.Contexts.Add(valueContext);
+            var ruleContext = ruleContextFactory.GetContextForCollection(valueContext, typeof(TValue));
+            valueContext.Contexts.Add(ruleContext);
+            valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(ruleContext, valueConfig);
+
             return this;
         }
         
@@ -104,16 +112,19 @@ namespace CSF.Validation.ValidatorBuilding
         public IConfiguresValidator<TValidated> WhenValueIs<TDerived>(Action<IConfiguresValidator<TDerived>> derivedConfig)
             where TDerived : TValidated
         {
-            AssertNotRecursive();
-            var derivedContext = ruleContextFactory.GetPolymorphicContext(context, typeof(TDerived));
-            var derivedBuilder = new ValidatorBuilder<TDerived>(ruleContextFactory,
-                                                                ruleBuilderFactory,
-                                                                valueBuilderFactory,
-                                                                validatorManifestFactory,
-                                                                derivedContext);
+            Context.AssertNotRecursive();
+            var polymorphicContext = ruleContextFactory.GetPolymorphicContext(Context, typeof(TDerived));
+            Context.Contexts.Add(polymorphicContext);
+
             if(!(derivedConfig is null))
-                derivedConfig(derivedBuilder);
-            ruleBuilders.Add(derivedBuilder);
+            {
+                var polymorphicBuilder = new ValidatorBuilder<TDerived>(ruleContextFactory,
+                                                                        ruleBuilderFactory,
+                                                                        valueBuilderFactory,
+                                                                        validatorManifestFactory,
+                                                                        polymorphicContext);
+                derivedConfig(polymorphicBuilder);
+            }
 
             return this;
         }
@@ -123,84 +134,9 @@ namespace CSF.Validation.ValidatorBuilding
         {
             if(depth < 1)
                 throw new ArgumentOutOfRangeException(nameof(depth));
-            if(!isEligibleToBeRecursive)
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeRecursive"), nameof(ValidateAsAncestor));
-                throw new InvalidOperationException(message);
-            }
-            recursiveAncestor = context.ManifestValue.GetAncestor(depth);
-            isEligibleToBeRecursive = false;
+            var recursiveAncestor = Context.ManifestValue.GetAncestor(depth);
+            Context.MakeRecursive(recursiveAncestor);
             return this;
-        }
-
-        void AssertNotRecursive()
-        {
-            if(!(recursiveAncestor is null))
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustBeRecursive"), nameof(ValidateAsAncestor));
-                throw new InvalidOperationException(message);
-            }
-            isEligibleToBeRecursive = false;
-        }
-
-        /// <inheritdoc/>
-        public ManifestItem GetManifestValue()
-        {
-            if(!(recursiveAncestor is null))
-                return GetRecursiveValue();
-
-            var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
-            
-            foreach(var manifestItem in manifestValues)
-                HandleManifestItem(manifestItem);
-
-            return context.ManifestValue;
-        }
-
-        void HandleManifestItem(ManifestItem manifestItem)
-        {
-            if(Equals(manifestItem, context.ManifestValue)) return;
-
-            if (manifestItem.IsValue
-             && !(context.ManifestValue.Children.Contains(manifestItem)))
-            {
-                context.ManifestValue.Children.Add(manifestItem);
-            }
-
-            if (manifestItem.IsPolymorphicType
-             && !(context.ManifestValue.IsPolymorphicType)
-             && !(context.ManifestValue.PolymorphicTypes.Contains(manifestItem)))
-            {
-                context.ManifestValue.PolymorphicTypes.Add(manifestItem);
-            }
-        }
-
-        ManifestItem GetRecursiveValue()
-        {
-            var recursiveValue = ManifestItem.CreateRecursive(recursiveAncestor);
-            recursiveValue.Parent = context.ManifestValue.Parent;
-            recursiveValue.AccessorFromParent = recursiveAncestor.AccessorFromParent;
-            recursiveValue.MemberName = recursiveAncestor.MemberName;
-            return recursiveValue;
-        }
-
-        /// <inheritdoc/>
-        public ValidationManifest GetManifest()
-        {
-            var manifestValue = GetManifestValue();
-            var manifest = new ValidationManifest
-            {
-                RootValue = manifestValue,
-                ValidatedType = typeof(TValidated),
-            };
-            manifestValue.Parent = manifest;
-            return manifest;
-        }
-
-        void AddValueValidation<TValue>(Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig, ValidatorBuilderContext context)
-        {
-            var valueBuilder = valueBuilderFactory.GetValueAccessorBuilder<TValidated, TValue>(context, valueConfig);
-            ruleBuilders.Add(valueBuilder);
         }
 
         /// <summary>
@@ -216,7 +152,7 @@ namespace CSF.Validation.ValidatorBuilding
         public ValidatorBuilder(IGetsValidatorBuilderContext ruleContextFactory,
                                 IGetsRuleBuilder ruleBuilderFactory,
                                 IGetsValueAccessorBuilder valueBuilderFactory,
-                                IGetsValidatorManifest validatorManifestFactory,
+                                IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
                                 ValidatorBuilderContext context)
         {
             this.ruleContextFactory = ruleContextFactory ?? throw new ArgumentNullException(nameof(ruleContextFactory));

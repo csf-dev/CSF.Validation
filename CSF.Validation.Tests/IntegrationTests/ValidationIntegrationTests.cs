@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture, NUnit.Framework.Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable,Category(TestCategory.Integration)]
     public class ValidationIntegrationTests
     {
         [Test,AutoMoqData]
@@ -132,10 +132,6 @@ namespace CSF.Validation.IntegrationTests
             {
                 Assert.That(result.Passed, Is.False, "Result is false");
 
-                var dependencyFailures = result.RuleResults
-                    .Where(x => !x.IsPass && x.Outcome == RuleOutcome.DependencyFailed)
-                    .Select(x => x.Identifier.RuleType)
-                    .ToList();
                 var failures = result.RuleResults
                     .Where(x => !x.IsPass && x.Outcome == RuleOutcome.Failed)
                     .Select(x => x.Identifier.RuleType)
@@ -358,7 +354,8 @@ namespace CSF.Validation.IntegrationTests
             };
             nameValue.Rules.Add(nameRule);
             var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
-            var recursiveValue = ManifestItem.CreateRecursive(manifest.RootValue);
+            var recursiveValue = new ManifestItem();
+            recursiveValue.MakeRecursive(manifest.RootValue);
             recursiveValue.AccessorFromParent = obj => ((NodeChild)obj).Node;
             childValue.Children.Add(recursiveValue);
 
@@ -410,7 +407,8 @@ namespace CSF.Validation.IntegrationTests
             };
             nameValue.Rules.Add(nameRule);
             var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
-            var recursiveValue = ManifestItem.CreateRecursive(manifest.RootValue);
+            var recursiveValue = new ManifestItem();
+            recursiveValue.MakeRecursive(manifest.RootValue);
             recursiveValue.AccessorFromParent = obj => ((NodeChild)obj).Node;
             childValue.Children.Add(recursiveValue);
 

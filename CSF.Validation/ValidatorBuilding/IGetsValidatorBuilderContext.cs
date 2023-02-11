@@ -16,15 +16,9 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TValue">The type of the member being validated.</typeparam>
         /// <param name="memberAccessor">An expression which indicates the member of <typeparamref name="TValidated"/> to validate.</param>
         /// <param name="validatorContext">Contextual information relating to how a validator is built.</param>
-        /// <param name="enumerateItems">
-        /// A value that indicates whether or not the items within the validated member should be enumerated
-        /// and validated independently.  This is relevant when <typeparamref name="TValue"/> implements
-        /// <see cref="IEnumerable{T}"/>.
-        /// </param>
         /// <returns>A context object for building a validator.</returns>
         ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor,
-                                                                        ValidatorBuilderContext validatorContext,
-                                                                        bool enumerateItems = false);
+                                                                        ValidatorBuilderContext validatorContext);
 
         /// <summary>
         /// Gets the validator builder context for validating values that have been retrieved from a validated object.
@@ -33,15 +27,17 @@ namespace CSF.Validation.ValidatorBuilding
         /// <typeparam name="TValue">The type of the retrieved value being validated.</typeparam>
         /// <param name="valueAccessor">An accessor function which gets the value to be validated from a <typeparamref name="TValidated"/>.</param>
         /// <param name="validatorContext">Contextual information relating to how a validator is built.</param>
-        /// <param name="enumerateItems">
-        /// A value that indicates whether or not the items within the retrieved value should be enumerated
-        /// and validated independently.  This is relevant when <typeparamref name="TValue"/> implements
-        /// <see cref="IEnumerable{T}"/>.
-        /// </param>
         /// <returns>A context object for building a validator.</returns>
         ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor,
-                                                                       ValidatorBuilderContext validatorContext,
-                                                                       bool enumerateItems = false);
+                                                                       ValidatorBuilderContext validatorContext);
+
+        /// <summary>
+        /// Gets a validator builder context for validating items within a collection.
+        /// </summary>
+        /// <param name="collectionContext">A validation context representing the collection itself.</param>
+        /// <param name="collectionItemType">The type of items within the collection.</param>
+        /// <returns>A validation builder context.</returns>
+        ValidatorBuilderContext GetContextForCollection(ValidatorBuilderContext collectionContext, Type collectionItemType);
 
         /// <summary>
         /// Gets a validator context for polymorphic validation of a derived type.

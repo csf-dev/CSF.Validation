@@ -59,7 +59,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
             
-            var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext, true);
+            var result = sut.GetContextForCollection(validationContext, typeof(string));
 
             Assert.That(result.ManifestValue.IsCollectionItem, Is.True);
         }
@@ -94,7 +94,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Setup(x => x.Member(It.IsAny<Expression<Func<ValidatedObject, string>>>()))
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
             aPropertyValue.MemberName = nameof(ValidatedObject.AProperty);
-            validationContext.ManifestValue.Children.Add(aPropertyValue);
+            validationContext.Contexts.Add(new ValidatorBuilderContext(aPropertyValue));
 
             var result = sut.GetContextForMember<ValidatedObject,string>(v => v.AProperty, validationContext);
 
@@ -113,7 +113,7 @@ namespace CSF.Validation.ValidatorBuilding
                 .Returns((Expression<Func<ValidatedObject, string>> accessor) => Reflect.Member(accessor));
             validationContext.ManifestValue.CollectionItemValue = collectionValue;
 
-            var result = sut.GetContextForMember<ValidatedObject,IEnumerable<string>>(v => v.Strings, validationContext, true);
+            var result = sut.GetContextForCollection(validationContext, typeof(string));
 
             Assert.That(result.ManifestValue, Is.SameAs(collectionValue));
         }

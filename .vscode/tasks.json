@@ -32,6 +32,22 @@
             }
         },
         {
+            "label": "test (except integration)",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "--filter",
+                "TestCategory!=Integration",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test"
+            }
+        },
+        {
             "label": "Serve documentation website",
             "command": "docfx",
             "type": "process",

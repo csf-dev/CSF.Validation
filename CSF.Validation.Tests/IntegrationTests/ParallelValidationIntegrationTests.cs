@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture,NonParallelizable]
+    [TestFixture,NonParallelizable,Category(TestCategory.Integration)]
     public class ParallelValidationIntegrationTests
     {
         int workerThreads, completionThreads;

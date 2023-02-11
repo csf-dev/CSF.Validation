@@ -254,7 +254,7 @@
     <comment/>
   </data>
   <data name="ValueMustBeACollection" xml:space="preserve">
-    <value>The validation manifest for the instance of {0} contain a value for a member named '{1}' but in order to use {2}, that value must represent a collection of items.</value>
+    <value>The validation manifest for the instance of {0} must contain a value for a member named '{1}' and that value must represent a collection of items.</value>
     <comment/>
   </data>
   <data name="MustNotBeAPolymorphicType" xml:space="preserve">
@@ -291,6 +291,10 @@
   </data>
   <data name="ValidatedTypeMustDeriveFromBaseType" xml:space="preserve">
     <value>When using {2}, the specified base type ({1}) must be a less derived form of the validated type ({0}).  In other words, the validated type must derive from the base type, but it does not.</value>
+    <comment/>
+  </data>
+  <data name="MustProvideAContext" xml:space="preserve">
+    <value>The validation configuration object must implement {0} in order to use it with {1}.</value>
     <comment/>
   </data>
 </root>

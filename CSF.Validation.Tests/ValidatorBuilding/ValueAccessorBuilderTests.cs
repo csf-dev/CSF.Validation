@@ -14,23 +14,12 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetManifestRulesShouldIterateOverEveryRuleAdded([Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                     [Frozen] IGetsRuleBuilder ruleBuilderFactory,
-                                                                    ValueAccessorBuilder<ValidatedObject,string> sut,
-                                                                    [ManifestModel] ManifestItem value)
+                                                                    ValueAccessorBuilder<ValidatedObject,string> sut)
         {
-            Mock.Get(ruleBuilderFactory)
-                .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
-                .Returns(() => {
-                    var ruleBuilder = new Mock<IBuildsRule<StringValueRule>>();
-                    ruleBuilder
-                        .Setup(x => x.GetManifestValue())
-                        .Returns(() => value);
-                    return ruleBuilder.Object;
-                });
-
             sut.AddRuleWithParent<StringValueRule>();
             sut.AddRuleWithParent<StringValueRule>();
 
-            var manifestRules = sut.GetManifestValue().Rules.ToList();
+            var manifestRules = sut.Context.GetManifestValue().Rules.ToList();
 
             Mock.Get(ruleBuilderFactory)
                 .Verify(x => x.GetRuleBuilder<StringValueRule>(context, It.IsAny<Action<IConfiguresRule<StringValueRule>>>()),
@@ -41,16 +30,13 @@ namespace CSF.Validation.ValidatorBuilding
         public void AddRuleShouldProvideConfigFunctionToRuleBuilder([Frozen] IGetsRuleBuilder ruleBuilderFactory,
                                                                     [Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                     ValueAccessorBuilder<ValidatedObject,string> sut,
-                                                                    IBuildsRule<StringValueRule> ruleBuilder,
+                                                                    IConfiguresContext ruleBuilder,
                                                                     [ManifestModel] ManifestRule rule,
                                                                     [ManifestModel] ManifestItem value)
         {
             Mock.Get(ruleBuilderFactory)
                 .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
-                .Returns(ruleBuilder);
-            Mock.Get(ruleBuilder)
-                .Setup(x => x.GetManifestValue())
-                .Returns(() => value);
+                .Returns(() => ruleBuilder);
 
             Action<IConfiguresRule<StringValueRule>> configFunction = r => { };
             sut.AddRuleWithParent<StringValueRule>(configFunction);
@@ -60,21 +46,18 @@ namespace CSF.Validation.ValidatorBuilding
         }
 
         [Test,AutoMoqData]
-        public void AddRulesShouldAddBuilderReturnedFromManifestFactory([Frozen] IGetsValidatorManifest manifestFactory,
+        public void AddRulesShouldNotAddAnyAdditionalContexts([Frozen] IGetsValidatorBuilderContextFromBuilder manifestFactory,
                                                                         [Frozen, ManifestModel] ValidatorBuilderContext context,
                                                                         ValueAccessorBuilder<ValidatedObject,string> sut,
-                                                                        IGetsManifestValue manifest,
-                                                                        [ManifestModel] ManifestRule rule,
-                                                                        [ManifestModel] ManifestItem value)
+                                                                        [ManifestModel] ValidatorBuilderContext subContext)
         {
             Mock.Get(manifestFactory)
-                .Setup(x => x.GetValidatorManifest(typeof(StringValidator), context))
-                .Returns(manifest);
-            Mock.Get(manifest).Setup(x => x.GetManifestValue()).Returns(() => value);
+                .Setup(x => x.GetValidatorBuilderContext(typeof(StringValidator), context))
+                .Returns(subContext);
 
             sut.AddRules<StringValidator>();
 
-            Assert.That(sut.GetManifestValue().Children.Single(), Is.SameAs(value));
+            Assert.That(sut.Context.Contexts, Is.Empty);
         }
 
         [Test,AutoMoqData]
@@ -84,7 +67,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             context.ManifestValue.AccessorExceptionBehaviour = behaviour;
             sut.AccessorExceptionBehaviour(behaviour);
-            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestItem.AccessorExceptionBehaviour)).EqualTo(behaviour));
+            Assert.That(() => sut.Context.GetManifestValue(), Has.Property(nameof(ManifestItem.AccessorExceptionBehaviour)).EqualTo(behaviour));
         }
 
         [Test,AutoMoqData]
@@ -92,7 +75,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                                                                   ValueAccessorBuilder<ValidatedObject, string> sut)
         {
             context.ManifestValue.AccessorExceptionBehaviour = null;
-            Assert.That(() => sut.GetManifestValue(), Has.Property(nameof(ManifestItem.AccessorExceptionBehaviour)).Null);
+            Assert.That(() => sut.Context.GetManifestValue(), Has.Property(nameof(ManifestItem.AccessorExceptionBehaviour)).Null);
         }
 
         [Test,AutoMoqData]
@@ -108,7 +91,7 @@ namespace CSF.Validation.ValidatorBuilding
 
             Assert.Multiple(() =>
             {
-                var manifestValue = sut.GetManifestValue();
+                var manifestValue = sut.Context.GetManifestValue();
                 Assert.That(manifestValue.IsValue,
                             Is.True,
                             "Manifest value has polymorphic types.");

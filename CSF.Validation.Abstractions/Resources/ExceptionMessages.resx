@@ -149,4 +149,12 @@
     <value>Cannot create a recursive manifest item from an item which is already recursive.</value>
     <comment/>
   </data>
+  <data name="AlreadyHaveACollectionItem" xml:space="preserve">
+    <value>The current item already has a non-null {0}; the {1} method may not be used to alter it.</value>
+    <comment/>
+  </data>
+  <data name="AlreadyPolymorphic" xml:space="preserve">
+    <value>The current item is already a polymorphic type; polymorphic types may not have descendents which are themselves polymorphic types.</value>
+    <comment/>
+  </data>
 </root>

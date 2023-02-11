@@ -44,7 +44,7 @@ namespace CSF.Validation
             manifest.ValidatedType = typeof(Person);
             var sut = new ValidationResult<Person>(Enumerable.Empty<ValidationRuleResult>(), manifest);
             Assert.That(() => sut.ForMatchingMemberItem(x => x.Pets, pet),
-                        Throws.ArgumentException.And.Message.Contains("does not contain any values for a member named"));
+                        Throws.ArgumentException.And.Message.Contains("must contain a value for a member named 'Pets' and that value must represent a collection of items."));
         }
 
         [Test,AutoMoqData]
@@ -60,7 +60,7 @@ namespace CSF.Validation
             value.CollectionItemValue = null;
             var sut = new ValidationResult<Person>(Enumerable.Empty<ValidationRuleResult>(), manifest);
             Assert.That(() => sut.ForMatchingMemberItem(x => x.Pets, pet),
-                        Throws.ArgumentException.And.Message.Contains("but in order to use ForMatchingMemberItem, that value must represent a collection of items"));
+                        Throws.ArgumentException.And.Message.Contains("must contain a value for a member named 'Pets' and that value must represent a collection of items."));
         }
 
         [Test,AutoMoqData]
