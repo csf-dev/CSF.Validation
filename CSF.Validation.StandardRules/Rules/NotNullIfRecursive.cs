@@ -13,10 +13,7 @@ namespace CSF.Validation.Rules
     {
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(ManifestItem value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
-        {
-            // TODO: Write this impl
-            throw new System.NotImplementedException();
-        }
+            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullIfRecursive"));
 
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)

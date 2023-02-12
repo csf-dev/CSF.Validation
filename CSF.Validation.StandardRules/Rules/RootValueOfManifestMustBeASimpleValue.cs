@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
@@ -14,10 +15,10 @@ namespace CSF.Validation.Rules
     {
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            // TODO: Write this impl
-            throw new System.NotImplementedException();
-        }
+            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("RootValueOfManifestMustBeASimpleValue"),
+                                             nameof(ValidationManifest),
+                                             nameof(ValidationManifest.RootValue),
+                                             nameof(ManifestItemTypes.Value)));
 
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)

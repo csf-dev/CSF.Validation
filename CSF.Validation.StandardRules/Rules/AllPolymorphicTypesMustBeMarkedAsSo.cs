@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,10 +15,10 @@ namespace CSF.Validation.Rules
     {
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            // TODO: Write this impl
-            throw new System.NotImplementedException();
-        }
+            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("AllPolymorphicTypesMustBeMarkedAsSo"),
+                                             nameof(ManifestItem),
+                                             nameof(ManifestItem.PolymorphicTypes),
+                                             nameof(ManifestItemTypes.PolymorphicType)));
 
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)

@@ -12,10 +12,12 @@ namespace CSF.Validation.ValidatorValidation
         /// <inheritdoc/>
         public void ConfigureValidator(IConfiguresValidator<ManifestItem> config)
         {
+            config.AddRule<MayNotHaveOwnItemsIfRecursive>();
+
             config.ForMember(x => x.ValidatedType, m =>
             {
                 m.AddRule<NotNull>();
-                // TODO: Add a rule to verify that if the current manifest is a polymorphic type then its validated type should derive from the parent validated type
+                m.AddRuleWithParent<PolymorphicTypeMustDeriveFromParentValidatedType>();
             });
 
             config.ForMember(x => x.Parent, m => m.AddRule<NotNull>());

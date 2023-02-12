@@ -37,6 +37,7 @@ namespace CSF.Validation.Rules
         // allocating new objects where the singleton would suffice.
         // This is especially relevant for occasions where completed tasks are required for rules that
         // run synchronously.
+        // They might become less important once #72 is developed: https://github.com/csf-dev/CSF.Validation/issues/72
         
         static readonly RuleResult
             passSingleton = new RuleResult(RuleOutcome.Passed),

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CSF.Validation.Manifest;
@@ -13,10 +14,10 @@ namespace CSF.Validation.Rules
     {
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
-        {
-            // TODO: Write this impl
-            throw new System.NotImplementedException();
-        }
+            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("CollectionItemValueMustBeCollectionItem"),
+                                             nameof(ManifestItem),
+                                             nameof(ManifestItem.CollectionItemValue),
+                                             nameof(ManifestItemTypes.CollectionItem)));
 
         /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)

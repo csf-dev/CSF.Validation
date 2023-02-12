@@ -273,4 +273,42 @@
     <value>The rule logic type ({0}.{1}) must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface. The type {5} does not implement either of these interfaces, though.</value>
     <comment/>
   </data>
+  <data name="PolymorphicTypeMustDeriveFromParentValidatedType" xml:space="preserve">
+    <value>Manifest items which include the type {0} must have a {1} which derives from the {1} of the parent manifest item.
+{1} = {3}
+{2}.{1} = {4}</value>
+    <comment/>
+  </data>
+  <data name="MayNotHaveOwnItemsIfRecursive" xml:space="preserve">
+    <value>Manifest items which include the type {0} must not have any of their own descendent items; they must all be derived from the recursive ancestor.
+{1} is null? {2} (must be null for recursive items)
+{3} has count {4} (must be empty for recursive items)
+{5} has count {6} (must be empty for recursive items)
+{7} has count {8} (must be empty for recursive items)</value>
+    <comment/>
+  </data>
+  <data name="AllChildrenMustBeValues" xml:space="preserve">
+    <value>All items within the collection {0}.{1} must be of the {2} type.</value>
+    <comment/>
+  </data>
+  <data name="CollectionItemValueMustBeCollectionItem" xml:space="preserve">
+    <value>All items within the collection {0}.{1} must be of the {2} type.</value>
+    <comment/>
+  </data>
+  <data name="AllPolymorphicTypesMustBeMarkedAsSo" xml:space="preserve">
+    <value>If not null, the {0}.{1} must be of the {2} type.</value>
+    <comment/>
+  </data>
+  <data name="RootValueOfManifestMustBeASimpleValue" xml:space="preserve">
+    <value>The {0}.{1} must be of the {2} type and must not be recursive.</value>
+    <comment/>
+  </data>
+  <data name="NotNullIfRecursive" xml:space="preserve">
+    <value>This value must not be null if the manifest item is a recursive one.</value>
+    <comment/>
+  </data>
+  <data name="NullIfNotRecursive" xml:space="preserve">
+    <value>This value must be null if the manifest item is not a recursive one.</value>
+    <comment/>
+  </data>
 </root>
