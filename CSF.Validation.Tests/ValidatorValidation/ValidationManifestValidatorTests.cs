@@ -19,10 +19,16 @@ namespace CSF.Validation.ValidatorValidation
         }
 
         [Test,AutoMoqData]
+        public async Task ValidateAsyncShouldReturnAtLeastOneResultForRuleMustImplementCompatibleValidationLogic([IntegrationTesting] IValidatesValidationManifest sut)
+        {
+            var result = await sut.ValidateAsync(new ValidationManifestValidatorBuilder());
+            Assert.That(result?.RuleResults, Has.Some.Matches<ValidationRuleResult>(r => r.Identifier.RuleType == typeof(RuleMustImplementCompatibleValidationLogic)));
+        }
+
+        [Test,AutoMoqData]
         public async Task ValidateAsyncShouldReturnFailingResultForAValidationManifestWithAnIncompatibleRule([IntegrationTesting] IValidatesValidationManifest sut)
         {
-            var options = new ValidationOptions { RuleThrowingBehaviour = RuleThrowingBehaviour.Never, EnableMessageGeneration = true };
-            var result = await sut.ValidateAsync(GetManifestThatIncludesIncompatibleRule(), options);
+            var result = await sut.ValidateAsync(GetManifestThatIncludesIncompatibleRule());
 
             Assert.Multiple(() =>
             {
