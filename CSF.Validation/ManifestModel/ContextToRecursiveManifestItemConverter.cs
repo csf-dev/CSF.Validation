@@ -22,6 +22,7 @@ namespace CSF.Validation.ManifestModel
             var ancestor = GetAncestor(context);
             var recursiveItem = new ManifestItem();
             recursiveItem.MakeRecursive(ancestor);
+            recursiveItem.Id = context.CurrentValue.Id;
             recursiveItem.AccessorFromParent = context.AccessorFromParent;
             recursiveItem.MemberName = context.MemberName;
             recursiveItem.Parent = context.ParentManifestValue;

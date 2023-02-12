@@ -18,6 +18,7 @@ namespace CSF.Validation.ManifestModel
 
             var manifestValue = new ManifestItem
             {
+                Id = context.CurrentValue.Id,
                 Parent = context.ParentManifestValue,
                 MemberName = context.MemberName,
                 AccessorFromParent = context.AccessorFromParent,

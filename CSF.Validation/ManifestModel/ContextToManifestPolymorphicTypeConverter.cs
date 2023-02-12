@@ -21,6 +21,7 @@ namespace CSF.Validation.ManifestModel
 
             var polymorphicType = new ManifestItem
             {
+                Id = context.CurrentValue.Id,
                 Parent = context.ParentManifestValue,
                 ValidatedType = validatedType,
                 ItemType = ManifestItemTypes.PolymorphicType,

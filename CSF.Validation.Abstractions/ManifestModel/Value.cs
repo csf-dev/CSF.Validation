@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.ManifestModel
@@ -27,6 +28,22 @@ namespace CSF.Validation.ManifestModel
         IDictionary<string,Value> children = new Dictionary<string,Value>();
         ICollection<Rule> rules = new List<Rule>();
         IDictionary<string,Value> polymorphicValues = new Dictionary<string,Value>();
+
+        /// <summary>
+        /// Gets or sets an identifier for the current value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The id of a value is not used by the validator, but it provides a way in which
+        /// developers may track the lifetime of a single item.
+        /// </para>
+        /// <para>
+        /// There are no technical reasons why they must be, but developers are encouraged to keep Id values
+        /// unique within a validation manifest, so that they may identify items unambiguously. The default value
+        /// for this property is the string representation of a newly-generated GUID.
+        /// </para>
+        /// </remarks>
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// Gets or sets an optional value which indicates the desired behaviour should the member accessor
@@ -153,5 +170,11 @@ namespace CSF.Validation.ManifestModel
         /// </para>
         /// </remarks>
         public int? ValidateRecursivelyAsAncestor { get; set; }
-     }
+
+        /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string which represents the current instance.</returns>
+        public override string ToString() => $"[{nameof(Value)}: {nameof(Id)} = {Id}]";
+    }
 }

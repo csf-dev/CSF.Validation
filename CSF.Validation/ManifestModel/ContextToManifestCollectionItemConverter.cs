@@ -18,6 +18,7 @@ namespace CSF.Validation.ManifestModel
 
             var collectionItem = new ManifestItem
             {
+                Id = context.CurrentValue.Id,
                 Parent = context.ParentManifestValue.Parent,
                 ValidatedType = context.ValidatedType,
                 ItemType = ManifestItemTypes.CollectionItem,

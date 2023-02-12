@@ -43,6 +43,22 @@ namespace CSF.Validation.Manifest
         Func<object, object> identityAccessor;
 
         /// <summary>
+        /// Gets or sets an identifier for the current manifest item.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The id of a manifest item is not used by the validator, but it provides a way in which
+        /// developers may track the lifetime of a single item.
+        /// </para>
+        /// <para>
+        /// There are no technical reasons why they must be, but developers are encouraged to keep Id values
+        /// unique within a validation manifest, so that they may identify items unambiguously. The default value
+        /// for this property is the string representation of a newly-generated GUID.
+        /// </para>
+        /// </remarks>
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+
+        /// <summary>
         /// Gets or sets a value which indicates the type &amp; behaviour of the current manifest item.
         /// </summary>
         public ManifestItemTypes ItemType
@@ -254,7 +270,7 @@ namespace CSF.Validation.Manifest
                 .Where(x => !(x.Value is null))
                 .Select(x => $"{x.Key} = {x.Value}").ToList();
 
-            return $"[{GetType().Name}: {String.Join(", ", propertyStrings)}]";
+            return $"[{nameof(ManifestItem)}: {String.Join(", ", propertyStrings)}]";
         }
 
         /// <summary>
@@ -265,6 +281,7 @@ namespace CSF.Validation.Manifest
         {
             return new Dictionary<string, string>
             {
+                { nameof(Id), Id },
                 { nameof(Type), ValidatedType?.Name },
                 { nameof(ManifestItem.MemberName), this.MemberName },
             };
