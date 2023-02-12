@@ -71,6 +71,7 @@ For more information about testing validators & rules, please read [the testing 
 
 [domain objects]:WhatIsDomainObjectValidation.md
 [Validation rule classes]: WritingValidators/WritingValidationRules/index.md
+[validation message providers]: xref:WritingMessageProviders
 [follow the SOLID principles]:https://en.wikipedia.org/wiki/SOLID
 [`IValidatesValidationManifest`]:xref:CSF.Validation.ValidatorValidation.IValidatesValidationManifest
 [the testing documentation]: Testing.md
