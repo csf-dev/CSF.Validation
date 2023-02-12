@@ -77,15 +77,15 @@
 <h1 id="consuming-validators">Consuming validators</h1>
 
 <p>Once you have one or more validators defined, using <a href="WritingValidators/index.html#creating-a-validator-from-some-rules">any of the three available techniques</a>, you may create and use a validator instance to validate objects using those rules.
-To accomplish this you should inject an instance of the validator factory: <a class="xref" href="../api/CSF.Validation.IGetsValidator.html"><code>IGetsValidator</code></a> into your logic which needs validation.
+To accomplish this you should inject an instance of the validator factory: <a href="xref:CSF.Validation.IGetsValidator"><code>IGetsValidator</code></a> into your logic which needs validation.
 You will require a reference to the <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions">the CSF.Validation.Abstractions package</a>.</p>
 <p>The validator factory has a number of methods &amp; extension methods which cater for all of the possible scenarios, regardless of which technique was used to define the validator.
-The methods of the validator factory will allow you to get either <a class="xref" href="../api/CSF.Validation.IValidator-1.html">a <code>IValidator&lt;T&gt;</code></a> or perhaps <a class="xref" href="../api/CSF.Validation.IValidator.html">a non-generic <code>IValidator</code></a>.
+The methods of the validator factory will allow you to get either <a href="xref:CSF.Validation.IValidator%601">a <code>IValidator&lt;T&gt;</code></a> or perhaps <a href="xref:CSF.Validation.IValidator">a non-generic <code>IValidator</code></a>.
 Which you use depends upon whether or not the type of the validated object is known at design-time.</p>
 <p>Both validator interfaces provide the method <code>ValidateAsync</code>, which is used to validate the object and get the results.</p>
 <h2 id="further-techniques">Further techniques</h2>
 <ul>
-<li><a class="xref" href="../api/CSF.Validation.ValidationOptions.html">Customise the validation process using Validation Options</a></li>
+<li><a href="xref:CSF.Validation.ValidationOptions">Customise the validation process using Validation Options</a></li>
 <li><a href="QueryingTheResults.html">Querying the validation results</a></li>
 </ul>
 </article>

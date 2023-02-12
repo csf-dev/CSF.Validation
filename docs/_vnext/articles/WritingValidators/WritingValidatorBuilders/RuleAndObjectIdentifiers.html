@@ -80,7 +80,7 @@
 <p>Additionally, sometimes it is useful to identify an individual rule with a name. This can be useful if the same rule-type must be applied more than once to the same property.</p>
 <h2 id="identifying-object-instances">Identifying object instances</h2>
 <p>A common problem when validating a complex object graph (such as one which contains collections of validated objects) is matching the validation results back to the corresponding objects.
-To simplify this, validated objects may be marked with an identity using <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_System_Func__0_System_Object__">the <code>UseObjectIdentity</code> method</a> of a validator-builder.
+To simplify this, validated objects may be marked with an identity using <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.UseObjectIdentity(System.Func%7B%600,System.Object%7D)">the <code>UseObjectIdentity</code> method</a> of a validator-builder.
 Validation results for these objects include the identity with each result, so that the result may be matched with its corresponding validated object.</p>
 <p>Object identities in CSF.Validation have no meaning beyond the above.
 You may use an identity property/value which is already available upon the object or you may add one.
@@ -91,7 +91,7 @@ If the validation logic is executed twice, then subsequent invocations do not ne
 <h2 id="identifyingnaming-rules">Identifying/naming rules</h2>
 <p>It is quite rare that rules need to be named. Rules are usually identified by their <code>System.Type</code> along with the type and perhaps parent type and member name that they validate.</p>
 <p>Sometimes the above is not enough, though. For example if the same object or member must be validated with the same rule type more than once, for example with different configurations.</p>
-<p>In this case, these rules must be given unique names in order to distinguish them. This is performed by setting <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html#CSF_Validation_ValidatorBuilding_IConfiguresRule_1_Name">the <code>Name</code> property</a> of the rule-configuration builder. Here is an example:</p>
+<p>In this case, these rules must be given unique names in order to distinguish them. This is performed by setting <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresRule%601.Name">the <code>Name</code> property</a> of the rule-configuration builder. Here is an example:</p>
 <pre><code class="lang-csharp">builder.AddRule&lt;MyRuleType&gt;(conf =&gt; {
     conf.Name = &quot;Rule name here&quot;;
 });

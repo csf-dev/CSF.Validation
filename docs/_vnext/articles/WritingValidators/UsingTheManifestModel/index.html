@@ -80,13 +80,13 @@
 Use the manifest model when you wish to create a validator <strong>based upon data</strong>.
 If you would like to create a validator using strongly-typed .NET code instead, you will find that a <a href="../WritingValidatorBuilders/index.html">Validation Builder</a> is a superior mechanism.</p>
 <h2 id="the-manifest-model-classes">The Manifest Model classes</h2>
-<p>The manifest model is a number of model classes found in the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.html"><code>CSF.Validation.ManifestModel</code></a> namespace of the <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">CSF.Validation.Abstractions</a> NuGet package.
+<p>The manifest model is a number of model classes found in the <a href="xref:CSF.Validation.ManifestModel"><code>CSF.Validation.ManifestModel</code></a> namespace of the <a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">CSF.Validation.Abstractions</a> NuGet package.
 These classes are:</p>
 <ul>
-<li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.Value.html"><code>Value</code></a></li>
-<li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.CollectionItemValue.html"><code>CollectionItemValue</code></a></li>
-<li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.Rule.html"><code>Rule</code></a></li>
-<li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.RelativeIdentifier.html"><code>RelativeIdentifier</code></a></li>
+<li><a href="xref:CSF.Validation.ManifestModel.Value"><code>Value</code></a></li>
+<li><a href="xref:CSF.Validation.ManifestModel.CollectionItemValue"><code>CollectionItemValue</code></a></li>
+<li><a href="xref:CSF.Validation.ManifestModel.Rule"><code>Rule</code></a></li>
+<li><a href="xref:CSF.Validation.ManifestModel.RelativeIdentifier"><code>RelativeIdentifier</code></a></li>
 </ul>
 <p>These classes have no dependencies upon other complex types or parts of the framework; they are <a href="https://en.wikipedia.org/wiki/Plain_old_CLR_object">POCOs</a>.
 Because of this, they are <strong>suitable for serialization</strong> to and from other data-types.
@@ -95,26 +95,26 @@ This allows validators to be defined using technologies such as JSON, XML, a rel
 <h3 id="values-represent-the-validated-objects">Values represent the validated objects</h3>
 <p>Using the manifest model is primarily about declaring the appropriate values and rules.
 Values form a hierarchical structure which corresponds to the design of the types of the objects to be validated.
-The <a class="xref" href="../../../api/CSF.Validation.ManifestModel.ValueBase.html#CSF_Validation_ManifestModel_ValueBase_Children"><code>Children</code></a> property of a value holds a further collection of values which may be accessed from the initial object to be validated.
+The <a href="xref:CSF.Validation.ManifestModel.ValueBase.Children"><code>Children</code></a> property of a value holds a further collection of values which may be accessed from the initial object to be validated.
 Most commonly this is via property getter but could include public fields or parameterless public methods which return a value.
 It is possible to describe the validation of deep, connected object graphs involving multiple levels of traversal.</p>
 <p><em>All manifest models use a single <code>Value</code> instance as the root of the model.</em>
-Unlike the <a class="xref" href="../../../api/CSF.Validation.Manifest.ValidationManifest.html"><code>ValidationManifest</code></a> class, there is no particular type which serves as the root of the object model.</p>
+Unlike the <a href="xref:CSF.Validation.Manifest.ValidationManifest"><code>ValidationManifest</code></a> class, there is no particular type which serves as the root of the object model.</p>
 <h3 id="validating-collection-items">Validating collection items</h3>
 <p>If a value implements <code>IEnumerable&lt;T&gt;</code>, it is also possible to individually validate each item of that collection.
-In this case, configure the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.CollectionItemValue.html"><code>CollectionItemValue</code></a> property of that <code>Value</code> object.
+In this case, configure the <a href="xref:CSF.Validation.ManifestModel.CollectionItemValue"><code>CollectionItemValue</code></a> property of that <code>Value</code> object.
 The <code>Value</code> represents the collection as a whole, the <code>CollectionItemValue</code> represents each individual collection item.</p>
 <h3 id="validation-rules">Validation rules</h3>
 <p>Rules define the validation rules to be applied to values.
 The <code>Rule</code> class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.</p>
 <h3 id="specifying-rule-dependencies">Specifying rule-dependencies</h3>
 <p>Dependencies between validation rules may be specified using the manifest model.
-To do so, use the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.Rule.html#CSF_Validation_ManifestModel_Rule_Dependencies"><code>Rule.Dependencies</code></a> property using relative identifiers.</p>
+To do so, use the <a href="xref:CSF.Validation.ManifestModel.Rule.Dependencies"><code>Rule.Dependencies</code></a> property using relative identifiers.</p>
 <h2 id="example">Example</h2>
 <p>For an example of how this might look when serialized to JSON, please read through the <a href="ExampleOfTheManifestModel.html">example of using the Manifest Model</a>.</p>
 <h2 id="converting-a-manifest-model-into-a-validation-manifest">Converting a Manifest Model into a Validation Manifest</h2>
-<p>If you wish to directly convert a Manifest Model - an instance of the <code>Value</code> class, including its descendent values &amp; rules - into an instance of <a class="xref" href="../../../api/CSF.Validation.Manifest.ValidationManifest.html"><code>ValidationManifest</code></a> then you may do so by injecting an using an instance of <a class="xref" href="../../../api/CSF.Validation.ManifestModel.IGetsValidationManifestFromModel.html"><code>IGetsValidationManifestFromModel</code></a>.</p>
-<p>If all you want is a validator, though, then <a class="xref" href="../../../api/CSF.Validation.IGetsValidator.html"><code>IGetsValidator</code></a> includes <a class="xref" href="../../../api/CSF.Validation.IGetsValidator.html#CSF_Validation_IGetsValidator_GetValidator_CSF_Validation_ManifestModel_Value_System_Type_">an overload which works from a Manifest Model <code>Value</code> and a <code>System.Type</code></a>.</p>
+<p>If you wish to directly convert a Manifest Model - an instance of the <code>Value</code> class, including its descendent values &amp; rules - into an instance of <a href="xref:CSF.Validation.Manifest.ValidationManifest"><code>ValidationManifest</code></a> then you may do so by injecting an using an instance of <a href="xref:CSF.Validation.ManifestModel.IGetsValidationManifestFromModel"><code>IGetsValidationManifestFromModel</code></a>.</p>
+<p>If all you want is a validator, though, then <a href="xref:CSF.Validation.IGetsValidator"><code>IGetsValidator</code></a> includes <a href="xref:CSF.Validation.IGetsValidator.GetValidator(CSF.Validation.ManifestModel.Value,System.Type)">an overload which works from a Manifest Model <code>Value</code> and a <code>System.Type</code></a>.</p>
 <h2 id="manifest-model-limitations">Manifest Model limitations</h2>
 <p>The Manifest Model sacrifices some functionality in order to provide an easily-serializable model.
 For more information please read the article about <a href="Limitations.html">the Manifest Model's limitations</a>.</p>

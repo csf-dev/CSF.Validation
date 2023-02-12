@@ -85,7 +85,7 @@ Validator builders may also consume the rules and configuration from another bui
 <li>Validating referenced objects</li>
 <li><a href="PolymorphicValidation.html">Polymorphic validation</a></li>
 </ul>
-<p>Using a validator builder, importing another builder is accomplished via the <code>AddRules&lt;TBuilder&gt;()</code> method from either an instance of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules__1"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> or (for validating referenced objects) from an instance of <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AddRules__1"><code>IConfiguresValueAccessor&lt;TValidated, TValue&gt;</code></a>.</p>
+<p>Using a validator builder, importing another builder is accomplished via the <code>AddRules&lt;TBuilder&gt;()</code> method from either an instance of <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.AddRules%60%601"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> or (for validating referenced objects) from an instance of <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%602.AddRules%60%601"><code>IConfiguresValueAccessor&lt;TValidated, TValue&gt;</code></a>.</p>
 <h2 id="example-de-duplicating-base-type-validation">Example: De-duplicating base type validation</h2>
 <p>This technique is useful when you want to validate members of a class hierarchy.
 Consider this very simple example of an object model for validation:</p>
@@ -206,7 +206,7 @@ public class ExtensionBookLoanRequestBuilder : IBuildsValidator&lt;BookLoanReque
 <p>This produces a validator for each of the Initial &amp; Extension loans, both of which consume the rules configured within the common validator builder.</p>
 <h2 id="example-validating-referenced-objects">Example: Validating referenced objects</h2>
 <p>When validating <a href="https://en.wikipedia.org/wiki/Object_graph">object graphs</a>, each nontrivial object-type included in that graph should have its own validator builder.
-Then, when validating across references, import the rules from the appropriate builder within <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">a <code>ForMember</code> or <code>ForValue</code> or <code>ForMemberItems</code> or <code>ForValues</code> declaration</a>.</p>
+Then, when validating across references, import the rules from the appropriate builder within <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601">a <code>ForMember</code> or <code>ForValue</code> or <code>ForMemberItems</code> or <code>ForValues</code> declaration</a>.</p>
 <p>Consider these models</p>
 <pre><code class="lang-csharp">public class Vehicle
 {

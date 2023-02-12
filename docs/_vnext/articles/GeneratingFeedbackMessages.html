@@ -88,17 +88,17 @@ In this case we would not want to duplicate the message-logic across all of thes
 This is what the validation-message-generation functionality of CSF.Validation accomplishes.</p>
 <h2 id="enabling-message-generation">Enabling message generation</h2>
 <p>By default, <em>generation of feedback messages is <strong>switched off</strong></em> in CSF.Validation.
-If you wish to use it then it must be explicitly enabled by setting the validation option <a class="xref" href="../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableMessageGeneration"><code>EnableMessageGeneration</code></a> to <code>true</code>.</p>
+If you wish to use it then it must be explicitly enabled by setting the validation option <a href="xref:CSF.Validation.ValidationOptions.EnableMessageGeneration"><code>EnableMessageGeneration</code></a> to <code>true</code>.</p>
 <h2 id="writing-feedback-messages-for-rules">Writing feedback messages for rules</h2>
 <p>In CSF.Validation, human-readable failure messages are generated for each individual validation rule result.
 Most commonly, messages have a one-to-one relationship with validation rules; <em>if rule X indicates a failure, then message X is used, if rule Y fails then use message Y</em> and so on.
-In full, the <a class="xref" href="../api/CSF.Validation.ValidationRuleResult.html">validation rule result</a> for the rule failure is inspected and then framework looks for a suitable &quot;message provider&quot; class which may get the message for that failure result.</p>
+In full, the <a href="xref:CSF.Validation.ValidationRuleResult">validation rule result</a> for the rule failure is inspected and then framework looks for a suitable &quot;message provider&quot; class which may get the message for that failure result.</p>
 <p>There are two techniques available for writing message providers, and they may be mixed within the same project or even the same validator.
 You may keep the rule logic and message provider together, in the same class; this is the easiest and simplest technique.
 Alternatively, you may split the message provider from the rule logic and keep them in separate classes; this may be useful in advanced scenarios.</p>
 <h3 id="message-providers-combined-with-rules">Message providers combined with rules</h3>
 <p>The simplest way to write feedback messages is to use an alternative to <a href="WritingValidators/WritingValidationRules/TheRuleInterfaces.html">the generic IRule interfaces</a>.
-Instead of <code>IRule&lt;TValidated&gt;</code> or <code>IRule&lt;TValidated,TParent&gt;</code>, use <a class="xref" href="../api/CSF.Validation.Rules.IRuleWithMessage-1.html"><code>IRuleWithMessage&lt;TValidated&gt;</code></a> or <a class="xref" href="../api/CSF.Validation.Rules.IRuleWithMessage-2.html"><code>IRuleWithMessage&lt;TValidated,TParent&gt;</code></a>.
+Instead of <code>IRule&lt;TValidated&gt;</code> or <code>IRule&lt;TValidated,TParent&gt;</code>, use <a href="xref:CSF.Validation.Rules.IRuleWithMessage%601"><code>IRuleWithMessage&lt;TValidated&gt;</code></a> or <a href="xref:CSF.Validation.Rules.IRuleWithMessage%602"><code>IRuleWithMessage&lt;TValidated,TParent&gt;</code></a>.
 These &quot;rule with message&quot; interfaces declare an additional method: <code>GetFailureMessageAsync</code>.
 This method is used to get a failure message which is used when that particular rule fails.</p>
 <p>This technique is simple and keeps the failure message close (in the same class) to the rule with which it is associated.

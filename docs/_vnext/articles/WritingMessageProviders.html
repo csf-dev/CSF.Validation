@@ -78,21 +78,21 @@
 
 <p>A feedback message provider is an object which implements at least one of these interfaces:</p>
 <ul>
-<li><a class="xref" href="../api/CSF.Validation.Messages.IGetsFailureMessage.html"><code>IGetsFailureMessage</code></a></li>
-<li><a class="xref" href="../api/CSF.Validation.Messages.IGetsFailureMessage-1.html"><code>IGetsFailureMessage&lt;in TValidated&gt;</code></a></li>
-<li><a class="xref" href="../api/CSF.Validation.Messages.IGetsFailureMessage-2.html"><code>IGetsFailureMessage&lt;in TValidated, in TParent&gt;</code></a></li>
+<li><a href="xref:CSF.Validation.Messages.IGetsFailureMessage"><code>IGetsFailureMessage</code></a></li>
+<li><a href="xref:CSF.Validation.Messages.IGetsFailureMessage%601"><code>IGetsFailureMessage&lt;in TValidated&gt;</code></a></li>
+<li><a href="xref:CSF.Validation.Messages.IGetsFailureMessage%602"><code>IGetsFailureMessage&lt;in TValidated, in TParent&gt;</code></a></li>
 </ul>
 <p>You will likely notice that these are quite similar to <a href="WritingValidators/WritingValidationRules/TheRuleInterfaces.html">the rule interfaces</a>, with the addition of a non-generic interface.
-It is recommended to decorate separated rule/message provider classes with <a class="xref" href="../api/CSF.Validation.Messages.FailureMessageStrategyAttribute.html"><code>FailureMessageStrategyAttribute</code></a> for both performance and organisational reasons.</p>
+It is recommended to decorate separated rule/message provider classes with <a href="xref:CSF.Validation.Messages.FailureMessageStrategyAttribute"><code>FailureMessageStrategyAttribute</code></a> for both performance and organisational reasons.</p>
 <p>Finally, message providers may optionally use one or more of:</p>
 <ul>
-<li><a class="xref" href="../api/CSF.Validation.Messages.IHasFailureMessageUsageCriteria.html"><code>IHasFailureMessageUsageCriteria</code></a></li>
-<li><a class="xref" href="../api/CSF.Validation.Messages.IHasFailureMessageUsageCriteria-1.html"><code>IHasFailureMessageUsageCriteria&lt;in TValidated&gt;</code></a></li>
-<li><a class="xref" href="../api/CSF.Validation.Messages.IHasFailureMessageUsageCriteria-2.html"><code>IHasFailureMessageUsageCriteria&lt;in TValidated, in TParent&gt;</code></a></li>
+<li><a href="xref:CSF.Validation.Messages.IHasFailureMessageUsageCriteria"><code>IHasFailureMessageUsageCriteria</code></a></li>
+<li><a href="xref:CSF.Validation.Messages.IHasFailureMessageUsageCriteria%601"><code>IHasFailureMessageUsageCriteria&lt;in TValidated&gt;</code></a></li>
+<li><a href="xref:CSF.Validation.Messages.IHasFailureMessageUsageCriteria%602"><code>IHasFailureMessageUsageCriteria&lt;in TValidated, in TParent&gt;</code></a></li>
 </ul>
 <h2 id="how-separated-message-providers-work">How separated message providers work</h2>
 <p>When using message provider classes which are separated from the rule classes for which they generate messages, the validation framework makes use of <a href="https://en.wikipedia.org/wiki/Strategy_pattern">the <strong>strategy pattern</strong></a>.
-For each <a class="xref" href="../api/CSF.Validation.ValidationRuleResult.html"><code>ValidationRuleResult</code></a>, the framework looks for an appropriate message provider - a class which implements one of the three <code>IGetsFailureMessage</code> interfaces noted above - and uses the best match in order to get the message for that rule result.
+For each <a href="xref:CSF.Validation.ValidationRuleResult"><code>ValidationRuleResult</code></a>, the framework looks for an appropriate message provider - a class which implements one of the three <code>IGetsFailureMessage</code> interfaces noted above - and uses the best match in order to get the message for that rule result.
 If no matching message provider is found then the rule result is left without a message.</p>
 <p>The selection process (to choose the appropriate class) is influnced by a number of factors.
 The process is described below.</p>
@@ -103,12 +103,12 @@ The process is described below.</p>
 </ul>
 </li>
 <li>If a message provider class is registered with DI that implements a compatible <code>IGetsFailureMessage</code> interface (generic or non-generic) then this is considered as a candidate for getting the message.</li>
-<li>From the candidate message provider classes, any which are decorated with <a class="xref" href="../api/CSF.Validation.Messages.FailureMessageStrategyAttribute.html"><code>FailureMessageStrategyAttribute</code></a> are further tested for compatibility; those which are incompatible are discarded from the list of candidates and those which are compatible according to the attribute are given a higher priority than those which do not have the attribute.</li>
+<li>From the candidate message provider classes, any which are decorated with <a href="xref:CSF.Validation.Messages.FailureMessageStrategyAttribute"><code>FailureMessageStrategyAttribute</code></a> are further tested for compatibility; those which are incompatible are discarded from the list of candidates and those which are compatible according to the attribute are given a higher priority than those which do not have the attribute.</li>
 <li>The remaining candidates are instantiated via dependency injection; if any of these implement a compatible <code>IHasFailureMessageUsageCriteria</code> interface then the logic in the <code>CanGetFailureMessage</code> is used to further eliminate incompatible providers. Any provider which implement this criteria interface and which are able to get a failure message are given higher priority than those which do not implement the interface.</li>
 <li>The highest-priority message provider which remains amongst the candidates is used to get the feedback message.</li>
 </ol>
 <h2 id="using-the-failuremessagestrategyattribute">Using the <code>FailureMessageStrategyAttribute</code></h2>
-<p>It is recommended to decorate classes which implement any of the <code>IGetsFailureMessage</code> interfaces, but not an <code>IRuleWithMessage</code> interface with <a class="xref" href="../api/CSF.Validation.Messages.FailureMessageStrategyAttribute.html"><code>FailureMessageStrategyAttribute</code></a>.
+<p>It is recommended to decorate classes which implement any of the <code>IGetsFailureMessage</code> interfaces, but not an <code>IRuleWithMessage</code> interface with <a href="xref:CSF.Validation.Messages.FailureMessageStrategyAttribute"><code>FailureMessageStrategyAttribute</code></a>.
 This attribute is used to provide some simple criteria indicating the rules for which this message provider is appropriate.
 These criteria are indicated via the attribute's settable properties, each serving as a predicate value which must be matched by the rule result.</p>
 <p>A message provider class will only be used if it matches all of the provided predicate values for a single attribute (a logical &quot;AND&quot;).

@@ -84,18 +84,18 @@ When defining the validator it is easy to combine many rules to validate a singl
 <li>If a rule fails and a user must be shown a feedback message, it is easier to provide a concise &amp; relevant message if the reason for failure is known precisely.</li>
 <li>Rules become more reusable if they do not conflate failure scenarios because they may be used individually.</li>
 </ul>
-<p>Because rules work with dependency injection, it is easy to write and share logic between rules if required (just move the logic into a separate injectable service).  Rules may even use other rules as dependencies.  Look at the <a class="xref" href="../../api/CSF.Validation.Rules.NotNullOrEmpty.html"><code>NotNullOrEmpty</code></a> rule as an example of this technique.</p>
+<p>Because rules work with dependency injection, it is easy to write and share logic between rules if required (just move the logic into a separate injectable service).  Rules may even use other rules as dependencies.  Look at the <a href="xref:CSF.Validation.Rules.NotNullOrEmpty"><code>NotNullOrEmpty</code></a> rule as an example of this technique.</p>
 <h2 id="rules-should-not-assume-a-value-is-mandatory">Rules should not assume a value is mandatory</h2>
 <p>A very common specialisation of this advice is for validating values that could be <code>null</code> or 'missing', such as empty strings/collections.
 A well-designed rule which validates a nullable value should return a <em>Pass</em> outcome if that value is <code>null</code>.</p>
 <p>This way, the same rule may be reused <em>regardless of whether the value is optional or mandatory</em>.
-In cases where the value is mandatory you would add (for example) a <a class="xref" href="../../api/CSF.Validation.Rules.NotNull.html"><code>NotNull</code></a> rule for the same value.</p>
+In cases where the value is mandatory you would add (for example) a <a href="xref:CSF.Validation.Rules.NotNull"><code>NotNull</code></a> rule for the same value.</p>
 <h2 id="an-example">An example</h2>
 <p>Imagine you are writing a rule for the format of a <code>string</code> to validate that it is in the correct format to be a valid US ZIP code.</p>
 <p>This rule <em>should return a Pass result</em> if the string is <code>null</code> (and perhaps if it is an empty string).
 This is because &quot;empty&quot; &amp; &quot;missing&quot; are conceptually different to &quot;present, but invalid&quot;.
 If the rule failed for a <code>null</code> string then it could not be reused to validate an optional ZIP code.</p>
-<p>If the value is mandatory then it is easy to add a <a class="xref" href="../../api/CSF.Validation.Rules.NotNullOrEmpty.html"><code>NotNullOrEmpty</code></a> rule to the validator alongside the format-validation rule.</p>
+<p>If the value is mandatory then it is easy to add a <a href="xref:CSF.Validation.Rules.NotNullOrEmpty"><code>NotNullOrEmpty</code></a> rule to the validator alongside the format-validation rule.</p>
 </article>
           </div>
           

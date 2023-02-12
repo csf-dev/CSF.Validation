@@ -96,7 +96,7 @@ In this case it makes sense to add cancellation-checking such as <code>ThrowIfCa
 <p>The overall validation process: the <code>ValidateAsync</code> method accepts a cancellation token.
 This may be used to specify a timeout for the overall validation process; if this token is cancelled then the whole validation operation will cease and the validator will raise an exception.</p>
 <p>If individual rules risk running for too long (for example, a rule which depends upon an external/network source such as a database server) then an individual per-rule timeout may be specified.
-To do this, have you rule class additionally implement <a class="xref" href="../../api/CSF.Validation.Rules.IHasRuleTimeout.html">the interface <code>IHasRuleTimeout</code></a>.
+To do this, have you rule class additionally implement <a href="xref:CSF.Validation.Rules.IHasRuleTimeout">the interface <code>IHasRuleTimeout</code></a>.
 This interface adds a <code>GetTimeout</code> method which should return a <code>TimeSpan</code> (or a <code>null</code> reference, indicating that no timeout is applicable).
 If a rule implements <code>IHasRuleTimeout</code> and it takes longer than that timeout value to execute then:</p>
 <ul>
@@ -105,7 +105,7 @@ If a rule implements <code>IHasRuleTimeout</code> and it takes longer than that 
 <li>That error result will contain <em>either</em>:
 <ul>
 <li>An <code>OperationCanceledException</code></li>
-<li>If it contains no exception then it will have a <a class="xref" href="../../api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Data"><code>RuleResult.Data</code></a> item with a key equal to &quot;<code>Validation rule timeout</code>&quot; and value equal to the <code>TimeSpan</code> of the timeout which was exceeded.</li>
+<li>If it contains no exception then it will have a <a href="xref:CSF.Validation.Rules.RuleResult.Data"><code>RuleResult.Data</code></a> item with a key equal to &quot;<code>Validation rule timeout</code>&quot; and value equal to the <code>TimeSpan</code> of the timeout which was exceeded.</li>
 </ul>
 </li>
 </ul>

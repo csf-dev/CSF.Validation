@@ -76,7 +76,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="use-the-common-rule-results">Use the common rule results</h1>
 
-<p>Use the static <a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html"><code>CommonResults</code></a> class within your rules to get result instances/tasks of result instances.
+<p>Use the static <a href="xref:CSF.Validation.Rules.CommonResults"><code>CommonResults</code></a> class within your rules to get result instances/tasks of result instances.
 You should use the <code>CommonResults</code> class as follows.</p>
 <pre><code class="lang-csharp">using static CSF.Validation.Rules.CommonResults;
 
@@ -92,14 +92,14 @@ public class MustBeFour : IRule&lt;int&gt;
 </code></pre>
 <h2 id="optimisation-as-well-as-convenience">Optimisation as well as convenience</h2>
 <p>When omitting the optional parameters (or passing only <code>null</code>) to the following methods, the <code>CommonResults</code> class offers an optimisation.
-In these scenarios <a href="https://en.wikipedia.org/wiki/Flyweight_pattern">flyweight instances</a> will be returned instead of allocating new <a class="xref" href="../../api/CSF.Validation.Rules.RuleResult.html"><code>RuleResult</code></a> and/or <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1"><code>Task&lt;RuleResult&gt;</code></a> instances.</p>
+In these scenarios <a href="https://en.wikipedia.org/wiki/Flyweight_pattern">flyweight instances</a> will be returned instead of allocating new <a href="xref:CSF.Validation.Rules.RuleResult"><code>RuleResult</code></a> and/or <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1"><code>Task&lt;RuleResult&gt;</code></a> instances.</p>
 <ul>
-<li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Pass_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>Pass()</code></a></li>
-<li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>PassAsync()</code></a></li>
-<li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Fail_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>Fail()</code></a></li>
-<li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>FailAsync()</code></a></li>
-<li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Error_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>Error()</code></a></li>
-<li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_ErrorAsync_System_Exception_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>ErrorAsync()</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.CommonResults.Pass(System.Collections.Generic.IDictionary%7BSystem.String,System.Object%7D)"><code>Pass()</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.CommonResults.PassAsync(System.Collections.Generic.IDictionary%7BSystem.String,System.Object%7D)"><code>PassAsync()</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.CommonResults.Fail(System.Collections.Generic.IDictionary%7BSystem.String,System.Object%7D)"><code>Fail()</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.CommonResults.FailAsync(System.Collections.Generic.IDictionary%7BSystem.String,System.Object%7D)"><code>FailAsync()</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.CommonResults.Error(System.Exception,System.Collections.Generic.IDictionary%7BSystem.String,System.Object%7D)"><code>Error()</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.CommonResults.ErrorAsync(System.Exception,System.Collections.Generic.IDictionary%7BSystem.String,System.Object%7D)"><code>ErrorAsync()</code></a></li>
 </ul>
 <p>This will improve throughput, particularly for validators which include a large number of rules which do not need to return data when they pass or fail.</p>
 </article>

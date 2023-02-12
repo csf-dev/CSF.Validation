@@ -77,11 +77,11 @@
 <h1 id="handling-accessor-exceptions">Handling accessor exceptions</h1>
 
 <p>When validating derived values or member values, there are occasionally instances when the accessor (executing a method, or a property getter, or arbitrary accessor logic) could raise an exception.</p>
-<p>The CSF.Validation framework has three available behaviours to deal with this, represented in <a class="xref" href="../../../api/CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">the <code>ValueAccessExceptionBehaviour</code> enum</a>.
+<p>The CSF.Validation framework has three available behaviours to deal with this, represented in <a href="xref:CSF.Validation.Manifest.ValueAccessExceptionBehaviour">the <code>ValueAccessExceptionBehaviour</code> enum</a>.
 Theese three behaviours are explained in the documentaion for that enumeration.</p>
 <h2 id="how-to-use-these-behaviours">How to use these behaviours</h2>
-<p>The behaviour may be specified either or both per-manifest value &amp; upon the <a class="xref" href="../../../api/CSF.Validation.ValidationOptions.html"><code>ValidationOptions</code></a> used when validation is performed.
-To specify the behaviour using a validator builder, use the <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__"><code>AccessorExceptionBehaviour</code></a> method upon the builder, specifying the behaviour you wish to use.</p>
+<p>The behaviour may be specified either or both per-manifest value &amp; upon the <a href="xref:CSF.Validation.ValidationOptions"><code>ValidationOptions</code></a> used when validation is performed.
+To specify the behaviour using a validator builder, use the <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%602.AccessorExceptionBehaviour(System.Nullable%7BCSF.Validation.Manifest.ValueAccessExceptionBehaviour%7D)"><code>AccessorExceptionBehaviour</code></a> method upon the builder, specifying the behaviour you wish to use.</p>
 <p>When behaviour is not specified (it is <code>null</code>) upon a manifest value, then the behaviour specified in the validation options will be used.
 When the behaviour is specified in both places, the behaviour upon the manifest value will be used instead.</p>
 </article>

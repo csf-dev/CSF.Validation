@@ -77,8 +77,8 @@
 <h1 id="writing-validator-builders">Writing Validator Builders</h1>
 
 <p>Validator builders are the simplest &amp; clearest way to define a validator when you wish to describe the validator using .NET code.</p>
-<p>A validator builder is a class which implements the interface <a class="xref" href="../../../api/CSF.Validation.IBuildsValidator-1.html"><code>IBuildsValidator&lt;TValidated&gt;</code></a>.
-Developers then use the <code>ConfigureValidator</code> method and the <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> helper to specify how the validator will function.
+<p>A validator builder is a class which implements the interface <a href="xref:CSF.Validation.IBuildsValidator%601"><code>IBuildsValidator&lt;TValidated&gt;</code></a>.
+Developers then use the <code>ConfigureValidator</code> method and the <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601"><code>IConfiguresValidator&lt;TValidated&gt;</code></a> helper to specify how the validator will function.
 Validator builders are type-safe and benefit from IDE autocomplete (aka Intellisense) functionality.</p>
 <h2 id="the-basics-adding-rules-to-a-builder">The basics: Adding rules to a builder</h2>
 <p>Rules may be added to either or both of the object being validated or values derived from that object.
@@ -110,13 +110,13 @@ Here is an example of three ways to add rules to a validator, by using a builder
     static int GetAge(DateTime birthDate) { /* Implementation omitted */ }
 }
 </code></pre>
-<p>In the first example, <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___">the <code>AddRule</code> method</a> is used directly from the <code>IConfiguresValidator&lt;Pet&gt;</code> instance.
+<p>In the first example, <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.AddRule%60%601(System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresRule%7B%60%600%7D%7D)">the <code>AddRule</code> method</a> is used directly from the <code>IConfiguresValidator&lt;Pet&gt;</code> instance.
 This would add a rule that implements <code>IRule&lt;Pet&gt;</code>, to apply validation logic associated with the complete object instance.
-In this case it is the <a class="xref" href="../../../api/CSF.Validation.Rules.NotNull.html"><code>NotNull</code></a> rule.</p>
-<p>In the second example, <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">the <code>ForMember</code> method</a> is used to specify a member (in this case, a property) of the <code>Pet</code> class.
+In this case it is the <a href="xref:CSF.Validation.Rules.NotNull"><code>NotNull</code></a> rule.</p>
+<p>In the second example, <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForMember%60%601(System.Linq.Expressions.Expression%7BSystem.Func%7B%600,%60%600%7D%7D,System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600,%60%600%7D%7D)">the <code>ForMember</code> method</a> is used to specify a member (in this case, a property) of the <code>Pet</code> class.
 Let's assume that <code>Pet.Name</code> is a property of type <code>string</code>.
-Rules added within the member lambda target that member's value.  In this case the <a class="xref" href="../../../api/CSF.Validation.Rules.NotNullOrEmpty.html"><code>NotNullOrEmpty</code></a> rule will validate this string value.</p>
-<p>In the third example, <a class="xref" href="../../../api/CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">the <code>ForValue</code> method</a> is used.
+Rules added within the member lambda target that member's value.  In this case the <a href="xref:CSF.Validation.Rules.NotNullOrEmpty"><code>NotNullOrEmpty</code></a> rule will validate this string value.</p>
+<p>In the third example, <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForValue%60%601(System.Func%7B%600,%60%600%7D,System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600,%60%600%7D%7D)">the <code>ForValue</code> method</a> is used.
 <code>ForValue</code> allows validation of a completely arbitrary value, not limited to only values returned-by/stored-in a member like a property.
 Developers are encouraged to prefer <code>ForMember</code> over <code>ForValue</code> where possible, as the <code>ForValue</code> method comes with some limitations which do not apply to <code>ForMember</code>.</p>
 <p>Finally, the third example also demonstrates a rule that has configuration.

@@ -78,15 +78,15 @@
 
 <p>A validation rule class must implement at least one of the following two interfaces.</p>
 <ul>
-<li><a class="xref" href="../../../api/CSF.Validation.Rules.IRule-1.html"><code>IRule&lt;in TValidated&gt;</code></a></li>
-<li><a class="xref" href="../../../api/CSF.Validation.Rules.IRule-2.html"><code>IRule&lt;in TValue, in TParent&gt;</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.IRule%601"><code>IRule&lt;in TValidated&gt;</code></a></li>
+<li><a href="xref:CSF.Validation.Rules.IRule%602"><code>IRule&lt;in TValue, in TParent&gt;</code></a></li>
 </ul>
 <h2 id="rules-can-implement-these-multiple-times">Rules can implement these multiple times</h2>
 <p>If it makes sense to do so, it is perfectly reasonable for a rule class to implement both interfaces.
 Likewise, a rule class may implement either or both interfaces more than once for different generic types if it's appropriate.
 Developers might need to use <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation">explicit interface implementation</a> to avoid ambiguity of overloads.</p>
 <h3 id="example-the-integerinrange-rule">Example: The <code>IntegerInRange</code> rule</h3>
-<p>The rule <a class="xref" href="../../../api/CSF.Validation.Rules.IntegerInRange.html"><code>IntegerInRange</code></a> in the standard rules package implements <code>IRule&lt;TValidated&gt;</code> for all of the following types:</p>
+<p>The rule <a href="xref:CSF.Validation.Rules.IntegerInRange"><code>IntegerInRange</code></a> in the standard rules package implements <code>IRule&lt;TValidated&gt;</code> for all of the following types:</p>
 <ul>
 <li><code>Byte</code></li>
 <li><code>Int16</code></li>
@@ -101,10 +101,10 @@ Developers might need to use <a href="https://docs.microsoft.com/en-us/dotnet/cs
 This rule may be reused regardless of the type of integer value, or whether that value is nullable or not</p>
 <h2 id="which-interface-to-choose">Which interface to choose?</h2>
 <p>The <code>IRule&lt;in TValidated&gt;</code> interface is suitable for the majority of validation rules.
-The value to be validated is provided to <a class="xref" href="../../../api/CSF.Validation.Rules.IRule-1.html#CSF_Validation_Rules_IRule_1_GetResultAsync__0_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_">the <code>GetResultAsync</code> method</a> and the rule logic returns a result based upon that value.</p>
+The value to be validated is provided to <a href="xref:CSF.Validation.Rules.IRule%601.GetResultAsync(%600,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">the <code>GetResultAsync</code> method</a> and the rule logic returns a result based upon that value.</p>
 <p>Use the <code>IRule&lt;in TValue, in TParent&gt;</code> interface when the validation rule also requires access to the object from which the value was derived.
 This is most common when validating properties of a model object.
-<a class="xref" href="../../../api/CSF.Validation.Rules.IRule-2.html#CSF_Validation_Rules_IRule_2_GetResultAsync__0__1_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_">The <code>GetResultAsync</code> method in <code>IRule&lt;in TValue, in TParent&gt;</code></a> receives a 'parent' object as an additional parameter.</p>
+<a href="xref:CSF.Validation.Rules.IRule%602.GetResultAsync(%600,%601,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">The <code>GetResultAsync</code> method in <code>IRule&lt;in TValue, in TParent&gt;</code></a> receives a 'parent' object as an additional parameter.</p>
 <h3 id="example-validating-a-library-book-loan">Example: Validating a library book loan</h3>
 <p>Imagine we are validating the following model.</p>
 <pre><code class="lang-csharp">public class LibraryBookLoan

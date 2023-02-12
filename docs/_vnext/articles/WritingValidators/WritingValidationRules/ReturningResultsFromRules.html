@@ -83,7 +83,7 @@
 </ul>
 <p>In <em>truly exceptional</em> scenarios it is acceptable to either throw an exception from the rule class or to return an error result.</p>
 <h2 id="returning-a-pass-or-failure-result">Returning a pass or failure result</h2>
-<p>In order to return pass/failure results <a href="../../BestPractice/UseCommonRuleResults.html">it is strongly recommended</a> to use <a class="xref" href="../../../api/CSF.Validation.Rules.CommonResults.html">the static class <strong><code>CommonResults</code></strong></a>.
+<p>In order to return pass/failure results <a href="../../BestPractice/UseCommonRuleResults.html">it is strongly recommended</a> to use <a href="xref:CSF.Validation.Rules.CommonResults">the static class <strong><code>CommonResults</code></strong></a>.
 This class is intended to be used via the <code>using static</code> syntax, as demonstrated below.</p>
 <pre><code class="lang-csharp">using static CSF.Validation.Rules.CommonResults;
 
@@ -101,10 +101,10 @@ public class NotAString : IRule&lt;object&gt;
 <p>As well as the pass &amp; fail scenarios here, there are also methods dealing with <em>error results</em>; we will cover these below.</p>
 <h3 id="synchronous-or-asynchronous-operation">Synchronous or asynchronous operation</h3>
 <p>The example above is of a rule that runs synchronously; there is nothing to <code>await</code> and the <code>GetResultAsync</code> method does not need to be made <code>async</code>.
-All overloads of the <code>PassAsync</code>, <code>FailAsync</code> &amp; <code>ErrorAsync</code> methods upon the <a class="xref" href="../../../api/CSF.Validation.Rules.CommonResults.html"><code>CommonResults</code></a> class will return completed tasks with a result already available.</p>
+All overloads of the <code>PassAsync</code>, <code>FailAsync</code> &amp; <code>ErrorAsync</code> methods upon the <a href="xref:CSF.Validation.Rules.CommonResults"><code>CommonResults</code></a> class will return completed tasks with a result already available.</p>
 <p>Rules may also operate asynchronously.
 This is useful where the rule logic requires use of an awaitable method from a dependency, such as reading from a database.
-For these results you may use overloads of the <code>Pass</code>, <code>Fail</code> &amp; <code>Error</code> methods from <a class="xref" href="../../../api/CSF.Validation.Rules.CommonResults.html"><code>CommonResults</code></a>.
+For these results you may use overloads of the <code>Pass</code>, <code>Fail</code> &amp; <code>Error</code> methods from <a href="xref:CSF.Validation.Rules.CommonResults"><code>CommonResults</code></a>.
 These methods are more suitable when you wish to use the <code>async</code> keyword with the <code>GetResultAsync</code> method.</p>
 <h3 id="returning-additional-data">Returning additional data</h3>
 <p>All of the methods defined on the <code>CommonResults</code> class present an overload that accepts <a href="ResultData.html">a dictionary of result data</a>.
@@ -114,16 +114,16 @@ This allows advanced usages scenarios in which supplemental information may be r
 For example a rule which must read a value from a database is likely to throw an exception if the database is unavailable.</p>
 <p>CSF.Validation attempts to minimuse the amount of boilerplate <code>try/catch</code> that developers must write in their rule classes.
 Any and all exceptions which originate in a <code>GetResultAsync</code> method are caught automatically by the framework.
-These exceptions are translated to validation results which have an outcome of <a class="xref" href="../../../api/CSF.Validation.Rules.RuleOutcome.html"><code>RuleOutcome.Errored</code></a>.
-The <a class="xref" href="../../../api/CSF.Validation.ValidationRuleResult.html"><code>ValidationRuleResult</code></a> resulting from this caught exception will include <a class="xref" href="../../../api/CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Exception">a reference to the exception which was thrown by the rule</a>.</p>
+These exceptions are translated to validation results which have an outcome of <a href="xref:CSF.Validation.Rules.RuleOutcome"><code>RuleOutcome.Errored</code></a>.
+The <a href="xref:CSF.Validation.ValidationRuleResult"><code>ValidationRuleResult</code></a> resulting from this caught exception will include <a href="xref:CSF.Validation.Rules.RuleResult.Exception">a reference to the exception which was thrown by the rule</a>.</p>
 <h3 id="how-the-validator-treats-errors">How the validator treats errors</h3>
 <p>The validator treats error results similarly to failures; an error result does not count as a pass.
 For rules which have dependencies, if any of a rule's dependencies' results is an error then the dependent rule will not be executed.</p>
-<p>When one or more validation results has the outcome <a class="xref" href="../../../api/CSF.Validation.Rules.RuleOutcome.html"><code>RuleOutcome.Errored</code></a>, the framework's default behaviour is to throw an exception at the end of validation.
+<p>When one or more validation results has the outcome <a href="xref:CSF.Validation.Rules.RuleOutcome"><code>RuleOutcome.Errored</code></a>, the framework's default behaviour is to throw an exception at the end of validation.
 That exception will contain the complete validation result including all of the error results.
-This behaviour may be overridden by specifying <a class="xref" href="../../../api/CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour">the <code>RuleThrowingBehaviour</code> property</a> on <a class="xref" href="../../../api/CSF.Validation.ValidationOptions.html">an instance of <code>ValidationOptions</code></a> passed to the validator.</p>
+This behaviour may be overridden by specifying <a href="xref:CSF.Validation.ValidationOptions.RuleThrowingBehaviour">the <code>RuleThrowingBehaviour</code> property</a> on <a href="xref:CSF.Validation.ValidationOptions">an instance of <code>ValidationOptions</code></a> passed to the validator.</p>
 <h3 id="returning-error-results-manually">Returning error results manually</h3>
-<p>It is also possible, using <a class="xref" href="../../../api/CSF.Validation.Rules.CommonResults.html">the <code>CommonResults</code> class</a> to manually create and return an error result, via either of the <code>ErrorAsync()</code> or <code>Error()</code> methods.
+<p>It is also possible, using <a href="xref:CSF.Validation.Rules.CommonResults">the <code>CommonResults</code> class</a> to manually create and return an error result, via either of the <code>ErrorAsync()</code> or <code>Error()</code> methods.
 The only practical difference between using these methods and allowing the rule <code>GetResultAsync</code> method to throw an exception is:</p>
 <ul>
 <li>A manually-returned error result does not require an exception</li>

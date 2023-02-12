@@ -98,7 +98,7 @@ If there is no complex validation to be performed then this framework is likely 
 <p>CSF.Validation is also less well-suited for validation which must be architecturally connected with a specific user interface technology.</p>
 <h2 id="features-and-benefits">Features and benefits</h2>
 <h3 id="compatible-with-dependency-injection">Compatible with dependency injection</h3>
-<p><a href="WritingValidators/WritingValidationRules/index.html">Validation rule classes</a> and (if you wish to use them) [validation message providers] are fully compatible with .NET dependency injection.
+<p><a href="WritingValidators/WritingValidationRules/index.html">Validation rule classes</a> and (if you wish to use them) <a class="xref" href="WritingMessageProviders.html">validation message providers</a> are fully compatible with .NET dependency injection.
 Rule and failure message logic may use constructor-injected dependencies like the rest of your business logic.</p>
 <h3 id="flexible">Flexible</h3>
 <p>The CSF.Validation architecture is flexible; you may define validators declaratively in code or as data such as JSON or XML.
@@ -113,6 +113,13 @@ Each individual validation rule is written in a single-responsibility class.</p>
 <h3 id="generates-feedback-messages">Generates feedback messages</h3>
 <p>An optional function of the validation logic is the generation of human-readable feedback messages for validation.
 Typically this is used for validation rules which fail, to inform the user why the data is invalid and to help them correct the problem.</p>
+<h3 id="unit-testable">Unit testable</h3>
+<p>Each validation rule is held within its own class, which only needs implement one or more interfaces.
+Because these classes are compatible with dependency injection, they are easy to unit test.
+It is also possible [<em>to test a validator</em> or a validation manifest]; use the default implementation
+of <a href="xref:CSF.Validation.ValidatorValidation.IValidatesValidationManifest"><code>IValidatesValidationManifest</code></a> within your own integration tests to sanity-check your own validators
+for common mistakes.</p>
+<p>For more information about testing validators &amp; rules, please read <a href="Testing.html">the testing documentation</a>.</p>
 </article>
           </div>
           
