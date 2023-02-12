@@ -10,14 +10,14 @@ namespace CSF.Validation.Rules
         public void GetResultAsyncShouldReturnPassIfValueIsNull(MatchesRegex sut, [RuleContext] RuleContext context)
         {
             sut.Pattern = "abc";
-            Assert.That(() =>sut.GetResultAsync(null, context), Is.PassingValidationResult);
+            Assert.That(() =>sut.GetResultAsync(null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValueMatchesRegexPattern(MatchesRegex sut, [RuleContext] RuleContext context)
         {
             sut.Pattern = "abc";
-            Assert.That(() =>sut.GetResultAsync("123abc123", context), Is.PassingValidationResult);
+            Assert.That(() =>sut.GetResultAsync("123abc123", context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -25,7 +25,7 @@ namespace CSF.Validation.Rules
         {
             // In this case we are expecting failure because default regex options are to be case-sensitive
             sut.Pattern = "ABC";
-            Assert.That(() =>sut.GetResultAsync("123abc123", context), Is.FailingValidationResult);
+            Assert.That(() =>sut.GetResultAsync("123abc123", context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -33,7 +33,7 @@ namespace CSF.Validation.Rules
         {
             sut.Pattern = "ABC";
             sut.RegexOptions = RegexOptions.IgnoreCase;
-            Assert.That(() =>sut.GetResultAsync("123abc123", context), Is.PassingValidationResult);
+            Assert.That(() =>sut.GetResultAsync("123abc123", context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]

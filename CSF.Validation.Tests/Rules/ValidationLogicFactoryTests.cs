@@ -20,7 +20,7 @@ namespace CSF.Validation.Rules
                                                                                   string str,
                                                                                   [RuleContext] RuleContext context)
         {
-            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var value = new ManifestItem { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
             value.Rules.Add(rule);
             var ruleBody = new StringRule();
@@ -38,7 +38,7 @@ namespace CSF.Validation.Rules
                                                                                  string str,
                                                                                  [RuleContext] RuleContext context)
         {
-            var value = new ManifestValue { ValidatedType = typeof(string), Parent = new ManifestValue { ValidatedType = typeof(ComplexObject) } };
+            var value = new ManifestItem { ValidatedType = typeof(string), Parent = new ManifestItem { ValidatedType = typeof(ComplexObject) } };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
             value.Rules.Add(rule);
             var ruleBody = new StringValueRule();
@@ -56,7 +56,7 @@ namespace CSF.Validation.Rules
                                                                                                                                          string str,
                                                                                                                                          [RuleContext] RuleContext context)
         {
-            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var value = new ManifestItem { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringValueRule)));
             value.Rules.Add(rule);
             var ruleBody = new StringValueRule();
@@ -74,7 +74,7 @@ namespace CSF.Validation.Rules
                                                                                  string str,
                                                                                  string configValue)
         {
-            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var value = new ManifestItem { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
             rule.RuleConfiguration = obj => ((StringRule)obj).ConfigurableValue = configValue;
             value.Rules.Add(rule);
@@ -91,7 +91,7 @@ namespace CSF.Validation.Rules
                                                                                                                          ValidationLogicFactory sut,
                                                                                                                          string str)
         {
-            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var value = new ManifestItem { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(StringRule)));
             rule.RuleConfiguration = obj => throw new Exception();
             value.Rules.Add(rule);
@@ -106,7 +106,7 @@ namespace CSF.Validation.Rules
                                                                                                          ValidationLogicFactory sut,
                                                                                                          string str)
         {
-            var value = new ManifestValue { ValidatedType = typeof(string) };
+            var value = new ManifestItem { ValidatedType = typeof(string) };
             var rule = new ManifestRule(value, new ManifestRuleIdentifier(value, typeof(object)));
             value.Rules.Add(rule);
             var ruleBody = new object();
@@ -120,10 +120,10 @@ namespace CSF.Validation.Rules
                                                                                                               ValidationLogicFactory sut,
                                                                                                               string str)
         {
-            var value = new ManifestValue
+            var value = new ManifestItem
             {
                 ValidatedType = typeof(string),
-                Parent = new ManifestValue
+                Parent = new ManifestItem
                 {
                     ValidatedType = typeof(int),
                 }
@@ -142,12 +142,13 @@ namespace CSF.Validation.Rules
                                                                                                               string str,
                                                                                                               [RuleContext] RuleContext context)
         {
-            var value = new ManifestValue
+            var value = new ManifestItem
             {
                 ValidatedType = typeof(IEnumerable<string>),
-                CollectionItemValue = new ManifestCollectionItem
+                CollectionItemValue = new ManifestItem
                 {
                     ValidatedType = typeof(string),
+                    ItemType = ManifestItemTypes.CollectionItem,
                 },
             };
             var rule = new ManifestRule(value.CollectionItemValue, new ManifestRuleIdentifier(value.CollectionItemValue, typeof(StringRule)));
@@ -166,10 +167,14 @@ namespace CSF.Validation.Rules
                                                                                                                             ValidationLogicFactory sut,
                                                                                                                             string str)
         {
-            var value = new ManifestValue
+            var value = new ManifestItem
             {
                 ValidatedType = typeof(int),
-                CollectionItemValue = new ManifestCollectionItem { ValidatedType = typeof(int) }
+                CollectionItemValue = new ManifestItem
+                {
+                    ValidatedType = typeof(int),
+                    ItemType = ManifestItemTypes.CollectionItem,
+                }
             };
             var rule = new ManifestRule(value.CollectionItemValue, new ManifestRuleIdentifier(value.CollectionItemValue, typeof(StringRule)));
             value.Rules.Add(rule);

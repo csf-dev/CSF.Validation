@@ -16,7 +16,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="currentValue">The current manifest value from which the <paramref name="relativeIdentifier"/> should be derived.</param>
         /// <param name="relativeIdentifier">The relative rule identifier.</param>
         /// <returns>A manifest rule identifier.</returns>
-        public ManifestRuleIdentifier GetManifestRuleIdentifier(IManifestItem currentValue, RelativeRuleIdentifier relativeIdentifier)
+        public ManifestRuleIdentifier GetManifestRuleIdentifier(ManifestItem currentValue, RelativeRuleIdentifier relativeIdentifier)
         {
             if (currentValue is null)
                 throw new ArgumentNullException(nameof(currentValue));
@@ -27,12 +27,12 @@ namespace CSF.Validation.ValidatorBuilding
             return new ManifestRuleIdentifier(manifestValue, relativeIdentifier.RuleType, relativeIdentifier.RuleName);
         }
 
-        static IManifestItem GetManifestValue(IManifestItem baseValue, RelativeRuleIdentifier relativeIdentifier)
+        static ManifestItem GetManifestValue(ManifestItem baseValue, RelativeRuleIdentifier relativeIdentifier)
         {
             var current = baseValue;
 
             for (var i = relativeIdentifier.AncestorLevels; i > 0; i--)
-                current = current?.Parent ?? throw GetInsufficientParentsException(relativeIdentifier.AncestorLevels, nameof(relativeIdentifier));
+                current = current?.Parent as ManifestItem ?? throw GetInsufficientParentsException(relativeIdentifier.AncestorLevels, nameof(relativeIdentifier));
 
             var memberName = relativeIdentifier.MemberName;
             if(!String.IsNullOrEmpty(memberName))
@@ -43,13 +43,13 @@ namespace CSF.Validation.ValidatorBuilding
 
         static Exception GetCannotFindMemberException(string memberName, string paramName)
         {
-            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveChildMember"), nameof(ManifestValue), memberName);
+            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveChildMember"), nameof(ManifestItem), memberName);
             return new ArgumentException(message, paramName);
         }
 
         static ArgumentException GetInsufficientParentsException(int ancestorLevels, string paramName)
         {
-            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveSufficientAncestorLevels"), nameof(ManifestValue), ancestorLevels);
+            var message = String.Format(GetExceptionMessage("ManifestValueDoesNotHaveSufficientAncestorLevels"), nameof(ManifestItem), ancestorLevels);
             return new ArgumentException(message, paramName);
         }
     }

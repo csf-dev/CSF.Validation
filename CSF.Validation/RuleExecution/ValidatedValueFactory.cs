@@ -8,7 +8,7 @@ using CSF.Validation.Manifest;
 namespace CSF.Validation.RuleExecution
 {
     /// <summary>
-    /// A service which gets a <see cref="ValidatedValue"/> from a <see cref="ManifestValue"/> and an object
+    /// A service which gets a <see cref="ValidatedValue"/> from a <see cref="ManifestItem"/> and an object
     /// to be validated.
     /// </summary>
     /// <remarks>
@@ -31,7 +31,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="options">The validation options.</param>
         /// <returns>A validated value, including a hierarchy of descendent values and
         /// the rules which may be executed upon those values.</returns>
-        public ValidatedValue GetValidatedValue(ManifestValue manifestValue,
+        public ValidatedValue GetValidatedValue(ManifestItem manifestValue,
                                                 object objectToBeValidated,
                                                 ResolvedValidationOptions options)
         {
@@ -66,7 +66,7 @@ namespace CSF.Validation.RuleExecution
 
         IList<ValidatedValue> GetValidatedValues(ValidatedValueBasis basis)
         {
-            if(!(basis.ManifestValue is ManifestCollectionItem))
+            if(!(basis.ManifestValue.IsCollectionItem))
             {
                 var value = valueFromBasisFactory.GetValidatedValue(basis);
                 if(!(basis.Parent is null))

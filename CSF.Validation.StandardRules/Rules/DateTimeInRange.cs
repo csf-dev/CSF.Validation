@@ -1,6 +1,8 @@
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -29,7 +31,7 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class DateTimeInRange : IRule<DateTime>, IRule<DateTime?>
+    public class DateTimeInRange : IRuleWithMessage<DateTime>, IRuleWithMessage<DateTime?>
     {
         /// <summary>
         /// Gets or sets the (inclusive) start <see cref="DateTime"/> for validating DateTimes.
@@ -41,28 +43,30 @@ namespace CSF.Validation.Rules
         /// </summary>
         public DateTime? End { get; set; }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(DateTime? value, ValidationRuleResult result, CancellationToken token = default)
+        {
+            if(Start.HasValue && End.HasValue)
+                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeRange"), Start, End, value));
+            if(Start.HasValue)
+                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeMin"), Start, value));
+
+            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeMax"), End, value));
+        }
+
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(DateTime? validated, RuleContext context, CancellationToken token = default)
             => !validated.HasValue ? PassAsync() : GetResultAsync(validated.Value, context, token);
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(DateTime validated, RuleContext context, CancellationToken token = default)
         {
             var result = (!Start.HasValue || Start.Value <= validated)
                       && (!End.HasValue   || validated   <= End.Value);
             return result ? PassAsync() : FailAsync();
         }
+
+        Task<string> IGetsFailureMessage<DateTime>.GetFailureMessageAsync(DateTime value, ValidationRuleResult result, CancellationToken token)
+            => GetFailureMessageAsync(value, result, token);
     }
 }

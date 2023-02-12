@@ -15,7 +15,7 @@ namespace CSF.Validation.Manifest
     /// <list type="bullet">
     /// <item><description><see cref="ManifestRule"/></description></item>
     /// <item><description><see cref="ManifestRuleIdentifier"/></description></item>
-    /// <item><description><see cref="ManifestValue"/></description></item>
+    /// <item><description><see cref="ManifestItem"/></description></item>
     /// </list>
     /// </remarks>
     public class ManifestModelAttribute : CustomizeAttribute

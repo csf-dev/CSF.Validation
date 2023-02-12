@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using CSF.Validation.Manifest;
 
 namespace CSF.Validation.RuleExecution
@@ -12,7 +11,7 @@ namespace CSF.Validation.RuleExecution
         readonly IGetsAccessorExceptionBehaviour behaviourProvider;
 
         /// <inheritdoc/>
-        public GetValueToBeValidatedResponse GetValueToBeValidated(IManifestValue manifestValue, object parentValue, ResolvedValidationOptions validationOptions)
+        public GetValueToBeValidatedResponse GetValueToBeValidated(ManifestItem manifestValue, object parentValue, ResolvedValidationOptions validationOptions)
         {
             if(parentValue is null) return IgnoredGetValueToBeValidatedResponse.Default;
 

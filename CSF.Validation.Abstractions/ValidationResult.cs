@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using CSF.Validation.Manifest;
 using CSF.Validation.Rules;
 
@@ -27,11 +28,42 @@ namespace CSF.Validation
         /// <inheritdoc/>
         public abstract SerializableValidationResult ToSerializableResult();
 
-        IManifestItem IQueryableValidationResult.ManifestValue => Manifest.RootValue;
+        ManifestItem IQueryableValidationResult.ManifestValue => Manifest.RootValue;
 
         IEnumerator<ValidationRuleResult> IEnumerable<ValidationRuleResult>.GetEnumerator() => RuleResults.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => RuleResults.GetEnumerator();
+
+        /// <summary>
+        /// Gets a string representation of the current instance.
+        /// </summary>
+        /// <returns>A string representation.</returns>
+        public override string ToString() => ToString(null);
+
+        /// <summary>
+        /// Gets a string representation of the current instance, possibly skipping some rule results with irrelevant outcomes.
+        /// </summary>
+        /// <param name="omittedOutcomes">An optional collection of rule outcomes to omit when displaying rule results.</param>
+        /// <returns>A string representation.</returns>
+        public string ToString(IEnumerable<RuleOutcome> omittedOutcomes)
+        {
+            omittedOutcomes = omittedOutcomes ?? Enumerable.Empty<RuleOutcome>();
+
+            var builder = new StringBuilder();
+            builder.AppendLine($"[{nameof(ValidationResult)}<{Manifest.ValidatedType}>: {nameof(ValidationResult.Passed)} = {Passed}]");
+            if(omittedOutcomes.Any())
+                builder.AppendLine($"Rule results, omitting those with outcomes {{ {String.Join(", ", omittedOutcomes)} }}:");
+            else
+                builder.AppendLine("Rule results:");
+
+            foreach(var ruleResult in RuleResults)
+            {
+                if(omittedOutcomes.Contains(ruleResult.Outcome)) continue;
+                builder.AppendLine($"    {ruleResult}");
+            }
+
+            return builder.ToString();
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidationResult"/>.

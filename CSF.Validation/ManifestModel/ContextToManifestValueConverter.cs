@@ -11,12 +11,12 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsManifestItemFromModelToManifestConversionContext next;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             if(context.ConversionType != ModelToManifestConversionType.Manifest)
                 return next.GetManifestItem(context);
 
-            var manifestValue = new ManifestValue
+            var manifestValue = new ManifestItem
             {
                 Parent = context.ParentManifestValue,
                 MemberName = context.MemberName,

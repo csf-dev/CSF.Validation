@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -37,6 +39,13 @@ namespace CSF.Validation.Rules
     /// side-effects such as performance degradation.
     /// </para>
     /// <para>
+    /// Note that when using this class to provide a failure message for an <see cref="IQueryable{T}"/>, the failure message will not
+    /// indicate the actual count of elements exposed by the queryable.  This is for performance reasons; the validation rule makes use
+    /// of <see cref="Queryable.Any{TSource}(IQueryable{TSource})"/>, which does not read the count from the queryable, only determines if
+    /// at least one element is present.  The message-generation logic does not further interrogate the queryable, as doing so may incur
+    /// further undesired computational cost.
+    /// </para>
+    /// <para>
     /// If you do not wish to (or cannot) specify the generic type of the validated value then you may instead use the non-generic
     /// <see cref="Empty"/> rule.
     /// </para>
@@ -45,28 +54,17 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class Empty<T> : IRule<ICollection<T>>, IRule<IReadOnlyCollection<T>>, IRule<IQueryable<T>>
+    public class Empty<T> : IRuleWithMessage<ICollection<T>>, IRuleWithMessage<IReadOnlyCollection<T>>, IRuleWithMessage<IQueryable<T>>
     {
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Count == 0 ? PassAsync() : FailAsync();
+            var data = new Dictionary<string, object> { { Empty.CountKey, validated.Count } };
+            return validated.Count == 0 ? PassAsync(data) : FailAsync(data);
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
@@ -76,7 +74,20 @@ namespace CSF.Validation.Rules
         Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
         {
             if(validated is null) return PassAsync();
-            return validated.Count == 0 ? PassAsync() : FailAsync();
+            var data = new Dictionary<string, object> { { Empty.CountKey, validated.Count } };
+            return validated.Count == 0 ? PassAsync(data) : FailAsync(data);
         }
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(Empty.GetFailureMessage(result));
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(Empty.GetFailureMessage(result));
+
+        /// <inheritdoc/>
+        public Task<string> GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => Task.FromResult(Empty.GetFailureMessage(result));
     }
 }

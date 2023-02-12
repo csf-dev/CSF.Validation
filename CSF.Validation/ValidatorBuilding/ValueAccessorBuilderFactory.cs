@@ -3,12 +3,12 @@ using System;
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// A factory service which gets instances of <see cref="IBuildsValueAccessor{TValidated, TValue}"/>.
+    /// A factory service which gets instances of <see cref="IConfiguresValueAccessor{TValidated, TValue}"/>.
     /// </summary>
     public class ValueAccessorBuilderFactory : IGetsValueAccessorBuilder
     {
         readonly Func<IGetsRuleBuilder> ruleBuilderFactory;
-        readonly Func<IGetsValidatorManifest> validatorManifestFactory;
+        readonly Func<IGetsValidatorBuilderContextFromBuilder> validatorManifestFactory;
         readonly Func<IGetsValidatorBuilderContext> contextFactory;
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="ValidatorBuilderContext">Contextual information about how validation rules should be built.</param>
         /// <param name="valueConfig">An action which configures the value accessor-builder.</param>
         /// <returns>A builder for validating the derived value.</returns>
-        public IBuildsValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(ValidatorBuilderContext ValidatorBuilderContext,
+        public IConfiguresValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(ValidatorBuilderContext ValidatorBuilderContext,
                                                                                                     Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig)
         {
             var builder = new ValueAccessorBuilder<TValidated, TValue>(ValidatorBuilderContext,
@@ -39,7 +39,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="validatorManifestFactory">A function which gets a validator manifest factory.</param>
         /// <param name="contextFactory">A function which gets a validation context factory.</param>
         public ValueAccessorBuilderFactory(Func<IGetsRuleBuilder> ruleBuilderFactory,
-                                           Func<IGetsValidatorManifest> validatorManifestFactory,
+                                           Func<IGetsValidatorBuilderContextFromBuilder> validatorManifestFactory,
                                            Func<IGetsValidatorBuilderContext> contextFactory)
         {
             this.ruleBuilderFactory = ruleBuilderFactory ?? throw new ArgumentNullException(nameof(ruleBuilderFactory));

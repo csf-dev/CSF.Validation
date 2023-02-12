@@ -12,21 +12,22 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsManifestItemFromModelToManifestConversionContext next;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             if(context.ConversionType != ModelToManifestConversionType.PolymorphicType)
                 return next.GetManifestItem(context);
 
             var validatedType = Type.GetType(context.PolymorphicTypeName, true);
 
-            var polymorphicType = new ManifestPolymorphicType
+            var polymorphicType = new ManifestItem
             {
                 Parent = context.ParentManifestValue,
                 ValidatedType = validatedType,
+                ItemType = ManifestItemTypes.PolymorphicType,
             };
             
-            if (context.ParentManifestValue is IHasPolymorphicTypes polyParent)
-                polyParent.PolymorphicTypes.Add(polymorphicType);
+            if (!(context.ParentManifestValue.IsPolymorphicType))
+                context.ParentManifestValue.PolymorphicTypes.Add(polymorphicType);
 
             return polymorphicType;
         }

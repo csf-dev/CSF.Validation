@@ -18,7 +18,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="objectToBeValidated">The object to be validated.</param>
         /// <param name="options">The validation options.</param>
         /// <returns>A flattened collection of executable rules from the manifest value and the value's descendents.</returns>
-        public IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestValue manifestValue,
+        public IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestItem manifestValue,
                                                                 object objectToBeValidated,
                                                                 ResolvedValidationOptions options)
         {

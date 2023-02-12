@@ -10,7 +10,7 @@ namespace CSF.Validation
     public class ValueContextIsMatchForItemTests
     {
         [Test,AutoMoqData]
-        public void GetExpressionGetsAnExpresssionWhichReturnsTrueForAManifestValueAndNoItem([ManifestModel] ManifestValue value,
+        public void GetExpressionGetsAnExpresssionWhichReturnsTrueForAManifestValueAndNoItem([ManifestModel] ManifestItem value,
                                                                                              object identity,
                                                                                              object actualValue)
         {
@@ -20,8 +20,8 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionGetsAnExpresssionWhichReturnsFalseForADifferentManifestValueAndNoItem([ManifestModel] ManifestValue value,
-                                                                                                       [ManifestModel] ManifestValue otherValue,
+        public void GetExpressionGetsAnExpresssionWhichReturnsFalseForADifferentManifestValueAndNoItem([ManifestModel] ManifestItem value,
+                                                                                                       [ManifestModel] ManifestItem otherValue,
                                                                                                        object identity,
                                                                                                        object actualValue)
         {
@@ -31,7 +31,7 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionGetsAnExpresssionWhichReturnsTrueForAManifestValueAndAnItemWithTheCorrectIdentity([ManifestModel] ManifestValue value,
+        public void GetExpressionGetsAnExpresssionWhichReturnsTrueForAManifestValueAndAnItemWithTheCorrectIdentity([ManifestModel] ManifestItem value,
                                                                                                                    ObjectWithIdentity item)
         {
             value.IdentityAccessor = obj => ((ObjectWithIdentity)obj).Identity;
@@ -41,7 +41,7 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionGetsAnExpresssionWhichReturnsFalseForAManifestValueAndAnItemWithTheWrongIdentity([ManifestModel] ManifestValue value,
+        public void GetExpressionGetsAnExpresssionWhichReturnsFalseForAManifestValueAndAnItemWithTheWrongIdentity([ManifestModel] ManifestItem value,
                                                                                                                   ObjectWithIdentity item)
         {
             value.IdentityAccessor = obj => ((ObjectWithIdentity)obj).Identity;
@@ -51,7 +51,7 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionGetsAnExpresssionWhichReturnsTrueForAManifestValueAndTheSameItemWithoutIdentity([ManifestModel] ManifestValue value,
+        public void GetExpressionGetsAnExpresssionWhichReturnsTrueForAManifestValueAndTheSameItemWithoutIdentity([ManifestModel] ManifestItem value,
                                                                                                                  ObjectWithIdentity item)
         {
             value.IdentityAccessor = null;
@@ -61,7 +61,7 @@ namespace CSF.Validation
         }
 
         [Test,AutoMoqData]
-        public void GetExpressionGetsAnExpresssionWhichReturnsFalseForAManifestValueAndADifferentItemWithoutIdentity([ManifestModel] ManifestValue value,
+        public void GetExpressionGetsAnExpresssionWhichReturnsFalseForAManifestValueAndADifferentItemWithoutIdentity([ManifestModel] ManifestItem value,
                                                                                                                      ObjectWithIdentity item,
                                                                                                                      ObjectWithIdentity otherItem)
         {

@@ -12,7 +12,7 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets or sets the manifest value to which the current instance relates.
         /// </summary>
-        public IManifestItem ManifestValue { get; set;  }
+        public ManifestItem ManifestValue { get; set;  }
 
         /// <summary>
         /// Gets or sets a response object which may expose an "actual value" of the validated value.
@@ -78,24 +78,24 @@ namespace CSF.Validation.RuleExecution
         /// <param name="item">A manifest item</param>
         /// <param name="valueResponse">A value response</param>
         /// <returns><see langword="true" /> if the current instance matches the item and value response; <see langword="false" /> otherwise.</returns>
-        public bool IsMatch(IManifestItem item, GetValueToBeValidatedResponse valueResponse)
+        public bool IsMatch(ManifestItem item, GetValueToBeValidatedResponse valueResponse)
         {
             if (item is null)
                 throw new ArgumentNullException(nameof(item));
             if (valueResponse is null)
                 throw new ArgumentNullException(nameof(valueResponse));
 
-            IManifestItem
+            ManifestItem
                 thisItem = GetManifestItemForMatching(ManifestValue),
                 thatItem = GetManifestItemForMatching(item);
             
             return ReferenceEquals(thisItem, thatItem) && Equals(ValueResponse, valueResponse);
         }
 
-        static IManifestItem GetManifestItemForMatching(IManifestItem item)
+        static ManifestItem GetManifestItemForMatching(ManifestItem item)
         {
-            if(item is RecursiveManifestValue recursiveItem)
-                return recursiveItem.WrappedValue;
+            if(item.IsRecursive)
+                return item.RecursiveAncestor;
             return item;
         }
 

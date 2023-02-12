@@ -16,12 +16,12 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWithDependenciesShouldNotThrowIfThereAreNoCircularDependencies([Frozen] IGetsAllExecutableRulesWithDependencies wrapped,
                                                                                            [Frozen] IDetectsCircularDependencies circularDependencyDetector,
                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
-                                                                                           [ManifestModel] ManifestValue manifestValue,
+                                                                                           [ManifestModel] ManifestItem manifestValue,
                                                                                            object objectToBeValidated,
                                                                                            ResolvedValidationOptions validationOptions)
         {
             Mock.Get(wrapped)
-                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
+                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestItem>(), It.IsAny<object>(), validationOptions))
                 .Returns(new ExecutableRuleAndDependencies[0]);
             Mock.Get(circularDependencyDetector)
                 .Setup(x => x.GetCircularDependencies(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>()))
@@ -33,38 +33,24 @@ namespace CSF.Validation.RuleExecution
         public void GetRulesWithDependenciesShouldThrowValidationExceptionWithCorrectMessageIfThereAreCircularDependencies([Frozen] IGetsAllExecutableRulesWithDependencies wrapped,
                                                                                                                            [Frozen] IDetectsCircularDependencies circularDependencyDetector,
                                                                                                                            CircularDependencyPreventingRulesWithDependenciesDecorator sut,
-                                                                                                                           [ManifestModel] ManifestValue manifestValue,
+                                                                                                                           [ManifestModel] ManifestItem manifestValue,
                                                                                                                            object objectToBeValidated,
                                                                                                                            ResolvedValidationOptions validationOptions)
         {
             var circularDependencies = GetSomeCircularDependencies(manifestValue);
             var expectedMessage = @"Validation rules may not have circular dependencies.  Following is a list of the circular dependencies found, to a maximum of the first 10.
 
-Type               = System.String
-Name               = Foo
-Validated type     = System.Int32
-Validated identity = Identity 1
-->  Type           = System.DateTime
-    Validated type = System.Int64
-    ->  Type               = System.String
-        Name               = Foo
-        Validated type     = System.Int32
-        Validated identity = Identity 1
+[RuleIdentifier: Type = System.String, Name = Foo, Validated type = System.Int32, Validated identity = Identity 1]
+->  [RuleIdentifier: Type = System.DateTime, Validated type = System.Int64]
+    ->  [RuleIdentifier: Type = System.String, Name = Foo, Validated type = System.Int32, Validated identity = Identity 1]
 
-Type               = System.String
-Name               = Bar
-Validated type     = System.Int32
-Validated identity = Identity 2
-->  Type           = System.Object
-    Validated type = System.Int64
-    ->  Type               = System.String
-        Name               = Bar
-        Validated type     = System.Int32
-        Validated identity = Identity 2
+[RuleIdentifier: Type = System.String, Name = Bar, Validated type = System.Int32, Validated identity = Identity 2]
+->  [RuleIdentifier: Type = System.Object, Validated type = System.Int64]
+    ->  [RuleIdentifier: Type = System.String, Name = Bar, Validated type = System.Int32, Validated identity = Identity 2]
 ";
 
             Mock.Get(wrapped)
-                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestValue>(), It.IsAny<object>(), validationOptions))
+                .Setup(x => x.GetRulesWithDependencies(It.IsAny<ManifestItem>(), It.IsAny<object>(), validationOptions))
                 .Returns(new ExecutableRuleAndDependencies[0]);
             Mock.Get(circularDependencyDetector)
                 .Setup(x => x.GetCircularDependencies(It.IsAny<IEnumerable<ExecutableRuleAndDependencies>>()))
@@ -73,7 +59,7 @@ Validated identity = Identity 2
             Assert.That(() => sut.GetRulesWithDependencies(manifestValue, objectToBeValidated, validationOptions), Throws.InstanceOf<ValidationException>().And.Message.EqualTo(expectedMessage));
         }
 
-        static IEnumerable<CircularDependency> GetSomeCircularDependencies(ManifestValue manifestValue)
+        static IEnumerable<CircularDependency> GetSomeCircularDependencies(ManifestItem manifestValue)
         {
             return new[] {
                 new CircularDependency

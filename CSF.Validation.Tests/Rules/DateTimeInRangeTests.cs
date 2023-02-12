@@ -9,7 +9,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValueIsNull(DateTimeInRange sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -17,7 +17,7 @@ namespace CSF.Validation.Rules
         {
             sut.Start = new DateTime(2001, 1, 1);
             sut.End = new DateTime(2002, 1, 1);
-            Assert.That(() => sut.GetResultAsync(new DateTime(2001, 6, 1), context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new DateTime(2001, 6, 1), context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -25,7 +25,7 @@ namespace CSF.Validation.Rules
         {
             sut.Start = new DateTime(2001, 1, 1);
             sut.End = new DateTime(2002, 1, 1);
-            Assert.That(() => sut.GetResultAsync(new DateTime(1999, 6, 1), context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new DateTime(1999, 6, 1), context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -33,7 +33,7 @@ namespace CSF.Validation.Rules
         {
             sut.Start = new DateTime(2001, 1, 1);
             sut.End = new DateTime(2002, 1, 1);
-            Assert.That(() => sut.GetResultAsync(new DateTime(2010, 6, 1), context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(new DateTime(2010, 6, 1), context), Is.FailingRuleResult);
         }
     }
 }

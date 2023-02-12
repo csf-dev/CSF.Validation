@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CSF.Validation.Manifest;
-using static CSF.Validation.Resources.ExceptionMessages;
 
 namespace CSF.Validation.ValidatorBuilding
 {
@@ -10,12 +9,10 @@ namespace CSF.Validation.ValidatorBuilding
     /// A builder which is used to define &amp; configure a single instance of a validation rule.
     /// </summary>
     /// <typeparam name="TRule">The concrete type of the configured validation rule.</typeparam>
-    public class RuleBuilder<TRule> : IBuildsRule<TRule>
+    public class RuleBuilder<TRule> : IConfiguresRule<TRule>, IConfiguresContext
     {
-        readonly ValidatorBuilderContext context;
         readonly IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestId;
         readonly IGetsManifestRuleIdentifier identifierFactory;
-        bool ruleCreated;
 
         ICollection<RelativeRuleIdentifier> dependencies = new HashSet<RelativeRuleIdentifier>();
         Action<TRule> ruleConfig = r => { };
@@ -65,22 +62,9 @@ namespace CSF.Validation.ValidatorBuilding
             this.ruleConfig = ruleConfig ?? (r => { });
         }
 
-        /// <summary>
-        /// Gets a manifest value from the current instance, which will be the same manifest value instance passed via the
-        /// <see cref="ValidatorBuilderContext"/> constructor parameter as <see cref="ValidatorBuilderContext.ManifestValue"/>,
-        /// but which will also have received one additional rule added.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This method may be called a maximum of once.
-        /// </para>
-        /// </remarks>
-        /// <returns>A manifest value.</returns>
-        public IManifestItem GetManifestValue()
+        /// <inheritdoc/>
+        public void ConfigureContext(ValidatorBuilderContext context)
         {
-            if(ruleCreated)
-                return context.ManifestValue;
-                
             var identifier = identifierFactory.GetManifestRuleIdentifier(typeof(TRule), context, Name);
             var dependencyRules = Dependencies
                 .Select(relativeIdentifier => relativeToManifestId.GetManifestRuleIdentifier(context.ManifestValue, relativeIdentifier))
@@ -92,21 +76,16 @@ namespace CSF.Validation.ValidatorBuilding
                 DependencyRules = dependencyRules,
             };
             context.ManifestValue.Rules.Add(rule);
-            ruleCreated = true;
-            return context.ManifestValue;
         }
 
         /// <summary>
         /// Initialises an instance of <see cref="RuleBuilder{TRule}"/>.
         /// </summary>
-        /// <param name="context">The rule-building context</param>
         /// <param name="relativeToManifestIdentityConverter">A service which converts relative rule identifiers to absolute ones.</param>
         /// <param name="identifierFactory">A factory which creates manifest identifiers.</param>
-        public RuleBuilder(ValidatorBuilderContext context,
-                           IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter,
+        public RuleBuilder(IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter,
                            IGetsManifestRuleIdentifier identifierFactory)
         {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
             this.relativeToManifestId = relativeToManifestIdentityConverter ?? throw new ArgumentNullException(nameof(relativeToManifestIdentityConverter));
             this.identifierFactory = identifierFactory ?? throw new ArgumentNullException(nameof(identifierFactory));
         }

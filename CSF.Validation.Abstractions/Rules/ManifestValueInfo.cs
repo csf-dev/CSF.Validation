@@ -10,13 +10,15 @@ namespace CSF.Validation.Rules
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This type roughly corresponds to a <see cref="IManifestItem"/> and its derived types.  The key difference
+    /// This type roughly corresponds to a <see cref="ManifestItem"/> and its derived types.  The key difference
     /// between that and this 'info' class is that this type is immutable and presents a read-only API.
     /// </para>
     /// </remarks>
     public class ManifestValueInfo
     {
-        readonly IManifestItem manifestValue;
+        readonly ManifestItem manifestValue;
+        readonly Lazy<ManifestValueInfo> collectionItemValue;
+        readonly Lazy<IReadOnlyCollection<ManifestValueInfo>> children;
 
         /// <summary>
         /// Gets the type of the object which the current manifest value describes.
@@ -27,7 +29,7 @@ namespace CSF.Validation.Rules
         /// Where the current value represents a member access invocation (such as
         /// a property getter), this property gets the name of that member.
         /// </summary>
-        public string MemberName => (manifestValue is IManifestValue val)? val.MemberName : null;
+        public string MemberName => (manifestValue.IsValue)? manifestValue.MemberName : null;
 
         /// <summary>
         /// Gets an optional value object which indicates how items within a collection are to be validated.
@@ -43,12 +45,12 @@ namespace CSF.Validation.Rules
         /// property will be <see langword="null" />.
         /// </para>
         /// </remarks>
-        public ManifestValueInfo CollectionItemValue { get; }
+        public ManifestValueInfo CollectionItemValue => collectionItemValue.Value;
 
         /// <summary>
         /// Gets a collection of the immediate descendents of the current manifest value.
         /// </summary>
-        public IReadOnlyCollection<ManifestValueInfo> Children { get; }
+        public IReadOnlyCollection<ManifestValueInfo> Children => children.Value;
 
         /// <summary>
         /// Gets or sets an optional value which indicates the desired behaviour should the value-accessor raise an exception.
@@ -76,29 +78,34 @@ namespace CSF.Validation.Rules
         /// </para>
         /// </remarks>
         /// <returns>The original manifest value from which this instance was created.</returns>
-        public IManifestItem GetOriginalManifestValue() => manifestValue;
+        public ManifestItem GetOriginalManifestValue() => manifestValue;
 
         /// <summary>
         /// Initialises an instance of <see cref="ManifestValueInfo"/>.
-        /// This is essentially a copy-constructor for a <see cref="IManifestItem"/>.
+        /// This is essentially a copy-constructor for a <see cref="ManifestItem"/>.
         /// </summary>
         /// <param name="manifestValue">The manifest value from which to create this instance.</param>
         /// <exception cref="System.ArgumentNullException">If <paramref name="manifestValue"/> is <see langword="null" />.</exception>
-        public ManifestValueInfo(IManifestItem manifestValue)
+        public ManifestValueInfo(ManifestItem manifestValue)
         {
             this.manifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
 
-            CollectionItemValue = manifestValue.CollectionItemValue is null
+            collectionItemValue = new Lazy<ManifestValueInfo>(() =>
+            {
+                return manifestValue.CollectionItemValue is null
                 ? null
                 : new ManifestValueInfo(manifestValue.CollectionItemValue);
-            
-            Children = manifestValue.Children
-                .Where(x => !(x is RecursiveManifestValue))
+            });
+
+            children = new Lazy<IReadOnlyCollection<ManifestValueInfo>>(() =>
+            {
+                return manifestValue.Children
                 .Select(x => new ManifestValueInfo(x))
                 .ToList();
+            });
             
-            if(manifestValue is ManifestValue val)
-                AccessorExceptionBehaviour = val.AccessorExceptionBehaviour;
+            if(manifestValue.IsValue)
+                AccessorExceptionBehaviour = manifestValue.AccessorExceptionBehaviour;
         }
     }
 }

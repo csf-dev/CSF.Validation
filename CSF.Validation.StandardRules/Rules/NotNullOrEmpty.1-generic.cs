@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -21,18 +22,12 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class NotNullOrEmpty<T> : IRule<ICollection<T>>, IRule<IReadOnlyCollection<T>>, IRule<IQueryable<T>>
+    public class NotNullOrEmpty<T> : IRuleWithMessage<ICollection<T>>, IRuleWithMessage<IReadOnlyCollection<T>>, IRuleWithMessage<IQueryable<T>>
     {
         readonly NotNull notNull;
         readonly NotEmpty<T> notEmpty;
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
@@ -41,13 +36,7 @@ namespace CSF.Validation.Rules
             return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
@@ -56,13 +45,7 @@ namespace CSF.Validation.Rules
             return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
+        /// <inheritdoc/>
         public Task<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
@@ -70,6 +53,15 @@ namespace CSF.Validation.Rules
             var notEmptyResult = notEmpty.GetResultAsync(validated, context, token).Result;
             return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
         }
+
+        Task<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
+            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+
+        Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
+            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+
+        Task<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
+            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
         /// <summary>
         /// Initialises a new instance of <see cref="NotNullOrEmpty{T}"/>.

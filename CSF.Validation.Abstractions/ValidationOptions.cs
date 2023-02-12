@@ -69,12 +69,12 @@ namespace CSF.Validation
         /// </para>
         /// <para>
         /// Please note that the behaviour specified in this validation option can be overridden by individual
-        /// values in the validation manifest.  The property <see cref="ManifestValue.AccessorExceptionBehaviour"/>,
+        /// values in the validation manifest.  The property <see cref="ManifestItem.AccessorExceptionBehaviour"/>,
         /// where set to a non-null value, will override the behaviour specified upon this options property.
         /// </para>
         /// </remarks>
         /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.AccessorExceptionBehaviour"/>
-        /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
+        /// <seealso cref="ManifestItem.AccessorExceptionBehaviour"/>
         /// <seealso cref="ValueAccessExceptionBehaviour"/>
         /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
         public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }

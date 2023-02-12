@@ -14,26 +14,26 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsManifestItemFromModelToManifestConversionContext next;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             if(context.ConversionType != ModelToManifestConversionType.RecursiveManifestValue)
                 return next.GetManifestItem(context);
 
             var ancestor = GetAncestor(context);
-            var recursiveItem = new RecursiveManifestValue(ancestor)
-            {
-                AccessorFromParent = context.AccessorFromParent,
-                MemberName = context.MemberName,
-                Parent = context.ParentManifestValue,
-            };
-            
+            var recursiveItem = new ManifestItem();
+            recursiveItem.MakeRecursive(ancestor);
+            recursiveItem.AccessorFromParent = context.AccessorFromParent;
+            recursiveItem.MemberName = context.MemberName;
+            recursiveItem.Parent = context.ParentManifestValue;
+
+
             if (context.ParentManifestValue != null)
                 context.ParentManifestValue.Children.Add(recursiveItem);
 
             return recursiveItem;
         }
 
-        static IManifestItem GetAncestor(ModelToManifestConversionContext context)
+        static ManifestItem GetAncestor(ModelToManifestConversionContext context)
         {
             var ancestorLevels = context.CurrentValue.ValidateRecursivelyAsAncestor.Value;
             try

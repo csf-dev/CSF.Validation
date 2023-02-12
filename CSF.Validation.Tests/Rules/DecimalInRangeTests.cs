@@ -8,7 +8,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassIfValueIsNull(DecimalInRange sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -16,7 +16,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => sut.GetResultAsync(6, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(6, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -24,7 +24,7 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => sut.GetResultAsync(2, context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(2, context), Is.FailingRuleResult);
         }
 
         [Test,AutoMoqData]
@@ -32,7 +32,37 @@ namespace CSF.Validation.Rules
         {
             sut.Min = 5;
             sut.Max = 10;
-            Assert.That(() => sut.GetResultAsync(20, context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(20, context), Is.FailingRuleResult);
+        }
+
+        [Test,AutoMoqData,SetCulture("en-GB")]
+        public void GetFailureMessageAsyncShouldReturnTheCorrectMessageWhenMinAndMaxAreSet(DecimalInRange sut,
+                                                                                           [RuleResult] ValidationRuleResult result)
+        {
+            sut.Min = 1.5m;
+            sut.Max = 2.5m;
+            Assert.That(async () => await sut.GetFailureMessageAsync(3.5m, result),
+                        Is.EqualTo("The value must be in the range 1.5 to 2.5 (inclusive). The actual value is 3.5."));
+        }
+
+        [Test,AutoMoqData,SetCulture("en-GB")]
+        public void GetFailureMessageAsyncShouldReturnTheCorrectMessageWhenMinIsSet(DecimalInRange sut,
+                                                                                    [RuleResult] ValidationRuleResult result)
+        {
+            sut.Min = 1.5m;
+            sut.Max = null;
+            Assert.That(async () => await sut.GetFailureMessageAsync(0.5m, result),
+                        Is.EqualTo("The value must be greater than or equal to 1.5. The actual value is 0.5."));
+        }
+
+        [Test,AutoMoqData,SetCulture("en-GB")]
+        public void GetFailureMessageAsyncShouldReturnTheCorrectMessageWhenMaxIsSet(DecimalInRange sut,
+                                                                                    [RuleResult] ValidationRuleResult result)
+        {
+            sut.Min = null;
+            sut.Max = 2.5m;
+            Assert.That(async () => await sut.GetFailureMessageAsync(3.5m, result),
+                        Is.EqualTo("The value must be less than or equal to 2.5. The actual value is 3.5."));
         }
     }
 }

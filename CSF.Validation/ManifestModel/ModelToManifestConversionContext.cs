@@ -15,10 +15,10 @@ namespace CSF.Validation.ManifestModel
         public ValueBase CurrentValue { get; set; }
 
         /// <summary>
-        /// Gets or sets an optional reference to the parent (already-converted) <see cref="ManifestValue"/>
+        /// Gets or sets an optional reference to the parent (already-converted) <see cref="ManifestItem"/>
         /// which should be used as the parent of the <see cref="CurrentValue"/>.
         /// </summary>
-        public IManifestItem ParentManifestValue { get; set; }
+        public ManifestItem ParentManifestValue { get; set; }
 
         /// <summary>
         /// Gets or sets an optional member name which would be used to traverse from the

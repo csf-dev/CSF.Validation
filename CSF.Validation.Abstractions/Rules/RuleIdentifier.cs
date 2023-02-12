@@ -31,19 +31,13 @@ namespace CSF.Validation.Rules
                     { "Type", RuleType.FullName },
                     { "Name", RuleName },
                     { "Validated type", ValidatedType.FullName },
+                    { "Member name", MemberName },
                     { "Validated identity", ObjectIdentity?.ToString() },
                 }
                 .Where(x => x.Value != null)
-                .ToDictionary(x => x.Key, x => x.Value);
-
-            var longestKey = GetLongestKey(properties);
-            return String.Join(Environment.NewLine, properties.Select(prop => String.Concat(FormatKey(prop.Key, longestKey), prop.Value)));
+                .Select(x => $"{x.Key} = {x.Value}");
+            return $"[{nameof(RuleIdentifier)}: {String.Join(", ", properties)}]";
         }
-
-        static string FormatKey(string key, int width) => key.PadRight(width) + " = ";
-
-        static int GetLongestKey(Dictionary<string, string> properties)
-            => (from prop in properties orderby prop.Key.Length descending select prop.Key).First().Length;
 
         /// <summary>
         /// Initializes a new instance of <see cref="RuleIdentifier"/>.
@@ -72,7 +66,7 @@ namespace CSF.Validation.Rules
                               object objectIdentity) : this(manifestRule.Identifier.RuleType,
                                                             manifestRule.Identifier.ValidatedType,
                                                             objectIdentity,
-                                                            (manifestRule.ManifestValue is IManifestValue val)? val.MemberName : null,
+                                                            (manifestRule.ManifestValue.IsValue)? manifestRule.ManifestValue.MemberName : null,
                                                             manifestRule.Identifier.RuleName) {}
     }
 }

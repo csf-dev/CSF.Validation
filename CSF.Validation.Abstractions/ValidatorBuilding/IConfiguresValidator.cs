@@ -79,6 +79,29 @@ namespace CSF.Validation.ValidatorBuilding
         IConfiguresValidator<TValidated> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValidated>;
 
         /// <summary>
+        /// Adds/imports rules from an object that implements <see cref="IBuildsValidator{TBase}"/>.  These rules should be for validation
+        /// of a type from which <typeparamref name="TValidated"/> derives.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This allows composition of validators and use of rules declared to validate a base type, reusing validation rules across differing
+        /// validation scenarios. All of the rules specified in the selected builder-type will be imported and added to the current validator.
+        /// </para>
+        /// </remarks>
+        /// <typeparam name="TBuilder">
+        /// The type of a class implementing <see cref="IBuildsValidator{TBase}"/>, specifying how a validator for the base type should be built.
+        /// </typeparam>
+        /// <typeparam name="TBase">
+        /// The base type, for which validation rules are to be imported.  The type <typeparamref name="TValidated"/> must derive from
+        /// the type specified in this generic type parameter.
+        /// </typeparam>
+        /// <returns>A reference to the same builder object, enabling chaining of calls if desired.</returns>
+        /// <exception cref="InvalidCastException">
+        /// If the type specified as <typeparamref name="TBase"/> is not an ancestor type to <typeparamref name="TValidated"/>.
+        /// </exception>
+        IConfiguresValidator<TValidated> AddBaseRules<TBase, TBuilder>() where TBuilder : IBuildsValidator<TBase>;
+
+        /// <summary>
         /// Allows addition of validation which will work upon the value of a specific member of the validated object.
         /// </summary>
         /// <remarks>
@@ -169,7 +192,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <remarks>
         /// <para>
         /// If this method is used then the current value will be configured for recursive (or re-entrant) validation.  It will be converted as a
-        /// <see cref="CSF.Validation.Manifest.RecursiveManifestValue"/> rather than a normal value.
+        /// <see cref="CSF.Validation.Manifest.ManifestItem"/> that is recursive rather than a normal value.
         /// </para>
         /// <para>
         /// The numeric value of <paramref name="depth"/> must be a positive integer &amp; indicates the level of ancestor

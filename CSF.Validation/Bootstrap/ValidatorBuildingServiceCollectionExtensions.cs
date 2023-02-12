@@ -11,7 +11,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsValidatorBuilderContext,ValidatorBuilderContextFactory>()
                 .AddTransient<IGetsRuleBuilder,RuleBuilderFactory>()
                 .AddTransient<IGetsValueAccessorBuilder,ValueAccessorBuilderFactory>()
-                .AddTransient<IGetsValidatorManifest,ImportedValidatorBuilderManifestFactory>()
+                .AddTransient<IGetsValidatorBuilderContextFromBuilder,ImportedValidatorBuilderManifestFactory>()
                 .AddTransient<IGetsManifestRuleIdentifier,ManifestIdentifierFactory>()
                 .AddTransient<IGetsValidatorBuilder,ValidatorBuilderFactory>()
                 .AddTransient<IGetsManifestRuleIdentifierFromRelativeIdentifier,RelativeToManifestRuleIdentifierConverter>()
@@ -20,7 +20,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransientFactory<IGetsRuleBuilder>()
                 .AddTransientFactory<IGetsValidatorBuilderContext>()
                 .AddTransientFactory<IGetsValueAccessorBuilder>()
-                .AddTransientFactory<IGetsValidatorManifest>()
+                .AddTransientFactory<IGetsValidatorBuilderContextFromBuilder>()
                 .AddTransientFactory<IGetsManifestRuleIdentifier>()
                 ;
         }

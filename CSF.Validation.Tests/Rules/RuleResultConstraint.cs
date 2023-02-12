@@ -3,7 +3,7 @@ using NUnit.Framework.Constraints;
 
 namespace CSF.Validation.Rules
 {
-    public class ValidationResultConstraint : NUnit.Framework.Constraints.Constraint
+    public class RuleResultConstraint : Constraint
     {
         readonly RuleOutcome expectedOutcome;
 
@@ -30,10 +30,10 @@ namespace CSF.Validation.Rules
         ConstraintResult GetConstraintResult(RuleOutcome outcome, object actual)
             => new ConstraintResult(this, actual, outcome == expectedOutcome);
 
-        public ValidationResultConstraint(RuleOutcome expectedOutcome)
+        public RuleResultConstraint(RuleOutcome expectedOutcome)
         {
             this.expectedOutcome = expectedOutcome;
-            Description = $"Validation result with outcome {expectedOutcome}";
+            Description = $"Validation rule result with outcome {expectedOutcome}";
         }
     }
 }

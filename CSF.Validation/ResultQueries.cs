@@ -37,16 +37,9 @@ namespace CSF.Validation
                 throw new ArgumentNullException(nameof(results));
 
             var member = Reflection.Reflect.Member(memberExpression);
-            var collectionValue = results.ManifestValue.Children.FirstOrDefault(x => x.MemberName == member.Name);
+            var collectionValue = results.ManifestValue.Children.FirstOrDefault(x => x.MemberName == member.Name && x.CollectionItemValue != null);
 
-            if(collectionValue is null)
-            {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("NoMatchingMemberInManifest"),
-                                            typeof(TValidated).FullName,
-                                            member.Name);
-                throw new ArgumentException(message, nameof(memberExpression));
-            }
-            if(collectionValue.CollectionItemValue is null)
+            if(collectionValue?.CollectionItemValue is null)
             {
                 var message = string.Format(Resources.ExceptionMessages.GetExceptionMessage("ValueMustBeACollection"),
                                             typeof(TValidated).FullName,
@@ -82,15 +75,14 @@ namespace CSF.Validation
             if (results is null)
                 throw new ArgumentNullException(nameof(results));
 
-            if(!(results.ManifestValue is IHasPolymorphicTypes poly))
+            if(results.ManifestValue.IsPolymorphicType)
             {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
-                                            typeof(IHasPolymorphicTypes).Name,
-                                            results.ManifestValue.GetType().FullName);
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeAPolymorphicType"),
+                                            typeof(ManifestItem).Name);
                 throw new ArgumentException(message, nameof(results));
             }
 
-            var polymorphicManifest = poly.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == typeof(TDerived));
+            var polymorphicManifest = results.ManifestValue.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == typeof(TDerived));
             if(polymorphicManifest is null)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustHaveMatchingPolymorphicManifest"),

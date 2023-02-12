@@ -25,9 +25,9 @@ namespace CSF.Validation.ValidatorBuilding
 
             sut.Name = "Rule name";
 
-            var rule = sut.GetManifestValue().Rules.Single();
+            sut.ConfigureContext(context);
 
-            Assert.That(rule.Identifier, Is.SameAs(identifier));
+            Assert.That(context.ManifestValue.Rules.Single().Identifier, Is.SameAs(identifier));
         }
 
         [Test,AutoMoqData]
@@ -43,10 +43,10 @@ namespace CSF.Validation.ValidatorBuilding
             sut.ConfigureRule(r => r.StringProp = stringPropValue);
             sut.Dependencies.Clear();
 
-            var rule = sut.GetManifestValue().Rules.Single();
+            sut.ConfigureContext(context);
 
             var sampleRule = new SampleRule();
-            rule.RuleConfiguration(sampleRule);
+            context.ManifestValue.Rules.Single().RuleConfiguration(sampleRule);
             Assert.That(sampleRule.StringProp, Is.EqualTo(stringPropValue), "Configuration action applied correctly");
 
         }
@@ -72,9 +72,10 @@ namespace CSF.Validation.ValidatorBuilding
 
             sut.Dependencies = new[] { relativeId1, relativeId2, relativeId3 };
 
-            var result = sut.GetManifestValue().Rules.Single();
+            sut.ConfigureContext(context);
 
-            Assert.That(result, Has.Property(nameof(ManifestRule.DependencyRules)).EquivalentTo(new[] { manifestId1, manifestId2, manifestId3 }));
+            Assert.That(context.ManifestValue.Rules.Single(),
+                        Has.Property(nameof(ManifestRule.DependencyRules)).EquivalentTo(new[] { manifestId1, manifestId2, manifestId3 }));
         }
         
         public class SampleRule

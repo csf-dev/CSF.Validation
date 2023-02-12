@@ -24,7 +24,7 @@ namespace CSF.Validation.ValidatorBuilding
         {
             var sut = new RuleBuilderFactory(() => identifierConverter, () => identifierFactory);
             var result = sut.GetRuleBuilder<ObjectRule>(context, c => c.Name = name);
-            Assert.That(result.Name, Is.EqualTo(name));
+            Assert.That(((RuleBuilder<ObjectRule>) result).Name, Is.EqualTo(name));
         }
     }
 }

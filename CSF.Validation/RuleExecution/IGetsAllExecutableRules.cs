@@ -9,7 +9,7 @@ namespace CSF.Validation.RuleExecution
     /// <remarks>
     /// <para>
     /// This includes the traversal of any descendent values from the object to be validated, as dictated by the
-    /// descendents of the specified <see cref="ManifestValue"/>.
+    /// descendents of the specified <see cref="ManifestItem"/>.
     /// </para>
     /// </remarks>
     public interface IGetsAllExecutableRules
@@ -21,7 +21,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="objectToBeValidated">The object to be validated.</param>
         /// <param name="options">The validation options.</param>
         /// <returns>A flattened collection of executable rules from the manifest value and the value's descendents.</returns>
-        IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestValue manifestValue,
+        IReadOnlyList<ExecutableRule> GetExecutableRules(ManifestItem manifestValue,
                                                          object objectToBeValidated,
                                                          ResolvedValidationOptions options);
     }
