@@ -35,7 +35,7 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnAPassResultForAnEmptyArray(Empty sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync(new object[0], context), Is.PassingRuleResult);
+            Assert.That(() => sut.GetResultAsync(Array.Empty<object>(), context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]

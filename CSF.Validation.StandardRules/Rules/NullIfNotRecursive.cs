@@ -14,6 +14,7 @@ namespace CSF.Validation.Rules
         /// <inheritdoc/>
         public Task<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
         {
+            // TODO: Write this impl
             throw new System.NotImplementedException();
         }
 
