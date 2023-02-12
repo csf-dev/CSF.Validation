@@ -86,9 +86,9 @@ namespace CSF.Validation.ManifestModel
                 openList.Enqueue(collectionItem);
             }
 
-            if(currentContext.CurrentValue is IHasPolymorphicValues hasPolyValues)
+            if(currentContext.ConversionType != ModelToManifestConversionType.PolymorphicType)
             {
-                foreach(var polyValue in hasPolyValues.PolymorphicValues)
+                foreach(var polyValue in currentContext.CurrentValue.PolymorphicValues)
                 {
                     var polymorphicItem = new ModelToManifestConversionContext
                     {

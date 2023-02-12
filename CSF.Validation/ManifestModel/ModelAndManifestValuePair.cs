@@ -16,6 +16,6 @@ namespace CSF.Validation.ManifestModel
         /// <summary>
         /// Gets or sets the model value instance.
         /// </summary>
-        public ValueBase ModelValue { get; set; }
+        public Value ModelValue { get; set; }
     }
 }

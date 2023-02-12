@@ -43,14 +43,14 @@ namespace CSF.Validation.ManifestModel
             catch(ArgumentOutOfRangeException ex)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AncestorLevelsMustNotBeLessThanOne"),
-                                            nameof(ValueBase.ValidateRecursivelyAsAncestor));
+                                            nameof(Value.ValidateRecursivelyAsAncestor));
                 throw new ValidationException(message, ex);
             }
             catch(InvalidOperationException ex)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("NotEnoughAncestorsForAncestorLevels"),
-                                            nameof(ValueBase.ValidateRecursivelyAsAncestor),
-                                            nameof(ValueBase));
+                                            nameof(Value.ValidateRecursivelyAsAncestor),
+                                            nameof(Value));
                 throw new ValidationException(message, ex);
             }
         }

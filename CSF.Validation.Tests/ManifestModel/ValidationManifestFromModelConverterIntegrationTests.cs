@@ -96,7 +96,7 @@ namespace CSF.Validation.ManifestModel
                         },
                     } },
                     { nameof(ComplexObject.Children), new Value {
-                        CollectionItemValue = new CollectionItemValue
+                        CollectionItemValue = new Value
                         {
                             IdentityMemberName = nameof(ComplexObject.Identity),
                             Rules =  {

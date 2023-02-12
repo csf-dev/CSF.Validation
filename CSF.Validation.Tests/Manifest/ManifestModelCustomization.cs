@@ -49,7 +49,6 @@ namespace CSF.Validation.Manifest
                     .Without(x => x.PolymorphicValues)
                     .Without(x => x.ValidateRecursivelyAsAncestor);
             });
-            fixture.Customize<PolymorphicValue>(c => c.Without(x => x.Children).Without(x => x.Rules).Without(x => x.CollectionItemValue));
             fixture.Customize<Rule>(c => c.Without(x => x.Dependencies));
             fixture.Customize<ValidatorBuilderContext>(c => c.FromFactory((ManifestItem val) => new ValidatorBuilderContext(val)));
             fixture.Customize<ModelToManifestConversionContext>(c =>
