@@ -52,12 +52,12 @@ namespace CSF.Validation.Rules
                 {ownRulesKey, ownRulesCount},
             };
 
-            return !hasOwnCollectionItem
-                && ownChildrenCount == 0
-                && ownPolymorphicTypesCount == 0
-                && ownRulesCount == 0
-                ? PassAsync(data)
-                : FailAsync(data);
+            var ok = !hasOwnCollectionItem
+                  && ownChildrenCount == 0
+                  && ownPolymorphicTypesCount == 0
+                  && ownRulesCount == 0;
+            
+            return ok ? PassAsync(data) : FailAsync(data);
         }
     }
 }

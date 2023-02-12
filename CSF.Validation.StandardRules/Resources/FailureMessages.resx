@@ -281,7 +281,7 @@
   </data>
   <data name="MayNotHaveOwnItemsIfRecursive" xml:space="preserve">
     <value>Manifest items which include the type {0} must not have any of their own descendent items; they must all be derived from the recursive ancestor.
-{1} is null? {2} (must be null for recursive items)
+{1} is not null? {2} (must be null for recursive items)
 {3} has count {4} (must be empty for recursive items)
 {5} has count {6} (must be empty for recursive items)
 {7} has count {8} (must be empty for recursive items)</value>

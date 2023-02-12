@@ -19,7 +19,7 @@ namespace CSF.Validation.Rules
                                         nameof(ManifestItemTypes.PolymorphicType),
                                         nameof(ManifestItem.ValidatedType),
                                         nameof(ManifestItem.Parent),
-                                        parentValue?.ValidatedType,
+                                        value,
                                         parentValue?.Parent?.ValidatedType);
             return Task.FromResult(message);
         }
