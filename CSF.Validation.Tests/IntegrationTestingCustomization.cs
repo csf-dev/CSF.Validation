@@ -29,8 +29,7 @@ namespace CSF.Validation
                     c.AddMessageProvider(typeof(IntegrationTests.DateTimeInRangeMessageProvider));
                     c.AddMessageProvider(typeof(IntegrationTests.CantBeOwnedByUnderageChildrenMessageProvider));
                     c.AddMessageProvider(typeof(MessageThrowingAnExceptionIntegrationTests.MessageThatThrowsAnException));
-                    // Blocked on #76
-                    // c.AddMessageProvidersInAssemblies(typeof(StandardRulesServiceCollectionExtensions).Assembly);
+                    c.AddMessageProvidersInAssemblies(typeof(StandardRulesServiceCollectionExtensions).Assembly);
                 })
                 ;
             return serviceCollection.BuildServiceProvider();
