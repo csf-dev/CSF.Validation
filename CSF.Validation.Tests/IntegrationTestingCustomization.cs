@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using AutoFixture;
+using CSF.Validation.IntegrationTests;
 using CSF.Validation.ValidatorValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,6 +28,7 @@ namespace CSF.Validation
                 .UseMessageProviders(c => {
                     c.AddMessageProvider(typeof(IntegrationTests.DateTimeInRangeMessageProvider));
                     c.AddMessageProvider(typeof(IntegrationTests.CantBeOwnedByUnderageChildrenMessageProvider));
+                    c.AddMessageProvider(typeof(MessageThrowingAnExceptionIntegrationTests.MessageThatThrowsAnException));
                     // Blocked on #76
                     // c.AddMessageProvidersInAssemblies(typeof(StandardRulesServiceCollectionExtensions).Assembly);
                 })

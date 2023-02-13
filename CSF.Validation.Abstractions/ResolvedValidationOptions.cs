@@ -93,6 +93,31 @@ namespace CSF.Validation
         public bool EnableMessageGeneration { get; set; } = false;
 
         /// <summary>
+        /// Gets or sets a value that determines whether or not the validator should treat errors encountered whilst generating
+        /// validation failure messages as rule errors.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Firstly, this option is irrelevant if <see cref="EnableMessageGeneration"/> is not <see langword="true" />.
+        /// </para>
+        /// <para>
+        /// When this option is not <see langword="true" />, then any errors encountered by the validation framework whilst
+        /// generating validation failure messages are ignored.  In this case, if a message was to be generated for a rule
+        /// result but an error meant that it could not be then the <see cref="ValidationRuleResult.Message"/> property of
+        /// the validation rule result is left <see langword="null" /> but the validation will otherwise complete normally.
+        /// </para>
+        /// <para>
+        /// If this option is set to <see langword="true" /> then if an error occurs whilst generating a message for a
+        /// validation rule then that rule will have its outcome set to <see cref="Rules.RuleOutcome.Errored"/> and the
+        /// exception will be stored within the <see cref="Rules.RuleResult.Exception"/> property. This could then cause
+        /// the overall validation process to raise an exception, depending upon the setting of the
+        /// <see cref="RuleThrowingBehaviour"/> option.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="ValidationOptions.TreatMessageGenerationErrorsAsRuleErrors"/>
+        public bool TreatMessageGenerationErrorsAsRuleErrors { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets a value indicating whether or not rules are permitted to be executed/evaluated in parallel.
         /// This may offer a modest performance gain in the right scenarios.
         /// </summary>
