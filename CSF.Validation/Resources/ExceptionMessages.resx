@@ -297,4 +297,8 @@
     <value>The validation configuration object must implement {0} in order to use it with {1}.</value>
     <comment/>
   </data>
+  <data name="ErrorGeneratingFailureMessage" xml:space="preserve">
+    <value>An exception occurred whilst getting the message for this rule; see the inner exception for more information.</value>
+    <comment/>
+  </data>
 </root>

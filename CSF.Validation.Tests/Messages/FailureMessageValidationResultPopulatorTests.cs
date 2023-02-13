@@ -41,15 +41,17 @@ namespace CSF.Validation.Messages
                                                                                                                 FailureMessageValidationResultPopulator sut,
                                                                                                                 [RuleResult] ValidationRuleResult ruleResult,
                                                                                                                 IGetsFailureMessage messageProvider,
-                                                                                                                string message)
+                                                                                                                string message,
+                                                                                                                ResolvedValidationOptions options)
         {
             var validationResult = new ValidationResult<object>(new[] { ruleResult }, new Manifest.ValidationManifest { ValidatedType = typeof(object) });
             Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(ruleResult)).Returns(messageProvider);
             Mock.Get(messageProvider)
                 .Setup(x => x.GetFailureMessageAsync(ruleResult, It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(message));
+            options.TreatMessageGenerationErrorsAsRuleErrors = false;
 
-            var results = await sut.GetResultWithMessagesAsync(validationResult);
+            var results = await sut.GetResultWithMessagesAsync(validationResult, options);
             var firstResult = results.RuleResults.First();
 
             Assert.Multiple(() =>

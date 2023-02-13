@@ -14,6 +14,7 @@ namespace CSF.Validation
     {
         readonly IValidator<TValidated> validator;
         readonly IAddsFailureMessagesToResult failureMessageEnricher;
+        readonly IGetsResolvedValidationOptions optionsResolver;
 
         /// <inheritdoc/>
         public Type ValidatedType => typeof(TValidated);
@@ -23,8 +24,9 @@ namespace CSF.Validation
         {
             var result = await validator.ValidateAsync(validatedObject, options, cancellationToken).ConfigureAwait(false);
             if(options?.EnableMessageGeneration != true) return result;
-            
-            return await failureMessageEnricher.GetResultWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
+
+            var resolvedOptions = optionsResolver.GetResolvedValidationOptions(options);
+            return await failureMessageEnricher.GetResultWithMessagesAsync(result, resolvedOptions, cancellationToken).ConfigureAwait(false);
         }
 
         async Task<ValidationResult> IValidator.ValidateAsync(object validatedObject, ValidationOptions options, CancellationToken cancellationToken)
@@ -38,11 +40,15 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="validator">A validator instance.</param>
         /// <param name="failureMessageEnricher">A service which adds failure messages to validation results.</param>
+        /// <param name="optionsResolver">An options resolving service.</param>
         /// <exception cref="System.ArgumentNullException">If any parameter is <see langword="null" />.</exception>
-        public MessageEnrichingValidatorDecorator(IValidator<TValidated> validator, IAddsFailureMessagesToResult failureMessageEnricher)
-        {
+        public MessageEnrichingValidatorDecorator(IValidator<TValidated> validator,
+                                                  IAddsFailureMessagesToResult failureMessageEnricher,
+                                                  IGetsResolvedValidationOptions optionsResolver)
+{
             this.validator = validator ?? throw new System.ArgumentNullException(nameof(validator));
             this.failureMessageEnricher = failureMessageEnricher ?? throw new System.ArgumentNullException(nameof(failureMessageEnricher));
+            this.optionsResolver = optionsResolver ?? throw new ArgumentNullException(nameof(optionsResolver));
         }
     }
 }

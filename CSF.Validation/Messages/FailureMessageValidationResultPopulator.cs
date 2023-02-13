@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -17,20 +18,40 @@ namespace CSF.Validation.Messages
         readonly IGetsFailureMessageProvider messageProviderFactory;
 
         /// <inheritdoc/>
-        public async Task<IQueryableValidationResult<TValidated>> GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated> result, CancellationToken cancellationToken = default)
+        public async Task<IQueryableValidationResult<TValidated>> GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated> result,
+                                                                                                         ResolvedValidationOptions options,
+                                                                                                         CancellationToken cancellationToken = default)
         {
-            var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, cancellationToken).ConfigureAwait(false);
+            var resultsWithMessages = await GetRuleResultsWithMessagesAsync(result, options, cancellationToken).ConfigureAwait(false);
             return new ValidationResult<TValidated>(resultsWithMessages, ((ValidationResult<TValidated>) result).Manifest);
         }
 
-        async Task<IEnumerable<ValidationRuleResult>> GetRuleResultsWithMessagesAsync(IQueryableValidationResult result, CancellationToken cancellationToken)
+        async Task<IEnumerable<ValidationRuleResult>> GetRuleResultsWithMessagesAsync(IQueryableValidationResult result,
+                                                                                      ResolvedValidationOptions options,
+                                                                                      CancellationToken cancellationToken)
         {
             var results = new List<ValidationRuleResult>();
 
             foreach (var ruleResult in result.RuleResults)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                results.Add(await GetRuleResultWithMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false));
+                try
+                {
+                    results.Add(await GetRuleResultWithMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false));
+                }
+                catch(Exception e)
+                {
+                    if(options.TreatMessageGenerationErrorsAsRuleErrors)
+                    {
+                        var exception = new ValidationException(Resources.ExceptionMessages.GetExceptionMessage("ErrorGeneratingFailureMessage"), e);
+                        var replacementRuleResult = new RuleResult(RuleOutcome.Errored, ruleResult.Data.ToDictionary(k => k.Key, v => v.Value), exception);
+                        results.Add(new ValidationRuleResult(replacementRuleResult, ruleResult.RuleContext, ruleResult.ValidationLogic));
+                    }
+                    else
+                    {
+                        results.Add(ruleResult);
+                    }
+                }
             }
 
             return results;
