@@ -22,7 +22,9 @@ namespace CSF.Validation
         {
             options.EnableMessageGeneration = true;
             Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, options, default)).Returns(Task.FromResult<IQueryableValidationResult<object>>(originalResult));
-            Mock.Get(failureMessageEnricher).Setup(x => x.GetResultWithMessagesAsync(originalResult, default)).Returns(Task.FromResult<IQueryableValidationResult<object>>(resultWithMessages));
+            Mock.Get(failureMessageEnricher)
+                .Setup(x => x.GetResultWithMessagesAsync(originalResult, It.IsAny<ResolvedValidationOptions>(), default))
+                .Returns(Task.FromResult<IQueryableValidationResult<object>>(resultWithMessages));
 
             Assert.That(async () => await sut.ValidateAsync(validatedObject, options), Is.SameAs(resultWithMessages));
         }
@@ -40,7 +42,9 @@ namespace CSF.Validation
             Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, options, default)).Returns(Task.FromResult<IQueryableValidationResult<object>>(originalResult));
 
             Assert.That(async () => await sut.ValidateAsync(validatedObject, options), Is.SameAs(originalResult));
-            Mock.Get(failureMessageEnricher).Verify(x => x.GetResultWithMessagesAsync<object>(It.IsAny<IQueryableValidationResult<object>>(), It.IsAny<CancellationToken>()), Times.Never);
+            Mock.Get(failureMessageEnricher)
+                .Verify(x => x.GetResultWithMessagesAsync<object>(It.IsAny<IQueryableValidationResult<object>>(), It.IsAny<ResolvedValidationOptions>(), It.IsAny<CancellationToken>()),
+                        Times.Never);
         }
 
         [Test,AutoMoqData]
@@ -54,7 +58,9 @@ namespace CSF.Validation
             Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, default, default)).Returns(Task.FromResult<IQueryableValidationResult<object>>(originalResult));
 
             Assert.That(async () => await sut.ValidateAsync(validatedObject), Is.SameAs(originalResult));
-            Mock.Get(failureMessageEnricher).Verify(x => x.GetResultWithMessagesAsync(It.IsAny<IQueryableValidationResult<object>>(), It.IsAny<CancellationToken>()), Times.Never);
+            Mock.Get(failureMessageEnricher)
+                .Verify(x => x.GetResultWithMessagesAsync(It.IsAny<IQueryableValidationResult<object>>(), It.IsAny<ResolvedValidationOptions>(), It.IsAny<CancellationToken>()),
+                        Times.Never);
         }
 
         [Test,AutoMoqData]
@@ -68,7 +74,9 @@ namespace CSF.Validation
         {
             options.EnableMessageGeneration = true;
             Mock.Get(validator).Setup(x => x.ValidateAsync(validatedObject, options, default)).Returns(Task.FromResult<IQueryableValidationResult<object>>(originalResult));
-            Mock.Get(failureMessageEnricher).Setup(x => x.GetResultWithMessagesAsync(originalResult, default)).Returns(Task.FromResult<IQueryableValidationResult<object>>(resultWithMessages));
+            Mock.Get(failureMessageEnricher)
+                .Setup(x => x.GetResultWithMessagesAsync(originalResult, It.IsAny<ResolvedValidationOptions>(), default))
+                .Returns(Task.FromResult<IQueryableValidationResult<object>>(resultWithMessages));
 
             Assert.That(async () => await ((IValidator) sut).ValidateAsync(validatedObject, options), Is.SameAs(resultWithMessages));
         }

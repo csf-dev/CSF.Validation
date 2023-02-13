@@ -14,8 +14,11 @@ namespace CSF.Validation.Messages
         /// added to the individual rule-results where applicable.
         /// </summary>
         /// <param name="result">The validation result.</param>
+        /// <param name="options">Validation options.</param>
         /// <param name="cancellationToken">An optional token which may be used to cancel the process prematurely.</param>
         /// <returns>A task which exposes a copy of the validation result, but with additional feedback messages.</returns>
-        Task<IQueryableValidationResult<TValidated>> GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated> result, CancellationToken cancellationToken = default);
+        Task<IQueryableValidationResult<TValidated>> GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated> result,
+                                                                                            ResolvedValidationOptions options,
+                                                                                            CancellationToken cancellationToken = default);
     }
 }

@@ -12,6 +12,7 @@ namespace CSF.Validation
         static readonly MethodInfo getValidatorPrivateMethod = typeof(MessageSupportValidatorWrapper).GetTypeInfo().GetDeclaredMethod(nameof(GetValidatorWithMessageSupportPrivate));
 
         readonly IAddsFailureMessagesToResult failureMessageEnricher;
+        readonly IGetsResolvedValidationOptions optionsResolver;
 
         /// <inheritdoc/>
         public IValidator GetValidatorWithMessageSupport(IValidator validator)
@@ -28,16 +29,18 @@ namespace CSF.Validation
             => GetValidatorWithMessageSupportPrivate(validator);
 
         IValidator<TValidated> GetValidatorWithMessageSupportPrivate<TValidated>(IValidator<TValidated> validator)
-            => new MessageEnrichingValidatorDecorator<TValidated>(validator, failureMessageEnricher);
+            => new MessageEnrichingValidatorDecorator<TValidated>(validator, failureMessageEnricher, optionsResolver);
 
         /// <summary>
         /// Initialises a new instance of <see cref="MessageSupportValidatorWrapper"/>.
         /// </summary>
         /// <param name="failureMessageEnricher">The failure message enriching service.</param>
+        /// <param name="optionsResolver">An options resolving service.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="failureMessageEnricher"/> is <see langword="null" />.</exception>
-        public MessageSupportValidatorWrapper(IAddsFailureMessagesToResult failureMessageEnricher)
+        public MessageSupportValidatorWrapper(IAddsFailureMessagesToResult failureMessageEnricher, IGetsResolvedValidationOptions optionsResolver)
         {
             this.failureMessageEnricher = failureMessageEnricher ?? throw new ArgumentNullException(nameof(failureMessageEnricher));
+            this.optionsResolver = optionsResolver ?? throw new ArgumentNullException(nameof(optionsResolver));
         }
     }
 }
