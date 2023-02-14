@@ -10,7 +10,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>CSF.Validation.StandardRules</Title>
     <Description>A library of stock validation rules for general usage.</Description>
-    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>

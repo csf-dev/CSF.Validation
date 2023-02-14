@@ -10,7 +10,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>CSF.Validation.Abstractions</Title>
     <Description>A framework for business rule validation - abstractions package</Description>
-    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>

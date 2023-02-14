@@ -10,7 +10,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>CSF.Validation.Selfhosting</Title>
     <Description>Standalone/self-hosting validation framework for consumers which do not use dependency injection.</Description>
-    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>

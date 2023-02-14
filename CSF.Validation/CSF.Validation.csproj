@@ -10,7 +10,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>CSF.Validation</Title>
     <Description>A framework for business rule validation</Description>
-    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>

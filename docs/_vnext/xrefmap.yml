@@ -519,6 +519,64 @@ references:
   fullName.vb: CSF.Validation.IGetsValidator.GetValidator(Of TValidated)(CSF.Validation.IBuildsValidator(Of TValidated))
   nameWithType: IGetsValidator.GetValidator<TValidated>(IBuildsValidator<TValidated>)
   nameWithType.vb: IGetsValidator.GetValidator(Of TValidated)(IBuildsValidator(Of TValidated))
+- uid: CSF.Validation.IHostsValidationFramework
+  name: IHostsValidationFramework
+  href: api/CSF.Validation.IHostsValidationFramework.html
+  commentId: T:CSF.Validation.IHostsValidationFramework
+  fullName: CSF.Validation.IHostsValidationFramework
+  nameWithType: IHostsValidationFramework
+- uid: CSF.Validation.IHostsValidationFramework.ManifestFromBuilderProvider
+  name: ManifestFromBuilderProvider
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ManifestFromBuilderProvider
+  commentId: P:CSF.Validation.IHostsValidationFramework.ManifestFromBuilderProvider
+  fullName: CSF.Validation.IHostsValidationFramework.ManifestFromBuilderProvider
+  nameWithType: IHostsValidationFramework.ManifestFromBuilderProvider
+- uid: CSF.Validation.IHostsValidationFramework.ManifestFromBuilderProvider*
+  name: ManifestFromBuilderProvider
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ManifestFromBuilderProvider_
+  commentId: Overload:CSF.Validation.IHostsValidationFramework.ManifestFromBuilderProvider
+  isSpec: "True"
+  fullName: CSF.Validation.IHostsValidationFramework.ManifestFromBuilderProvider
+  nameWithType: IHostsValidationFramework.ManifestFromBuilderProvider
+- uid: CSF.Validation.IHostsValidationFramework.ManifestFromModelProvider
+  name: ManifestFromModelProvider
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ManifestFromModelProvider
+  commentId: P:CSF.Validation.IHostsValidationFramework.ManifestFromModelProvider
+  fullName: CSF.Validation.IHostsValidationFramework.ManifestFromModelProvider
+  nameWithType: IHostsValidationFramework.ManifestFromModelProvider
+- uid: CSF.Validation.IHostsValidationFramework.ManifestFromModelProvider*
+  name: ManifestFromModelProvider
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ManifestFromModelProvider_
+  commentId: Overload:CSF.Validation.IHostsValidationFramework.ManifestFromModelProvider
+  isSpec: "True"
+  fullName: CSF.Validation.IHostsValidationFramework.ManifestFromModelProvider
+  nameWithType: IHostsValidationFramework.ManifestFromModelProvider
+- uid: CSF.Validation.IHostsValidationFramework.ManifestValidator
+  name: ManifestValidator
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ManifestValidator
+  commentId: P:CSF.Validation.IHostsValidationFramework.ManifestValidator
+  fullName: CSF.Validation.IHostsValidationFramework.ManifestValidator
+  nameWithType: IHostsValidationFramework.ManifestValidator
+- uid: CSF.Validation.IHostsValidationFramework.ManifestValidator*
+  name: ManifestValidator
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ManifestValidator_
+  commentId: Overload:CSF.Validation.IHostsValidationFramework.ManifestValidator
+  isSpec: "True"
+  fullName: CSF.Validation.IHostsValidationFramework.ManifestValidator
+  nameWithType: IHostsValidationFramework.ManifestValidator
+- uid: CSF.Validation.IHostsValidationFramework.ValidatorFactory
+  name: ValidatorFactory
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ValidatorFactory
+  commentId: P:CSF.Validation.IHostsValidationFramework.ValidatorFactory
+  fullName: CSF.Validation.IHostsValidationFramework.ValidatorFactory
+  nameWithType: IHostsValidationFramework.ValidatorFactory
+- uid: CSF.Validation.IHostsValidationFramework.ValidatorFactory*
+  name: ValidatorFactory
+  href: api/CSF.Validation.IHostsValidationFramework.html#CSF_Validation_IHostsValidationFramework_ValidatorFactory_
+  commentId: Overload:CSF.Validation.IHostsValidationFramework.ValidatorFactory
+  isSpec: "True"
+  fullName: CSF.Validation.IHostsValidationFramework.ValidatorFactory
+  nameWithType: IHostsValidationFramework.ValidatorFactory
 - uid: CSF.Validation.IQueryableValidationResult
   name: IQueryableValidationResult
   href: api/CSF.Validation.IQueryableValidationResult.html
@@ -12874,6 +12932,80 @@ references:
   fullName.vb: CSF.Validation.ValidatorFactoryExtensions.GetValidator(Of TValidated)(CSF.Validation.IGetsValidator, System.Type)
   nameWithType: ValidatorFactoryExtensions.GetValidator<TValidated>(IGetsValidator, Type)
   nameWithType.vb: ValidatorFactoryExtensions.GetValidator(Of TValidated)(IGetsValidator, Type)
+- uid: CSF.Validation.ValidatorHost
+  name: ValidatorHost
+  href: api/CSF.Validation.ValidatorHost.html
+  commentId: T:CSF.Validation.ValidatorHost
+  fullName: CSF.Validation.ValidatorHost
+  nameWithType: ValidatorHost
+- uid: CSF.Validation.ValidatorHost.Build(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Action{CSF.Validation.ValidationOptions})
+  name: Build(Action<IServiceCollection>, Action<ValidationOptions>)
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_Build_System_Action_Microsoft_Extensions_DependencyInjection_IServiceCollection__System_Action_CSF_Validation_ValidationOptions__
+  commentId: M:CSF.Validation.ValidatorHost.Build(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Action{CSF.Validation.ValidationOptions})
+  name.vb: Build(Action(Of IServiceCollection), Action(Of ValidationOptions))
+  fullName: CSF.Validation.ValidatorHost.Build(System.Action<Microsoft.Extensions.DependencyInjection.IServiceCollection>, System.Action<CSF.Validation.ValidationOptions>)
+  fullName.vb: CSF.Validation.ValidatorHost.Build(System.Action(Of Microsoft.Extensions.DependencyInjection.IServiceCollection), System.Action(Of CSF.Validation.ValidationOptions))
+  nameWithType: ValidatorHost.Build(Action<IServiceCollection>, Action<ValidationOptions>)
+  nameWithType.vb: ValidatorHost.Build(Action(Of IServiceCollection), Action(Of ValidationOptions))
+- uid: CSF.Validation.ValidatorHost.Build*
+  name: Build
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_Build_
+  commentId: Overload:CSF.Validation.ValidatorHost.Build
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorHost.Build
+  nameWithType: ValidatorHost.Build
+- uid: CSF.Validation.ValidatorHost.ManifestFromBuilderProvider
+  name: ManifestFromBuilderProvider
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ManifestFromBuilderProvider
+  commentId: P:CSF.Validation.ValidatorHost.ManifestFromBuilderProvider
+  fullName: CSF.Validation.ValidatorHost.ManifestFromBuilderProvider
+  nameWithType: ValidatorHost.ManifestFromBuilderProvider
+- uid: CSF.Validation.ValidatorHost.ManifestFromBuilderProvider*
+  name: ManifestFromBuilderProvider
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ManifestFromBuilderProvider_
+  commentId: Overload:CSF.Validation.ValidatorHost.ManifestFromBuilderProvider
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorHost.ManifestFromBuilderProvider
+  nameWithType: ValidatorHost.ManifestFromBuilderProvider
+- uid: CSF.Validation.ValidatorHost.ManifestFromModelProvider
+  name: ManifestFromModelProvider
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ManifestFromModelProvider
+  commentId: P:CSF.Validation.ValidatorHost.ManifestFromModelProvider
+  fullName: CSF.Validation.ValidatorHost.ManifestFromModelProvider
+  nameWithType: ValidatorHost.ManifestFromModelProvider
+- uid: CSF.Validation.ValidatorHost.ManifestFromModelProvider*
+  name: ManifestFromModelProvider
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ManifestFromModelProvider_
+  commentId: Overload:CSF.Validation.ValidatorHost.ManifestFromModelProvider
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorHost.ManifestFromModelProvider
+  nameWithType: ValidatorHost.ManifestFromModelProvider
+- uid: CSF.Validation.ValidatorHost.ManifestValidator
+  name: ManifestValidator
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ManifestValidator
+  commentId: P:CSF.Validation.ValidatorHost.ManifestValidator
+  fullName: CSF.Validation.ValidatorHost.ManifestValidator
+  nameWithType: ValidatorHost.ManifestValidator
+- uid: CSF.Validation.ValidatorHost.ManifestValidator*
+  name: ManifestValidator
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ManifestValidator_
+  commentId: Overload:CSF.Validation.ValidatorHost.ManifestValidator
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorHost.ManifestValidator
+  nameWithType: ValidatorHost.ManifestValidator
+- uid: CSF.Validation.ValidatorHost.ValidatorFactory
+  name: ValidatorFactory
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ValidatorFactory
+  commentId: P:CSF.Validation.ValidatorHost.ValidatorFactory
+  fullName: CSF.Validation.ValidatorHost.ValidatorFactory
+  nameWithType: ValidatorHost.ValidatorFactory
+- uid: CSF.Validation.ValidatorHost.ValidatorFactory*
+  name: ValidatorFactory
+  href: api/CSF.Validation.ValidatorHost.html#CSF_Validation_ValidatorHost_ValidatorFactory_
+  commentId: Overload:CSF.Validation.ValidatorHost.ValidatorFactory
+  isSpec: "True"
+  fullName: CSF.Validation.ValidatorHost.ValidatorFactory
+  nameWithType: ValidatorHost.ValidatorFactory
 - uid: CSF.Validation.ValidatorValidation
   name: CSF.Validation.ValidatorValidation
   href: api/CSF.Validation.ValidatorValidation.html
