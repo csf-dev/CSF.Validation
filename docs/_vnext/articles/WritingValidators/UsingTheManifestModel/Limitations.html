@@ -81,7 +81,7 @@
 <p>When using <a href="../WritingValidatorBuilders/index.html">a validator builder</a> or when using <a href="../TheValidationManifest/index.html">the validation manifest</a> directly, it is possible to use arbitrary accessor logic to derive child values.</p>
 <ul>
 <li>In a builder you would use <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForValue%60%601(System.Func%7B%600,%60%600%7D,System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600,%60%600%7D%7D)"><code>ForValue</code></a> or <a href="xref:CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForValues%60%601(System.Func%7B%600,System.Collections.Generic.IEnumerable%7B%60%600%7D%7D,System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600,%60%600%7D%7D)"><code>ForValues</code></a></li>
-<li>In the manifest you would set <a href="xref:CSF.Validation.Manifest.ManifestValue.AccessorFromParent"><code>ManifestValue.AccessorFromParent</code></a> to an arbitrary function</li>
+<li>In the manifest you would set <a href="xref:CSF.Validation.Manifest.ManifestItem.AccessorFromParent"><code>ManifestItem.AccessorFromParent</code></a> to an arbitrary function</li>
 </ul>
 <p>Using the manifest model <em>you may only specify the <code>string</code> name of a member</em> by which to access the child value.
 This could be public property, field or parameterless method.
