@@ -3,7 +3,12 @@ uid: ConfiguringTheFramework
 ---
 # Configuring the Validation Framework
 
-The recommended and easiest way to configure and consume the Validation Framework is to add it to your application's **dependency injection**.
+_The recommended and easiest_ way to configure and consume the Validation Framework is to add it to your application's **dependency injection**.
+
+For applications which do not use dependency injection, [the CSF.Validation.Selfhosting NuGet package] provides [a self-contained way to use validators] which does not depend upon an application's dependency injection.
+
+[the CSF.Validation.Selfhosting NuGet package]: https://www.nuget.org/packages/CSF.Validation.Selfhosting
+[a self-contained way to use validators]: SelfHosting.md
 
 ## Adding CSF.Validation to your app
 
