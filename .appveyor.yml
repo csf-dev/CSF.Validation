@@ -56,5 +56,6 @@ after_test:
         dotnet-sonarscanner end
         /d:"sonar.login=%SONARCLOUD_SECRET_KEY%"
     - ps: if ($isWindows) { Tools\appveyor-upload-test-results.ps1 }
-    - ps: if ($isWindows) { Tools\appveyor-publish-docs.ps1 }
+    # Temporarily disabled due to #75
+    # - ps: if ($isWindows) { Tools\appveyor-publish-docs.ps1 }
     - cmd: Tools\appveyor-create-packages.cmd

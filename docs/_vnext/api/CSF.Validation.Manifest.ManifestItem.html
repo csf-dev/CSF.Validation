@@ -1,0 +1,1153 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ManifestItem
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ManifestItem
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Manifest.ManifestItem">
+  
+  
+  <h1 id="CSF_Validation_Manifest_ManifestItem" data-uid="CSF.Validation.Manifest.ManifestItem" class="text-break">Class ManifestItem
+  </h1>
+  <div class="markdown level0 summary"><p>Base class used for values which are validated.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ManifestItem</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CSF.Validation.Manifest.IManifestNode.html">IManifestNode</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.Manifest.html">CSF.Validation.Manifest</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ManifestItem : IManifestNode</code></pre>
+  </div>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+The validation manifest is the model by which validators are described, including how they should
+validate objects and values.
+</p>
+<p>
+The validation manifest objects are not particularly suited to serialization,
+as they support the use of types that cannot be easily serialized.
+If you are looking for a way to create/define a validator using serialized data then please read the
+article <a class="xref" href="../articles/WritingValidators/UsingTheManifestModel/index.html">Using the Manifest Model</a>.
+</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.AccessorExceptionBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L261">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour_" data-uid="CSF.Validation.Manifest.ManifestItem.AccessorExceptionBehaviour*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour" data-uid="CSF.Validation.Manifest.ManifestItem.AccessorExceptionBehaviour">AccessorExceptionBehaviour</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an optional value which indicates the desired behaviour should the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_AccessorFromParent">AccessorFromParent</a> raise an exception.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueAccessExceptionBehaviour? AccessorExceptionBehaviour { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This option will override the behaviour specified at <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>
+for the current manifest value, if this property is set to any non-<span class="xref">null</span> value.
+</p>
+<p>
+If this property is set to <span class="xref">null</span> then the behaviour at <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>
+will be used.
+</p>
+<p>
+If <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsValue">IsValue</a> is <span class="xref">false</span> then this value is irrelevant and must be <span class="xref">null</span>.
+</p>
+</div>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_AccessorFromParent.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.AccessorFromParent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L231">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_AccessorFromParent_" data-uid="CSF.Validation.Manifest.ManifestItem.AccessorFromParent*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_AccessorFromParent" data-uid="CSF.Validation.Manifest.ManifestItem.AccessorFromParent">AccessorFromParent</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a function which gets (from the object represented by the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Parent">Parent</a>)
+the value for the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;object, object&gt; AccessorFromParent { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_AccessorFromParent_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsValue">IsValue</a> is <span class="xref">false</span> then this value is irrelevant and must be <span class="xref">null</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_Children.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.Children%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L175">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_Children_" data-uid="CSF.Validation.Manifest.ManifestItem.Children*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_Children" data-uid="CSF.Validation.Manifest.ManifestItem.Children">Children</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a collection of the immediate descendents of the current manifest value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ManifestItem&gt; Children { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_CollectionItemValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.CollectionItemValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L160">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_CollectionItemValue_" data-uid="CSF.Validation.Manifest.ManifestItem.CollectionItemValue*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_CollectionItemValue" data-uid="CSF.Validation.Manifest.ManifestItem.CollectionItemValue">CollectionItemValue</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an optional value object which indicates how items within a collection are to be validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ManifestItem CollectionItemValue { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_CollectionItemValue_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If the value representd by the current instance is a collection/enumerable of items then these items may
+be validated individually.  In this scenario, the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> must be a
+type that implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> for at least one generic type.
+</p>
+<p>
+If this property has a non-null value, then the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> will be used to validate
+each item within that collection.
+</p>
+<p>
+If the current manifest value does not represent a collection of items to be validated individually then this
+property must be <span class="xref">null</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_Id.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L59">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_Id_" data-uid="CSF.Validation.Manifest.ManifestItem.Id*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_Id" data-uid="CSF.Validation.Manifest.ManifestItem.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an identifier for the current manifest item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_Id_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+The id of a manifest item is not used by the validator, but it provides a way in which
+developers may track the lifetime of a single item.
+</p>
+<p>
+There are no technical reasons why they must be, but developers are encouraged to keep Id values
+unique within a validation manifest, so that they may identify items unambiguously. The default value
+for this property is the string representation of a newly-generated GUID.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_IdentityAccessor.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.IdentityAccessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L136">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_IdentityAccessor_" data-uid="CSF.Validation.Manifest.ManifestItem.IdentityAccessor*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_IdentityAccessor" data-uid="CSF.Validation.Manifest.ManifestItem.IdentityAccessor">IdentityAccessor</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a function which retrieves a unique identity of the object being
+validated, given a reference to that object being validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;object, object&gt; IdentityAccessor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_IsCollectionItem.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.IsCollectionItem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L88">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_IsCollectionItem_" data-uid="CSF.Validation.Manifest.ManifestItem.IsCollectionItem*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_IsCollectionItem" data-uid="CSF.Validation.Manifest.ManifestItem.IsCollectionItem">IsCollectionItem</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether or not the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ItemType">ItemType</a> includes the flag <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_CollectionItem">CollectionItem</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCollectionItem { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_IsPolymorphicType.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.IsPolymorphicType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L93">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_IsPolymorphicType_" data-uid="CSF.Validation.Manifest.ManifestItem.IsPolymorphicType*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_IsPolymorphicType" data-uid="CSF.Validation.Manifest.ManifestItem.IsPolymorphicType">IsPolymorphicType</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether or not the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ItemType">ItemType</a> includes the flag <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_PolymorphicType">PolymorphicType</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPolymorphicType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_IsRecursive.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.IsRecursive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L98">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_IsRecursive_" data-uid="CSF.Validation.Manifest.ManifestItem.IsRecursive*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_IsRecursive" data-uid="CSF.Validation.Manifest.ManifestItem.IsRecursive">IsRecursive</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether or not the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ItemType">ItemType</a> includes the flag <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Recursive">Recursive</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRecursive { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_IsValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.IsValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L83">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_IsValue_" data-uid="CSF.Validation.Manifest.ManifestItem.IsValue*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_IsValue" data-uid="CSF.Validation.Manifest.ManifestItem.IsValue">IsValue</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether or not the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ItemType">ItemType</a> includes the flag <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Value">Value</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_ItemType.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.ItemType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L64">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_ItemType_" data-uid="CSF.Validation.Manifest.ManifestItem.ItemType*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_ItemType" data-uid="CSF.Validation.Manifest.ManifestItem.ItemType">ItemType</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value which indicates the type &amp; behaviour of the current manifest item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ManifestItemTypes ItemType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html">ManifestItemTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_MemberName.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.MemberName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L242">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_MemberName_" data-uid="CSF.Validation.Manifest.ManifestItem.MemberName*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_MemberName" data-uid="CSF.Validation.Manifest.ManifestItem.MemberName">MemberName</h4>
+  <div class="markdown level1 summary"><p>Where the current value represents a member access invocation (such as
+a property getter), this property gets or sets the name of that member.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MemberName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_MemberName_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsValue">IsValue</a> is <span class="xref">false</span> then this value is irrelevant and must be <span class="xref">null</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_OwnChildren.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.OwnChildren%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L185">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_OwnChildren_" data-uid="CSF.Validation.Manifest.ManifestItem.OwnChildren*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_OwnChildren" data-uid="CSF.Validation.Manifest.ManifestItem.OwnChildren">OwnChildren</h4>
+  <div class="markdown level1 summary"><p>Gets a collection of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Children">Children</a>, excluding any children which are exposed via
+recursion, should <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsRecursive">IsRecursive</a> true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;ManifestItem&gt; OwnChildren { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_OwnCollectionItemValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.OwnCollectionItemValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L170">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_OwnCollectionItemValue_" data-uid="CSF.Validation.Manifest.ManifestItem.OwnCollectionItemValue*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_OwnCollectionItemValue" data-uid="CSF.Validation.Manifest.ManifestItem.OwnCollectionItemValue">OwnCollectionItemValue</h4>
+  <div class="markdown level1 summary"><p>Gets a value equivalent to <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_CollectionItemValue">CollectionItemValue</a>, except that <span class="xref">null</span> will be
+returned if the collection item value is only inherited via recursion, should <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsRecursive">IsRecursive</a> be true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ManifestItem OwnCollectionItemValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_OwnPolymorphicTypes.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.OwnPolymorphicTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L220">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_OwnPolymorphicTypes_" data-uid="CSF.Validation.Manifest.ManifestItem.OwnPolymorphicTypes*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_OwnPolymorphicTypes" data-uid="CSF.Validation.Manifest.ManifestItem.OwnPolymorphicTypes">OwnPolymorphicTypes</h4>
+  <div class="markdown level1 summary"><p>Gets a collection of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_PolymorphicTypes">PolymorphicTypes</a>, excluding any types which are exposed via
+recursion, should <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsRecursive">IsRecursive</a> true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;ManifestItem&gt; OwnPolymorphicTypes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_OwnRules.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.OwnRules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L200">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_OwnRules_" data-uid="CSF.Validation.Manifest.ManifestItem.OwnRules*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_OwnRules" data-uid="CSF.Validation.Manifest.ManifestItem.OwnRules">OwnRules</h4>
+  <div class="markdown level1 summary"><p>Gets a collection of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Rules">Rules</a>, excluding any rules which are exposed via
+recursion, should <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsRecursive">IsRecursive</a> true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;ManifestRule&gt; OwnRules { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_Parent.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.Parent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L130">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_Parent_" data-uid="CSF.Validation.Manifest.ManifestItem.Parent*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_Parent" data-uid="CSF.Validation.Manifest.ManifestItem.Parent">Parent</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the parent of the current manifest item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IManifestNode Parent { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.IManifestNode.html">IManifestNode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_Parent_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This must be either a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a> (indicating that this item is the root of the
+validation manifest data-structure) or another <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>, indicating the parent of the
+current item.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_PolymorphicTypes.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.PolymorphicTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L210">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_PolymorphicTypes_" data-uid="CSF.Validation.Manifest.ManifestItem.PolymorphicTypes*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_PolymorphicTypes" data-uid="CSF.Validation.Manifest.ManifestItem.PolymorphicTypes">PolymorphicTypes</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a mapping of the runtime types to polymorphic validation manifest definitions for those types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ManifestItem&gt; PolymorphicTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_PolymorphicTypes_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsPolymorphicType">IsPolymorphicType</a> is <span class="xref">true</span> then this collection must be empty.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_RecursiveAncestor.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.RecursiveAncestor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L109">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_RecursiveAncestor_" data-uid="CSF.Validation.Manifest.ManifestItem.RecursiveAncestor*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_RecursiveAncestor" data-uid="CSF.Validation.Manifest.ManifestItem.RecursiveAncestor">RecursiveAncestor</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a reference to an ancestor manifest item, to which the current item refers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ManifestItem RecursiveAncestor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_RecursiveAncestor_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsRecursive">IsRecursive</a> is <span class="xref">true</span> then this value must not be <span class="xref">null</span>.
+Otherwise, it must be <span class="xref">null</span>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_Rules.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L190">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_Rules_" data-uid="CSF.Validation.Manifest.ManifestItem.Rules*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_Rules" data-uid="CSF.Validation.Manifest.ManifestItem.Rules">Rules</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a collection of the rules associated with the current value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ManifestRule&gt; Rules { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_ValidatedType.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.ValidatedType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L114">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_ValidatedType_" data-uid="CSF.Validation.Manifest.ManifestItem.ValidatedType*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_ValidatedType" data-uid="CSF.Validation.Manifest.ManifestItem.ValidatedType">ValidatedType</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the type of the object which the current manifest value describes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type ValidatedType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_CombineWithDescendent_CSF_Validation_Manifest_ManifestItem_.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.CombineWithDescendent(CSF.Validation.Manifest.ManifestItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L344">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_CombineWithDescendent_" data-uid="CSF.Validation.Manifest.ManifestItem.CombineWithDescendent*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_CombineWithDescendent_CSF_Validation_Manifest_ManifestItem_" data-uid="CSF.Validation.Manifest.ManifestItem.CombineWithDescendent(CSF.Validation.Manifest.ManifestItem)">CombineWithDescendent(ManifestItem)</h4>
+  <div class="markdown level1 summary"><p>Combines the current instance with a descendent manifest item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CombineWithDescendent(ManifestItem other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>Another manifest item.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_CombineWithDescendent_CSF_Validation_Manifest_ManifestItem__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+A descendent item might be any of:
+</p>
+<ul><li>A child item, to be placed in <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Children">Children</a></li><li>A collection item value, to be stored at in <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_CollectionItemValue">CollectionItemValue</a></li><li>A polymorphic type, to be placed in <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_PolymorphicTypes">PolymorphicTypes</a></li></ul>
+<p>
+This method will work with any of these.
+</p>
+<p>
+This method will silently discard duplicates; so if the <code data-dev-comment-type="paramref" class="paramref">other</code> is reference equal to
+the current instance, or if it is already contained within the appropriate property/collection then
+it will be ignored and the method will complete without making any change to the state of the current
+instance.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If the <code data-dev-comment-type="paramref" class="paramref">other</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If the current item is not eligible to be combined with the specified other item.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_CombineWithDescendents_System_Collections_Generic_IEnumerable_CSF_Validation_Manifest_ManifestItem__.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.CombineWithDescendents(System.Collections.Generic.IEnumerable%7BCSF.Validation.Manifest.ManifestItem%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L393">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_CombineWithDescendents_" data-uid="CSF.Validation.Manifest.ManifestItem.CombineWithDescendents*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_CombineWithDescendents_System_Collections_Generic_IEnumerable_CSF_Validation_Manifest_ManifestItem__" data-uid="CSF.Validation.Manifest.ManifestItem.CombineWithDescendents(System.Collections.Generic.IEnumerable{CSF.Validation.Manifest.ManifestItem})">CombineWithDescendents(IEnumerable&lt;ManifestItem&gt;)</h4>
+  <div class="markdown level1 summary"><p>Iterates through a collection of manifest items and calls <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_CombineWithDescendent_CSF_Validation_Manifest_ManifestItem_">CombineWithDescendent(ManifestItem)</a> upon each.
+See the documentation for that method for more information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CombineWithDescendents(IEnumerable&lt;ManifestItem&gt; others)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>&gt;</td>
+        <td><span class="parametername">others</span></td>
+        <td><p>A collection of manifest items to combine with the current instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If the <code data-dev-comment-type="paramref" class="paramref">others</code>, or if any item in that collection is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If the current item is not eligible to be combined with any of the other items within the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_MakeRecursive_CSF_Validation_Manifest_ManifestItem_.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.MakeRecursive(CSF.Validation.Manifest.ManifestItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L308">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_MakeRecursive_" data-uid="CSF.Validation.Manifest.ManifestItem.MakeRecursive*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_MakeRecursive_CSF_Validation_Manifest_ManifestItem_" data-uid="CSF.Validation.Manifest.ManifestItem.MakeRecursive(CSF.Validation.Manifest.ManifestItem)">MakeRecursive(ManifestItem)</h4>
+  <div class="markdown level1 summary"><p>Converts the current <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> into a recursive item, using information
+from the specified <code data-dev-comment-type="paramref" class="paramref">ancestor</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MakeRecursive(ManifestItem ancestor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
+        <td><span class="parametername">ancestor</span></td>
+        <td><p>The ancestor item upon which to base the new recursive item.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Manifest_ManifestItem_MakeRecursive_CSF_Validation_Manifest_ManifestItem__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This process will add the <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Recursive">Recursive</a> type to the current instance&apos;s
+<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ItemType">ItemType</a>.
+</p>
+<p>
+Many property values are copied from the <code data-dev-comment-type="paramref" class="paramref">ancestor</code> by this method, as the
+recursive item has many of the same properties as its ancestor.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If the <code data-dev-comment-type="paramref" class="paramref">ancestor</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>If the <code data-dev-comment-type="paramref" class="paramref">ancestor</code> is already recursive.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem_ToString.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L267">View Source</a>
+  </span>
+  <a id="CSF_Validation_Manifest_ManifestItem_ToString_" data-uid="CSF.Validation.Manifest.ManifestItem.ToString*"></a>
+  <h4 id="CSF_Validation_Manifest_ManifestItem_ToString" data-uid="CSF.Validation.Manifest.ManifestItem.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Gets a string representation of the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A string which represents the current instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.IManifestNode.html">IManifestNode</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestors_CSF_Validation_Manifest_ManifestItem_">ManifestItemExtensions.GetAncestors(ManifestItem)</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html#CSF_Validation_Manifest_ManifestItemExtensions_GetAncestor_CSF_Validation_Manifest_ManifestItem_System_Int32_">ManifestItemExtensions.GetAncestor(ManifestItem, Int32)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestRuleIdentifier.html">ManifestRuleIdentifier</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html">ManifestItemTypes</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItem.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/Manifest/ManifestItem.cs/#L26" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,974 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IConfiguresValidator&lt;TValidated&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IConfiguresValidator&lt;TValidated&gt;
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1">
+  
+  
+  <h1 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1" class="text-break">Interface IConfiguresValidator&lt;TValidated&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>A builder service which may be used to configure a validator as it is being built.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.ValidatorBuilding.html">CSF.Validation.ValidatorBuilding</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IConfiguresValidator&lt;TValidated&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TValidated</span></td>
+        <td><p>The validated object type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddBaseRules__2.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.AddBaseRules%60%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L102">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddBaseRules_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddBaseRules*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddBaseRules__2" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddBaseRules``2">AddBaseRules&lt;TBase, TBuilder&gt;()</h4>
+  <div class="markdown level1 summary"><p>Adds/imports rules from an object that implements <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>.  These rules should be for validation
+of a type from which <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code> derives.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; AddBaseRules&lt;TBase, TBuilder&gt;()
+    where TBuilder : IBuildsValidator&lt;TBase&gt;</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TBase</span></td>
+        <td><p>The base type, for which validation rules are to be imported.  The type <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code> must derive from
+the type specified in this generic type parameter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TBuilder</span></td>
+        <td><p>The type of a class implementing <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>, specifying how a validator for the base type should be built.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddBaseRules__2_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This allows composition of validators and use of rules declared to validate a base type, reusing validation rules across differing
+validation scenarios. All of the rules specified in the selected builder-type will be imported and added to the current validator.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidCastException</span></td>
+        <td><p>If the type specified as <code data-dev-comment-type="typeparamref" class="typeparamref">TBase</code> is not an ancestor type to <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.AddRule%60%601(System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresRule%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L64">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRule_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddRule*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRule__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresRule___0___" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddRule``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresRule{``0}})">AddRule&lt;TRule&gt;(Action&lt;IConfiguresRule&lt;TRule&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds a validation rule to validate the validated object instance.
+The rule type must be a class that implements <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a> for the same
+(or a compatible contravariant) generic type <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; AddRule&lt;TRule&gt;(Action&lt;IConfiguresRule&lt;TRule&gt;&gt; ruleDefinition = null)
+    where TRule : IRule&lt;TValidated&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule</a>&lt;TRule&gt;&gt;</td>
+        <td><span class="parametername">ruleDefinition</span></td>
+        <td><p>An optional action which defines &amp; configures the validation rule.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TRule</span></td>
+        <td><p>The concrete type of the validation rule.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules__1.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.AddRules%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L79">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddRules*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules__1" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.AddRules``1">AddRules&lt;TBuilder&gt;()</h4>
+  <div class="markdown level1 summary"><p>Adds/imports rules from an object that implements <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; AddRules&lt;TBuilder&gt;()
+    where TBuilder : IBuildsValidator&lt;TValidated&gt;</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TBuilder</span></td>
+        <td><p>The type of a class implementing <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>, specifying how a validator should be built.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_AddRules__1_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This allows composition of validators and reuse of validation rules across differing validation scenarios.
+All of the rules specified in the selected builder-type will be imported and added to the current validator.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForMember%60%601(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2C%60%600%7D%7D%2CSystem.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600%2C%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L123">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForMember*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})">ForMember&lt;TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows addition of validation which will work upon the value of a specific member of the validated object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; ForMember&lt;TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt; memberAccessor, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt; valueConfig)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TValidated, TValue&gt;&gt;</td>
+        <td><span class="parametername">memberAccessor</span></td>
+        <td><p>An expression which describes the accessor for the member.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html">IConfiguresValueAccessor</a>&lt;TValidated, TValue&gt;&gt;</td>
+        <td><span class="parametername">valueConfig</span></td>
+        <td><p>Configuration which indicates what validation will be performed upon the member's value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type (property/field/method-return-type) of the member which is being validated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Most commonly the member is a property, but it may also be a field or parameterless method (which has a non-void
+return value).
+</p>
+<p>
+When it is possible to describe a validated value by a simple member access then this mechanism is preferred over
+<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">ForValue&lt;TValue&gt;(Func&lt;TValidated, TValue&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</a> because
+the member name will form a part of the validation rule&apos;s identifier.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If either <code data-dev-comment-type="paramref" class="paramref">memberAccessor</code> or <code data-dev-comment-type="paramref" class="paramref">valueConfig</code> are <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0____System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForMemberItems%60%601(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%60%600%7D%7D%7D%2CSystem.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600%2C%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L149">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForMemberItems*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0____System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForMemberItems``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})">ForMemberItems&lt;TValue&gt;(Expression&lt;Func&lt;TValidated, IEnumerable&lt;TValue&gt;&gt;&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows addition of validation which will work upon each of the items exposed by a specific member of the
+validated object, where that member's type implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; ForMemberItems&lt;TValue&gt;(Expression&lt;Func&lt;TValidated, IEnumerable&lt;TValue&gt;&gt;&gt; memberAccessor, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt; valueConfig)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TValidated, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TValue&gt;&gt;&gt;</td>
+        <td><span class="parametername">memberAccessor</span></td>
+        <td><p>An expression which describes the accessor for the collection member.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html">IConfiguresValueAccessor</a>&lt;TValidated, TValue&gt;&gt;</td>
+        <td><span class="parametername">valueConfig</span></td>
+        <td><p>Configuration which indicates what validation will be performed upon the collection items.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type of the items within the collection which shall be validated, where the type (property/field/method-return-type)
+of the member implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of this generic type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0____System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Most commonly the member is a property, but it may also be a field or parameterless method (which has a non-void
+return value).
+</p>
+<p>
+When it is possible to describe the collection which should have its items validated by using a simple member access
+then this mechanism is preferred over
+<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues__1_System_Func__0_System_Collections_Generic_IEnumerable___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">ForValues&lt;TValue&gt;(Func&lt;TValidated, IEnumerable&lt;TValue&gt;&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</a>
+because the member name will form a part of the validation rule&apos;s identifier.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If either <code data-dev-comment-type="paramref" class="paramref">memberAccessor</code> or <code data-dev-comment-type="paramref" class="paramref">valueConfig</code> are <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForValue%60%601(System.Func%7B%600%2C%60%600%7D%2CSystem.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600%2C%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L166">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForValue*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForValue``1(System.Func{`0,``0},System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})">ForValue&lt;TValue&gt;(Func&lt;TValidated, TValue&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows addition of validation which will work upon an arbitrary value derived from the validated object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; ForValue&lt;TValue&gt;(Func&lt;TValidated, TValue&gt; valueAccessor, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt; valueConfig)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TValidated, TValue&gt;</td>
+        <td><span class="parametername">valueAccessor</span></td>
+        <td><p>A function which gets the value to be validated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html">IConfiguresValueAccessor</a>&lt;TValidated, TValue&gt;&gt;</td>
+        <td><span class="parametername">valueConfig</span></td>
+        <td><p>Configuration which indicates what validation will be performed upon the value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type of the value which is to be validated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValue__1_System_Func__0___0__System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+When it is possible to describe/acces the derived value by a simple member access then please prefer
+<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">ForMember&lt;TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</a>
+over this method.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If either <code data-dev-comment-type="paramref" class="paramref">valueAccessor</code> or <code data-dev-comment-type="paramref" class="paramref">valueConfig</code> are <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues__1_System_Func__0_System_Collections_Generic_IEnumerable___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ForValues%60%601(System.Func%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%60%600%7D%7D%2CSystem.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValueAccessor%7B%600%2C%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L187">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForValues*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues__1_System_Func__0_System_Collections_Generic_IEnumerable___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ForValues``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}},System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor{`0,``0}})">ForValues&lt;TValue&gt;(Func&lt;TValidated, IEnumerable&lt;TValue&gt;&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows addition of validation which will work upon each of the items exposed by an arbitrary collection, derived from the
+validated object, which implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; ForValues&lt;TValue&gt;(Func&lt;TValidated, IEnumerable&lt;TValue&gt;&gt; valuesAccessor, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt; valueConfig)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TValidated, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TValue&gt;&gt;</td>
+        <td><span class="parametername">valuesAccessor</span></td>
+        <td><p>A function which gets the collection, for which its items should be validated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html">IConfiguresValueAccessor</a>&lt;TValidated, TValue&gt;&gt;</td>
+        <td><span class="parametername">valueConfig</span></td>
+        <td><p>Configuration which indicates what validation will be performed upon the collection items.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type of the items within the collection which shall be validated, where the collection itself
+implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of this generic type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForValues__1_System_Func__0_System_Collections_Generic_IEnumerable___0___System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+When it is possible to describe/access the collection by a simple member access then please prefer
+<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html#CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ForMemberItems__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0____System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor__0___0___">ForMemberItems&lt;TValue&gt;(Expression&lt;Func&lt;TValidated, IEnumerable&lt;TValue&gt;&gt;&gt;, Action&lt;IConfiguresValueAccessor&lt;TValidated, TValue&gt;&gt;)</a>
+over this method.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If either <code data-dev-comment-type="paramref" class="paramref">valuesAccessor</code> or <code data-dev-comment-type="paramref" class="paramref">valueConfig</code> are <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_System_Func__0_System_Object__.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.UseObjectIdentity(System.Func%7B%600%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L54">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.UseObjectIdentity*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_System_Func__0_System_Object__" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.UseObjectIdentity(System.Func{`0,System.Object})">UseObjectIdentity(Func&lt;TValidated, Object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Specifies an accessor function which should be used to get the identity of the validated object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; UseObjectIdentity(Func&lt;TValidated, object&gt; identityAccessor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TValidated, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">identityAccessor</span></td>
+        <td><p>The accessor function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_System_Func__0_System_Object___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Object identities are useful &amp; important when validating complex object models which include
+object graphs (tree-structures) of related/connected objects.  This is particularly true where
+collections are child objects are involved.
+The identity is used to differentiate object instances.  For example, so that the validation rule
+results may be matched back to the object to which they relate.
+</p>
+</div>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_UseObjectIdentity_System_Func__0_System_Object___examples">Examples</h5>
+  <p>
+For example, if validating an instance of the following object:
+</p>
+<pre><code>using System;
+using System.Collections.Generic;
+<p>public class HumanBeing
+{
+public Guid Identity { get; set; } = new Guid();
+public string Name { get; set; }
+public List&lt;HumanBeing&gt; Children { get; } = new List&lt;HumanBeing&gt;();
+}</code></pre><p>
+<p>
+Without any kind of identity, if we had a validation rule that validated the <code>Name</code> property is not null
+or whitespace-only, then what if more than one child failed this same rule?  In our feedback (for example some
+user interface), how would we indicate which children failed the validation and which children did not.
+</p>
+<p>
+By using (for example) the <code>Identity</code> property to uniquely identity each instance of <code>HumanBeing</code>
+we will recieve the related identities back with the validation rule results, allowing us to associate the
+results back to the appropriate object within the object graph.
+</p>
+
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ValidateAsAncestor_System_Int32_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.ValidateAsAncestor(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L210">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ValidateAsAncestor_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ValidateAsAncestor*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ValidateAsAncestor_System_Int32_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.ValidateAsAncestor(System.Int32)">ValidateAsAncestor(Int32)</h4>
+  <div class="markdown level1 summary"><p>Configures the current value to be validated in the same manner as an ancestor value which already has validation configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; ValidateAsAncestor(int depth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td><p>The ancestor number to use when validating the current value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_ValidateAsAncestor_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If this method is used then the current value will be configured for recursive (or re-entrant) validation.  It will be converted as a
+<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> that is recursive rather than a normal value.
+</p>
+<p>
+The numeric value of <code data-dev-comment-type="paramref" class="paramref">depth</code> must be a positive integer &amp; indicates the level of ancestor
+value is used to provide the recursive validation.  For example a value of 1 indicates that the immediate
+parent value should be used as the wrapped value for the recursive manifest value.  A value of 2 would indicate the
+grandparent value.
+</p>
+<p>
+When recursive validation is configured, no other methods upon this builder may be called.  Doing so will raise an exception.
+The validation of the current value will be treated in the same way as the indicated ancestor value.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601.WhenValueIs%60%601(System.Action%7BCSF.Validation.ValidatorBuilding.IConfiguresValidator%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L230">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs_" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0___" data-uid="CSF.Validation.ValidatorBuilding.IConfiguresValidator`1.WhenValueIs``1(System.Action{CSF.Validation.ValidatorBuilding.IConfiguresValidator{``0}})">WhenValueIs&lt;TDerived&gt;(Action&lt;IConfiguresValidator&lt;TDerived&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds validation configuration for polymorphic validatation when the runtime type
+of the validated value is <code data-dev-comment-type="typeparamref" class="typeparamref">TDerived</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IConfiguresValidator&lt;TValidated&gt; WhenValueIs&lt;TDerived&gt;(Action&lt;IConfiguresValidator&lt;TDerived&gt;&gt; derivedConfig)
+    where TDerived : TValidated</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TDerived&gt;&gt;</td>
+        <td><span class="parametername">derivedConfig</span></td>
+        <td><p>Configuration which indicates what validation will be performed upon the value if its runtime type is <code data-dev-comment-type="typeparamref" class="typeparamref">TDerived</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValidator-1.html">IConfiguresValidator</a>&lt;TValidated&gt;</td>
+        <td><p>A reference to the same builder object, enabling chaining of calls if desired.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDerived</span></td>
+        <td><p>The derived (child) type to be configured for validation in this polymorphic validation configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ValidatorBuilding_IConfiguresValidator_1_WhenValueIs__1_System_Action_CSF_Validation_ValidatorBuilding_IConfiguresValidator___0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Where the current validator configuration works to validate an object of type <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code>,
+the value being validated might be a derived type of <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code> at runtime.
+Polymorphic validation allows a developer to specify how a derived type should be validated, if that is the runtime
+type of the value to be validated.
+</p>
+<p>
+This method may be used multiple times, each time for a different type that is derived from <code data-dev-comment-type="typeparamref" class="typeparamref">TValidated</code>.
+</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_IConfiguresValidator_1.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.IConfiguresValidator%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ValidatorBuilding/IConfiguresValidator.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
