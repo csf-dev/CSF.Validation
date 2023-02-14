@@ -7,7 +7,8 @@
             "files": [
               "CSF.Validation.Abstractions/CSF.Validation.Abstractions.csproj",
               "CSF.Validation/CSF.Validation.csproj",
-              "CSF.Validation.StandardRules/CSF.Validation.StandardRules.csproj"
+              "CSF.Validation.StandardRules/CSF.Validation.StandardRules.csproj",
+              "CSF.Validation.Selfhosting/CSF.Validation.Selfhosting.csproj"
             ],
             "exclude": [
               "**/bin/**",

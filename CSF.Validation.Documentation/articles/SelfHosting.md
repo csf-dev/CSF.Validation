@@ -5,7 +5,7 @@ It is **strongly recommended** that consumers of this validation framework integ
 For applications which do not use DI, the NuGet package [CSF.Validation.Selfhosting] provides a mechanism by which the validation framework may used without DI.
 You must install this package to any .NET project where you wish to use the validator.
 
-To create a self-hosted/self-contained instance of the framework, use the following technique:
+To create a self-hosted/self-contained instance of the framework, use the [`ValidatorHost`] class as follows:
 
 ```csharp
 using CSF.Validation;
@@ -25,4 +25,5 @@ Once a self-hosting builder has been created, properties accessible from that ob
 
 [the Configuration page]: ConfigureTheFramework.md
 [CSF.Validation.Selfhosting]: https://www.nuget.org/packages/CSF.Validation.Selfhosting
+[`ValidatorHost`]: xref:CSF.Validation.ValidatorHost
 [as described in the Configuration guide]: ConfigureTheFramework.md#adding-csfvalidation-to-your-app
