@@ -48,6 +48,7 @@ namespace CSF.Validation.Rules
     /// </description></item>
     /// </list>
     /// </remarks>
+    [Parallelizable]
     public class MustBeDefinedEnumConstant : IRuleWithMessage<object>
     {
         const string enumTypeKey = "Enum type", enumTypeNameKey = nameof(EnumTypeName);

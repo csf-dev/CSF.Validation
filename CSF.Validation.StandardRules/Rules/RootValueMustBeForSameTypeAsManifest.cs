@@ -11,6 +11,7 @@ namespace CSF.Validation.Rules
     /// used as the <see cref="ValidationManifest.RootValue"/> is for the same (or a less-derived) type as
     /// the <see cref="ValidationManifest.ValidatedType"/> of that manifest.
     /// </summary>
+    [Parallelizable]
     public class RootValueMustBeForSameTypeAsManifest : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>

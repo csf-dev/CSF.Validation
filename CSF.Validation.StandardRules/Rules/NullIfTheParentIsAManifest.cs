@@ -9,6 +9,7 @@ namespace CSF.Validation.Rules
     /// A rule which asserts that a value is <see langword="null" /> if the <see cref="ManifestItem.Parent"/>
     /// is an instance of <see cref="ValidationManifest"/>.
     /// </summary>
+    [Parallelizable]
     public class NullIfTheParentIsAManifest : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>

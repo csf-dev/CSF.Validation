@@ -15,6 +15,7 @@ namespace CSF.Validation.Rules
     /// manifest value is not the root value of a validation manifest.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class NotNullIfTheParentIsNotAManifest : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>

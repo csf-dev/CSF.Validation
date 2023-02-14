@@ -9,6 +9,7 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A rule which asserts that the value indicates a member which exists upon the <see cref="ManifestItem.ValidatedType"/> of the <see cref="ManifestItem"/>.
     /// </summary>
+    [Parallelizable]
     public class MemberMustExist : IRuleWithMessage<string, ManifestItem>
     {
         /// <inheritdoc/>

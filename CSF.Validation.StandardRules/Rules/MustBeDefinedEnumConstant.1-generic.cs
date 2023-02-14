@@ -17,6 +17,7 @@ namespace CSF.Validation.Rules
     /// result if the validated value is <see langword="null" />.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class MustBeDefinedEnumConstant<T> : IRuleWithMessage<T>, IRuleWithMessage<T?> where T : struct, Enum
     {
         /// <inheritdoc/>

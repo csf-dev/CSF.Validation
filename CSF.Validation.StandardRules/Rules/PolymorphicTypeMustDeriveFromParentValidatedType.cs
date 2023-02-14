@@ -10,6 +10,7 @@ namespace CSF.Validation.Rules
     /// Validation rule which asserts that for any manifest item which <see cref="ManifestItem.IsPolymorphicType"/>,
     /// the <see cref="ManifestItem.ValidatedType"/> of the polymorphic type 
     /// </summary>
+    [Parallelizable]
     public class PolymorphicTypeMustDeriveFromParentValidatedType : IRuleWithMessage<Type, ManifestItem>
     {
         /// <inheritdoc/>

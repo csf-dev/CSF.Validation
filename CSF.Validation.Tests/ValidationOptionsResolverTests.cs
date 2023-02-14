@@ -93,7 +93,7 @@ namespace CSF.Validation
                             Is.EqualTo(RuleThrowingBehaviour.OnError),
                             nameof(ValidationOptions.RuleThrowingBehaviour));
                 Assert.That(result.EnableRuleParallelization,
-                            Is.EqualTo(false),
+                            Is.EqualTo(true),
                             nameof(ValidationOptions.EnableRuleParallelization));
             });
         }

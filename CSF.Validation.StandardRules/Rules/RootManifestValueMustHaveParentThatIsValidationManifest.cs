@@ -10,6 +10,7 @@ namespace CSF.Validation.Rules
     /// A validation rule which asserts that the <see cref="ManifestItem.Parent"/> is an instance of
     /// <see cref="ValidationManifest"/>.
     /// </summary>
+    [Parallelizable]
     public class RootManifestValueMustHaveParentThatIsValidationManifest : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>

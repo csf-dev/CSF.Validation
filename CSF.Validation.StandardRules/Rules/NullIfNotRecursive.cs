@@ -9,6 +9,7 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A rule which asserts that a value is null if the parent <see cref="ManifestItem"/> is not a recursive one.
     /// </summary>
+    [Parallelizable]
     public class NullIfNotRecursive : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>

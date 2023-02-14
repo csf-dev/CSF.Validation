@@ -10,6 +10,7 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A rule that asserts all members of the <see cref="ManifestItem.Children"/> collection have the value type <see cref="ManifestItemTypes.Value"/>.
     /// </summary>
+    [Parallelizable]
     public class AllChildrenMustBeValues : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>

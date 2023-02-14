@@ -10,6 +10,7 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A rule that passes if the validated value is <see langword="null" /> or if it does not derive from a specified type, and fails if it does.
     /// </summary>
+    [Parallelizable]
     public class DoesNotDeriveFrom : IRuleWithMessage<object>
     {
         /// <summary>

@@ -24,6 +24,7 @@ namespace CSF.Validation.Rules
     /// </para>
     /// </remarks>
     /// <typeparam name="T">The type of item contained within the collection.</typeparam>
+    [Parallelizable]
     public class ContainsNoNullItems<T> : IRuleWithMessage<IEnumerable<T>>, IRuleWithMessage<IQueryable<T>>
     {
         /// <inheritdoc/>

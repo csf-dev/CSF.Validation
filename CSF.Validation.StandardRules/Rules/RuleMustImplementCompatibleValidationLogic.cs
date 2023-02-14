@@ -12,6 +12,7 @@ namespace CSF.Validation.Rules
     /// A rule which asserts that the rule's concrete logic type, <see cref="RuleIdentifierBase.RuleType"/>, implements
     /// an interface which is compatible with the corresponding manifest item's <see cref="ManifestItem.ValidatedType"/>.
     /// </summary>
+    [Parallelizable]
     public class RuleMustImplementCompatibleValidationLogic : IRuleWithMessage<ManifestRule>
     {
         /// <inheritdoc/>

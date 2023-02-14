@@ -10,6 +10,7 @@ namespace CSF.Validation.Rules
     /// A rule which asserts that the <see cref="ManifestItem.CollectionItemValue"/> property is either <see langword="null" />
     /// or contains a manifest item with the type <see cref="ManifestItemTypes.CollectionItem"/>.
     /// </summary>
+    [Parallelizable]
     public class CollectionItemValueMustBeCollectionItem : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>

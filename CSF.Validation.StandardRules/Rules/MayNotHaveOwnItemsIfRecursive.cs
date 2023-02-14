@@ -11,6 +11,7 @@ namespace CSF.Validation.Rules
     /// A validation rule which asserts that - if the manifest item type is recursive - then the parent manifest item may not
     /// have any of its "own" collection item, children, polymorphic types or rules.
     /// </summary>
+    [Parallelizable]
     public class MayNotHaveOwnItemsIfRecursive : IRuleWithMessage<ManifestItem>
     {
         const string

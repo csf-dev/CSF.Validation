@@ -9,6 +9,7 @@ namespace CSF.Validation.Rules
     /// <summary>
     /// A rule which ensures that the <see cref="ValidationManifest.RootValue"/> is not <see langword="null" />.
     /// </summary>
+    [Parallelizable]
     public class RootValueMustNotBeNull : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>

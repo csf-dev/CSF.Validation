@@ -12,6 +12,7 @@ namespace CSF.Validation.Rules
     /// not a type that derives from <see cref="IEnumerable{T}"/> then the <see cref="ManifestItem.CollectionItemValue"/>
     /// of that manifest item must be null.
     /// </summary>
+    [Parallelizable]
     public class CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>

@@ -25,6 +25,7 @@ namespace CSF.Validation.Rules
     /// when creating the message, if available.
     /// </para>
     /// </remarks>
+    [Parallelizable]
     public class ContainsNoNullItems : IRuleWithMessage<IEnumerable>
     {
         internal const string CountOfNullsKey = "Count of nulls";

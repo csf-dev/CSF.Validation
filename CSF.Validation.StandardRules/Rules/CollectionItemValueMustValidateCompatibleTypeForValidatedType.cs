@@ -25,6 +25,7 @@ namespace CSF.Validation.Rules
     /// which is only capable of validating "Cat" instances.
     /// </para>
     /// </example>
+    [Parallelizable]
     public class CollectionItemValueMustValidateCompatibleTypeForValidatedType : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>

@@ -11,6 +11,7 @@ namespace CSF.Validation.Rules
     /// A rule that asserts all members of the <see cref="ManifestItem.PolymorphicTypes"/> collection have the value
     /// type <see cref="ManifestItemTypes.PolymorphicType"/>.
     /// </summary>
+    [Parallelizable]
     public class AllPolymorphicTypesMustBeMarkedAsSo : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
