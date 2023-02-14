@@ -16,7 +16,6 @@ The manifest model is a number of model classes found in the [`CSF.Validation.Ma
 These classes are:
 
 * [`Value`]
-* [`CollectionItemValue`]
 * [`Rule`]
 * [`RelativeIdentifier`]
 
@@ -29,7 +28,6 @@ This allows validators to be defined using technologies such as JSON, XML, a rel
 [`Value`]:xref:CSF.Validation.ManifestModel.Value
 [`Rule`]:xref:CSF.Validation.ManifestModel.Rule
 [`RelativeIdentifier`]:xref:CSF.Validation.ManifestModel.RelativeIdentifier
-[`CollectionItemValue`]:xref:CSF.Validation.ManifestModel.CollectionItemValue
 [POCOs]: https://en.wikipedia.org/wiki/Plain_old_CLR_object
 
 ## Values & rules
@@ -56,8 +54,8 @@ The `Value` represents the collection as a whole, the `CollectionItemValue` repr
 Rules define the validation rules to be applied to values.
 The `Rule` class has properties that allows you to specify the validation rule type to be applied to the value, and optionally how that rule is configured.
 
-[`Children`]:xref:CSF.Validation.ManifestModel.ValueBase.Children
-[`CollectionItemValue`]:xref:CSF.Validation.ManifestModel.ValueBase.CollectionItemValue
+[`Children`]:xref:CSF.Validation.ManifestModel.Value.Children
+[`CollectionItemValue`]:xref:CSF.Validation.ManifestModel.Value.CollectionItemValue
 [`ValidationManifest`]:xref:CSF.Validation.Manifest.ValidationManifest
 
 ### Specifying rule-dependencies
