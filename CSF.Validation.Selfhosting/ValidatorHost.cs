@@ -17,7 +17,6 @@ namespace CSF.Validation
     /// </remarks>
     public class ValidatorHost : IHostsValidationFramework
     {
-        readonly IServiceProvider services;
         readonly Lazy<IGetsValidator> validatorFactory;
         readonly Lazy<IGetsManifestFromBuilder> manifestFromBuilderProvider;
         readonly Lazy<IGetsValidationManifestFromModel> manifestFromModelProvider;
@@ -42,7 +41,8 @@ namespace CSF.Validation
         /// <exception cref="ArgumentNullException">If <paramref name="services"/> is <see langword="null" />.</exception>
         internal ValidatorHost(IServiceProvider services)
         {
-            this.services = services ?? throw new ArgumentNullException(nameof(services));
+            if (services is null)
+                throw new ArgumentNullException(nameof(services));
 
             validatorFactory = LazyFactory<IGetsValidator>(services);
             manifestFromBuilderProvider = LazyFactory<IGetsManifestFromBuilder>(services);
