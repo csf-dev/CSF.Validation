@@ -8,9 +8,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation.StandardRules\CSF.Validation.StandardRules.csproj" />
+    <ProjectReference Include="..\CSF.Validation.Selfhosting\CSF.Validation.Selfhosting.csproj" />
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
-    <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\\CSF.Validation.Tests.SamplePlugin.csproj"
+    <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\CSF.Validation.Tests.SamplePlugin.csproj"
                       ReferenceOutputAssembly="false" />
   </ItemGroup>
 

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.StandardRule
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.Documentation", "CSF.Validation.Documentation\CSF.Validation.Documentation.csproj", "{92B95B52-9B03-46B4-B6D8-4BD9D6C5B4A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.Validation.Selfhosting", "CSF.Validation.Selfhosting\CSF.Validation.Selfhosting.csproj", "{93A4BE1E-D993-4E15-BC1B-3D4554A61259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{92B95B52-9B03-46B4-B6D8-4BD9D6C5B4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92B95B52-9B03-46B4-B6D8-4BD9D6C5B4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92B95B52-9B03-46B4-B6D8-4BD9D6C5B4A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A4BE1E-D993-4E15-BC1B-3D4554A61259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A4BE1E-D993-4E15-BC1B-3D4554A61259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A4BE1E-D993-4E15-BC1B-3D4554A61259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A4BE1E-D993-4E15-BC1B-3D4554A61259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
