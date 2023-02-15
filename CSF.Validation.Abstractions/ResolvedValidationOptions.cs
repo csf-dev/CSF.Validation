@@ -142,5 +142,22 @@ namespace CSF.Validation
         /// <seealso cref="ValidationOptions.EnableRuleParallelization"/>
         /// <seealso cref="Rules.ParallelizableAttribute"/>
         public bool EnableRuleParallelization { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether or not the validaiton rule process should record and add instrumentation
+        /// data to the results.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Developers wishing to benchmark or profile validation rules may find this useful.  When this option is set to <see langword="true" />,
+        /// additional information is added to the validation results, including information about the length of time spent executing rules
+        /// and/or generating validation feedback messages.
+        /// </para>
+        /// <para>
+        /// Because the act of gathering this information causes some performance degradation, this option defaults to <see langword="false" />.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="ValidationOptions.InstrumentRuleExecution"/>
+        public bool InstrumentRuleExecution { get; set; } = false;
     }
 }

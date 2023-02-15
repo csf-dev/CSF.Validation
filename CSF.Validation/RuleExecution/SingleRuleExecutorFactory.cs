@@ -1,4 +1,6 @@
+using System;
 using CSF.Validation.Rules;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation.RuleExecution
 {
@@ -7,7 +9,7 @@ namespace CSF.Validation.RuleExecution
     /// </summary>
     public class SingleRuleExecutorFactory : IGetsSingleRuleExecutor
     {
-        readonly IGetsRuleContext contextFactory;
+        readonly IServiceProvider services;
 
         /// <summary>
         /// Gets the service which may be used for executing validation rules.
@@ -15,16 +17,20 @@ namespace CSF.Validation.RuleExecution
         /// <param name="options">The validation options.</param>
         /// <returns>A single-rule execution service instance.</returns>
         public IExeucutesSingleRule GetRuleExecutor(ResolvedValidationOptions options)
-            => new SingleRuleExecutor(contextFactory);
+        {
+            var executor = ActivatorUtilities.CreateInstance<SingleRuleExecutor>(services);
+            if(!options.InstrumentRuleExecution) return executor;
+            return ActivatorUtilities.CreateInstance<InstrumentingSingleRuleExecutorDecorator>(services, executor);
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="SingleRuleExecutorFactory"/>.
         /// </summary>
-        /// <param name="contextFactory">A rule context factory.</param>
-        /// <exception cref="System.ArgumentNullException">If <paramref name="contextFactory"/> is <see langword="null" />.</exception>
-        public SingleRuleExecutorFactory(IGetsRuleContext contextFactory)
+        /// <param name="services">A service provider</param>
+        /// <exception cref="System.ArgumentNullException">If <paramref name="services"/> is <see langword="null" />.</exception>
+        public SingleRuleExecutorFactory(IServiceProvider services)
         {
-            this.contextFactory = contextFactory ?? throw new System.ArgumentNullException(nameof(contextFactory));
+            this.services = services ?? throw new ArgumentNullException(nameof(services));
         }
     }
 }

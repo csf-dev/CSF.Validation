@@ -13,9 +13,7 @@ namespace CSF.Validation.Messages
     /// </summary>
     public class FailureMessageValidationResultPopulator : IAddsFailureMessagesToResult
     {
-        static readonly RuleOutcome[] outcomesWhichDontGetMessages = { RuleOutcome.Passed, RuleOutcome.DependencyFailed };
-
-        readonly IGetsFailureMessageProvider messageProviderFactory;
+        readonly IGetsRuleWithMessageProvider providerFactory;
 
         /// <inheritdoc/>
         public async Task<IQueryableValidationResult<TValidated>> GetResultWithMessagesAsync<TValidated>(IQueryableValidationResult<TValidated> result,
@@ -30,6 +28,7 @@ namespace CSF.Validation.Messages
                                                                                       ResolvedValidationOptions options,
                                                                                       CancellationToken cancellationToken)
         {
+            var provider = providerFactory.GetRuleWithMessageProvider(options);
             var results = new List<ValidationRuleResult>();
 
             foreach (var ruleResult in result.RuleResults)
@@ -37,7 +36,7 @@ namespace CSF.Validation.Messages
                 cancellationToken.ThrowIfCancellationRequested();
                 try
                 {
-                    results.Add(await GetRuleResultWithMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false));
+                    results.Add(await provider.GetRuleResultWithMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false));
                 }
                 catch(Exception e)
                 {
@@ -57,30 +56,14 @@ namespace CSF.Validation.Messages
             return results;
         }
 
-        async Task<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
-        {
-            var message = await GetMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false);
-            return new ValidationRuleResult(ruleResult, ruleResult.RuleContext, ruleResult.ValidationLogic, message);
-        }
-
-        async Task<string> GetMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken)
-        {
-            if(outcomesWhichDontGetMessages.Contains(ruleResult.Outcome)) return null;
-
-            var messageProvider = messageProviderFactory.GetProvider(ruleResult);
-            if(messageProvider is null) return null;
-
-            return await messageProvider.GetFailureMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false);
-        }
-
         /// <summary>
         /// Initialises a new instance of <see cref="FailureMessageValidationResultPopulator"/>.
         /// </summary>
-        /// <param name="messageProviderFactory"></param>
-        /// <exception cref="System.ArgumentNullException">If <paramref name="messageProviderFactory"/> is <see langword="null" />.</exception>
-        public FailureMessageValidationResultPopulator(IGetsFailureMessageProvider messageProviderFactory)
+        /// <param name="providerFactory">A rule/message provider factory.</param>
+        /// <exception cref="System.ArgumentNullException">If <paramref name="providerFactory"/> is <see langword="null" />.</exception>
+        public FailureMessageValidationResultPopulator(IGetsRuleWithMessageProvider providerFactory)
         {
-            this.messageProviderFactory = messageProviderFactory ?? throw new System.ArgumentNullException(nameof(messageProviderFactory));
+            this.providerFactory = providerFactory ?? throw new ArgumentNullException(nameof(providerFactory));
         }
     }
 }
