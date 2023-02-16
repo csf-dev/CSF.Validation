@@ -17,7 +17,6 @@
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
     <ProjectReference Include="..\CSF.Validation.StandardRules\CSF.Validation.StandardRules.csproj" />
     <ProjectReference Include="..\CSF.Validation.Json\CSF.Validation.Json.csproj" />
-    <ProjectReference Include="..\CSF.Validation.Xml\CSF.Validation.Xml.csproj" />
   </ItemGroup>
 
   <ItemGroup>

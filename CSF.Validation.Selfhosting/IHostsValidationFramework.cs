@@ -79,10 +79,5 @@ namespace CSF.Validation
         /// Gets an object which may be used to serialize instances of manifest model <see cref="ManifestModel.Value"/> to/from JSON.
         /// </summary>
         ISerializesManifestModelToFromJson JsonSerializer { get; }
-
-        /// <summary>
-        /// Gets an object which may be used to serialize instances of manifest model <see cref="ManifestModel.Value"/> to/from XML.
-        /// </summary>
-        ISerializesManifestModelToFromXml XmlSerializer { get; }
     }
 }

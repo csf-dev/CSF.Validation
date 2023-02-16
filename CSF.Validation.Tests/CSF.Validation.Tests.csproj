@@ -14,7 +14,6 @@
     <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\CSF.Validation.Tests.SamplePlugin.csproj"
                       ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\CSF.Validation.Json\CSF.Validation.Json.csproj" />
-    <ProjectReference Include="..\CSF.Validation.Xml\CSF.Validation.Xml.csproj" />
   </ItemGroup>
 
   <ItemGroup>
