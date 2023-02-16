@@ -20,6 +20,15 @@ namespace CSF.Validation.IntegrationTests
             Assert.That(result?.RuleResults.Single()?.Message, Is.EqualTo(guid.ToString()));
         }
 
+        [Test,AutoMoqData]
+        public async Task WhenProducingAMessageWithInstrumentationEnabledTheTimeTakenToGenerateTheMessageShouldBeRecorded([IntegrationTesting] IGetsValidator validatorFactory, object validated)
+        {
+            var options = new ValidationOptions { EnableMessageGeneration = true, InstrumentRuleExecution = true };
+            var validator = validatorFactory.GetValidator<object>(new ObjectValidatorBuilder());
+            var result = await validator.ValidateAsync(validated, options);
+            Assert.That(result?.RuleResults.Single()?.InstrumentationData.MessageGenerationTime, Is.Not.Null);
+        }
+
         public class ObjectValidatorBuilder : IBuildsValidator<object>
         {
             public void ConfigureValidator(IConfiguresValidator<object> config)

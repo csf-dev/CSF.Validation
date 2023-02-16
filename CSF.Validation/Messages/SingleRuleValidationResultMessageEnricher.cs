@@ -26,9 +26,9 @@ namespace CSF.Validation.Messages
             return GetRuleResultWithMessagePrivateAsync(ruleResult, messageProvider, cancellationToken);
         }
 
-        async Task<ValidationRuleResult> GetRuleResultWithMessagePrivateAsync(ValidationRuleResult ruleResult,
-                                                                              IGetsFailureMessage messageProvider,
-                                                                              CancellationToken cancellationToken)
+        static async Task<ValidationRuleResult> GetRuleResultWithMessagePrivateAsync(ValidationRuleResult ruleResult,
+                                                                                     IGetsFailureMessage messageProvider,
+                                                                                     CancellationToken cancellationToken)
         {
             var message = await messageProvider.GetFailureMessageAsync(ruleResult, cancellationToken).ConfigureAwait(false);
             return new ValidationRuleResult(ruleResult, ruleResult.RuleContext, ruleResult.ValidationLogic, message);
