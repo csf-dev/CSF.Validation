@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using CSF.Validation.ManifestModel;
 using System.Text.Json;
 using System.Threading;
+using System.Text.Json.Serialization;
+using CSF.Validation.Manifest;
 
 namespace CSF.Validation
 {
@@ -11,12 +13,24 @@ namespace CSF.Validation
     /// </summary>
     public class JsonManifestModelSerializer : ISerializesManifestModelToFromJson
     {
+        static readonly JsonSerializerOptions options = GetOptions();
+
         /// <inheritdoc/>
         public Task<Value> DeserializeManifestModelAsync(Stream jsonStream, CancellationToken token = default)
-            => JsonSerializer.DeserializeAsync<Value>(jsonStream, cancellationToken: token).AsTask();
+            => JsonSerializer.DeserializeAsync<Value>(jsonStream, options, token).AsTask();
 
         /// <inheritdoc/>
         public Task SerializeManifestModelAsync(Value value, Stream destinationStream, CancellationToken token = default)
-            => JsonSerializer.SerializeAsync(destinationStream, value, cancellationToken: token);
+            => JsonSerializer.SerializeAsync(destinationStream, value, options, token);
+
+        static JsonSerializerOptions GetOptions()
+        {
+            var options = new JsonSerializerOptions
+            {
+                IgnoreNullValues = true,
+            };
+            options.Converters.Add(new JsonStringEnumConverter());
+            return options;
+        }
     }
 }
