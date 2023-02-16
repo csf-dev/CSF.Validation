@@ -34,6 +34,7 @@ namespace CSF.Validation
                 EnableMessageGeneration = GetEffectiveValue(x => x.EnableMessageGeneration, specifiedOptions, hardcodedDefaults.EnableMessageGeneration),
                 TreatMessageGenerationErrorsAsRuleErrors = GetEffectiveValue(x => x.TreatMessageGenerationErrorsAsRuleErrors, specifiedOptions, hardcodedDefaults.TreatMessageGenerationErrorsAsRuleErrors),
                 EnableRuleParallelization = GetEffectiveValue(x => x.EnableRuleParallelization, specifiedOptions, hardcodedDefaults.EnableRuleParallelization),
+                InstrumentRuleExecution = GetEffectiveValue(x => x.InstrumentRuleExecution, specifiedOptions, hardcodedDefaults.InstrumentRuleExecution),
             };
         }
 

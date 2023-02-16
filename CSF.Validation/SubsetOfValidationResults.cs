@@ -22,6 +22,9 @@ namespace CSF.Validation
         public ManifestItem ManifestValue  { get; }
 
         /// <inheritdoc/>
+        public TimeSpan? ValidationTime { get; }
+
+        /// <inheritdoc/>
         public IReadOnlyCollection<ValidationRuleResult> RuleResults { get; }
 
         /// <inheritdoc/>
@@ -56,12 +59,14 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="ruleResults">The rule results.</param>
         /// <param name="manifestValue">The manifest value.</param>
+        /// <param name="validationTime">The time it has taken to perform validation.</param>
         /// <exception cref="ArgumentNullException">If any parameter is <see langword="null" />.</exception>
-        public SubsetOfValidationResults(IEnumerable<ValidationRuleResult> ruleResults, ManifestItem manifestValue)
+        public SubsetOfValidationResults(IEnumerable<ValidationRuleResult> ruleResults, ManifestItem manifestValue, TimeSpan? validationTime)
         {
             RuleResults = ruleResults?.ToList() ?? throw new ArgumentNullException(nameof(ruleResults));
             ManifestValue = manifestValue ?? throw new ArgumentNullException(nameof(manifestValue));
             Passed = RuleResults.All(r => r.Outcome == RuleOutcome.Passed);
+            ValidationTime = validationTime;
         }
     }
 }

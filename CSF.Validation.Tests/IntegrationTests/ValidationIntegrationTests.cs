@@ -34,6 +34,62 @@ namespace CSF.Validation.IntegrationTests
         }
 
         [Test,AutoMoqData]
+        public async Task ValidateAsyncShouldReturnResultWithMetricsWhenInstrumentationEnabled([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var options = new ValidationOptions { InstrumentRuleExecution = true };
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
+
+            var person = new Person
+            {
+                Name = "Bobby",
+                Birthday = new DateTime(2000, 1, 1),
+                Pets = new[] {
+                    new Pet {
+                        Name = "Miffles",
+                        NumberOfLegs = 4,
+                        Type = "Cat"
+                    },
+                },
+            };
+
+            var result = await validator.ValidateAsync(person, options).ConfigureAwait(false);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.ValidationTime, Is.Not.Null, "Overall time");
+                Assert.That(result.RuleResults, Has.All.Property(nameof(ValidationRuleResult.InstrumentationData)).Not.Null, "Instrumentation data");
+            });
+        }
+        
+        [Test,AutoMoqData]
+        public async Task ValidateAsyncShouldReturnResultWithoutMetricsWhenInstrumentationDisabled([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var options = new ValidationOptions { InstrumentRuleExecution = false };
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
+
+            var person = new Person
+            {
+                Name = "Bobby",
+                Birthday = new DateTime(2000, 1, 1),
+                Pets = new[] {
+                    new Pet {
+                        Name = "Miffles",
+                        NumberOfLegs = 4,
+                        Type = "Cat"
+                    },
+                },
+            };
+
+            var result = await validator.ValidateAsync(person, options).ConfigureAwait(false);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.ValidationTime, Is.Null, "Overall time");
+                Assert.That(result.RuleResults, Has.All.Property(nameof(ValidationRuleResult.InstrumentationData)).Null, "Instrumentation data");
+            });
+        }
+
+        [Test,AutoMoqData]
         public async Task ValidateAsyncShouldReturnFailureResultForInvalidCollectionObject([IntegrationTesting] IGetsValidator validatorFactory)
         {
             var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));

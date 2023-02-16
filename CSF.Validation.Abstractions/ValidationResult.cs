@@ -23,6 +23,9 @@ namespace CSF.Validation
         public ValidationManifest Manifest { get; }
 
         /// <inheritdoc/>
+        public TimeSpan? ValidationTime { get; }
+
+        /// <inheritdoc/>
         public IQueryableValidationResult<T> AsResultFor<T>() => (IQueryableValidationResult<T>) this;
 
         /// <inheritdoc/>
@@ -70,15 +73,14 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="ruleResults">The rule results.</param>
         /// <param name="manifest">The validation manifest</param>
-        /// <exception cref="ArgumentNullException">If either parameter is <see langword="null" />.</exception>
-        protected ValidationResult(IEnumerable<ValidationRuleResult> ruleResults, ValidationManifest manifest)
+        /// <param name="validationTime">The time it has taken to perform validation.</param>
+        /// <exception cref="ArgumentNullException">If either of the first two parameters is <see langword="null" />.</exception>
+        protected ValidationResult(IEnumerable<ValidationRuleResult> ruleResults, ValidationManifest manifest, TimeSpan? validationTime = default)
         {
-            if (ruleResults is null)
-                throw new ArgumentNullException(nameof(ruleResults));
-
-            RuleResults = ruleResults.ToList();
+            RuleResults = ruleResults?.ToList() ?? throw new ArgumentNullException(nameof(ruleResults));
             Passed = RuleResults.All(r => r.Outcome == RuleOutcome.Passed);
             Manifest = manifest ?? throw new ArgumentNullException(nameof(manifest));
+            ValidationTime = validationTime;
         }
     }
 }
