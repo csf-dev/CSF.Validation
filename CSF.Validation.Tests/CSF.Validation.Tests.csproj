@@ -13,6 +13,7 @@
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
     <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\CSF.Validation.Tests.SamplePlugin.csproj"
                       ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\CSF.Validation.Json\CSF.Validation.Json.csproj" />
   </ItemGroup>
 
   <ItemGroup>

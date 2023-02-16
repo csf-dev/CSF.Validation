@@ -5,27 +5,24 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>CSF.Validation</RootNamespace>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.xml</DocumentationFile>
-    <PackageId>CSF.Validation</PackageId>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Json.xml</DocumentationFile>
+    <PackageId>CSF.Validation.Json</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Title>CSF.Validation</Title>
-    <Description>A framework for business rule validation</Description>
+    <Title>CSF.Validation.Json</Title>
+    <Description>A small library which consumes CSF.Validation and allows creation of validators from JSON.  This is an example of "validators as data".</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CSF.Reflector" Version="3.0.0" />
-    <PackageReference Include="CSF.ReflectionSpecifications" Version="3.1.0" />
-    <PackageReference Include="CSF.Specifications" Version="2.0.0" />
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.3.0" Condition="'$(TargetFramework)' == 'net461'" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
+
 </Project>
