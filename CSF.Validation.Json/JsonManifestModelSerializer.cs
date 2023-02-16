@@ -25,12 +25,12 @@ namespace CSF.Validation
 
         static JsonSerializerOptions GetOptions()
         {
-            var options = new JsonSerializerOptions
+            var opts = new JsonSerializerOptions
             {
                 IgnoreNullValues = true,
             };
-            options.Converters.Add(new JsonStringEnumConverter());
-            return options;
+            opts.Converters.Add(new JsonStringEnumConverter());
+            return opts;
         }
     }
 }
