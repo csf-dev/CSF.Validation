@@ -21,6 +21,8 @@ namespace CSF.Validation
         readonly Lazy<IGetsManifestFromBuilder> manifestFromBuilderProvider;
         readonly Lazy<IGetsValidationManifestFromModel> manifestFromModelProvider;
         readonly Lazy<IValidatesValidationManifest> manifestValidator;
+        readonly Lazy<ISerializesManifestModelToFromJson> jsonSerializer;
+        readonly Lazy<ISerializesManifestModelToFromXml> xmlSerializer;
 
         /// <inheritdoc/>
         public IGetsValidator ValidatorFactory => validatorFactory.Value;
@@ -33,6 +35,12 @@ namespace CSF.Validation
 
         /// <inheritdoc/>
         public IValidatesValidationManifest ManifestValidator => manifestValidator.Value;
+
+        /// <inheritdoc/>
+        public ISerializesManifestModelToFromJson JsonSerializer => jsonSerializer.Value;
+
+        /// <inheritdoc/>
+        public ISerializesManifestModelToFromXml XmlSerializer => xmlSerializer.Value;
 
         /// <summary>
         /// Initialises a new instance of <see cref="ValidatorHost"/>.
@@ -48,6 +56,8 @@ namespace CSF.Validation
             manifestFromBuilderProvider = LazyFactory<IGetsManifestFromBuilder>(services);
             manifestFromModelProvider = LazyFactory<IGetsValidationManifestFromModel>(services);
             manifestValidator = LazyFactory<IValidatesValidationManifest>(services);
+            jsonSerializer = LazyFactory<ISerializesManifestModelToFromJson>(services);
+            xmlSerializer = LazyFactory<ISerializesManifestModelToFromXml>(services);
         }
 
         static Lazy<T> LazyFactory<T>(IServiceProvider services) => new Lazy<T>(() => services.GetRequiredService<T>());
@@ -64,7 +74,7 @@ namespace CSF.Validation
         /// <para>
         /// When using the self-hosting/self-contained validator host, the standard validation rules:
         /// <see cref="StandardRulesServiceCollectionExtensions.UseStandardValidationRules(IServiceCollection)"/> are always
-        /// automatically added by default.
+        /// automatically added by default, as are the JSON and XML serializers.
         /// </para>
         /// </remarks>
         /// <param name="serviceCollectionConfig">An object permitting further configuration of the self-contained service collection.</param>
@@ -73,7 +83,12 @@ namespace CSF.Validation
         public static IHostsValidationFramework Build(Action<IServiceCollection> serviceCollectionConfig = null, Action<ValidationOptions> optionsAction = null)
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.UseValidationFramework(optionsAction).UseStandardValidationRules();
+            serviceCollection
+                .UseValidationFramework(optionsAction)
+                .UseStandardValidationRules()
+                .AddJsonValidationSerializer()
+                .AddXmlValidationSerializer();
+            
             if(serviceCollectionConfig != null)
                 serviceCollectionConfig(serviceCollection);
             var services = serviceCollection.BuildServiceProvider();

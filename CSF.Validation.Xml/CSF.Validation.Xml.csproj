@@ -5,11 +5,11 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>CSF.Validation</RootNamespace>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.StandardRules.xml</DocumentationFile>
-    <PackageId>CSF.Validation.StandardRules</PackageId>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Xml.xml</DocumentationFile>
+    <PackageId>CSF.Validation.Xml</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Title>CSF.Validation.StandardRules</Title>
-    <Description>A library of stock validation rules for general usage.</Description>
+    <Title>CSF.Validation.Xml</Title>
+    <Description>A small library which consumes CSF.Validation and allows creation of validators from XML.  This is an example of "validators as data".</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,4 @@
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
 </Project>

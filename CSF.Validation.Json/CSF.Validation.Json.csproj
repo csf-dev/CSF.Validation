@@ -5,14 +5,15 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>CSF.Validation</RootNamespace>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.StandardRules.xml</DocumentationFile>
-    <PackageId>CSF.Validation.StandardRules</PackageId>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Json.xml</DocumentationFile>
+    <PackageId>CSF.Validation.Json</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Title>CSF.Validation.StandardRules</Title>
-    <Description>A library of stock validation rules for general usage.</Description>
+    <Title>CSF.Validation.Json</Title>
+    <Description>A small library which consumes CSF.Validation and allows creation of validators from JSON.  This is an example of "validators as data".</Description>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
   </ItemGroup>
 
@@ -20,7 +21,4 @@
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
 </Project>
