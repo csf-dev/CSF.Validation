@@ -89,9 +89,9 @@ This class is intended to be used via the <code>using static</code> syntax, as d
 
 public class NotAString : IRule&lt;object&gt;
 {
-    public Task&lt;RuleResult&gt; GetResultAsync(object validated,
-                                           RuleContext context,
-                                           CancellationToken token = default)
+    public ValueTask&lt;RuleResult&gt; GetResultAsync(object validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         // The FailAsync and PassAsync methods are defined on CommonResults.
         return validated is string ? FailAsync() : PassAsync();

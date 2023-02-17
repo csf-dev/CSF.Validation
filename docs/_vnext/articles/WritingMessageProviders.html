@@ -120,9 +120,9 @@ This way, many unsuitable message providers may be ruled-out before they are cre
 <pre><code class="lang-csharp">[FailureMessageStrategy(RuleType = typeof(MySampleRule))]
 public class MySampleRuleMessageProvider : IGetsFailureMessage&lt;int&gt;
 {
-    public Task&lt;string&gt; GetFailureMessageAsync(int value,
-                                               ValidationRuleResult result,
-                                               CancellationToken token = default)
+    public ValueTask&lt;string&gt; GetFailureMessageAsync(int value,
+                                                    ValidationRuleResult result,
+                                                    CancellationToken token = default)
     {
         // Implementation omitted
     }
@@ -133,8 +133,8 @@ public class MySampleRuleMessageProvider : IGetsFailureMessage&lt;int&gt;
 [FailureMessageStrategy(ValidatedType = typeof(IEntity)]
 public class DatabaseErrorMessageProvider : IGetsFailureMessage
 {
-    public Task&lt;string&gt; GetFailureMessageAsync(ValidationRuleResult result,
-                                               CancellationToken token = default)
+    public ValueTask&lt;string&gt; GetFailureMessageAsync(ValidationRuleResult result,
+                                                    CancellationToken token = default)
     {
         // Implementation omitted
     }

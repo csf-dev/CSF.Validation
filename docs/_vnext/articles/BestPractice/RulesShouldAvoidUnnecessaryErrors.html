@@ -88,9 +88,9 @@ Then, in a different validation rule applied to the same value, return a <em>Fai
 
 public class FifthCharacterMustBeY : IRule&lt;string&gt;
 {
-    Task&lt;RuleResult&gt; GetResultAsync(string validated,
-                                    RuleContext context,
-                                    CancellationToken token = default)
+    public ValueTask&lt;RuleResult&gt; GetResultAsync(string validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         return validated[4] == 'Y' ? PassAsync() : FailAsync();
     }
@@ -103,9 +103,9 @@ public class FifthCharacterMustBeY : IRule&lt;string&gt;
 
 public class FifthCharacterMustBeY : IRule&lt;string&gt;
 {
-    Task&lt;RuleResult&gt; GetResultAsync(string validated,
-                                    RuleContext context,
-                                    CancellationToken token = default)
+    public ValueTask&lt;RuleResult&gt; GetResultAsync(string validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         if(validated is null || validated.Length &lt; 5) return PassAsync();
         return validated[4] == 'Y' ? PassAsync() : FailAsync();
