@@ -21,7 +21,7 @@ namespace CSF.Validation.Rules
         public Type Type { get; set; }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
         {
             if(Type is null) throw new InvalidOperationException(String.Format(ExceptionMessages.GetExceptionMessage("DerivesFrom")));
             if(validated is null) return PassAsync();
@@ -31,8 +31,8 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(value, result, Type));
+        public ValueTask<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(value, result, Type));
 
         static internal string GetFailureMessage(object value, ValidationRuleResult result, Type requiredType)
         {

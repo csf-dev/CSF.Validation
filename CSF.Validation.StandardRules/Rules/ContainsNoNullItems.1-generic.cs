@@ -28,7 +28,7 @@ namespace CSF.Validation.Rules
     public class ContainsNoNullItems<T> : IRuleWithMessage<IEnumerable<T>>, IRuleWithMessage<IQueryable<T>>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IEnumerable<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IEnumerable<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             var countOfNulls = validated.Count(x => Equals(x, null));
@@ -37,18 +37,18 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.All(x => x != null) ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(ContainsNoNullItems.GetFailureMessage(value, result));
+        public ValueTask<string> GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(ContainsNoNullItems.GetFailureMessage(value, result));
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(IEnumerable<T> value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(ContainsNoNullItems.GetFailureMessage(value, result));
+        public ValueTask<string> GetFailureMessageAsync(IEnumerable<T> value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(ContainsNoNullItems.GetFailureMessage(value, result));
     }
 }

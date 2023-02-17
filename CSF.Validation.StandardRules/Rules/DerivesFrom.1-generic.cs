@@ -13,7 +13,7 @@ namespace CSF.Validation.Rules
     public class DerivesFrom<T> : IRuleWithMessage<object>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             var actualType = validated.GetType();
@@ -22,7 +22,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(DerivesFrom.GetFailureMessage(value, result, typeof(T)));
+        public ValueTask<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(DerivesFrom.GetFailureMessage(value, result, typeof(T)));
     }
 }

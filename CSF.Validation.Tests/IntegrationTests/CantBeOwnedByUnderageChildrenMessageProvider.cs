@@ -7,9 +7,9 @@ namespace CSF.Validation.IntegrationTests
     [FailureMessageStrategy(RuleType = typeof(CantBeOwnedByUnderageChildren))]
     public class CantBeOwnedByUnderageChildrenMessageProvider : IGetsFailureMessage<Pet>
     {
-        public Task<string> GetFailureMessageAsync(Pet value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(Pet value, ValidationRuleResult result, CancellationToken token = default)
         {
-            return Task.FromResult($"The pet cannot be owned by a child under {value.MinimumAgeToOwn} years old, " +
+            return new ValueTask<string>($"The pet cannot be owned by a child under {value.MinimumAgeToOwn} years old, " +
                                    $"but the child is only {result.Data[CantBeOwnedByUnderageChildren.ActualAgeKey]} years old.");
         }
     }

@@ -15,14 +15,14 @@ namespace CSF.Validation.Rules
     public class AllPolymorphicTypesMustBeMarkedAsSo : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("AllPolymorphicTypesMustBeMarkedAsSo"),
+        public ValueTask<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("AllPolymorphicTypesMustBeMarkedAsSo"),
                                              nameof(ManifestItem),
                                              nameof(ManifestItem.PolymorphicTypes),
                                              nameof(ManifestItemTypes.PolymorphicType)));
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.PolymorphicTypes is null) return PassAsync();
             return validated.PolymorphicTypes.All(x => x.IsPolymorphicType) ? PassAsync() : FailAsync();

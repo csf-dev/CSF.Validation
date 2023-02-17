@@ -108,7 +108,7 @@ namespace CSF.Validation.Rules
         public TimeSpan ExecutionTimeout { get; set; } = TimeSpan.FromMilliseconds(50);
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null)
                 return PassAsync();
@@ -119,11 +119,11 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("MatchesRegex"),
                                         Pattern, RegexOptions, value);
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

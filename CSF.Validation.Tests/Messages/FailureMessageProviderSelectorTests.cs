@@ -30,7 +30,7 @@ namespace CSF.Validation.Messages
 
         public class SampleProvider : IGetsFailureMessage
         {
-            Task<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }

@@ -14,6 +14,6 @@ namespace CSF.Validation.RuleExecution
         /// <param name="rule">The rule to execute.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         /// <returns>A task containing the rule's result.</returns>
-        Task<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default);
+        ValueTask<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default);
     }
 }

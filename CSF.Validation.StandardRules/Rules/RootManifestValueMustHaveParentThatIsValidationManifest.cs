@@ -14,19 +14,19 @@ namespace CSF.Validation.Rules
     public class RootManifestValueMustHaveParentThatIsValidationManifest : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.RootValue?.Parent is null) return PassAsync();
             return ReferenceEquals(validated.RootValue.Parent, validated) ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("ParentMustDeriveFromValidationManifest"),
                                         nameof(ManifestItem.Parent),
                                         nameof(ManifestItem));
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

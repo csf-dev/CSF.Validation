@@ -44,29 +44,29 @@ namespace CSF.Validation.Rules
         public DateTime? End { get; set; }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(DateTime? value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(DateTime? value, ValidationRuleResult result, CancellationToken token = default)
         {
             if(Start.HasValue && End.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeRange"), Start, End, value));
+                return new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeRange"), Start, End, value));
             if(Start.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeMin"), Start, value));
+                return new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeMin"), Start, value));
 
-            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeMax"), End, value));
+            return new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("DateTimeInRangeMax"), End, value));
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(DateTime? validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(DateTime? validated, RuleContext context, CancellationToken token = default)
             => !validated.HasValue ? PassAsync() : GetResultAsync(validated.Value, context, token);
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(DateTime validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(DateTime validated, RuleContext context, CancellationToken token = default)
         {
             var result = (!Start.HasValue || Start.Value <= validated)
                       && (!End.HasValue   || validated   <= End.Value);
             return result ? PassAsync() : FailAsync();
         }
 
-        Task<string> IGetsFailureMessage<DateTime>.GetFailureMessageAsync(DateTime value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<DateTime>.GetFailureMessageAsync(DateTime value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
     }
 }

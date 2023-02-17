@@ -26,11 +26,11 @@ namespace CSF.Validation.Rules
     public class NotNull : IRuleWithMessage<object>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
             => Equals(validated, null) ? FailAsync() : PassAsync();
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
-             => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNull"));
+        public ValueTask<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
+             => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNull"));
     }
 }

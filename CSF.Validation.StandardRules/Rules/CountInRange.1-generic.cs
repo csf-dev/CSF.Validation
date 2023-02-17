@@ -44,7 +44,7 @@ namespace CSF.Validation.Rules
         public int? Max { get; set; }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             inRangeRule.Min = Min;
@@ -53,7 +53,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             // Operations upon the queryable might be expensive, so skip them if neither min or max is set.
@@ -63,7 +63,7 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Count(), context, token);
         }
 
-        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
         {
             if(validated is null) return PassAsync();
             inRangeRule.Min = Min;
@@ -71,24 +71,24 @@ namespace CSF.Validation.Rules
             return inRangeRule.GetResultAsync(validated.Count, context, token);
         }
 
-        Task<string> GetFailureMessageAsync(ValidationRuleResult result)
+        ValueTask<string> GetFailureMessageAsync(ValidationRuleResult result)
         {
             if(Min.HasValue && Max.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeRange"), Min, Max, result.Data[IntegerInRange.ActualKey]));
+                return new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeRange"), Min, Max, result.Data[IntegerInRange.ActualKey]));
             if(Min.HasValue)
-                return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeMin"), Min, result.Data[IntegerInRange.ActualKey]));
+                return new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeMin"), Min, result.Data[IntegerInRange.ActualKey]));
 
-            return Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeMax"), Max, result.Data[IntegerInRange.ActualKey]));
+            return new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("CountInRangeMax"), Max, result.Data[IntegerInRange.ActualKey]));
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token = default)
             => GetFailureMessageAsync(result);
 
-        Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(result);
 
-        Task<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(result);
         
         /// <summary>

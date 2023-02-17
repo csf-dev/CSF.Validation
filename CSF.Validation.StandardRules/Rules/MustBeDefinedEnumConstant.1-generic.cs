@@ -21,20 +21,20 @@ namespace CSF.Validation.Rules
     public class MustBeDefinedEnumConstant<T> : IRuleWithMessage<T>, IRuleWithMessage<T?> where T : struct, Enum
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(T? validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(T? validated, RuleContext context, CancellationToken token = default)
         {
             if(!validated.HasValue) return PassAsync();
             return Enum.IsDefined(typeof(T), validated) ? PassAsync() : FailAsync();
         }
 
-        Task<RuleResult> IRule<T>.GetResultAsync(T validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<T>.GetResultAsync(T validated, RuleContext context, CancellationToken token)
             => GetResultAsync(validated, context, token);
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(T? value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(MustBeDefinedEnumConstant.GetFailureMessage(typeof(T)));
+        public ValueTask<string> GetFailureMessageAsync(T? value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(MustBeDefinedEnumConstant.GetFailureMessage(typeof(T)));
 
-        Task<string> IGetsFailureMessage<T>.GetFailureMessageAsync(T value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<T>.GetFailureMessageAsync(T value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
     }
 }

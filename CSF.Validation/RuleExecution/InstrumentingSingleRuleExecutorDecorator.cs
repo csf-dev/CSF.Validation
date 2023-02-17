@@ -13,7 +13,7 @@ namespace CSF.Validation.RuleExecution
         readonly Stopwatch stopwatch = new Stopwatch();
 
         /// <inheritdoc/>
-        public async Task<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default)
+        public async ValueTask<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default)
         {
             stopwatch.Reset();
             stopwatch.Start();

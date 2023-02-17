@@ -13,14 +13,14 @@ namespace CSF.Validation.Rules
     public class MemberMustExist : IRuleWithMessage<string, ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(string value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
         {
             if(value is null || !(parentValue?.Parent is ManifestItem grandparentItem) || grandparentItem?.ValidatedType is null) return PassAsync();
             return grandparentItem.ValidatedType.GetMember(value).Any() ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(string value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(string value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = string.Format(Resources.FailureMessages.GetFailureMessage("MemberMustExist"),
                                         nameof(ManifestItem.ValidatedType),
@@ -28,7 +28,7 @@ namespace CSF.Validation.Rules
                                         value,
                                         nameof(ManifestItem.MemberName),
                                         nameof(ManifestItem));
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

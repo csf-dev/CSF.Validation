@@ -39,7 +39,7 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
             Mock.Get(rule.RuleLogic)
                 .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(expectedResult));
+                .Returns(() => new ValueTask<RuleResult>(expectedResult));
 
             await sut.ExecuteRuleAsync(rule);
 
@@ -56,7 +56,7 @@ namespace CSF.Validation.RuleExecution
         {
             Mock.Get(rule.RuleLogic)
                 .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(expectedResult));
+                .Returns(() => new ValueTask<RuleResult>(expectedResult));
             Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
 
             var result = await sut.ExecuteRuleAsync(rule);
@@ -80,7 +80,7 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(rule.RuleLogic)
                 .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
                 .Callback((object v1, object v2, RuleContext context, CancellationToken t) => capturedContext = context)
-                .Returns(() => Task.FromResult(expectedResult));
+                .Returns(() => new ValueTask<RuleResult>(expectedResult));
             Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
 
             await sut.ExecuteRuleAsync(rule);
@@ -98,10 +98,10 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(rule.RuleLogic).Setup(x => x.GetTimeout()).Returns(timeout);
             Mock.Get(rule.RuleLogic)
                 .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
-                .Returns(() => Task.Run(async () => {
+                .Returns(() => new ValueTask<RuleResult>(Task.Run(async () => {
                     await Task.Delay(200);
                     return CommonResults.Pass();
-                }));
+                })));
             Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
 
             var result = await sut.ExecuteRuleAsync(rule);
@@ -125,10 +125,10 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(rule.RuleLogic).Setup(x => x.GetTimeout()).Returns(timeout);
             Mock.Get(rule.RuleLogic)
                 .Setup(x => x.GetResultAsync(It.IsAny<object>(), It.IsAny<object>(), It.IsAny<RuleContext>(), It.IsAny<CancellationToken>()))
-                .Returns(() => Task.Run(async () => {
+                .Returns(() => new ValueTask<RuleResult>(Task.Run(async () => {
                     await Task.Delay(50);
                     return CommonResults.Pass();
-                }));
+                })));
             Mock.Get(contextFactory).Setup(x => x.GetRuleContext(rule)).Returns(context);
 
             Assert.That(() => sut.ExecuteRuleAsync(rule), Is.PassingRuleResult);

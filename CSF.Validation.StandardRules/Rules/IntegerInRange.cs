@@ -56,7 +56,7 @@ namespace CSF.Validation.Rules
         public long? Max { get; set; }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(long validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(long validated, RuleContext context, CancellationToken token = default)
         {
             var result = (!Min.HasValue || Min.Value <= validated)
                       && (!Max.HasValue || validated <= Max.Value);
@@ -65,50 +65,50 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(long? validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(long? validated, RuleContext context, CancellationToken token = default)
             => validated.HasValue ? GetResultAsync(validated.Value, context, token) : PassAsync(new Dictionary<string, object> { { MinKey, Min }, { MaxKey, Max }, { ActualKey, validated } });
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(long? value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage<long>(value, result, Min, Max));
+        public ValueTask<string> GetFailureMessageAsync(long? value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage<long>(value, result, Min, Max));
 
-        Task<string> IGetsFailureMessage<byte>.GetFailureMessageAsync(byte value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<byte>.GetFailureMessageAsync(byte value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<string> IGetsFailureMessage<short>.GetFailureMessageAsync(short value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<short>.GetFailureMessageAsync(short value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<string> IGetsFailureMessage<int>.GetFailureMessageAsync(int value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<int>.GetFailureMessageAsync(int value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<string> IGetsFailureMessage<long>.GetFailureMessageAsync(long value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<long>.GetFailureMessageAsync(long value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<string> IGetsFailureMessage<byte?>.GetFailureMessageAsync(byte? value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<byte?>.GetFailureMessageAsync(byte? value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<string> IGetsFailureMessage<short?>.GetFailureMessageAsync(short? value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<short?>.GetFailureMessageAsync(short? value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<string> IGetsFailureMessage<int?>.GetFailureMessageAsync(int? value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<int?>.GetFailureMessageAsync(int? value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync(value, result, token);
 
-        Task<RuleResult> IRule<byte>.GetResultAsync(byte validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<byte>.GetResultAsync(byte validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long)validated, context, token);
 
-        Task<RuleResult> IRule<short>.GetResultAsync(short validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<short>.GetResultAsync(short validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long)validated, context, token);
 
-        Task<RuleResult> IRule<int>.GetResultAsync(int validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<int>.GetResultAsync(int validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long)validated, context, token);
 
-        Task<RuleResult> IRule<byte?>.GetResultAsync(byte? validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<byte?>.GetResultAsync(byte? validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long?)validated, context, token);
 
-        Task<RuleResult> IRule<short?>.GetResultAsync(short? validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<short?>.GetResultAsync(short? validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long?)validated, context, token);
 
-        Task<RuleResult> IRule<int?>.GetResultAsync(int? validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<int?>.GetResultAsync(int? validated, RuleContext context, CancellationToken token)
             => GetResultAsync((long?)validated, context, token);
 
         internal static string GetFailureMessage<TNumeric>(TNumeric? value, ValidationRuleResult result, TNumeric? min, TNumeric? max) where TNumeric : struct

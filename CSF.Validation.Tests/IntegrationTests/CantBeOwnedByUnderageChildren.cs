@@ -11,7 +11,7 @@ namespace CSF.Validation.IntegrationTests
     {
         public static readonly string ActualAgeKey = "Actual age";
 
-        public Task<RuleResult> GetResultAsync(Pet validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(Pet validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.MinimumAgeToOwn.HasValue != true) return PassAsync();
 

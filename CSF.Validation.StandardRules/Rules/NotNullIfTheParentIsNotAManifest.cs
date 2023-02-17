@@ -19,12 +19,12 @@ namespace CSF.Validation.Rules
     public class NotNullIfTheParentIsNotAManifest : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
             => (parentValue?.Parent is ValidationManifest || !parentValue.IsValue || !(value is null)) ? PassAsync() : FailAsync();
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(string.Format(Resources.FailureMessages.GetFailureMessage("NotNullIfTheParentIsNotAManifest"),
+        public ValueTask<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(string.Format(Resources.FailureMessages.GetFailureMessage("NotNullIfTheParentIsNotAManifest"),
                                              nameof(ManifestItem),
                                              nameof(ValidationManifest)));
     }

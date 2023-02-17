@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
     public class CollectionItemValueMustValidateCompatibleTypeForValidatedType : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.CollectionItemValue?.ValidatedType is null || validated?.ValidatedType is null) return PassAsync();
             var requiredEnumerableType = typeof(IEnumerable<>).MakeGenericType(validated.CollectionItemValue.ValidatedType);
@@ -37,7 +37,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("CollectionItemValueMustValidateCompatibleTypeForValidatedType"),
                                         nameof(ManifestItem),
@@ -46,7 +46,7 @@ namespace CSF.Validation.Rules
                                         nameof(ManifestItem.CollectionItemValue),
                                         value.ValidatedType,
                                         value.CollectionItemValue.ValidatedType);
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

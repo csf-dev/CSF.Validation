@@ -14,14 +14,14 @@ namespace CSF.Validation.Rules
     public class RootValueOfManifestMustBeASimpleValue : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("RootValueOfManifestMustBeASimpleValue"),
+        public ValueTask<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("RootValueOfManifestMustBeASimpleValue"),
                                              nameof(ValidationManifest),
                                              nameof(ValidationManifest.RootValue),
                                              nameof(ManifestItemTypes.Value)));
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.RootValue is null) return PassAsync();
             return validated.RootValue.ItemType == ManifestItemTypes.Value ? PassAsync() : FailAsync();

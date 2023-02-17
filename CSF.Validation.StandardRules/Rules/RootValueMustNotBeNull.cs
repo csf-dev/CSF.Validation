@@ -13,18 +13,18 @@ namespace CSF.Validation.Rules
     public class RootValueMustNotBeNull : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
             return validated?.RootValue is null ? FailAsync() : PassAsync();
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = string.Format(FailureMessages.GetFailureMessage("RootValueMustNotBeNull"),
                                         nameof(ValidationManifest));
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

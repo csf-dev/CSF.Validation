@@ -16,14 +16,14 @@ namespace CSF.Validation.Rules
     public class CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.CollectionItemValue is null || validated?.ValidatedType is null) return PassAsync();
             return typeof(IEnumerable<object>).IsAssignableFrom(validated.ValidatedType) ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable"),
                                         nameof(ManifestItem.ValidatedType),
@@ -31,7 +31,7 @@ namespace CSF.Validation.Rules
                                         nameof(IEnumerable<object>),
                                         nameof(Object),
                                         nameof(ManifestItem.CollectionItemValue));
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

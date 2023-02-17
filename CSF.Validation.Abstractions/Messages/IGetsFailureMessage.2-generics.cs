@@ -41,6 +41,6 @@ namespace CSF.Validation.Messages
         /// <param name="result">A validation result, typically indicating failure.</param>
         /// <param name="token">An optional cancellation token.</param>
         /// <returns>A human-readable message.</returns>
-        Task<string> GetFailureMessageAsync(TValidated value, TParent parentValue, ValidationRuleResult result, CancellationToken token = default);
+        ValueTask<string> GetFailureMessageAsync(TValidated value, TParent parentValue, ValidationRuleResult result, CancellationToken token = default);
     }
 }

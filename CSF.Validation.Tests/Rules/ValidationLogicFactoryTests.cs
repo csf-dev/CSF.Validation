@@ -190,7 +190,7 @@ namespace CSF.Validation.Rules
 
             public string ConfigurableValue { get; set; }
 
-            public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
             {
                 Executed = true;
                 return PassAsync();
@@ -203,13 +203,13 @@ namespace CSF.Validation.Rules
 
             public bool ExecutedAsValueRule { get; private set; }
 
-            public Task<RuleResult> GetResultAsync(string value, ComplexObject validated, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(string value, ComplexObject validated, RuleContext context, CancellationToken token = default)
             {
                 ExecutedAsValueRule = true;
                 return PassAsync();
             }
 
-            public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
             {
                 ExecutedAsRule = true;
                 return PassAsync();

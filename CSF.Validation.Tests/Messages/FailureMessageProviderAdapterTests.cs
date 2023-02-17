@@ -25,7 +25,7 @@ namespace CSF.Validation.Messages
         {
             var context = new RuleContext(rule, id, actualValue, Enumerable.Empty<ValueContext>(), ruleInterface);
             var validationRuleResult = new ValidationRuleResult(ruleResult, context, validationLogic);
-            Mock.Get(wrapped).Setup(x => x.GetFailureMessageAsync(actualValue, validationRuleResult, default)).Returns(Task.FromResult(expectedResult));
+            Mock.Get(wrapped).Setup(x => x.GetFailureMessageAsync(actualValue, validationRuleResult, default)).Returns(new ValueTask<string>(expectedResult));
             Assert.That(async () => await sut.GetFailureMessageAsync(validationRuleResult), Is.EqualTo(expectedResult));
         }
 
@@ -44,7 +44,7 @@ namespace CSF.Validation.Messages
         {
             var context = new RuleContext(rule, id, actualValue, new [] { new ValueContext(null, parentValue, value) }, ruleInterface);
             var validationRuleResult = new ValidationRuleResult(ruleResult, context, validationLogic);
-            Mock.Get(wrapped).Setup(x => x.GetFailureMessageAsync(actualValue, parentValue, validationRuleResult, default)).Returns(Task.FromResult(expectedResult));
+            Mock.Get(wrapped).Setup(x => x.GetFailureMessageAsync(actualValue, parentValue, validationRuleResult, default)).Returns(new ValueTask<string>(expectedResult));
             Assert.That(async () => await sut.GetFailureMessageAsync(validationRuleResult), Is.EqualTo(expectedResult));
         }
     }

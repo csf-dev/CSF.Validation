@@ -6,7 +6,7 @@ namespace CSF.Validation
 {
     public class SecondSampleRule : IRule<object>
     {
-        public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
         {
             throw new System.NotImplementedException();
         }

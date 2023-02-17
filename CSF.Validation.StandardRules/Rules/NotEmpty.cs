@@ -48,45 +48,45 @@ namespace CSF.Validation.Rules
     public class NotEmpty : IRuleWithMessage<ICollection>, IRuleWithMessage<IEnumerable>, IRuleWithMessage<Array>, IRuleWithMessage<string>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Count > 0 ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.GetEnumerator().MoveNext() ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Length > 0 ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Length > 0 ? PassAsync() : FailAsync();
         }
 
-        static Task<string> GetFailureMessageAsync() => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotEmpty"));
+        static ValueTask<string> GetFailureMessageAsync() => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotEmpty"));
 
-        Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
 
-        Task<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
 
-        Task<string> IGetsFailureMessage<IEnumerable>.GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<IEnumerable>.GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
 
-        Task<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
     }
 }
