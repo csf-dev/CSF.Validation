@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build (Debug)",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -15,6 +15,20 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build (Release)",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "-c",
+                "Release",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": { "kind": "build" }
         },
         {
             "label": "test",

@@ -188,7 +188,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -229,7 +229,7 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>A human-readable message.</p>
 </td>
       </tr>
@@ -249,7 +249,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -290,7 +290,7 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>A human-readable message.</p>
 </td>
       </tr>
@@ -310,7 +310,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -351,7 +351,7 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>A human-readable message.</p>
 </td>
       </tr>
@@ -371,7 +371,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -412,7 +412,7 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>A human-readable message.</p>
 </td>
       </tr>
@@ -432,7 +432,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(Array validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(Array validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -473,7 +473,7 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
 </td>
       </tr>
@@ -539,7 +539,7 @@ However, if this rule only needs access to an immediate parent value then consid
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -580,7 +580,7 @@ However, if this rule only needs access to an immediate parent value then consid
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
 </td>
       </tr>
@@ -646,7 +646,7 @@ However, if this rule only needs access to an immediate parent value then consid
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -687,7 +687,7 @@ However, if this rule only needs access to an immediate parent value then consid
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
 </td>
       </tr>
@@ -753,7 +753,7 @@ However, if this rule only needs access to an immediate parent value then consid
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(string validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(string validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -794,7 +794,7 @@ However, if this rule only needs access to an immediate parent value then consid
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
 </td>
       </tr>

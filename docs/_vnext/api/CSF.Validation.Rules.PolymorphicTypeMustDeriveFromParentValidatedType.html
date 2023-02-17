@@ -141,7 +141,7 @@ the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validati
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetFailureMessageAsync(Type value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; GetFailureMessageAsync(Type value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -187,7 +187,7 @@ the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validati
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>A human-readable message.</p>
 </td>
       </tr>
@@ -207,7 +207,7 @@ the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validati
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(Type value, ManifestItem parentValue, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(Type value, ManifestItem parentValue, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -253,7 +253,7 @@ the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validati
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
 </td>
       </tr>
