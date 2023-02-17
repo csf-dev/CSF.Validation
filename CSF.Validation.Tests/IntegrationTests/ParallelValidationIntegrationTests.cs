@@ -49,7 +49,7 @@ namespace CSF.Validation.IntegrationTests
         /// </remarks>
         const int millisecondsGrace = 250;
 
-        [Test,AutoMoqData]
+        [Test,AutoMoqData,Description("The validator should complete more quickly than the worst-case scenario when parallelization is enabled.")]
         public async Task ValidateAsyncShouldTakeApproximatelyTheCorrectTimeToRunAParallelRuleset([IntegrationTesting] IGetsValidator validatorFactory,
                                                                                                   [NoAutoProperties] Person person)
         {
@@ -68,8 +68,29 @@ namespace CSF.Validation.IntegrationTests
             var bestCaseMilliseconds = 650;
 
             Assert.That(stopwatch.ElapsedMilliseconds,
-                        Is.GreaterThan(bestCaseMilliseconds).And.LessThan(bestCaseMilliseconds + millisecondsGrace),
-                        "The validator is expected to take between 650 and 900 milliseconds to complete validation.");
+                        Is.GreaterThan(bestCaseMilliseconds)
+                          .And.LessThan(bestCaseMilliseconds + millisecondsGrace));
+        }
+
+        [Test,AutoMoqData,Description("The validaor should complete less quickly than the hypothetical worst-case scenario when parallelization is disabled.")]
+        public async Task ValidateAsyncShouldTakeAtLeastWorstCaseScenarioTimeWhenParallelizationIsDisabled([IntegrationTesting] IGetsValidator validatorFactory,
+                                                                                                           [NoAutoProperties] Person person)
+        {
+            var validator = validatorFactory.GetValidator<Person>(typeof(ParallelValidatorBuilder));
+
+            stopwatch.Start();
+            await validator.ValidateAsync(person, new ValidationOptions { EnableRuleParallelization = false }).ConfigureAwait(false);
+            stopwatch.Stop();
+
+            // Best case time :  [largest of (300, 300, 200, 200)] + 200 + 150 = 650    (represents perfect parallelisation with no overhead)
+            // Worst case time:  300 + 300 + 200 + 200             + 200 + 150 = 1350   (represents serial execution, although still no overhead)
+            // 
+            // The total time for validation should be a little over "the best case time".
+            // We allow a short grace period because that best case is totally hypothetical and impossible to actually achieve.
+            // Even with the grace period, the target time is well below the worst case (representing totally non-parallel execution).
+            var worstCaseMilliseconds = 1350;
+
+            Assert.That(stopwatch.ElapsedMilliseconds, Is.GreaterThanOrEqualTo(worstCaseMilliseconds));
         }
     }
 }
