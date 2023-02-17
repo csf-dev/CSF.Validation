@@ -15,18 +15,18 @@ namespace CSF.Validation.Messages
         readonly IGetsFailureMessageProvider messageProviderFactory;
 
         /// <inheritdoc/>
-        public Task<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken = default)
+        public ValueTask<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken = default)
         {
             if(outcomesWhichDontGetMessages.Contains(ruleResult.Outcome))
-                return Task.FromResult(ruleResult);
+                return new ValueTask<ValidationRuleResult>(ruleResult);
 
             var messageProvider = messageProviderFactory.GetProvider(ruleResult);
-            if(messageProvider is null) return Task.FromResult(ruleResult);
+            if(messageProvider is null) return new ValueTask<ValidationRuleResult>(ruleResult);
 
             return GetRuleResultWithMessagePrivateAsync(ruleResult, messageProvider, cancellationToken);
         }
 
-        static async Task<ValidationRuleResult> GetRuleResultWithMessagePrivateAsync(ValidationRuleResult ruleResult,
+        static async ValueTask<ValidationRuleResult> GetRuleResultWithMessagePrivateAsync(ValidationRuleResult ruleResult,
                                                                                      IGetsFailureMessage messageProvider,
                                                                                      CancellationToken cancellationToken)
         {

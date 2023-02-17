@@ -33,7 +33,7 @@ namespace CSF.Validation.Messages
                                                                                                      [RuleResult(Outcome = RuleOutcome.Failed)] ValidationRuleResult result)
         {
             Mock.Get(messageProviderFactory).Setup(x => x.GetProvider(result)).Returns(messageProvider);
-            Mock.Get(messageProvider).Setup(x => x.GetFailureMessageAsync(result, default)).Returns(Task.FromResult(message));
+            Mock.Get(messageProvider).Setup(x => x.GetFailureMessageAsync(result, default)).Returns(new ValueTask<string>(message));
             Assert.That(async () => await sut.GetRuleResultWithMessageAsync(result, default), Has.Property(nameof(ValidationRuleResult.Message)).EqualTo(message));
         }
     }

@@ -21,7 +21,7 @@ namespace CSF.Validation.Rules
             ownRulesKey = nameof(ManifestItem.OwnRules);
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("MayNotHaveOwnItemsIfRecursive"),
                                         nameof(ManifestItemTypes.Recursive),
@@ -33,11 +33,11 @@ namespace CSF.Validation.Rules
                                         result.Data.TryGetValue(ownPolymorphicTypesKey, out object val3) && val3 is int intVal2 ? intVal2.ToString() : "<unknown>",
                                         nameof(ManifestItem.OwnRules),
                                         result.Data.TryGetValue(ownRulesKey, out object val4) && val4 is int intVal3 ? intVal3.ToString() : "<unknown>");
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null || !validated.IsRecursive) return PassAsync();
 

@@ -14,7 +14,7 @@ namespace CSF.Validation.RuleExecution
         readonly IGetsRuleContext contextFactory;
         
         /// <inheritdoc/>
-        public async Task<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default)
+        public async ValueTask<ValidationRuleResult> ExecuteRuleAsync(ExecutableRule rule, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
             
@@ -33,13 +33,16 @@ namespace CSF.Validation.RuleExecution
             }
         }
 
-        static async Task<RuleResult> WaitForResultAsync(Task<RuleResult> ruleTask, CancellationToken combinedToken, TimeSpan? timeout)
+        static async ValueTask<RuleResult> WaitForResultAsync(ValueTask<RuleResult> ruleTask, CancellationToken combinedToken, TimeSpan? timeout)
         {
             if (!timeout.HasValue)
                 return await ruleTask.ConfigureAwait(false);
 
-            if (await Task.WhenAny(ruleTask, Task.Delay(timeout.Value, combinedToken)).ConfigureAwait(false) == ruleTask)
-                return await ruleTask.ConfigureAwait(false);
+            if(ruleTask.IsCompletedSuccessfully) return ruleTask.Result;
+            var asyncRuleTask = ruleTask.AsTask();
+
+            if (await Task.WhenAny(asyncRuleTask, Task.Delay(timeout.Value, combinedToken)).ConfigureAwait(false) == asyncRuleTask)
+                return await asyncRuleTask.ConfigureAwait(false);
 
             return CommonResults.Error(data: new Dictionary<string,object> { { RuleResult.RuleTimeoutDataKey, timeout.Value } });
         }

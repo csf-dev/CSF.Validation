@@ -31,7 +31,7 @@ namespace CSF.Validation.Rules
         internal const string CountOfNullsKey = "Count of nulls";
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             var countOfNulls = validated.Cast<object>().Count(x => Equals(x, null));
@@ -40,8 +40,8 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(value, result));
+        public ValueTask<string> GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(value, result));
 
         internal static string GetFailureMessage(IEnumerable value, ValidationRuleResult result)
         {

@@ -21,6 +21,6 @@ namespace CSF.Validation.Messages
         /// <param name="ruleResult">The rule result for which to enrich with a message.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         /// <returns>A task containing a validation rule result.</returns>
-        Task<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken = default);
+        ValueTask<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken = default);
     }
 }

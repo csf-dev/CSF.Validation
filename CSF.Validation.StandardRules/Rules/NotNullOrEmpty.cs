@@ -29,7 +29,7 @@ namespace CSF.Validation.Rules
         readonly NotEmpty notEmpty;
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
@@ -38,7 +38,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
@@ -47,7 +47,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
@@ -56,20 +56,20 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
             => String.IsNullOrEmpty(validated) ? FailAsync() : PassAsync();
 
-        Task<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<ICollection>.GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
-        Task<string> IGetsFailureMessage<IEnumerable>.GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<IEnumerable>.GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
-        Task<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<Array>.GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
-        Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
         /// <summary>
         /// Initialises a new instance of <see cref="NotNullOrEmpty"/>.

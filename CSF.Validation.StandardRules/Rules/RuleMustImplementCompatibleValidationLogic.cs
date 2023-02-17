@@ -16,7 +16,7 @@ namespace CSF.Validation.Rules
     public class RuleMustImplementCompatibleValidationLogic : IRuleWithMessage<ManifestRule>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestRule validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestRule validated, RuleContext context, CancellationToken token = default)
         {
             var candidates = GetCandidateInterfaces(validated);
             if(!candidates.Any()) return PassAsync();
@@ -36,8 +36,8 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestRule value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(GetCandidateInterfaces(value), value.Identifier.RuleType));
+        public ValueTask<string> GetFailureMessageAsync(ManifestRule value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(GetCandidateInterfaces(value), value.Identifier.RuleType));
 
         static string GetFailureMessage(Type[] candidateInterfaces, Type logicType)
         {

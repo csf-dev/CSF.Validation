@@ -29,13 +29,13 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(executionContext).InSequence(sequence).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => Enumerable.Empty<ExecutableRule>());
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule1.ExecutableRule, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result1));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result1));
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule2.ExecutableRule, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result2));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result2));
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule3.ExecutableRule, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result3));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result3));
 
             Assert.That(async () => await sut.ExecuteAllRulesAsync(executionContext, default),
                         Is.EquivalentTo(new[] { result1, result2, result3 }));
@@ -54,7 +54,7 @@ namespace CSF.Validation.RuleExecution
             Mock.Get(executionContext).InSequence(sequence).Setup(x => x.GetRulesWhichMayBeExecuted()).Returns(() => Enumerable.Empty<ExecutableRule>());
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule.ExecutableRule, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result));
 
             await sut.ExecuteAllRulesAsync(executionContext);
 
@@ -86,7 +86,7 @@ namespace CSF.Validation.RuleExecution
                 });
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule1.ExecutableRule, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result1));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result1));
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule2.ExecutableRule, It.IsAny<CancellationToken>()))
                 .Callback(() =>
@@ -94,7 +94,7 @@ namespace CSF.Validation.RuleExecution
                     if(rule1.ExecutableRule.Result is null)
                         Assert.Fail("Rule 2 should not be executed before rule 1");
                 })
-                .Returns(() => Task.FromResult(result2));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result2));
             Mock.Get(ruleExecutor)
                 .Setup(x => x.ExecuteRuleAsync(rule3.ExecutableRule, It.IsAny<CancellationToken>()))
                 .Callback(() =>
@@ -102,7 +102,7 @@ namespace CSF.Validation.RuleExecution
                     if(rule1.ExecutableRule.Result is null || rule2.ExecutableRule.Result is null)
                         Assert.Fail("Rule 3 should not be executed before rules 1 or 2");
                 })
-                .Returns(() => Task.FromResult(result3));
+                .Returns(() => new ValueTask<ValidationRuleResult>(result3));
 
             Assert.That(async () => await sut.ExecuteAllRulesAsync(executionContext, default),
                         Is.EquivalentTo(new[] { result1, result2, result3 }));

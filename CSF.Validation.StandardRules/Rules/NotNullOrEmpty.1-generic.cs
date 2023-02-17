@@ -28,7 +28,7 @@ namespace CSF.Validation.Rules
         readonly NotEmpty<T> notEmpty;
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
@@ -37,7 +37,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
@@ -46,7 +46,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
         {
             // Because both NotNull & NotEmpty<T> are synchronous, it is safe to use .Result
             var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
@@ -54,14 +54,14 @@ namespace CSF.Validation.Rules
             return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
         }
 
-        Task<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
-        Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
-        Task<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
+        ValueTask<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotNullOrEmpty"));
 
         /// <summary>
         /// Initialises a new instance of <see cref="NotNullOrEmpty{T}"/>.

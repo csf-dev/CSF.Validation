@@ -14,14 +14,14 @@ namespace CSF.Validation.Rules
     public class AllChildrenMustBeValues : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("AllChildrenMustBeValues"),
+        public ValueTask<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("AllChildrenMustBeValues"),
                                              nameof(ManifestItem),
                                              nameof(ManifestItem.Children),
                                              nameof(ManifestItemTypes.Value)));
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.Children is null) return PassAsync();
             return validated.Children.All(x => x.IsValue) ? PassAsync() : FailAsync();

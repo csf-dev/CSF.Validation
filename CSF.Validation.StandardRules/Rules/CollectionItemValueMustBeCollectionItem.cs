@@ -14,14 +14,14 @@ namespace CSF.Validation.Rules
     public class CollectionItemValueMustBeCollectionItem : IRuleWithMessage<ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(String.Format(Resources.FailureMessages.GetFailureMessage("CollectionItemValueMustBeCollectionItem"),
+        public ValueTask<string> GetFailureMessageAsync(ManifestItem value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("CollectionItemValueMustBeCollectionItem"),
                                              nameof(ManifestItem),
                                              nameof(ManifestItem.CollectionItemValue),
                                              nameof(ManifestItemTypes.CollectionItem)));
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ManifestItem validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.CollectionItemValue is null) return PassAsync();
             return validated.CollectionItemValue.IsCollectionItem ? PassAsync() : FailAsync();

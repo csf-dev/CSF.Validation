@@ -13,7 +13,7 @@ namespace CSF.Validation.Messages
         readonly Stopwatch stopwatch = new Stopwatch();
 
         /// <inheritdoc/>
-        public async Task<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken = default)
+        public async ValueTask<ValidationRuleResult> GetRuleResultWithMessageAsync(ValidationRuleResult ruleResult, CancellationToken cancellationToken = default)
         {
             stopwatch.Reset();
             stopwatch.Start();

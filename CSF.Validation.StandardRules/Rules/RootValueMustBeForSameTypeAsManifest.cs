@@ -15,7 +15,7 @@ namespace CSF.Validation.Rules
     public class RootValueMustBeForSameTypeAsManifest : IRuleWithMessage<ValidationManifest>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ValidationManifest validated, RuleContext context, CancellationToken token = default)
         {
             if(validated?.ValidatedType is null) return PassAsync();
             if(validated?.RootValue?.ValidatedType is null) return PassAsync();
@@ -23,7 +23,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(ValidationManifest value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = string.Format(FailureMessages.GetFailureMessage("RootValueMustBeForSameTypeAsManifest"),
                                         nameof(ManifestItem.ValidatedType),
@@ -32,7 +32,7 @@ namespace CSF.Validation.Rules
                                         nameof(ValidationManifest.RootValue),
                                         value?.ValidatedType,
                                         value?.RootValue?.ValidatedType);
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

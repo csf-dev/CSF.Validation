@@ -10,10 +10,10 @@ namespace CSF.Validation.IntegrationTests
     {
         public Guid GuidProperty { get; set; }
 
-        public Task<string> GetFailureMessageAsync(TValidated value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GuidProperty.ToString());
+        public ValueTask<string> GetFailureMessageAsync(TValidated value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GuidProperty.ToString());
 
-        public Task<RuleResult> GetResultAsync(TValidated validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(TValidated validated, RuleContext context, CancellationToken token = default)
             => FailAsync();
     }
 }

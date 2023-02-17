@@ -78,7 +78,7 @@ namespace CSF.Validation.Rules
         public string EnumTypeName { get; set; }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
         {
             if(Equals(validated, null)) return PassAsync();
             Type enumType = null;
@@ -107,8 +107,8 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(result.Data.TryGetValue(enumTypeKey, out var val) ? val as Type : null));
+        public ValueTask<string> GetFailureMessageAsync(object value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result.Data.TryGetValue(enumTypeKey, out var val) ? val as Type : null));
 
         internal static string GetFailureMessage(Type enumType)
             => String.Format(Resources.FailureMessages.GetFailureMessage("MustBeDefinedEnumConstant"), enumType?.ToString() ?? "<unknown>");

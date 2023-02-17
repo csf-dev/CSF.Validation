@@ -96,13 +96,13 @@ namespace CSF.Validation.Rules
 
         public class IntegerRule : IRule<int>
         {
-            public Task<RuleResult> GetResultAsync(int validated, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(int validated, RuleContext context, CancellationToken token = default)
                 => throw new System.NotImplementedException();
         }
 
         public class IntegerAndObjectRule : IRule<int,object>
         {
-            public Task<RuleResult> GetResultAsync(int value, object parentValue, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(int value, object parentValue, RuleContext context, CancellationToken token = default)
                 => throw new System.NotImplementedException();
         }
     }

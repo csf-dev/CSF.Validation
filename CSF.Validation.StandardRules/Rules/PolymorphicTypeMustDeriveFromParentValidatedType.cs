@@ -14,7 +14,7 @@ namespace CSF.Validation.Rules
     public class PolymorphicTypeMustDeriveFromParentValidatedType : IRuleWithMessage<Type, ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(Type value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(Type value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = String.Format(Resources.FailureMessages.GetFailureMessage("PolymorphicTypeMustDeriveFromParentValidatedType"),
                                         nameof(ManifestItemTypes.PolymorphicType),
@@ -22,11 +22,11 @@ namespace CSF.Validation.Rules
                                         nameof(ManifestItem.Parent),
                                         value,
                                         parentValue?.Parent?.ValidatedType);
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(Type value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(Type value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
         {
             if (value is null
              || parentValue is null

@@ -13,11 +13,11 @@ namespace CSF.Validation.Rules
     public class NullIfNotRecursive : IRuleWithMessage<object, ManifestItem>
     {
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NullIfNotRecursive"));
+        public ValueTask<string> GetFailureMessageAsync(object value, ManifestItem parentValue, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NullIfNotRecursive"));
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object value, ManifestItem parentValue, RuleContext context, CancellationToken token = default)
         {
             if(parentValue?.IsRecursive != false) return PassAsync();
             return ReferenceEquals(value, null) ? PassAsync() : FailAsync();

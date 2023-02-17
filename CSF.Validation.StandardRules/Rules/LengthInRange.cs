@@ -43,7 +43,7 @@ namespace CSF.Validation.Rules
         public int? Max { get; set; }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
             inRangeRule.Min = Min;
@@ -52,7 +52,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
             inRangeRule.Min = Min;
@@ -61,7 +61,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if (validated is null) return PassAsync();
             inRangeRule.Min = Min;
@@ -81,16 +81,16 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(result, Min, Max));
+        public ValueTask<string> GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result, Min, Max));
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(result, Min, Max));
+        public ValueTask<string> GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result, Min, Max));
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(GetFailureMessage(result, Min, Max));
+        public ValueTask<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result, Min, Max));
 
         /// <summary>
         /// Initialises a new instance of <see cref="LengthInRange"/>.

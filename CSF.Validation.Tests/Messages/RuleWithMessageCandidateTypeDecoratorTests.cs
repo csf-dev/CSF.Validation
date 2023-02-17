@@ -55,19 +55,19 @@ namespace CSF.Validation.Messages
 
         class DoubleGenericRuleWithMessage : IRuleWithMessage<string,int>
         {
-            public Task<string> GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token = default)
+            public ValueTask<string> GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token = default)
                 => throw new System.NotImplementedException();
 
-            public Task<RuleResult> GetResultAsync(string validated, int parentValue, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(string validated, int parentValue, RuleContext context, CancellationToken token = default)
                 => throw new System.NotImplementedException();
         }
 
         class SingleGenericRuleWithMessage : IRuleWithMessage<string>
         {
-            public Task<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+            public ValueTask<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
                 => throw new System.NotImplementedException();
 
-            public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+            public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
                 => throw new System.NotImplementedException();
         }
 

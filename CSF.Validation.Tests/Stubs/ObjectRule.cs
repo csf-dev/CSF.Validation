@@ -6,7 +6,7 @@ namespace CSF.Validation.Stubs
 {
     public class ObjectRule : IRule<object>
     {
-        public Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
             => throw new System.NotImplementedException();
     }
 }

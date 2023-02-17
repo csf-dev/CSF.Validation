@@ -44,10 +44,10 @@ namespace CSF.Validation.Rules
             failSingleton = new RuleResult(RuleOutcome.Failed),
             errorSingleton = new RuleResult(RuleOutcome.Errored);
 
-        static readonly Task<RuleResult>
-            passTaskSingleton = Task.FromResult(passSingleton),
-            failTaskSingleton = Task.FromResult(failSingleton),
-            errorTaskSingleton = Task.FromResult(errorSingleton);
+        static readonly ValueTask<RuleResult>
+            passTaskSingleton = new ValueTask<RuleResult>(passSingleton),
+            failTaskSingleton = new ValueTask<RuleResult>(failSingleton),
+            errorTaskSingleton = new ValueTask<RuleResult>(errorSingleton);
 
         #endregion
 
@@ -79,7 +79,7 @@ namespace CSF.Validation.Rules
         /// </remarks>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> PassAsync(Dictionary<string, object> data) => PassAsync((IDictionary<string, object>)data);
+        public static ValueTask<RuleResult> PassAsync(Dictionary<string, object> data) => PassAsync((IDictionary<string, object>)data);
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for passing validation, returned within a completed task.
@@ -92,8 +92,8 @@ namespace CSF.Validation.Rules
         /// </remarks>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> PassAsync(IDictionary<string, object> data = null)
-            => IsEmpty(data) ? passTaskSingleton : Task.FromResult(Pass(data));
+        public static ValueTask<RuleResult> PassAsync(IDictionary<string, object> data = null)
+            => IsEmpty(data) ? passTaskSingleton : new ValueTask<RuleResult>(Pass(data));
 
         #endregion
 
@@ -125,7 +125,7 @@ namespace CSF.Validation.Rules
         /// </remarks>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> FailAsync(Dictionary<string, object> data) => FailAsync((IDictionary<string, object>)data);
+        public static ValueTask<RuleResult> FailAsync(Dictionary<string, object> data) => FailAsync((IDictionary<string, object>)data);
 
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for failing validation, returned within a completed task.
@@ -138,8 +138,8 @@ namespace CSF.Validation.Rules
         /// </remarks>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> FailAsync(IDictionary<string, object> data = null)
-            => IsEmpty(data) ? failTaskSingleton : Task.FromResult(Fail(data));
+        public static ValueTask<RuleResult> FailAsync(IDictionary<string, object> data = null)
+            => IsEmpty(data) ? failTaskSingleton : new ValueTask<RuleResult>(Fail(data));
 
         #endregion
 
@@ -213,7 +213,7 @@ namespace CSF.Validation.Rules
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ErrorAsync(Exception exception, Dictionary<string, object> data)
+        public static ValueTask<RuleResult> ErrorAsync(Exception exception, Dictionary<string, object> data)
             => ErrorAsync(exception, (IDictionary<string, object>)data);
 
         /// <summary>
@@ -240,8 +240,8 @@ namespace CSF.Validation.Rules
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ErrorAsync(Exception exception = null, IDictionary<string, object> data = null)
-            => IsEmpty(data) && exception is null ? errorTaskSingleton : Task.FromResult(Error(exception, data));
+        public static ValueTask<RuleResult> ErrorAsync(Exception exception = null, IDictionary<string, object> data = null)
+            => IsEmpty(data) && exception is null ? errorTaskSingleton : new ValueTask<RuleResult>(Error(exception, data));
 
         #endregion
 
@@ -287,7 +287,7 @@ namespace CSF.Validation.Rules
         /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ResultAsync(bool pass, Dictionary<string, object> data)
+        public static ValueTask<RuleResult> ResultAsync(bool pass, Dictionary<string, object> data)
             => ResultAsync(pass, (IDictionary<string, object>) data);
 
         /// <summary>
@@ -304,13 +304,13 @@ namespace CSF.Validation.Rules
         /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static Task<RuleResult> ResultAsync(bool pass, IDictionary<string, object> data = null)
+        public static ValueTask<RuleResult> ResultAsync(bool pass, IDictionary<string, object> data = null)
         {
             if(IsEmpty(data))
                 return pass ? passTaskSingleton : failTaskSingleton;
 
             var result = pass ? RuleOutcome.Passed : RuleOutcome.Failed;
-            return Task.FromResult(new RuleResult(result, data));
+            return new ValueTask<RuleResult>(new RuleResult(result, data));
         }
 
         #endregion

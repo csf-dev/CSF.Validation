@@ -7,10 +7,10 @@ namespace CSF.Validation.Stubs
 {
     public class StringValueRule : IRule<string, ValidatedObject>, IRule<string, object>
     {
-        public Task<RuleResult> GetResultAsync(string value, ValidatedObject validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string value, ValidatedObject validated, RuleContext context, CancellationToken token = default)
             => throw new NotImplementedException();
 
-        public Task<RuleResult> GetResultAsync(string value, object validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(string value, object validated, RuleContext context, CancellationToken token = default)
             => throw new NotImplementedException();
     }
 }

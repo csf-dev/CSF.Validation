@@ -50,31 +50,31 @@ namespace CSF.Validation.Rules
     public class NotEmpty<T> : IRuleWithMessage<ICollection<T>>, IRuleWithMessage<IReadOnlyCollection<T>>, IRuleWithMessage<IQueryable<T>>
     {
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(ICollection<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Count > 0 ? PassAsync() : FailAsync();
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(IQueryable<T> validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.Any() ? PassAsync() : FailAsync();
         }
 
-        static Task<string> GetFailureMessageAsync() => Task.FromResult(Resources.FailureMessages.GetFailureMessage("NotEmpty"));
+        static ValueTask<string> GetFailureMessageAsync() => new ValueTask<string>(Resources.FailureMessages.GetFailureMessage("NotEmpty"));
 
-        Task<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<IReadOnlyCollection<T>>.GetFailureMessageAsync(IReadOnlyCollection<T> value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
 
-        Task<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<ICollection<T>>.GetFailureMessageAsync(ICollection<T> value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
 
-        Task<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<IQueryable<T>>.GetFailureMessageAsync(IQueryable<T> value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync();
 
-        Task<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<IReadOnlyCollection<T>>.GetResultAsync(IReadOnlyCollection<T> validated, RuleContext context, CancellationToken token)
         {
             if(validated is null) return PassAsync();
             return validated.Count > 0 ? PassAsync() : FailAsync();

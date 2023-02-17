@@ -46,7 +46,7 @@ namespace CSF.Validation.Rules
         public double? Max { get; set; }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(double validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(double validated, RuleContext context, CancellationToken token = default)
         {
             var result = (!Min.HasValue || Min.Value <= validated)
                       && (!Max.HasValue || validated <= Max.Value);
@@ -54,26 +54,26 @@ namespace CSF.Validation.Rules
         }
 
         /// <inheritdoc/>
-        public Task<RuleResult> GetResultAsync(double? validated, RuleContext context, CancellationToken token = default)
+        public ValueTask<RuleResult> GetResultAsync(double? validated, RuleContext context, CancellationToken token = default)
             => validated.HasValue ? GetResultAsync(validated.Value, context, token) : PassAsync();
 
         /// <inheritdoc/>
-        public Task<string> GetFailureMessageAsync(double? value, ValidationRuleResult result, CancellationToken token = default)
-            => Task.FromResult(IntegerInRange.GetFailureMessage<double>(value, result, Min, Max));
+        public ValueTask<string> GetFailureMessageAsync(double? value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(IntegerInRange.GetFailureMessage<double>(value, result, Min, Max));
 
-        Task<RuleResult> IRule<float>.GetResultAsync(float validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<float>.GetResultAsync(float validated, RuleContext context, CancellationToken token)
             => GetResultAsync((double)validated, context, token);
 
-        Task<RuleResult> IRule<float?>.GetResultAsync(float? validated, RuleContext context, CancellationToken token)
+        ValueTask<RuleResult> IRule<float?>.GetResultAsync(float? validated, RuleContext context, CancellationToken token)
             => GetResultAsync((double?)validated, context, token);
 
-        Task<string> IGetsFailureMessage<float>.GetFailureMessageAsync(float value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<float>.GetFailureMessageAsync(float value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync((double?)value, result, token);
 
-        Task<string> IGetsFailureMessage<double>.GetFailureMessageAsync(double value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<double>.GetFailureMessageAsync(double value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync((double?)value, result, token);
 
-        Task<string> IGetsFailureMessage<float?>.GetFailureMessageAsync(float? value, ValidationRuleResult result, CancellationToken token)
+        ValueTask<string> IGetsFailureMessage<float?>.GetFailureMessageAsync(float? value, ValidationRuleResult result, CancellationToken token)
             => GetFailureMessageAsync((double?)value, result, token);
     }
 }
