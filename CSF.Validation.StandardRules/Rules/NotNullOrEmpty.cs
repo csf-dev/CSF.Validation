@@ -29,30 +29,27 @@ namespace CSF.Validation.Rules
         readonly NotEmpty notEmpty;
 
         /// <inheritdoc/>
-        public ValueTask<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
+        public async ValueTask<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
-            // Because both NotNull & NotEmpty are synchronous, it is safe to use .Result
-            var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
-            var notEmptyResult = notEmpty.GetResultAsync(validated, context, token).Result;
-            return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
+            var notNullResult = await notNull.GetResultAsync(validated, context, token).ConfigureAwait(false);
+            var notEmptyResult = await notEmpty.GetResultAsync(validated, context, token).ConfigureAwait(false);
+            return notNullResult.IsPass && notEmptyResult.IsPass ? Pass() : Fail();
         }
 
         /// <inheritdoc/>
-        public ValueTask<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
+        public async ValueTask<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
-            // Because both NotNull & NotEmpty are synchronous, it is safe to use .Result
-            var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
-            var notEmptyResult = notEmpty.GetResultAsync(validated, context, token).Result;
-            return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
+            var notNullResult = await notNull.GetResultAsync(validated, context, token).ConfigureAwait(false);
+            var notEmptyResult = await notEmpty.GetResultAsync(validated, context, token).ConfigureAwait(false);
+            return notNullResult.IsPass && notEmptyResult.IsPass ? Pass() : Fail();
         }
 
         /// <inheritdoc/>
-        public ValueTask<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
+        public async ValueTask<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
-            // Because both NotNull & NotEmpty are synchronous, it is safe to use .Result
-            var notNullResult = notNull.GetResultAsync(validated, context, token).Result;
-            var notEmptyResult = notEmpty.GetResultAsync(validated, context, token).Result;
-            return notNullResult.IsPass && notEmptyResult.IsPass ? PassAsync() : FailAsync();
+            var notNullResult = await notNull.GetResultAsync(validated, context, token).ConfigureAwait(false);
+            var notEmptyResult = await notEmpty.GetResultAsync(validated, context, token).ConfigureAwait(false);
+            return notNullResult.IsPass && notEmptyResult.IsPass ? Pass() : Fail();
         }
 
         /// <inheritdoc/>
