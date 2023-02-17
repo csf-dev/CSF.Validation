@@ -42,6 +42,8 @@
       href: BestPractice/UseDependencyInjectionForRules.md
     - name: Use CommonResults
       href: BestPractice/UseCommonRuleResults.md
+    - name: Cancellation & timeout
+      href: BestPractice/RuleCancellationAndTimeout.md
 - name: Testing
   href: Testing.md
 - name: Examples
