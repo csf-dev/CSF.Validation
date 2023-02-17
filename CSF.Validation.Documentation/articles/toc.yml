@@ -44,3 +44,5 @@
       href: BestPractice/UseCommonRuleResults.md
 - name: Testing
   href: Testing.md
+- name: Examples
+  href: Examples.md
