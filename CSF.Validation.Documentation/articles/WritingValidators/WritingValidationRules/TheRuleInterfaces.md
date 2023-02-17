@@ -69,10 +69,10 @@ using static CSF.Validation.Rules.CommonResults;
 
 public class MustNotBeBeforeLoanDate : IRule<DateTime, LibraryBookLoan>
 {
-    public Task<RuleResult> GetResultAsync(DateTime validated,
-                                           LibraryBookLoan parent,
-                                           RuleContext context,
-                                           CancellationToken token = default)
+    public ValueTask<RuleResult> GetResultAsync(DateTime validated,
+                                                LibraryBookLoan parent,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         if(parent is null) return PassAsync();
         return validated >= parent.LoanDate ? PassAsync() : FailAsync();

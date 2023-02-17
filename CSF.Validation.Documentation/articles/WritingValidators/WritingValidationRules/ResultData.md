@@ -34,9 +34,9 @@ public class MustSatisfyAgeRestrictionForAlcoholPurchase : IRule<OrderLineItem>
     readonly IGetsMinimumAgeForAlcoholPurchase minimumAgeProvider;
     readonly IGetsCustomerAgeForOrderLineItem ageProvider;
 
-    public async Task<RuleResult> GetResultAsync(OrderLineItem validated,
-                                                 RuleContext context,
-                                                 CancellationToken token = default)
+    public async ValueTask<RuleResult> GetResultAsync(OrderLineItem validated,
+                                                      RuleContext context,
+                                                      CancellationToken token = default)
     {
         if(validated is null) return Pass();
 

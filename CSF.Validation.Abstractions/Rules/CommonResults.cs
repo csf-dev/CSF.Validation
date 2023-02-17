@@ -13,15 +13,10 @@ namespace CSF.Validation.Rules
     /// your rule implementations.
     /// </para>
     /// <para>
-    /// This class also provides a small performance optimisation for the methods <see cref="PassAsync(IDictionary{string, object})"/>,
-    /// <see cref="FailAsync(IDictionary{string, object})"/> &amp; <see cref="ErrorAsync(Exception, IDictionary{string, object})"/>.
-    /// If any of these methods are used with all parameters set to their default (<see langword="null" />) values then an immutable
-    /// cached/singleton task will be returned instead of creating/allocating a new instance.
-    /// </para>
-    /// <para>
-    /// This improves performance, particularly for large validators by using what is essentially the flyweight pattern.
-    /// Where passing results are returned synchronously without data, we do not need to allocate resources for many identical
-    /// pass-result <see cref="Task{T}"/> instances.
+    /// This class also provides a small performance optimisation for results which do not return a data dictionary (or exception,
+    /// in the case of error results).
+    /// When any of these methods are used without data or exceptions then flyweight validation rule result instances will be
+    /// used.
     /// See https://en.wikipedia.org/wiki/Flyweight_pattern for more information.
     /// </para>
     /// <para>
@@ -35,19 +30,11 @@ namespace CSF.Validation.Rules
 
         // These immutable singleton/cached instances are flyweights which may be reused to avoid
         // allocating new objects where the singleton would suffice.
-        // This is especially relevant for occasions where completed tasks are required for rules that
-        // run synchronously.
-        // They might become less important once #72 is developed: https://github.com/csf-dev/CSF.Validation/issues/72
         
         static readonly RuleResult
             passSingleton = new RuleResult(RuleOutcome.Passed),
             failSingleton = new RuleResult(RuleOutcome.Failed),
             errorSingleton = new RuleResult(RuleOutcome.Errored);
-
-        static readonly ValueTask<RuleResult>
-            passTaskSingleton = new ValueTask<RuleResult>(passSingleton),
-            failTaskSingleton = new ValueTask<RuleResult>(failSingleton),
-            errorTaskSingleton = new ValueTask<RuleResult>(errorSingleton);
 
         #endregion
 
@@ -71,12 +58,6 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for passing validation, returned within a completed task.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
-        /// </remarks>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
         public static ValueTask<RuleResult> PassAsync(Dictionary<string, object> data) => PassAsync((IDictionary<string, object>)data);
@@ -84,16 +65,9 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for passing validation, returned within a completed task.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
-        /// </remarks>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
-        public static ValueTask<RuleResult> PassAsync(IDictionary<string, object> data = null)
-            => IsEmpty(data) ? passTaskSingleton : new ValueTask<RuleResult>(Pass(data));
+        public static ValueTask<RuleResult> PassAsync(IDictionary<string, object> data = null) => new ValueTask<RuleResult>(Pass(data));
 
         #endregion
 
@@ -117,12 +91,6 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for failing validation, returned within a completed task.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
-        /// </remarks>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
         public static ValueTask<RuleResult> FailAsync(Dictionary<string, object> data) => FailAsync((IDictionary<string, object>)data);
@@ -130,16 +98,9 @@ namespace CSF.Validation.Rules
         /// <summary>
         /// Creates an instance of <see cref="RuleResult"/> for failing validation, returned within a completed task.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
-        /// </remarks>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
-        public static ValueTask<RuleResult> FailAsync(IDictionary<string, object> data = null)
-            => IsEmpty(data) ? failTaskSingleton : new ValueTask<RuleResult>(Fail(data));
+        public static ValueTask<RuleResult> FailAsync(IDictionary<string, object> data = null) => new ValueTask<RuleResult>(Fail(data));
 
         #endregion
 
@@ -205,10 +166,6 @@ namespace CSF.Validation.Rules
         /// when it also wants to return a dictionary of data, when there are reasons to catch/manipulate the
         /// exception before returning the error result or when the "error" does not involve an uncaught exception.
         /// </para>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
         /// </remarks>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
@@ -232,16 +189,12 @@ namespace CSF.Validation.Rules
         /// when it also wants to return a dictionary of data, when there are reasons to catch/manipulate the
         /// exception before returning the error result or when the "error" does not involve an uncaught exception.
         /// </para>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
         /// </remarks>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <param name="exception">The exception which caused the error.</param>
         /// <returns>A <see cref="RuleResult"/>.</returns>
         public static ValueTask<RuleResult> ErrorAsync(Exception exception = null, IDictionary<string, object> data = null)
-            => IsEmpty(data) && exception is null ? errorTaskSingleton : new ValueTask<RuleResult>(Error(exception, data));
+            => new ValueTask<RuleResult>(Error(exception, data));
 
         #endregion
 
@@ -277,12 +230,6 @@ namespace CSF.Validation.Rules
         /// Creates an instance of <see cref="RuleResult"/> for a validation result, either a pass or a fail determined by
         /// a boolean parameter, returned within a completed task.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
-        /// </remarks>
         /// <param name="pass">A value which indicates whether or not the result was a pass.
         /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
         /// <param name="data">A key/value collection of arbitrary validation data.</param>
@@ -294,24 +241,12 @@ namespace CSF.Validation.Rules
         /// Creates an instance of <see cref="RuleResult"/> for a validation result, either a pass or a fail determined by
         /// a boolean parameter, returned within a completed task.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This API is provided for both convenience &amp; a possible performance optimisation, for validation rules
-        /// which run synchronously.
-        /// </para>
-        /// </remarks>
         /// <param name="pass">A value which indicates whether or not the result was a pass.
         /// <see langword="true" /> indicates pass, <see langword="false" /> indicates failure.</param>
         /// <param name="data">An optional key/value collection of arbitrary validation data.</param>
         /// <returns>A completed task of <see cref="RuleResult"/>.</returns>
         public static ValueTask<RuleResult> ResultAsync(bool pass, IDictionary<string, object> data = null)
-        {
-            if(IsEmpty(data))
-                return pass ? passTaskSingleton : failTaskSingleton;
-
-            var result = pass ? RuleOutcome.Passed : RuleOutcome.Failed;
-            return new ValueTask<RuleResult>(new RuleResult(result, data));
-        }
+            => new ValueTask<RuleResult>(Result(pass, data));
 
         #endregion
 

@@ -66,9 +66,9 @@ In this simple example, this message provider will only be considered a candidat
 [FailureMessageStrategy(RuleType = typeof(MySampleRule))]
 public class MySampleRuleMessageProvider : IGetsFailureMessage<int>
 {
-    public Task<string> GetFailureMessageAsync(int value,
-                                               ValidationRuleResult result,
-                                               CancellationToken token = default)
+    public ValueTask<string> GetFailureMessageAsync(int value,
+                                                    ValidationRuleResult result,
+                                                    CancellationToken token = default)
     {
         // Implementation omitted
     }
@@ -82,8 +82,8 @@ In the following example, the message provider will be considered a candidate to
 [FailureMessageStrategy(ValidatedType = typeof(IEntity)]
 public class DatabaseErrorMessageProvider : IGetsFailureMessage
 {
-    public Task<string> GetFailureMessageAsync(ValidationRuleResult result,
-                                               CancellationToken token = default)
+    public ValueTask<string> GetFailureMessageAsync(ValidationRuleResult result,
+                                                    CancellationToken token = default)
     {
         // Implementation omitted
     }

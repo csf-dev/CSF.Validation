@@ -23,7 +23,9 @@ public class RuleWhichDependsUponAnother : IRule<string>
 {
   readonly DependencyRule  dependencyRule;
 
-  public async Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+  public async ValueTask<RuleResult> GetResultAsync(string validated,
+                                                    RuleContext context,
+                                                    CancellationToken token = default)
   {
     var dependencyResult = await dependencyRule.GetResultAsync(validated, context, token);
     if (dependencyResult.Outcome != RuleOutcome.Pass)

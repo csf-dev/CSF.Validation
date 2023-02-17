@@ -19,9 +19,9 @@ Here is a simple example of a rule which could raise an error for scenarios whic
 
 public class FifthCharacterMustBeY : IRule<string>
 {
-    Task<RuleResult> GetResultAsync(string validated,
-                                    RuleContext context,
-                                    CancellationToken token = default)
+    public ValueTask<RuleResult> GetResultAsync(string validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         return validated[4] == 'Y' ? PassAsync() : FailAsync();
     }
@@ -34,9 +34,9 @@ public class FifthCharacterMustBeY : IRule<string>
 
 public class FifthCharacterMustBeY : IRule<string>
 {
-    Task<RuleResult> GetResultAsync(string validated,
-                                    RuleContext context,
-                                    CancellationToken token = default)
+    public ValueTask<RuleResult> GetResultAsync(string validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         if(validated is null || validated.Length < 5) return PassAsync();
         return validated[4] == 'Y' ? PassAsync() : FailAsync();

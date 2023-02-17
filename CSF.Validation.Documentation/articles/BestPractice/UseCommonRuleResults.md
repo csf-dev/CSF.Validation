@@ -8,9 +8,9 @@ using static CSF.Validation.Rules.CommonResults;
 
 public class MustBeFour : IRule<int>
 {
-    Task<RuleResult> GetResultAsync(int validated,
-                                    RuleContext context,
-                                    CancellationToken token = default)
+    public ValueTask<RuleResult> GetResultAsync(int validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         return validated == 4 ? PassAsync() : FailAsync();
     }
@@ -22,7 +22,7 @@ public class MustBeFour : IRule<int>
 ## Optimisation as well as convenience
 
 When omitting the optional parameters (or passing only `null`) to the following methods, the `CommonResults` class offers an optimisation.
-In these scenarios [flyweight instances] will be returned instead of allocating new [`RuleResult`] and/or [`Task<RuleResult>`] instances.
+In these scenarios [flyweight instances] will be returned instead of allocating new [`RuleResult`] instances.
 
 * [`Pass()`]
 * [`PassAsync()`]
@@ -35,7 +35,6 @@ This will improve throughput, particularly for validators which include a large 
 
 [flyweight instances]:https://en.wikipedia.org/wiki/Flyweight_pattern
 [`RuleResult`]:xref:CSF.Validation.Rules.RuleResult
-[`Task<RuleResult>`]:https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1
 [`Pass()`]:xref:CSF.Validation.Rules.CommonResults.Pass(System.Collections.Generic.IDictionary{System.String,System.Object})
 [`PassAsync()`]:xref:CSF.Validation.Rules.CommonResults.PassAsync(System.Collections.Generic.IDictionary{System.String,System.Object})
 [`Fail()`]:xref:CSF.Validation.Rules.CommonResults.Fail(System.Collections.Generic.IDictionary{System.String,System.Object})
