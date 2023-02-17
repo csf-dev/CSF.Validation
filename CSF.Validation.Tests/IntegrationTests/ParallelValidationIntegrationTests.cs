@@ -40,7 +40,14 @@ namespace CSF.Validation.IntegrationTests
         /// An amount of time in milliseconds that we allow the validator to run, beyond
         /// what we would expect in the best case scenario.
         /// </summary>
-        const int millisecondsGrace = 150;
+        /// <remarks>
+        /// <para>
+        /// If the test is failing on lower-performance systems then this value could be increased.
+        /// What's important is that it remains lower than 700.  If it were 700 or higher then the
+        /// test could pass even if no rules were running in parallel.
+        /// </para>
+        /// </remarks>
+        const int millisecondsGrace = 250;
 
         [Test,AutoMoqData]
         public async Task ValidateAsyncShouldTakeApproximatelyTheCorrectTimeToRunAParallelRuleset([IntegrationTesting] IGetsValidator validatorFactory,
@@ -62,7 +69,7 @@ namespace CSF.Validation.IntegrationTests
 
             Assert.That(stopwatch.ElapsedMilliseconds,
                         Is.GreaterThan(bestCaseMilliseconds).And.LessThan(bestCaseMilliseconds + millisecondsGrace),
-                        "The validator is expected to take between 650 and 800 milliseconds to complete validation.");
+                        "The validator is expected to take between 650 and 900 milliseconds to complete validation.");
         }
     }
 }
