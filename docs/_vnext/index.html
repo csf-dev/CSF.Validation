@@ -71,18 +71,67 @@
 
 <p><strong>CSF.Validation</strong> is a framework <a href="articles/WhatIsDomainObjectValidation.html">for validating domain objects</a>.
 Its goal is to provide an extensible architecture for writing, executing and consuming the results of validation logic.</p>
-<h2 id="tutorials--documentation">Tutorials &amp; documentation</h2>
-<p>The <a href="articles/index.html">documentation introduction page</a> lists the three main steps to creating a working validator, with links to further detail.</p>
-<h2 id="source-code-status--issue-reports">Source code, status &amp; issue reports</h2>
-<p>For the source code, to contribute changes or issue reports and to see the current project status, you are encouraged to visit the <a href="https://github.com/csf-dev/CSF.Validation">GitHub project site</a>.</p>
+<p>The <a href="articles/index.html">documentation home page</a> links to tutorials, examples &amp; guidance for writing validators.
+The source code is hosted on a <a href="https://github.com/csf-dev/CSF.Validation">GitHub project site</a>.
+Please visit to contribute issue reports, changes, discussion or to see the project status.</p>
 <h2 id="compatibility">Compatibility</h2>
-<p>The CSF.Validation NuGet packages are multi-targeted for <strong>.NET Standard 2.0</strong> &amp; <strong>.NET Framework 4.6.1</strong>.
-This means that it supports all of the following target frameworks (amongst others):</p>
-<ul>
-<li>.NET Framework v4.6.1 or higher</li>
-<li>.NET Core v2.0 or higher</li>
-<li>.NET v5.0 or higher</li>
-</ul>
+<p>The CSF.Validation NuGet packages are <em>multi-targeted</em> for a wide-range of supported .NET versions.
+This table shows the .NET support.</p>
+<table>
+<thead>
+<tr>
+<th>Runtime</th>
+<th>Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET Framework</td>
+<td><strong>4.6.1</strong> and up</td>
+</tr>
+<tr>
+<td>.NET Core</td>
+<td><strong>2.0</strong> and up</td>
+</tr>
+<tr>
+<td>.NET</td>
+<td><strong>5.0</strong> and up</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuget-packages">NuGet packages</h2>
+<p>The validation framework is distributed across a number of packages available via NuGet.
+This table summarises each of them and their purpose.</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.nuget.org/packages/CSF.Validation.Abstractions/">CSF.Validation.Abstractions</a></td>
+<td>Models &amp; interfaces required to consume validation from your application's logic using dependency injection.  Has minimal/no dependencies of its own (depending upon target framework).</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/CSF.Validation/">CSF.Validation</a></td>
+<td>The core logic of the validation framework. Only needs to be referenced by an application's startup project to configure dependency injection.</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/CSF.Validation.StandardRules/">CSF.Validation.StandardRules</a></td>
+<td>Pre-written validation rules &amp; messages. Also a service to validate a validation manifest. Has minimal dependencies of its own.</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/CSF.Validation.Json/">CSF.Validation.Json</a></td>
+<td>A serializer service for reading/writing <a class="xref" href="articles/WritingValidators/UsingTheManifestModel/index.html">manifest models</a> to/from JSON, demonstrating <em>validation as data</em>.</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/CSF.Validation.Selfhosting/">CSF.Validation.Selfhosting</a></td>
+<td>A library enabling use of the validation framework by apps which do not use dependency injection.</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
