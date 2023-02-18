@@ -23,6 +23,7 @@ namespace CSF.Validation
         IGetsBaseValidator BaseValidatorFactory => serviceProvider.GetRequiredService<IGetsBaseValidator>();
         IWrapsValidatorWithExceptionBehaviour ExceptionBehaviourWrapper => serviceProvider.GetRequiredService<IWrapsValidatorWithExceptionBehaviour>();
         IWrapsValidatorWithMessageSupport MessageSupportWrapper => serviceProvider.GetRequiredService<IWrapsValidatorWithMessageSupport>();
+        IWrapsValidatorWithInstrumentationSupport InstrumentingWrapper => serviceProvider.GetRequiredService<IWrapsValidatorWithInstrumentationSupport>();
 
         #region Without message support
 
@@ -44,7 +45,8 @@ namespace CSF.Validation
         {
             var validator = BaseValidatorFactory.GetValidator(manifest);
             var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);
-            return ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
+            var exceptionValidator = ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
+            return InstrumentingWrapper.WrapValidator(exceptionValidator);
         }
 
         /// <inheritdoc/>
@@ -62,7 +64,8 @@ namespace CSF.Validation
         {
             var validator = BaseValidatorFactory.GetValidator(builder);
             var messaageValidator = MessageSupportWrapper.GetValidatorWithMessageSupport(validator);
-            return ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
+            var exceptionValidator = ExceptionBehaviourWrapper.WrapValidator(messaageValidator);
+            return InstrumentingWrapper.WrapValidator(exceptionValidator);
         }
 
         /// <summary>

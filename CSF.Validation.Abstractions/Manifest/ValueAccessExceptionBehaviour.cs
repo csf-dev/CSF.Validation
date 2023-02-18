@@ -8,7 +8,7 @@ namespace CSF.Validation.Manifest
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Typically, a value-accessor: <see cref="ManifestValue.AccessorFromParent"/> should not raise exceptions.  If an exception
+    /// Typically, a value-accessor: <see cref="ManifestItem.AccessorFromParent"/> should not raise exceptions.  If an exception
     /// occurs then it will be impossible to validate this value or any of the values derived from it.
     /// The validator has a number of ways in which it can respond to such exceptions.
     /// </para>
@@ -70,7 +70,7 @@ namespace CSF.Validation.Manifest
     /// exceptions. It is much better to create accessors which do not raise exceptions.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
+    /// <seealso cref="ManifestItem.AccessorExceptionBehaviour"/>
     /// <seealso cref="ResolvedValidationOptions.AccessorExceptionBehaviour"/>
     /// <seealso cref="CSF.Validation.RuleExecution.IGetsValueToBeValidated"/>
     /// <seealso cref="CSF.Validation.RuleExecution.IGetsAccessorExceptionBehaviour"/>

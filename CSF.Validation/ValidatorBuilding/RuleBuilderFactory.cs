@@ -18,9 +18,9 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">Contextual information from which to build this rule.</param>
         /// <param name="ruleDefinition">An optional configuration/definition action which will be used to customise the rule.</param>
         /// <returns>A rule builder object.</returns>
-        public IBuildsRule<TRule> GetRuleBuilder<TRule>(ValidatorBuilderContext context, Action<IConfiguresRule<TRule>> ruleDefinition)
+        public IConfiguresContext GetRuleBuilder<TRule>(ValidatorBuilderContext context, Action<IConfiguresRule<TRule>> ruleDefinition)
         {
-            var builder = new RuleBuilder<TRule>(context, manifestIdentifierConverter(), manifestIdentifierFactory());
+            var builder = new RuleBuilder<TRule>(manifestIdentifierConverter(), manifestIdentifierFactory());
             if(!(ruleDefinition is null))
                 ruleDefinition(builder);
             return builder;

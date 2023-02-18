@@ -1,6 +1,8 @@
 using System;
 using System.Reflection;
 using AutoFixture;
+using CSF.Validation.IntegrationTests;
+using CSF.Validation.ValidatorValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CSF.Validation
@@ -11,7 +13,8 @@ namespace CSF.Validation
         {
             var provider = GetServiceProvider();
             fixture.Inject(provider);
-            fixture.Customize<IGetsValidator>(c => c.FromFactory((IServiceProvider resolver) => resolver.GetRequiredService<IGetsValidator>()));
+            ResolveFromServiceProvider<IGetsValidator>(fixture);
+            ResolveFromServiceProvider<IValidatesValidationManifest>(fixture);
         }
 
         static IServiceProvider GetServiceProvider()
@@ -25,9 +28,14 @@ namespace CSF.Validation
                 .UseMessageProviders(c => {
                     c.AddMessageProvider(typeof(IntegrationTests.DateTimeInRangeMessageProvider));
                     c.AddMessageProvider(typeof(IntegrationTests.CantBeOwnedByUnderageChildrenMessageProvider));
+                    c.AddMessageProvider(typeof(MessageThrowingAnExceptionIntegrationTests.MessageThatThrowsAnException));
+                    c.AddMessageProvidersInAssemblies(typeof(StandardRulesServiceCollectionExtensions).Assembly);
                 })
                 ;
             return serviceCollection.BuildServiceProvider();
         }
+
+        static void ResolveFromServiceProvider<T>(IFixture fixture)
+            => fixture.Customize<T>(c => c.FromFactory((IServiceProvider resolver) => resolver.GetRequiredService<T>()));
     }
 }

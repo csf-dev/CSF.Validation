@@ -15,7 +15,7 @@ namespace CSF.Validation.ManifestModel
     public class ThrowingContextToManifestItemConverter : IGetsManifestItemFromModelToManifestConversionContext
     {
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("UnexpectedModelToManifestConversionType"),
                                         nameof(ModelToManifestConversionType));

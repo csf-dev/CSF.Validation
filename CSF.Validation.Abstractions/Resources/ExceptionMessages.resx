@@ -137,4 +137,24 @@
     <value>The dependency identity builder function must return an instance of {0}.</value>
     <comment/>
   </data>
+  <data name="PropertyMayNotBeSetForRecursiveItem" xml:space="preserve">
+    <value>Setting {0} is not supported in an instance of {1}; the value is derived from the wrapped object.</value>
+    <comment/>
+  </data>
+  <data name="InvalidManifestItemType" xml:space="preserve">
+    <value>Invalid {0}; all manifest items must have a valid type.  See the enum {1} for permitted values.</value>
+    <comment/>
+  </data>
+  <data name="AlreadyRecursive" xml:space="preserve">
+    <value>Cannot create a recursive manifest item from an item which is already recursive.</value>
+    <comment/>
+  </data>
+  <data name="AlreadyHaveACollectionItem" xml:space="preserve">
+    <value>The current item already has a non-null {0}; the {1} method may not be used to alter it.</value>
+    <comment/>
+  </data>
+  <data name="AlreadyPolymorphic" xml:space="preserve">
+    <value>The current item is already a polymorphic type; polymorphic types may not have descendents which are themselves polymorphic types.</value>
+    <comment/>
+  </data>
 </root>

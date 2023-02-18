@@ -19,7 +19,7 @@ namespace CSF.Validation.Rules
         {
             Mock.Get(wrapped)
                 .Setup(x => x.GetResultAsync(value, context, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result));
+                .Returns(() => new ValueTask<RuleResult>(result));
             Assert.That(async () => await sut.GetResultAsync(value, parentValue, context, default), Is.SameAs(result));
         }
     }

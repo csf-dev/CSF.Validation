@@ -81,7 +81,7 @@
   <h1 id="CSF_Validation_ManifestModel_ModelRuleToManifestRuleConverter" data-uid="CSF.Validation.ManifestModel.ModelRuleToManifestRuleConverter" class="text-break">Class ModelRuleToManifestRuleConverter
   </h1>
   <div class="markdown level0 summary"><p>A service which converts the rules within a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> into manifest rules
-and to add those rules to a corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></p>
+and to add those rules to a corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -184,7 +184,7 @@ and to add those rules to a corresponding <a class="xref" href="CSF.Validation.M
   <h4 id="CSF_Validation_ManifestModel_ModelRuleToManifestRuleConverter_ConvertAllRulesAndAddToManifestValues_System_Collections_Generic_IEnumerable_CSF_Validation_ManifestModel_ModelAndManifestValuePair__" data-uid="CSF.Validation.ManifestModel.ModelRuleToManifestRuleConverter.ConvertAllRulesAndAddToManifestValues(System.Collections.Generic.IEnumerable{CSF.Validation.ManifestModel.ModelAndManifestValuePair})">ConvertAllRulesAndAddToManifestValues(IEnumerable&lt;ModelAndManifestValuePair&gt;)</h4>
   <div class="markdown level1 summary"><p>Converts all of the rules present in each of the <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> models into
 <a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a> instances and then adds those rules to
-the corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a> instance in
+the corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> instance in
 the model/manifest value pair.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -213,7 +213,7 @@ the model/manifest value pair.</p>
   <h5 id="CSF_Validation_ManifestModel_ModelRuleToManifestRuleConverter_ConvertAllRulesAndAddToManifestValues_System_Collections_Generic_IEnumerable_CSF_Validation_ManifestModel_ModelAndManifestValuePair___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>
 The input parameter is a collection of objects, each of which contains both a
-<a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a> and also the model <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a>
+<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> and also the model <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a>
 from which that manifest value was created.  This method gets the rules from within
 that model value, converts them and then adds those the the corresponding manifest value.
 This process occurs for each item in the input collection.

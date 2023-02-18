@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using CSF.Validation.Messages;
 using static CSF.Validation.Rules.CommonResults;
 
 namespace CSF.Validation.Rules
@@ -40,62 +42,75 @@ namespace CSF.Validation.Rules
     /// and thus provides superior performance when used with an ORM.
     /// </para>
     /// <para>
+    /// Note that when using this class to provide a failure message for an <see cref="IEnumerable"/>, the failure message will not
+    /// indicate the actual count of elements exposed by the enumerable instance.  This is for both performance reasons and because the
+    /// <see cref="IEnumerable"/> interface does not guarantee that the collection is finite.
+    /// </para>
+    /// <para>
     /// This rule will always return a synchronous result.
     /// </para>
     /// </remarks>
     [Parallelizable]
-    public class Empty : IRule<ICollection>, IRule<IEnumerable>, IRule<Array>, IRule<string>
+    public class Empty : IRuleWithMessage<ICollection>, IRuleWithMessage<IEnumerable>, IRuleWithMessage<Array>, IRuleWithMessage<string>
     {
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        public Task<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
+        internal const string CountKey = "Count";
+
+        /// <inheritdoc/>
+        public ValueTask<RuleResult> GetResultAsync(ICollection validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Count == 0 ? PassAsync() : FailAsync();
+            var data = new Dictionary<string, object> { { Empty.CountKey, validated.Count } };
+            return validated.Count == 0 ? PassAsync() : FailAsync(data);
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        public Task<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
+        /// <inheritdoc/>
+        public ValueTask<RuleResult> GetResultAsync(IEnumerable validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
             return validated.GetEnumerator().MoveNext() ? FailAsync() : PassAsync();
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        public Task<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
+        /// <inheritdoc/>
+        public ValueTask<RuleResult> GetResultAsync(Array validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Length == 0 ? PassAsync() : FailAsync();
+            var data = new Dictionary<string, object> { { Empty.CountKey, validated.Length } };
+            return validated.Length == 0 ? PassAsync() : FailAsync(data);
         }
 
-        /// <summary>
-        /// Performs the validation logic asynchronously and returns a task of <see cref="RuleResult"/>.
-        /// </summary>
-        /// <param name="validated">The object being validated</param>
-        /// <param name="context">Contextual information about the validation</param>
-        /// <param name="token">An object which may be used to cancel the process</param>
-        /// <returns>A task which provides a result object, indicating the result of validation</returns>
-        public Task<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+        /// <inheritdoc/>
+        public ValueTask<RuleResult> GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
         {
             if(validated is null) return PassAsync();
-            return validated.Length == 0 ? PassAsync() : FailAsync();
+            var data = new Dictionary<string, object> { { Empty.CountKey, validated.Length } };
+            return validated.Length == 0 ? PassAsync() : FailAsync(data);
         }
+
+        internal static string GetFailureMessage(ValidationRuleResult result)
+        {
+            if(!result.Data.TryGetValue(CountKey, out var countObj))
+                return Resources.FailureMessages.GetFailureMessage("EmptyWithNoCount");
+
+            var count = (int) countObj;
+            return count == 1
+                ? Resources.FailureMessages.GetFailureMessage("EmptyWithCountOne")
+                : String.Format(Resources.FailureMessages.GetFailureMessage("EmptyWithCount"), count);
+        }
+
+        /// <inheritdoc/>
+        public ValueTask<string> GetFailureMessageAsync(ICollection value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result));
+
+        /// <inheritdoc/>
+        public ValueTask<string> GetFailureMessageAsync(Array value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result));
+
+        /// <inheritdoc/>
+        public ValueTask<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(String.Format(Resources.FailureMessages.GetFailureMessage("EmptyString"), value));
+
+        /// <inheritdoc/>
+        public ValueTask<string> GetFailureMessageAsync(IEnumerable value, ValidationRuleResult result, CancellationToken token = default)
+            => new ValueTask<string>(GetFailureMessage(result));
     }
 }

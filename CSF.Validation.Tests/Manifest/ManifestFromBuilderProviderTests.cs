@@ -12,20 +12,38 @@ namespace CSF.Validation.Manifest
         public void GetManifestShouldReturnManifestCreatedFromBuilderAndBuilderCustomisation([Frozen] IGetsValidatorBuilder builderFactory,
                                                                                              ManifestFromBuilderProvider sut,
                                                                                              IBuildsValidator<string> builder,
-                                                                                             IValidatorBuilder<string> validatorBuilder,
-                                                                                             [ManifestModel] ValidationManifest manifest)
+                                                                                             Mock<IConfiguresValidator<string>> validatorBuilder,
+                                                                                             [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(builderFactory)
                 .Setup(x => x.GetValidatorBuilder<string>(It.IsAny<ValidatorBuilderContext>()))
-                .Returns(validatorBuilder);
-            Mock.Get(validatorBuilder)
-                .Setup(x => x.GetManifest())
-                .Returns(manifest);
+                .Returns(() => validatorBuilder.Object);
+            validatorBuilder
+                .As<IHasValidationBuilderContext>()
+                .SetupGet(x => x.Context)
+                .Returns(context);
 
-            var result = sut.GetManifest(builder);
+            Assert.That(() => sut.GetManifest(builder)?.RootValue, Is.SameAs(context.ManifestValue));
+        }
 
-            Assert.That(result, Is.SameAs(manifest));
-            Mock.Get(builder).Verify(x => x.ConfigureValidator(validatorBuilder), Times.Once);
+        [Test,AutoMoqData]
+        public void GetManifestShouldConfigureTheValidatorUsingTheSpecifiedBuilder([Frozen] IGetsValidatorBuilder builderFactory,
+                                                                                             ManifestFromBuilderProvider sut,
+                                                                                             IBuildsValidator<string> builder,
+                                                                                             Mock<IConfiguresValidator<string>> validatorBuilder,
+                                                                                             [ManifestModel] ValidatorBuilderContext context)
+        {
+            Mock.Get(builderFactory)
+                .Setup(x => x.GetValidatorBuilder<string>(It.IsAny<ValidatorBuilderContext>()))
+                .Returns(() => validatorBuilder.Object);
+            validatorBuilder
+                .As<IHasValidationBuilderContext>()
+                .SetupGet(x => x.Context)
+                .Returns(context);
+
+            sut.GetManifest(builder);
+
+            Mock.Get(builder).Verify(x => x.ConfigureValidator(validatorBuilder.Object), Times.Once);
         }
     }
 }

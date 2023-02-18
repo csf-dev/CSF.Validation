@@ -11,14 +11,15 @@ namespace CSF.Validation.ValidatorBuilding
     /// </summary>
     /// <typeparam name="TValidated">The type of the overall object being validated.</typeparam>
     /// <typeparam name="TValue">The type of this specific value being validated.</typeparam>
-    public class ValueAccessorBuilder<TValidated, TValue> : IBuildsValueAccessor<TValidated, TValue>
+    public class ValueAccessorBuilder<TValidated, TValue> : IConfiguresValueAccessor<TValidated, TValue>, IHasValidationBuilderContext
     {
         readonly ValidatorBuilderContext context;
         readonly IGetsRuleBuilder ruleBuilderFactory;
-        readonly IGetsValidatorManifest validatorManifestFactory;
+        readonly IGetsValidatorBuilderContextFromBuilder validatorManifestFactory;
         readonly IGetsValidatorBuilderContext builderContextFactory;
-        readonly ICollection<IGetsManifestValue> ruleBuilders = new HashSet<IGetsManifestValue>();
-        ValueAccessExceptionBehaviour? accessExceptionBehaviour;
+
+        /// <inheritdoc/>
+        public ValidatorBuilderContext Context => context;
 
         /// <inheritdoc/>
         public IConfiguresValueAccessor<TValidated, TValue> AddRuleWithParent<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition = null) where TRule : IRule<TValue, TValidated>
@@ -30,23 +31,22 @@ namespace CSF.Validation.ValidatorBuilding
 
         IConfiguresValueAccessor<TValidated, TValue> AddRulePrivate<TRule>(Action<IConfiguresRule<TRule>> ruleDefinition)
         {
-            var ruleBuilder = ruleBuilderFactory.GetRuleBuilder(context, ruleDefinition);
-            ruleBuilders.Add(ruleBuilder);
+            var builder = ruleBuilderFactory.GetRuleBuilder(context, ruleDefinition);
+            context.ConfigurationCallbacks.Add(builder);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValueAccessor<TValidated, TValue> AddRules<TBuilder>() where TBuilder : IBuildsValidator<TValue>
         {
-            var importedRules = validatorManifestFactory.GetValidatorManifest(typeof(TBuilder), context);
-            ruleBuilders.Add(importedRules);
+            validatorManifestFactory.GetValidatorBuilderContext(typeof(TBuilder), context);
             return this;
         }
 
         /// <inheritdoc/>
         public IConfiguresValueAccessor<TValidated, TValue> AccessorExceptionBehaviour(ValueAccessExceptionBehaviour? behaviour)
         {
-            accessExceptionBehaviour = behaviour;
+            context.ManifestValue.AccessorExceptionBehaviour = behaviour;
             return this;
         }
 
@@ -61,41 +61,9 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                 builderContextFactory);
             if(!(derivedConfig is null))
                 derivedConfig(derivedBuilder);
-            ruleBuilders.Add(derivedBuilder);
+            Context.Contexts.Add(derivedContext);
 
             return this;
-        }
-
-        /// <inheritdoc/>
-        public IManifestItem GetManifestValue()
-        {
-            var manifestValues = ruleBuilders.Select(x => x.GetManifestValue()).ToList();
-            
-            foreach(var manifestItem in manifestValues)
-                HandleManifestItem(manifestItem);
-
-            if(accessExceptionBehaviour.HasValue && context.ManifestValue is ManifestValue value)
-                value.AccessorExceptionBehaviour = accessExceptionBehaviour.Value;
-
-            return context.ManifestValue;
-        }
-
-        void HandleManifestItem(IManifestItem manifestItem)
-        {
-            if(manifestItem == context.ManifestValue) return;
-
-            if (manifestItem is ManifestValue value
-             && !(context.ManifestValue.Children.Contains(manifestItem)))
-            {
-                context.ManifestValue.Children.Add(value);
-            }
-
-            if (manifestItem is ManifestPolymorphicType poly
-             && context.ManifestValue is IHasPolymorphicTypes hasPoly
-             && !(hasPoly.PolymorphicTypes.Contains(poly)))
-            {
-                hasPoly.PolymorphicTypes.Add(poly);
-            }
         }
 
         /// <summary>
@@ -107,7 +75,7 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="builderContextFactory">A factory for validator builder contexts.</param>
         public ValueAccessorBuilder(ValidatorBuilderContext context,
                                     IGetsRuleBuilder ruleBuilderFactory,
-                                    IGetsValidatorManifest validatorManifestFactory,
+                                    IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
                                     IGetsValidatorBuilderContext builderContextFactory)
         {
             this.validatorManifestFactory = validatorManifestFactory ?? throw new ArgumentNullException(nameof(validatorManifestFactory));

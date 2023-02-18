@@ -33,8 +33,8 @@ namespace CSF.Validation.RuleExecution
             var singleRuleExecutor = GetSingleRuleExecutor(options);
 
             return options.EnableRuleParallelization
-                ? (IExecutesAllRules) new ParallelRuleExecutor(singleRuleExecutor)
-                : (IExecutesAllRules) new SerialRuleExecutor(singleRuleExecutor);
+                ? (IExecutesAllRules) ActivatorUtilities.CreateInstance<ParallelRuleExecutor>(resolver, singleRuleExecutor)
+                : (IExecutesAllRules) ActivatorUtilities.CreateInstance<SerialRuleExecutor>(resolver, singleRuleExecutor);
         }
 
         IExeucutesSingleRule GetSingleRuleExecutor(ResolvedValidationOptions options)

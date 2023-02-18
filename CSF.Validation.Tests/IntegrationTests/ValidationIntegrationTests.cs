@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace CSF.Validation.IntegrationTests
 {
-    [TestFixture, NUnit.Framework.Parallelizable]
+    [TestFixture, NUnit.Framework.Parallelizable,Category(TestCategory.Integration)]
     public class ValidationIntegrationTests
     {
         [Test,AutoMoqData]
@@ -31,6 +31,62 @@ namespace CSF.Validation.IntegrationTests
             var result = await validator.ValidateAsync(person).ConfigureAwait(false);
             
             Assert.That(result.Passed, Is.True);
+        }
+
+        [Test,AutoMoqData]
+        public async Task ValidateAsyncShouldReturnResultWithMetricsWhenInstrumentationEnabled([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var options = new ValidationOptions { InstrumentRuleExecution = true };
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
+
+            var person = new Person
+            {
+                Name = "Bobby",
+                Birthday = new DateTime(2000, 1, 1),
+                Pets = new[] {
+                    new Pet {
+                        Name = "Miffles",
+                        NumberOfLegs = 4,
+                        Type = "Cat"
+                    },
+                },
+            };
+
+            var result = await validator.ValidateAsync(person, options).ConfigureAwait(false);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.ValidationTime, Is.Not.Null, "Overall time");
+                Assert.That(result.RuleResults, Has.All.Property(nameof(ValidationRuleResult.InstrumentationData)).Not.Null, "Instrumentation data");
+            });
+        }
+        
+        [Test,AutoMoqData]
+        public async Task ValidateAsyncShouldReturnResultWithoutMetricsWhenInstrumentationDisabled([IntegrationTesting] IGetsValidator validatorFactory)
+        {
+            var options = new ValidationOptions { InstrumentRuleExecution = false };
+            var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
+
+            var person = new Person
+            {
+                Name = "Bobby",
+                Birthday = new DateTime(2000, 1, 1),
+                Pets = new[] {
+                    new Pet {
+                        Name = "Miffles",
+                        NumberOfLegs = 4,
+                        Type = "Cat"
+                    },
+                },
+            };
+
+            var result = await validator.ValidateAsync(person, options).ConfigureAwait(false);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.ValidationTime, Is.Null, "Overall time");
+                Assert.That(result.RuleResults, Has.All.Property(nameof(ValidationRuleResult.InstrumentationData)).Null, "Instrumentation data");
+            });
         }
 
         [Test,AutoMoqData]
@@ -132,10 +188,6 @@ namespace CSF.Validation.IntegrationTests
             {
                 Assert.That(result.Passed, Is.False, "Result is false");
 
-                var dependencyFailures = result.RuleResults
-                    .Where(x => !x.IsPass && x.Outcome == RuleOutcome.DependencyFailed)
-                    .Select(x => x.Identifier.RuleType)
-                    .ToList();
                 var failures = result.RuleResults
                     .Where(x => !x.IsPass && x.Outcome == RuleOutcome.Failed)
                     .Select(x => x.Identifier.RuleType)
@@ -144,21 +196,21 @@ namespace CSF.Validation.IntegrationTests
             });
         }
 
-        [Test,AutoMoqData]
+        [Test,AutoMoqData,SetCulture("en-GB")]
         public async Task ValidateAsyncWithMessageSupportShouldReturnMessagesForAFailingRule([IntegrationTesting] IGetsValidator validatorFactory)
         {
             var validator = validatorFactory.GetValidator<Person>(typeof(PersonValidatorBuilder));
             var person = new Person
             {
                 Name = "John Smith",
-                Birthday = new DateTime(1750, 1, 1),
+                Birthday = new DateTime(1750, 2, 1),
                 Pets = Array.Empty<Pet>(),
             };
 
             var result = await validator.ValidateAsync(person, new ValidationOptions { EnableMessageGeneration = true }).ConfigureAwait(false);
 
             Assert.That(result.RuleResults.Single(x => !x.IsPass).Message,
-                        Is.EqualTo("The date 1750-01-01 is invalid. It must equal-to or later than 1900-01-01."));
+                        Is.EqualTo("The date/time must be 01/01/1900 00:00:00 or afterward.  The actual date/time is 01/02/1750 00:00:00."));
         }
 
         [Test,AutoMoqData]
@@ -323,7 +375,7 @@ namespace CSF.Validation.IntegrationTests
             var result = await validator.ValidateAsync(customer).ConfigureAwait(false);
 
             Assert.That(() => result.ForMember(x => x.Person).PolymorphicAs<Employee>().PolymorphicAs<Employee>(),
-                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must implement IHasPolymorphicTypes"));
+                        Throws.ArgumentException.And.Message.StartWith("The validation manifest value for the current context must not be ManifestItem"));
         }
 
         [Test,AutoMoqData,Timeout(300)]
@@ -332,18 +384,18 @@ namespace CSF.Validation.IntegrationTests
             var manifest = new ValidationManifest
             {
                 ValidatedType = typeof(Node),
-                RootValue = new ManifestValue
+                RootValue = new ManifestItem
                 {
                     ValidatedType = typeof(Node),
                     IdentityAccessor = obj => ((Node)obj).Identity,
                     Children = new[] {
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(NodeChild),
                             IdentityAccessor = obj => ((NodeChild) obj).Identity,
                             AccessorFromParent = obj => ((Node) obj).Child,
                         },
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(string),
                             AccessorFromParent = obj => ((Node) obj).Name,
@@ -358,10 +410,9 @@ namespace CSF.Validation.IntegrationTests
             };
             nameValue.Rules.Add(nameRule);
             var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
-            var recursiveValue = new RecursiveManifestValue(manifest.RootValue)
-            {
-                AccessorFromParent = obj => ((NodeChild)obj).Node,
-            };
+            var recursiveValue = new ManifestItem();
+            recursiveValue.MakeRecursive(manifest.RootValue);
+            recursiveValue.AccessorFromParent = obj => ((NodeChild)obj).Node;
             childValue.Children.Add(recursiveValue);
 
             var validatedObject = new Node
@@ -386,18 +437,18 @@ namespace CSF.Validation.IntegrationTests
             var manifest = new ValidationManifest
             {
                 ValidatedType = typeof(Node),
-                RootValue = new ManifestValue
+                RootValue = new ManifestItem
                 {
                     ValidatedType = typeof(Node),
                     IdentityAccessor = obj => ((Node)obj).Identity,
                     Children = new[] {
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(NodeChild),
                             IdentityAccessor = obj => ((NodeChild) obj).Identity,
                             AccessorFromParent = obj => ((Node) obj).Child,
                         },
-                        new ManifestValue
+                        new ManifestItem
                         {
                             ValidatedType = typeof(string),
                             AccessorFromParent = obj => ((Node) obj).Name,
@@ -412,10 +463,9 @@ namespace CSF.Validation.IntegrationTests
             };
             nameValue.Rules.Add(nameRule);
             var childValue = manifest.RootValue.Children.Single(x => x.ValidatedType == typeof(NodeChild));
-            var recursiveValue = new RecursiveManifestValue(manifest.RootValue)
-            {
-                AccessorFromParent = obj => ((NodeChild)obj).Node,
-            };
+            var recursiveValue = new ManifestItem();
+            recursiveValue.MakeRecursive(manifest.RootValue);
+            recursiveValue.AccessorFromParent = obj => ((NodeChild)obj).Node;
             childValue.Children.Add(recursiveValue);
 
             var validatedObject = new Node

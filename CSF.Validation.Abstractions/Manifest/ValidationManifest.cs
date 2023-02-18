@@ -23,15 +23,8 @@ namespace CSF.Validation.Manifest
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ManifestRuleIdentifier"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
-    /// <seealso cref="ManifestValueBase"/>
-    /// <seealso cref="ManifestValue"/>
-    /// <seealso cref="ManifestCollectionItem"/>
-    /// <seealso cref="ManifestPolymorphicType"/>
-    /// <seealso cref="RecursiveManifestValue"/>
-    public class ValidationManifest
+    /// <seealso cref="ManifestItem"/>
+    public class ValidationManifest : IManifestNode
     {
         /// <summary>
         /// Gets or sets the type of object which the validator should validate.
@@ -41,6 +34,12 @@ namespace CSF.Validation.Manifest
         /// <summary>
         /// Gets or sets the root value for the current manifest.
         /// </summary>
-        public ManifestValue RootValue { get; set; }
+        /// <remarks>
+        /// <para>
+        /// The root item (referenced by this property) must be of <see cref="ManifestItem.ItemType"/>
+        /// <see cref="ManifestItemTypes.Value"/> and nothing else.
+        /// </para>
+        /// </remarks>
+        public ManifestItem RootValue { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                               [ExecutableModel] ExecutableRule rule6,
                                                                                                               [ExecutableModel] ExecutableRule rule7,
                                                                                                               ExecutableRulesFromValidatedValueProvider sut,
-                                                                                                              [ManifestModel] ManifestValue manifestValue,
+                                                                                                              [ManifestModel] ManifestItem manifestValue,
                                                                                                               object valueToBeValidated,
                                                                                                               ResolvedValidationOptions validationOptions)
         {
@@ -59,7 +59,7 @@ namespace CSF.Validation.RuleExecution
                                                                                                               [ExecutableModel] ExecutableRule rule5,
                                                                                                               [ExecutableModel] ExecutableRule rule6,
                                                                                                               ExecutableRulesFromValidatedValueProvider sut,
-                                                                                                              [ManifestModel] ManifestValue manifestValue,
+                                                                                                              [ManifestModel] ManifestItem manifestValue,
                                                                                                               object valueToBeValidated,
                                                                                                               ResolvedValidationOptions validationOptions)
         {

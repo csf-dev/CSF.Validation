@@ -10,12 +10,12 @@ namespace CSF.Validation.RuleExecution
     /// </summary>
     public sealed class ValidatedValueBasis
     {
-        readonly IEnumerable<ManifestPolymorphicType> polymorphicTypes;
+        readonly IEnumerable<ManifestItem> polymorphicTypes;
 
         /// <summary>
         /// Gets the manifest value.
         /// </summary>
-        public IManifestItem ManifestValue { get; }
+        public ManifestItem ManifestValue { get; }
 
         /// <summary>
         /// Gets the actual value.
@@ -48,17 +48,17 @@ namespace CSF.Validation.RuleExecution
             => (ValidatedValueResponse is SuccessfulGetValueToBeValidatedResponse successResponse) ? successResponse.Value : null;
 
         /// <summary>
-        /// Gets a collection of the <see cref="ManifestValue"/> which should be considered as children of the current
+        /// Gets a collection of the <see cref="ManifestItem"/> which should be considered as children of the current
         /// manifest value basis.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This method considers not only the <see cref="IManifestItem.Children"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
+        /// This method considers not only the <see cref="ManifestItem.Children"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
         /// but also the children of every value returned by <see cref="GetPolymorphicTypes"/>.
         /// </para>
         /// </remarks>
         /// <returns>A collection of manifest values.</returns>
-        public IEnumerable<IManifestValue> GetChildManifestValues()
+        public IEnumerable<ManifestItem> GetChildManifestValues()
         {
             return new [] { ManifestValue }
                 .Union(polymorphicTypes)
@@ -72,7 +72,7 @@ namespace CSF.Validation.RuleExecution
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This method considers not only the <see cref="IManifestItem.Rules"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
+        /// This method considers not only the <see cref="ManifestItem.Rules"/> of <see cref="ValidatedValueBasis.ManifestValue"/>
         /// but also the rules of every value returned by <see cref="GetPolymorphicTypes"/>.
         /// </para>
         /// </remarks>
@@ -108,13 +108,13 @@ namespace CSF.Validation.RuleExecution
         /// <summary>
         /// Gets a collection of applicable polymorphic types which are applicable to the current validated value.
         /// </summary>
-        IEnumerable<ManifestPolymorphicType> GetPolymorphicTypes()
+        IEnumerable<ManifestItem> GetPolymorphicTypes()
         {
-            if (!(ManifestValue is IHasPolymorphicTypes polymorphicManifest)
+            if (ManifestValue.IsPolymorphicType
              || !(ValidatedValueResponse is SuccessfulGetValueToBeValidatedResponse successResponse))
-                return Enumerable.Empty<ManifestPolymorphicType>();
+                return Enumerable.Empty<ManifestItem>();
 
-            return polymorphicManifest
+            return ManifestValue
                 .PolymorphicTypes
                 .Where(x => x.ValidatedType.IsInstanceOfType(successResponse.Value))
                 .ToList();
@@ -127,7 +127,7 @@ namespace CSF.Validation.RuleExecution
         /// <param name="actualValue">The actual value for this basis.</param>
         /// <param name="parent">An optional parent validated value for this basis.</param>
         /// <param name="collectionOrder">An optional collection order for this basis.</param>
-        public ValidatedValueBasis(IManifestItem manifestValue,
+        public ValidatedValueBasis(ManifestItem manifestValue,
                                    GetValueToBeValidatedResponse actualValue,
                                    ValidatedValue parent,
                                    long? collectionOrder = default)

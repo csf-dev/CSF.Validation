@@ -11,18 +11,20 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsManifestItemFromModelToManifestConversionContext next;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             if(context.ConversionType != ModelToManifestConversionType.CollectionItem)
                 return next.GetManifestItem(context);
 
-            var collectionItem = new ManifestCollectionItem
+            var collectionItem = new ManifestItem
             {
+                Id = context.CurrentValue.Id,
                 Parent = context.ParentManifestValue.Parent,
                 ValidatedType = context.ValidatedType,
+                ItemType = ManifestItemTypes.CollectionItem,
             };
 
-            if (context.ParentManifestValue is ManifestValueBase mvb)
+            if (context.ParentManifestValue is ManifestItem mvb)
                 mvb.CollectionItemValue = collectionItem;
             
             return collectionItem;

@@ -17,20 +17,20 @@ namespace CSF.Validation.ValidatorBuilding
                                                                       IGetsValidatorBuilderContext ruleContextFactory,
                                                                       IGetsRuleBuilder ruleBuilderFactory,
                                                                       IGetsValueAccessorBuilder valueBuilderFactory,
-                                                                      IGetsValidatorManifest validatorManifestFactory,
+                                                                      IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
                                                                       IResolvesServices resolver,
                                                                       [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContextFromBuilder))).Returns(validatorManifestFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IResolvesServices))).Returns(resolver);
             Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(GenericValidatorDefinition<object>))).Returns(() => new GenericValidatorDefinition<object>());
 
-            var result = sut.GetValidatorManifest(typeof(GenericValidatorDefinition<object>), context);
+            var result = sut.GetValidatorBuilderContext(typeof(GenericValidatorDefinition<object>), context);
 
-            Assert.That(result, Is.InstanceOf<ValidatorBuilder<object>>());
+            Assert.That(result, Is.InstanceOf<ValidatorBuilderContext>());
         }
 
         [Test,AutoMoqData]
@@ -39,7 +39,7 @@ namespace CSF.Validation.ValidatorBuilding
                                                                                                  IGetsValidatorBuilderContext ruleContextFactory,
                                                                                                  IGetsRuleBuilder ruleBuilderFactory,
                                                                                                  IGetsValueAccessorBuilder valueBuilderFactory,
-                                                                                                 IGetsValidatorManifest validatorManifestFactory,
+                                                                                                 IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
                                                                                                  IResolvesServices resolver,
                                                                                                  [ManifestModel] ValidatorBuilderContext context,
                                                                                                  ValidatedObject obj)
@@ -47,11 +47,11 @@ namespace CSF.Validation.ValidatorBuilding
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContextFromBuilder))).Returns(validatorManifestFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IResolvesServices))).Returns(resolver);
             Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(ValidatedObjectDefinition))).Returns(() => new ValidatedObjectDefinition());
 
-            sut.GetValidatorManifest(typeof(ValidatedObjectDefinition), context);
+            sut.GetValidatorBuilderContext(typeof(ValidatedObjectDefinition), context);
 
             Assert.That(() => context.ManifestValue.IdentityAccessor(obj),
                         Is.EqualTo(obj.Identity),
@@ -63,36 +63,36 @@ for identity, asserting that they are equal proves that the configuration functi
         public void GetValidatorManifestShouldThrowForAnInvalidDefinitionWithNoInterface(ImportedValidatorBuilderManifestFactory sut,
                                                                                          [ManifestModel] ValidatorBuilderContext context)
         {
-            Assert.That(() => sut.GetValidatorManifest(typeof(InvalidDefinitionWithNoInterface), context),
+            Assert.That(() => sut.GetValidatorBuilderContext(typeof(InvalidDefinitionWithNoInterface), context),
                         Throws.ArgumentException.And.Message.StartWith("The validation definition type must implement IBuildsValidator<T>."));
         }
 
         [Test,AutoMoqData]
         public void GetValidatorManifestShouldThrowForAnInvalidDefinitionWithTwoInterfaces(ImportedValidatorBuilderManifestFactory sut, [ManifestModel] ValidatorBuilderContext context)
         {
-            Assert.That(() => sut.GetValidatorManifest(typeof(InvalidDefinitionWithTwoInterfaces), context),
+            Assert.That(() => sut.GetValidatorBuilderContext(typeof(InvalidDefinitionWithTwoInterfaces), context),
                         Throws.ArgumentException.And.Message.StartWith("The validation definition type must implement IBuildsValidator<T> a maximum of once, for one generic validated type."));
         }
         [Test,AutoMoqData]
-        public void GetValidatorManifestWithRuleContextShouldReturnAValidatorBuilder([Frozen] IServiceProvider serviceProvider,
+        public void GetValidatorManifestWithRuleContextShouldReturnABuilderContext([Frozen] IServiceProvider serviceProvider,
                                                                                      ImportedValidatorBuilderManifestFactory sut,
                                                                                      IGetsValidatorBuilderContext ruleContextFactory,
                                                                                      IGetsRuleBuilder ruleBuilderFactory,
                                                                                      IGetsValueAccessorBuilder valueBuilderFactory,
-                                                                                     IGetsValidatorManifest validatorManifestFactory,
+                                                                                     IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
                                                                                      IResolvesServices resolver,
                                                                                      [ManifestModel] ValidatorBuilderContext context)
         {
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContext))).Returns(ruleContextFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsRuleBuilder))).Returns(ruleBuilderFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValueAccessorBuilder))).Returns(valueBuilderFactory);
-            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorManifest))).Returns(validatorManifestFactory);
+            Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IGetsValidatorBuilderContextFromBuilder))).Returns(validatorManifestFactory);
             Mock.Get(serviceProvider).Setup(x => x.GetService(typeof(IResolvesServices))).Returns(resolver);
             Mock.Get(resolver).Setup(x => x.ResolveService<object>(typeof(GenericValidatorDefinition<object>))).Returns(() => new GenericValidatorDefinition<object>());
 
-            var result = sut.GetValidatorManifest(typeof(GenericValidatorDefinition<object>), context);
+            var result = sut.GetValidatorBuilderContext(typeof(GenericValidatorDefinition<object>), context);
 
-            Assert.That(result, Is.InstanceOf<ValidatorBuilder<object>>());
+            Assert.That(result?.ManifestValue.ValidatedType, Is.EqualTo(typeof(object)), "Result is builder context for correct type");
         }
 
         public class GenericValidatorDefinition<T> : IBuildsValidator<T>

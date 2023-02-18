@@ -20,20 +20,13 @@ namespace CSF.Validation.Manifest
     /// </remarks>
     /// <seealso cref="ManifestRule"/>
     /// <seealso cref="ValidationManifest"/>
-    /// <seealso cref="IManifestItem"/>
-    /// <seealso cref="IManifestValue"/>
-    /// <seealso cref="IHasPolymorphicTypes"/>
-    /// <seealso cref="ManifestValueBase"/>
-    /// <seealso cref="ManifestValue"/>
-    /// <seealso cref="ManifestCollectionItem"/>
-    /// <seealso cref="ManifestPolymorphicType"/>
-    /// <seealso cref="RecursiveManifestValue"/>
+    /// <seealso cref="ManifestItem"/>
     public sealed class ManifestRuleIdentifier : RuleIdentifierBase, IEquatable<ManifestRuleIdentifier>
     {
         /// <summary>
         /// Gets the manifest object to which this rule relates.
         /// </summary>
-        public IManifestItem ManifestValue { get; }
+        public ManifestItem ManifestValue { get; }
 
         /// <summary>
         /// Gets a value that indicates whether the specified <see cref="ManifestRuleIdentifier"/>
@@ -88,9 +81,9 @@ namespace CSF.Validation.Manifest
         /// <param name="ruleType">The rule type.</param>
         /// <param name="ruleName">An optional rule name.</param>
         /// <exception cref="ArgumentNullException">If either <paramref name="ruleType"/> or <paramref name="manifestValue"/> are
-        /// <see langword="null"/> or if the <see cref="IManifestItem.ValidatedType"/> of the <paramref name="manifestValue"/>
+        /// <see langword="null"/> or if the <see cref="ManifestItem.ValidatedType"/> of the <paramref name="manifestValue"/>
         /// is <see langword="null" />.</exception>
-        public ManifestRuleIdentifier(IManifestItem manifestValue,
+        public ManifestRuleIdentifier(ManifestItem manifestValue,
                                       Type ruleType,
                                       string ruleName = default) : base(ruleType, manifestValue?.ValidatedType, ruleName)
         {

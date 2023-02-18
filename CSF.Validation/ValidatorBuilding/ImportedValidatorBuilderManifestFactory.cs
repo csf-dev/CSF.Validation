@@ -4,15 +4,14 @@ using System.Reflection;
 using CSF.Reflection;
 using CSF.Specifications;
 using Microsoft.Extensions.DependencyInjection;
-using static CSF.Validation.Resources.ExceptionMessages;
 
 namespace CSF.Validation.ValidatorBuilding
 {
     /// <summary>
-    /// A factory service which creates an implementation of <see cref="IGetsManifestValue"/> based upon a
+    /// A factory service which gets an implementation of <see cref="ValidatorBuilderContext"/> based upon a
     /// type that implements <see cref="IBuildsValidator{TValidated}"/>.
     /// </summary>
-    public class ImportedValidatorBuilderManifestFactory : IGetsValidatorManifest
+    public class ImportedValidatorBuilderManifestFactory : IGetsValidatorBuilderContextFromBuilder
     {
         static readonly ISpecificationExpression<Type> openGenericSpec
             = new IsClosedGenericBasedOnOpenGenericSpecification(typeof(IBuildsValidator<>));
@@ -28,7 +27,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         IGetsValueAccessorBuilder ValueBuilderFactory => serviceProvider.GetRequiredService<IGetsValueAccessorBuilder>();
 
-        IGetsValidatorManifest ValidatorManifestFactory => serviceProvider.GetRequiredService<IGetsValidatorManifest>();
+        IGetsValidatorBuilderContextFromBuilder ValidatorManifestFactory => serviceProvider.GetRequiredService<IGetsValidatorBuilderContextFromBuilder>();
 
         /// <summary>
         /// Gets an object which provides manifest rules from a specified validator-builder type.
@@ -37,20 +36,20 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="context">Contextual information about how a validator should be built.</param>
         /// <returns>An object which provides a collection of <see cref="Manifest.ManifestRule"/> instances.</returns>
         /// <exception cref="ArgumentException">If the <paramref name="definitionType"/> does not implement <see cref="IBuildsValidator{TValidated}"/>.</exception>
-        public IGetsManifestValue GetValidatorManifest(Type definitionType, ValidatorBuilderContext context)
+        public ValidatorBuilderContext GetValidatorBuilderContext(Type definitionType, ValidatorBuilderContext context)
         {
             var validatedType = GetValidatedType(definitionType);
 
             var method = getValidatorManifestGenericMethod.MakeGenericMethod(validatedType);
-            return (IGetsManifestValue) method.Invoke(this, new object[] { definitionType, context });
+            return (ValidatorBuilderContext) method.Invoke(this, new object[] { definitionType, context });
         }
 
-        IGetsManifestValue GetValidatorManifestGeneric<T>(Type definitionType, ValidatorBuilderContext context)
+        ValidatorBuilderContext GetValidatorManifestGeneric<T>(Type definitionType, ValidatorBuilderContext context)
         {
             var definition = GetValidatorBuilder<T>(definitionType);
             var builder = new ValidatorBuilder<T>(RuleContextFactory, RuleBuilderFactory, ValueBuilderFactory, ValidatorManifestFactory, context);
             definition.ConfigureValidator(builder);
-            return builder;
+            return context;
         }
 
         IBuildsValidator<T> GetValidatorBuilder<T>(Type definitionType)

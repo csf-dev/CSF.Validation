@@ -16,7 +16,7 @@ namespace CSF.Validation.ManifestModel
                                                                                        [Frozen] IGetsManifestItemFromModelToManifestConversionContext itemFactory,
                                                                                        ModelValueToManifestValueConverter sut,
                                                                                        [ManifestModel] ModelToManifestConversionContext context,
-                                                                                       IManifestItem item,
+                                                                                       ManifestItem item,
                                                                                        AccessorFunctionAndType accessor)
         {
             Mock.Get(accessorFactory)
@@ -40,13 +40,13 @@ namespace CSF.Validation.ManifestModel
                                 { "Bar", new Value { ValidateRecursivelyAsAncestor = 1 } },
                                 { "Baz", new Value
                                     {
-                                        CollectionItemValue = new CollectionItemValue(),
+                                        CollectionItemValue = new Value(),
                                     }
                                 },
                             },
-                            PolymorphicValues = new Dictionary<string,PolymorphicValue>
+                            PolymorphicValues = new Dictionary<string,Value>
                             {
-                                { "System.String", new PolymorphicValue() },
+                                { "System.String", new Value() },
                             }
                         }
                     },

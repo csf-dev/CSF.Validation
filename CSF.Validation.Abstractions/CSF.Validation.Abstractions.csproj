@@ -1,29 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\Tools\CommonSolutionProperties.props" />
+
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;netstandard2.1</TargetFrameworks>
     <RootNamespace>CSF.Validation</RootNamespace>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.Validation.Abstractions.xml</DocumentationFile>
-    <ReleaseVersion>3.0.0</ReleaseVersion>
     <PackageId>CSF.Validation.Abstractions</PackageId>
-    <Authors>craigfowler</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>CSF.Validation.Abstractions</Title>
     <Description>A framework for business rule validation - abstractions package</Description>
-    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Copyright>Copyright 2021 - CSF Software Limited</Copyright>
-    <PackageProjectUrl>https://github.com/csf-dev/CSF.Validation/</PackageProjectUrl>
-    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
-    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" Condition="'$(TargetFramework)' == 'net461'" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.2"
+                      Condition="'$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>

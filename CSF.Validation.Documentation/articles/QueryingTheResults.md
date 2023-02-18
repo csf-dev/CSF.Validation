@@ -2,14 +2,14 @@
 
 A strongly-typed validator returns an instance of [`IQueryableValidationResult<T>`].
 This interface implements `IEnumerable<ValidationRuleResult>` and so it is possible to query it using Linq.
-The validation framework also adds a few methods to make querying even easier:
 
+The validation framework also adds a few methods to make querying even easier.
 All of the following methods work a lot like `.Where()` in Linq; each returns a filtered collection of results, _without modifying the original result object_.
 
 ## `ForMember` narrows the results by member
 
 The [`ForMember`] method is used to filter/narrow a collection of results to only those which relate to a member, or descendent values derived from that member's value.
-In essence this allows narrowing of the results by a property or other member.
+In essence this allows narrowing of the results by traversing the object graph which is being validated.
 
 ## `ForMatchingMemberItem` narrows the results by a collection item
 

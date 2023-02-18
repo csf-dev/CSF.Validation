@@ -12,7 +12,7 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetValueAccessorBuilderShouldReturnAnAccessorBuilder([ManifestModel] ValidatorBuilderContext context,
                                                                          IGetsRuleBuilder ruleBuilderFactory,
-                                                                         IGetsValidatorManifest validatorManifestFactory,
+                                                                         IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
                                                                          IGetsValidatorBuilderContext contextFactory)
         {
             var sut = new ValueAccessorBuilderFactory(() => ruleBuilderFactory, () => validatorManifestFactory, () => contextFactory);
@@ -22,10 +22,16 @@ namespace CSF.Validation.ValidatorBuilding
         [Test,AutoMoqData]
         public void GetValueAccessorBuilderShouldExecuteConfigurationUponBuilder([ManifestModel] ValidatorBuilderContext context,
                                                                                  IGetsRuleBuilder ruleBuilderFactory,
-                                                                                 IGetsValidatorManifest validatorManifestFactory,
-                                                                                 IGetsValidatorBuilderContext contextFactory)
+                                                                                 IGetsValidatorBuilderContextFromBuilder validatorManifestFactory,
+                                                                                 IGetsValidatorBuilderContext contextFactory,
+                                                                                 IConfiguresContext ruleBuilder,
+                                                                                 [ManifestModel] ValidatorBuilderContext ruleContext)
         {
+            Mock.Get(ruleBuilderFactory)
+                .Setup(x => x.GetRuleBuilder<StringValueRule>(It.IsAny<ValidatorBuilderContext>(), It.IsAny<Action<IConfiguresRule<StringValueRule>>>()))
+                .Returns(() => ruleBuilder);
             var sut = new ValueAccessorBuilderFactory(() => ruleBuilderFactory, () => validatorManifestFactory, () => contextFactory);
+
             sut.GetValueAccessorBuilder<ValidatedObject, string>(context, c => c.AddRuleWithParent<StringValueRule>());
             Mock.Get(ruleBuilderFactory)
                 .Verify(x => x.GetRuleBuilder<StringValueRule>(context, It.IsAny<Action<IConfiguresRule<StringValueRule>>>()), Times.Once);

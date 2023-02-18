@@ -6,7 +6,7 @@ namespace CSF.Validation.ManifestModel
 {
     /// <summary>
     /// A service which converts <see cref="ModelToManifestConversionContext"/> instances (containing a <see cref="Value"/>)
-    /// into a hierarchy of <see cref="CSF.Validation.Manifest.ManifestValue"/>, contained within a <see cref="ModelToManifestValueConversionResult"/>.
+    /// into a hierarchy of <see cref="CSF.Validation.Manifest.ManifestItem"/>, contained within a <see cref="ModelToManifestValueConversionResult"/>.
     /// </summary>
     public class ModelValueToManifestValueConverter : IConvertsModelValuesToManifestValues
     {
@@ -16,7 +16,7 @@ namespace CSF.Validation.ManifestModel
 
         /// <summary>
         /// Converts all of the hierarchy of <see cref="Value"/> instances within the specified context into
-        /// an equivalent hierarchy of <see cref="CSF.Validation.Manifest.ManifestValue"/>, which are returned
+        /// an equivalent hierarchy of <see cref="CSF.Validation.Manifest.ManifestItem"/>, which are returned
         /// as a result object.
         /// </summary>
         /// <param name="context">A conversion context.</param>
@@ -36,8 +36,8 @@ namespace CSF.Validation.ManifestModel
                 var current = openList.Dequeue();
                 var value = contextToItemConverter.GetManifestItem(current);
 
-                if (result.RootValue is null && value is ManifestValue manifestValue)
-                    result.RootValue = manifestValue;
+                if (result.RootValue is null && value.IsValue)
+                    result.RootValue = value;
 
                 FindAndAddChildrenToOpenList(openList, current, value);
 
@@ -51,7 +51,7 @@ namespace CSF.Validation.ManifestModel
             return result;
         }
 
-        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, IManifestItem parent)
+        void FindAndAddChildrenToOpenList(Queue<ModelToManifestConversionContext> openList, ModelToManifestConversionContext currentContext, ManifestItem parent)
         {
             if(!(currentContext.CurrentValue.CollectionItemValue is null))
             {
@@ -86,9 +86,9 @@ namespace CSF.Validation.ManifestModel
                 openList.Enqueue(collectionItem);
             }
 
-            if(currentContext.CurrentValue is IHasPolymorphicValues hasPolyValues)
+            if(currentContext.ConversionType != ModelToManifestConversionType.PolymorphicType)
             {
-                foreach(var polyValue in hasPolyValues.PolymorphicValues)
+                foreach(var polyValue in currentContext.CurrentValue.PolymorphicValues)
                 {
                     var polymorphicItem = new ModelToManifestConversionContext
                     {

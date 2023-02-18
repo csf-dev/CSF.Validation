@@ -13,6 +13,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="currentValue">The current manifest value from which the <paramref name="relativeIdentifier"/> should be derived.</param>
         /// <param name="relativeIdentifier">The relative rule identifier.</param>
         /// <returns>A manifest rule identifier.</returns>
-        ManifestRuleIdentifier GetManifestRuleIdentifier(IManifestItem currentValue, RelativeRuleIdentifier relativeIdentifier);
+        ManifestRuleIdentifier GetManifestRuleIdentifier(ManifestItem currentValue, RelativeRuleIdentifier relativeIdentifier);
     }
 }

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RootValueMustBeForSameTypeAsManifest" xml:space="preserve">
+    <value>The {0} of a {1} must be be assignable to the {0} of the {2} used as the manifest's {3}.
+{1}.{0} = {4}
+{1}.{3}.{0} = {5}</value>
+    <comment/>
+  </data>
+  <data name="ParentMustBeAValidationManifest" xml:space="preserve">
+    <value>The {0} of the root {1} in a {2} must be an instance of {2}.</value>
+    <comment/>
+  </data>
+  <data name="RootValueMustNotBeNull" xml:space="preserve">
+    <value>The root value of a {0} must not be null.</value>
+    <comment/>
+  </data>
+  <data name="ParentMustDeriveFromValidationManifest" xml:space="preserve">
+    <value>The {0} property of a {1} that is the root of a validation manifest must be a reference to that same validation manifest.</value>
+    <comment/>
+  </data>
+  <data name="MustBeDefinedEnumConstant" xml:space="preserve">
+    <value>The value must be a defined constant of the enum {0}, but it is not.</value>
+    <comment/>
+  </data>
+  <data name="IntegerInRangeRange" xml:space="preserve">
+    <value>The value must be in the range {0} to {1} (inclusive). The actual value is {2}.</value>
+    <comment/>
+  </data>
+  <data name="IntegerInRangeMin" xml:space="preserve">
+    <value>The value must be greater than or equal to {0}. The actual value is {1}.</value>
+    <comment/>
+  </data>
+  <data name="IntegerInRangeMax" xml:space="preserve">
+    <value>The value must be less than or equal to {0}. The actual value is {1}.</value>
+    <comment/>
+  </data>
+  <data name="CountInRangeRange" xml:space="preserve">
+    <value>The value must have a count in the range {0} to {1} (inclusive). The actual count is {2}.</value>
+    <comment/>
+  </data>
+  <data name="CountInRangeMin" xml:space="preserve">
+    <value>The value must have a count greater than or equal to {0}. The actual count is {1}.</value>
+    <comment/>
+  </data>
+  <data name="CountInRangeMax" xml:space="preserve">
+    <value>The value must have a count less than or equal to {0}. The actual count is {1}.</value>
+    <comment/>
+  </data>
+  <data name="LengthInRangeRange" xml:space="preserve">
+    <value>The value must have a length in the range {0} to {1} (inclusive).  The actual length is {2}.</value>
+    <comment/>
+  </data>
+  <data name="LengthInRangeMin" xml:space="preserve">
+    <value>The value must have a length greater than or equal to {0}.  The actual length is {1}.</value>
+    <comment/>
+  </data>
+  <data name="LengthInRangeMax" xml:space="preserve">
+    <value>The value must have a length less than or equal to {0}.  The actual length is {1}.</value>
+    <comment/>
+  </data>
+  <data name="DateTimeInRangeRange" xml:space="preserve">
+    <value>The date/time must be in the range {0} to {1} (inclusive).  The actual date/time is {2}.</value>
+    <comment/>
+  </data>
+  <data name="DateTimeInRangeMin" xml:space="preserve">
+    <value>The date/time must be {0} or afterward.  The actual date/time is {1}.</value>
+    <comment/>
+  </data>
+  <data name="DateTimeInRangeMax" xml:space="preserve">
+    <value>The date/time must be {0} or earlier.  The actual date/time is {1}.</value>
+    <comment/>
+  </data>
+  <data name="DerivesFrom" xml:space="preserve">
+    <value>The value must derive from {0}. The actual value is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="DoesNotDeriveFrom" xml:space="preserve">
+    <value>The value must not derive from {0}. The actual value is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="EmptyWithCountOne" xml:space="preserve">
+    <value>The value must be empty but it actually has one item.</value>
+    <comment/>
+  </data>
+  <data name="EmptyWithCount" xml:space="preserve">
+    <value>The value must be empty but it actually has {0} items.</value>
+    <comment/>
+  </data>
+  <data name="EmptyWithNoCount" xml:space="preserve">
+    <value>The value must be empty but it is not.</value>
+    <comment/>
+  </data>
+  <data name="EmptyString" xml:space="preserve">
+    <value>The value must be empty but it is "{0}".</value>
+    <comment/>
+  </data>
+  <data name="MatchesRegex" xml:space="preserve">
+    <value>The value must match the regular expression "{0}", using the regex options {1}.  The actual value is "{2}".</value>
+    <comment/>
+  </data>
+  <data name="NotEmpty" xml:space="preserve">
+    <value>The value must not be empty.</value>
+    <comment/>
+  </data>
+  <data name="NotNull" xml:space="preserve">
+    <value>The value must not be null.</value>
+    <comment/>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>The value must be null.</value>
+    <comment/>
+  </data>
+  <data name="NotNullOrEmpty" xml:space="preserve">
+    <value>The value must not be null and must not be empty.</value>
+    <comment/>
+  </data>
+  <data name="ContainsNoNullItems" xml:space="preserve">
+    <value>No items within this value may be null; at least one null item was found.</value>
+    <comment/>
+  </data>
+  <data name="ContainsNoNullItemsOne" xml:space="preserve">
+    <value>No items within this collection may be null; one null item was found.</value>
+    <comment/>
+  </data>
+  <data name="ContainsNoNullItemsCount" xml:space="preserve">
+    <value>No items within this collection may be null; {0} null items were found.</value>
+    <comment/>
+  </data>
+  <data name="NullIfTheParentIsAManifest" xml:space="preserve">
+    <value>The value must be null if the {0} is an instance of {1}.</value>
+    <comment/>
+  </data>
+  <data name="NotNullIfTheParentIsNotAManifest" xml:space="preserve">
+    <value>The value must not be null if the {0} is not the root of a {1}.</value>
+    <comment/>
+  </data>
+  <data name="MemberMustExist" xml:space="preserve">
+    <value>The {0} {1} must have a member named {2}, or else the {3} property of the {4} must be null.</value>
+    <comment/>
+  </data>
+  <data name="CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable" xml:space="preserve">
+    <value>If the {0} of the {1} does not implement {2}&lt;{3}&gt; then {4} must be null.</value>
+    <comment/>
+  </data>
+  <data name="CollectionItemValueMustValidateCompatibleTypeForValidatedType" xml:space="preserve">
+    <value>When validating collection items, the {0}.{1} must be assignable to {2}&lt;T&gt; for a generic type that matches the {0}.{3}.{1}.
+{0}.{1} = {4}
+{0}.{3}.{1} = {5}</value>
+    <comment/>
+  </data>
+  <data name="RuleMustImplementCompatibleValidationLogicOneInterface" xml:space="preserve">
+    <value>The rule logic type ({0}.{1}) must implement {2}&lt;{3}&gt;, either directly or contravariantly via a less-specific interface. The type {4} does not implement this interface, though.</value>
+    <comment/>
+  </data>
+  <data name="RuleMustImplementCompatibleValidationLogicTwoInterfaces" xml:space="preserve">
+    <value>The rule logic type ({0}.{1}) must implement one of {2}&lt;{3}&gt; or {2}&lt;{3},{4}&gt;, either directly or contravariantly via a less-specific interface. The type {5} does not implement either of these interfaces, though.</value>
+    <comment/>
+  </data>
+  <data name="PolymorphicTypeMustDeriveFromParentValidatedType" xml:space="preserve">
+    <value>Manifest items which include the type {0} must have a {1} which derives from the {1} of the parent manifest item.
+{1} = {3}
+{2}.{1} = {4}</value>
+    <comment/>
+  </data>
+  <data name="MayNotHaveOwnItemsIfRecursive" xml:space="preserve">
+    <value>Manifest items which include the type {0} must not have any of their own descendent items; they must all be derived from the recursive ancestor.
+{1} is not null? {2} (must be null for recursive items)
+{3} has count {4} (must be empty for recursive items)
+{5} has count {6} (must be empty for recursive items)
+{7} has count {8} (must be empty for recursive items)</value>
+    <comment/>
+  </data>
+  <data name="AllChildrenMustBeValues" xml:space="preserve">
+    <value>All items within the collection {0}.{1} must be of the {2} type.</value>
+    <comment/>
+  </data>
+  <data name="CollectionItemValueMustBeCollectionItem" xml:space="preserve">
+    <value>All items within the collection {0}.{1} must be of the {2} type.</value>
+    <comment/>
+  </data>
+  <data name="AllPolymorphicTypesMustBeMarkedAsSo" xml:space="preserve">
+    <value>If not null, the {0}.{1} must be of the {2} type.</value>
+    <comment/>
+  </data>
+  <data name="RootValueOfManifestMustBeASimpleValue" xml:space="preserve">
+    <value>The {0}.{1} must be of the {2} type and must not be recursive.</value>
+    <comment/>
+  </data>
+  <data name="NotNullIfRecursive" xml:space="preserve">
+    <value>This value must not be null if the manifest item is a recursive one.</value>
+    <comment/>
+  </data>
+  <data name="NullIfNotRecursive" xml:space="preserve">
+    <value>This value must be null if the manifest item is not a recursive one.</value>
+    <comment/>
+  </data>
+</root>

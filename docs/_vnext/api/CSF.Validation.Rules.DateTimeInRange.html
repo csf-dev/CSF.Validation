@@ -91,8 +91,12 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="CSF.Validation.Rules.IRuleWithMessage-1.html">IRuleWithMessage</a>&lt;<span class="xref">System.DateTime</span>&gt;</div>
     <div><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule</a>&lt;<span class="xref">System.DateTime</span>&gt;</div>
+    <div><a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage-1.html">IGetsFailureMessage</a>&lt;<span class="xref">System.DateTime</span>&gt;</div>
+    <div><a class="xref" href="CSF.Validation.Rules.IRuleWithMessage-1.html">IRuleWithMessage</a>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;&gt;</div>
     <div><a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule</a>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;&gt;</div>
+    <div><a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage-1.html">IGetsFailureMessage</a>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -122,7 +126,7 @@
   <h6><strong>Assembly</strong>: CSF.Validation.StandardRules.dll</h6>
   <h5 id="CSF_Validation_Rules_DateTimeInRange_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DateTimeInRange : IRule&lt;DateTime&gt;, IRule&lt;DateTime?&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class DateTimeInRange : IRuleWithMessage&lt;DateTime&gt;, IRule&lt;DateTime&gt;, IGetsFailureMessage&lt;DateTime&gt;, IRuleWithMessage&lt;DateTime?&gt;, IRule&lt;DateTime?&gt;, IGetsFailureMessage&lt;DateTime?&gt;</code></pre>
   </div>
   <h5 id="CSF_Validation_Rules_DateTimeInRange_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>
@@ -150,7 +154,7 @@ This rule will always return a synchronous result.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange_End.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange.End%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L42">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L44">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_DateTimeInRange_End_" data-uid="CSF.Validation.Rules.DateTimeInRange.End*"></a>
   <h4 id="CSF_Validation_Rules_DateTimeInRange_End" data-uid="CSF.Validation.Rules.DateTimeInRange.End">End</h4>
@@ -181,7 +185,7 @@ This rule will always return a synchronous result.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange_Start.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange.Start%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L37">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L39">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_DateTimeInRange_Start_" data-uid="CSF.Validation.Rules.DateTimeInRange.Start*"></a>
   <h4 id="CSF_Validation_Rules_DateTimeInRange_Start" data-uid="CSF.Validation.Rules.DateTimeInRange.Start">Start</h4>
@@ -211,10 +215,71 @@ This rule will always return a synchronous result.
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange_GetFailureMessageAsync_System_Nullable_System_DateTime__CSF_Validation_ValidationRuleResult_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange.GetFailureMessageAsync(System.Nullable%7BSystem.DateTime%7D%2CCSF.Validation.ValidationRuleResult%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L47">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_DateTimeInRange_GetFailureMessageAsync_" data-uid="CSF.Validation.Rules.DateTimeInRange.GetFailureMessageAsync*"></a>
+  <h4 id="CSF_Validation_Rules_DateTimeInRange_GetFailureMessageAsync_System_Nullable_System_DateTime__CSF_Validation_ValidationRuleResult_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.DateTimeInRange.GetFailureMessageAsync(System.Nullable{System.DateTime},CSF.Validation.ValidationRuleResult,System.Threading.CancellationToken)">GetFailureMessageAsync(Nullable&lt;DateTime&gt;, ValidationRuleResult, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the validation failure message for the specified result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; GetFailureMessageAsync(DateTime? value, ValidationRuleResult result, CancellationToken token = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>A validation result, typically indicating failure.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>An optional cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A human-readable message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange_GetResultAsync_System_DateTime_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange.GetResultAsync(System.DateTime%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L61">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L62">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_DateTimeInRange_GetResultAsync_" data-uid="CSF.Validation.Rules.DateTimeInRange.GetResultAsync*"></a>
   <h4 id="CSF_Validation_Rules_DateTimeInRange_GetResultAsync_System_DateTime_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.DateTimeInRange.GetResultAsync(System.DateTime,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">GetResultAsync(DateTime, RuleContext, CancellationToken)</h4>
@@ -223,7 +288,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(DateTime validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(DateTime validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -238,8 +303,7 @@ This rule will always return a synchronous result.
       <tr>
         <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">validated</span></td>
-        <td><p>The object being validated</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
@@ -265,8 +329,54 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Rules_DateTimeInRange_GetResultAsync_System_DateTime_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method receives the value to be validated as well as an object which represents the
+context in which this rule is running.
+It should return a task of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>.
+</p>
+<p>
+In order to create the result object, particularly if your rule logic will run synchronously,
+consider using the <a class="xref" href="CSF.Validation.Rules.CommonResults.html">CommonResults</a> class via <code>using static CSF.Validation.Rules.CommonResults;</code> in your
+rule logic.
+The common results class has helper methods such as <a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__">PassAsync(IDictionary&lt;String, Object&gt;)</a>
+and <a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object__">FailAsync(IDictionary&lt;String, Object&gt;)</a>
+which include optimisations for flyweight task instances that avoid allocating additional resources
+needlessly.
+</p>
+<p>
+It is acceptable to throw an uncaught exception from this method, as the validation framework will
+catch it and automatically convert it into an error result.
+Generally, developers do not need to manually return a result of outcome <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a>
+manually.  This would be appropriate only in an unusual scenario that is considered an error, but
+which does not involve the throwing of an exception.
+Error results are generally harder for the consumer to deal with than failure results.
+</p>
+<p>
+The <code data-dev-comment-type="paramref" class="paramref">context</code> parameter may be used, amongst other things, to access &apos;ancestor&apos;
+values.
+However, if this rule only needs access to an immediate parent value then consider using
+<a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a> instead.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><p>This method may raise any exception type</p>
 </td>
       </tr>
     </tbody>
@@ -276,7 +386,7 @@ This rule will always return a synchronous result.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange_GetResultAsync_System_Nullable_System_DateTime__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange.GetResultAsync(System.Nullable%7BSystem.DateTime%7D%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L51">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L58">View Source</a>
   </span>
   <a id="CSF_Validation_Rules_DateTimeInRange_GetResultAsync_" data-uid="CSF.Validation.Rules.DateTimeInRange.GetResultAsync*"></a>
   <h4 id="CSF_Validation_Rules_DateTimeInRange_GetResultAsync_System_Nullable_System_DateTime__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.DateTimeInRange.GetResultAsync(System.Nullable{System.DateTime},CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">GetResultAsync(Nullable&lt;DateTime&gt;, RuleContext, CancellationToken)</h4>
@@ -285,7 +395,7 @@ This rule will always return a synchronous result.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;RuleResult&gt; GetResultAsync(DateTime? validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(DateTime? validated, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -300,8 +410,7 @@ This rule will always return a synchronous result.
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td><span class="parametername">validated</span></td>
-        <td><p>The object being validated</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
@@ -327,18 +436,135 @@ This rule will always return a synchronous result.
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
         <td><p>A task which provides a result object, indicating the result of validation</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="CSF_Validation_Rules_DateTimeInRange_GetResultAsync_System_Nullable_System_DateTime__CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method receives the value to be validated as well as an object which represents the
+context in which this rule is running.
+It should return a task of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>.
+</p>
+<p>
+In order to create the result object, particularly if your rule logic will run synchronously,
+consider using the <a class="xref" href="CSF.Validation.Rules.CommonResults.html">CommonResults</a> class via <code>using static CSF.Validation.Rules.CommonResults;</code> in your
+rule logic.
+The common results class has helper methods such as <a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__">PassAsync(IDictionary&lt;String, Object&gt;)</a>
+and <a class="xref" href="CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_FailAsync_System_Collections_Generic_IDictionary_System_String_System_Object__">FailAsync(IDictionary&lt;String, Object&gt;)</a>
+which include optimisations for flyweight task instances that avoid allocating additional resources
+needlessly.
+</p>
+<p>
+It is acceptable to throw an uncaught exception from this method, as the validation framework will
+catch it and automatically convert it into an error result.
+Generally, developers do not need to manually return a result of outcome <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a>
+manually.  This would be appropriate only in an unusual scenario that is considered an error, but
+which does not involve the throwing of an exception.
+Error results are generally harder for the consumer to deal with than failure results.
+</p>
+<p>
+The <code data-dev-comment-type="paramref" class="paramref">context</code> parameter may be used, amongst other things, to access &apos;ancestor&apos;
+values.
+However, if this rule only needs access to an immediate parent value then consider using
+<a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a> instead.
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><p>This method may raise any exception type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange_CSF_Validation_Messages_IGetsFailureMessage_System_DateTime__GetFailureMessageAsync_System_DateTime_CSF_Validation_ValidationRuleResult_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange.CSF%23Validation%23Messages%23IGetsFailureMessage%7BSystem%23DateTime%7D%23GetFailureMessageAsync(System.DateTime%2CCSF.Validation.ValidationRuleResult%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L69">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_DateTimeInRange_CSF_Validation_Messages_IGetsFailureMessage_System_DateTime__GetFailureMessageAsync_" data-uid="CSF.Validation.Rules.DateTimeInRange.CSF#Validation#Messages#IGetsFailureMessage{System#DateTime}#GetFailureMessageAsync*"></a>
+  <h4 id="CSF_Validation_Rules_DateTimeInRange_CSF_Validation_Messages_IGetsFailureMessage_System_DateTime__GetFailureMessageAsync_System_DateTime_CSF_Validation_ValidationRuleResult_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.DateTimeInRange.CSF#Validation#Messages#IGetsFailureMessage{System#DateTime}#GetFailureMessageAsync(System.DateTime,CSF.Validation.ValidationRuleResult,System.Threading.CancellationToken)">IGetsFailureMessage&lt;DateTime&gt;.GetFailureMessageAsync(DateTime, ValidationRuleResult, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; IGetsFailureMessage&lt;DateTime&gt;.GetFailureMessageAsync(DateTime value, ValidationRuleResult result, CancellationToken token)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a></td>
+        <td><span class="parametername">result</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IRuleWithMessage-1.html">IRuleWithMessage&lt;TValidated&gt;</a>
+  </div>
   <div>
       <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
   </div>
   <div>
+      <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage-1.html">IGetsFailureMessage&lt;TValidated&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IRuleWithMessage-1.html">IRuleWithMessage&lt;TValidated&gt;</a>
+  </div>
+  <div>
       <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage-1.html">IGetsFailureMessage&lt;TValidated&gt;</a>
   </div>
 </article>
           </div>
@@ -351,7 +577,7 @@ This rule will always return a synchronous result.
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_DateTimeInRange.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.DateTimeInRange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L31" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.StandardRules/Rules/DateTimeInRange.cs/#L33" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

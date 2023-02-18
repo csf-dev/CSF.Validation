@@ -8,13 +8,13 @@ namespace CSF.Validation.Rules
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnPassResultIfObjectIsNull(Null sut, [RuleContext] RuleContext context)
         {
-            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingValidationResult);
+            Assert.That(() => sut.GetResultAsync(null, context), Is.PassingRuleResult);
         }
 
         [Test,AutoMoqData]
         public void GetResultAsyncShouldReturnFailResultIfObjectIsNotNull(Null sut, [RuleContext] RuleContext context, object obj)
         {
-            Assert.That(() => sut.GetResultAsync(obj, context), Is.FailingValidationResult);
+            Assert.That(() => sut.GetResultAsync(obj, context), Is.FailingRuleResult);
         }
     }
 }

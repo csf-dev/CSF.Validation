@@ -1,0 +1,19 @@
+<Project>
+
+  <PropertyGroup>
+    <ReleaseVersion>3.0.0</ReleaseVersion>
+    <Authors>craigfowler</Authors>
+    <VersionPrefix>$(ReleaseVersion)</VersionPrefix>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2023 - CSF Software Limited</Copyright>
+    <PackageProjectUrl>https://csf-dev.github.io/CSF.Validation/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/csf-dev/CSF.Validation/</RepositoryUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" Condition="'$(TargetFramework)' == 'net461'" />
+  </ItemGroup>
+
+</Project>

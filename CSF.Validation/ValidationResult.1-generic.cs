@@ -37,9 +37,12 @@ namespace CSF.Validation
         /// </summary>
         /// <param name="ruleResults">The rule results.</param>
         /// <param name="manifest">The validation manifest.</param>
+        /// <param name="validationTime">The time it has taken to perform validation.</param>
         /// <exception cref="ArgumentException">If <paramref name="manifest"/> is for a type that is not compatible with <typeparamref name="TValidated"/>.</exception>
         /// <exception cref="ArgumentNullException">If either parameter is <see langword="null" />.</exception>
-        public ValidationResult(IEnumerable<ValidationRuleResult> ruleResults, ValidationManifest manifest) : base(ruleResults, manifest)
+        public ValidationResult(IEnumerable<ValidationRuleResult> ruleResults,
+                                ValidationManifest manifest,
+                                TimeSpan? validationTime = default) : base(ruleResults, manifest, validationTime)
         {
             if(!typeof(TValidated).IsAssignableFrom(manifest.ValidatedType))
             {

@@ -9,7 +9,7 @@ namespace CSF.Validation.ValidatorBuilding
     {
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldGetCorrectIdentifierForASiblingRule(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                       [ManifestModel] ManifestValue value,
+                                                                                       [ManifestModel] ManifestItem value,
                                                                                        Type ruleType)
         {
             var expected = new ManifestRuleIdentifier(value, ruleType);
@@ -19,7 +19,7 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldGetCorrectIdentifierForASiblingRuleWitAName(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                               [ManifestModel] ManifestValue value,
+                                                                                               [ManifestModel] ManifestItem value,
                                                                                                Type ruleType,
                                                                                                string ruleName)
         {
@@ -30,8 +30,8 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldGetCorrectIdentifierForAParentRule(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                      [ManifestModel] ManifestValue value,
-                                                                                      [ManifestModel] ManifestValue parent,
+                                                                                      [ManifestModel] ManifestItem value,
+                                                                                      [ManifestModel] ManifestItem parent,
                                                                                       Type ruleType)
         {
             value.Parent = parent;
@@ -42,8 +42,8 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldGetCorrectIdentifierForAParentRuleWithAName(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                      [ManifestModel] ManifestValue value,
-                                                                                      [ManifestModel] ManifestValue parent,
+                                                                                      [ManifestModel] ManifestItem value,
+                                                                                      [ManifestModel] ManifestItem parent,
                                                                                       Type ruleType,
                                                                                       string ruleName)
         {
@@ -55,9 +55,9 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldGetCorrectIdentifierForACousinRuleForAMember(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                                [ManifestModel] ManifestValue value,
-                                                                                                [ManifestModel] ManifestValue parent,
-                                                                                                [ManifestModel] ManifestValue cousin,
+                                                                                                [ManifestModel] ManifestItem value,
+                                                                                                [ManifestModel] ManifestItem parent,
+                                                                                                [ManifestModel] ManifestItem cousin,
                                                                                                 Type ruleType,
                                                                                                 string memberName)
         {
@@ -73,9 +73,9 @@ namespace CSF.Validation.ValidatorBuilding
 
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldGetCorrectIdentifierForACousinRuleForAMemberWithARuleName(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                                             [ManifestModel] ManifestValue value,
-                                                                                                             [ManifestModel] ManifestValue parent,
-                                                                                                             [ManifestModel] ManifestValue cousin,
+                                                                                                             [ManifestModel] ManifestItem value,
+                                                                                                             [ManifestModel] ManifestItem parent,
+                                                                                                             [ManifestModel] ManifestItem cousin,
                                                                                                              Type ruleType,
                                                                                                              string memberName,
                                                                                                              string ruleName)
@@ -92,24 +92,24 @@ namespace CSF.Validation.ValidatorBuilding
         
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldThrowIfExcessAncestorLevelsAreSpecified(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                           [ManifestModel] ManifestValue value,
-                                                                                           [ManifestModel] ManifestValue parent,
+                                                                                           [ManifestModel] ManifestItem value,
+                                                                                           [ManifestModel] ManifestItem parent,
                                                                                            Type ruleType)
         {
             value.Parent = parent;
             Assert.That(() => sut.GetManifestRuleIdentifier(value, new RelativeRuleIdentifier(ruleType, ancestorLevels: 2)),
-                        Throws.ArgumentException.And.Message.StartWith("The ManifestValue must have at least 2 level(s) of ancestors."));
+                        Throws.ArgumentException.And.Message.StartWith("The ManifestItem must have at least 2 level(s) of ancestors."));
         }
         
         [Test,AutoMoqData]
         public void GetManifestRuleIdentifierShouldThrowIfNoMatchingMemberIsFound(RelativeToManifestRuleIdentifierConverter sut,
-                                                                                  [ManifestModel] ManifestValue value,
-                                                                                  [ManifestModel] ManifestValue parent,
+                                                                                  [ManifestModel] ManifestItem value,
+                                                                                  [ManifestModel] ManifestItem parent,
                                                                                   Type ruleType)
         {
             value.Parent = parent;
             Assert.That(() => sut.GetManifestRuleIdentifier(value, new RelativeRuleIdentifier(ruleType, "NoMember", ancestorLevels: 1)),
-                        Throws.ArgumentException.And.Message.StartWith("The ManifestValue must have configuration for a member named \"NoMember\"."));
+                        Throws.ArgumentException.And.Message.StartWith("The ManifestItem must have configuration for a member named \"NoMember\"."));
         }
 
     }

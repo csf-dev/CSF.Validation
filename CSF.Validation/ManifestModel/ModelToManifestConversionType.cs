@@ -8,22 +8,23 @@ namespace CSF.Validation.ManifestModel
     public enum ModelToManifestConversionType
     {
         /// <summary>
-        /// A <see cref="Value"/> which is to be converted to a <see cref="ManifestValue"/>.
+        /// A <see cref="Value"/> which is to be converted to a <see cref="ManifestItem"/>.
         /// </summary>
         Manifest,
 
         /// <summary>
-        /// A <see cref="CollectionItemValue"/> which is to be converted to a <see cref="ManifestCollectionItem"/>.
+        /// A <see cref="Value"/> which is to be converted to a <see cref="ManifestItem"/> of type <see cref="ManifestItemTypes.CollectionItem"/>.
         /// </summary>
         CollectionItem,
 
         /// <summary>
-        /// A <see cref="PolymorphicValue"/> which is to be converted to a <see cref="ManifestPolymorphicType"/>.
+        /// A <see cref="Value"/> which is to be converted to a <see cref="ManifestItem"/> of type <see cref="ManifestItemTypes.PolymorphicType"/>.
         /// </summary>
         PolymorphicType,
 
         /// <summary>
-        /// A <see cref="Value"/> or <see cref="CollectionItemValue"/> which is to be converted to a <see cref="RecursiveManifestValue"/>.
+        /// A <see cref="Value"/> which is to be converted to a <see cref="ManifestItem"/> of either type <see cref="ManifestItemTypes.RecursiveValue"/>
+        /// or <see cref="ManifestItemTypes.RecursiveCollectionItem"/>.
         /// </summary>
         RecursiveManifestValue,
     }

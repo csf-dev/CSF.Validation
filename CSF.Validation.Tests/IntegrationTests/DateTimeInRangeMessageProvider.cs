@@ -9,7 +9,7 @@ namespace CSF.Validation.IntegrationTests
     [FailureMessageStrategy(RuleType = typeof(DateTimeInRange))]
     public class DateTimeInRangeMessageProvider : IGetsFailureMessage<DateTime>
     {
-        public Task<string> GetFailureMessageAsync(DateTime value, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(DateTime value, ValidationRuleResult result, CancellationToken token = default)
         {
             var message = $"The date {value.ToString("yyyy-MM-dd")} is invalid. ";
             var ruleObject = (DateTimeInRange)result.ValidationLogic.RuleObject;
@@ -21,7 +21,7 @@ namespace CSF.Validation.IntegrationTests
             else
                 message = message + $"It must equal-to or before than {ruleObject.End.Value.ToString("yyyy-MM-dd")}.";
 
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

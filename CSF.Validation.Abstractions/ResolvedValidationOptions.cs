@@ -49,7 +49,7 @@ namespace CSF.Validation
         /// </para>
         /// <para>
         /// Please note that the behaviour specified in this validation option can be overridden by individual
-        /// values in the validation manifest.  The property <see cref="ManifestValue.AccessorExceptionBehaviour"/>,
+        /// values in the validation manifest.  The property <see cref="ManifestItem.AccessorExceptionBehaviour"/>,
         /// where set to a non-null value, will override the behaviour specified upon this options property.
         /// </para>
         /// <para>
@@ -58,7 +58,7 @@ namespace CSF.Validation
         /// </para>
         /// </remarks>
         /// <seealso cref="IConfiguresValueAccessor{TValidated,TValue}.AccessorExceptionBehaviour"/>
-        /// <seealso cref="ManifestValue.AccessorExceptionBehaviour"/>
+        /// <seealso cref="ManifestItem.AccessorExceptionBehaviour"/>
         /// <seealso cref="ValueAccessExceptionBehaviour"/>
         /// <seealso cref="ValidationOptions.AccessorExceptionBehaviour"/>
         public ValueAccessExceptionBehaviour AccessorExceptionBehaviour { get; set; } = ValueAccessExceptionBehaviour.TreatAsError;
@@ -93,15 +93,40 @@ namespace CSF.Validation
         public bool EnableMessageGeneration { get; set; } = false;
 
         /// <summary>
+        /// Gets or sets a value that determines whether or not the validator should treat errors encountered whilst generating
+        /// validation failure messages as rule errors.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Firstly, this option is irrelevant if <see cref="EnableMessageGeneration"/> is not <see langword="true" />.
+        /// </para>
+        /// <para>
+        /// When this option is not <see langword="true" />, then any errors encountered by the validation framework whilst
+        /// generating validation failure messages are ignored.  In this case, if a message was to be generated for a rule
+        /// result but an error meant that it could not be then the <see cref="ValidationRuleResult.Message"/> property of
+        /// the validation rule result is left <see langword="null" /> but the validation will otherwise complete normally.
+        /// </para>
+        /// <para>
+        /// If this option is set to <see langword="true" /> then if an error occurs whilst generating a message for a
+        /// validation rule then that rule will have its outcome set to <see cref="Rules.RuleOutcome.Errored"/> and the
+        /// exception will be stored within the <see cref="Rules.RuleResult.Exception"/> property. This could then cause
+        /// the overall validation process to raise an exception, depending upon the setting of the
+        /// <see cref="RuleThrowingBehaviour"/> option.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="ValidationOptions.TreatMessageGenerationErrorsAsRuleErrors"/>
+        public bool TreatMessageGenerationErrorsAsRuleErrors { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets a value indicating whether or not rules are permitted to be executed/evaluated in parallel.
-        /// This may offer a modest performance gain in the right scenarios.
+        /// This will offer a modest performance improvement, particularly if your rules perform a lot of CPU-bound work.
         /// </summary>
         /// <remarks>
         /// <para>
         /// Running rules in parallel requires both of the following:
         /// </para>
         /// <list type="bullet">
-        /// <item><description>This configuration option must be set to <see langword="true" />.</description></item>
+        /// <item><description>This configuration option must be set to <see langword="true" /> (this is the default setting).</description></item>
         /// <item><description>Individual rule classes must be decorated with the <see cref="Rules.ParallelizableAttribute"/>
         /// to be eligible for parallel execution.</description></item>
         /// </list>
@@ -116,6 +141,23 @@ namespace CSF.Validation
         /// </remarks>
         /// <seealso cref="ValidationOptions.EnableRuleParallelization"/>
         /// <seealso cref="Rules.ParallelizableAttribute"/>
-        public bool EnableRuleParallelization { get; set; } = false;
+        public bool EnableRuleParallelization { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether or not the validaiton rule process should record and add instrumentation
+        /// data to the results.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Developers wishing to benchmark or profile validation rules may find this useful.  When this option is set to <see langword="true" />,
+        /// additional information is added to the validation results, including information about the length of time spent executing rules
+        /// and/or generating validation feedback messages.
+        /// </para>
+        /// <para>
+        /// Because the act of gathering this information causes some performance degradation, this option defaults to <see langword="false" />.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="ValidationOptions.InstrumentRuleExecution"/>
+        public bool InstrumentRuleExecution { get; set; } = false;
     }
 }

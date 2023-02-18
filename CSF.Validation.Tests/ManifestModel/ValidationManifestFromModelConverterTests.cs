@@ -31,5 +31,22 @@ namespace CSF.Validation.ManifestModel
 
             Mock.Get(ruleConverter).Verify(x => x.ConvertAllRulesAndAddToManifestValues(conversionResult.ConvertedValues), Times.Once, "Rule converter was used correctly");
         }
+
+        [Test,AutoMoqData]
+        public void GetValidationManifestShouldSetParentOfRootValueToEqualTheManifest([Frozen] IConvertsModelValuesToManifestValues valueConverter,
+                                                                                      [Frozen] IConvertsModelRulesToManifestRules ruleConverter,
+                                                                                      ValidationManifestFromModelConverter sut,
+                                                                                      [ManifestModel] Value rootValue,
+                                                                                      Type validatedType,
+                                                                                      [ManifestModel] ModelToManifestValueConversionResult conversionResult)
+        {
+            Mock.Get(valueConverter)
+                .Setup(x => x.ConvertAllValues(It.Is<ModelToManifestConversionContext>(c => c.CurrentValue == rootValue && c.ValidatedType == validatedType)))
+                .Returns(conversionResult);
+
+            var result = sut.GetValidationManifest(rootValue, validatedType);
+
+            Assert.That(result?.RootValue?.Parent, Is.SameAs(result));
+        }
     }
 }

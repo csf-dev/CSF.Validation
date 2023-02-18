@@ -47,11 +47,13 @@ namespace CSF.Validation.Bootstrap
         {
             get {
                 var isConcreteClass = new IsConcreteClassSpecification();
+                var isNotGeneric = new IsOpenGenericTypeSpecification().Not();
+                var isNonGenericConcreteClass = isConcreteClass.And(isNotGeneric);
                 var derivesFromNonGenericProvider = new DerivesFromSpecification(typeof(IGetsFailureMessage));
                 var derivesFromSingleGenericProvider = new DerivesFromOpenGenericSpecification(typeof(IGetsFailureMessage<>));
                 var derivesFromDoubleGenericProvider = new DerivesFromOpenGenericSpecification(typeof(IGetsFailureMessage<,>));
 
-                return isConcreteClass
+                return isNonGenericConcreteClass
                     .And(derivesFromNonGenericProvider.Or(derivesFromSingleGenericProvider).Or(derivesFromDoubleGenericProvider));
             }
         }

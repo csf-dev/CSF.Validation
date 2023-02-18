@@ -16,6 +16,7 @@ namespace CSF.Validation.Bootstrap
                 .AddTransient<IGetsNonGenericMessageCriteria,FailureMessageUsageCriteriaFactory>()
                 .AddTransient<IAddsFailureMessagesToResult,FailureMessageValidationResultPopulator>()
                 .AddTransient<IGetsMessageProviderFactoryStrategy,MessageProviderFactoryStrategyProvider>()
+                .AddTransient<IGetsRuleWithMessageProvider,RuleWithMessageProviderFactory>()
                 .AddTransient<MessageProviderInfoFactory>()
                 .AddTransient<DoubleGenericMessageProviderStrategy>()
                 .AddTransient<NonGenericMessageProviderStrategy>()

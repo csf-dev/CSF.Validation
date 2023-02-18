@@ -167,7 +167,7 @@ throws an exception.
 </p>
 <p>
 Please note that the behaviour specified in this validation option can be overridden by individual
-values in the validation manifest.  The property <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>,
+values in the validation manifest.  The property <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a>,
 where set to a non-null value, will override the behaviour specified upon this options property.
 </p>
 <p>
@@ -178,7 +178,7 @@ is <a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.h
   <h5 id="CSF_Validation_ResolvedValidationOptions_AccessorExceptionBehaviour_seealso">See Also</h5>
   <div class="seealso">
       <div><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresValueAccessor-2.html#CSF_Validation_ValidatorBuilding_IConfiguresValueAccessor_2_AccessorExceptionBehaviour_System_Nullable_CSF_Validation_Manifest_ValueAccessExceptionBehaviour__">AccessorExceptionBehaviour</a>(<span class="xref">System.Nullable</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a>&gt;)</div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html#CSF_Validation_Manifest_ManifestValue_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
       <div><a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a></div>
       <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_AccessorExceptionBehaviour">AccessorExceptionBehaviour</a></div>
   </div>
@@ -245,12 +245,12 @@ is <span class="xref">false</span>.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions_EnableRuleParallelization.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L119">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L144">View Source</a>
   </span>
   <a id="CSF_Validation_ResolvedValidationOptions_EnableRuleParallelization_" data-uid="CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization*"></a>
   <h4 id="CSF_Validation_ResolvedValidationOptions_EnableRuleParallelization" data-uid="CSF.Validation.ResolvedValidationOptions.EnableRuleParallelization">EnableRuleParallelization</h4>
   <div class="markdown level1 summary"><p>Gets or sets a value indicating whether or not rules are permitted to be executed/evaluated in parallel.
-This may offer a modest performance gain in the right scenarios.</p>
+This will offer a modest performance improvement, particularly if your rules perform a lot of CPU-bound work.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -276,7 +276,7 @@ This may offer a modest performance gain in the right scenarios.</p>
   <div class="markdown level1 remarks"><p>
 Running rules in parallel requires both of the following:
 </p>
-<ul><li>This configuration option must be set to <span class="xref">true</span>.</li><li>Individual rule classes must be decorated with the <a class="xref" href="CSF.Validation.Rules.ParallelizableAttribute.html">ParallelizableAttribute</a>
+<ul><li>This configuration option must be set to <span class="xref">true</span> (this is the default setting).</li><li>Individual rule classes must be decorated with the <a class="xref" href="CSF.Validation.Rules.ParallelizableAttribute.html">ParallelizableAttribute</a>
 to be eligible for parallel execution.</li></ul>
 <p>
 For rules which are executed in parallel, the default .NET Task Parallel Library is used.  More can be read about this
@@ -291,6 +291,52 @@ is <span class="xref">false</span>.
   <div class="seealso">
       <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableRuleParallelization">EnableRuleParallelization</a></div>
       <div><a class="xref" href="CSF.Validation.Rules.ParallelizableAttribute.html">ParallelizableAttribute</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions_InstrumentRuleExecution.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions.InstrumentRuleExecution%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L161">View Source</a>
+  </span>
+  <a id="CSF_Validation_ResolvedValidationOptions_InstrumentRuleExecution_" data-uid="CSF.Validation.ResolvedValidationOptions.InstrumentRuleExecution*"></a>
+  <h4 id="CSF_Validation_ResolvedValidationOptions_InstrumentRuleExecution" data-uid="CSF.Validation.ResolvedValidationOptions.InstrumentRuleExecution">InstrumentRuleExecution</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value that indicates whether or not the validaiton rule process should record and add instrumentation
+data to the results.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InstrumentRuleExecution { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_InstrumentRuleExecution_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Developers wishing to benchmark or profile validation rules may find this useful.  When this option is set to <span class="xref">true</span>,
+additional information is added to the validation results, including information about the length of time spent executing rules
+and/or generating validation feedback messages.
+</p>
+<p>
+Because the act of gathering this information causes some performance degradation, this option defaults to <span class="xref">false</span>.
+</p>
+</div>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_InstrumentRuleExecution_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_InstrumentRuleExecution">InstrumentRuleExecution</a></div>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
@@ -341,6 +387,60 @@ is <a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html#CSF_Validatio
   <div class="seealso">
       <div><a class="xref" href="CSF.Validation.RuleThrowingBehaviour.html">RuleThrowingBehaviour</a></div>
       <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_RuleThrowingBehaviour">RuleThrowingBehaviour</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ResolvedValidationOptions_TreatMessageGenerationErrorsAsRuleErrors.md&amp;value=---%0Auid%3A%20CSF.Validation.ResolvedValidationOptions.TreatMessageGenerationErrorsAsRuleErrors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation.Abstractions/ResolvedValidationOptions.cs/#L118">View Source</a>
+  </span>
+  <a id="CSF_Validation_ResolvedValidationOptions_TreatMessageGenerationErrorsAsRuleErrors_" data-uid="CSF.Validation.ResolvedValidationOptions.TreatMessageGenerationErrorsAsRuleErrors*"></a>
+  <h4 id="CSF_Validation_ResolvedValidationOptions_TreatMessageGenerationErrorsAsRuleErrors" data-uid="CSF.Validation.ResolvedValidationOptions.TreatMessageGenerationErrorsAsRuleErrors">TreatMessageGenerationErrorsAsRuleErrors</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value that determines whether or not the validator should treat errors encountered whilst generating
+validation failure messages as rule errors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TreatMessageGenerationErrorsAsRuleErrors { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_TreatMessageGenerationErrorsAsRuleErrors_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Firstly, this option is irrelevant if <a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_EnableMessageGeneration">EnableMessageGeneration</a> is not <span class="xref">true</span>.
+</p>
+<p>
+When this option is not <span class="xref">true</span>, then any errors encountered by the validation framework whilst
+generating validation failure messages are ignored.  In this case, if a message was to be generated for a rule
+result but an error meant that it could not be then the <a class="xref" href="CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_Message">Message</a> property of
+the validation rule result is left <span class="xref">null</span> but the validation will otherwise complete normally.
+</p>
+<p>
+If this option is set to <span class="xref">true</span> then if an error occurs whilst generating a message for a
+validation rule then that rule will have its outcome set to <a class="xref" href="CSF.Validation.Rules.RuleOutcome.html#CSF_Validation_Rules_RuleOutcome_Errored">Errored</a> and the
+exception will be stored within the <a class="xref" href="CSF.Validation.Rules.RuleResult.html#CSF_Validation_Rules_RuleResult_Exception">Exception</a> property. This could then cause
+the overall validation process to raise an exception, depending upon the setting of the
+<a class="xref" href="CSF.Validation.ResolvedValidationOptions.html#CSF_Validation_ResolvedValidationOptions_RuleThrowingBehaviour">RuleThrowingBehaviour</a> option.
+</p>
+</div>
+  <h5 id="CSF_Validation_ResolvedValidationOptions_TreatMessageGenerationErrorsAsRuleErrors_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_TreatMessageGenerationErrorsAsRuleErrors">TreatMessageGenerationErrorsAsRuleErrors</a></div>
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">

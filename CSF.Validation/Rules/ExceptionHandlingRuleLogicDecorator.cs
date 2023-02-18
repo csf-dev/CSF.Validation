@@ -24,7 +24,7 @@ namespace CSF.Validation.Rules
         public TimeSpan? GetTimeout() => wrapped.GetTimeout();
 
         /// <inheritdoc/>
-        public async Task<RuleResult> GetResultAsync(object value, object parentValue, RuleContext context, CancellationToken token = default)
+        public async ValueTask<RuleResult> GetResultAsync(object value, object parentValue, RuleContext context, CancellationToken token = default)
         {
             try
             {

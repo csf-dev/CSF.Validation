@@ -9,7 +9,7 @@ namespace CSF.Validation.IntegrationTests
     {
         public int MillisecondsDelay { get; set; } = 100;
 
-        public async Task<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
+        public async ValueTask<RuleResult> GetResultAsync(object validated, RuleContext context, CancellationToken token = default)
         {
             await Task.Delay(MillisecondsDelay, token);
             return Pass();

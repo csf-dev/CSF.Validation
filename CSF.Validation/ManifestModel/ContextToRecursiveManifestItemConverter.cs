@@ -14,26 +14,27 @@ namespace CSF.Validation.ManifestModel
         readonly IGetsManifestItemFromModelToManifestConversionContext next;
 
         /// <inheritdoc/>
-        public IManifestItem GetManifestItem(ModelToManifestConversionContext context)
+        public ManifestItem GetManifestItem(ModelToManifestConversionContext context)
         {
             if(context.ConversionType != ModelToManifestConversionType.RecursiveManifestValue)
                 return next.GetManifestItem(context);
 
             var ancestor = GetAncestor(context);
-            var recursiveItem = new RecursiveManifestValue(ancestor)
-            {
-                AccessorFromParent = context.AccessorFromParent,
-                MemberName = context.MemberName,
-                Parent = context.ParentManifestValue,
-            };
-            
+            var recursiveItem = new ManifestItem();
+            recursiveItem.MakeRecursive(ancestor);
+            recursiveItem.Id = context.CurrentValue.Id;
+            recursiveItem.AccessorFromParent = context.AccessorFromParent;
+            recursiveItem.MemberName = context.MemberName;
+            recursiveItem.Parent = context.ParentManifestValue;
+
+
             if (context.ParentManifestValue != null)
                 context.ParentManifestValue.Children.Add(recursiveItem);
 
             return recursiveItem;
         }
 
-        static IManifestItem GetAncestor(ModelToManifestConversionContext context)
+        static ManifestItem GetAncestor(ModelToManifestConversionContext context)
         {
             var ancestorLevels = context.CurrentValue.ValidateRecursivelyAsAncestor.Value;
             try
@@ -43,14 +44,14 @@ namespace CSF.Validation.ManifestModel
             catch(ArgumentOutOfRangeException ex)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("AncestorLevelsMustNotBeLessThanOne"),
-                                            nameof(ValueBase.ValidateRecursivelyAsAncestor));
+                                            nameof(Value.ValidateRecursivelyAsAncestor));
                 throw new ValidationException(message, ex);
             }
             catch(InvalidOperationException ex)
             {
                 var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("NotEnoughAncestorsForAncestorLevels"),
-                                            nameof(ValueBase.ValidateRecursivelyAsAncestor),
-                                            nameof(ValueBase));
+                                            nameof(Value.ValidateRecursivelyAsAncestor),
+                                            nameof(Value));
                 throw new ValidationException(message, ex);
             }
         }

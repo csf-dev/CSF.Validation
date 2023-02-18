@@ -15,26 +15,33 @@ namespace CSF.Validation.ValidatorBuilding
         readonly IStaticallyReflects reflect;
 
         /// <inheritdoc/>
-        public ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
+        public ValidatorBuilderContext GetContextForMember<TValidated, TValue>(Expression<Func<TValidated, TValue>> memberAccessor, ValidatorBuilderContext validatorContext)
         {
-            if (enumerateItems)
-                return GetCollectionItemContext(validatorContext, typeof(TValue));
-
             if (memberAccessor is null)
                 throw new ArgumentNullException(nameof(memberAccessor));
 
             var member = reflect.Member(memberAccessor);
             var accessor = memberAccessor.Compile();
-            return GetContext(obj => accessor((TValidated)obj), validatorContext, typeof(TValue), member.Name);
+            return GetOrCreateContext(obj => accessor((TValidated)obj), validatorContext, typeof(TValue), member.Name);
         }
 
         /// <inheritdoc/>
-        public ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)
+        public ValidatorBuilderContext GetContextForValue<TValidated, TValue>(Func<TValidated, TValue> valueAccessor, ValidatorBuilderContext validatorContext)
         {
-            if(enumerateItems)
-                return GetCollectionItemContext(validatorContext, typeof(TValue));
+            return GetOrCreateContext(obj => valueAccessor((TValidated)obj), validatorContext, typeof(TValue));
+        }
 
-            return GetContext(obj => valueAccessor((TValidated)obj), validatorContext, typeof(TValue));
+        /// <inheritdoc/>
+        public ValidatorBuilderContext GetContextForCollection(ValidatorBuilderContext collectionContext, Type collectionItemType)
+        {
+            var collectionItemValue = collectionContext.ManifestValue.CollectionItemValue ?? new ManifestItem
+            {
+                Parent = collectionContext.ManifestValue.Parent,
+                ValidatedType = collectionItemType,
+                ItemType = ManifestItemTypes.CollectionItem,
+            };
+
+            return new ValidatorBuilderContext(collectionItemValue);
         }
 
         /// <inheritdoc/>
@@ -44,56 +51,37 @@ namespace CSF.Validation.ValidatorBuilding
                 throw new ArgumentNullException(nameof(validatorContext));
             if (derivedType is null)
                 throw new ArgumentNullException(nameof(derivedType));
-            if (!(validatorContext.ManifestValue is IHasPolymorphicTypes polyManifest))
+            if (validatorContext.ManifestValue.IsPolymorphicType)
             {
-                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustImplementPolymorphicInterface"),
-                                            typeof(IHasPolymorphicTypes).Name,
-                                            validatorContext.ManifestValue?.GetType().FullName ?? "<null>");
+                var message = String.Format(Resources.ExceptionMessages.GetExceptionMessage("MustNotBeAPolymorphicType"),
+                                            typeof(ManifestItem).Name);
                 throw new ArgumentException(message, nameof(validatorContext));
             }
 
-            ManifestPolymorphicType existingPoly;
-            if ((existingPoly = polyManifest.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == derivedType)) != null)
-                return new ValidatorBuilderContext(existingPoly);
-
-            var polymorphicValue = new ManifestPolymorphicType
+            var polymorphicValue = validatorContext.ManifestValue.PolymorphicTypes.FirstOrDefault(x => x.ValidatedType == derivedType) ?? new ManifestItem
             {
                 Parent = validatorContext.ManifestValue.Parent,
                 ValidatedType = derivedType,
+                ItemType = ManifestItemTypes.PolymorphicType,
             };
-            polyManifest.PolymorphicTypes.Add(polymorphicValue);
             return new ValidatorBuilderContext(polymorphicValue);
         }
 
-        static ValidatorBuilderContext GetContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
+        static ValidatorBuilderContext GetOrCreateContext(Func<object,object> accessor, ValidatorBuilderContext parentContext, Type validatedType, string memberName = null)
         {
-            ManifestValue existingManifest;
-            if(!(memberName is null) && (existingManifest = parentContext.ManifestValue.Children.OfType<ManifestValue>().FirstOrDefault(x => x.MemberName == memberName)) != null)
-                return new ValidatorBuilderContext(existingManifest);
-
-            var manifestValue = new ManifestValue
+            return GetExistingContextForMember(parentContext, memberName) ?? new ValidatorBuilderContext(new ManifestItem
             {
                 Parent = parentContext.ManifestValue,
                 AccessorFromParent = accessor,
                 MemberName = memberName,
                 ValidatedType = validatedType,
-            };
-            parentContext.ManifestValue.Children.Add(manifestValue);
-            return new ValidatorBuilderContext(manifestValue);
+            });
         }
 
-        ValidatorBuilderContext GetCollectionItemContext(ValidatorBuilderContext parentContext, Type validatedType)
+        static ValidatorBuilderContext GetExistingContextForMember(ValidatorBuilderContext parentContext, string memberName)
         {
-            if(parentContext.ManifestValue.CollectionItemValue != null)
-                return new ValidatorBuilderContext(parentContext.ManifestValue.CollectionItemValue);
-
-            var manifestValue = new ManifestCollectionItem
-            {
-                Parent = parentContext.ManifestValue,
-                ValidatedType = validatedType,
-            };
-            parentContext.ManifestValue.CollectionItemValue = manifestValue;
-            return new ValidatorBuilderContext(manifestValue);
+            if(memberName is null) return null;
+            return parentContext.Contexts.FirstOrDefault(x => x.ManifestValue.MemberName == memberName);
         }
 
         /// <summary>

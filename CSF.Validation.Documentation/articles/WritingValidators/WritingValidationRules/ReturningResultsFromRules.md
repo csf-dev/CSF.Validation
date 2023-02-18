@@ -17,9 +17,9 @@ using static CSF.Validation.Rules.CommonResults;
 
 public class NotAString : IRule<object>
 {
-    public Task<RuleResult> GetResultAsync(object validated,
-                                           RuleContext context,
-                                           CancellationToken token = default)
+    public ValueTask<RuleResult> GetResultAsync(object validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         // The FailAsync and PassAsync methods are defined on CommonResults.
         return validated is string ? FailAsync() : PassAsync();

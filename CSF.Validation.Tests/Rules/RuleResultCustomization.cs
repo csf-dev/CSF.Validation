@@ -4,7 +4,6 @@ using System.Reflection;
 using AutoFixture;
 using CSF.Validation.Manifest;
 using CSF.Validation.RuleExecution;
-using Moq;
 
 namespace CSF.Validation.Rules
 {

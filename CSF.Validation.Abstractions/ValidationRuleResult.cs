@@ -62,6 +62,26 @@ namespace CSF.Validation
         public string Message { get; }
 
         /// <summary>
+        /// Gets optional instrumentation data about how the current rule executed.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This data is only collected and added to the validation rule result if <see cref="ValidationOptions.InstrumentRuleExecution"/>
+        /// is set to <see langword="true" />.
+        /// </para>
+        /// </remarks>
+        public RuleInstrumentationData InstrumentationData { get; }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            if(Outcome == RuleOutcome.Errored)
+                return $"[{nameof(ValidationRuleResult)}: {nameof(RuleResult.Outcome)} = {Outcome}, {nameof(Identifier)} = {Identifier}, {nameof(Exception)} = {Exception}]";
+            
+            return $"[{nameof(ValidationRuleResult)}: {nameof(RuleResult.Outcome)} = {Outcome}, {nameof(Identifier)} = {Identifier}, {nameof(Message)} = {Message}]";
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ValidationRuleResult"/> class.
         /// </summary>
         /// <remarks>
@@ -73,10 +93,12 @@ namespace CSF.Validation
         /// <param name="ruleContext">The rule context.</param>
         /// <param name="validationLogic">The validation logic for the rule.</param>
         /// <param name="message">The human-readable validation feedback message.</param>
+        /// <param name="instrumentationData">Optional instrumentation data.</param>
         public ValidationRuleResult(RuleResult result,
                                     RuleContext ruleContext,
                                     IValidationLogic validationLogic,
-                                    string message = default) : base(result)
+                                    string message = default,
+                                    RuleInstrumentationData instrumentationData = default) : base(result)
         {
             RuleContext = ruleContext;
             ValidationLogic = validationLogic;
@@ -84,6 +106,7 @@ namespace CSF.Validation
             RuleInterface = ruleContext?.RuleInterface;
             ValidatedValue = ruleContext?.ActualValue;
             Message = message;
+            InstrumentationData = instrumentationData;
         }
     }
 }

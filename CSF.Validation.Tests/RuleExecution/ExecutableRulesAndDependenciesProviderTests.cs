@@ -12,7 +12,7 @@ namespace CSF.Validation.RuleExecution
     {
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldNotReturnAnyDependenciesForARuleWhichHasNone([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                               [ManifestModel] ManifestValue manifestValue,
+                                                                                               [ManifestModel] ManifestItem manifestValue,
                                                                                                object objectToBeValidated,
                                                                                                [ExecutableModel] ExecutableRule rule,
                                                                                                ExecutableRulesAndDependenciesProvider sut,
@@ -29,7 +29,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldReturnAnObjectWithDependencyExecutableRulesWhereItHasADependencyUponTheSameValue([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                                                   [ManifestModel] ManifestValue manifestValue,
+                                                                                                                                   [ManifestModel] ManifestItem manifestValue,
                                                                                                                                    object objectToBeValidated,
                                                                                                                                    IValidationLogic logic,
                                                                                                                                    ManifestRule manifestRule,
@@ -55,7 +55,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldReturnAnObjectWhichIncludesRulesDependingUponTheCurrentRule([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                              [ManifestModel] ManifestValue manifestValue,
+                                                                                                              [ManifestModel] ManifestItem manifestValue,
                                                                                                               object objectToBeValidated,
                                                                                                               IValidationLogic logic,
                                                                                                               ManifestRule manifestRule,
@@ -81,7 +81,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldReturnAnObjectWithDependencyExecutableRulesWhereItHasADependencyUponAParentValue([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                                                   [ManifestModel] ManifestValue manifestValue,
+                                                                                                                                   [ManifestModel] ManifestItem manifestValue,
                                                                                                                                    object objectToBeValidated,
                                                                                                                                    IValidationLogic logic,
                                                                                                                                    ManifestRule manifestRule,
@@ -109,7 +109,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldReturnAnObjectWithDependencyExecutableRulesWhereItHasADependencyUponAGrandparentValue([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                                                        [ManifestModel] ManifestValue manifestValue,
+                                                                                                                                        [ManifestModel] ManifestItem manifestValue,
                                                                                                                                         object objectToBeValidated,
                                                                                                                                         IValidationLogic logic,
                                                                                                                                         ManifestRule manifestRule,
@@ -139,7 +139,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldReturnAnObjectWithDependencyExecutableRulesWhereItHasADependencyUponASiblingOfTheParentValue([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                                                               [ManifestModel] ManifestValue manifestValue,
+                                                                                                                                               [ManifestModel] ManifestItem manifestValue,
                                                                                                                                                object objectToBeValidated,
                                                                                                                                                IValidationLogic logic,
                                                                                                                                                ManifestRule manifestRule,
@@ -171,7 +171,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldThrowIfNoAncestorOrSiblingOfAnyAncestorValueMatchesTheDependencyValue([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                                        [ManifestModel] ManifestValue manifestValue,
+                                                                                                                        [ManifestModel] ManifestItem manifestValue,
                                                                                                                         object objectToBeValidated,
                                                                                                                         IValidationLogic logic,
                                                                                                                         ManifestRule manifestRule,
@@ -195,7 +195,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetRulesWithDependenciesShouldThrowIfTheMatchingValueDoesNotHaveTheSpecifiedRule([Frozen] IGetsAllExecutableRules executableRulesProvider,
-                                                                                                     [ManifestModel] ManifestValue manifestValue,
+                                                                                                     [ManifestModel] ManifestItem manifestValue,
                                                                                                      object objectToBeValidated,
                                                                                                      IValidationLogic logic,
                                                                                                      ManifestRule manifestRule,

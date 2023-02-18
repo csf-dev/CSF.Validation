@@ -19,7 +19,7 @@ namespace CSF.Validation.Manifest
         }
 
         [Test,AutoMoqData]
-        public void EqualsShouldReturnFalseForAnInstanceWithDifferentRuleName([ManifestModel] ManifestValue value, Type aType)
+        public void EqualsShouldReturnFalseForAnInstanceWithDifferentRuleName([ManifestModel] ManifestItem value, Type aType)
         {
             var first = new ManifestRuleIdentifier(value, aType, "One");
             var second = new ManifestRuleIdentifier(value, aType, "Two");
@@ -28,7 +28,7 @@ namespace CSF.Validation.Manifest
         }
 
         [Test,AutoMoqData]
-        public void EqualsShouldReturnFalseForADifferentInstanceWithEqualPropertyValues([ManifestModel] ManifestValue value, Type aType, string aString)
+        public void EqualsShouldReturnFalseForADifferentInstanceWithEqualPropertyValues([ManifestModel] ManifestItem value, Type aType, string aString)
         {
             var first = new ManifestRuleIdentifier(value, aType, aString);
             var second = new ManifestRuleIdentifier(value, aType, aString);
@@ -37,7 +37,7 @@ namespace CSF.Validation.Manifest
         }
 
         [Test,AutoMoqData]
-        public void GetHashCodeShouldReturnDifferentResultsForAnInstanceWithDifferentRuleName([ManifestModel] ManifestValue value, Type aType)
+        public void GetHashCodeShouldReturnDifferentResultsForAnInstanceWithDifferentRuleName([ManifestModel] ManifestItem value, Type aType)
         {
             var first = new ManifestRuleIdentifier(value, aType, "One");
             var second = new ManifestRuleIdentifier(value, aType, "Two");
@@ -46,7 +46,7 @@ namespace CSF.Validation.Manifest
         }
 
         [Test,AutoMoqData]
-        public void GetHashCodeShouldReturnSameResultForADifferentInstanceWithEqualPropertyValues([ManifestModel] ManifestValue value, Type aType, string aString)
+        public void GetHashCodeShouldReturnSameResultForADifferentInstanceWithEqualPropertyValues([ManifestModel] ManifestItem value, Type aType, string aString)
         {
             var first = new ManifestRuleIdentifier(value, aType, aString);
             var second = new ManifestRuleIdentifier(value, aType, aString);

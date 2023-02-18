@@ -8,7 +8,7 @@ namespace CSF.Validation.ManifestModel
 {
     /// <summary>
     /// A service which converts the rules within a <see cref="Value"/> into manifest rules
-    /// and to add those rules to a corresponding <see cref="CSF.Validation.Manifest.ManifestValue"/>
+    /// and to add those rules to a corresponding <see cref="CSF.Validation.Manifest.ManifestItem"/>
     /// </summary>
     public class ModelRuleToManifestRuleConverter : IConvertsModelRulesToManifestRules
     {
@@ -19,13 +19,13 @@ namespace CSF.Validation.ManifestModel
         /// <summary>
         /// Converts all of the rules present in each of the <see cref="Value"/> models into
         /// <see cref="CSF.Validation.Manifest.ManifestRule"/> instances and then adds those rules to
-        /// the corresponding <see cref="CSF.Validation.Manifest.ManifestValue"/> instance in
+        /// the corresponding <see cref="CSF.Validation.Manifest.ManifestItem"/> instance in
         /// the model/manifest value pair.
         /// </summary>
         /// <remarks>
         /// <para>
         /// The input parameter is a collection of objects, each of which contains both a
-        /// <see cref="CSF.Validation.Manifest.ManifestValue"/> and also the model <see cref="Value"/>
+        /// <see cref="CSF.Validation.Manifest.ManifestItem"/> and also the model <see cref="Value"/>
         /// from which that manifest value was created.  This method gets the rules from within
         /// that model value, converts them and then adds those the the corresponding manifest value.
         /// This process occurs for each item in the input collection.
@@ -46,7 +46,7 @@ namespace CSF.Validation.ManifestModel
             }
         }
 
-        ManifestRule ConvertRule(Rule rule, IManifestItem value)
+        ManifestRule ConvertRule(Rule rule, ManifestItem value)
         {
             var ruleType = ruleTypeResolver.GetRuleType(rule.RuleTypeName);
 
@@ -57,7 +57,7 @@ namespace CSF.Validation.ManifestModel
             };
         }
 
-        ICollection<ManifestRuleIdentifier> GetDependencyRules(IManifestItem value, IEnumerable<RelativeIdentifier> dependencyIdentifiers)
+        ICollection<ManifestRuleIdentifier> GetDependencyRules(ManifestItem value, IEnumerable<RelativeIdentifier> dependencyIdentifiers)
         {
             return dependencyIdentifiers
                 .Select(x => new RelativeRuleIdentifier(ruleTypeResolver.GetRuleType(x.RuleTypeName), x.MemberName, x.RuleName, x.AncestorLevels))

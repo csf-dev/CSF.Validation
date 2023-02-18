@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IQueryableValidationResult
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IQueryableValidationResult
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.IQueryableValidationResult">
+  
+  
+  <h1 id="CSF_Validation_IQueryableValidationResult" data-uid="CSF.Validation.IQueryableValidationResult" class="text-break">Interface IQueryableValidationResult
+  </h1>
+  <div class="markdown level0 summary"><p>An object which contains validation rule results, which may be queried for specific results.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;CSF.Validation.ValidationRuleResult&gt;.GetEnumerator()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.html">CSF.Validation</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
+  <h5 id="CSF_Validation_IQueryableValidationResult_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IQueryableValidationResult : IEnumerable&lt;ValidationRuleResult&gt;, IEnumerable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_ManifestValue.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.ManifestValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L21">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_ManifestValue_" data-uid="CSF.Validation.IQueryableValidationResult.ManifestValue*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_ManifestValue" data-uid="CSF.Validation.IQueryableValidationResult.ManifestValue">ManifestValue</h4>
+  <div class="markdown level1 summary"><p>Gets a reference to the manifest value which forms the logical
+root of the results in the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ManifestItem ManifestValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_Passed.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.Passed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L15">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_Passed_" data-uid="CSF.Validation.IQueryableValidationResult.Passed*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_Passed" data-uid="CSF.Validation.IQueryableValidationResult.Passed">Passed</h4>
+  <div class="markdown level1 summary"><p>Gets a value that indicates whether or not the current instance represents passing validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Passed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_RuleResults.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.RuleResults%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L44">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_RuleResults_" data-uid="CSF.Validation.IQueryableValidationResult.RuleResults*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_RuleResults" data-uid="CSF.Validation.IQueryableValidationResult.RuleResults">RuleResults</h4>
+  <div class="markdown level1 summary"><p>Gets a collection of the results of individual validation rules, making up
+the current validation result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyCollection&lt;ValidationRuleResult&gt; RuleResults { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_ValidationTime.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.ValidationTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L38">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_ValidationTime_" data-uid="CSF.Validation.IQueryableValidationResult.ValidationTime*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_ValidationTime" data-uid="CSF.Validation.IQueryableValidationResult.ValidationTime">ValidationTime</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating how long the validation process took.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TimeSpan? ValidationTime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_IQueryableValidationResult_ValidationTime_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This value will only be populated if <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_InstrumentRuleExecution">InstrumentRuleExecution</a> is set to <span class="xref">true</span>.
+Otherwise it will be <span class="xref">null</span>.
+</p>
+<p>
+When <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableRuleParallelization">EnableRuleParallelization</a> is <span class="xref">true</span> the sum of the times reported within each
+<a class="xref" href="CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_InstrumentationData">InstrumentationData</a> will likely not total the amount reported by this property.  That is because
+many of the reported times for each of the rules will have run concurrently with other rules.
+On the other hand, this time does correspond to real &quot;wall clock&quot; time to perform validation.
+</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_AsResultFor__1.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.AsResultFor%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L52">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_AsResultFor_" data-uid="CSF.Validation.IQueryableValidationResult.AsResultFor*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_AsResultFor__1" data-uid="CSF.Validation.IQueryableValidationResult.AsResultFor``1">AsResultFor&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Gets a representation of the current queryable result as a strongly-typed queryable result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IQueryableValidationResult&lt;T&gt; AsResultFor&lt;T&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult</a>&lt;T&gt;</td>
+        <td><p>The same conceptual queryable result, cast to a specified type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The validated-type for the queryable result.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidCastException</span></td>
+        <td><p>If the <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> is incompatible with the validated type for the current results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult_ToSerializableResult.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult.ToSerializableResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L68">View Source</a>
+  </span>
+  <a id="CSF_Validation_IQueryableValidationResult_ToSerializableResult_" data-uid="CSF.Validation.IQueryableValidationResult.ToSerializableResult*"></a>
+  <h4 id="CSF_Validation_IQueryableValidationResult_ToSerializableResult" data-uid="CSF.Validation.IQueryableValidationResult.ToSerializableResult">ToSerializableResult()</h4>
+  <div class="markdown level1 summary"><p>Gets a representation of the current result as a serializable validation result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SerializableValidationResult ToSerializableResult()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.SerializableValidationResult.html">SerializableValidationResult</a></td>
+        <td><p>A copy of the current validation result, in an easily-serializable format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_IQueryableValidationResult_ToSerializableResult_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Whilst the validation result types represented by <a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a> &amp;
+<a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult&lt;TValidated&gt;</a> are powerful and include querying/matching
+functionality, they are cumbersome to serialize and/or transmit via network APIs such as JSON or XML.
+The <a class="xref" href="CSF.Validation.SerializableValidationResult.html">SerializableValidationResult</a> trades the powerful functionality for a simplified,
+flattened object model which is easy to serialize, and convert to other formats such as JSON, XML
+or data to be persisted in a relational database.
+</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_IQueryableValidationResult.md&amp;value=---%0Auid%3A%20CSF.Validation.IQueryableValidationResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/IQueryableValidationResult.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -6,7 +6,7 @@ namespace CSF.Validation
 {
     public class SecondSampleProvider : IGetsFailureMessage<string>
     {
-        public Task<string> GetFailureMessageAsync(string val, ValidationRuleResult result, CancellationToken token = default)
+        public ValueTask<string> GetFailureMessageAsync(string val, ValidationRuleResult result, CancellationToken token = default)
             => throw new System.NotImplementedException();
     }
 }

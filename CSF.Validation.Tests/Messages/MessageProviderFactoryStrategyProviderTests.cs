@@ -60,7 +60,7 @@ namespace CSF.Validation.Messages
 
         public class TwoGenericProvider : IGetsFailureMessage<string, int>
         {
-            public Task<string> GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token = default)
+            public ValueTask<string> GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token = default)
             {
                 throw new System.NotImplementedException();
             }
@@ -68,7 +68,7 @@ namespace CSF.Validation.Messages
 
         public class OneGenericProvider : IGetsFailureMessage<string>
         {
-            public Task<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
+            public ValueTask<string> GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token = default)
             {
                 throw new System.NotImplementedException();
             }
@@ -76,7 +76,7 @@ namespace CSF.Validation.Messages
 
         public class NonGenericProvider : IGetsFailureMessage
         {
-            public Task<string> GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token = default)
+            public ValueTask<string> GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token = default)
             {
                 throw new System.NotImplementedException();
             }
@@ -84,22 +84,22 @@ namespace CSF.Validation.Messages
 
         public class MultipleInterfaceProvider : IGetsFailureMessage<string, int>, IGetsFailureMessage<string>, IGetsFailureMessage, IGetsFailureMessage<int>
         {
-            Task<string> IGetsFailureMessage<string, int>.GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage<string, int>.GetFailureMessageAsync(string value, int parentValue, ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage<string>.GetFailureMessageAsync(string value, ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage<int>.GetFailureMessageAsync(int value, ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage<int>.GetFailureMessageAsync(int value, ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }

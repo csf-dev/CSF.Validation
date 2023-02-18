@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RuleWithParentValueAdapter&lt;TValue, TValidated&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RuleWithParentValueAdapter&lt;TValue, TValidated&gt;
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YVLFJR3G3V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YVLFJR3G3V');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2">
+  
+  
+  <h1 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2" class="text-break">Class RuleWithParentValueAdapter&lt;TValue, TValidated&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>, which
+allows their logic to be executed as if they were instances of the
+non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a> interface.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">RuleWithParentValueAdapter&lt;TValue, TValidated&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a></div>
+    <div><a class="xref" href="CSF.Validation.Rules.IHasRuleTimeout.html">IHasRuleTimeout</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.Rules.html">CSF.Validation.Rules</a></h6>
+  <h6><strong>Assembly</strong>: CSF.Validation.dll</h6>
+  <h5 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RuleWithParentValueAdapter&lt;TValue, TValidated&gt; : IValidationLogic, IHasRuleTimeout</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type of value being validated by the current instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValidated</span></td>
+        <td><p>The type of parent object being validated by the current instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_RuleWithParentValueAdapter_2__ctor_CSF_Validation_Rules_IRule__0__1__.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.RuleWithParentValueAdapter%602.%23ctor(CSF.Validation.Rules.IRule%7B%600%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/Rules/RuleWithParentValueAdapter.cs/#L35">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_RuleWithParentValueAdapter_2__ctor_" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.#ctor*"></a>
+  <h4 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2__ctor_CSF_Validation_Rules_IRule__0__1__" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.#ctor(CSF.Validation.Rules.IRule{`0,`1})">RuleWithParentValueAdapter(IRule&lt;TValue, TValidated&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initialises an instance of <a class="xref" href="CSF.Validation.Rules.RuleWithParentValueAdapter-2.html">RuleWithParentValueAdapter&lt;TValue, TValidated&gt;</a> from a specified rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RuleWithParentValueAdapter(IRule&lt;TValue, TValidated&gt; wrapped)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule</a>&lt;TValue, TValidated&gt;</td>
+        <td><span class="parametername">wrapped</span></td>
+        <td><p>The rule logic to be wrapped by the current instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleInterface.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.RuleWithParentValueAdapter%602.RuleInterface%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/Rules/RuleWithParentValueAdapter.cs/#L19">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleInterface_" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.RuleInterface*"></a>
+  <h4 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleInterface" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.RuleInterface">RuleInterface</h4>
+  <div class="markdown level1 summary"><p>Gets the type of rule interface that is used by this rule logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type RuleInterface { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleInterface_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This will be a closed-generic form of either <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a> or
+<a class="xref" href="CSF.Validation.Rules.IRule-2.html">IRule&lt;TValue, TParent&gt;</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleObject.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.RuleWithParentValueAdapter%602.RuleObject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/Rules/RuleWithParentValueAdapter.cs/#L22">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleObject_" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.RuleObject*"></a>
+  <h4 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_RuleObject" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.RuleObject">RuleObject</h4>
+  <div class="markdown level1 summary"><p>Gets a reference to the original/raw rule object instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object RuleObject { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetResultAsync_System_Object_System_Object_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.RuleWithParentValueAdapter%602.GetResultAsync(System.Object%2CSystem.Object%2CCSF.Validation.Rules.RuleContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/Rules/RuleWithParentValueAdapter.cs/#L28">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetResultAsync_" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetResultAsync*"></a>
+  <h4 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetResultAsync_System_Object_System_Object_CSF_Validation_Rules_RuleContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetResultAsync(System.Object,System.Object,CSF.Validation.Rules.RuleContext,System.Threading.CancellationToken)">GetResultAsync(Object, Object, RuleContext, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Executes the logic of the validation rule and returns the result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask&lt;RuleResult&gt; GetResultAsync(object value, object parentValue, RuleContext context, CancellationToken token = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value which is being validated by the current rule.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">parentValue</span></td>
+        <td><p>An optional 'parent value' to the value being validated by the current rule.  This is
+typically the object from which the <code data-dev-comment-type="paramref" class="paramref">value</code> is accessed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.Rules.RuleContext.html">RuleContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A validation rule context object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>An optional cancellation token to abort the validation process early.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a>&gt;</td>
+        <td><p>A task which provides the rule result.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetTimeout.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.RuleWithParentValueAdapter%602.GetTimeout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/Rules/RuleWithParentValueAdapter.cs/#L25">View Source</a>
+  </span>
+  <a id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetTimeout_" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetTimeout*"></a>
+  <h4 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetTimeout" data-uid="CSF.Validation.Rules.RuleWithParentValueAdapter`2.GetTimeout">GetTimeout()</h4>
+  <div class="markdown level1 summary"><p>Gets the timeout value for the current rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan? GetTimeout()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><p>A timespan indicating the timeout duration, or a <span class="xref">null</span> reference if no timeout is applicable.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_Rules_RuleWithParentValueAdapter_2_GetTimeout_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If this method returns non-null &amp; the execution of the
+rule takes longer than this timeout value then:</p>
+<p>The rule will immediately return an error result.
+Additionally the CancellationToken passed to the rule will be cancelled, allowing the rule logic to terminate early.
+</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IValidationLogic</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.Validation.Rules.IHasRuleTimeout.html">IHasRuleTimeout</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Rules_RuleWithParentValueAdapter_2.md&amp;value=---%0Auid%3A%20CSF.Validation.Rules.RuleWithParentValueAdapter%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/Rules/RuleWithParentValueAdapter.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

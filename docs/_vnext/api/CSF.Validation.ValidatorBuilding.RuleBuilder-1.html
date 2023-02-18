@@ -90,9 +90,8 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="CSF.Validation.ValidatorBuilding.IBuildsRule-1.html">IBuildsRule</a>&lt;TRule&gt;</div>
     <div><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule</a>&lt;TRule&gt;</div>
-    <div><a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsManifestValue.html">IGetsManifestValue</a></div>
+    <div><a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresContext.html">IConfiguresContext</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -122,7 +121,7 @@
   <h6><strong>Assembly</strong>: CSF.Validation.dll</h6>
   <h5 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RuleBuilder&lt;TRule&gt; : IBuildsRule&lt;TRule&gt;, IConfiguresRule&lt;TRule&gt;, IGetsManifestValue</code></pre>
+    <pre><code class="lang-csharp hljs">public class RuleBuilder&lt;TRule&gt; : IConfiguresRule&lt;TRule&gt;, IConfiguresContext</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -144,19 +143,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1__ctor_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifier_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.%23ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CCSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier%2CCSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1__ctor_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifier_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.%23ctor(CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier%2CCSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L105">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L86">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_RuleBuilder_1__ctor_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.#ctor*"></a>
-  <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1__ctor_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifier_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.#ctor(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier,CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier)">RuleBuilder(ValidatorBuilderContext, IGetsManifestRuleIdentifierFromRelativeIdentifier, IGetsManifestRuleIdentifier)</h4>
+  <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1__ctor_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifierFromRelativeIdentifier_CSF_Validation_ValidatorBuilding_IGetsManifestRuleIdentifier_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.#ctor(CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier,CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifier)">RuleBuilder(IGetsManifestRuleIdentifierFromRelativeIdentifier, IGetsManifestRuleIdentifier)</h4>
   <div class="markdown level1 summary"><p>Initialises an instance of <a class="xref" href="CSF.Validation.ValidatorBuilding.RuleBuilder-1.html">RuleBuilder&lt;TRule&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleBuilder(ValidatorBuilderContext context, IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter, IGetsManifestRuleIdentifier identifierFactory)</code></pre>
+    <pre><code class="lang-csharp hljs">public RuleBuilder(IGetsManifestRuleIdentifierFromRelativeIdentifier relativeToManifestIdentityConverter, IGetsManifestRuleIdentifier identifierFactory)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -168,12 +167,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a></td>
-        <td><span class="parametername">context</span></td>
-        <td><p>The rule-building context</p>
-</td>
-      </tr>
       <tr>
         <td><a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsManifestRuleIdentifierFromRelativeIdentifier.html">IGetsManifestRuleIdentifierFromRelativeIdentifier</a></td>
         <td><span class="parametername">relativeToManifestIdentityConverter</span></td>
@@ -195,7 +188,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1_Dependencies.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.Dependencies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L53">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L50">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_Dependencies_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.Dependencies*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_Dependencies" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.Dependencies">Dependencies</h4>
@@ -240,7 +233,7 @@ In case it is not obvious, specifying a circular set of validation rule dependen
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1_Name.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L27">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L24">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_Name_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.Name*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_Name" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.Name">Name</h4>
@@ -271,10 +264,44 @@ of the same rule (but with different configuration), applied to the same member 
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1_ConfigureContext_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.ConfigureContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L66">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_ConfigureContext_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.ConfigureContext*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_ConfigureContext_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.ConfigureContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext)">ConfigureContext(ValidatorBuilderContext)</h4>
+  <div class="markdown level1 summary"><p>Performs configuration upon the context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ConfigureContext(ValidatorBuilderContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The builder context to configure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1_ConfigureRule_System_Action__0__.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.ConfigureRule(System.Action%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L63">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L60">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_ConfigureRule_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.ConfigureRule*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_ConfigureRule_System_Action__0__" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.ConfigureRule(System.Action{`0})">ConfigureRule(Action&lt;TRule&gt;)</h4>
@@ -303,54 +330,12 @@ of the same rule (but with different configuration), applied to the same member 
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1_GetManifestValue.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601.GetManifestValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L79">View Source</a>
-  </span>
-  <a id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_GetManifestValue_" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.GetManifestValue*"></a>
-  <h4 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_GetManifestValue" data-uid="CSF.Validation.ValidatorBuilding.RuleBuilder`1.GetManifestValue">GetManifestValue()</h4>
-  <div class="markdown level1 summary"><p>Gets a manifest value from the current instance, which will be the same manifest value instance passed via the
-<a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a> constructor parameter as <a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html#CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_ManifestValue">ManifestValue</a>,
-but which will also have received one additional rule added.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IManifestItem GetManifestValue()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></td>
-        <td><p>A manifest value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="CSF_Validation_ValidatorBuilding_RuleBuilder_1_GetManifestValue_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>
-This method may be called a maximum of once.
-</p>
-</div>
   <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="CSF.Validation.ValidatorBuilding.IBuildsRule-1.html">IBuildsRule&lt;TRule&gt;</a>
-  </div>
   <div>
       <a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule&lt;TRule&gt;</a>
   </div>
   <div>
-      <a class="xref" href="CSF.Validation.ValidatorBuilding.IGetsManifestValue.html">IGetsManifestValue</a>
+      <a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresContext.html">IConfiguresContext</a>
   </div>
 </article>
           </div>
@@ -363,7 +348,7 @@ This method may be called a maximum of once.
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_RuleBuilder_1.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.RuleBuilder%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/master/CSF.Validation/ValidatorBuilding/RuleBuilder.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

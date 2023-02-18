@@ -1,17 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <RootNamespace>CSF.Validation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CSF.Validation.StandardRules\CSF.Validation.StandardRules.csproj" />
+    <ProjectReference Include="..\CSF.Validation.Selfhosting\CSF.Validation.Selfhosting.csproj" />
     <ProjectReference Include="..\CSF.Validation.Abstractions\CSF.Validation.Abstractions.csproj" />
     <ProjectReference Include="..\CSF.Validation\CSF.Validation.csproj" />
-    <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\\CSF.Validation.Tests.SamplePlugin.csproj"
+    <ProjectReference Include="..\CSF.Validation.Tests.SamplePlugin\CSF.Validation.Tests.SamplePlugin.csproj"
                       ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\CSF.Validation.Json\CSF.Validation.Json.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +23,7 @@
     <PackageReference Include="AutoFixture" Version="4.17.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
     <PackageReference Include="AutoFixture.NUnit3" Version="4.17.0" />
-    <PackageReference Include="coverlet.msbuild" Version="3.1.0">
+    <PackageReference Include="coverlet.msbuild" Version="3.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

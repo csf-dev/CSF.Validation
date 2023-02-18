@@ -1,3 +1,4 @@
+using System;
 using CSF.Validation.ValidatorBuilding;
 
 namespace CSF.Validation.Manifest
@@ -23,7 +24,7 @@ namespace CSF.Validation.Manifest
 
             var validatorBuilder = builderFactory.GetValidatorBuilder<TValidated>();
             builder.ConfigureValidator(validatorBuilder);
-            return validatorBuilder.GetManifest();
+            return ValidatorBuilderContext.GetContextProvider(validatorBuilder).Context.GetManifest();
         }
 
         /// <summary>

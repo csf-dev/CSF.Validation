@@ -11,7 +11,7 @@ namespace CSF.Validation.RuleExecution
     {
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldReturnSuccessResponseIfTheValueIsReadable(ValueToBeValidatedProvider sut,
-                                                                                 [ManifestModel] ManifestValue manifestValue,
+                                                                                 [ManifestModel] ManifestItem manifestValue,
                                                                                  object parentValue,
                                                                                  ResolvedValidationOptions validationOptions,
                                                                                  object value)
@@ -22,7 +22,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldExposeTheCorrectValueWhenItIsReadable(ValueToBeValidatedProvider sut,
-                                                                                        [ManifestModel] ManifestValue manifestValue,
+                                                                                        [ManifestModel] ManifestItem manifestValue,
                                                                                         object parentValue,
                                                                                         ResolvedValidationOptions validationOptions,
                                                                                         object expected)
@@ -34,7 +34,7 @@ namespace CSF.Validation.RuleExecution
 
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldReturnIgnoredResultIfTheParentValueIsNull(ValueToBeValidatedProvider sut,
-                                                                                         [ManifestModel] ManifestValue manifestValue,
+                                                                                         [ManifestModel] ManifestItem manifestValue,
                                                                                          ResolvedValidationOptions validationOptions)
         {
             Assert.That(() => sut.GetValueToBeValidated(manifestValue, null, validationOptions), Is.InstanceOf<IgnoredGetValueToBeValidatedResponse>());
@@ -43,7 +43,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldThrowIfTheAccessorThrowsAndExceptionBehaviourIsThrow([Frozen] IGetsAccessorExceptionBehaviour behaviourProvider,
                                                                                                     ValueToBeValidatedProvider sut,
-                                                                                                    [ManifestModel] ManifestValue manifestValue,
+                                                                                                    [ManifestModel] ManifestItem manifestValue,
                                                                                                     object parentValue,
                                                                                                     ResolvedValidationOptions validationOptions,
                                                                                                     Exception exception)
@@ -57,7 +57,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldReturnIgnoredResultIfAccessorThrowsAndExceptionBehaviourIsIgnore([Frozen] IGetsAccessorExceptionBehaviour behaviourProvider,
                                                                                                                 ValueToBeValidatedProvider sut,
-                                                                                                                [ManifestModel] ManifestValue manifestValue,
+                                                                                                                [ManifestModel] ManifestItem manifestValue,
                                                                                                                 object parentValue,
                                                                                                                 ResolvedValidationOptions validationOptions,
                                                                                                                 Exception exception)
@@ -70,7 +70,7 @@ namespace CSF.Validation.RuleExecution
         [Test,AutoMoqData]
         public void GetValueToBeValidatedShouldReturnErrorResultIfAccessorThrowsAndExceptionBehaviourIsError([Frozen] IGetsAccessorExceptionBehaviour behaviourProvider,
                                                                                                              ValueToBeValidatedProvider sut,
-                                                                                                             [ManifestModel] ManifestValue manifestValue,
+                                                                                                             [ManifestModel] ManifestItem manifestValue,
                                                                                                              object parentValue,
                                                                                                              ResolvedValidationOptions validationOptions,
                                                                                                              Exception exception)

@@ -17,26 +17,27 @@ namespace CSF.Validation.RuleExecution
     /// <item><description>Get all of the available rules, via <see cref="IRuleExecutionContext.GetRulesWhichMayBeExecuted"/>.
     /// If no rules are found in this way then exit and return all of the results which have been found across all iterations of 
     /// this algorithm.</description></item>
-    /// <item><description>Split those available rules into "can be run in parallel" and "cannot be run in parallel" TODO collections,
-    /// using <see cref="ExecutableRule.IsEligibleToBeExecutedInParallel"/> to differentiate them.</description></item>
-    /// <item><description>Add all of the rules which may be run in parallel to a collection of "in progress" tasks &amp;
-    /// empty the TODO collection for rules which may be run in parallel.</description></item>
+    /// <item><description>Sort those available rules into two lists, one list of rules which may be run in parallel &amp; another list
+    /// of those which cannot be run in parallel.  The sorting process uses <see cref="ExecutableRule.IsEligibleToBeExecutedInParallel"/>.
+    /// These lists become the rules that are pending for execution.</description></item>
+    /// <item><description>Add all of the rules which may be run in parallel to an "in progress" list of tasks &amp;
+    /// empty the pending list for rules which may be run in parallel.</description></item>
     /// <item><description>As each of the in-progress parallel rules completes remove it from the in-progress list and record its result.</description></item>
     /// <item><description>Once all in-progress list is empty, try again to find new rules which may executed in parallel, possibly refilling
-    /// the "can be run in parallel" TODO collection.  If any rules eligible to be run in parallel are found in this way, return to step 3 with
+    /// the "can be run in parallel" pending list.  If any rules eligible to be run in parallel are found in this way, return to step 3 with
     /// regard to these newly-found rules.  This is a process similar to steps 1 &amp; 2, except that a result of finding no new rules does not
-    /// terminate the algorithm.  Any new non-parallelisable rules that are found are added to the existing "cannot be run in parallel" TODO
+    /// terminate the algorithm.  Any new non-parallelisable rules that are found are added to the existing "cannot be run in parallel" pending list
     /// collection</description></item>
     /// <item><description>Now that we have run out of available rules which may be executed in parallel, execute all rules in the
-    /// "cannot be run in parallel" TODO collection in sequence &amp; record their results.  As this occurs, clear the "cannot be run in
-    /// parallel" TODO collection</description></item>
+    /// "cannot be run in parallel" pending list in sequence &amp; record their results.  As this occurs, clear the "cannot be run in
+    /// parallel" pending list.</description></item>
     /// <item><description>Return to step 1 to attempt to find additional available rules to execute.</description></item>
     /// </list>
     /// <para>
     /// Step 5 (above) is not strictly neccesary but is included as an attempt at optimisation.  It ensures that rules which may be run in parallel
     /// are prioritised over rules which may not be run in parallel.
-    /// This means that non-parallelisable rules will generally be left toward the end of each iteration, ensuring that as many rules (which were
-    /// eligible to be run in parallel) as possible were run in parallel.
+    /// This means that non-parallelisable rules will generally be left toward the end of each iteration, ensuring that as many rules as possible (which were
+    /// eligible to be run in parallel) are run in parallel.
     /// </para>
     /// </remarks>
     public class ParallelRuleExecutor : IExecutesAllRules

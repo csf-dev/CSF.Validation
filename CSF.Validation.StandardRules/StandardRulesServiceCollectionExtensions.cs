@@ -1,9 +1,5 @@
-using CSF.Validation.Rules;
+using CSF.Validation.Bootstrap;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace CSF.Validation
 {
@@ -12,6 +8,8 @@ namespace CSF.Validation
     /// </summary>
     public static class StandardRulesServiceCollectionExtensions
     {
+
+
         /// <summary>
         /// Adds the standard validation rules to the service collection, so that they may be used in validators.
         /// </summary>
@@ -25,20 +23,10 @@ namespace CSF.Validation
         /// <returns>The service collection, so that calls may be chained.</returns>
         public static IServiceCollection UseStandardValidationRules(this IServiceCollection serviceCollection)
         {
-            var ruleTypes = GetRuleTypes();
-
-            foreach(var type in ruleTypes)
-                serviceCollection.AddTransient(type);
-
-            return serviceCollection;
-        }
-
-        static IEnumerable<Type> GetRuleTypes()
-        {
-            return (from type in typeof(StandardRulesServiceCollectionExtensions).GetTypeInfo().Assembly.DefinedTypes
-                    where type.Namespace == typeof(NotNull).Namespace
-                    select type.AsType())
-                .ToList();
+            return serviceCollection
+                .AddStandardRules()
+                .AddValidatorValidationServices()
+                ;
         }
     }
 }

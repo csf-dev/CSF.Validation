@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CSF.Validation.Manifest;
 
@@ -17,7 +18,24 @@ namespace CSF.Validation
         /// Gets a reference to the manifest value which forms the logical
         /// root of the results in the current instance.
         /// </summary>
-        IManifestItem ManifestValue { get; }
+        ManifestItem ManifestValue { get; }
+
+        /// <summary>
+        /// Gets a value indicating how long the validation process took.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This value will only be populated if <see cref="ValidationOptions.InstrumentRuleExecution"/> is set to <see langword="true" />.
+        /// Otherwise it will be <see langword="null" />.
+        /// </para>
+        /// <para>
+        /// When <see cref="ValidationOptions.EnableRuleParallelization"/> is <see langword="true" /> the sum of the times reported within each
+        /// <see cref="ValidationRuleResult.InstrumentationData"/> will likely not total the amount reported by this property.  That is because
+        /// many of the reported times for each of the rules will have run concurrently with other rules.
+        /// On the other hand, this time does correspond to real "wall clock" time to perform validation.
+        /// </para>
+        /// </remarks>
+        TimeSpan? ValidationTime { get; }
 
         /// <summary>
         /// Gets a collection of the results of individual validation rules, making up

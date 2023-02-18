@@ -95,7 +95,7 @@ namespace CSF.Validation.Rules
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RuleResult"/> class.
+        /// Initializes a new instance of the <see cref="RuleResult"/> class.  This is essentially a copy-constructor.
         /// </summary>
         /// <param name="result">A rule result instance to copy.</param>
         /// <exception cref="ArgumentNullException">If the <paramref name="result"/> is <see langword="null"/>.</exception>

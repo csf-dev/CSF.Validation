@@ -15,23 +15,16 @@ Working with a validation manifest directly is an advanced technique which is de
 The validation manifest is created from the following model classes. These are all found in the [CSF.Validation.Abstractions] NuGet package and are generally in the [`CSF.Validation.Manifest`] namespace.
 
 * [`VariationManifest`]
-* [`ManifestValue`]
-* [`ManifestCollectionItem`]
-* [`ManifestPolymorphicType`]
-* [`RecursiveManifestValue`]
+* [`ManifestItem`]
 * [`ManifestRule`]
 * [`ManifestRuleIdentifier`]
 
 [`CSF.Validation.Manifest`]:xref:CSF.Validation.Manifest
 [CSF.Validation.Abstractions]:https://www.nuget.org/packages/CSF.Validation.Abstractions/
 [`VariationManifest`]:xref:CSF.Validation.Manifest.ValidationManifest
-[`ManifestValue`]:xref:CSF.Validation.Manifest.ManifestValue
-[`ManifestCollectionItem`]:xref:CSF.Validation.Manifest.ManifestCollectionItem
-[`ManifestPolymorphicType`]:xref:CSF.Validation.Manifest.ManifestPolymorphicType
-[`RecursiveManifestValue`]:xref:CSF.Validation.Manifest.RecursiveManifestValue
+[`ManifestItem`]:xref:CSF.Validation.Manifest.ManifestItem
 [`ManifestRule`]:xref:CSF.Validation.Manifest.ManifestRule
 [`ManifestRuleIdentifier`]:xref:CSF.Validation.Manifest.ManifestRuleIdentifier
-[`RuleIdentifierBase`]:xref:CSF.Validation.Rules.RuleIdentifierBase
 
 ## Values & rules
 

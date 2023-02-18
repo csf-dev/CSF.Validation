@@ -63,7 +63,7 @@ namespace CSF.Validation.Messages
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }
@@ -76,7 +76,7 @@ namespace CSF.Validation.Messages
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }
@@ -89,7 +89,7 @@ namespace CSF.Validation.Messages
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }
@@ -107,7 +107,7 @@ namespace CSF.Validation.Messages
                 throw new System.NotImplementedException();
             }
 
-            Task<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
+            ValueTask<string> IGetsFailureMessage.GetFailureMessageAsync(ValidationRuleResult result, CancellationToken token)
             {
                 throw new System.NotImplementedException();
             }

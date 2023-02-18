@@ -15,6 +15,6 @@ namespace CSF.Validation.ValidatorBuilding
         /// <param name="ValidatorBuilderContext">Contextual information about how validation rules should be built.</param>
         /// <param name="valueConfig">An action which configures the value accessor-builder.</param>
         /// <returns>A builder for validating the derived value.</returns>
-        IBuildsValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(ValidatorBuilderContext ValidatorBuilderContext, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
+        IConfiguresValueAccessor<TValidated, TValue> GetValueAccessorBuilder<TValidated, TValue>(ValidatorBuilderContext ValidatorBuilderContext, Action<IConfiguresValueAccessor<TValidated, TValue>> valueConfig);
     }
 }
