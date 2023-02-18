@@ -121,10 +121,10 @@ Whilst we could write a class which implements <code>IRule&lt;LibraryBookLoan&gt
 
 public class MustNotBeBeforeLoanDate : IRule&lt;DateTime, LibraryBookLoan&gt;
 {
-    public Task&lt;RuleResult&gt; GetResultAsync(DateTime validated,
-                                           LibraryBookLoan parent,
-                                           RuleContext context,
-                                           CancellationToken token = default)
+    public ValueTask&lt;RuleResult&gt; GetResultAsync(DateTime validated,
+                                                LibraryBookLoan parent,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         if(parent is null) return PassAsync();
         return validated &gt;= parent.LoanDate ? PassAsync() : FailAsync();

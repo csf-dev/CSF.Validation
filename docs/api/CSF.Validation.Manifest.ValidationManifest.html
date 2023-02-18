@@ -88,6 +88,10 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ValidationManifest</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CSF.Validation.Manifest.IManifestNode.html">IManifestNode</a></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -116,7 +120,7 @@
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
   <h5 id="CSF_Validation_Manifest_ValidationManifest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ValidationManifest</code></pre>
+    <pre><code class="lang-csharp hljs">public class ValidationManifest : IManifestNode</code></pre>
   </div>
   <h5 id="CSF_Validation_Manifest_ValidationManifest_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>
@@ -141,7 +145,7 @@ article <a class="xref" href="../articles/WritingValidators/UsingTheManifestMode
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ValidationManifest_RootValue.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ValidationManifest.RootValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ValidationManifest.cs/#L44">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ValidationManifest.cs/#L43">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ValidationManifest_RootValue_" data-uid="CSF.Validation.Manifest.ValidationManifest.RootValue*"></a>
   <h4 id="CSF_Validation_Manifest_ValidationManifest_RootValue" data-uid="CSF.Validation.Manifest.ValidationManifest.RootValue">RootValue</h4>
@@ -150,7 +154,7 @@ article <a class="xref" href="../articles/WritingValidators/UsingTheManifestMode
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManifestValue RootValue { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ManifestItem RootValue { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -162,17 +166,23 @@ article <a class="xref" href="../articles/WritingValidators/UsingTheManifestMode
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></td>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 id="CSF_Validation_Manifest_ValidationManifest_RootValue_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+The root item (referenced by this property) must be of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ItemType">ItemType</a>
+<a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Value">Value</a> and nothing else.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ValidationManifest_ValidatedType.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ValidationManifest.ValidatedType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ValidationManifest.cs/#L39">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ValidationManifest.cs/#L32">View Source</a>
   </span>
   <a id="CSF_Validation_Manifest_ValidationManifest_ValidatedType_" data-uid="CSF.Validation.Manifest.ValidationManifest.ValidatedType*"></a>
   <h4 id="CSF_Validation_Manifest_ValidationManifest_ValidatedType" data-uid="CSF.Validation.Manifest.ValidationManifest.ValidatedType">ValidatedType</h4>
@@ -198,18 +208,15 @@ article <a class="xref" href="../articles/WritingValidators/UsingTheManifestMode
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.Validation.Manifest.IManifestNode.html">IManifestNode</a>
+  </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
       <div><a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a></div>
       <div><a class="xref" href="CSF.Validation.Manifest.ManifestRuleIdentifier.html">ManifestRuleIdentifier</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.IHasPolymorphicTypes.html">IHasPolymorphicTypes</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValueBase.html">ManifestValueBase</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestPolymorphicType.html">ManifestPolymorphicType</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.RecursiveManifestValue.html">RecursiveManifestValue</a></div>
+      <div><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></div>
   </div>
 </article>
           </div>
@@ -222,7 +229,7 @@ article <a class="xref" href="../articles/WritingValidators/UsingTheManifestMode
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ValidationManifest.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ValidationManifest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ValidationManifest.cs/#L34" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ValidationManifest.cs/#L27" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

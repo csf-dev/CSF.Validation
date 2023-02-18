@@ -128,20 +128,21 @@ This class uses a fairly naive algorithm to achieve parallelism.  It could be de
 </p>
 <ol><li>Get all of the available rules, via <a class="xref" href="CSF.Validation.RuleExecution.IRuleExecutionContext.html#CSF_Validation_RuleExecution_IRuleExecutionContext_GetRulesWhichMayBeExecuted">GetRulesWhichMayBeExecuted()</a>.
 If no rules are found in this way then exit and return all of the results which have been found across all iterations of 
-this algorithm.</li><li>Split those available rules into &quot;can be run in parallel&quot; and &quot;cannot be run in parallel&quot; TODO collections,
-using <a class="xref" href="CSF.Validation.RuleExecution.ExecutableRule.html#CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel">IsEligibleToBeExecutedInParallel</a> to differentiate them.</li><li>Add all of the rules which may be run in parallel to a collection of &quot;in progress&quot; tasks &amp;
-empty the TODO collection for rules which may be run in parallel.</li><li>As each of the in-progress parallel rules completes remove it from the in-progress list and record its result.</li><li>Once all in-progress list is empty, try again to find new rules which may executed in parallel, possibly refilling
-the &quot;can be run in parallel&quot; TODO collection.  If any rules eligible to be run in parallel are found in this way, return to step 3 with
+this algorithm.</li><li>Sort those available rules into two lists, one list of rules which may be run in parallel &amp; another list
+of those which cannot be run in parallel.  The sorting process uses <a class="xref" href="CSF.Validation.RuleExecution.ExecutableRule.html#CSF_Validation_RuleExecution_ExecutableRule_IsEligibleToBeExecutedInParallel">IsEligibleToBeExecutedInParallel</a>.
+These lists become the rules that are pending for execution.</li><li>Add all of the rules which may be run in parallel to an &quot;in progress&quot; list of tasks &amp;
+empty the pending list for rules which may be run in parallel.</li><li>As each of the in-progress parallel rules completes remove it from the in-progress list and record its result.</li><li>Once all in-progress list is empty, try again to find new rules which may executed in parallel, possibly refilling
+the &quot;can be run in parallel&quot; pending list.  If any rules eligible to be run in parallel are found in this way, return to step 3 with
 regard to these newly-found rules.  This is a process similar to steps 1 &amp; 2, except that a result of finding no new rules does not
-terminate the algorithm.  Any new non-parallelisable rules that are found are added to the existing &quot;cannot be run in parallel&quot; TODO
+terminate the algorithm.  Any new non-parallelisable rules that are found are added to the existing &quot;cannot be run in parallel&quot; pending list
 collection</li><li>Now that we have run out of available rules which may be executed in parallel, execute all rules in the
-&quot;cannot be run in parallel&quot; TODO collection in sequence &amp; record their results.  As this occurs, clear the &quot;cannot be run in
-parallel&quot; TODO collection</li><li>Return to step 1 to attempt to find additional available rules to execute.</li></ol>
+&quot;cannot be run in parallel&quot; pending list in sequence &amp; record their results.  As this occurs, clear the &quot;cannot be run in
+parallel&quot; pending list.</li><li>Return to step 1 to attempt to find additional available rules to execute.</li></ol>
 <p>
 Step 5 (above) is not strictly neccesary but is included as an attempt at optimisation.  It ensures that rules which may be run in parallel
 are prioritised over rules which may not be run in parallel.
-This means that non-parallelisable rules will generally be left toward the end of each iteration, ensuring that as many rules (which were
-eligible to be run in parallel) as possible were run in parallel.
+This means that non-parallelisable rules will generally be left toward the end of each iteration, ensuring that as many rules as possible (which were
+eligible to be run in parallel) are run in parallel.
 </p>
 </div>
   <h3 id="constructors">Constructors
@@ -151,7 +152,7 @@ eligible to be run in parallel) as possible were run in parallel.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ParallelRuleExecutor__ctor_CSF_Validation_RuleExecution_IExeucutesSingleRule_.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ParallelRuleExecutor.%23ctor(CSF.Validation.RuleExecution.IExeucutesSingleRule)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/RuleExecution/ParallelRuleExecutor.cs/#L119">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/RuleExecution/ParallelRuleExecutor.cs/#L120">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ParallelRuleExecutor__ctor_" data-uid="CSF.Validation.RuleExecution.ParallelRuleExecutor.#ctor*"></a>
   <h4 id="CSF_Validation_RuleExecution_ParallelRuleExecutor__ctor_CSF_Validation_RuleExecution_IExeucutesSingleRule_" data-uid="CSF.Validation.RuleExecution.ParallelRuleExecutor.#ctor(CSF.Validation.RuleExecution.IExeucutesSingleRule)">ParallelRuleExecutor(IExeucutesSingleRule)</h4>
@@ -203,7 +204,7 @@ eligible to be run in parallel) as possible were run in parallel.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ParallelRuleExecutor_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/RuleExecution/ParallelRuleExecutor.cs/#L47">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/RuleExecution/ParallelRuleExecutor.cs/#L48">View Source</a>
   </span>
   <a id="CSF_Validation_RuleExecution_ParallelRuleExecutor_ExecuteAllRulesAsync_" data-uid="CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync*"></a>
   <h4 id="CSF_Validation_RuleExecution_ParallelRuleExecutor_ExecuteAllRulesAsync_CSF_Validation_RuleExecution_IRuleExecutionContext_System_Threading_CancellationToken_" data-uid="CSF.Validation.RuleExecution.ParallelRuleExecutor.ExecuteAllRulesAsync(CSF.Validation.RuleExecution.IRuleExecutionContext,System.Threading.CancellationToken)">ExecuteAllRulesAsync(IRuleExecutionContext, CancellationToken)</h4>
@@ -269,7 +270,7 @@ eligible to be run in parallel) as possible were run in parallel.
                     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_RuleExecution_ParallelRuleExecutor.md&amp;value=---%0Auid%3A%20CSF.Validation.RuleExecution.ParallelRuleExecutor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/RuleExecution/ParallelRuleExecutor.cs/#L42" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/RuleExecution/ParallelRuleExecutor.cs/#L43" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

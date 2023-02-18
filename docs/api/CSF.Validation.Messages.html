@@ -129,6 +129,9 @@ getting messages for each rule result within the original result and adding a me
       <h4><a class="xref" href="CSF.Validation.Messages.InstanceMessageProviderInfo.html">InstanceMessageProviderInfo</a></h4>
       <section><p>A specialisation of <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a> which includes an existing instance of a message provider.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Messages.InstrumentingValidaionRuleResultWithMessageDecorator.html">InstrumentingValidaionRuleResultWithMessageDecorator</a></h4>
+      <section><p>Decorator for <a class="xref" href="CSF.Validation.Messages.IGetsValidationRuleResultWithMessage.html">IGetsValidationRuleResultWithMessage</a> which adds instrumentation data to the result.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Messages.LazyMessageProviderInfo.html">LazyMessageProviderInfo</a></h4>
       <section><p>A specialisation of <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html">MessageProviderInfo</a> which resolves the <a class="xref" href="CSF.Validation.Messages.MessageProviderInfo.html#CSF_Validation_Messages_MessageProviderInfo_MessageProvider">MessageProvider</a>
 lazily, only instantiating it upon usage.</p>
@@ -169,9 +172,15 @@ used as failure message providers.</p>
       <section><p>A decorator for <a class="xref" href="CSF.Validation.Messages.IGetsCandidateMessageTypes.html">IGetsCandidateMessageTypes</a> which adds an additional message provider for rules which implement
 a rule-with-message interface.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Messages.RuleWithMessageProviderFactory.html">RuleWithMessageProviderFactory</a></h4>
+      <section><p>Default implementation of <a class="xref" href="CSF.Validation.Messages.IGetsRuleWithMessageProvider.html">IGetsRuleWithMessageProvider</a>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Messages.SingleGenericMessageProviderStrategy.html">SingleGenericMessageProviderStrategy</a></h4>
       <section><p>A strategy for getting <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage.html">IGetsFailureMessage</a> from a type that implements the
 generic <a class="xref" href="CSF.Validation.Messages.IGetsFailureMessage-1.html">IGetsFailureMessage&lt;TValidated&gt;</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Messages.SingleRuleValidationResultMessageEnricher.html">SingleRuleValidationResultMessageEnricher</a></h4>
+      <section><p>Default implementation of <a class="xref" href="CSF.Validation.Messages.IGetsValidationRuleResultWithMessage.html">IGetsValidationRuleResultWithMessage</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Messages.UseExistingInstanceMessageProviderStrategy.html">UseExistingInstanceMessageProviderStrategy</a></h4>
       <section><p>A strategy for <a class="xref" href="CSF.Validation.Messages.IGetsNonGenericMessageProvider.html">IGetsNonGenericMessageProvider</a> which uses an existing instance
@@ -223,6 +232,12 @@ from an instance of <a class="xref" href="CSF.Validation.Messages.MessageProvide
       <h4><a class="xref" href="CSF.Validation.Messages.IGetsRuleMatchingInfoForMessageProviderType.html">IGetsRuleMatchingInfoForMessageProviderType</a></h4>
       <section><p>An object which gets a collection of the <a class="xref" href="CSF.Validation.Messages.IGetsMessageProviderTypeMatchingInfoForRule.html">IGetsMessageProviderTypeMatchingInfoForRule</a> applicable
 for a specified message provider type.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Messages.IGetsRuleWithMessageProvider.html">IGetsRuleWithMessageProvider</a></h4>
+      <section><p>An object which can get an instance of <a class="xref" href="CSF.Validation.Messages.IGetsValidationRuleResultWithMessage.html">IGetsValidationRuleResultWithMessage</a> applicable for the specified options.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Messages.IGetsValidationRuleResultWithMessage.html">IGetsValidationRuleResultWithMessage</a></h4>
+      <section><p>An object which can get a copy of a single <a class="xref" href="CSF.Validation.ValidationRuleResult.html">ValidationRuleResult</a>, possibly with an added validation feedback message.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Messages.IHasFailureMessageUsageCriteria.html">IHasFailureMessageUsageCriteria</a></h4>
       <section><p>An object which can use custom logic to determine whether it may be used to provide a failure message.</p>

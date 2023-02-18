@@ -119,6 +119,9 @@ any circular dependencies are found.</p>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.IgnoredGetValueToBeValidatedResponse.html">IgnoredGetValueToBeValidatedResponse</a></h4>
       <section><p>A <a class="xref" href="CSF.Validation.RuleExecution.GetValueToBeValidatedResponse.html">GetValueToBeValidatedResponse</a> which indicates failure but that the failure should be ignored.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.RuleExecution.InstrumentingSingleRuleExecutorDecorator.html">InstrumentingSingleRuleExecutorDecorator</a></h4>
+      <section><p>Decorator for <a class="xref" href="CSF.Validation.RuleExecution.IExeucutesSingleRule.html">IExeucutesSingleRule</a> which adds instrumentation data to the rule result if applicable.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.ParallelRuleExecutor.html">ParallelRuleExecutor</a></h4>
       <section><p>An implementation of <a class="xref" href="CSF.Validation.RuleExecution.IExecutesAllRules.html">IExecutesAllRules</a> which executes validation rules in parallel.</p>
 </section>
@@ -162,7 +165,7 @@ list of the rules which should not be executed because their dependencies failed
 It holds the information required in order to get the validated value at a point in the future.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.ValidatedValueFactory.html">ValidatedValueFactory</a></h4>
-      <section><p>A service which gets a <a class="xref" href="CSF.Validation.RuleExecution.ValidatedValue.html">ValidatedValue</a> from a <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a> and an object
+      <section><p>A service which gets a <a class="xref" href="CSF.Validation.RuleExecution.ValidatedValue.html">ValidatedValue</a> from a <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> and an object
 to be validated.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.ValidatedValueFromBasisFactory.html">ValidatedValueFromBasisFactory</a></h4>
@@ -211,7 +214,7 @@ a specified collection of rules.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.IGetsValidatedValue.html">IGetsValidatedValue</a></h4>
       <section><p>An object which gets a <a class="xref" href="CSF.Validation.RuleExecution.ValidatedValue.html">ValidatedValue</a> (including a hierarchy of descendent values)
-from a <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a> and the object to be validated.</p>
+from a <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> and the object to be validated.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleExecution.IGetsValidatedValueFromBasis.html">IGetsValidatedValueFromBasis</a></h4>
       <section><p>An object which can get a <a class="xref" href="CSF.Validation.RuleExecution.ValidatedValue.html">ValidatedValue</a> from a <a class="xref" href="CSF.Validation.RuleExecution.ValidatedValueBasis.html">ValidatedValueBasis</a>.</p>

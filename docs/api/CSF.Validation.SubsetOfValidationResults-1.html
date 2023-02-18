@@ -145,19 +145,19 @@ subset of a larger validation result.  This is usually due to some form of filte
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_IManifestItem_.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.%23ctor(System.Collections.Generic.IEnumerable%7BCSF.Validation.ValidationRuleResult%7D%2CCSF.Validation.Manifest.IManifestItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ManifestItem_System_Nullable_System_TimeSpan__.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.%23ctor(System.Collections.Generic.IEnumerable%7BCSF.Validation.ValidationRuleResult%7D%2CCSF.Validation.Manifest.ManifestItem%2CSystem.Nullable%7BSystem.TimeSpan%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L60">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L64">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1__ctor_" data-uid="CSF.Validation.SubsetOfValidationResults`1.#ctor*"></a>
-  <h4 id="CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_IManifestItem_" data-uid="CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.IManifestItem)">SubsetOfValidationResults(IEnumerable&lt;ValidationRuleResult&gt;, IManifestItem)</h4>
+  <h4 id="CSF_Validation_SubsetOfValidationResults_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ManifestItem_System_Nullable_System_TimeSpan__" data-uid="CSF.Validation.SubsetOfValidationResults`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ManifestItem,System.Nullable{System.TimeSpan})">SubsetOfValidationResults(IEnumerable&lt;ValidationRuleResult&gt;, ManifestItem, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.Validation.SubsetOfValidationResults-1.html">SubsetOfValidationResults&lt;TValidated&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SubsetOfValidationResults(IEnumerable&lt;ValidationRuleResult&gt; ruleResults, IManifestItem manifestValue)</code></pre>
+    <pre><code class="lang-csharp hljs">public SubsetOfValidationResults(IEnumerable&lt;ValidationRuleResult&gt; ruleResults, ManifestItem manifestValue, TimeSpan? validationTime)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,9 +176,15 @@ subset of a larger validation result.  This is usually due to some form of filte
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></td>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
         <td><span class="parametername">manifestValue</span></td>
         <td><p>The manifest value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="parametername">validationTime</span></td>
+        <td><p>The time it has taken to perform validation.</p>
 </td>
       </tr>
     </tbody>
@@ -216,7 +222,7 @@ root of the results in the current instance.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IManifestItem ManifestValue { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ManifestItem ManifestValue { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -228,7 +234,7 @@ root of the results in the current instance.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></td>
+        <td><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -269,7 +275,7 @@ root of the results in the current instance.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_RuleResults.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.RuleResults%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L25">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L28">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_RuleResults_" data-uid="CSF.Validation.SubsetOfValidationResults`1.RuleResults*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_RuleResults" data-uid="CSF.Validation.SubsetOfValidationResults`1.RuleResults">RuleResults</h4>
@@ -296,6 +302,49 @@ the current validation result.</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_ValidationTime.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.ValidationTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L25">View Source</a>
+  </span>
+  <a id="CSF_Validation_SubsetOfValidationResults_1_ValidationTime_" data-uid="CSF.Validation.SubsetOfValidationResults`1.ValidationTime*"></a>
+  <h4 id="CSF_Validation_SubsetOfValidationResults_1_ValidationTime" data-uid="CSF.Validation.SubsetOfValidationResults`1.ValidationTime">ValidationTime</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating how long the validation process took.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan? ValidationTime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="CSF_Validation_SubsetOfValidationResults_1_ValidationTime_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This value will only be populated if <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_InstrumentRuleExecution">InstrumentRuleExecution</a> is set to <span class="xref">true</span>.
+Otherwise it will be <span class="xref">null</span>.
+</p>
+<p>
+When <a class="xref" href="CSF.Validation.ValidationOptions.html#CSF_Validation_ValidationOptions_EnableRuleParallelization">EnableRuleParallelization</a> is <span class="xref">true</span> the sum of the times reported within each
+<a class="xref" href="CSF.Validation.ValidationRuleResult.html#CSF_Validation_ValidationRuleResult_InstrumentationData">InstrumentationData</a> will likely not total the amount reported by this property.  That is because
+many of the reported times for each of the rules will have run concurrently with other rules.
+On the other hand, this time does correspond to real &quot;wall clock&quot; time to perform validation.
+</p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -303,7 +352,7 @@ the current validation result.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_ForMatchingMemberItem__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0______0_.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.ForMatchingMemberItem%60%601(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%60%600%7D%7D%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L32">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L35">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_ForMatchingMemberItem_" data-uid="CSF.Validation.SubsetOfValidationResults`1.ForMatchingMemberItem*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_ForMatchingMemberItem__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0______0_" data-uid="CSF.Validation.SubsetOfValidationResults`1.ForMatchingMemberItem``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}},``0)">ForMatchingMemberItem&lt;TItem&gt;(Expression&lt;Func&lt;TValidated, IEnumerable&lt;TItem&gt;&gt;&gt;, TItem)</h4>
@@ -375,7 +424,7 @@ a collection item that matches the specified item.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.ForMember%60%601(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2C%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L28">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L31">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_ForMember_" data-uid="CSF.Validation.SubsetOfValidationResults`1.ForMember*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___" data-uid="CSF.Validation.SubsetOfValidationResults`1.ForMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">ForMember&lt;TItem&gt;(Expression&lt;Func&lt;TValidated, TItem&gt;&gt;)</h4>
@@ -463,7 +512,7 @@ the specified member and descendent members.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_ForOnlyThisValue.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.ForOnlyThisValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L36">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L39">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_ForOnlyThisValue_" data-uid="CSF.Validation.SubsetOfValidationResults`1.ForOnlyThisValue*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_ForOnlyThisValue" data-uid="CSF.Validation.SubsetOfValidationResults`1.ForOnlyThisValue">ForOnlyThisValue()</h4>
@@ -496,7 +545,7 @@ Any rule results for descendent values are excluded.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_PolymorphicAs__1.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.PolymorphicAs%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L42">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L45">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_PolymorphicAs_" data-uid="CSF.Validation.SubsetOfValidationResults`1.PolymorphicAs*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_PolymorphicAs__1" data-uid="CSF.Validation.SubsetOfValidationResults`1.PolymorphicAs``1">PolymorphicAs&lt;TDerived&gt;()</h4>
@@ -546,7 +595,7 @@ rules and values added as part of polymorphic validation.</p>
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_ToSerializableResult.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.ToSerializableResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L46">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L49">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_ToSerializableResult_" data-uid="CSF.Validation.SubsetOfValidationResults`1.ToSerializableResult*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_ToSerializableResult" data-uid="CSF.Validation.SubsetOfValidationResults`1.ToSerializableResult">ToSerializableResult()</h4>
@@ -588,7 +637,7 @@ or data to be persisted in a relational database.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_WithoutSuccesses.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.WithoutSuccesses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L39">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L42">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_WithoutSuccesses_" data-uid="CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_WithoutSuccesses" data-uid="CSF.Validation.SubsetOfValidationResults`1.WithoutSuccesses">WithoutSuccesses()</h4>
@@ -622,7 +671,7 @@ or data to be persisted in a relational database.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_CSF_Validation_IQueryableValidationResult_AsResultFor__1.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.CSF%23Validation%23IQueryableValidationResult%23AsResultFor%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L48">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L51">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_CSF_Validation_IQueryableValidationResult_AsResultFor_" data-uid="CSF.Validation.SubsetOfValidationResults`1.CSF#Validation#IQueryableValidationResult#AsResultFor*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_CSF_Validation_IQueryableValidationResult_AsResultFor__1" data-uid="CSF.Validation.SubsetOfValidationResults`1.CSF#Validation#IQueryableValidationResult#AsResultFor``1">IQueryableValidationResult.AsResultFor&lt;T&gt;()</h4>
@@ -667,7 +716,7 @@ or data to be persisted in a relational database.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.System%23Collections%23Generic%23IEnumerable%7BCSF%23Validation%23ValidationRuleResult%7D%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L50">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L53">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator_" data-uid="CSF.Validation.SubsetOfValidationResults`1.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__GetEnumerator" data-uid="CSF.Validation.SubsetOfValidationResults`1.System#Collections#Generic#IEnumerable{CSF#Validation#ValidationRuleResult}#GetEnumerator">IEnumerable&lt;ValidationRuleResult&gt;.GetEnumerator()</h4>
@@ -697,7 +746,7 @@ or data to be persisted in a relational database.
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_SubsetOfValidationResults_1_System_Collections_IEnumerable_GetEnumerator.md&amp;value=---%0Auid%3A%20CSF.Validation.SubsetOfValidationResults%601.System%23Collections%23IEnumerable%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L52">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/SubsetOfValidationResults.cs/#L55">View Source</a>
   </span>
   <a id="CSF_Validation_SubsetOfValidationResults_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="CSF.Validation.SubsetOfValidationResults`1.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="CSF_Validation_SubsetOfValidationResults_1_System_Collections_IEnumerable_GetEnumerator" data-uid="CSF.Validation.SubsetOfValidationResults`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>

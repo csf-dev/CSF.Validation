@@ -84,8 +84,35 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="CSF.Validation.Rules.AllChildrenMustBeValues.html">AllChildrenMustBeValues</a></h4>
+      <section><p>A rule that asserts all members of the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Children">Children</a> collection have the value type <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Value">Value</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.AllPolymorphicTypesMustBeMarkedAsSo.html">AllPolymorphicTypesMustBeMarkedAsSo</a></h4>
+      <section><p>A rule that asserts all members of the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_PolymorphicTypes">PolymorphicTypes</a> collection have the value
+type <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_PolymorphicType">PolymorphicType</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.CollectionItemValueMustBeCollectionItem.html">CollectionItemValueMustBeCollectionItem</a></h4>
+      <section><p>A rule which asserts that the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_CollectionItemValue">CollectionItemValue</a> property is either <span class="xref">null</span>
+or contains a manifest item with the type <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_CollectionItem">CollectionItem</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable.html">CollectionItemValueMustBeNullIfValidatedTypeIsNotEnumerable</a></h4>
+      <section><p>A rule which asserts that - if the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> of a <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> is
+not a type that derives from <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> then the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_CollectionItemValue">CollectionItemValue</a>
+of that manifest item must be null.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.CollectionItemValueMustValidateCompatibleTypeForValidatedType.html">CollectionItemValueMustValidateCompatibleTypeForValidatedType</a></h4>
+      <section><p>A rule which asserts that - where the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_OwnCollectionItemValue">OwnCollectionItemValue</a> is not <span class="xref">null</span>,
+it is configured to validate a type (via its own <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> property) that is compatible with
+the generic type for which the current <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> implements <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.CommonResults.html">CommonResults</a></h4>
       <section><p>Helper class to create instances of <a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a> instances from commonly-used scenarios.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ContainsNoNullItems.html">ContainsNoNullItems</a></h4>
+      <section><p>A rule which asserts that a collection contains no items that are <span class="xref">null</span>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.ContainsNoNullItems-1.html">ContainsNoNullItems&lt;T&gt;</a></h4>
+      <section><p>A rule which asserts that a collection or a queryable value contains no items that are <span class="xref">null</span>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.CountInRange-1.html">CountInRange&lt;T&gt;</a></h4>
       <section><p>A rule that passes if a validated collection or queryable is either <span class="xref">null</span> or has a count of items
@@ -98,6 +125,18 @@ between inclusive minimum/maximums, configured in this rule.</p>
       <h4><a class="xref" href="CSF.Validation.Rules.DecimalInRange.html">DecimalInRange</a></h4>
       <section><p>A validation rule which passes if the validated <span class="xref">System.Decimal</span> or <span class="xref">System.Nullable&lt;T&gt;</span> decimal is within
 an inclusive <a class="xref" href="CSF.Validation.Rules.DecimalInRange.html#CSF_Validation_Rules_DecimalInRange_Min">Min</a> &amp; <a class="xref" href="CSF.Validation.Rules.DecimalInRange.html#CSF_Validation_Rules_DecimalInRange_Max">Max</a> range.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.DerivesFrom.html">DerivesFrom</a></h4>
+      <section><p>A rule that passes if the validated value is <span class="xref">null</span> or if it derives from a specified type, and fails if it does not.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.DerivesFrom-1.html">DerivesFrom&lt;T&gt;</a></h4>
+      <section><p>A rule that passes if the validated value is <span class="xref">null</span> or if it derives from a specified type, and fails if it does not.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.DoesNotDeriveFrom.html">DoesNotDeriveFrom</a></h4>
+      <section><p>A rule that passes if the validated value is <span class="xref">null</span> or if it does not derive from a specified type, and fails if it does.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.DoesNotDeriveFrom-1.html">DoesNotDeriveFrom&lt;T&gt;</a></h4>
+      <section><p>A rule that passes if the validated value is <span class="xref">null</span> or if it does not derive from a specified type, and fails if it does.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.Empty.html">Empty</a></h4>
       <section><p>A validation rule which passes if the value being validated is either <span class="xref">null</span> or is a collection or
@@ -134,6 +173,21 @@ between inclusive minimum/maximums, configured in this rule.</p>
       <section><p>A rule which passes if the validated string is either <span class="xref">null</span> or is a match for the specified
 regular expression.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.MayNotHaveOwnItemsIfRecursive.html">MayNotHaveOwnItemsIfRecursive</a></h4>
+      <section><p>A validation rule which asserts that - if the manifest item type is recursive - then the parent manifest item may not
+have any of its &quot;own&quot; collection item, children, polymorphic types or rules.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.MemberMustExist.html">MemberMustExist</a></h4>
+      <section><p>A rule which asserts that the value indicates a member which exists upon the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> of the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.MustBeDefinedEnumConstant.html">MustBeDefinedEnumConstant</a></h4>
+      <section><p>A validation rule which asserts that the validated value (which may be nullable) is a defined member
+of the specified enumerated type.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.MustBeDefinedEnumConstant-1.html">MustBeDefinedEnumConstant&lt;T&gt;</a></h4>
+      <section><p>A validation rule which asserts that the validated value (which may be nullable) is a defined member
+of the specified enumerated type.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.NotEmpty.html">NotEmpty</a></h4>
       <section><p>A validation rule which passes if the value being validated is either <span class="xref">null</span> or is a collection or
 a string that has at least one item/is not empty.</p>
@@ -144,6 +198,13 @@ that has at least one item.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.NotNull.html">NotNull</a></h4>
       <section><p>A validation rule which passes if the value being validated is not <span class="xref">null</span> and fails if it is.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NotNullIfRecursive.html">NotNullIfRecursive</a></h4>
+      <section><p>A rule which asserts that a value is not null if the parent <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> is a recursive one.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NotNullIfTheParentIsNotAManifest.html">NotNullIfTheParentIsNotAManifest</a></h4>
+      <section><p>A rule which asserts that a value is not <span class="xref">null</span> if the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Parent">Parent</a>
+is not an instance of <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.NotNullOrEmpty.html">NotNullOrEmpty</a></h4>
       <section><p>A validation rule which passes if the object being validated is both not <span class="xref">null</span> and
@@ -156,8 +217,35 @@ not an empty collection.  The rule fails if it is either.</p>
       <h4><a class="xref" href="CSF.Validation.Rules.Null.html">Null</a></h4>
       <section><p>A validation rule which passes if the value being validated is <span class="xref">null</span> and fails if it is not.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NullIfNotRecursive.html">NullIfNotRecursive</a></h4>
+      <section><p>A rule which asserts that a value is null if the parent <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> is not a recursive one.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.NullIfTheParentIsAManifest.html">NullIfTheParentIsAManifest</a></h4>
+      <section><p>A rule which asserts that a value is <span class="xref">null</span> if the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Parent">Parent</a>
+is an instance of <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Rules.ParallelizableAttribute.html">ParallelizableAttribute</a></h4>
       <section><p>Attribute used to mark rule classes which may be executed in parallel with other rules.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.PolymorphicTypeMustDeriveFromParentValidatedType.html">PolymorphicTypeMustDeriveFromParentValidatedType</a></h4>
+      <section><p>Validation rule which asserts that for any manifest item which <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IsPolymorphicType">IsPolymorphicType</a>,
+the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> of the polymorphic type</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RootManifestValueMustHaveParentThatIsValidationManifest.html">RootManifestValueMustHaveParentThatIsValidationManifest</a></h4>
+      <section><p>A validation rule which asserts that the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_Parent">Parent</a> is an instance of
+<a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RootValueMustBeForSameTypeAsManifest.html">RootValueMustBeForSameTypeAsManifest</a></h4>
+      <section><p>A rule which ensures that the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a> of the <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> which has been
+used as the <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html#CSF_Validation_Manifest_ValidationManifest_RootValue">RootValue</a> is for the same (or a less-derived) type as
+the <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html#CSF_Validation_Manifest_ValidationManifest_ValidatedType">ValidatedType</a> of that manifest.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RootValueMustNotBeNull.html">RootValueMustNotBeNull</a></h4>
+      <section><p>A rule which ensures that the <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html#CSF_Validation_Manifest_ValidationManifest_RootValue">RootValue</a> is not <span class="xref">null</span>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RootValueOfManifestMustBeASimpleValue.html">RootValueOfManifestMustBeASimpleValue</a></h4>
+      <section><p>A rule which verifies that the root manifest item within a validation manifest has an
+item type equal to <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Value">Value</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.RuleAdapter-1.html">RuleAdapter&lt;TValidated&gt;</a></h4>
       <section><p>An adapter class for instances of <a class="xref" href="CSF.Validation.Rules.IRule-1.html">IRule&lt;TValidated&gt;</a>, which
@@ -175,6 +263,10 @@ non-generic <a class="xref" href="CSF.Validation.Rules.IValidationLogic.html">IV
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.RuleIdentifierBase.html">RuleIdentifierBase</a></h4>
       <section><p>Base model for rule identifiers.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.Rules.RuleMustImplementCompatibleValidationLogic.html">RuleMustImplementCompatibleValidationLogic</a></h4>
+      <section><p>A rule which asserts that the rule's concrete logic type, <a class="xref" href="CSF.Validation.Rules.RuleIdentifierBase.html#CSF_Validation_Rules_RuleIdentifierBase_RuleType">RuleType</a>, implements
+an interface which is compatible with the corresponding manifest item's <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_ValidatedType">ValidatedType</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Rules.RuleResult.html">RuleResult</a></h4>
       <section><p>A model for information about the result of running a single validation rule.</p>

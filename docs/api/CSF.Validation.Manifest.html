@@ -84,32 +84,20 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a></h4>
-      <section><p>A model which represents an item of a collection which is to be validated individually.</p>
-</section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ManifestFromBuilderProvider.html">ManifestFromBuilderProvider</a></h4>
       <section><p>A service which gets a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a> from an instance of <a class="xref" href="CSF.Validation.IBuildsValidator-1.html">IBuildsValidator&lt;TValidated&gt;</a>.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html">ManifestItemExtensions</a></h4>
-      <section><p>Extension methods for <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a>.</p>
+      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></h4>
+      <section><p>Base class used for values which are validated.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestPolymorphicType.html">ManifestPolymorphicType</a></h4>
-      <section><p>A model which represents how a specific runtime type should be validated, when performing polymorphic validation.</p>
+      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestItemExtensions.html">ManifestItemExtensions</a></h4>
+      <section><p>Extension methods for <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a></h4>
       <section><p>A model for a single validation rule within a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ManifestRuleIdentifier.html">ManifestRuleIdentifier</a></h4>
       <section><p>A model for information which uniquely identifies a validation rule within a validation manifest.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></h4>
-      <section><p>A model which represents a value which is validated within a validation hierarchy.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestValueBase.html">ManifestValueBase</a></h4>
-      <section><p>Abstract base class used for values which are validated, implementors of <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a>.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.RecursiveManifestValue.html">RecursiveManifestValue</a></h4>
-      <section><p>Represents a recursive reference to a manifest value which already appears within the current manifest.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ValidatedTypeProvider.html">ValidatedTypeProvider</a></h4>
       <section><p>A service that gets the validated type from a value type.</p>
@@ -131,17 +119,15 @@
       <h4><a class="xref" href="CSF.Validation.Manifest.IGetsValidatorFromManifest.html">IGetsValidatorFromManifest</a></h4>
       <section><p>An object which gets an <a class="xref" href="CSF.Validation.IValidator.html">IValidator</a> from a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.IHasPolymorphicTypes.html">IHasPolymorphicTypes</a></h4>
-      <section><p>An object within a validation manifest which supports polymorphic validation.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></h4>
-      <section><p>An object which behaves like an item within a validation manifest.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a></h4>
-      <section><p>A specialisation of <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a> which behaves like a value within a validation manifest.</p>
+      <h4><a class="xref" href="CSF.Validation.Manifest.IManifestNode.html">IManifestNode</a></h4>
+      <section><p>A node in the validation manifest.  Typically either a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a>
+itself or a <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>.</p>
 </section>
     <h3 id="enums">Enums
   </h3>
+      <h4><a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html">ManifestItemTypes</a></h4>
+      <section><p>A 'flags' enumeration which indicates the possible kinds of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.Manifest.ValueAccessExceptionBehaviour.html">ValueAccessExceptionBehaviour</a></h4>
       <section><p>Enumerates the possible behaviours which the validator should take when a value-accessor raises an exception.</p>
 </section>
