@@ -84,7 +84,6 @@ If you would like to create a validator using strongly-typed .NET code instead, 
 These classes are:</p>
 <ul>
 <li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.Value.html"><code>Value</code></a></li>
-<li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.CollectionItemValue.html"><code>CollectionItemValue</code></a></li>
 <li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.Rule.html"><code>Rule</code></a></li>
 <li><a class="xref" href="../../../api/CSF.Validation.ManifestModel.RelativeIdentifier.html"><code>RelativeIdentifier</code></a></li>
 </ul>
@@ -95,14 +94,14 @@ This allows validators to be defined using technologies such as JSON, XML, a rel
 <h3 id="values-represent-the-validated-objects">Values represent the validated objects</h3>
 <p>Using the manifest model is primarily about declaring the appropriate values and rules.
 Values form a hierarchical structure which corresponds to the design of the types of the objects to be validated.
-The <a class="xref" href="../../../api/CSF.Validation.ManifestModel.ValueBase.html#CSF_Validation_ManifestModel_ValueBase_Children"><code>Children</code></a> property of a value holds a further collection of values which may be accessed from the initial object to be validated.
+The <a class="xref" href="../../../api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_Children"><code>Children</code></a> property of a value holds a further collection of values which may be accessed from the initial object to be validated.
 Most commonly this is via property getter but could include public fields or parameterless public methods which return a value.
 It is possible to describe the validation of deep, connected object graphs involving multiple levels of traversal.</p>
 <p><em>All manifest models use a single <code>Value</code> instance as the root of the model.</em>
 Unlike the <a class="xref" href="../../../api/CSF.Validation.Manifest.ValidationManifest.html"><code>ValidationManifest</code></a> class, there is no particular type which serves as the root of the object model.</p>
 <h3 id="validating-collection-items">Validating collection items</h3>
 <p>If a value implements <code>IEnumerable&lt;T&gt;</code>, it is also possible to individually validate each item of that collection.
-In this case, configure the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.CollectionItemValue.html"><code>CollectionItemValue</code></a> property of that <code>Value</code> object.
+In this case, configure the <a class="xref" href="../../../api/CSF.Validation.ManifestModel.Value.html#CSF_Validation_ManifestModel_Value_CollectionItemValue"><code>CollectionItemValue</code></a> property of that <code>Value</code> object.
 The <code>Value</code> represents the collection as a whole, the <code>CollectionItemValue</code> represents each individual collection item.</p>
 <h3 id="validation-rules">Validation rules</h3>
 <p>Rules define the validation rules to be applied to values.

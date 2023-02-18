@@ -77,12 +77,12 @@
 <h1 id="querying-validation-results">Querying validation results</h1>
 
 <p>A strongly-typed validator returns an instance of <a class="xref" href="../api/CSF.Validation.IQueryableValidationResult-1.html"><code>IQueryableValidationResult&lt;T&gt;</code></a>.
-This interface implements <code>IEnumerable&lt;ValidationRuleResult&gt;</code> and so it is possible to query it using Linq.
-The validation framework also adds a few methods to make querying even easier:</p>
-<p>All of the following methods work a lot like <code>.Where()</code> in Linq; each returns a filtered collection of results, <em>without modifying the original result object</em>.</p>
+This interface implements <code>IEnumerable&lt;ValidationRuleResult&gt;</code> and so it is possible to query it using Linq.</p>
+<p>The validation framework also adds a few methods to make querying even easier.
+All of the following methods work a lot like <code>.Where()</code> in Linq; each returns a filtered collection of results, <em>without modifying the original result object</em>.</p>
 <h2 id="formember-narrows-the-results-by-member"><code>ForMember</code> narrows the results by member</h2>
 <p>The <a class="xref" href="../api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForMember__1_System_Linq_Expressions_Expression_System_Func__0___0___"><code>ForMember</code></a> method is used to filter/narrow a collection of results to only those which relate to a member, or descendent values derived from that member's value.
-In essence this allows narrowing of the results by a property or other member.</p>
+In essence this allows narrowing of the results by traversing the object graph which is being validated.</p>
 <h2 id="formatchingmemberitem-narrows-the-results-by-a-collection-item"><code>ForMatchingMemberItem</code> narrows the results by a collection item</h2>
 <p>The <a class="xref" href="../api/CSF.Validation.IQueryableValidationResult-1.html#CSF_Validation_IQueryableValidationResult_1_ForMatchingMemberItem__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_IEnumerable___0______0_"><code>ForMatchingMemberItem</code></a> method is similar to <code>ForMember</code> (above) except that it works with collections.
 As well as an expression identifying the collection property, you also specify the item (from the original validated object) which you wish to narrow-by.</p>

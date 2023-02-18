@@ -129,7 +129,7 @@
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory__ctor_CSF_Reflection_IStaticallyReflects_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.%23ctor(CSF.Reflection.IStaticallyReflects)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L103">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L91">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory__ctor_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.#ctor*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory__ctor_CSF_Reflection_IStaticallyReflects_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.#ctor(CSF.Reflection.IStaticallyReflects)">ValidatorBuilderContextFactory(IStaticallyReflects)</h4>
@@ -162,19 +162,75 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForMember__2_System_Linq_Expressions_Expression_System_Func___0___1___CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Boolean_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForMember%60%602(System.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2C%60%601%7D%7D%2CCSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForCollection_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Type_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForCollection(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L35">View Source</a>
+  </span>
+  <a id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForCollection_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForCollection*"></a>
+  <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForCollection_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Type_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForCollection(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Type)">GetContextForCollection(ValidatorBuilderContext, Type)</h4>
+  <div class="markdown level1 summary"><p>Gets a validator builder context for validating items within a collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValidatorBuilderContext GetContextForCollection(ValidatorBuilderContext collectionContext, Type collectionItemType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a></td>
+        <td><span class="parametername">collectionContext</span></td>
+        <td><p>A validation context representing the collection itself.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">collectionItemType</span></td>
+        <td><p>The type of items within the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a></td>
+        <td><p>A validation builder context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForMember__2_System_Linq_Expressions_Expression_System_Func___0___1___CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForMember%60%602(System.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2C%60%601%7D%7D%2CCSF.Validation.ValidatorBuilding.ValidatorBuilderContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L18">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForMember_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForMember*"></a>
-  <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForMember__2_System_Linq_Expressions_Expression_System_Func___0___1___CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Boolean_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForMember``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Boolean)">GetContextForMember&lt;TValidated, TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt;, ValidatorBuilderContext, Boolean)</h4>
+  <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForMember__2_System_Linq_Expressions_Expression_System_Func___0___1___CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForMember``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},CSF.Validation.ValidatorBuilding.ValidatorBuilderContext)">GetContextForMember&lt;TValidated, TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt;, ValidatorBuilderContext)</h4>
   <div class="markdown level1 summary"><p>Gets the validator builder context for validating values of a specified member of a validated object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValidatorBuilderContext GetContextForMember&lt;TValidated, TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt; memberAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValidatorBuilderContext GetContextForMember&lt;TValidated, TValue&gt;(Expression&lt;Func&lt;TValidated, TValue&gt;&gt; memberAccessor, ValidatorBuilderContext validatorContext)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,14 +252,6 @@
         <td><a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a></td>
         <td><span class="parametername">validatorContext</span></td>
         <td><p>Contextual information relating to how a validator is built.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">enumerateItems</span></td>
-        <td><p>A value that indicates whether or not the items within the validated member should be enumerated
-and validated independently.  This is relevant when <code data-dev-comment-type="typeparamref" class="typeparamref">TValue</code> implements
-<span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -247,19 +295,19 @@ and validated independently.  This is relevant when <code data-dev-comment-type=
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForValue__2_System_Func___0___1__CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Boolean_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForValue%60%602(System.Func%7B%60%600%2C%60%601%7D%2CCSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForValue__2_System_Func___0___1__CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForValue%60%602(System.Func%7B%60%600%2C%60%601%7D%2CCSF.Validation.ValidatorBuilding.ValidatorBuilderContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L32">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L29">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForValue_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForValue*"></a>
-  <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForValue__2_System_Func___0___1__CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Boolean_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForValue``2(System.Func{``0,``1},CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Boolean)">GetContextForValue&lt;TValidated, TValue&gt;(Func&lt;TValidated, TValue&gt;, ValidatorBuilderContext, Boolean)</h4>
+  <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetContextForValue__2_System_Func___0___1__CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetContextForValue``2(System.Func{``0,``1},CSF.Validation.ValidatorBuilding.ValidatorBuilderContext)">GetContextForValue&lt;TValidated, TValue&gt;(Func&lt;TValidated, TValue&gt;, ValidatorBuilderContext)</h4>
   <div class="markdown level1 summary"><p>Gets the validator builder context for validating values that have been retrieved from a validated object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValidatorBuilderContext GetContextForValue&lt;TValidated, TValue&gt;(Func&lt;TValidated, TValue&gt; valueAccessor, ValidatorBuilderContext validatorContext, bool enumerateItems = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValidatorBuilderContext GetContextForValue&lt;TValidated, TValue&gt;(Func&lt;TValidated, TValue&gt; valueAccessor, ValidatorBuilderContext validatorContext)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -281,14 +329,6 @@ and validated independently.  This is relevant when <code data-dev-comment-type=
         <td><a class="xref" href="CSF.Validation.ValidatorBuilding.ValidatorBuilderContext.html">ValidatorBuilderContext</a></td>
         <td><span class="parametername">validatorContext</span></td>
         <td><p>Contextual information relating to how a validator is built.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">enumerateItems</span></td>
-        <td><p>A value that indicates whether or not the items within the retrieved value should be enumerated
-and validated independently.  This is relevant when <code data-dev-comment-type="typeparamref" class="typeparamref">TValue</code> implements
-<span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -335,7 +375,7 @@ and validated independently.  This is relevant when <code data-dev-comment-type=
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetPolymorphicContext_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Type_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L41">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidatorBuilding/ValidatorBuilderContextFactory.cs/#L48">View Source</a>
   </span>
   <a id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetPolymorphicContext_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext*"></a>
   <h4 id="CSF_Validation_ValidatorBuilding_ValidatorBuilderContextFactory_GetPolymorphicContext_CSF_Validation_ValidatorBuilding_ValidatorBuilderContext_System_Type_" data-uid="CSF.Validation.ValidatorBuilding.ValidatorBuilderContextFactory.GetPolymorphicContext(CSF.Validation.ValidatorBuilding.ValidatorBuilderContext,System.Type)">GetPolymorphicContext(ValidatorBuilderContext, Type)</h4>

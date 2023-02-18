@@ -82,9 +82,9 @@ You should use the <code>CommonResults</code> class as follows.</p>
 
 public class MustBeFour : IRule&lt;int&gt;
 {
-    Task&lt;RuleResult&gt; GetResultAsync(int validated,
-                                    RuleContext context,
-                                    CancellationToken token = default)
+    public ValueTask&lt;RuleResult&gt; GetResultAsync(int validated,
+                                                RuleContext context,
+                                                CancellationToken token = default)
     {
         return validated == 4 ? PassAsync() : FailAsync();
     }
@@ -92,7 +92,7 @@ public class MustBeFour : IRule&lt;int&gt;
 </code></pre>
 <h2 id="optimisation-as-well-as-convenience">Optimisation as well as convenience</h2>
 <p>When omitting the optional parameters (or passing only <code>null</code>) to the following methods, the <code>CommonResults</code> class offers an optimisation.
-In these scenarios <a href="https://en.wikipedia.org/wiki/Flyweight_pattern">flyweight instances</a> will be returned instead of allocating new <a class="xref" href="../../api/CSF.Validation.Rules.RuleResult.html"><code>RuleResult</code></a> and/or <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1"><code>Task&lt;RuleResult&gt;</code></a> instances.</p>
+In these scenarios <a href="https://en.wikipedia.org/wiki/Flyweight_pattern">flyweight instances</a> will be returned instead of allocating new <a class="xref" href="../../api/CSF.Validation.Rules.RuleResult.html"><code>RuleResult</code></a> instances.</p>
 <ul>
 <li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_Pass_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>Pass()</code></a></li>
 <li><a class="xref" href="../../api/CSF.Validation.Rules.CommonResults.html#CSF_Validation_Rules_CommonResults_PassAsync_System_Collections_Generic_IDictionary_System_String_System_Object__"><code>PassAsync()</code></a></li>

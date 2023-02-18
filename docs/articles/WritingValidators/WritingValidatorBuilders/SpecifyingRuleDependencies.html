@@ -91,7 +91,9 @@ Consider the following example; you may wish to inject the dependency rule by an
 {
   readonly DependencyRule  dependencyRule;
 
-  public async Task&lt;RuleResult&gt; GetResultAsync(string validated, RuleContext context, CancellationToken token = default)
+  public async ValueTask&lt;RuleResult&gt; GetResultAsync(string validated,
+                                                    RuleContext context,
+                                                    CancellationToken token = default)
   {
     var dependencyResult = await dependencyRule.GetResultAsync(validated, context, token);
     if (dependencyResult.Outcome != RuleOutcome.Pass)

@@ -76,7 +76,8 @@
             <article class="content wrap" id="_content" data-uid="ConfiguringTheFramework">
 <h1 id="configuring-the-validation-framework">Configuring the Validation Framework</h1>
 
-<p>The recommended and easiest way to configure and consume the Validation Framework is to add it to your application's <strong>dependency injection</strong>.</p>
+<p><em>The recommended and easiest</em> way to configure and consume the Validation Framework is to add it to your application's <strong>dependency injection</strong>.</p>
+<p>For applications which do not use dependency injection, <a href="https://www.nuget.org/packages/CSF.Validation.Selfhosting">the CSF.Validation.Selfhosting NuGet package</a> provides <a href="SelfHosting.html">a self-contained way to use validators</a> which does not depend upon an application's dependency injection.</p>
 <h2 id="adding-csfvalidation-to-your-app">Adding CSF.Validation to your app</h2>
 <p>In the method where you configure your <code>IServiceCollection</code>, typically in your application's startup project, you would use something like the following.
 You will also require a reference to <a href="https://www.nuget.org/packages/CSF.Validation/">the <strong>CSF.Validation</strong> NuGet package</a>.</p>

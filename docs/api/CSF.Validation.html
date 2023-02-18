@@ -90,6 +90,22 @@
       <h4><a class="xref" href="CSF.Validation.ExceptionThrowingValidatorWrapper.html">ExceptionThrowingValidatorWrapper</a></h4>
       <section><p>A service which wraps instances of validators with exception-throwing behaviour.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.InsrumentingValidatorWrapper.html">InsrumentingValidatorWrapper</a></h4>
+      <section><p>Default implementation of <a class="xref" href="CSF.Validation.IWrapsValidatorWithInstrumentationSupport.html">IWrapsValidatorWithInstrumentationSupport</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.InstrumentingValidatorDecorator-1.html">InstrumentingValidatorDecorator&lt;TValidated&gt;</a></h4>
+      <section><p>Decorator for <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a> &amp; <a class="xref" href="CSF.Validation.IValidator.html">IValidator</a> which instruments the result
+with timing data if applicable.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.JsonManifestModelSerializer.html">JsonManifestModelSerializer</a></h4>
+      <section><p>Default implementation of <a class="xref" href="CSF.Validation.ISerializesManifestModelToFromJson.html">ISerializesManifestModelToFromJson</a> which uses <code>System.Text.Json</code>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.JsonManifestModelSerializerExtensions.html">JsonManifestModelSerializerExtensions</a></h4>
+      <section><p>Extension methods for <a class="xref" href="CSF.Validation.ISerializesManifestModelToFromJson.html">ISerializesManifestModelToFromJson</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.JsonServiceCollectionExtensions.html">JsonServiceCollectionExtensions</a></h4>
+      <section><p>Extension methods for a service collection which adds JSON-serialization services.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.MessageEnrichingValidatorDecorator-1.html">MessageEnrichingValidatorDecorator&lt;TValidated&gt;</a></h4>
       <section><p>A decorator service which wraps a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a> and extends it to be usable as either
 a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidated&gt;</a> or <a class="xref" href="CSF.Validation.IValidator.html">IValidator</a>.</p>
@@ -102,6 +118,10 @@ a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidat
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleBuilderExtensions.html">RuleBuilderExtensions</a></h4>
       <section><p>Extension methods for instances of <a class="xref" href="CSF.Validation.ValidatorBuilding.IConfiguresRule-1.html">IConfiguresRule&lt;TRule&gt;</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.RuleInstrumentationData.html">RuleInstrumentationData</a></h4>
+      <section><p>A small model which represents instrumentation data about the execution of a single
+validation rule.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.RuleResultIsForDescendentOfValue.html">RuleResultIsForDescendentOfValue</a></h4>
       <section><p>A specification for validation rule results which must be for a specified value, or a descendent of that value.</p>
@@ -160,6 +180,9 @@ and returns a result.</p>
       <h4><a class="xref" href="CSF.Validation.ValidatorFactoryExtensions.html">ValidatorFactoryExtensions</a></h4>
       <section><p>Extensionm methods for <a class="xref" href="CSF.Validation.IGetsValidator.html">IGetsValidator</a>.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.ValidatorHost.html">ValidatorHost</a></h4>
+      <section><p>Default implementation of <a class="xref" href="CSF.Validation.IHostsValidationFramework.html">IHostsValidationFramework</a>.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.ValueContextIsMatchForItem.html">ValueContextIsMatchForItem</a></h4>
       <section><p>A specification for validation value contexts that match a specified manifest value and
 optionally a validated item.</p>
@@ -181,11 +204,17 @@ in which they might be specified.</p>
       <h4><a class="xref" href="CSF.Validation.IGetsValidator.html">IGetsValidator</a></h4>
       <section><p>An object which may be used as the factory from which to create validator instances.</p>
 </section>
+      <h4><a class="xref" href="CSF.Validation.IHostsValidationFramework.html">IHostsValidationFramework</a></h4>
+      <section><p>An object which hosts a validation framework in a self-contained manner, for applications which do not use dependency injection.</p>
+</section>
       <h4><a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a></h4>
       <section><p>An object which contains validation rule results, which may be queried for specific results.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IQueryableValidationResult-1.html">IQueryableValidationResult&lt;TValidated&gt;</a></h4>
       <section><p>A strongly-typed specialisation of <a class="xref" href="CSF.Validation.IQueryableValidationResult.html">IQueryableValidationResult</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.ISerializesManifestModelToFromJson.html">ISerializesManifestModelToFromJson</a></h4>
+      <section><p>An object which can serialize &amp; deserialize a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> to or from JSON.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IValidator.html">IValidator</a></h4>
       <section><p>An object which may be used to validate object instances and get a validation result.</p>
@@ -195,6 +224,9 @@ in which they might be specified.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IWrapsValidatorWithExceptionBehaviour.html">IWrapsValidatorWithExceptionBehaviour</a></h4>
       <section><p>An object which wraps a validator instance with appropriate exception-throwing behaviour.</p>
+</section>
+      <h4><a class="xref" href="CSF.Validation.IWrapsValidatorWithInstrumentationSupport.html">IWrapsValidatorWithInstrumentationSupport</a></h4>
+      <section><p>An object which wraps a validator instance with appropriate instrumentation behaviour.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.IWrapsValidatorWithMessageSupport.html">IWrapsValidatorWithMessageSupport</a></h4>
       <section><p>An object which wraps a validator instance with the capability to show human-readable feedback

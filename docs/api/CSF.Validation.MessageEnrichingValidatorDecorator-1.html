@@ -144,19 +144,19 @@ a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidat
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_CSF_Validation_IValidator__0__CSF_Validation_Messages_IAddsFailureMessagesToResult_.md&amp;value=---%0Auid%3A%20CSF.Validation.MessageEnrichingValidatorDecorator%601.%23ctor(CSF.Validation.IValidator%7B%600%7D%2CCSF.Validation.Messages.IAddsFailureMessagesToResult)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_CSF_Validation_IValidator__0__CSF_Validation_Messages_IAddsFailureMessagesToResult_CSF_Validation_IGetsResolvedValidationOptions_.md&amp;value=---%0Auid%3A%20CSF.Validation.MessageEnrichingValidatorDecorator%601.%23ctor(CSF.Validation.IValidator%7B%600%7D%2CCSF.Validation.Messages.IAddsFailureMessagesToResult%2CCSF.Validation.IGetsResolvedValidationOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L42">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L45">View Source</a>
   </span>
   <a id="CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor*"></a>
-  <h4 id="CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_CSF_Validation_IValidator__0__CSF_Validation_Messages_IAddsFailureMessagesToResult_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor(CSF.Validation.IValidator{`0},CSF.Validation.Messages.IAddsFailureMessagesToResult)">MessageEnrichingValidatorDecorator(IValidator&lt;TValidated&gt;, IAddsFailureMessagesToResult)</h4>
+  <h4 id="CSF_Validation_MessageEnrichingValidatorDecorator_1__ctor_CSF_Validation_IValidator__0__CSF_Validation_Messages_IAddsFailureMessagesToResult_CSF_Validation_IGetsResolvedValidationOptions_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.#ctor(CSF.Validation.IValidator{`0},CSF.Validation.Messages.IAddsFailureMessagesToResult,CSF.Validation.IGetsResolvedValidationOptions)">MessageEnrichingValidatorDecorator(IValidator&lt;TValidated&gt;, IAddsFailureMessagesToResult, IGetsResolvedValidationOptions)</h4>
   <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.Validation.MessageEnrichingValidatorDecorator-1.html">MessageEnrichingValidatorDecorator&lt;TValidated&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MessageEnrichingValidatorDecorator(IValidator&lt;TValidated&gt; validator, IAddsFailureMessagesToResult failureMessageEnricher)</code></pre>
+    <pre><code class="lang-csharp hljs">public MessageEnrichingValidatorDecorator(IValidator&lt;TValidated&gt; validator, IAddsFailureMessagesToResult failureMessageEnricher, IGetsResolvedValidationOptions optionsResolver)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -178,6 +178,12 @@ a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidat
         <td><a class="xref" href="CSF.Validation.Messages.IAddsFailureMessagesToResult.html">IAddsFailureMessagesToResult</a></td>
         <td><span class="parametername">failureMessageEnricher</span></td>
         <td><p>A service which adds failure messages to validation results.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CSF.Validation.IGetsResolvedValidationOptions.html">IGetsResolvedValidationOptions</a></td>
+        <td><span class="parametername">optionsResolver</span></td>
+        <td><p>An options resolving service.</p>
 </td>
       </tr>
     </tbody>
@@ -205,7 +211,7 @@ a <a class="xref" href="CSF.Validation.IValidator-1.html">IValidator&lt;TValidat
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidatedType.md&amp;value=---%0Auid%3A%20CSF.Validation.MessageEnrichingValidatorDecorator%601.ValidatedType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L19">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L20">View Source</a>
   </span>
   <a id="CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidatedType_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidatedType*"></a>
   <h4 id="CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidatedType" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidatedType">ValidatedType</h4>
@@ -244,7 +250,7 @@ the type indicated by this property, or a type that is derived from the type ind
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.MessageEnrichingValidatorDecorator%601.ValidateAsync(%600%2CCSF.Validation.ValidationOptions%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L22">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L23">View Source</a>
   </span>
   <a id="CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidateAsync_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidateAsync*"></a>
   <h4 id="CSF_Validation_MessageEnrichingValidatorDecorator_1_ValidateAsync__0_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.ValidateAsync(`0,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)">ValidateAsync(TValidated, ValidationOptions, CancellationToken)</h4>
@@ -326,7 +332,7 @@ for more info about how the options are resolved from the defaults configured wi
     <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_MessageEnrichingValidatorDecorator_1_CSF_Validation_IValidator_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20CSF.Validation.MessageEnrichingValidatorDecorator%601.CSF%23Validation%23IValidator%23ValidateAsync(System.Object%2CCSF.Validation.ValidationOptions%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L30">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/MessageEnrichingValidatorDecorator.cs/#L32">View Source</a>
   </span>
   <a id="CSF_Validation_MessageEnrichingValidatorDecorator_1_CSF_Validation_IValidator_ValidateAsync_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.CSF#Validation#IValidator#ValidateAsync*"></a>
   <h4 id="CSF_Validation_MessageEnrichingValidatorDecorator_1_CSF_Validation_IValidator_ValidateAsync_System_Object_CSF_Validation_ValidationOptions_System_Threading_CancellationToken_" data-uid="CSF.Validation.MessageEnrichingValidatorDecorator`1.CSF#Validation#IValidator#ValidateAsync(System.Object,CSF.Validation.ValidationOptions,System.Threading.CancellationToken)">IValidator.ValidateAsync(Object, ValidationOptions, CancellationToken)</h4>

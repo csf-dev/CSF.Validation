@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IHasPolymorphicTypes
+    <title>Enum ManifestItemTypes
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IHasPolymorphicTypes
+    <meta name="title" content="Enum ManifestItemTypes
    ">
     <meta name="generator" content="docfx 2.58.9.0">
     
@@ -75,66 +75,74 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="CSF.Validation.Manifest.IHasPolymorphicTypes">
+            <article class="content wrap" id="_content" data-uid="CSF.Validation.Manifest.ManifestItemTypes">
   
   
-  <h1 id="CSF_Validation_Manifest_IHasPolymorphicTypes" data-uid="CSF.Validation.Manifest.IHasPolymorphicTypes" class="text-break">Interface IHasPolymorphicTypes
+  <h1 id="CSF_Validation_Manifest_ManifestItemTypes" data-uid="CSF.Validation.Manifest.ManifestItemTypes" class="text-break">Enum ManifestItemTypes
   </h1>
-  <div class="markdown level0 summary"><p>An object within a validation manifest which supports polymorphic validation.</p>
+  <div class="markdown level0 summary"><p>A 'flags' enumeration which indicates the possible kinds of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.Manifest.html">CSF.Validation.Manifest</a></h6>
   <h6><strong>Assembly</strong>: CSF.Validation.Abstractions.dll</h6>
-  <h5 id="CSF_Validation_Manifest_IHasPolymorphicTypes_syntax">Syntax</h5>
+  <h5 id="CSF_Validation_Manifest_ManifestItemTypes_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IHasPolymorphicTypes</code></pre>
+    <pre><code class="lang-csharp hljs">[Flags]
+public enum ManifestItemTypes</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_IHasPolymorphicTypes_PolymorphicTypes.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/IHasPolymorphicTypes.cs/#L24">View Source</a>
-  </span>
-  <a id="CSF_Validation_Manifest_IHasPolymorphicTypes_PolymorphicTypes_" data-uid="CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes*"></a>
-  <h4 id="CSF_Validation_Manifest_IHasPolymorphicTypes_PolymorphicTypes" data-uid="CSF.Validation.Manifest.IHasPolymorphicTypes.PolymorphicTypes">PolymorphicTypes</h4>
-  <div class="markdown level1 summary"><p>Gets or sets a mapping of the runtime types to polymorphic validation manifest definitions for those types.</p>
+  <h5 id="CSF_Validation_Manifest_ManifestItemTypes_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+Instead of a class hierarchy, manifest items are marked-up with these flags because a
+manifest item may have more than one of these attributes at the same time.
+</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ICollection&lt;ManifestPolymorphicType&gt; PolymorphicTypes { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h3 id="fields">Fields
+  </h3>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
-    </thead>
+    <thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="CSF.Validation.Manifest.ManifestPolymorphicType.html">ManifestPolymorphicType</a>&gt;</td>
-        <td></td>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_CollectionItem">CollectionItem</td>
+        <td><p>The manifest item represents an item of a collection.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_PolymorphicType">PolymorphicType</td>
+        <td><p>The manifest item represents a polymorphic type for either a value or collection item.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_Recursive">Recursive</td>
+        <td><p>The manifest item is recursive and 'points back to' an ancestor manifest item.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_RecursiveCollectionItem">RecursiveCollectionItem</td>
+        <td><p>A convenience value equivalent to the combination of both <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_CollectionItem">CollectionItem</a> &amp; <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Recursive">Recursive</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_RecursivePolymorphicType">RecursivePolymorphicType</td>
+        <td><p>A convenience value equivalent to the combination of both <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_PolymorphicType">PolymorphicType</a> &amp; <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Recursive">Recursive</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_RecursiveValue">RecursiveValue</td>
+        <td><p>A convenience value equivalent to the combination of both <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Value">Value</a> &amp; <a class="xref" href="CSF.Validation.Manifest.ManifestItemTypes.html#CSF_Validation_Manifest_ManifestItemTypes_Recursive">Recursive</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="CSF_Validation_Manifest_ManifestItemTypes_Value">Value</td>
+        <td><p>The manifest item represents a regular value to be validated.</p>
+</td>
       </tr>
     </tbody>
-  </table>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestRule.html">ManifestRule</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestRuleIdentifier.html">ManifestRuleIdentifier</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.IManifestValue.html">IManifestValue</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValueBase.html">ManifestValueBase</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestCollectionItem.html">ManifestCollectionItem</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.ManifestPolymorphicType.html">ManifestPolymorphicType</a></div>
-      <div><a class="xref" href="CSF.Validation.Manifest.RecursiveManifestValue.html">RecursiveManifestValue</a></div>
-  </div>
+  </thead></thead></table>
 </article>
           </div>
           
@@ -143,10 +151,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_IHasPolymorphicTypes.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.IHasPolymorphicTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_Manifest_ManifestItemTypes.md&amp;value=---%0Auid%3A%20CSF.Validation.Manifest.ManifestItemTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/IHasPolymorphicTypes.cs/#L19" class="contribution-link">View Source</a>
+                    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation.Abstractions/Manifest/ManifestItemType.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

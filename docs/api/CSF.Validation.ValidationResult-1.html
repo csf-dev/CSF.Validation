@@ -108,6 +108,9 @@
       <a class="xref" href="CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_Manifest">ValidationResult.Manifest</a>
     </div>
     <div>
+      <a class="xref" href="CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_ValidationTime">ValidationResult.ValidationTime</a>
+    </div>
+    <div>
       <a class="xref" href="CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_AsResultFor__1">ValidationResult.AsResultFor&lt;T&gt;()</a>
     </div>
     <div>
@@ -118,6 +121,12 @@
     </div>
     <div>
       <a class="xref" href="CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_System_Collections_IEnumerable_GetEnumerator">ValidationResult.IEnumerable.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_ToString">ValidationResult.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="CSF.Validation.ValidationResult.html#CSF_Validation_ValidationResult_ToString_System_Collections_Generic_IEnumerable_CSF_Validation_Rules_RuleOutcome__">ValidationResult.ToString(IEnumerable&lt;RuleOutcome&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -136,9 +145,6 @@
     </div>
     <div>
       <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CSF.Validation.html">CSF.Validation</a></h6>
@@ -166,19 +172,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationResult_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ValidationManifest_.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationResult%601.%23ctor(System.Collections.Generic.IEnumerable%7BCSF.Validation.ValidationRuleResult%7D%2CCSF.Validation.Manifest.ValidationManifest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/new/master/apiSpec/new?filename=CSF_Validation_ValidationResult_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ValidationManifest_System_Nullable_System_TimeSpan__.md&amp;value=---%0Auid%3A%20CSF.Validation.ValidationResult%601.%23ctor(System.Collections.Generic.IEnumerable%7BCSF.Validation.ValidationRuleResult%7D%2CCSF.Validation.Manifest.ValidationManifest%2CSystem.Nullable%7BSystem.TimeSpan%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidationResult.1-generic.cs/#L42">View Source</a>
+    <a href="https://github.com/csf-dev/CSF.Validation/blob/production/CSF.Validation/ValidationResult.1-generic.cs/#L43">View Source</a>
   </span>
   <a id="CSF_Validation_ValidationResult_1__ctor_" data-uid="CSF.Validation.ValidationResult`1.#ctor*"></a>
-  <h4 id="CSF_Validation_ValidationResult_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ValidationManifest_" data-uid="CSF.Validation.ValidationResult`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ValidationManifest)">ValidationResult(IEnumerable&lt;ValidationRuleResult&gt;, ValidationManifest)</h4>
+  <h4 id="CSF_Validation_ValidationResult_1__ctor_System_Collections_Generic_IEnumerable_CSF_Validation_ValidationRuleResult__CSF_Validation_Manifest_ValidationManifest_System_Nullable_System_TimeSpan__" data-uid="CSF.Validation.ValidationResult`1.#ctor(System.Collections.Generic.IEnumerable{CSF.Validation.ValidationRuleResult},CSF.Validation.Manifest.ValidationManifest,System.Nullable{System.TimeSpan})">ValidationResult(IEnumerable&lt;ValidationRuleResult&gt;, ValidationManifest, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Initialises a new generic instance of <a class="xref" href="CSF.Validation.ValidationResult-1.html">ValidationResult&lt;TValidated&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValidationResult(IEnumerable&lt;ValidationRuleResult&gt; ruleResults, ValidationManifest manifest)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValidationResult(IEnumerable&lt;ValidationRuleResult&gt; ruleResults, ValidationManifest manifest, TimeSpan? validationTime = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -200,6 +206,12 @@
         <td><a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a></td>
         <td><span class="parametername">manifest</span></td>
         <td><p>The validation manifest.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="parametername">validationTime</span></td>
+        <td><p>The time it has taken to perform validation.</p>
 </td>
       </tr>
     </tbody>

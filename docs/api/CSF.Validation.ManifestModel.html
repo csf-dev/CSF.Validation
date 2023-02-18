@@ -87,9 +87,6 @@
       <h4><a class="xref" href="CSF.Validation.ManifestModel.AccessorFunctionAndType.html">AccessorFunctionAndType</a></h4>
       <section><p>A simple model which describes a function that provides access to a value.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.ManifestModel.CollectionItemValue.html">CollectionItemValue</a></h4>
-      <section><p>A model which represents an item of a collection which is to be validated individually.</p>
-</section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ContextToManifestCollectionItemConverter.html">ContextToManifestCollectionItemConverter</a></h4>
       <section><p>A Chain of Responsibility impl of <a class="xref" href="CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html">IGetsManifestItemFromModelToManifestConversionContext</a> which deals with
 contexts for <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestConversionType.html#CSF_Validation_ManifestModel_ModelToManifestConversionType_CollectionItem">CollectionItem</a>.</p>
@@ -108,15 +105,15 @@ contexts for <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestC
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IdentityAccessorPopulatingManifestFromModelConversionContextDecorator.html">IdentityAccessorPopulatingManifestFromModelConversionContextDecorator</a></h4>
       <section><p>A decorator for <a class="xref" href="CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html">IGetsManifestItemFromModelToManifestConversionContext</a> which populates the
-<a class="xref" href="CSF.Validation.Manifest.ManifestValueBase.html#CSF_Validation_Manifest_ManifestValueBase_IdentityAccessor">IdentityAccessor</a> if the result of the appropriate type.</p>
+<a class="xref" href="CSF.Validation.Manifest.ManifestItem.html#CSF_Validation_Manifest_ManifestItem_IdentityAccessor">IdentityAccessor</a> if the result of the appropriate type.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ModelAndManifestValuePair.html">ModelAndManifestValuePair</a></h4>
-      <section><p>A simple object that describes both a <a class="xref" href="CSF.Validation.ManifestModel.ModelAndManifestValuePair.html#CSF_Validation_ManifestModel_ModelAndManifestValuePair_ManifestValue">ManifestValue</a> instanec and
+      <section><p>A simple object that describes both a <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> instanec and
 also the model <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> instance which was used to create it.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ModelRuleToManifestRuleConverter.html">ModelRuleToManifestRuleConverter</a></h4>
       <section><p>A service which converts the rules within a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> into manifest rules
-and to add those rules to a corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></p>
+and to add those rules to a corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestConversionContext.html">ModelToManifestConversionContext</a></h4>
       <section><p>A model which describes the contextual state required in order to convert
@@ -124,15 +121,12 @@ a validation model into a validation manifest.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html">ModelToManifestValueConversionResult</a></h4>
       <section><p>A model which describes the result of <a class="xref" href="CSF.Validation.ManifestModel.IConvertsModelValuesToManifestValues.html#CSF_Validation_ManifestModel_IConvertsModelValuesToManifestValues_ConvertAllValues_CSF_Validation_ManifestModel_ModelToManifestConversionContext_">ConvertAllValues(ModelToManifestConversionContext)</a>.
-This contains a root <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a> but also a collection of all of the
+This contains a root <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a> but also a collection of all of the
 manifest values which were converted, along with their original model values.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ModelValueToManifestValueConverter.html">ModelValueToManifestValueConverter</a></h4>
       <section><p>A service which converts <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestConversionContext.html">ModelToManifestConversionContext</a> instances (containing a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a>)
-into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a>, contained within a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html">ModelToManifestValueConversionResult</a>.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.ManifestModel.PolymorphicValue.html">PolymorphicValue</a></h4>
-      <section><p>A manifest model type representing a runtime type for polymorphic validation.</p>
+into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>, contained within a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html">ModelToManifestValueConversionResult</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.ReflectionDelegateFactory.html">ReflectionDelegateFactory</a></h4>
       <section><p>A factory service which gets an accessor function via reflection.</p>
@@ -160,25 +154,22 @@ rule instance based on a series of specified property values.</p>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a></h4>
       <section><p>A manifest model class representing a value to be validated.</p>
 </section>
-      <h4><a class="xref" href="CSF.Validation.ManifestModel.ValueBase.html">ValueBase</a></h4>
-      <section><p>Abstract base class used for values which are validated.</p>
-</section>
     <h3 id="interfaces">Interfaces
   </h3>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IConvertsModelRulesToManifestRules.html">IConvertsModelRulesToManifestRules</a></h4>
       <section><p>An object which may be used to convert the rules within a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a> into manifest rules
-and to add those rules to a corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a></p>
+and to add those rules to a corresponding <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a></p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IConvertsModelValuesToManifestValues.html">IConvertsModelValuesToManifestValues</a></h4>
       <section><p>An object which can convert a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestConversionContext.html">ModelToManifestConversionContext</a> (containing a <a class="xref" href="CSF.Validation.ManifestModel.Value.html">Value</a>)
-into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestValue.html">ManifestValue</a>, contained within a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html">ModelToManifestValueConversionResult</a>.</p>
+into a hierarchy of <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>, contained within a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestValueConversionResult.html">ModelToManifestValueConversionResult</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IGetsAccessorFunction.html">IGetsAccessorFunction</a></h4>
       <section><p>An object which can provide an accessor function which represents
 getting a value from a named member of a specified type.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IGetsManifestItemFromModelToManifestConversionContext.html">IGetsManifestItemFromModelToManifestConversionContext</a></h4>
-      <section><p>An object which converts a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestConversionContext.html">ModelToManifestConversionContext</a> into a <a class="xref" href="CSF.Validation.Manifest.IManifestItem.html">IManifestItem</a>.</p>
+      <section><p>An object which converts a <a class="xref" href="CSF.Validation.ManifestModel.ModelToManifestConversionContext.html">ModelToManifestConversionContext</a> into a <a class="xref" href="CSF.Validation.Manifest.ManifestItem.html">ManifestItem</a>.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IGetsPropertySetterAction.html">IGetsPropertySetterAction</a></h4>
       <section><p>An object which can provide a setter action/delegate which represents
@@ -191,9 +182,6 @@ rule instance based on a series of specified property values.</p>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IGetsValidationManifestFromModel.html">IGetsValidationManifestFromModel</a></h4>
       <section><p>An object which can get a <a class="xref" href="CSF.Validation.Manifest.ValidationManifest.html">ValidationManifest</a> from a simplified (serialization-friendly)
 model.</p>
-</section>
-      <h4><a class="xref" href="CSF.Validation.ManifestModel.IHasPolymorphicValues.html">IHasPolymorphicValues</a></h4>
-      <section><p>A manifest model object which supports a collection of polymorphic values.</p>
 </section>
       <h4><a class="xref" href="CSF.Validation.ManifestModel.IResolvesRuleType.html">IResolvesRuleType</a></h4>
       <section><p>An object which may be used to get a <span class="xref">System.Type</span> from a string rule-type name.</p>
